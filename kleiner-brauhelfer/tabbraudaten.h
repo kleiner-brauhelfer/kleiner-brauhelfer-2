@@ -24,7 +24,6 @@ private slots:
     void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
     void updateValues();
-    void updateWebView();
     void sudDataChanged(const QModelIndex& index);
 
     void on_tbBraudatum_dateChanged(const QDate &date);
@@ -55,7 +54,6 @@ private:
     Ui::TabBraudaten *ui;
     QByteArray mDefaultSplitterState;
     QByteArray mDefaultSplitterHelpState;
-    QTimer mTimerWebViewUpdate;
 };
 
 #endif // TABBRAUDATEN_H

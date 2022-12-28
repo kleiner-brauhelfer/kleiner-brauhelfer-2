@@ -24,7 +24,6 @@ private slots:
     void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
     void updateValues();
-    void updateWebView();
     void sudDataChanged(const QModelIndex& index);
 
     void on_tbAbfuelldatum_dateChanged(const QDate &date);
@@ -49,7 +48,6 @@ private:
     Ui::TabAbfuellen *ui;
     QByteArray mDefaultSplitterState;
     QByteArray mDefaultSplitterHelpState;
-    QTimer mTimerWebViewUpdate;
 };
 
 #endif // TABABFUELLEN_H

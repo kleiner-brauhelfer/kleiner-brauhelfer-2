@@ -1988,7 +1988,7 @@
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="WdgWebViewEditable" name="webview" native="true">
+      <widget class="QWidget" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -2045,12 +2045,6 @@
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>WdgWebViewEditable</class>
-   <extends>QWidget</extends>
-   <header>widgets/wdgwebvieweditable.h</header>
-   <container>1</container>
   </customwidget>
   <customwidget>
    <class>TimeEdit</class>

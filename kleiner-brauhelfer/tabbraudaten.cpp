@@ -4,11 +4,6 @@
 #include <qmath.h>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "templatetags.h"
-#include "model/spinboxdelegate.h"
-#include "model/doublespinboxdelegate.h"
-#include "model/checkboxdelegate.h"
-#include "model/comboboxdelegate.h"
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgvolumen.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
@@ -48,11 +43,6 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("l"));
     ui->lblDurchschnittWarnung->setPalette(gSettings->paletteErrorLabel);
 
-    mTimerWebViewUpdate.setSingleShot(true);
-    connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
-    ui->webview->setHtmlFile("braudaten");
-    ui->webview->setPrintable(false);
-
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
@@ -60,7 +50,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
 
     gSettings->beginGroup("TabBraudaten");
 
-    ui->splitter->setSizes({100, 200});
+    ui->splitter->setSizes({100, 400});
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
@@ -288,13 +278,6 @@ void TabBraudaten::updateValues()
     ui->tbSWSollKochbeginnMitWzBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginnMitWz()));
     ui->tbSWSollKochendeBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochende()));
     ui->tbSWAnstellenSollBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollAnstellen()));
-
-    mTimerWebViewUpdate.start(200);
-}
-
-void TabBraudaten::updateWebView()
-{
-    TemplateTags::render(ui->webview, bh->sud()->row());
 }
 
 void TabBraudaten::on_tbBraudatum_dateChanged(const QDate &date)

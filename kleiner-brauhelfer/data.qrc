@@ -12,14 +12,6 @@
         <file>data/Rohstoffe/Malz.csv</file>
         <file>data/Rohstoffe/Wasserprofile.csv</file>
         <file>data/Rohstoffe/WeitereZutaten.csv</file>
-        <file>data/Webview/abfuelldaten.html</file>
-        <file>data/Webview/abfuelldaten_en.html</file>
-        <file>data/Webview/abfuelldaten_nl.html</file>
-        <file>data/Webview/abfuelldaten_sv.html</file>
-        <file>data/Webview/braudaten.html</file>
-        <file>data/Webview/braudaten_en.html</file>
-        <file>data/Webview/braudaten_nl.html</file>
-        <file>data/Webview/braudaten_sv.html</file>
         <file>data/Webview/spickzettel.html</file>
         <file>data/Webview/spickzettel_en.html</file>
         <file>data/Webview/spickzettel_nl.html</file>

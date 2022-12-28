@@ -4,7 +4,6 @@
 #include <qmath.h>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "templatetags.h"
 #include "dialogs/dlgrestextrakt.h"
 
 extern Brauhelfer* bh;
@@ -36,11 +35,6 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->lblNebenkostenEinheit->setText(QLocale().currencySymbol());
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
-    mTimerWebViewUpdate.setSingleShot(true);
-    connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
-    ui->webview->setHtmlFile("abfuelldaten");
-    ui->webview->setPrintable(false);
-
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
@@ -48,7 +42,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
 
     gSettings->beginGroup("TabAbfuellen");
 
-    ui->splitter->setSizes({100, 200});
+    ui->splitter->setSizes({100, 400});
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
@@ -265,13 +259,6 @@ void TabAbfuellen::updateValues()
     ui->lblKonzentrationZuckerloesung->setVisible(hasZuckerLoesung);
     ui->tbKonzentrationZuckerloesung->setVisible(hasZuckerLoesung);
     ui->tbKonzentrationZuckerloesungEinheit->setVisible(hasZuckerLoesung);
-
-    mTimerWebViewUpdate.start(200);
-}
-
-void TabAbfuellen::updateWebView()
-{
-    TemplateTags::render(ui->webview, bh->sud()->row());
 }
 
 void TabAbfuellen::on_tbAbfuelldatum_dateChanged(const QDate &date)

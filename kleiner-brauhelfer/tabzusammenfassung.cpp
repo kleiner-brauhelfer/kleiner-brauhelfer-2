@@ -1,7 +1,6 @@
 #include "tabzusammenfassung.h"
 #include "ui_tabzusammenfassung.h"
-#include <QFileInfo>
-#include <QFileDialog>
+#include <QDirIterator>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "templatetags.h"
@@ -14,6 +13,11 @@ TabZusammenfassung::TabZusammenfassung(QWidget *parent) :
     ui(new Ui::TabZusammenfassung)
 {
     ui->setupUi(this);
+    updateAuswahl();
+
+    gSettings->beginGroup("TabZusammenfassung");
+    ui->cbAuswahl->setCurrentText(gSettings->value("auswahl", "spickzettel").toString());
+    gSettings->endGroup();
 
     connect(bh, SIGNAL(modified()), this, SLOT(updateWebView()), Qt::QueuedConnection);
     connect(bh, SIGNAL(discarded()), this, SLOT(updateWebView()), Qt::QueuedConnection);
@@ -23,6 +27,13 @@ TabZusammenfassung::TabZusammenfassung(QWidget *parent) :
 TabZusammenfassung::~TabZusammenfassung()
 {
     delete ui;
+}
+
+void TabZusammenfassung::saveSettings()
+{
+    gSettings->beginGroup("TabZusammenfassung");
+    gSettings->setValue("auswahl", ui->cbAuswahl->currentText());
+    gSettings->endGroup();
 }
 
 void TabZusammenfassung::onTabActivated()
@@ -36,15 +47,29 @@ void TabZusammenfassung::modulesChanged(Settings::Modules modules)
     updateWebView();
 }
 
+void TabZusammenfassung::updateAuswahl()
+{
+    QStringList lst;
+    QDirIterator it(gSettings->dataDir(1), QStringList() << "*.html");
+    while (it.hasNext())
+    {
+        it.next();
+        QString filename = it.fileName().chopped(5);
+        int lastUnderscore = filename.lastIndexOf('_');
+        if (filename.length() - lastUnderscore == 3)
+            filename = filename.left(lastUnderscore);
+        if (!lst.contains(filename) && filename != "sudinfo")
+            lst.append(filename);
+    }
+    ui->cbAuswahl->clear();
+    ui->cbAuswahl->addItems(lst);
+}
+
 void TabZusammenfassung::updateWebView()
 {
     if (!isTabActive())
         return;
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-    if (status == Brauhelfer::SudStatus::Rezept)
-        ui->webview->setHtmlFile("spickzettel");
-    else
-        ui->webview->setHtmlFile("zusammenfassung");
+    ui->webview->setHtmlFile(ui->cbAuswahl->currentText());
     ui->webview->setPdfName(bh->sud()->getSudname());
     TemplateTags::render(ui->webview, bh->sud()->row());
 }
@@ -62,4 +87,10 @@ void TabZusammenfassung::printPreview()
 void TabZusammenfassung::toPdf()
 {
     ui->webview->printToPdf();
+}
+
+void TabZusammenfassung::on_cbAuswahl_currentTextChanged(const QString &txt)
+{
+    Q_UNUSED(txt)
+    updateWebView();
 }

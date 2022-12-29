@@ -119,7 +119,7 @@
              <disabledoff>:/images/disabled/tabzusammenfassung.svg</disabledoff>:/images/light/tabzusammenfassung.svg</iconset>
            </attribute>
            <attribute name="title">
-            <string>Zusammenfassung</string>
+            <string>Ausdruck</string>
            </attribute>
           </widget>
           <widget class="TabEtikette" name="tabEtikette">

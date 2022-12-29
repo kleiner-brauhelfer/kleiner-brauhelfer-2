@@ -324,7 +324,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleZusammenfassung))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed("tabzusammenfassung", gSettings->theme() == Settings::Theme::Bright), "");
+                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed("tabzusammenfassung", gSettings->theme() == Settings::Theme::Bright), tr("Ausdruck"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -387,7 +387,6 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabGaerverlauf), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabZusammenfassung), loaded);
-    ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabZusammenfassung), status == Brauhelfer::SudStatus::Rezept && loaded ? tr("Spickzettel") : tr("Zusammenfassung"));
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
     ui->menuSud->setEnabled(loaded);

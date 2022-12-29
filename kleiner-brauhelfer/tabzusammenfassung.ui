@@ -15,6 +15,9 @@
     <number>4</number>
    </property>
    <item>
+    <widget class="QComboBox" name="cbAuswahl"/>
+   </item>
+   <item>
     <widget class="WdgWebViewEditable" name="webview" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">

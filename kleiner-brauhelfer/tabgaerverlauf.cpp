@@ -408,7 +408,7 @@ void TabGaerverlauf::updateDiagramm()
         diag->L2Daten.append(model->index(row, ModelSchnellgaerverlauf::ColAlc).data().toDouble());
         diag->L3Daten.append(model->index(row, ModelSchnellgaerverlauf::ColTemp).data().toDouble());
     }
-    double sreSoll = BierCalc::sreAusVergaerungsgrad(bh->sud()->getSWIst(), bh->sud()->getVergaerungsgrad());
+    double sreSoll = bh->sud()->getSREErwartet();
     diag->setWertLinie1(sreSoll);
     diag->repaint();
 

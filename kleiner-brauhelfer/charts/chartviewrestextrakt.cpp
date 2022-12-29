@@ -25,7 +25,7 @@ ChartViewRestextrakt::ChartViewRestextrakt(QWidget *parent) :
     chart()->addSeries(barSeries);
     barSeries->setLabelsVisible(true);
     barSeries->setLabelsAngle(-90);
-    barSeries->setLabelsPrecision(3);
+    barSeries->setLabelsPrecision(2);
     barSeries->attachAxis(axisX);
     barSeries->attachAxis(axisY);
 
@@ -44,7 +44,7 @@ void ChartViewRestextrakt::update()
         }
         setExtrakt->replace(0, bh->sud()->getSWSchnellgaerprobe());
         setExtrakt->replace(1, bh->sud()->getSWJungbier());
-        setExtrakt->replace(2, BierCalc::sreAusVergaerungsgrad(bh->sud()->getSWIst(), bh->sud()->getVergaerungsgrad()));
+        setExtrakt->replace(2, bh->sud()->getSREErwartet());
         setExtrakt->replace(3, bh->sud()->getSRE());
     }
     else
@@ -54,7 +54,7 @@ void ChartViewRestextrakt::update()
             axisX->setCategories({tr("Gemessen"), tr("Erwartet"), tr("Rezept")});
         }
         setExtrakt->replace(0, bh->sud()->getSWJungbier());
-        setExtrakt->replace(1, BierCalc::sreAusVergaerungsgrad(bh->sud()->getSWIst(), bh->sud()->getVergaerungsgrad()));
+        setExtrakt->replace(1, bh->sud()->getSREErwartet());
         setExtrakt->replace(2, bh->sud()->getSRE());
     }
 

@@ -17,6 +17,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->tbReifezeit->setColumn(ModelSud::ColWoche);
     ui->tbSWSchnellgaerprobe->setColumn(ModelSud::ColSWSchnellgaerprobe);
     ui->tbSWJungbier->setColumn(ModelSud::ColSWJungbier);
+    ui->tbSWJungbierSoll->setColumn(ModelSud::ColSREErwartet);
     ui->tbBiermengeAbfuellen->setColumn(ModelSud::Colerg_AbgefuellteBiermenge);
     ui->tbJungbiermengeAbfuellen->setColumn(ModelSud::ColJungbiermengeAbfuellen);
     ui->tbSpeisemengeAbgefuellt->setColumn(ModelSud::ColSpeisemenge);
@@ -210,7 +211,6 @@ void TabAbfuellen::updateValues()
     ui->tbReifung->setMinimumDate(ui->tbAbfuelldatum->date());
     ui->tbReifung->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
 
-    ui->tbSWJungbierSoll->setValue(BierCalc::sreAusVergaerungsgrad(bh->sud()->getSWIst(), bh->sud()->getVergaerungsgrad()));
     ui->cbSchnellgaerprobeAktiv->setChecked(bh->sud()->getSchnellgaerprobeAktiv() && gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
     ui->tbSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblSWSchnellgaerprobeEinheit->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());

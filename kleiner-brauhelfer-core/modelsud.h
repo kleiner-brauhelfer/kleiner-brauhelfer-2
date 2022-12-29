@@ -88,6 +88,7 @@ public:
         ColMengeSoll,
         ColSWIst,
         ColSRE,
+        ColSREErwartet,
         ColSREIst,
         ColMengeIst,
         ColIbuIst,
@@ -172,6 +173,7 @@ private:
     QVector<double> swWzKochenRecipe;
     QVector<double> swWzGaerungRecipe;
     QVector<double> swWzGaerungCurrent;
+    QVector<double> swWzUnvergaerbarRecipe;
 };
 
 #endif // MODELSUD_H

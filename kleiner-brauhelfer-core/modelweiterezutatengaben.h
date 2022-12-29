@@ -29,6 +29,7 @@ public:
         ColZugabedauer,
         ColEntnahmeindex,
         ColZugabestatus,
+        ColUnvergaerbar,
         // virtual
         ColDeleted,
         ColExtrakt,

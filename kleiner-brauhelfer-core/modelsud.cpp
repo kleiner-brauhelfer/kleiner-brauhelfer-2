@@ -12,7 +12,8 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     swWzMaischenRecipe(QVector<double>()),
     swWzKochenRecipe(QVector<double>()),
     swWzGaerungRecipe(QVector<double>()),
-    swWzGaerungCurrent(QVector<double>())
+    swWzGaerungCurrent(QVector<double>()),
+    swWzUnvergaerbarRecipe(QVector<double>())
 {
     connect(this, SIGNAL(modelReset()), this, SLOT(onModelReset()));
     connect(this, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(onModelReset()));
@@ -21,6 +22,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("MengeSoll");
     mVirtualField.append("SWIst");
     mVirtualField.append("SRE");
+    mVirtualField.append("SREErwartet");
     mVirtualField.append("SREIst");
     mVirtualField.append("MengeIst");
     mVirtualField.append("IbuIst");
@@ -83,6 +85,7 @@ void ModelSud::onModelReset()
     swWzKochenRecipe = QVector<double>(rows);
     swWzGaerungRecipe = QVector<double>(rows);
     swWzGaerungCurrent = QVector<double>(rows);
+    swWzUnvergaerbarRecipe = QVector<double>(rows);
     for (int row = 0; row < rows; ++row)
         updateSwWeitereZutaten(row);
     emit modified();
@@ -161,9 +164,15 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     }
     case ColSRE:
     {
-        double sw = data(idx.row(), ColSW).toDouble();
+        double sw = data(idx.row(), ColSW).toDouble() - swWzUnvergaerbarRecipe[idx.row()];
         double vg = data(idx.row(), ColVergaerungsgrad).toDouble();
-        return BierCalc::sreAusVergaerungsgrad(sw, vg);
+        return BierCalc::sreAusVergaerungsgrad(sw, vg) + swWzUnvergaerbarRecipe[idx.row()];
+    }
+    case ColSREErwartet:
+    {
+        double sw = data(idx.row(), ColSWIst).toDouble() - swWzUnvergaerbarRecipe[idx.row()];
+        double vg = data(idx.row(), ColVergaerungsgrad).toDouble();
+        return BierCalc::sreAusVergaerungsgrad(sw, vg) + swWzUnvergaerbarRecipe[idx.row()];
     }
     case ColSREIst:
     {
@@ -411,8 +420,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     case ColAlkohol:
     {
         double sw = data(idx.row(), ColSW).toDouble();
-        double vg = data(idx.row(), ColVergaerungsgrad).toDouble();
-        double sre = BierCalc::sreAusVergaerungsgrad(sw, vg);
+        double sre = data(idx.row(), ColSRE).toDouble();
         return BierCalc::alkohol(sw, sre);
     }
     case ColRestalkalitaetWasser:
@@ -701,7 +709,7 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
             if (status == Brauhelfer::SudStatus::Rezept)
             {
                 double vg = data(idx.row(), ColVergaerungsgrad).toDouble();
-                double sre = BierCalc::sreAusVergaerungsgrad(value.toDouble(), vg);
+                double sre = BierCalc::sreAusVergaerungsgrad(value.toDouble() - swWzUnvergaerbarRecipe[idx.row()], vg) + swWzUnvergaerbarRecipe[idx.row()];
                 setData(idx.row(), ColSWSchnellgaerprobe, sre);
                 setData(idx.row(), ColSWJungbier, sre);
             }
@@ -848,6 +856,7 @@ void ModelSud::updateSwWeitereZutaten(int row)
     swWzKochenRecipe[row] = 0.0;
     swWzGaerungRecipe[row] = 0.0;
     swWzGaerungCurrent[row] = 0.0;
+    swWzUnvergaerbarRecipe[row] = 0.0;
 
     ProxyModel modelWeitereZutatenGaben;
     modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
@@ -863,6 +872,7 @@ void ModelSud::updateSwWeitereZutaten(int row)
         {
             Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
             Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
+            bool unvergaerbar = modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColUnvergaerbar).toBool();
             switch (zeitpunkt)
             {
             case Brauhelfer::ZusatzZeitpunkt::Gaerung:
@@ -877,6 +887,8 @@ void ModelSud::updateSwWeitereZutaten(int row)
                 swWzMaischenRecipe[row] += extrakt;
                 break;
             }
+            if (unvergaerbar)
+                swWzUnvergaerbarRecipe[row] += extrakt;
         }
     }
 }

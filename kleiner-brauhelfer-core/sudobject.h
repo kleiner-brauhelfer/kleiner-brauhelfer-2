@@ -96,6 +96,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD_READONLY(double, MengeSoll, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SWIst, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SRE, toDouble())
+    Q_PROPERTY_SUD_READONLY(double, SREErwartet, toDouble())
     Q_PROPERTY_SUD_READONLY(double, SREIst, toDouble())
     Q_PROPERTY_SUD_READONLY(double, MengeIst, toDouble())
     Q_PROPERTY_SUD_READONLY(double, IbuIst, toDouble())

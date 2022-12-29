@@ -87,7 +87,8 @@ int ModelWeitereZutatenGaben::import(int row)
                                     {ModelWeitereZutaten::ColEinheit, data(row, ColEinheit)},
                                     {ModelWeitereZutaten::ColTyp, data(row, ColTyp)},
                                     {ModelWeitereZutaten::ColAusbeute, data(row, ColAusbeute)},
-                                    {ModelWeitereZutaten::ColFarbe, data(row, ColFarbe)}});
+                                    {ModelWeitereZutaten::ColFarbe, data(row, ColFarbe)},
+                                    {ModelWeitereZutaten::ColUnvergaerbar, data(row, ColUnvergaerbar)}});
         return bh->modelWeitereZutaten()->append(values);
     }
 }
@@ -107,6 +108,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
                 QSqlTableModel::setData(index(idx.row(), ColTyp), static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen));
                 QSqlTableModel::setData(index(idx.row(), ColAusbeute), 0);
                 QSqlTableModel::setData(index(idx.row(), ColFarbe), 0);
+                QSqlTableModel::setData(index(idx.row(), ColUnvergaerbar), 0);
                 QSqlTableModel::setData(index(idx.row(), ColZeitpunkt), static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung));
             }
             else
@@ -118,6 +120,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
                     QSqlTableModel::setData(index(idx.row(), ColTyp), bh->modelWeitereZutaten()->data(row, ModelWeitereZutaten::ColTyp));
                     QSqlTableModel::setData(index(idx.row(), ColAusbeute), bh->modelWeitereZutaten()->data(row, ModelWeitereZutaten::ColAusbeute));
                     QSqlTableModel::setData(index(idx.row(), ColFarbe), bh->modelWeitereZutaten()->data(row, ModelWeitereZutaten::ColFarbe));
+                    QSqlTableModel::setData(index(idx.row(), ColUnvergaerbar), bh->modelWeitereZutaten()->data(row, ModelWeitereZutaten::ColUnvergaerbar));
                 }
             }
             return true;
@@ -155,6 +158,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
                 QSqlTableModel::setData(index(idx.row(), ColTyp), static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen));
                 QSqlTableModel::setData(index(idx.row(), ColAusbeute), 0);
                 QSqlTableModel::setData(index(idx.row(), ColFarbe), 0);
+                QSqlTableModel::setData(index(idx.row(), ColUnvergaerbar), 0);
                 QSqlTableModel::setData(index(idx.row(), ColZeitpunkt), static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung));
             }
             return true;

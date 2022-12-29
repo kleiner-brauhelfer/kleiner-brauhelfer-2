@@ -9,6 +9,7 @@
 - Neu: Bemerkungsfelder für Maischen, Kochen, Gärung, Maischplan und Wasseraufbereiung
 - Neu: Linke Seite in Brau- und Abfülldaten ersetzt mit Diagrammen
 - Neu: "Spickzettel/Zusammenfassung" ersetzt durch "Ausdruck" mit frei konfigurierbare Ansicht
+- Neu: Unvergärbare Zusätze
 - Fix: Übermäßige Zeilenumbrüche für die Bemerkungsfelder im Spickzettel
 
 ## Version 2.4.0 (26.05.2022)

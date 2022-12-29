@@ -1744,6 +1744,11 @@ bool Database::update()
             sqlExec(db, "ALTER TABLE Sud ADD COLUMN MengeHefestarter REAL DEFAULT 0");
             sqlExec(db, "ALTER TABLE Sud ADD COLUMN SWHefestarter REAL DEFAULT 0");
 
+            // WeitereZutaten & WeitereZutatenGaben
+            //  - neue Spalte 'Unvergaerbar'
+            sqlExec(db, "ALTER TABLE WeitereZutaten ADD COLUMN Unvergaerbar INTEGER");
+            sqlExec(db, "ALTER TABLE WeitereZutatenGaben ADD COLUMN Unvergaerbar INTEGER");
+
             sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }

@@ -1,5 +1,6 @@
 #include "dlgrohstoffe.h"
 #include "ui_dlgrohstoffe.h"
+#include <QTableView>
 #include <QMessageBox>
 #include <QMenu>
 #include <QKeyEvent>

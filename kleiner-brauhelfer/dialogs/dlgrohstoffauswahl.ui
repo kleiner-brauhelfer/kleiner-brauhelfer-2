@@ -90,7 +90,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Die Zutaten müssen zuvor im Reiter &quot;Rohstoffe&quot; eingetragen werden.</string>
+        <string>Die Zutaten müssen zuvor unter &quot;Rohstoffe&quot; eingetragen werden.</string>
        </property>
       </widget>
      </item>

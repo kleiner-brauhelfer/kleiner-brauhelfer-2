@@ -24,6 +24,10 @@ extern Settings* gSettings;
 TableView::TableView(QWidget *parent) :
     QTableView(parent)
 {
+    setEditTriggers(QAbstractItemView::DoubleClicked |
+                    QAbstractItemView::SelectedClicked |
+                    QAbstractItemView::EditKeyPressed |
+                    QAbstractItemView::AnyKeyPressed);
 }
 
 void TableView::build()

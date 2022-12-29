@@ -16,7 +16,7 @@ ChartViewAbfuelldaten::ChartViewAbfuelldaten(QWidget *parent) :
     axisY->setMax(100);
     chart()->addAxis(axisY, Qt::AlignLeft);
 
-    setMenge = new QBarSet(tr("Menge"));
+    setMenge = new QBarSet("Menge");
     *setMenge << 0 << 0 << 0 << 0;
 
     QBarSeries* barSeries = new QBarSeries();
@@ -24,7 +24,7 @@ ChartViewAbfuelldaten::ChartViewAbfuelldaten(QWidget *parent) :
     chart()->addSeries(barSeries);
     barSeries->setLabelsVisible(true);
     barSeries->setLabelsAngle(-90);
-    barSeries->setLabelsPrecision(3);
+    barSeries->setLabelsPrecision(4);
     barSeries->attachAxis(axisX);
     barSeries->attachAxis(axisY);
 

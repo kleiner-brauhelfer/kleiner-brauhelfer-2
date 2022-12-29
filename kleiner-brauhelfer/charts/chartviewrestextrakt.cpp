@@ -16,7 +16,7 @@ ChartViewRestextrakt::ChartViewRestextrakt(QWidget *parent) :
     axisY->setMax(100);
     chart()->addAxis(axisY, Qt::AlignLeft);
 
-    setExtrakt = new QBarSet(tr("Restextrakt"));
+    setExtrakt = new QBarSet("Restextrakt");
     setExtrakt->setColor(QColor(232,163,95));
     *setExtrakt << 0 << 0 << 0 << 0;
 

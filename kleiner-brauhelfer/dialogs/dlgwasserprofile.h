@@ -2,7 +2,7 @@
 #define DLGWASSERPROFILE_H
 
 #include "dlgabstract.h"
-#include <QTableView>
+#include <QItemSelection>
 
 namespace Ui {
 class DlgWasserprofile;

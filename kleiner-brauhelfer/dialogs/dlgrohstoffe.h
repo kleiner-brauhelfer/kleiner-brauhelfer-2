@@ -2,12 +2,13 @@
 #define DLG_ROHSTOFFE_H
 
 #include "dlgabstract.h"
-#include <QTableView>
 #include "settings.h"
 
 namespace Ui {
 class DlgRohstoffe;
 }
+
+class QTableView;
 
 class DlgRohstoffe : public DlgAbstract
 {

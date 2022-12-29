@@ -17,7 +17,7 @@ ChartViewAusbeute::ChartViewAusbeute(QWidget *parent) :
     axisY->setMax(100);
     chart()->addAxis(axisY, Qt::AlignLeft);
 
-    setAusbeute = new QBarSet(tr("SHA"));
+    setAusbeute = new QBarSet("SHA");
     setAusbeute->setColor(QColor(232,163,95));
     *setAusbeute << 0 << 0 << 0;
 

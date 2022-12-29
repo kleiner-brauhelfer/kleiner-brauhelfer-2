@@ -33,7 +33,7 @@ ChartViewBraudaten::ChartViewBraudaten(QWidget *parent) :
     setMengeSoll->setColor(setMengeIst->color().darker(200));
     seriesMenge->setLabelsVisible(true);
     seriesMenge->setLabelsAngle(-90);
-    seriesMenge->setLabelsPrecision(3);
+    seriesMenge->setLabelsPrecision(4);
     seriesMenge->attachAxis(axisX);
     seriesMenge->attachAxis(axisY);
 

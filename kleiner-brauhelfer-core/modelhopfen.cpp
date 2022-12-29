@@ -2,7 +2,6 @@
 #include "modelhopfen.h"
 #include "brauhelfer.h"
 #include <QDate>
-#include "proxymodelsud.h"
 
 ModelHopfen::ModelHopfen(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
@@ -70,73 +69,30 @@ bool ModelHopfen::setDataExt(const QModelIndex &idx, const QVariant &value)
     {
     case ColName:
     {
-        QString name = getUniqueName(idx, value);
+        QString newName = getUniqueName(idx, value);
         QVariant prevName = data(idx);
-        if (QSqlTableModel::setData(idx, name))
+        if (QSqlTableModel::setData(idx, newName))
         {
-            ProxyModelSud modelSud;
-            modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept);
-            for (int r = 0; r < modelSud.rowCount(); ++r)
-            {
-                QVariant sudId = modelSud.data(r, ModelSud::ColID);
-                SqlTableModel* model = bh->modelHopfengaben();
-                for (int j = 0; j < model->rowCount(); ++j)
-                {
-                    if (model->data(j, ModelHopfengaben::ColSudID) == sudId && model->data(j, ModelHopfengaben::ColName) == prevName)
-                        model->setData(j, ModelHopfengaben::ColName, name);
-                }
-                model = bh->modelWeitereZutatenGaben();
-                for (int j = 0; j < model->rowCount(); ++j)
-                {
-                    if (model->data(j, ModelWeitereZutatenGaben::ColSudID) == sudId && model->data(j, ModelWeitereZutatenGaben::ColName) == prevName)
-                        model->setData(j, ModelWeitereZutatenGaben::ColName, name);
-                }
-            }
+            bh->modelHopfengaben()->update(prevName, ModelHopfengaben::ColName, newName);
+            bh->modelWeitereZutatenGaben()->update(prevName, ModelWeitereZutatenGaben::ColName, newName);
             return true;
         }
         return false;
     }
     case ColAlpha:
     {
-        QVariant name = data(idx.row(), ColName);
         if (QSqlTableModel::setData(idx, value))
         {
-            ProxyModelSud modelSud;
-            modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept);
-            for (int r = 0; r < modelSud.rowCount(); ++r)
-            {
-                QVariant sudId = modelSud.data(r, ModelSud::ColID);
-                SqlTableModel* model = bh->modelHopfengaben();
-                for (int j = 0; j < model->rowCount(); ++j)
-                {
-                    if (model->data(j, ModelHopfengaben::ColSudID) == sudId && model->data(j, ModelHopfengaben::ColName) == name)
-                        model->setData(j, ModelHopfengaben::ColAlpha, value);
-                }
-            }
+            bh->modelHopfengaben()->update(data(idx.row(), ColName), ModelHopfengaben::ColAlpha, value);
             return true;
         }
         return false;
     }
     case ColPellets:
     {
-        QVariant name = data(idx.row(), ColName);
         if (QSqlTableModel::setData(idx, value))
         {
-            ProxyModelSud modelSud;
-            modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept);
-            for (int r = 0; r < modelSud.rowCount(); ++r)
-            {
-                QVariant sudId = modelSud.data(r, ModelSud::ColID);
-                SqlTableModel* model = bh->modelHopfengaben();
-                for (int j = 0; j < model->rowCount(); ++j)
-                {
-                    if (model->data(j, ModelHopfengaben::ColSudID) == sudId && model->data(j, ModelHopfengaben::ColName) == name)
-                        model->setData(j, ModelHopfengaben::ColPellets, value);
-                }
-            }
+            bh->modelHopfengaben()->update(data(idx.row(), ColName), ModelHopfengaben::ColPellets, value);
             return true;
         }
         return false;

@@ -2,7 +2,6 @@
 #include "modelmalz.h"
 #include "brauhelfer.h"
 #include <QDate>
-#include "proxymodelsud.h"
 
 ModelMalz::ModelMalz(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
@@ -70,23 +69,11 @@ bool ModelMalz::setDataExt(const QModelIndex &idx, const QVariant &value)
     {
     case ColName:
     {
-        QString name = getUniqueName(idx, value);
+        QString newName = getUniqueName(idx, value);
         QVariant prevName = data(idx);
-        if (QSqlTableModel::setData(idx, name))
+        if (QSqlTableModel::setData(idx, newName))
         {
-            ProxyModelSud modelSud;
-            modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept);
-            for (int r = 0; r < modelSud.rowCount(); ++r)
-            {
-                QVariant sudId = modelSud.data(r, ModelSud::ColID);
-                SqlTableModel* model = bh->modelMalzschuettung();
-                for (int j = 0; j < model->rowCount(); ++j)
-                {
-                    if (model->data(j, ModelMalzschuettung::ColSudID) == sudId && model->data(j, ModelMalzschuettung::ColName) == prevName)
-                        model->setData(j, ModelMalzschuettung::ColName, name);
-                }
-            }
+            bh->modelMalzschuettung()->update(prevName, ModelMalzschuettung::ColName, newName);
             return true;
         }
         return false;
@@ -94,60 +81,21 @@ bool ModelMalz::setDataExt(const QModelIndex &idx, const QVariant &value)
     case ColPotential:
         if (QSqlTableModel::setData(idx, value))
         {
-            QVariant name = data(idx.row(), ColName);
-            ProxyModelSud modelSud;
-            modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept);
-            for (int r = 0; r < modelSud.rowCount(); ++r)
-            {
-                QVariant sudId = modelSud.data(r, ModelSud::ColID);
-                SqlTableModel* model = bh->modelMalzschuettung();
-                for (int j = 0; j < model->rowCount(); ++j)
-                {
-                    if (model->data(j, ModelMalzschuettung::ColSudID) == sudId && model->data(j, ModelMalzschuettung::ColName) == name)
-                        model->setData(j, ModelMalzschuettung::ColPotential, value);
-                }
-            }
+            bh->modelMalzschuettung()->update(data(idx.row(), ColName), ModelMalzschuettung::ColPotential, value);
             return true;
         }
         return false;
     case ColFarbe:
         if (QSqlTableModel::setData(idx, value))
         {
-            QVariant name = data(idx.row(), ColName);
-            ProxyModelSud modelSud;
-            modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept);
-            for (int r = 0; r < modelSud.rowCount(); ++r)
-            {
-                QVariant sudId = modelSud.data(r, ModelSud::ColID);
-                SqlTableModel* model = bh->modelMalzschuettung();
-                for (int j = 0; j < model->rowCount(); ++j)
-                {
-                    if (model->data(j, ModelMalzschuettung::ColSudID) == sudId && model->data(j, ModelMalzschuettung::ColName) == name)
-                        model->setData(j, ModelMalzschuettung::ColFarbe, value);
-                }
-            }
+            bh->modelMalzschuettung()->update(data(idx.row(), ColName), ModelMalzschuettung::ColFarbe, value);
             return true;
         }
         return false;
     case ColpH:
         if (QSqlTableModel::setData(idx, value))
         {
-            QVariant name = data(idx.row(), ColName);
-            ProxyModelSud modelSud;
-            modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept);
-            for (int r = 0; r < modelSud.rowCount(); ++r)
-            {
-                QVariant sudId = modelSud.data(r, ModelSud::ColID);
-                SqlTableModel* model = bh->modelMalzschuettung();
-                for (int j = 0; j < model->rowCount(); ++j)
-                {
-                    if (model->data(j, ModelMalzschuettung::ColSudID) == sudId && model->data(j, ModelMalzschuettung::ColName) == name)
-                        model->setData(j, ModelMalzschuettung::ColpH, value);
-                }
-            }
+            bh->modelMalzschuettung()->update(data(idx.row(), ColName), ModelMalzschuettung::ColpH, value);
             return true;
         }
         return false;

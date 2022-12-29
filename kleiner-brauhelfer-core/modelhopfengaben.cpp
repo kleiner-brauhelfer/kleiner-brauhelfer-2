@@ -2,6 +2,7 @@
 #include "modelhopfengaben.h"
 #include <math.h>
 #include "brauhelfer.h"
+#include "proxymodelsud.h"
 
 ModelHopfengaben::ModelHopfengaben(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
@@ -294,6 +295,22 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
         mSignalModifiedBlocked = false;
         break;
     }
+    }
+}
+
+void ModelHopfengaben::update(const QVariant &name, int col, const QVariant &value)
+{
+    ProxyModelSud modelSud;
+    modelSud.setSourceModel(bh->modelSud());
+    modelSud.setFilterStatus(ProxyModelSud::Rezept);
+    for (int r = 0; r < modelSud.rowCount(); ++r)
+    {
+        QVariant sudId = modelSud.data(r, ModelSud::ColID);
+        for (int j = 0; j < rowCount(); ++j)
+        {
+            if (data(j, ColSudID) == sudId && data(j, ColName) == name)
+                setData(j, col, value);
+        }
     }
 }
 

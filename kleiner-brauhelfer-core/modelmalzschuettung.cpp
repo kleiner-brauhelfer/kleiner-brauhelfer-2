@@ -2,6 +2,7 @@
 #include "modelmalzschuettung.h"
 #include "brauhelfer.h"
 #include "modelsud.h"
+#include "proxymodelsud.h"
 
 ModelMalzschuettung::ModelMalzschuettung(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
@@ -101,6 +102,22 @@ void ModelMalzschuettung::onSudDataChanged(const QModelIndex &idx)
             }
         }
         mSignalModifiedBlocked = false;
+    }
+}
+
+void ModelMalzschuettung::update(const QVariant &name, int col, const QVariant &value)
+{
+    ProxyModelSud modelSud;
+    modelSud.setSourceModel(bh->modelSud());
+    modelSud.setFilterStatus(ProxyModelSud::Rezept);
+    for (int r = 0; r < modelSud.rowCount(); ++r)
+    {
+        QVariant sudId = modelSud.data(r, ModelSud::ColID);
+        for (int j = 0; j < rowCount(); ++j)
+        {
+            if (data(j, ColSudID) == sudId && data(j, ColName) == name)
+                setData(j, col, value);
+        }
     }
 }
 

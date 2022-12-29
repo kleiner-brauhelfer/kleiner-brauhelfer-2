@@ -48,10 +48,6 @@ public:
 
 private:
 
-    void updateWeitereZutatenGaben(const QVariant &name, int col, const QVariant &value);
-
-private:
-
     Brauhelfer* bh;
 };
 

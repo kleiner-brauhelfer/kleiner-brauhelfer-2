@@ -2,7 +2,6 @@
 #include "modelweiterezutaten.h"
 #include "brauhelfer.h"
 #include <QDate>
-#include "proxymodelsud.h"
 
 ModelWeitereZutaten::ModelWeitereZutaten(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
@@ -86,23 +85,6 @@ QVariant ModelWeitereZutaten::dataExt(const QModelIndex &idx) const
     }
 }
 
-void ModelWeitereZutaten::updateWeitereZutatenGaben(const QVariant &name, int col, const QVariant &value)
-{
-    ProxyModelSud modelSud;
-    modelSud.setSourceModel(bh->modelSud());
-    modelSud.setFilterStatus(ProxyModelSud::Rezept);
-    for (int r = 0; r < modelSud.rowCount(); ++r)
-    {
-        QVariant sudId = modelSud.data(r, ModelSud::ColID);
-        SqlTableModel* model = bh->modelWeitereZutatenGaben();
-        for (int j = 0; j < model->rowCount(); ++j)
-        {
-            if (model->data(j, ModelWeitereZutatenGaben::ColSudID) == sudId && model->data(j, ModelWeitereZutatenGaben::ColName) == name)
-                model->setData(j, col, value);
-        }
-    }
-}
-
 bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
     switch(idx.column())
@@ -113,7 +95,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
         QVariant prevName = data(idx);
         if (QSqlTableModel::setData(idx, newName))
         {
-            updateWeitereZutatenGaben(prevName, ModelWeitereZutatenGaben::ColName, newName);
+            bh->modelWeitereZutatenGaben()->update(prevName, ModelWeitereZutatenGaben::ColName, newName);
             return true;
         }
         return false;
@@ -122,7 +104,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            updateWeitereZutatenGaben(data(idx.row(), ColName), ModelWeitereZutatenGaben::ColEinheit, value);
+            bh->modelWeitereZutatenGaben()->update(data(idx.row(), ColName), ModelWeitereZutatenGaben::ColEinheit, value);
             return true;
         }
         return false;
@@ -131,7 +113,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            updateWeitereZutatenGaben(data(idx.row(), ColName), ModelWeitereZutatenGaben::ColTyp, value);
+            bh->modelWeitereZutatenGaben()->update(data(idx.row(), ColName), ModelWeitereZutatenGaben::ColTyp, value);
             return true;
         }
         return false;
@@ -140,7 +122,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            updateWeitereZutatenGaben(data(idx.row(), ColName), ModelWeitereZutatenGaben::ColAusbeute, value);
+            bh->modelWeitereZutatenGaben()->update(data(idx.row(), ColName), ModelWeitereZutatenGaben::ColAusbeute, value);
             return true;
         }
         return false;
@@ -149,7 +131,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            updateWeitereZutatenGaben(data(idx.row(), ColName), ModelWeitereZutatenGaben::ColFarbe, value);
+            bh->modelWeitereZutatenGaben()->update(data(idx.row(), ColName), ModelWeitereZutatenGaben::ColFarbe, value);
             return true;
         }
         return false;
@@ -158,7 +140,7 @@ bool ModelWeitereZutaten::setDataExt(const QModelIndex &idx, const QVariant &val
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            updateWeitereZutatenGaben(data(idx.row(), ColName), ModelWeitereZutatenGaben::ColUnvergaerbar, value);
+            bh->modelWeitereZutatenGaben()->update(data(idx.row(), ColName), ModelWeitereZutatenGaben::ColUnvergaerbar, value);
             return true;
         }
         return false;

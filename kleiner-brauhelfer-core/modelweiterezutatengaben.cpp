@@ -1,6 +1,7 @@
 // clazy:excludeall=skipped-base-method
 #include "modelweiterezutatengaben.h"
 #include "brauhelfer.h"
+#include "proxymodelsud.h"
 #include <QDateTime>
 #include <cmath>
 
@@ -70,26 +71,6 @@ QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &idx) const
     }
     default:
         return QVariant();
-    }
-}
-
-int ModelWeitereZutatenGaben::import(int row)
-{
-    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(row, ColTyp).toInt());
-    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-    {
-        QMap<int, QVariant> values({{ModelHopfen::ColName, data(row, ColName)}});
-        return bh->modelHopfen()->append(values);
-    }
-    else
-    {
-        QMap<int, QVariant> values({{ModelWeitereZutaten::ColName, data(row, ColName)},
-                                    {ModelWeitereZutaten::ColEinheit, data(row, ColEinheit)},
-                                    {ModelWeitereZutaten::ColTyp, data(row, ColTyp)},
-                                    {ModelWeitereZutaten::ColAusbeute, data(row, ColAusbeute)},
-                                    {ModelWeitereZutaten::ColFarbe, data(row, ColFarbe)},
-                                    {ModelWeitereZutaten::ColUnvergaerbar, data(row, ColUnvergaerbar)}});
-        return bh->modelWeitereZutaten()->append(values);
     }
 }
 
@@ -264,6 +245,42 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
             }
         }
         mSignalModifiedBlocked = false;
+    }
+}
+
+void ModelWeitereZutatenGaben::update(const QVariant &name, int col, const QVariant &value)
+{
+    ProxyModelSud modelSud;
+    modelSud.setSourceModel(bh->modelSud());
+    modelSud.setFilterStatus(ProxyModelSud::Rezept);
+    for (int r = 0; r < modelSud.rowCount(); ++r)
+    {
+        QVariant sudId = modelSud.data(r, ModelSud::ColID);
+        for (int j = 0; j < rowCount(); ++j)
+        {
+            if (data(j, ColSudID) == sudId && data(j, ColName) == name)
+                setData(j, col, value);
+        }
+    }
+}
+
+int ModelWeitereZutatenGaben::import(int row)
+{
+    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(row, ColTyp).toInt());
+    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
+    {
+        QMap<int, QVariant> values({{ModelHopfen::ColName, data(row, ColName)}});
+        return bh->modelHopfen()->append(values);
+    }
+    else
+    {
+        QMap<int, QVariant> values({{ModelWeitereZutaten::ColName, data(row, ColName)},
+                                    {ModelWeitereZutaten::ColEinheit, data(row, ColEinheit)},
+                                    {ModelWeitereZutaten::ColTyp, data(row, ColTyp)},
+                                    {ModelWeitereZutaten::ColAusbeute, data(row, ColAusbeute)},
+                                    {ModelWeitereZutaten::ColFarbe, data(row, ColFarbe)},
+                                    {ModelWeitereZutaten::ColUnvergaerbar, data(row, ColUnvergaerbar)}});
+        return bh->modelWeitereZutaten()->append(values);
     }
 }
 

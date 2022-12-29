@@ -1,6 +1,7 @@
 // clazy:excludeall=skipped-base-method
 #include "modelhefegaben.h"
 #include "brauhelfer.h"
+#include "proxymodelsud.h"
 #include <QDateTime>
 #include <cmath>
 
@@ -74,6 +75,22 @@ void ModelHefegaben::onSudDataChanged(const QModelIndex &idx)
             }
         }
         mSignalModifiedBlocked = false;
+    }
+}
+
+void ModelHefegaben::update(const QVariant &name, int col, const QVariant &value)
+{
+    ProxyModelSud modelSud;
+    modelSud.setSourceModel(bh->modelSud());
+    modelSud.setFilterStatus(ProxyModelSud::Rezept);
+    for (int r = 0; r < modelSud.rowCount(); ++r)
+    {
+        QVariant sudId = modelSud.data(r, ModelSud::ColID);
+        for (int j = 0; j < rowCount(); ++j)
+        {
+            if (data(j, ColSudID) == sudId && data(j, ColName) == name)
+                setData(j, col, value);
+        }
     }
 }
 

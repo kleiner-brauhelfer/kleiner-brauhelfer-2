@@ -2,7 +2,6 @@
 #include "modelhefe.h"
 #include "brauhelfer.h"
 #include <QDate>
-#include "proxymodelsud.h"
 
 ModelHefe::ModelHefe(Brauhelfer* bh, QSqlDatabase db) :
     SqlTableModel(bh, db),
@@ -70,23 +69,11 @@ bool ModelHefe::setDataExt(const QModelIndex &idx, const QVariant &value)
     {
     case ColName:
     {
-        QString name = getUniqueName(idx, value);
+        QString newName = getUniqueName(idx, value);
         QVariant prevName = data(idx);
-        if (QSqlTableModel::setData(idx, name))
+        if (QSqlTableModel::setData(idx, newName))
         {
-            ProxyModelSud modelSud;
-            modelSud.setSourceModel(bh->modelSud());
-            modelSud.setFilterStatus(ProxyModelSud::Rezept);
-            for (int r = 0; r < modelSud.rowCount(); ++r)
-            {
-                QVariant sudId = modelSud.data(r, ModelSud::ColID);
-                SqlTableModel* model = bh->modelHefegaben();
-                for (int j = 0; j < model->rowCount(); ++j)
-                {
-                    if (model->data(j, ModelHefegaben::ColSudID) == sudId && model->data(j, ModelHefegaben::ColName) == prevName)
-                        model->setData(j, ModelHefegaben::ColName, name);
-                }
-            }
+            bh->modelHefegaben()->update(prevName, ModelHefegaben::ColName, newName);
             return true;
         }
         return false;

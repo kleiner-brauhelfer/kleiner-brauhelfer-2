@@ -203,27 +203,27 @@ bool Database::isConnected() const
 
 bool Database::isDirty() const
 {
-    return modelSud->isDirty() |
-           modelRasten->isDirty() |
-           modelMalzschuettung->isDirty() |
-           modelHopfengaben->isDirty() |
-           modelHefegaben->isDirty() |
-           modelWeitereZutatenGaben->isDirty() |
-           modelSchnellgaerverlauf->isDirty() |
-           modelHauptgaerverlauf->isDirty() |
-           modelNachgaerverlauf->isDirty() |
-           modelBewertungen->isDirty() |
-           modelMalz->isDirty() |
-           modelHopfen->isDirty() |
-           modelHefe->isDirty() |
-           modelWeitereZutaten->isDirty() |
-           modelAnhang->isDirty() |
-           modelAusruestung->isDirty() |
-           modelGeraete->isDirty() |
-           modelWasser->isDirty() |
-           modelEtiketten->isDirty() |
-           modeTags->isDirty() |
-           modelKategorien->isDirty() |
+    return modelSud->isDirty() ||
+           modelRasten->isDirty() ||
+           modelMalzschuettung->isDirty() ||
+           modelHopfengaben->isDirty() ||
+           modelHefegaben->isDirty() ||
+           modelWeitereZutatenGaben->isDirty() ||
+           modelSchnellgaerverlauf->isDirty() ||
+           modelHauptgaerverlauf->isDirty() ||
+           modelNachgaerverlauf->isDirty() ||
+           modelBewertungen->isDirty() ||
+           modelMalz->isDirty() ||
+           modelHopfen->isDirty() ||
+           modelHefe->isDirty() ||
+           modelWeitereZutaten->isDirty() ||
+           modelAnhang->isDirty() ||
+           modelAusruestung->isDirty() ||
+           modelGeraete->isDirty() ||
+           modelWasser->isDirty() ||
+           modelEtiketten->isDirty() ||
+           modeTags->isDirty() ||
+           modelKategorien->isDirty() ||
            modelWasseraufbereitung->isDirty();
 }
 

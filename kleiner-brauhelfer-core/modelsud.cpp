@@ -635,25 +635,26 @@ bool ModelSud::setDataExt_impl(const QModelIndex &idx, const QVariant &value)
         }
         return false;
     }
-    case Colerg_AbgefuellteBiermenge:
+    case ColJungbiermengeAbfuellen:
     {
-        double speise = 0.0;
-        double verschneidung = 0.0;
-        if (!data(idx.row(), ColSpunden).toBool())
-        {
-            speise = data(idx.row(), ColSpeiseAnteil).toDouble() / 1000;
-            verschneidung = data(idx.row(), ColVerschneidungAbfuellen).toDouble();
-        }
-        double jungbiermenge = data(idx.row(), ColJungbiermengeAbfuellen).toDouble();
+        double preVal = data(idx).toDouble();
         if (QSqlTableModel::setData(idx, value))
         {
-            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(data(idx.row(), ColStatus).toInt());
-            if (status < Brauhelfer::SudStatus::Abgefuellt)
+            double preValTotal = data(idx.row(), Colerg_AbgefuellteBiermenge).toDouble();
+            QSqlTableModel::setData(index(idx.row(), Colerg_AbgefuellteBiermenge), preValTotal + (value.toDouble() - preVal));
+            return true;
+        }
+        return false;
+    }
+    case ColVerschneidungAbfuellen:
+    {
+        double preVal = data(idx).toDouble();
+        if (QSqlTableModel::setData(idx, value))
+        {
+            if (!data(idx.row(), ColSpunden).toBool())
             {
-                if (jungbiermenge > 0.0)
-                    QSqlTableModel::setData(index(idx.row(), ColJungbiermengeAbfuellen), value.toDouble() / (1 + (speise + verschneidung) / jungbiermenge));
-                else
-                    QSqlTableModel::setData(index(idx.row(), ColJungbiermengeAbfuellen), value.toDouble() - speise - verschneidung);
+                double preValTotal = data(idx.row(), Colerg_AbgefuellteBiermenge).toDouble();
+                QSqlTableModel::setData(index(idx.row(), Colerg_AbgefuellteBiermenge), preValTotal + (value.toDouble() - preVal));
             }
             return true;
         }
@@ -817,21 +818,17 @@ void ModelSud::update(int row, int colChanged)
     {
         // erg_Alkohol
         double sre = data(row, ColSREIst).toDouble();
-        double sw = data(row, ColSWAnstellen).toDouble() + swWzGaerungCurrent[row];
+        double sw = data(row, ColSWIst).toDouble();
         double menge = data(row, ColJungbiermengeAbfuellen).toDouble();
         double verschneidung = 0.0;
         double alcZucker = 0.0;
         if (!data(row, ColSpunden).toBool())
         {
-            verschneidung = data(row, ColVerschneidungAbfuellen).toDouble();
             alcZucker = BierCalc::alkoholVonZucker(data(row, ColZuckerAnteil).toDouble() / menge);
+            if (alcZucker > 0)
+                verschneidung = data(row, ColVerschneidungAbfuellen).toDouble();
         }
         setData(row, Colerg_Alkohol, BierCalc::alkohol(sw, sre, alcZucker) / (1 + verschneidung/menge));
-
-        // erg_AbgefuellteBiermenge
-        double jungbiermenge = data(row, ColJungbiermengeAbfuellen).toDouble();
-        double speise = data(row, ColSpeiseAnteil).toDouble() / 1000;
-        setData(row, Colerg_AbgefuellteBiermenge, jungbiermenge + speise + verschneidung);
 
         // erg_Preis
         updatePreis(row);

@@ -4,21 +4,25 @@
 #ifdef QT_CHARTS_LIB
 
 #include <QtCharts>
+
 class ChartView : public QChartView
 {
     Q_OBJECT
 public:
-    ChartView(QWidget *parent = nullptr);
+    explicit ChartView(QWidget *parent = nullptr);
+    virtual void update();
 };
 
 #else // QT_CHARTS_LIB
 
 #include <QGraphicsView>
+
 class ChartView : public QGraphicsView
 {
     Q_OBJECT
 public:
     ChartView(QWidget *parent = nullptr) : QGraphicsView(parent) {};
+    virtual void update() {};
 };
 
 #endif // QT_CHARTS_LIB

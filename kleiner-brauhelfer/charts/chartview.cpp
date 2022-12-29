@@ -17,4 +17,8 @@ ChartView::ChartView(QWidget *parent) :
     setRenderHint(QPainter::Antialiasing);
 }
 
+void ChartView::update()
+{
+}
+
 #endif // QT_CHARTS_LIB

@@ -58,6 +58,11 @@ SOURCES += \
     tabsudauswahl_sudinfo.cpp \
     tabzusammenfassung.cpp \
     templatetags.cpp \
+    charts/chartview.cpp \
+    charts/chartviewabfuelldaten.cpp \
+    charts/chartviewausbeute.cpp \
+    charts/chartviewbraudaten.cpp \
+    charts/chartviewrestextrakt.cpp \
     dialogs/dlgabout.cpp \
     dialogs/dlgabstract.cpp \
     dialogs/dlgausruestung.cpp \
@@ -101,7 +106,6 @@ SOURCES += \
     model/restextraktdelegate.cpp \
     model/spinboxdelegate.cpp \
     model/textdelegate.cpp \
-    widgets/chartview.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
     widgets/datetimeedit.cpp \
@@ -144,6 +148,11 @@ HEADERS += \
     tabsudauswahl.h \
     tabzusammenfassung.h \
     templatetags.h \
+    charts/chartview.h \
+    charts/chartviewabfuelldaten.h \
+    charts/chartviewausbeute.h \
+    charts/chartviewbraudaten.h \
+    charts/chartviewrestextrakt.h \
     dialogs/dlgabout.h \
     dialogs/dlgabstract.h \
     dialogs/dlgabstract-inl.h \
@@ -188,7 +197,6 @@ HEADERS += \
     model/restextraktdelegate.h \
     model/spinboxdelegate.h \
     model/textdelegate.h \
-    widgets/chartview.h \
     widgets/combobox.h \
     widgets/dateedit.h \
     widgets/datetimeedit.h \

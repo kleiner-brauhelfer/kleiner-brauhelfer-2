@@ -54,9 +54,9 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
-    ui->splitterHelp->setSizes({100, 50});
-    mDefaultSplitterHelpState = ui->splitterHelp->saveState();
-    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
+    ui->splitterCharts->setSizes({300, 300, 100, 50});
+    mDefaultSplitterChartsState = ui->splitterCharts->saveState();
+    ui->splitterCharts->restoreState(gSettings->value("splitterChartsState").toByteArray());
 
     gSettings->endGroup();
 
@@ -79,14 +79,14 @@ void TabBraudaten::saveSettings()
 {
     gSettings->beginGroup("TabBraudaten");
     gSettings->setValue("splitterState", ui->splitter->saveState());
-    gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
+    gSettings->setValue("splitterChartsState", ui->splitterCharts->saveState());
     gSettings->endGroup();
 }
 
 void TabBraudaten::restoreView()
 {
     ui->splitter->restoreState(mDefaultSplitterState);
-    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    ui->splitterCharts->restoreState(mDefaultSplitterChartsState);
 }
 
 void TabBraudaten::modulesChanged(Settings::Modules modules)
@@ -278,6 +278,9 @@ void TabBraudaten::updateValues()
     ui->tbSWSollKochbeginnMitWzBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginnMitWz()));
     ui->tbSWSollKochendeBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochende()));
     ui->tbSWAnstellenSollBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollAnstellen()));
+
+    ui->chartBraudaten->update();
+    ui->chartAusbeute->update();
 }
 
 void TabBraudaten::on_tbBraudatum_dateChanged(const QDate &date)

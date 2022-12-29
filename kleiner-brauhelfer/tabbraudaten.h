@@ -53,7 +53,7 @@ private:
 private:
     Ui::TabBraudaten *ui;
     QByteArray mDefaultSplitterState;
-    QByteArray mDefaultSplitterHelpState;
+    QByteArray mDefaultSplitterChartsState;
 };
 
 #endif // TABBRAUDATEN_H

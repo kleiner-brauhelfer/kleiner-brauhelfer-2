@@ -2689,7 +2689,11 @@
             </spacer>
            </item>
            <item row="7" column="0" colspan="8">
-            <widget class="WdgBemerkung" name="wdgBemerkung" native="true"/>
+            <widget class="WdgBemerkung" name="wdgBemerkung" native="true">
+             <property name="focusPolicy">
+              <enum>Qt::StrongFocus</enum>
+             </property>
+            </widget>
            </item>
            <item row="3" column="0" colspan="8">
             <widget class="QLabel" name="lblDurchschnittWarnung">
@@ -2749,14 +2753,16 @@
        </layout>
       </widget>
      </widget>
-     <widget class="QSplitter" name="splitterHelp">
+     <widget class="QSplitter" name="splitterCharts">
       <property name="focusPolicy">
        <enum>Qt::StrongFocus</enum>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="QWidget" native="true">
+      <widget class="ChartViewBraudaten" name="chartBraudaten"/>
+      <widget class="ChartViewAusbeute" name="chartAusbeute"/>
+      <widget class="QWidget" name="wdgEmpty" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -2789,15 +2795,20 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>DoubleSpinBoxSud</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinboxsud.h</header>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
   </customwidget>
   <customwidget>
    <class>WdgBemerkung</class>
    <extends>QWidget</extends>
    <header>widgets/wdgbemerkung.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBoxSud</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinboxsud.h</header>
   </customwidget>
   <customwidget>
    <class>DateEdit</class>
@@ -2810,9 +2821,14 @@
    <header>widgets/timeedit.h</header>
   </customwidget>
   <customwidget>
-   <class>PushButton</class>
-   <extends>QPushButton</extends>
-   <header>widgets/pushbutton.h</header>
+   <class>ChartViewBraudaten</class>
+   <extends>QGraphicsView</extends>
+   <header>charts/chartviewbraudaten.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ChartViewAusbeute</class>
+   <extends>QGraphicsView</extends>
+   <header>charts/chartviewausbeute.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
@@ -2864,14 +2880,18 @@
   <tabstop>tbSpeiseSRE</tabstop>
   <tabstop>tbSpeisemengeNoetig</tabstop>
   <tabstop>tbWuerzemengeAnstellen</tabstop>
+  <tabstop>btnWuerzemengeAnstellen</tabstop>
   <tabstop>tbSpeiseT</tabstop>
   <tabstop>tbAusbeuteEffektiv</tabstop>
   <tabstop>tbAusbeuteRezept</tabstop>
   <tabstop>tbNebenkosten</tabstop>
   <tabstop>tbKosten</tabstop>
   <tabstop>cbDurchschnittIgnorieren</tabstop>
+  <tabstop>wdgBemerkung</tabstop>
   <tabstop>btnSudGebraut</tabstop>
-  <tabstop>splitterHelp</tabstop>
+  <tabstop>splitterCharts</tabstop>
+  <tabstop>chartBraudaten</tabstop>
+  <tabstop>chartAusbeute</tabstop>
   <tabstop>tbHelp</tabstop>
  </tabstops>
  <resources>

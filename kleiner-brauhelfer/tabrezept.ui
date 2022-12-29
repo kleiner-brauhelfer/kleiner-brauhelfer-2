@@ -3799,7 +3799,7 @@ p, li { white-space: pre-wrap; }
   <customwidget>
    <class>ChartView</class>
    <extends>QGraphicsView</extends>
-   <header>widgets/chartview.h</header>
+   <header>charts/chartview.h</header>
   </customwidget>
   <customwidget>
    <class>SpinBoxSud</class>

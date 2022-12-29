@@ -2038,13 +2038,15 @@
        </layout>
       </widget>
      </widget>
-     <widget class="QSplitter" name="splitterHelp">
+     <widget class="QSplitter" name="splitterCharts">
       <property name="focusPolicy">
        <enum>Qt::StrongFocus</enum>
       </property>
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
+      <widget class="ChartViewAbfuelldaten" name="chartAbfuelldaten"/>
+      <widget class="ChartViewRestextrakt" name="chartRestextrakt"/>
       <widget class="QWidget" name="wdgEmpty" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -2113,6 +2115,16 @@
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
   </customwidget>
+  <customwidget>
+   <class>ChartViewAbfuelldaten</class>
+   <extends>QGraphicsView</extends>
+   <header>charts/chartviewabfuelldaten.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ChartViewRestextrakt</class>
+   <extends>QGraphicsView</extends>
+   <header>charts/chartviewrestextrakt.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>scrollArea_3</tabstop>
@@ -2159,7 +2171,7 @@
   <tabstop>wdgBemerkungGaerung</tabstop>
   <tabstop>btnSudAbgefuellt</tabstop>
   <tabstop>btnSudVerbraucht</tabstop>
-  <tabstop>splitterHelp</tabstop>
+  <tabstop>splitterCharts</tabstop>
   <tabstop>chartAbfuelldaten</tabstop>
   <tabstop>chartRestextrakt</tabstop>
   <tabstop>tbHelp</tabstop>

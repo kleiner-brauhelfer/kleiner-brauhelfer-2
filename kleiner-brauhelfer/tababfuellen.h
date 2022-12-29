@@ -47,7 +47,7 @@ private:
 private:
     Ui::TabAbfuellen *ui;
     QByteArray mDefaultSplitterState;
-    QByteArray mDefaultSplitterHelpState;
+    QByteArray mDefaultSplitterChartsState;
 };
 
 #endif // TABABFUELLEN_H

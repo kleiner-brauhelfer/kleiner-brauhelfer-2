@@ -46,9 +46,9 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
-    ui->splitterHelp->setSizes({100, 50});
-    mDefaultSplitterHelpState = ui->splitterHelp->saveState();
-    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
+    ui->splitterCharts->setSizes({300, 300, 100, 50});
+    mDefaultSplitterChartsState = ui->splitterCharts->saveState();
+    ui->splitterCharts->restoreState(gSettings->value("splitterChartsState").toByteArray());
 
     ui->tbZuckerFaktor->setValue(gSettings->value("ZuckerFaktor", 1.0).toDouble());
     ui->tbFlaschengroesse->setValue(gSettings->value("FlaschenGroesse", 0.5).toDouble());
@@ -75,7 +75,7 @@ void TabAbfuellen::saveSettings()
 {
     gSettings->beginGroup("TabAbfuellen");
     gSettings->setValue("splitterState", ui->splitter->saveState());
-    gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
+    gSettings->setValue("splitterChartsState", ui->splitterCharts->saveState());
     gSettings->setValue("ZuckerFaktor", ui->tbZuckerFaktor->value());
     gSettings->setValue("FlaschenGroesse", ui->tbFlaschengroesse->value());
     gSettings->endGroup();
@@ -84,7 +84,7 @@ void TabAbfuellen::saveSettings()
 void TabAbfuellen::restoreView()
 {
     ui->splitter->restoreState(mDefaultSplitterState);
-    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
+    ui->splitterCharts->restoreState(mDefaultSplitterChartsState);
 }
 
 void TabAbfuellen::modulesChanged(Settings::Modules modules)
@@ -259,6 +259,9 @@ void TabAbfuellen::updateValues()
     ui->lblKonzentrationZuckerloesung->setVisible(hasZuckerLoesung);
     ui->tbKonzentrationZuckerloesung->setVisible(hasZuckerLoesung);
     ui->tbKonzentrationZuckerloesungEinheit->setVisible(hasZuckerLoesung);
+
+    ui->chartAbfuelldaten->update();
+    ui->chartRestextrakt->update();
 }
 
 void TabAbfuellen::on_tbAbfuelldatum_dateChanged(const QDate &date)

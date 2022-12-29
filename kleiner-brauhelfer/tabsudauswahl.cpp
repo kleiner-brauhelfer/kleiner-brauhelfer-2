@@ -43,36 +43,9 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
 
     ui->webview->setHtmlFile("sudinfo");
 
-    SqlTableModel *model = bh->modelSud();
-    model->setHeaderData(ModelSud::ColID, Qt::Horizontal, tr("Sud ID"));
-    model->setHeaderData(ModelSud::ColSudname, Qt::Horizontal, tr("Sudname"));
-    model->setHeaderData(ModelSud::ColSudnummer, Qt::Horizontal, tr("Sudnummer"));
-    model->setHeaderData(ModelSud::ColKategorie, Qt::Horizontal, tr("Kategorie"));
-    model->setHeaderData(ModelSud::ColBraudatum, Qt::Horizontal, tr("Braudatum"));
-    model->setHeaderData(ModelSud::ColAbfuelldatum, Qt::Horizontal, tr("Abfülldatum"));
-    model->setHeaderData(ModelSud::ColErstellt, Qt::Horizontal, tr("Erstellt"));
-    model->setHeaderData(ModelSud::ColGespeichert, Qt::Horizontal, tr("Gespeichert"));
-    model->setHeaderData(ModelSud::ColWoche, Qt::Horizontal, tr("Woche"));
-    model->setHeaderData(ModelSud::ColBewertungMittel, Qt::Horizontal, tr("Bewertung"));
-    model->setHeaderData(ModelSud::ColMenge, Qt::Horizontal, tr("Menge [l]"));
-    model->setHeaderData(ModelSud::ColSW, Qt::Horizontal, tr("SW [°P]"));
-    model->setHeaderData(ModelSud::ColIBU, Qt::Horizontal, tr("Bittere [IBU]"));
-    model->setHeaderData(ModelSud::Colerg_AbgefuellteBiermenge, Qt::Horizontal, tr("Menge [l]"));
-    model->setHeaderData(ModelSud::Colerg_Sudhausausbeute, Qt::Horizontal, tr("SHA [%]"));
-    model->setHeaderData(ModelSud::ColSWIst, Qt::Horizontal, tr("SW [°P]"));
-    model->setHeaderData(ModelSud::ColSREIst, Qt::Horizontal, tr("Restextrakt [°P]"));
-    model->setHeaderData(ModelSud::Colerg_S_Gesamt, Qt::Horizontal, tr("Schüttung [kg]"));
-    model->setHeaderData(ModelSud::Colerg_Preis, Qt::Horizontal, tr("Kosten [%1/l]").arg(QLocale().currencySymbol()));
-    model->setHeaderData(ModelSud::Colerg_Alkohol, Qt::Horizontal, tr("Alk. [%]"));
-    model->setHeaderData(ModelSud::ColsEVG, Qt::Horizontal, tr("sEVG [%]"));
-    model->setHeaderData(ModelSud::ColtEVG, Qt::Horizontal, tr("tEVG [%]"));
-    model->setHeaderData(ModelSud::Colerg_EffektiveAusbeute, Qt::Horizontal, tr("Eff. SHA [%]"));
-    model->setHeaderData(ModelSud::ColVerdampfungsrateIst, Qt::Horizontal, tr("Verdampfungsrate [l/h]"));
-    model->setHeaderData(ModelSud::ColAusbeuteIgnorieren, Qt::Horizontal, tr("Für Durchschnitt Ignorieren"));
-
     TableView *table = ui->tableSudauswahl;
     ProxyModelSudColored *proxyModel = new ProxyModelSudColored(this);
-    proxyModel->setSourceModel(model);
+    proxyModel->setSourceModel(bh->modelSud());
     table->setModel(proxyModel);
     table->appendCol({ModelSud::ColSudname, true, false, -1, nullptr});
     table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});

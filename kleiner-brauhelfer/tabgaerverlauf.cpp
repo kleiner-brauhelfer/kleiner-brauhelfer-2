@@ -59,16 +59,8 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
 
     gSettings->beginGroup("TabGaerverlauf");
 
-    ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
-    model->setHeaderData(ModelSchnellgaerverlauf::ColZeitstempel, Qt::Horizontal, tr("Datum"));
-    model->setHeaderData(ModelSchnellgaerverlauf::ColRestextrakt, Qt::Horizontal, tr("SRE [°P]"));
-    model->setHeaderData(ModelSchnellgaerverlauf::ColTemp, Qt::Horizontal, tr("Temp. [°C]"));
-    model->setHeaderData(ModelSchnellgaerverlauf::ColAlc, Qt::Horizontal, tr("Alk. [%]"));
-    model->setHeaderData(ModelSchnellgaerverlauf::ColsEVG, Qt::Horizontal, tr("sEVG [%]"));
-    model->setHeaderData(ModelSchnellgaerverlauf::ColtEVG, Qt::Horizontal, tr("tEVG [%]"));
-    model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
     TableView *table = ui->tableWidget_Schnellgaerverlauf;
-    table->setModel(model);
+    table->setModel(bh->sud()->modelSchnellgaerverlauf());
     table->appendCol({ModelSchnellgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
     table->appendCol({ModelSchnellgaerverlauf::ColRestextrakt, true, false, 100, new RestextraktDelegate(false, table)});
     table->appendCol({ModelSchnellgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, -20.0, 100.0, 0.1, false, table)});
@@ -79,22 +71,13 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateSchnellgaerung").toByteArray());
-
     connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(table_selectionChanged(QItemSelection)));
     connect(ui->widget_DiaSchnellgaerverlauf, SIGNAL(sig_selectionChanged(int)),
             this, SLOT(diagram_selectionChanged(int)));
 
-    model = bh->sud()->modelHauptgaerverlauf();
-    model->setHeaderData(ModelHauptgaerverlauf::ColZeitstempel, Qt::Horizontal, tr("Datum"));
-    model->setHeaderData(ModelHauptgaerverlauf::ColRestextrakt, Qt::Horizontal, tr("SRE [°P]"));
-    model->setHeaderData(ModelHauptgaerverlauf::ColTemp, Qt::Horizontal, tr("Temp. [°C]"));
-    model->setHeaderData(ModelHauptgaerverlauf::ColAlc, Qt::Horizontal, tr("Alk. [%]"));
-    model->setHeaderData(ModelHauptgaerverlauf::ColsEVG, Qt::Horizontal, tr("sEVG [%]"));
-    model->setHeaderData(ModelHauptgaerverlauf::ColtEVG, Qt::Horizontal, tr("tEVG [%]"));
-    model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
     table = ui->tableWidget_Hauptgaerverlauf;
-    table->setModel(model);
+    table->setModel(bh->sud()->modelHauptgaerverlauf());
     table->appendCol({ModelHauptgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
     table->appendCol({ModelHauptgaerverlauf::ColRestextrakt, true, false, 100, new RestextraktDelegate(true, table)});
     table->appendCol({ModelHauptgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, -20.0, 100.0, 0.1, false, table)});
@@ -105,21 +88,13 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateHauptgaerung").toByteArray());
-
     connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(table_selectionChanged(QItemSelection)));
     connect(ui->widget_DiaHauptgaerverlauf, SIGNAL(sig_selectionChanged(int)),
             this, SLOT(diagram_selectionChanged(int)));
 
-    model = bh->sud()->modelNachgaerverlauf();
-    model->setHeaderData(ModelNachgaerverlauf::ColZeitstempel, Qt::Horizontal, tr("Datum"));
-    model->setHeaderData(ModelNachgaerverlauf::ColDruck, Qt::Horizontal, tr("Druck [bar]"));
-    model->setHeaderData(ModelNachgaerverlauf::ColTemp, Qt::Horizontal, tr("Temp. [°C]"));
-    model->setHeaderData(ModelNachgaerverlauf::ColCO2, Qt::Horizontal, tr("CO2 [g/l]"));
-    model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
     table = ui->tableWidget_Nachgaerverlauf;
-
-    table->setModel(model);
+    table->setModel(bh->sud()->modelNachgaerverlauf());
     table->appendCol({ModelNachgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
     table->appendCol({ModelNachgaerverlauf::ColDruck, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, 10.0, 0.1, false, table)});
     table->appendCol({ModelNachgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, -20.0, 100.0, 0.1, false, table)});
@@ -128,7 +103,6 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateNachgaerung").toByteArray());
-
     connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(table_selectionChanged(QItemSelection)));
     connect(ui->widget_DiaNachgaerverlauf, SIGNAL(sig_selectionChanged(int)),

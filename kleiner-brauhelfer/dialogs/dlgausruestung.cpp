@@ -65,14 +65,9 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     ui->tbHelp->setPalette(palette);
 
     TableView *table = ui->tableViewAnlagen;
-    ProxyModel *model = new ProxyModel(this);
-    model->setSourceModel(bh->modelAusruestung());
-    model->setHeaderData(ModelAusruestung::ColName, Qt::Horizontal, tr("Anlage"));
-    model->setHeaderData(ModelAusruestung::ColTyp, Qt::Horizontal, tr("Typ"));
-    model->setHeaderData(ModelAusruestung::ColVermoegen, Qt::Horizontal, tr("Vermögen [l]"));
-    model->setHeaderData(ModelAusruestung::ColAnzahlSude, Qt::Horizontal, tr("Anzahl Sude"));
-    model->setHeaderData(ModelAusruestung::ColAnzahlGebrauteSude, Qt::Horizontal, tr("Anzahl gebraute Sude"));
-    table->setModel(model);
+    ProxyModel *proxyModel = new ProxyModel(this);
+    proxyModel->setSourceModel(bh->modelAusruestung());
+    table->setModel(proxyModel);
     table->appendCol({ModelAusruestung::ColName, true, false, -1, nullptr});
     table->appendCol({ModelAusruestung::ColTyp, true, true, 100, new ComboBoxDelegate(Typname, table)});
     table->appendCol({ModelAusruestung::ColVermoegen, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
@@ -82,20 +77,19 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     table->setDefaultContextMenu();
 
     table = ui->tableViewGeraete;
-    model = new ProxyModel(this);
-    model->setSourceModel(bh->modelGeraete());
-    model->setHeaderData(ModelGeraete::ColBezeichnung, Qt::Horizontal, tr("Bezeichnung"));
-    model->setFilterKeyColumn(ModelGeraete::ColAusruestungAnlagenID);
-    table->setModel(model);
+    proxyModel = new ProxyModel(this);
+    proxyModel->setSourceModel(bh->modelGeraete());
+    proxyModel->setFilterKeyColumn(ModelGeraete::ColAusruestungAnlagenID);
+    table->setModel(proxyModel);
     table->appendCol({ModelGeraete::ColBezeichnung, true, false, -1, nullptr});
     table->build();
     table->setDefaultContextMenu();
 
     table = ui->tableViewSude;
-    model = new ProxyModelSudColored(this);
-    model->setSourceModel(bh->modelSud());
-    model->setFilterKeyColumn(ModelSud::ColAnlage);
-    table->setModel(model);
+    proxyModel = new ProxyModelSudColored(this);
+    proxyModel->setSourceModel(bh->modelSud());
+    proxyModel->setFilterKeyColumn(ModelSud::ColAnlage);
+    table->setModel(proxyModel);
     table->appendCol({ModelSud::ColSudname, true, false, 200, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, table)});
     table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
     table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});

@@ -40,12 +40,9 @@ DlgWasserprofile::DlgWasserprofile(QWidget *parent) :
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
 
-    SqlTableModel *model = bh->modelWasser();
-    model->setHeaderData(ModelWasser::ColName, Qt::Horizontal, tr("Wasserprofil"));
-    model->setHeaderData(ModelWasser::ColRestalkalitaet, Qt::Horizontal, tr("Restalkalität [°dH]"));
     ProxyModel *proxyModelWasser = new ProxyModel(this);
     TableView *table = ui->tableWasser;
-    proxyModelWasser->setSourceModel(model);
+    proxyModelWasser->setSourceModel(bh->modelWasser());
     table->setModel(proxyModelWasser);
     table->appendCol({ModelWasser::ColName, true, false, -1, nullptr});
     table->appendCol({ModelWasser::ColRestalkalitaet, true, false, 120, new DoubleSpinBoxDelegate(2, table)});

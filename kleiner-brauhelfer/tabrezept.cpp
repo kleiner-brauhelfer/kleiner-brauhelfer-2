@@ -218,12 +218,8 @@ TabRezept::TabRezept(QWidget *parent) :
 
     connect(ui->btnAnlage, SIGNAL(clicked()), MainWindow::getInstance(), SLOT(showDialogAusruestung()));
 
-    ProxyModel *model = bh->sud()->modelTags();
-    model->setHeaderData(ModelTags::ColKey, Qt::Horizontal, tr("Tag"));
-    model->setHeaderData(ModelTags::ColValue, Qt::Horizontal, tr("Wert"));
-    model->setHeaderData(ModelTags::ColGlobal, Qt::Horizontal, tr("Global"));
     TableView *table = ui->tableTags;
-    table->setModel(model);
+    table->setModel(bh->sud()->modelTags());
     table->appendCol({ModelTags::ColKey, true, false, 0, nullptr});
     table->appendCol({ModelTags::ColValue, true, false, -1, nullptr});
     table->appendCol({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});

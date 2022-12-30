@@ -42,10 +42,10 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbMenge->setColumn(ModelSud::ColMenge);
     ui->tbFaktorHauptguss->setColumn(ModelSud::ColFaktorHauptguss);
     ui->tbGesamtschuettung->setColumn(ModelSud::Colerg_S_Gesamt);
-    ui->tbSWMalz->setColumn(ModelSud::ColSW_Malz);
-    ui->tbSWWZMaischen->setColumn(ModelSud::ColSW_WZ_Maischen);
-    ui->tbSWWZKochen->setColumn(ModelSud::ColSW_WZ_Kochen);
-    ui->tbSWWZGaerung->setColumn(ModelSud::ColSW_WZ_Gaerung);
+    ui->tbSWMalz->setColumn(ModelSud::ColSWAnteilMalz);
+    ui->tbSWWZMaischen->setColumn(ModelSud::ColSWAnteilZusatzMaischen);
+    ui->tbSWWZKochen->setColumn(ModelSud::ColSWAnteilZusatzKochen);
+    ui->tbSWWZGaerung->setColumn(ModelSud::ColSWAnteilZusatzGaerung);
     ui->tbSudnummer->setColumn(ModelSud::ColSudnummer);
     ui->tbBittere->setColumn(ModelSud::ColIBU);
     ui->tbFarbe->setColumn(ModelSud::Colerg_Farbe);
@@ -62,7 +62,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbHauptguss->setColumn(ModelSud::Colerg_WHauptguss);
     ui->tbHauptgussEmpfohlen->setColumn(ModelSud::ColWHauptgussEmpfehlung);
     ui->tbNachguss->setColumn(ModelSud::Colerg_WNachguss);
-    ui->tbWasserHGF->setColumn(ModelSud::ColWasserHgf);
+    ui->tbWasserHGF->setColumn(ModelSud::ColMengeSollHgf);
     ui->tbRestextrakt->setColumn(ModelSud::ColSRE);
     ui->tbAlkohol->setColumn(ModelSud::ColAlkohol);
     ui->tbRestalkalitaetSoll->setColumn(ModelSud::ColRestalkalitaetSoll);

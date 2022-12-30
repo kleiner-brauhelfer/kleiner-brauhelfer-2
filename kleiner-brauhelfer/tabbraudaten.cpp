@@ -270,10 +270,10 @@ void TabBraudaten::updateValues()
         ui->tbMengeSollEndecmVomBoden->setValue(mengeSollKochende100 / d);
         h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
         ui->tbMengeSollEndecmVonOben->setValue(h - mengeSollKochende100 / d);
-        ui->lblDurchschnittWarnung->setVisible(bh->sud()->getSW_WZ_Maischen() > 0 || bh->sud()->getSW_WZ_Kochen() > 0);
+        ui->lblDurchschnittWarnung->setVisible(bh->sud()->getSWAnteilZusatzMaischen() > 0 || bh->sud()->getSWAnteilZusatzKochen() > 0);
     }
 
-    ui->wdgSWSollKochbeginnMitWz->setVisible(bh->sud()->getSW_WZ_Kochen() > 0.0);
+    ui->wdgSWSollKochbeginnMitWz->setVisible(bh->sud()->getSWAnteilZusatzKochen() > 0.0);
     ui->tbSWSollKochbeginnBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginn()));
     ui->tbSWSollKochbeginnMitWzBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginnMitWz()));
     ui->tbSWSollKochendeBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochende()));

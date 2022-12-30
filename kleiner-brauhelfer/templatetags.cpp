@@ -9,7 +9,6 @@
 #include "settings.h"
 #include "mainwindow.h"
 #include "widgets/wdganhang.h"
-#include "dialogs/dlgrichtexteditor.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -82,16 +81,16 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
         double fval, mengeMaischen, mengeKochbeginn100, mengeKochende100;
         QVariantMap ctxRezept;
         ctxRezept["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble(), 'f', 1);
-        fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_Malz).toDouble();
+        fval = bh->modelSud()->data(sudRow, ModelSud::ColSWAnteilMalz).toDouble();
         if (fval > 0)
             ctxRezept["SW_Malz"] = locale.toString(fval, 'f', 1);
-        fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_WZ_Maischen).toDouble();
+        fval = bh->modelSud()->data(sudRow, ModelSud::ColSWAnteilZusatzMaischen).toDouble();
         if (fval > 0)
             ctxRezept["SW_WZ_Maischen"] = locale.toString(fval, 'f', 1);
-        fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_WZ_Kochen).toDouble();
+        fval = bh->modelSud()->data(sudRow, ModelSud::ColSWAnteilZusatzKochen).toDouble();
         if (fval > 0)
             ctxRezept["SW_WZ_Kochen"] = locale.toString(fval, 'f', 1);
-        fval = bh->modelSud()->data(sudRow, ModelSud::ColSW_WZ_Gaerung).toDouble();
+        fval = bh->modelSud()->data(sudRow, ModelSud::ColSWAnteilZusatzGaerung).toDouble();
         if (fval > 0)
             ctxRezept["SW_WZ_Gaerung"] = locale.toString(fval, 'f', 1);
         ctxRezept["Menge"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColMenge).toDouble(), 'f', 1);
@@ -277,7 +276,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                 mapWasser["Nachguss"] = locale.toString(f2, 'f', 2);
                 if (bh->sud()->gethighGravityFaktor() != 0)
                 {
-                    f3 = bh->sud()->getWasserHgf();
+                    f3 = bh->sud()->getMengeSollHgf();
                     mapWasser["Verduennung"] = locale.toString(f3, 'f', 2);
                 }
                 mapWasser["Gesamt"] = locale.toString(f1 + f2 + f3, 'f', 2);

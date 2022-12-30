@@ -23,7 +23,7 @@ QVariant ModelHopfengaben::dataExt(const QModelIndex &idx) const
         double menge = data(idx.row(), Colerg_Menge).toDouble();
         double alpha = data(idx.row(), ColAlpha).toDouble();
         double ausbeute = data(idx.row(), ColAusbeute).toDouble();
-        double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMengeSoll).toDouble();
+        double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMengeSollAnstellen).toDouble();
         return menge * alpha * ausbeute / (10 * mengeSoll);
     }
     case ColAusbeute:
@@ -83,7 +83,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
         if (QSqlTableModel::setData(idx, fVal))
         {
             QVariant sudId = data(idx.row(), ColSudID);
-            double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMengeSoll).toDouble();
+            double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMengeSollAnstellen).toDouble();
             double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();
             Brauhelfer::BerechnungsartHopfen berechnungsart = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->modelSud()->dataSud(sudId, ModelSud::ColberechnungsArtHopfen).toInt());
             switch (berechnungsart)
@@ -161,7 +161,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
             }
             case Brauhelfer::BerechnungsartHopfen::IBU:
             {
-                double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMengeSoll).toDouble();
+                double mengeSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColMengeSollAnstellen).toDouble();
                 double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();
                 double alpha = data(idx.row(), ColAlpha).toDouble();
                 double ausbeute = data(idx.row(), ColAusbeute).toDouble();
@@ -244,7 +244,7 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
     switch (idx.column())
     {
     case ModelSud::ColMenge:
-    case ModelSud::ColMengeSoll:
+    case ModelSud::ColMengeSollAnstellen:
     case ModelSud::ColSW:
     case ModelSud::ColIBU:
     case ModelSud::ColberechnungsArtHopfen:

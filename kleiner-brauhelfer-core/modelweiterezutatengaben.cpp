@@ -37,7 +37,7 @@ QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &idx) const
     }
     case ColExtraktProzent:
     {
-        double sw = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::ColSW).toDouble();
+        double sw = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::ColSWAnteilZutaten).toDouble();
         double extrakt = data(idx.row(), ColExtrakt).toDouble();
         return extrakt / sw * 100;
     }
@@ -112,7 +112,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMengeSoll).toDouble();
+            double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMengeSollAnstellen).toDouble();
             QSqlTableModel::setData(index(idx.row(), Colerg_Menge), value.toDouble() * mengeSoll);
             return true;
         }
@@ -122,7 +122,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
     {
         if (QSqlTableModel::setData(idx, value))
         {
-            double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMengeSoll).toDouble();
+            double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMengeSollAnstellen).toDouble();
             QSqlTableModel::setData(index(idx.row(), ColMenge), value.toDouble() / mengeSoll);
             return true;
         }
@@ -185,7 +185,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
     }
     case ColExtraktProzent:
     {
-        double sw = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::ColSW).toDouble();
+        double sw = bh->modelSud()->dataSud(data(idx.row(), ColSudID).toInt(), ModelSud::ColSWAnteilZutaten).toDouble();
         return setDataExt(index(idx.row(), ColExtrakt), value.toDouble() * sw / 100);
     }
     case ColZugabeDatum:
@@ -209,7 +209,7 @@ bool ModelWeitereZutatenGaben::setDataExt(const QModelIndex &idx, const QVariant
 
 void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
 {
-    if (idx.column() == ModelSud::ColMenge || idx.column() == ModelSud::ColMengeSoll)
+    if (idx.column() == ModelSud::ColMenge || idx.column() == ModelSud::ColMengeSollAnstellen)
     {
         QVariant sudId = bh->modelSud()->data(idx.row(), ModelSud::ColID);
         mSignalModifiedBlocked = true;

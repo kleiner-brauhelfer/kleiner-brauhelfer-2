@@ -71,7 +71,7 @@ void WdgWasseraufbereitung::updateValues()
     ui->tbMengeGesamt->setValue(menge * bh->sud()->geterg_W_Gesamt());
     ui->tbMengeHg->setValue(menge * bh->sud()->geterg_WHauptguss());
     ui->tbMengeNg->setValue(menge * bh->sud()->geterg_WNachguss());
-    double w = bh->sud()->getWasserHgf();
+    double w = bh->sud()->getMengeSollHgf();
     ui->tbMengeHgf->setValue(menge * w);
     ui->tbMengeHgf->setVisible(w > 0);
     ui->lblHgf->setVisible(w > 0);

@@ -19,7 +19,22 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     connect(this, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(onModelReset()));
     connect(this, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(onModelReset()));
     connect(this, SIGNAL(rowChanged(QModelIndex)), this, SLOT(onRowChanged(QModelIndex)));
-    mVirtualField.append("MengeSoll");
+    mVirtualField.append("MengeSollAnstellen");
+    mVirtualField.append("MengeSollKochende");
+    mVirtualField.append("MengeSollKochbeginn");
+    mVirtualField.append("MengeSollVerdampfung");
+    mVirtualField.append("MengeSollHgf");
+    mVirtualField.append("SWSollAnstellen");
+    mVirtualField.append("SWSollKochende");
+    mVirtualField.append("SWSollKochbeginn");
+    mVirtualField.append("SWSollKochbeginnMitWz");
+    mVirtualField.append("SWAnteilMalz");
+    mVirtualField.append("SWAnteilZusatzMaischen");
+    mVirtualField.append("SWAnteilZusatzKochen");
+    mVirtualField.append("SWAnteilZusatzGaerung");
+    mVirtualField.append("SWAnteilHefestarter");
+    mVirtualField.append("SWAnteilZutaten");
+
     mVirtualField.append("SWIst");
     mVirtualField.append("SRE");
     mVirtualField.append("SREErwartet");
@@ -36,18 +51,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("Woche");
     mVirtualField.append("ReifezeitDelta");
     mVirtualField.append("AbfuellenBereitZutaten");
-    mVirtualField.append("MengeSollKochbeginn");
-    mVirtualField.append("MengeSollKochende");
     mVirtualField.append("WuerzemengeAnstellenTotal");
-    mVirtualField.append("SW_Malz");
-    mVirtualField.append("SW_WZ_Maischen");
-    mVirtualField.append("SW_WZ_Kochen");
-    mVirtualField.append("SW_WZ_Gaerung");
-    mVirtualField.append("SWSollKochbeginn");
-    mVirtualField.append("SWSollKochbeginnMitWz");
-    mVirtualField.append("SWSollKochende");
-    mVirtualField.append("SWSollAnstellen");
-    mVirtualField.append("WasserHgf");
     mVirtualField.append("VerdampfungsrateIst");
     mVirtualField.append("sEVG");
     mVirtualField.append("tEVG");
@@ -120,7 +124,7 @@ void ModelSud::onAnlageRowChanged(const QModelIndex &idx)
         if (data(row, ColAnlage) == name)
         {
             if (idx.column() == ModelAusruestung::ColKorrekturMenge)
-                update(row, ColMengeSoll);
+                update(row, ColMengeSollAnstellen);
             else
                 update(row);
         }
@@ -151,12 +155,103 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     {
         return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
     }
-    case ColMengeSoll:
+    case ColMengeSollAnstellen:
     {
         double menge = data(idx.row(), ColMenge).toDouble();
-        double mengeHefestarter = data(idx.row(), ColMengeHefestarter).toDouble();
         double mengeKorrektur = dataAnlage(idx.row(), ModelAusruestung::ColKorrekturMenge).toDouble();
-        return menge - mengeHefestarter + mengeKorrektur;
+        return menge + mengeKorrektur;
+    }
+    case ColMengeSollKochende:
+    {
+        double mengeSoll = data(idx.row(), ColMengeSollAnstellen).toDouble();
+        double mengeHgf = data(idx.row(), ColMengeSollHgf).toDouble();
+        double mengeHefestarter = data(idx.row(), ColMengeHefestarter).toDouble();
+        return mengeSoll - mengeHgf - mengeHefestarter;
+    }
+    case ColMengeSollKochbeginn:
+    {
+        double mengeKochende = data(idx.row(), ColMengeSollKochende).toDouble();
+        double mengeVerdampfung = data(idx.row(), ColMengeSollVerdampfung).toDouble();
+        return mengeKochende + mengeVerdampfung;
+    }
+    case ColMengeSollVerdampfung:
+    {
+        double kochdauer = data(idx.row(), ColKochdauer).toDouble();
+        double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
+        return verdampfungsrate * kochdauer / 60;
+    }
+    case ColMengeSollHgf:
+    {
+        double mengeSoll = data(idx.row(), ColMengeSollAnstellen).toDouble();
+        double mengeHefestarter = data(idx.row(), ColMengeHefestarter).toDouble();
+        double hgf = data(idx.row(), ColhighGravityFaktor).toInt();
+        return (mengeSoll-mengeHefestarter) * hgf/(100+hgf);
+    }
+    case ColSWSollAnstellen:
+    {
+        double sw = data(idx.row(), ColSW).toDouble();
+        return sw - swWzGaerungRecipe[idx.row()];
+    }
+    case ColSWSollKochende:
+    {
+        double swAnstellen = data(idx.row(), ColSWSollAnstellen).toDouble();
+        double mengeAnstellen = data(idx.row(), ColMengeSollAnstellen).toDouble();
+        double swHefestarter = data(idx.row(), ColSWHefestarter).toDouble();
+        double mengeHefestarter = data(idx.row(), ColMengeHefestarter).toDouble();
+        double hgf = data(idx.row(), ColhighGravityFaktor).toInt();
+        return (swAnstellen*mengeAnstellen-swHefestarter*mengeHefestarter)/(mengeAnstellen-mengeHefestarter)*(1+hgf/100);
+    }
+    case ColSWSollKochbeginn:
+    {
+        double mengeKochende = data(idx.row(), ColMengeSollKochende).toDouble();
+        double mengeVerdampfung = data(idx.row(), ColMengeSollVerdampfung).toDouble();
+        double swKochende = data(idx.row(), ColSWSollKochende).toDouble() - swWzKochenRecipe[idx.row()];
+        return swKochende*mengeKochende/(mengeKochende+mengeVerdampfung);
+    }
+    case ColSWSollKochbeginnMitWz:
+    {
+        double mengeKochende = data(idx.row(), ColMengeSollKochende).toDouble();
+        double mengeVerdampfung = data(idx.row(), ColMengeSollVerdampfung).toDouble();
+        double swKochende = data(idx.row(), ColSWSollKochende).toDouble();
+        return swKochende*mengeKochende/(mengeKochende+mengeVerdampfung);
+    }
+    case ColSWAnteilMalz:
+    {
+        double sw = data(idx.row(), ColSW).toDouble();
+        double anteilZusatzMaischen = swWzMaischenRecipe[idx.row()];
+        double anteilZusatzKochen = swWzKochenRecipe[idx.row()];
+        double anteilZusatzGaerung = swWzGaerungRecipe[idx.row()];
+        double anteilHefestarter = data(idx.row(), ColSWAnteilHefestarter).toDouble();
+        return sw - anteilZusatzMaischen - anteilZusatzKochen - anteilZusatzGaerung - anteilHefestarter;
+    }
+    case ColSWAnteilZusatzMaischen:
+    {
+        return swWzMaischenRecipe[idx.row()];
+    }
+    case ColSWAnteilZusatzKochen:
+    {
+        return swWzKochenRecipe[idx.row()];
+    }
+    case ColSWAnteilZusatzGaerung:
+    {
+        return swWzGaerungRecipe[idx.row()];
+    }
+    case ColSWAnteilHefestarter:
+    {
+        double mengeHefestarter = data(idx.row(), ColMengeHefestarter).toDouble();
+        if (mengeHefestarter > 0)
+        {
+            double swHefestarter = data(idx.row(), ColSWHefestarter).toDouble();
+            double mengeAnstellen = data(idx.row(), ColMengeSollAnstellen).toDouble();
+            return swHefestarter*mengeHefestarter/mengeAnstellen;
+        }
+        return 0;
+    }
+    case ColSWAnteilZutaten:
+    {
+        double sw = data(idx.row(), ColSW).toDouble();
+        double swAnteilHefestarter = data(idx.row(), ColSWAnteilHefestarter).toDouble();
+        return sw - swAnteilHefestarter;
     }
     case ColSWIst:
     {
@@ -327,75 +422,9 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         }
         return true;
     }
-    case ColMengeSollKochbeginn:
-    {
-        double mengeSollKochEnde = data(idx.row(), ColMengeSollKochende).toDouble();
-        double kochdauer = data(idx.row(), ColKochdauer).toDouble();
-        double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
-        return mengeSollKochEnde + verdampfungsrate * kochdauer / 60;
-    }
-    case ColMengeSollKochende:
-    {
-        double mengeSoll = data(idx.row(), ColMengeSoll).toDouble();
-        double hgf = 1 + data(idx.row(), ColhighGravityFaktor).toInt() / 100.0;
-        return mengeSoll / hgf;
-    }
     case ColWuerzemengeAnstellenTotal:
     {
         return data(idx.row(), ColWuerzemengeAnstellen).toDouble() + data(idx.row(), ColSpeisemenge).toDouble();
-    }
-    case ColSW_Malz:
-    {
-        return data(idx.row(), ColSW).toDouble() - swWzMaischenRecipe[idx.row()] - swWzKochenRecipe[idx.row()] - swWzGaerungRecipe[idx.row()];
-    }
-    case ColSW_WZ_Maischen:
-    {
-        return swWzMaischenRecipe[idx.row()];
-    }
-    case ColSW_WZ_Kochen:
-    {
-        return swWzKochenRecipe[idx.row()];
-    }
-    case ColSW_WZ_Gaerung:
-    {
-        return swWzGaerungRecipe[idx.row()];
-    }
-    case ColSWSollKochbeginn:
-    {
-        double sw = data(idx.row(), ColSWSollKochende).toDouble() - swWzKochenRecipe[idx.row()];
-        double kochdauer = data(idx.row(), ColKochdauer).toDouble();
-        double mengeSollKochEnde = data(idx.row(), ColMengeSollKochende).toDouble();
-        double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
-        return sw / (1 + (verdampfungsrate * kochdauer / (60 * mengeSollKochEnde)));
-    }
-    case ColSWSollKochbeginnMitWz:
-    {
-        double sw = data(idx.row(), ColSWSollKochende).toDouble();
-        double kochdauer = data(idx.row(), ColKochdauer).toDouble();
-        double mengeSollKochEnde = data(idx.row(), ColMengeSollKochende).toDouble();
-        double verdampfungsrate = data(idx.row(), ColVerdampfungsrate).toDouble();
-        return sw / (1 + (verdampfungsrate * kochdauer / (60 * mengeSollKochEnde)));
-    }
-    case ColSWSollKochende:
-    {
-        double swAnstellen = data(idx.row(), ColSWSollAnstellen).toDouble();
-        double hgf = 1 + data(idx.row(), ColhighGravityFaktor).toInt() / 100.0;
-        double swSoll = swAnstellen * hgf;
-        double mengeSoll = data(idx.row(), ColMengeSollKochende).toDouble();
-        double swHefestarter = data(idx.row(), ColSWHefestarter).toDouble();
-        double mengeHefestarter = data(idx.row(), ColMengeHefestarter).toDouble();
-        return (mengeSoll*swSoll-mengeHefestarter*swHefestarter)/(mengeSoll-mengeHefestarter);
-    }
-    case ColSWSollAnstellen:
-    {
-        double sw = data(idx.row(), ColSW).toDouble();
-        return sw - swWzGaerungRecipe[idx.row()];
-    }
-    case ColWasserHgf:
-    {
-        double mengeSoll = data(idx.row(), ColMengeSoll).toDouble();
-        double hgf = 1 + data(idx.row(), ColhighGravityFaktor).toInt() / 100.0;
-        return mengeSoll * (1 - 1 / hgf);
     }
     case ColVerdampfungsrateIst:
     {
@@ -790,16 +819,16 @@ void ModelSud::update(int row, int colChanged)
     if (status == Brauhelfer::SudStatus::Rezept)
     {
         // MengeSoll
-        if (colChanged == ColMengeSoll)
+        if (colChanged == ColMengeSollAnstellen)
         {
             QModelIndex idx2 = index(row, colChanged);
             emit dataChanged(idx2, idx2);
         }
 
         // erg_S_Gesamt
-        double sw = data(row, ColSW_Malz).toDouble();
+        double sw = data(row, ColSWAnteilMalz).toDouble();
         double sw_dichte = sw + swWzMaischenRecipe[row] + swWzKochenRecipe[row];
-        double menge = data(row, ColMengeSoll).toDouble();
+        double menge = data(row, ColMengeSollAnstellen).toDouble();
         double ausb = data(row, ColSudhausausbeute).toDouble();
         double schuet = BierCalc::schuettung(sw, sw_dichte, menge, ausb);
         setData(row, Colerg_S_Gesamt, schuet);
@@ -925,7 +954,7 @@ void ModelSud::updateWasser(int row)
     if (ng < 0)
         ng = 0;
 
-    hgf = data(row, ColWasserHgf).toDouble();
+    hgf = data(row, ColMengeSollHgf).toDouble();
     if (hgf < 0)
         hgf = 0;
 

@@ -115,7 +115,7 @@ void ModelHefe::defaultValues(QMap<int, QVariant> &values) const
     if (!values.contains(ColTypTrFl))
         values.insert(ColTypTrFl, 0);
     if (!values.contains(ColWuerzemenge))
-        values.insert(ColWuerzemenge, 0);
+        values.insert(ColWuerzemenge, 20);
     if (!values.contains(ColPreis))
         values.insert(ColPreis, 0);
     if (!values.contains(ColEingelagert))

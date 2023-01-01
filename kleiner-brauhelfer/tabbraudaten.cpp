@@ -37,6 +37,8 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui->tbVerdampfungRezept->setColumn(ModelSud::ColVerdampfungsrate);
     ui->tbAusbeuteRezept->setColumn(ModelSud::ColSudhausausbeute);
     ui->tbSWAnstellenSoll->setColumn(ModelSud::ColSWSollAnstellen);
+    ui->tbMengeHefestarter->setColumn(ModelSud::ColMengeHefestarter);
+    ui->tbSWHefestarter->setColumn(ModelSud::ColSWHefestarter);
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
     ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
     ui->lblNebenkostenEinheit->setText(QLocale().currencySymbol());
@@ -146,7 +148,7 @@ void TabBraudaten::sudLoaded()
 {
     checkEnabled();
     updateValues();
-    ui->tbSpeiseSRE->setValue(bh->sud()->getSRE());
+    ui->tbSpeiseSRE->setValue(bh->sud()->getSRESoll());
     ui->wdgBemerkung->setHtml(bh->sud()->getBemerkungBrauen());
 }
 
@@ -159,7 +161,7 @@ void TabBraudaten::sudDataChanged(const QModelIndex& index)
         break;
     case ModelSud::ColSW:
     case ModelSud::ColVergaerungsgrad:
-        ui->tbSpeiseSRE->setValue(bh->sud()->getSRE());
+        ui->tbSpeiseSRE->setValue(bh->sud()->getSRESoll());
         break;
     case ModelSud::ColBemerkungBrauen:
         ui->wdgBemerkung->setHtml(bh->sud()->getBemerkungBrauen());
@@ -278,6 +280,8 @@ void TabBraudaten::updateValues()
     ui->tbSWSollKochbeginnMitWzBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginnMitWz()));
     ui->tbSWSollKochendeBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochende()));
     ui->tbSWAnstellenSollBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollAnstellen()));
+
+    ui->wdgHefestarter->setVisible(bh->sud()->getMengeHefestarter() > 0.0);
 
     ui->chartBraudaten->update();
     ui->chartAusbeute->update();

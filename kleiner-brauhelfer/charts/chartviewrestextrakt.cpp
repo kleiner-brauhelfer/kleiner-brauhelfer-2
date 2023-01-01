@@ -45,7 +45,7 @@ void ChartViewRestextrakt::update()
         setExtrakt->replace(0, bh->sud()->getSWSchnellgaerprobe());
         setExtrakt->replace(1, bh->sud()->getSWJungbier());
         setExtrakt->replace(2, bh->sud()->getSREErwartet());
-        setExtrakt->replace(3, bh->sud()->getSRE());
+        setExtrakt->replace(3, bh->sud()->getSRESoll());
     }
     else
     {
@@ -55,7 +55,7 @@ void ChartViewRestextrakt::update()
         }
         setExtrakt->replace(0, bh->sud()->getSWJungbier());
         setExtrakt->replace(1, bh->sud()->getSREErwartet());
-        setExtrakt->replace(2, bh->sud()->getSRE());
+        setExtrakt->replace(2, bh->sud()->getSRESoll());
     }
 
     double maxVal = 0;

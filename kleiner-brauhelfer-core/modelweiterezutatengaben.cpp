@@ -246,6 +246,46 @@ void ModelWeitereZutatenGaben::onSudDataChanged(const QModelIndex &idx)
         }
         mSignalModifiedBlocked = false;
     }
+    else if (idx.column() == ModelSud::ColKochdauer)
+    {
+        QVariant sudId = bh->modelSud()->data(idx.row(), ModelSud::ColID);
+        mSignalModifiedBlocked = true;
+        for (int r = 0; r < rowCount(); ++r)
+        {
+            if (data(r, ColSudID) == sudId)
+            {
+                Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(data(r, ColZeitpunkt).toInt());
+                if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Kochen)
+                {
+                    int max = idx.data().toInt();
+                    QModelIndex idx2 = index(r, ColZugabedauer);
+                    if (idx2.data().toInt() > max)
+                        QSqlTableModel::setData(idx2, max);
+                }
+            }
+        }
+        mSignalModifiedBlocked = false;
+    }
+    else if (idx.column() == ModelSud::ColNachisomerisierungszeit)
+    {
+        QVariant sudId = bh->modelSud()->data(idx.row(), ModelSud::ColID);
+        mSignalModifiedBlocked = true;
+        for (int r = 0; r < rowCount(); ++r)
+        {
+            if (data(r, ColSudID) == sudId)
+            {
+                Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(data(r, ColZeitpunkt).toInt());
+                if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Kochen)
+                {
+                    int min = -idx.data().toInt();
+                    QModelIndex idx2 = index(r, ColZugabedauer);
+                    if (idx2.data().toInt() < min)
+                        QSqlTableModel::setData(idx2, min);
+                }
+            }
+        }
+        mSignalModifiedBlocked = false;
+    }
 }
 
 void ModelWeitereZutatenGaben::update(const QVariant &name, int col, const QVariant &value)

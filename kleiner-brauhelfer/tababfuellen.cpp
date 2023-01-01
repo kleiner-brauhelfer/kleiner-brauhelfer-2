@@ -28,7 +28,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->tbEVGRezept->setColumn(ModelSud::ColVergaerungsgrad);
     ui->tbGruenschlauchzeitpunkt->setColumn(ModelSud::ColGruenschlauchzeitpunkt);
     ui->tbAlkohol->setColumn(ModelSud::Colerg_Alkohol);
-    ui->tbAlkoholRezept->setColumn(ModelSud::ColAlkohol);
+    ui->tbAlkoholRezept->setColumn(ModelSud::ColAlkoholSoll);
     ui->tbSpundungsdruck->setColumn(ModelSud::ColSpundungsdruck);
     ui->tbTemperaturKarbonisierung->setColumn(ModelSud::ColTemperaturKarbonisierung);
     ui->tbWassserZuckerloesung->setColumn(ModelSud::ColVerschneidungAbfuellen);

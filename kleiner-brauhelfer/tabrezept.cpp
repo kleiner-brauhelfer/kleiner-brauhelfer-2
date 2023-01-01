@@ -46,6 +46,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbSWWZMaischen->setColumn(ModelSud::ColSWAnteilZusatzMaischen);
     ui->tbSWWZKochen->setColumn(ModelSud::ColSWAnteilZusatzKochen);
     ui->tbSWWZGaerung->setColumn(ModelSud::ColSWAnteilZusatzGaerung);
+    ui->tbSWAnteilHefestarter->setColumn(ModelSud::ColSWAnteilHefestarter);
     ui->tbSudnummer->setColumn(ModelSud::ColSudnummer);
     ui->tbBittere->setColumn(ModelSud::ColIBU);
     ui->tbFarbe->setColumn(ModelSud::Colerg_Farbe);
@@ -57,14 +58,13 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbKochzeit->setColumn(ModelSud::ColKochdauer);
     ui->tbNachisomerisierungszeit->setColumn(ModelSud::ColNachisomerisierungszeit);
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
-    ui->tbFaktorHauptgussEmpfehlung->setColumn(ModelSud::ColFaktorHauptgussEmpfehlung);
     ui->tbWasserGesamt->setColumn(ModelSud::Colerg_W_Gesamt);
     ui->tbHauptguss->setColumn(ModelSud::Colerg_WHauptguss);
     ui->tbHauptgussEmpfohlen->setColumn(ModelSud::ColWHauptgussEmpfehlung);
     ui->tbNachguss->setColumn(ModelSud::Colerg_WNachguss);
     ui->tbWasserHGF->setColumn(ModelSud::ColMengeSollHgf);
-    ui->tbRestextrakt->setColumn(ModelSud::ColSRE);
-    ui->tbAlkohol->setColumn(ModelSud::ColAlkohol);
+    ui->tbRestextrakt->setColumn(ModelSud::ColSRESoll);
+    ui->tbAlkohol->setColumn(ModelSud::ColAlkoholSoll);
     ui->tbRestalkalitaetSoll->setColumn(ModelSud::ColRestalkalitaetSoll);
     ui->tbRestalkalitaetWasser->setColumn(ModelSud::ColRestalkalitaetWasser);
     ui->tbRestalkalitaetIst->setColumn(ModelSud::ColRestalkalitaetIst);
@@ -72,7 +72,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbPhMaische->setColumn(ModelSud::ColPhMaische);
     ui->tbPhMaischeSoll->setColumn(ModelSud::ColPhMaischeSoll);
     ui->tbMengeHefestarter->setColumn(ModelSud::ColMengeHefestarter);
-    ui->tbSwHefestarter->setColumn(ModelSud::ColSWHefestarter);
+    ui->tbSWHefestarter->setColumn(ModelSud::ColSWHefestarter);
 
     ui->lblWarnungMalz->setPalette(gSettings->paletteErrorLabel);
     ui->btnMalzAusgleichen->setError(true);
@@ -664,6 +664,7 @@ void TabRezept::updateValues()
     ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
     ui->wdgSWWZKochen->setVisible(ui->tbSWWZKochen->value() > 0.0);
     ui->wdgSWWZGaerung->setVisible(ui->tbSWWZGaerung->value() > 0.0);
+    ui->wdgSWAnteilHefestarter->setVisible(ui->tbSWAnteilHefestarter->value() > 0.0);
     fVal = bh->sud()->getIBU() / bh->sud()->getSW();
     if (fVal <= 1)
         ui->lblBittere->setText(tr("sehr mild"));
@@ -677,6 +678,7 @@ void TabRezept::updateValues()
         ui->lblBittere->setText(tr("sehr herb"));
 
     Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(bh->sud()->getAnlageData(ModelAusruestung::ColTyp).toInt());
+    ui->tbFaktorHauptgussEmpfehlung->setValue(BierCalc::hauptgussFaktor(bh->sud()->geterg_Farbe()));
     ui->wdgFaktorHauptguss->setVisible(anlageTyp != Brauhelfer::AnlageTyp::GrainfatherG30 && anlageTyp != Brauhelfer::AnlageTyp::BrauheldPro30);
     diff = bh->sud()->geterg_WHauptguss() - bh->sud()->getWHauptgussEmpfehlung();
     ui->wdgHauptgussEmpfohlen->setVisible(qAbs(diff) > 0.005);

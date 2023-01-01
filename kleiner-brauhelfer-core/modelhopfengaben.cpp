@@ -126,6 +126,10 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                     double menge = (anteil * mengeSoll * 10) / (alpha * ausbeute);
                     QSqlTableModel::setData(index(idx.row(), Colerg_Menge), menge);
                 }
+                else
+                {
+                    QSqlTableModel::setData(idx, 0.0);
+                }
                 break;
             }
             }
@@ -265,28 +269,22 @@ void ModelHopfengaben::onSudDataChanged(const QModelIndex &idx)
                     QModelIndex idx2 = index(r, ColZeit);
                     switch (static_cast<Brauhelfer::HopfenZeitpunkt>(data(r, ColZeitpunkt).toInt()))
                     {
-                    case Brauhelfer::HopfenZeitpunkt::Kochen:
-                    case Brauhelfer::HopfenZeitpunkt::KochenAlt:
-                        if (idx2.data().toInt() > max)
-                            QSqlTableModel::setData(idx2, max);
-                        break;
                     case Brauhelfer::HopfenZeitpunkt::Vorderwuerze:
                     case Brauhelfer::HopfenZeitpunkt::Kochbeginn:
                         QSqlTableModel::setData(index(r, ColZeit), max);
                         break;
                     default:
+                        if (idx2.data().toInt() > max)
+                            QSqlTableModel::setData(idx2, max);
                         break;
                     }
                 }
                 else if (idx.column() == ModelSud::ColNachisomerisierungszeit)
                 {
-                    int min = -1 * idx.data().toInt();
-                    if (data(r, ColSudID) == sudId)
-                    {
-                        QModelIndex idx2 = index(r, ColZeit);
-                        if (idx2.data().toInt() < min)
-                            QSqlTableModel::setData(idx2, min);
-                    }
+                    int min = -idx.data().toInt();
+                    QModelIndex idx2 = index(r, ColZeit);
+                    if (idx2.data().toInt() < min)
+                        QSqlTableModel::setData(idx2, min);
                 }
                 QModelIndex idx2 = index(r, colUpdate);
                 setData(idx2, data(idx2));

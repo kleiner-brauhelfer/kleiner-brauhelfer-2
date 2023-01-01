@@ -396,6 +396,13 @@ public:
     Q_INVOKABLE static double phMalzRoest(double farbe);
 
     /**
+     * @brief hauptfussFaktor
+     * @param ebc
+     * @return
+     */
+    Q_INVOKABLE static double hauptgussFaktor(double ebc);
+
+    /**
      * @brief Farbe im RGB Raum
      * @param ebc EBC Farbwert [EBC]
      * @return Farbwert im RGB Raum

@@ -34,9 +34,9 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("SWAnteilZusatzGaerung");
     mVirtualField.append("SWAnteilHefestarter");
     mVirtualField.append("SWAnteilZutaten");
-
+    mVirtualField.append("SRESoll");
+    mVirtualField.append("AlkoholSoll");
     mVirtualField.append("SWIst");
-    mVirtualField.append("SRE");
     mVirtualField.append("SREErwartet");
     mVirtualField.append("SREIst");
     mVirtualField.append("MengeIst");
@@ -55,13 +55,11 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("VerdampfungsrateIst");
     mVirtualField.append("sEVG");
     mVirtualField.append("tEVG");
-    mVirtualField.append("Alkohol");
     mVirtualField.append("RestalkalitaetWasser");
     mVirtualField.append("RestalkalitaetIst");
     mVirtualField.append("PhMalz");
     mVirtualField.append("PhMaische");
     mVirtualField.append("PhMaischeSoll");
-    mVirtualField.append("FaktorHauptgussEmpfehlung");
     mVirtualField.append("WHauptgussEmpfehlung");
     mVirtualField.append("BewertungMittel");
 }
@@ -253,15 +251,21 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double swAnteilHefestarter = data(idx.row(), ColSWAnteilHefestarter).toDouble();
         return sw - swAnteilHefestarter;
     }
-    case ColSWIst:
-    {
-        return data(idx.row(), ColSWAnstellen).toDouble() + swWzGaerungCurrent[idx.row()];
-    }
-    case ColSRE:
+    case ColSRESoll:
     {
         double sw = data(idx.row(), ColSW).toDouble() - swWzUnvergaerbarRecipe[idx.row()];
         double vg = data(idx.row(), ColVergaerungsgrad).toDouble();
         return BierCalc::sreAusVergaerungsgrad(sw, vg) + swWzUnvergaerbarRecipe[idx.row()];
+    }
+    case ColAlkoholSoll:
+    {
+        double sw = data(idx.row(), ColSW).toDouble();
+        double sre = data(idx.row(), ColSRESoll).toDouble();
+        return BierCalc::alkohol(sw, sre);
+    }
+    case ColSWIst:
+    {
+        return data(idx.row(), ColSWAnstellen).toDouble() + swWzGaerungCurrent[idx.row()];
     }
     case ColSREErwartet:
     {
@@ -446,12 +450,6 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         double tre = BierCalc::toTRE(sw, sre);
         return BierCalc::vergaerungsgrad(sw, tre);
     }
-    case ColAlkohol:
-    {
-        double sw = data(idx.row(), ColSW).toDouble();
-        double sre = data(idx.row(), ColSRE).toDouble();
-        return BierCalc::alkohol(sw, sre);
-    }
     case ColRestalkalitaetWasser:
     {
         return dataWasser(idx.row(), ModelWasser::ColRestalkalitaet).toDouble();
@@ -505,14 +503,6 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
             return phMalz + phRa;
         }
         return 0;
-    }
-    case ColFaktorHauptgussEmpfehlung:
-    {
-        double ebc = data(idx.row(), Colerg_Farbe).toDouble();
-        if (ebc < 50)
-            return 4.0 - ebc * 0.02;
-        else
-            return 3.0;
     }
     case ColWHauptgussEmpfehlung:
     {

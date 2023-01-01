@@ -392,6 +392,14 @@ double BierCalc::phMalzRoest(double farbe)
     return 4.65;
 }
 
+double BierCalc::hauptgussFaktor(double ebc)
+{
+    if (ebc < 50)
+        return 4.0 - ebc * 0.02;
+    else
+        return 3.0;
+}
+
 static unsigned int toRgb(unsigned char r, unsigned char g, unsigned char b)
 {
     return (0xffu << 24) | ((r & 0xffu) << 16) | ((g & 0xffu) << 8) | (b & 0xffu);

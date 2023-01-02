@@ -45,8 +45,16 @@ h2 {
   margin-bottom: 5px;
 }
 
+h3 {
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0px;
+  margin: 0px;
+}
+
 .underline {
-  border-bottom: 0.5pt solid #dddddd;
+  border-top: 0.5pt solid #dddddd;
 }
 
 .value {
@@ -94,7 +102,6 @@ img.star_grey {
 }
 
 .kommentar {
-  color: #555555;
   word-wrap: break-word;
 }
 

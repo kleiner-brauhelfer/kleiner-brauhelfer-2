@@ -4516,24 +4516,24 @@ Versie geïnstalleerd: %2</translation>
         <translation>Onbekende Fout.</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="394"/>
-        <location filename="../templatetags.cpp" line="464"/>
+        <location filename="../templatetags.cpp" line="377"/>
+        <location filename="../templatetags.cpp" line="452"/>
         <source>zugegeben</source>
         <translation>toegelaten</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="396"/>
-        <location filename="../templatetags.cpp" line="458"/>
+        <location filename="../templatetags.cpp" line="379"/>
+        <location filename="../templatetags.cpp" line="446"/>
         <source>nicht zugegeben</source>
         <translation>niet toegelaten</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="462"/>
+        <location filename="../templatetags.cpp" line="450"/>
         <source>nicht entnommen</source>
         <translation>niet verwijderd</translation>
     </message>
     <message>
-        <location filename="../templatetags.cpp" line="467"/>
+        <location filename="../templatetags.cpp" line="455"/>
         <source>entnommen</source>
         <translation>verwijderd</translation>
     </message>
@@ -4782,9 +4782,8 @@ Versie geïnstalleerd: %2</translation>
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berekent de Kleine Brauhelfer het bierverlies door het vullen of overhevelen in het rijpings- of gistvat, de fles, enz. De waarde wordt beïnvloed door gist of hop of andere ingrediënten in het hergistingsproces, die de vloeistof binden, maar ook door de hoeveelheid verwijderd voedsel.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1235"/>
         <source>Temperatur</source>
-        <translation>Temperatuur</translation>
+        <translation type="vanished">Temperatuur</translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;zusätzlich benötigte Zucker &lt;/span&gt;unter Berücksichtigung der vorhandenen Speisemenge angegeben.&lt;/p&gt;&lt;p&gt;Die Zuckergabe wird zusätzlich zur Speisegabe dazugegeben. Die Zuckergabe berechnet sich aus den gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -5008,6 +5007,11 @@ Versie geïnstalleerd: %2</translation>
         <location filename="../tababfuellen.ui" line="1183"/>
         <location filename="../tababfuellen.ui" line="1256"/>
         <source>pro Flasche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="1235"/>
+        <source>Temperatur für Karbonisierung</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5858,13 +5862,14 @@ Afvuldatum: %1</translation>
         <location filename="../tabbraudaten.ui" line="1402"/>
         <location filename="../tabbraudaten.ui" line="1609"/>
         <location filename="../tabbraudaten.ui" line="1655"/>
-        <location filename="../tabbraudaten.ui" line="1808"/>
+        <location filename="../tabbraudaten.ui" line="1884"/>
         <location filename="../tabbraudaten.ui" line="2024"/>
         <location filename="../tabbraudaten.ui" line="2186"/>
         <location filename="../tabbraudaten.ui" line="2193"/>
         <location filename="../tabbraudaten.ui" line="2207"/>
         <location filename="../tabbraudaten.ui" line="2376"/>
-        <location filename="../tabbraudaten.cpp" line="43"/>
+        <location filename="../tabbraudaten.ui" line="2560"/>
+        <location filename="../tabbraudaten.cpp" line="45"/>
         <source>l</source>
         <translation>l</translation>
     </message>
@@ -5937,7 +5942,7 @@ Afvuldatum: %1</translation>
     <message>
         <location filename="../tabbraudaten.ui" line="541"/>
         <location filename="../tabbraudaten.ui" line="1150"/>
-        <location filename="../tabbraudaten.ui" line="1922"/>
+        <location filename="../tabbraudaten.ui" line="1871"/>
         <source>°C</source>
         <translation>°C</translation>
     </message>
@@ -5948,8 +5953,9 @@ Afvuldatum: %1</translation>
         <location filename="../tabbraudaten.ui" line="1179"/>
         <location filename="../tabbraudaten.ui" line="1395"/>
         <location filename="../tabbraudaten.ui" line="1648"/>
-        <location filename="../tabbraudaten.ui" line="1877"/>
+        <location filename="../tabbraudaten.ui" line="1864"/>
         <location filename="../tabbraudaten.ui" line="2439"/>
+        <location filename="../tabbraudaten.ui" line="2567"/>
         <source>°P</source>
         <translation>°P</translation>
     </message>
@@ -6011,7 +6017,7 @@ Afvuldatum: %1</translation>
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt de hoeveelheid wort ingevoerd, gemeten bij 20°C voor de hopstammen. Als de temperatuur afwijkt, moet het volume worden gecorrigeerd. Een klik op de knop rechts helpt bij de berekening en opent hiervoor een zwevend venster. Deze waarde is nodig voor de berekening van de verdampingssnelheid en het brouwrendement.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2701"/>
+        <location filename="../tabbraudaten.ui" line="2828"/>
         <source>Dieser Sud enthält Zusätze, welche die Stammwürze verändern. Dies kann die Durchschnittsberechnung verfälschen.</source>
         <translation>Dit brouwsel bevat toevoegingen die het stamwort kunnen veranderen. Dit kan de berekening vertekenen.</translation>
     </message>
@@ -6231,7 +6237,7 @@ Afvuldatum: %1</translation>
         <translation>Stamwort tijdens Enten (Pitching)</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1788"/>
+        <location filename="../tabbraudaten.ui" line="1775"/>
         <source>Benötigte Speisemenge</source>
         <translation>Benodigde Onvergist Wort</translation>
     </message>
@@ -6328,12 +6334,13 @@ Afvuldatum: %1</translation>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt het Stamwort in &lt;span style=&quot; font-weight:600;&quot;&gt;°plato tijdens het Enten (Pitching)&lt;/span&gt; ingevoerd.&lt;/p&gt;&lt;p&gt;De Stamwort bij het Enten (Pitching) is de basis voor de gistingsberekening in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Gistingsproces &lt;/span&gt; Als u op de widget rechts klikt, wordt een zwevend venster geopend en wordt u geholpen bij de berekening.&lt;/p&gt;&lt;p&gt;Het Stamwort bij het Enten (Pitching) kan verschillen van het Stamwort aan het Kookeind, afhankelijk van de &lt;span style=&quot; font-weight:600;&quot;&gt;Brouwmethode&lt;/span&gt;. Voorbeelden hiervan zijn een Giststarter of Toevoegingen zoals Honing, Suiker of Stroop, die het Stamwort beïnvloeden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1795"/>
+        <location filename="../tabbraudaten.ui" line="1782"/>
         <source>SRE</source>
         <translation>SRE</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1852"/>
+        <location filename="../tabbraudaten.ui" line="1808"/>
+        <location filename="../tabbraudaten.ui" line="2580"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer den erwarteten &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Restextrakt&lt;/span&gt; des Jungbiers beim Abfüllen für die Schätzung der benötigten &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge&lt;/span&gt; aus.&lt;/p&gt;&lt;p&gt;Der vorgeschlagene Wert ergibt sich aus den Angaben zur Karbonisierung im Tab Rezept. Über den Regler rechts kann er verändert werden. Die Funktion Sud gebraut sperrt diese Möglichkeit. &lt;/p&gt;&lt;p&gt;Im SRE fixiert sich der &lt;span style=&quot; font-weight:600;&quot;&gt;Vergärungsgrad&lt;/span&gt; der Hefe. Ein zu niedriger Wert ist Indiz für Störungen im Gärprozess. Biere mit zu wenig Hefe, von &lt;span style=&quot; font-weight:600;&quot;&gt;underpitched &lt;/span&gt;genannt, sind oft unausgewogen süß und mastig. Eine übermäßige Hefegabe, die Fachwelt spricht von &lt;span style=&quot; font-weight:600;&quot;&gt;overpitched&lt;/span&gt;, ist weniger problematisch. Sie wird auch bewusst eingesetzt. Overpitching kann auch Geschmacksabweichungen zur Folge haben, etwa weil mehr Alkohol produziert, das Bier trockener wird. Biere, die overpitched wurden, schmecken oft dünner und &amp;quot;flacher&amp;quot; als solche mit der richtigen Hefemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier geeft de Kleiner Brauhelfer de verwachte &lt;span style=&quot; font-weight:600;&quot;&gt;Schijnbaare Restextract&lt;/span&gt; van het Jongbier bij het Afvullen.voor het schatten van de benodigde hoeveelheid&lt;span style=&quot; font-weight:600;&quot;&gt; Onvergist Wort&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;De voorgestelde waarde volgt uit de informatie over Carbonatatie in het Tabblad Recept. Het kan worden veranderd via de schuifbalk aan de rechterkant. De functie gebrouwen blokkeert deze optie. &lt;/p&gt;&lt;p&gt;In het Stamwort, wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;Gistingsgraad&lt;/span&gt; van de Gist vastgesteld. Een te lage waarde wijst op storingen in het gistingsproces. Bieren met te weinig gist, &lt;span style=&quot; font-weight:600;&quot;&gt;underpitched &lt;/span&gt;genaamt,zijn vaak onevenwichtig zoet en dikker. Overmatige toediening van Gist, de experts spreken van &lt;span style=&quot; font-weight:600;&quot;&gt;overpitched&lt;/span&gt; is minder problematisch. Het wordt ook opzettelijk gebruikt. Overpitchen kan ook leiden tot smaakafwijkingen, bijvoorbeeld doordat meer Alcohol wordt geproduceerd, wordt het bier droger. Bieren die overgegist zijn smaken vaak dunner en &amp;quot;Vlakker&amp;quot;dan die met de juiste hoeveelheid gist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6342,7 +6349,7 @@ Afvuldatum: %1</translation>
         <translation type="vanished">T</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1890"/>
+        <location filename="../tabbraudaten.ui" line="1839"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die erwartete &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; des Jungbiers beim Abfüllen für die Schätzung der benötigten Speisemenge aus.&lt;/p&gt;&lt;p&gt;Den Wert schlägt der Kleine Brauhelfer vor. Über den Regler rechts kann er verändert werden. Die Funktion Sud gebraut sperrt diese Möglichkeit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier geeft de Kleiner Brauhelfer de verwachte &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatuur&lt;/span&gt; van het jongbier bij het Afvullen voor de schatting van de vereiste hoeveelheid Onvergist Wort.&lt;/p&gt;&lt;p&gt;De Kleiner Brauhelfer stelt de waarde voor. Het kan worden veranderd via de schuifbalk aan de rechterkant. De functie Gebrouwen blokkeert deze optie&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6357,7 +6364,8 @@ Afvuldatum: %1</translation>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Met deze functie kan het &lt;span style=&quot; font-weight:600;&quot;&gt;Stamwort bij het Enten (Pitching)&lt;/span&gt; worden berekend in een zwevend venster, gecorrigeerd met behulp van de gegevens van de Hydrometer of Refractometer.&lt;/p&gt;&lt;p&gt;De vastgestelde waarde wordt in het veld links weergegeven als &lt;span style=&quot; font-weight:600;&quot;&gt;gecorrigeerd resultaat&lt;/span&gt;.Deze kan afwijken van de eerder berekende waarde zoals vermeld in de &lt;span style=&quot; font-weight:600;&quot;&gt;Spieklijst&lt;/span&gt; of in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Recept &lt;/span&gt;Het Stamwort bij het Enten (Pitching) staan aan het eind van het Brouwproces.&lt;/p&gt;&lt;/body&gt;&lt;/html</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1821"/>
+        <location filename="../tabbraudaten.ui" line="1897"/>
+        <location filename="../tabbraudaten.ui" line="2611"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die geschätzte &lt;span style=&quot; font-weight:600;&quot;&gt;notwendige Speisemenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert beruht auf der gewählten Karbonisierung im Rezept sowie auf anderen Faktoren. Zu diesem Zeitpunkt ist er jedoch nur ein Näherungswert, da unter anderem die Hefearbeit und damit der Endvergärungsgrad unberücksichtigt sind.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Speise neigt zur Infektion bei der Lagerung. Es besteht erhöhte Gefahr unerwünschter Keime oder Fehlgeschmäcker bei der späteren Gabe ins Jungbier einzutragen. Eine hygienische Aufbewahrung und eine baldige Kühlung schützt vor Enttäuschungen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier geeft de Little Brewer&apos;s Helper de geschatte &lt;span style=&quot; font-weight:600;&quot;&gt;noodzakelijke hoeveelheid Onvergist Wort&lt;/span&gt;&lt;/p&gt;&lt;p&gt;De waarde is gebaseerd op de gekozen Carbonatie in het recept en op andere factoren. Op dit punt gaat het echter slechts om een benaderende waarde, omdat ondermeer geen rekening wordt gehouden met de gistarbeid en dus ook niet met de uiteindelijke Vergistingsgraad./p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Let op:&lt;/span&gt;Onvergist Wort heeft de neiging besmet te raken tijdens opslag. Er bestaat een verhoogd risico dat ongewenste kiemen of smaken in het jongbier terechtkomen wanneer het later wordt geserveerd. Hygiënische opslag en vroegtijdige koeling beschermt tegen teleurstelling.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6381,7 +6389,7 @@ Afvuldatum: %1</translation>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hierbij wordt de voorgestelde &lt;span style=&quot; font-weight:700;&quot;&gt;Hoeveelheid Water&lt;/span&gt; voor de verdunning om het streef Stamwort te bereiken.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Let op:&lt;/span&gt; Nadien moet het Stamwortt opnieuw worden gemeten en ingevoerd.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="1915"/>
+        <location filename="../tabbraudaten.ui" line="1922"/>
         <source>Temp</source>
         <translation>Temp</translation>
     </message>
@@ -6421,27 +6429,32 @@ Afvuldatum: %1</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2577"/>
+        <location filename="../tabbraudaten.ui" line="2527"/>
+        <source>Hefestarter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabbraudaten.ui" line="2704"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der einzelne &lt;span style=&quot; font-weight:600;&quot;&gt;Sud für Durschnittsberechnungen&lt;/span&gt; ignoriert werden.&lt;/p&gt;&lt;p&gt;Diese Funktion wird genutzt, wenn der Sud stark von den bisherigen Suden abweicht und die Durchschnittsberechnung negativ beeinflussen würde. Ist dem nicht der Fall, sollte diese Funktion ignoriert werden.&lt;/p&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; ist die Durchschnittsberechung möglich sowie Filtermöglichkeiten für die Sude vorhanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kan de individuele &lt;span style=&quot; font-weight:600;&quot;&gt;Brouwsel worden genegeerd voor de berekening van het gemiddelde.&lt;/p&gt;&lt;p&gt;Deze functie wordt gebruikt als het brouwsel sterk afwijkt van de vorige brouwsels en de berekening van het gemiddelde negatief zou beïnvloeden. Als dit niet het geval is, moet deze functie worden genegeerd.&lt;/p&gt;&lt;p&gt;In het Tabblad &lt;span style=&quot; font-weight:600;&quot;&gt;Installatie&lt;/span&gt; is de berekening van het gemiddelde mogelijk en zijn filteropties voor de brouwsels beschikbaar.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2624"/>
+        <location filename="../tabbraudaten.ui" line="2751"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten pro Liter&lt;/span&gt; ergibt sich aus den Kosten für Malz, Hopfen, Hefe und Zusätze, den sudspezifischen zusätzlichen Kosten und dem im Tab Ausrüstung definierten Betriebskosten.&lt;/p&gt;&lt;p&gt;Basale betriebswirtschaftliche Grundsätze schaden indes nicht, wenn es darum geht einen Überblick über die Kosten seines Hobbys zu erhalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;De &lt;span style=&quot; font-weight:600;&quot;&gt;Totale kosten per liter&lt;/span&gt; zijn het resultaat van de kosten voor Mout, Hop, Gist en Additieven, de brouwselspecifieke extra kosten en de bedrijfskosten die zijn gedefinieerd in het Tabblad Installaties.&lt;/p&gt;&lt;p&gt;Basisbedrijfsbeginselen kunnen echter geen kwaad als het erom gaat een overzicht te krijgen van de kosten van iemands hobby.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2646"/>
+        <location filename="../tabbraudaten.ui" line="2773"/>
         <source>Bemerkung</source>
         <translation>Opmerking</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2659"/>
+        <location filename="../tabbraudaten.ui" line="2786"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische zusätzliche Kosten&lt;/span&gt; angegeben werden.&lt;/p&gt;&lt;p&gt;Beispielsweise können hier die Kosten für Malz, Hopfen und Zusätze zusammengefasst werden. Was der Brauer hier einrechnet, ist ihm überlassen. Betriebswirtschaftliche Grundsätze schaden aber nicht, wenn es darum geht einen Überblick über die Kosten seines Hobbys zu erhalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kunnen &lt;span style=&quot; font-weight:600;&quot;&gt;Brouwspecifieke extra kosten&lt;/span&gt; worden ingevoerd.&lt;/p&gt;&lt;p&gt;Zo kunnen bijvoorbeeld de kosten voor Mout, Hop en Additieven hier worden samengevat. Wat de brouwer hier inbrengt is aan hem. De beginselen van bedrijfsbeheer kunnen echter geen kwaad wanneer het erom gaat een overzicht te krijgen van de kosten van iemands hobby.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2736"/>
+        <location filename="../tabbraudaten.ui" line="2863"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; als &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Nach Klick wird der Button Sud gebraut ausgegraut und inaktiv. Der Kleine Brauhelfer fragt, ob die verwendeten Zutaten von den Rohstoffvorräten abgezogen werden sollen. Bei Korrekturen ist diese Frage zu verneinen und die Rohstoffvorräte bleiben unverändert. Popups fragen zur Sicherheit nach, ob beim Zrücksetzen Zutaten zurückgebucht werden sollen oder nicht.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Unaufmerksamkeit kann eine Inkonsistenz im Rohstofflager nach sich ziehen.Im schlimmsten Fall stellt sich dann am Brautag ein Rohstoff als nicht in ausreichender Menge oder gar nicht vorhanden heraus!&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud gebraut &lt;/span&gt;schaltet weitere Aktionen im Kleinen Brauhelfer frei. So legt diese Aktion den ersten Eintrag im Tab Gärdaten an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Als u op de knop klikt, wordt het &lt;span style=&quot; font-weight:600;&quot;&gt;Brouwsel&lt;/span&gt; gemarkeerd als &lt;span style=&quot; font-weight:600;&quot;&gt;gebrouwen&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Na het klikken is de knop Gebrouwen grijs en inactief. De Kleiner Brauhelfer vraagt of de gebruikte ingrediënten in mindering moeten worden gebracht op de grondstofvoorraad. Indien correcties worden aangebracht, moet deze vraag ontkennend worden beantwoord en blijven de grondstofvoorraden ongewijzigd. Pop-ups vragen of u zeker bent of ingrediënten al dan niet moeten worden teruggeboekt bij het resetten.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Gebrouwd &lt;/span&gt; ontgrendelt verdere acties in de Kleiner Brauhelfer. Zo creëert deze actie het eerste item op het Tabblad Gistingsproces.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -6480,12 +6493,12 @@ Afvuldatum: %1</translation>
         <translation>Effectieve Brouwzaalrendement</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2515"/>
+        <location filename="../tabbraudaten.ui" line="2642"/>
         <source>Sonstiges</source>
         <translation>Diversen</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2524"/>
+        <location filename="../tabbraudaten.ui" line="2651"/>
         <source>Sud für Durchschnittsberechnung ignorieren</source>
         <translation>Negeer dit brouwsel voor de berekening van het gemiddelde</translation>
     </message>
@@ -6494,12 +6507,12 @@ Afvuldatum: %1</translation>
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kunt u het enkelvoudig brouwsel negeren voor de middeling en in het tabblad Apparatuur kunt u het gemiddelde berekenen en het brouwsel filteren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2597"/>
+        <location filename="../tabbraudaten.ui" line="2724"/>
         <source>Zusätzliche Kosten</source>
         <translation>Extra kosten</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2611"/>
+        <location filename="../tabbraudaten.ui" line="2738"/>
         <source>Gesamtkosten</source>
         <translation>Totale kosten</translation>
     </message>
@@ -6516,7 +6529,7 @@ Afvuldatum: %1</translation>
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Door op de knop te klikken wordt het brouwsel als gebrouwen aangeduid, na het klikken wordt de knop grijs en inactief. De Kleine Brauhelfer vraagt of de gebruikte ingrediënten moeten worden afgetrokken van de grondstofvoorraden. In geval van correcties moet deze vraag ontkennend worden beantwoord en blijven de grondstofvoorraden ongewijzigd...De actie kan ongedaan worden gemaakt met het menu Brouwen. In dit geval moeten de  grondstof aanpassingen worden bevestigd of opnieuw worden ontkend.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2742"/>
+        <location filename="../tabbraudaten.ui" line="2869"/>
         <source>Sud gebraut</source>
         <translation>Gebrouwen</translation>
     </message>
@@ -6529,12 +6542,12 @@ Afvuldatum: %1</translation>
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In dit veld worden alle brouwerijgegevens, setpoints en werkelijke waarden duidelijk opgesomd volgens de processtap in het brouwproces, op dezelfde manier, maar meer in detail worden deze stappen voorbereid op de spiekbrief.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.cpp" line="444"/>
+        <location filename="../tabbraudaten.cpp" line="448"/>
         <source>Sud als gebraut markieren?</source>
         <translation>Brouwsel markeren als gebrouwen?</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.cpp" line="445"/>
+        <location filename="../tabbraudaten.cpp" line="449"/>
         <source>Soll der Sud als gebraut markiert werden?
 
 Braudatum: %1</source>
@@ -7134,7 +7147,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="140"/>
-        <location filename="../tabrezept.ui" line="3443"/>
+        <location filename="../tabrezept.ui" line="3519"/>
         <source>Sudhausausbeute</source>
         <translation>Brouwzaalrendement</translation>
     </message>
@@ -7163,13 +7176,13 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
         <location filename="../tabrezept.ui" line="201"/>
         <location filename="../tabrezept.ui" line="489"/>
         <location filename="../tabrezept.ui" line="516"/>
-        <location filename="../tabrezept.ui" line="3456"/>
+        <location filename="../tabrezept.ui" line="3532"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="208"/>
-        <location filename="../tabrezept.ui" line="3463"/>
+        <location filename="../tabrezept.ui" line="3539"/>
         <source>Verdampfungsrate</source>
         <translation>Verdampingsgraad</translation>
     </message>
@@ -7215,7 +7228,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="409"/>
-        <location filename="../tabrezept.ui" line="3375"/>
+        <location filename="../tabrezept.ui" line="3451"/>
         <source>Anlage</source>
         <translation>Installatie</translation>
     </message>
@@ -7232,23 +7245,23 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="453"/>
-        <location filename="../tabrezept.ui" line="3401"/>
+        <location filename="../tabrezept.ui" line="3477"/>
         <source>l/h</source>
         <translation>l/u</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="466"/>
         <location filename="../tabrezept.ui" line="1630"/>
-        <location filename="../tabrezept.ui" line="3124"/>
-        <location filename="../tabrezept.ui" line="3131"/>
-        <location filename="../tabrezept.ui" line="3211"/>
-        <location filename="../tabrezept.ui" line="3227"/>
-        <location filename="../tabrezept.ui" line="3356"/>
-        <location filename="../tabrezept.ui" line="3492"/>
-        <location filename="../tabrezept.ui" line="3582"/>
-        <location filename="../tabrezept.ui" line="3612"/>
-        <location filename="../tabrezept.ui" line="3619"/>
-        <location filename="../tabrezept.ui" line="3723"/>
+        <location filename="../tabrezept.ui" line="3200"/>
+        <location filename="../tabrezept.ui" line="3207"/>
+        <location filename="../tabrezept.ui" line="3287"/>
+        <location filename="../tabrezept.ui" line="3303"/>
+        <location filename="../tabrezept.ui" line="3432"/>
+        <location filename="../tabrezept.ui" line="3568"/>
+        <location filename="../tabrezept.ui" line="3658"/>
+        <location filename="../tabrezept.ui" line="3688"/>
+        <location filename="../tabrezept.ui" line="3695"/>
+        <location filename="../tabrezept.ui" line="3799"/>
         <location filename="../tabrezept.cpp" line="124"/>
         <source>l</source>
         <translation>l</translation>
@@ -7271,13 +7284,14 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
         <location filename="../tabrezept.ui" line="2833"/>
         <location filename="../tabrezept.ui" line="2850"/>
         <location filename="../tabrezept.ui" line="2948"/>
-        <location filename="../tabrezept.ui" line="3031"/>
+        <location filename="../tabrezept.ui" line="3024"/>
+        <location filename="../tabrezept.ui" line="3107"/>
         <source>°P</source>
         <translation>°P</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="667"/>
-        <location filename="../tabrezept.cpp" line="1543"/>
+        <location filename="../tabrezept.cpp" line="1545"/>
         <source>Kategorie</source>
         <translation>Categorie</translation>
     </message>
@@ -7326,7 +7340,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
         <location filename="../tabrezept.ui" line="1156"/>
         <location filename="../tabrezept.ui" line="1174"/>
         <location filename="../tabrezept.ui" line="2044"/>
-        <location filename="../tabrezept.ui" line="2980"/>
+        <location filename="../tabrezept.ui" line="3056"/>
         <source>Malz</source>
         <translation>Mouten</translation>
     </message>
@@ -7402,7 +7416,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
         <translation>Percentage komt overeen met</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="692"/>
+        <location filename="../tabrezept.cpp" line="694"/>
         <source>Die Berechnung der Hopfengaben ist deaktiviert.</source>
         <translation>De berekening van de Hopdosering is gedeactiveerd.</translation>
     </message>
@@ -7450,7 +7464,7 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2124"/>
-        <location filename="../tabrezept.ui" line="3063"/>
+        <location filename="../tabrezept.ui" line="3139"/>
         <source>Wasser</source>
         <translation>Water</translation>
     </message>
@@ -7817,6 +7831,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1607"/>
+        <location filename="../tabrezept.ui" line="2973"/>
         <source>Hefestarter</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7861,68 +7876,73 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3006"/>
+        <location filename="../tabrezept.ui" line="2999"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze des &lt;span style=&quot; font-weight:600;&quot;&gt;Hefestarters&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../tabrezept.ui" line="3082"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der berechnete Anteil der &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Malzgaben&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;p&gt;Malzgaben sollten immer der Hauptanteil der Stammwürze sein. In ihr befinden sich gewöhnliche die meisten Enzyme, um verwertbare Einfachzucker für die Hefe bereit zu stellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt het berekende aandeel van de &lt;span style=&quot; font-weight:600;&quot;&gt;Stamwort&lt;/span&gt; in de &lt;span style=&quot; font-weight:600;&quot;&gt;Moutaanbod&lt;/span&gt;weergegeven.&lt;/p&gt;&lt;p&gt;Mout moet altijd het hoofdbestanddeel zijn van het Stamwort. Hier bevinden zich gewoonlijk de meeste Enzymen om de Gist van bruikbare eenvoudige Suikers te voorzien.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3160"/>
+        <location filename="../tabrezept.ui" line="3236"/>
         <source>Empfohlen</source>
         <translation>Aanbevolen</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3186"/>
+        <location filename="../tabrezept.ui" line="3262"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;empfohlene Menge Hauptguss&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier Wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;Aanbevolen hoeveelheid Maischwater&lt;/span&gt; aangegeven.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3234"/>
+        <location filename="../tabrezept.ui" line="3310"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity. Ferner kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; im Tab Ausrüstung &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; werden. Dazu sind gemeinhin einige Sude nötig, um eine Festlegung treffen zu können.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wid der Wert des Nachgusses zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berekent de Kleiner Brauhelfer de &lt;span style=&quot; font-weight:600;&quot;&gt;Spoelwater&lt;/span&gt; op basis van het Moutstort.&lt;/p&gt;&lt;p&gt;De waarde wordt sterk beïnvloed door het Maischwater en in mindere Mate door de High Gravity. Bovendien kan het &lt;span style=&quot; font-weight:600;&quot;&gt;Spoelwater&lt;/span&gt;  worden gecorrigeerd in het Tabblad Installatie. Dit vereist over het algemeen een paar Brouwsels om een beslissing  te kunnen maken.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Let op: &lt;/span&gt;Wanneer recepten worden Overgenomen, verschilt de waarde van het Spoelwater meestal. De reden hiervoor is de aard van de individuele Brouwainstallatie. Dit is &lt;span style=&quot; font-weight:600;&quot;&gt;Geen Fout&lt;/span&gt;, integendeel: de Kleiner Brauhelfer past het Recept aan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3328"/>
+        <location filename="../tabrezept.ui" line="3404"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdünnungsmenge Wasser&lt;/span&gt; für den &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity-Faktor&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wird der Wert für High Gravity zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berekent de Kleiner Brauhelfer de &lt;span style=&quot; font-weight:600;&quot;&gt;Verdunningshoeveelheid Water&lt;/span&gt; voor de &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity Factor&lt;/span&gt; op basis van de Moutstort.&lt;/p&gt;&lt;p&gt;Bij overgenomen recepten kan de waarde sterk afwijken. De reden is de aard van de individuele brouwinstallatie. Dit is geen fout, integendeel: De Kleine Brouwhulp past het recept aan.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Let op: &lt;/span&gt;Bij overgenomen recepten zal de waarde voor High Gravity meestal afwijken. De reden hiervoor is de aard van de individuele brouwinstallatie. Dit is &lt;span style=&quot; font-weight:600;&quot;&gt;geen fout, integendeel: De Kleiner Brauhelfer past het recept aan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3089"/>
+        <location filename="../tabrezept.ui" line="3165"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; anhand der Schüttung beim Maischen.&lt;/p&gt;&lt;p&gt;Die Schüttung beim maischen muss wegen Zusätzen bei folgenden Brauprozessen wie Kochen oder Gärung nicht zwigend mit der Gesamtschüttung übereinstimmen.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wid der Wert des Hauptgusses zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berekent de Kleiner Brauhelfer de &lt;span style=&quot; font-weight:600;&quot;&gt;Maischwater&lt;/span&gt; op basis van de Moutstort. &lt;/p&gt;&lt;p&gt;De Moutstort hoeft niet noodzakelijkerwijs hetzelfde te zijn als het Totale Moutstort vanwege Toevoegingen tijdens latere brouwprocessen zoals Koken of Gisten.&lt;/p&gt;&lt;p&gt;De waarde wordt sterk beïnvloed door de Moutstort en in mindere mate door de High Gravity.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Let op: &lt;/span&gt;Wanneer Recepten worden overgenomen, verschilt de waarde van het Maischwater meestal. De reden hiervoor is de aard van de individuele Brouwinstallatie. Dit is &lt;span style=&quot; font-weight:600;&quot;&gt;geen fout,&lt;/span&gt; integendeel: de Kleiner Brauhelfer past het Recept aan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3262"/>
+        <location filename="../tabrezept.ui" line="3338"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwassermenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert wird nicht allein durch die Schüttung beeinflusst, sondern auch durch technische Eigenheiten der Anlage. Ein Faktor hierbei ist unter anderem die Korrektur der Nachgussmenge im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wird der Wert der Gesamtwassermenge zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier geeft de Keiner Brauhelfer de vereiste &lt;span style=&quot; font-weight:600;&quot;&gt;Totale Waterhoeveelheid&lt;/span&gt; weer.&lt;/p&gt;&lt;p&gt;De waarde wordt niet alleen beïnvloed door de Moutstort, maar ook door technische Bijzonderheden van de Installatie. Een factor hierbij is onder andere de correctie van de Spoelwatervolume in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Installatie.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Let op: &lt;/span&gt;In overgenomen Recepten zal de waarde van de Totale Waterhoeveelheid meestal afwijken. De reden hiervoor is de aard van de individuele Brouwinstallatie. Dit is &lt;span style=&quot; font-weight:600;&quot;&gt;Geen fout,&lt;/span&gt; integendeel: de Kleiner Brauhelfer past het Recept aan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3421"/>
+        <location filename="../tabrezept.ui" line="3497"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; der Anlage ausgegeben. Dieser anlagentypische Wert kann aus dem Durchschnitt der gebrauten Suden im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;progrmmweit berechnet werden.&lt;/p&gt;&lt;p&gt;Sie beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;Brouwzaalrendement&lt;/span&gt; van de Installatie weergegeven. Deze Installatiespecifieke waarde kan worden berekend uit het Gemiddelde van de Brouwsels die in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Installatie&lt;/span&gt; Programmaweid berekend word.&lt;/p&gt;&lt;p&gt;Het beschrijft de Efficiëntie van de Brouwerij. In de Hobbysector wordt naar 70% gestreefd; in feite is de waarde meestal lager. In de Professionele sector is 80% het doel.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3470"/>
-        <location filename="../tabrezept.ui" line="3629"/>
+        <location filename="../tabrezept.ui" line="3546"/>
+        <location filename="../tabrezept.ui" line="3705"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das definierte &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben sind hierfür programmweite Grundlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier specificeert de Kleiner Brauhelfer het gedefinieerde &lt;span style=&quot; font-weight:600;&quot;&gt;bruikbare Volume&lt;/span&gt; in de &lt;span style=&quot; font-weight:600;&quot;&gt;Maischketel&lt;/span&gt; &lt;/p&gt;&lt;p&gt;De in het&lt;span style=&quot; font-weight:600;&quot;&gt; Tabblad Installatie&lt;/span&gt; installatietypische gegevens vormen hiervoor de programmabrede basis.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3506"/>
+        <location filename="../tabrezept.ui" line="3582"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben dienen als Grundlage für die programmweite Berechnung. Das Feld wird rot, wenn der Kessel zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier geeft de Kleiner Brauhelfer het &lt;span style=&quot; font-weight:600;&quot;&gt;benodigde Volume&lt;/span&gt; in de &lt;span style=&quot; font-weight:600;&quot;&gt;Maischketel&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;De in het&lt;span style=&quot; font-weight:600;&quot;&gt; Tabblad Installatie&lt;/span&gt; installatietypische gegevens vormen hiervoor de programmabrede basis.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3528"/>
+        <location filename="../tabrezept.ui" line="3604"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage ausgegeben. Dieser anlagentypische Wert kann aus dem Durchschnitt der gebrauten Suden programmweit im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;festgelegt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampingsgraad&lt;/span&gt; van de Installatie weergegeven. Deze Installatiespecifieke Waarde kan worden bepaald aan de hand van het gemiddelde van de Gebrouwen Brouwsels die in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Installatie&lt;/span&gt; vastgelegd zijn.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3550"/>
+        <location filename="../tabrezept.ui" line="3626"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben dienen als Grundlage für die programmweite Berechnung. Das Feld wird rot, wenn die Sudpfanne zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier geeft de Kleiner Brauhelfer het &lt;span style=&quot; font-weight:600;&quot;&gt;benodigde Volume&lt;/span&gt; van de &lt;span style=&quot; font-weight:600;&quot;&gt;Kookpan&lt;/span&gt; aan. &lt;/p&gt;&lt;p&gt;De in het&lt;span style=&quot; font-weight:600;&quot;&gt; Tabblad Installatie&lt;/span&gt; installatietypische gegevens vormen hiervoor de programmabrede basis.Het veld wordt rood als de brouwpan te klein is.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3695"/>
+        <location filename="../tabrezept.ui" line="3771"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur der Sollmenge&lt;/span&gt; der Anlage angegeben.&lt;/p&gt;&lt;p&gt;Der anlagentypische Korrekturwert für die Sollmenge wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; programmweit festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;Correctie van het Streefvolume&lt;/span&gt; van de Installatie gespecificeerd.&lt;/p&gt;&lt;p&gt;De Installatiespecifieke Correctiewaarde voor de Streefvolume wordt in het&lt;span style=&quot; font-weight:600;&quot;&gt; Tabblad Installatie &lt;/span&gt; Programmabreed vastgelegd&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -8038,43 +8058,43 @@ p, li { white-space: pre-wrap; }
         <translation type="obsolete">Aanvullende ingrediënten &quot;Maischen&quot;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3075"/>
+        <location filename="../tabrezept.ui" line="3151"/>
         <source>Hauptguss</source>
         <translation>Maischwater</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3302"/>
+        <location filename="../tabrezept.ui" line="3378"/>
         <source>High-Gravity Verdünnung</source>
         <translation>High Gravity Verdunning</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3082"/>
+        <location filename="../tabrezept.ui" line="3158"/>
         <source>Nachguss</source>
         <translation>Spoelwater</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3138"/>
+        <location filename="../tabrezept.ui" line="3214"/>
         <source>Gesamt</source>
         <translation>Totaal</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3387"/>
+        <location filename="../tabrezept.ui" line="3463"/>
         <source>Maischekessel nutzbares Volumen</source>
         <translation>Bruikbare volume Maischketel</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3499"/>
+        <location filename="../tabrezept.ui" line="3575"/>
         <source>Sudpfanne nutzbares Volumen</source>
         <translation>Bruikbare volume Kookketel</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3572"/>
-        <location filename="../tabrezept.ui" line="3589"/>
+        <location filename="../tabrezept.ui" line="3648"/>
+        <location filename="../tabrezept.ui" line="3665"/>
         <source>Benötigtes Volumen ca.</source>
         <translation>Vereist volume ca.</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="3669"/>
+        <location filename="../tabrezept.ui" line="3745"/>
         <source>Korrektur der Sollmenge</source>
         <translation>Correctie van de Streefvolume</translation>
     </message>
@@ -8116,57 +8136,57 @@ p, li { white-space: pre-wrap; }
         <translation>Ingrediënt &quot;%1&quot; is niet opgenomen in de grondstoffenlijst. Moet het nu worden toegevoegd?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="669"/>
+        <location filename="../tabrezept.cpp" line="670"/>
         <source>sehr mild</source>
         <translation>Zeer mild</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="671"/>
+        <location filename="../tabrezept.cpp" line="672"/>
         <source>mild</source>
         <translation>Mild</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="673"/>
+        <location filename="../tabrezept.cpp" line="674"/>
         <source>ausgewogen</source>
         <translation>Gebalanceerd</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="675"/>
+        <location filename="../tabrezept.cpp" line="676"/>
         <source>moderat herb</source>
         <translation>Matig bitter</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="677"/>
+        <location filename="../tabrezept.cpp" line="678"/>
         <source>sehr herb</source>
         <translation>Zeer bitter</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="696"/>
+        <location filename="../tabrezept.cpp" line="698"/>
         <source>Die Summe der angegebenen Hopfenmengen entspricht nicht der Gesamtmenge.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="700"/>
+        <location filename="../tabrezept.cpp" line="702"/>
         <source>Die Summe der angegebenen Anteile an Bittere entspricht nicht der Gesamtbittere.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1305"/>
+        <location filename="../tabrezept.cpp" line="1307"/>
         <source>Vergärungsgrad übernehmen?</source>
         <translation>Vergistingsgraad overnemen?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1306"/>
+        <location filename="../tabrezept.cpp" line="1308"/>
         <source>Soll der Vergärungsgrad der Hefe (%1%) übernommen werden?</source>
         <translation>Moet de vergistingsgraad van de gist (%1%) overgenomen worden?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1544"/>
+        <location filename="../tabrezept.cpp" line="1546"/>
         <source>Sudkategorien verwalten</source>
         <translation>Beheer brouwsel categorieën</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1580"/>
+        <location filename="../tabrezept.cpp" line="1582"/>
         <source>Neuer Tag</source>
         <translation>Nieuwe Tag</translation>
     </message>
@@ -9735,13 +9755,13 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="185"/>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="143"/>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="150"/>
+        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="157"/>
         <source>g/l</source>
         <translation>g/l</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="281"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="288"/>
         <source>Vorhanden</source>
         <translation>In voorraad</translation>
     </message>
@@ -9762,27 +9782,27 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Maischen</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="425"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="432"/>
         <source>Kochdauer</source>
         <translation>Kooktijd</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="438"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="445"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; für den Zusatz definiert, so diese beim Hopfenkochen zugegeben wird. Beim Maischen und in der Gärung ist dieser Wert 0.&lt;/p&gt;&lt;p&gt;Die Kochdauer kann entscheidend in der Betonung von &lt;span style=&quot; font-weight:600;&quot;&gt;Geschmacksnoten&lt;/span&gt; sein, da sich Zugaben beim Kochen zeitlich vollkommen unterschiedlich verhalten können oder später das Verhalten anderer Zugaben beeinflussen. Ein Beispiel hierfür ist Hefe. Auch Gewürzeinträge unterscheiden sich maßgebend, je nachdem, ob heiß oder kalt zugegeben.&lt;/p&gt;&lt;p&gt;Dies rührt unter anderem daher, dass Molekülketten bei mit höherer Temperatur und längerer Zeit aufgespalten werden können und sich damit Geschmacks- oder Geruchskomponenten &lt;span style=&quot; font-weight:600;&quot;&gt;unterschiedlich dominant&lt;/span&gt; verhalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit veld definieert de &lt;span style=&quot; font-weight:600;&quot;&gt;Kooktijd&lt;/span&gt; voor de toevoeging, als die tijdens het koken van de hop wordt toegevoegd. Tijdens het maischen en gisten is deze waarde 0.&lt;/p&gt;&lt;p&gt;De kooktijd kan van cruciaal belang zijn voor het benadrukken van &lt;span style=&quot; font-weight:600;&quot;&gt;Smaken&lt;/span&gt;, aangezien toevoegingen zich tijdens het koken totaal anders kunnen gedragen of later het gedrag van andere toevoegingen kunnen beïnvloeden. Een voorbeeld hiervan is Gist. Ook de toevoeging van specerijen verschilt aanzienlijk, afhankelijk van of ze warm of koud worden toegevoegd.&lt;/p&gt;&lt;p&gt;Dit is onder meer te wijten aan het feit dat moleculaire ketens bij hogere temperaturen en gedurende langere tijd kunnen worden afgebroken, waardoor smaak- of geurcomponenten &lt;span style=&quot; font-weight:600;&quot;&gt;verschillend overheersen&lt;/span&gt;.zijn&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="508"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="515"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird dem Kleinen Brauhelfer die Zugabe von einem Zusatz mitgeteilt. An verschiedenen Stellen des Programms wird dies berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Erst mit der Zugabe kann die Menge später aus de Rohstofflager abgezogen werden. Wird der Klick auf &lt;span style=&quot; font-weight:600;&quot;&gt;Zugeben&lt;/span&gt; vergessen, kann später der Sud nicht als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Door op deze knop te klikken, wordt de Kleiner Brauhelfer op de hoogte gebracht van de toevoeging van een Ingredient. Hiermee wordt op verschillende punten in het programma rekening gehouden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Let op: &lt;/span&gt;Alleen met de Toevoeging kan de hoeveelheid later aan de grondstofvoorraad worden onttrokken. Als de klik op &lt;span style=&quot; font-weight:600;&quot;&gt;Toevoegen&lt;/span&gt; wordt vergeten, kan het brouwsel later niet als Afgevuld worden gemarkeerd.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="543"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="550"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Zugabezeitpunkt weiterer Zutaten ab Braudatum angegeben. Das Braudatum ist meist identisch mit dem Anstelldatum der Hefe, kann aber auch vor der Hefegabe liegen, etwa wenn über Nacht gebraut wird. &lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabezeitpunkt&lt;/span&gt; kann entscheidend für den Gärverlauf und den Geschmack sein.&lt;/p&gt;&lt;p&gt;Gewöhnlich erfolgt die Zugabe weiterer Zutaten nach der Hauptgärung. Hefenährstoffe etwa werden oft schon beim Kochen hinzugegeben. Der Zugabezeitpunkt ist eine Stellschraube beim Ausbau der Geschmacksidee. Bei Zweifeln hilft vorab die einschlägige Literatur oder die bekannten Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Het tijdstip van toevoeging van verdere ingrediënten vanaf de brouwdatum wordt hier aangegeven. De brouwdatum is meestal gelijk aan de datum van het toevoegen van de gist, maar kan ook vóór de toevoeging van de gist liggen, bijvoorbeeld wanneer &apos;s nachts wordt gebrouwen. &lt;/p&gt;&lt;p&gt;De &lt;span style=&quot; font-weight:600;&quot;&gt;Toevoegingstijdstip&lt;/span&gt; kan doorslaggevend zijn voor het Gistingsproces en de Smaak.&lt;/p&gt;&lt;p&gt;Gewoonlijk worden pas na de hoofdgisting andere ingrediënten toegevoegd. Voedingsstoffen uit gist, bijvoorbeeld, worden vaak tijdens het koken toegevoegd. Het tijdstip van toevoeging is een stelschroef in de ontwikkeling van het smaakidee. Raadpleeg bij twijfel vooraf de relevante literatuur of de bekende gespecialiseerde forums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="457"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="464"/>
         <source>min</source>
         <translation>min</translation>
     </message>
@@ -9813,17 +9833,17 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In dit veld toont de Kleiner Brauhelfer het &lt;span style=&quot; font-weight:600;&quot;&gt;Totaal&lt;/span&gt; voor de &lt;span style=&quot; font-weight:600;&quot;&gt;Toevoeging&lt;/span&gt; in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Grondstoffen.&lt;/span&gt;an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="621"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="628"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf diesen Button wird dem Kleinen Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; voneinem Zusatz mitgeteilt. An verschiedenen Stellen des Programms wird dies berücksichtigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; color:#fc0107;&quot;/&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Die Entname ist ein Schritt, um die&lt;/span&gt; die Menge später aus de Rohstofflager abzuziehen. Wird der Klick auf &lt;span style=&quot; font-weight:600;&quot;&gt;Entnehmen&lt;/span&gt; vergessen, kann später im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;der Sud nicht als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Door op deze knop te klikken wordt de Kleiner Brauhelfer op de hoogte gebracht van de &lt;span style=&quot; font-weight:600;&quot;&gt;Verwijdering&lt;/span&gt; van een Toevoeging. Hiermee wordt op verschillende plaatsen in het programma rekening gehouden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Let op:&lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;De verwijdering is een stap&lt;/span&gt; om de hoeveelheid later uit de Grondstofopslag te halen. Als de klik op &lt;span style=&quot; font-weight:600;&quot;&gt;Verwijderen&lt;/span&gt; wordt vergeten, kan het brouwsel later niet als Afgevuld worden gemarkeerd in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Afvulinformatie&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="631"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="638"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; der Zugabe festgelegt. Flüssigkeiten oder lösliche Stoffe werden mit keiner Entnahme definiert. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Ist eine &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; vorgesehen, empfiehlt sich ein verschnürbares Baumwollsäckchen, um das Jungbier nicht unnötig zu verunreinigen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;Extraktie&lt;/span&gt; van de toevoeging vastgelegd. Vloeistoffen of oplosbare stoffen worden zonder Extraktie gedefinieerd&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Let op: &lt;/span&gt; Als een &lt;span style=&quot; font-weight:600;&quot;&gt;Extraktie&lt;/span&gt; wordt gepland, wordt een katoenen zak met bindband aanbevolen om het jongbier niet onnodig te verontreinigen.&lt;/p&gt;&lt;/body&gt;&lt;/html</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="350"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="357"/>
         <source>Extrakt</source>
         <translation>Extract</translation>
     </message>
@@ -9838,105 +9858,110 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In dit veld zal het &lt;span style=&quot; font-weight:600;&quot;&gt;Extractaandeel&lt;/span&gt; van de &lt;span style=&quot; font-weight:600;&quot;&gt;Toevoeging&lt;/span&gt; door middel van de vermelding ervan in het veld &lt;span style=&quot; font-weight:600;&quot;&gt;Opbrengst&lt;/span&gt;-in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Grondstoffen&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;De waarde in °Plato kan dan worden aangepast. Het extractgehalte van toevoegingen is doorgaans aanzienlijk lager dan dat van Mout. Dit is enerzijds te danken aan het watergehalte en anderzijds aan het aandeel bruikbare Koolhydraten, met name Polysacchariden&lt;/p&gt;&lt;p&gt;De Kleiner Brauhelfer maakt een uitzondering met de additieven: De &lt;span style=&quot; font-weight:600;&quot;&gt;Waarden&lt;/span&gt; uit de grondstoffenlijst zijn &lt;span style=&quot; font-weight:600;&quot;&gt;Veranderlijk&lt;/span&gt;. Dit is nodig omdat veel additieven, vooral fruit, een sterk schommelend suikergehalte hebben.&lt;/p&gt;&lt;p&gt;Bij pompoen bijvoorbeeld varieert het extractierendement aanzienlijk, zelfs binnen één variëteit.&lt;/p&gt;&lt;p&gt;Het onderwerp van extract in additieven is een uitdagend onderwerp. Als u hierover vragen hebt, raden wij u de gespecialiseerde forums aan, maar nog meer de Sites van de leveranciers en de wetenschappelijke publicaties.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="259"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="253"/>
+        <source>Bezogen auf Anstellmenge</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="266"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;in&lt;span style=&quot; font-weight:600;&quot;&gt; g/l &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;p&gt;Im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Menge &lt;/span&gt;links wird parallel dazu die gesamtes Menge des Zusatzes berechnet. Beide Felder bedingen sich gegenseitig.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Der Kleine Brauhelfer berechnet Zusätze&lt;span style=&quot; font-weight:600;&quot;&gt; ausschließlich&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; des Rezeptes, wie ganz zu Beginn der Rezepterstellung oben links festgelegt wurde. Die Gesamtmenge meint die definierte &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Gesamtmenge darf nicht mit de Gesamtmenge des Brauwassers aus Haupt- und Nachguss verwechselt werden!&lt;/p&gt;&lt;p&gt;Wenn ein Zusatz Anteil an der festgelegten Stammwürze hat, senkt die Mengenfestlegung hier den Malzanteil prozentual ab.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In dit veld wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;Hoeveelheid&lt;/span&gt; van een &lt;span style=&quot; font-weight:600;&quot;&gt;Toevoeging&lt;/span&gt; in&lt;span style=&quot; font-weight:600;&quot;&gt; g/l&lt;/span&gt; getoont.&lt;/p&gt;&lt;p&gt;In het veld &lt;span style=&quot; font-weight:600;&quot;&gt;Hoeveelheid &lt;/span&gt;links, wordt parallel de totale hoeveelheid van de toevoeging berekend. Beide velden zijn onderling afhankelijk.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Let op: &lt;/span&gt;De Kleiner Brauhelfer berekent toevoegingen &lt;span style=&quot; font-weight:600;&quot;&gt;Uitsluitend&lt;/span&gt; voor de &lt;span style=&quot; font-weight:600;&quot;&gt;Totale hoeveelheid&lt;/span&gt; van het recept, zoals dat helemaal aan het begin van het maken van het recept linksboven is gedefinieerd. De totale hoeveelheid is de vastgestelde &lt;span style=&quot; font-weight:600;&quot;&gt;Hoeveelheid jongbier&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;De totale hoeveelheid mag niet worden verward met de totale hoeveelheid Brouwwater uit Maisch- en Spoelwater&lt;/p&gt;&lt;p&gt;Als een additief een aandeel heeft in het opgegeven SG, verlaagt de hier opgegeven hoeveelheid het moutgehalte in procenten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="294"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="301"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf den Pfeil trägt die &lt;span style=&quot; font-weight:600;&quot;&gt;gesamte Menge&lt;/span&gt; der Zutat aus der Rohstoffliste ein.&lt;/p&gt;&lt;p&gt;Diese Funktion macht Sinn bei Restbeständen, bei größeren Mengen verständlicherweise nicht.&lt;/p&gt;&lt;p&gt;Zusätze werden im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; verwaltet. Nur wenn dort angelegt tauchen sie hier auf.&lt;/p&gt;&lt;p&gt;Zusätze sind:&lt;/p&gt;&lt;p&gt;• Honig&lt;/p&gt;&lt;p&gt;• Zucker&lt;/p&gt;&lt;p&gt;•Gewürze&lt;/p&gt;&lt;p&gt;• Früchte&lt;/p&gt;&lt;p&gt;• Sonstiges (Alkohol. Spirituosen, Hefenahrung)&lt;/p&gt;&lt;p&gt;• Kräuter&lt;/p&gt;&lt;p&gt;•Wasseraufbereitung Salze und Säuren&lt;/p&gt;&lt;p&gt;• Klärmittel&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Alle Zusätze haben teilweise sehr unterschiedliche Eigenschaften. Hat man keine Kenntnis von der Wirkung eines Zatzes, empfiehlt es sich, sich in Fachbüchern und Fachforen wie der &lt;a href=&quot;https://hobbybrauer.de/forum/viewforum.php?f=17&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Rezepteabteilung&lt;/span&gt;&lt;/a&gt; bei &lt;span style=&quot; font-weight:600;&quot;&gt;Hobbybrauer.de&lt;/span&gt; vorher kundig zu machen. Gerade für Brauanfänger liegt die Gefahr in einer Überdosierung von Zutaten. Bier wird es zwar immer, das sollte aber nicht die Messlatte sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Door op de pijl te klikken wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;Totale Hoeveelheid&lt;/span&gt; van het toevoeging uit de grondstoffenlijst toegevoegd&lt;/p&gt;&lt;p&gt;Deze functie is zinvol voor resterende voorraden, maar begrijpelijkerwijs niet voor grotere hoeveelheden.&lt;/p&gt;&lt;p&gt;Toevoegingen worden beheerd in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tablad Grondstoffen.&lt;/span&gt; Ze verschijnen hier alleen als ze daar zijn aangemaakt&lt;/p&gt;&lt;p&gt;.Toevoegingen zijn:&lt;/p&gt;&lt;p&gt;• Honing&lt;/p&gt;&lt;p&gt;• Suiker&lt;/p&gt;&lt;p&gt;• Specerijen&lt;/p&gt;&lt;p&gt;• Vruchten&lt;/p&gt;&lt;p&gt;• Overige (Alcohol. Spirits, gistvoedsel)&lt;/p&gt;&lt;p&gt;• Kruiden&lt;/p&gt;&lt;p&gt;• Waterbehandeling Zouten en Zuren&lt;/p&gt;&lt;p&gt;• Klaringsmiddel&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Let op: &lt;/span&gt;Alle additieven hebben soms zeer verschillende eigenschappen. Indien u niet op de hoogte bent van het effect van een additief, is het raadzaam om gespecialiseerde boeken en fora te raadplegen, zoals de &lt;a href=&quot;https://hobbybrauer.de/forum/viewforum.php?f=17&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Rezepteabteilung&lt;/span&gt;&lt;/a&gt; bij &lt;span style=&quot; font-weight:600;&quot;&gt;Hobbybrauer.de&lt;/span&gt; om je er van te voren vertrouwd mee te maken. Vooral voor beginnende brouwers schuilt het gevaar in overdosering van ingrediënten. Het zal altijd bier zijn, maar dat moet niet de maatstaf zijn.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="315"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="322"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;in&lt;span style=&quot; font-weight:600;&quot;&gt; g &lt;/span&gt;festgelegt.&lt;/p&gt;&lt;p&gt;Im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;g/l &lt;/span&gt;rechts wird parallel dazu der Mengenanteil pro Liter berechnet. Beide Felder bedingen sich gegenseitig.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Der Kleine Brauhelfer berechnet Zusätze&lt;span style=&quot; font-weight:600;&quot;&gt; ausschließlich&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; des Rezeptes, wie ganz zu Beginn der Rezepterstellung oben links festgelegt wurde. Die Gesamtmenge meint die definierte &lt;span style=&quot; font-weight:600;&quot;&gt;Jungbiermenge&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Gesamtmenge darf nicht mit de Gesamtmenge des Brauwassers aus Haupt- und Nachguss verwechselt werden!&lt;/p&gt;&lt;p&gt;Wenn ein Zusatz Anteil an der festgelegten Stammwürze hat, senkt die Mengenfestlegung hier den Malzanteil prozentual ab.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In dit veld wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;Totale Hoeveelheid &lt;/span&gt;van een &lt;span style=&quot; font-weight:600;&quot;&gt;Toevoeging &lt;/span&gt; in&lt;span style=&quot; font-weight:600;&quot;&gt;g &lt;/span&gt; ingesteld.&lt;/p&gt;&lt;p&gt;In het veld &lt;span style=&quot; font-weight:600;&quot;&gt;g/l &lt;/span&gt; rechts wordt de hoeveelheid per liter parallel berekend. Beide gebieden zijn van elkaar afhankelijk.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Let op: &lt;/span&gt;De Kleiner Brauhelfer berekent toevoegingen &lt;span style=&quot; font-weight:600;&quot;&gt;Uitsluitend&lt;/span&gt; voor de &lt;span style=&quot; font-weight:600;&quot;&gt;Totale hoeveelheid&lt;/span&gt; van het recept, zoals dat helemaal aan het begin van het maken van het recept linksboven is gedefinieerd. De totale hoeveelheid is de vastgestelde &lt;span style=&quot; font-weight:600;&quot;&gt;Hoeveelheid jongbier&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;De totale hoeveelheid mag niet worden verward met de totale hoeveelheid Brouwwater uit Maisch- en Spoelwater&lt;/p&gt;&lt;p&gt;Als een additief een aandeel heeft in het opgegeven SG, verlaagt de hier opgegeven hoeveelheid het moutgehalte in procenten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="363"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="370"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Extraktanteil&lt;/span&gt; vom &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz prozentual &lt;/span&gt;anhand seines Eintrags im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; ausgegeben. Der Kleine Brauhelfer geht bei Malz immer von 100% Ausbeute aus.&lt;/p&gt;&lt;p&gt;Der Wert in % kann anschließend angepasst werden, so eine prozentuale Verteilung der Malze bevorzugt wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="391"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="398"/>
         <source>%</source>
         <translation>%</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="398"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="405"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;prozentualer Korrekturfaktor &lt;/span&gt;ausgegeben, wenn die Extraktmenge 100% unter- oder überschreitet.&lt;/p&gt;&lt;p&gt;Die Schüttung berechnet sich u.a. aus eingesetzten Malzen und Rohfrucht, der gewählten Stammwürze, dem Farbwert, der Rastdauer und anderen Faktoren. Ein &lt;span style=&quot; font-weight:600;&quot;&gt;negativer Wert&lt;/span&gt; gibt an, dass &lt;span style=&quot; font-weight:600;&quot;&gt;zu wenig Rohstoffmenge &lt;/span&gt;gewählt wurde, ein &lt;span style=&quot; font-weight:600;&quot;&gt;positiver Wert&lt;/span&gt;, dass eine &lt;span style=&quot; font-weight:600;&quot;&gt;zu große Rohstoffmenge &lt;/span&gt;gewählt wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="501"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="508"/>
         <source>Zugabe nach</source>
         <translation>Toevoegen na</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="511"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="518"/>
         <source>Zugeben</source>
         <translation>Toevoegen</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="524"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="531"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Entnahmezeitpunkt weiterer Zutaten ab Zugabezeitpunkt angegeben. Der &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabezeitpunkt&lt;/span&gt; kann entscheidend für den Gärverlauf und den Geschmack sein.&lt;/p&gt;&lt;p&gt;Ein populäres Beispiel hierfür ist Zucker, der sowohl für den Alkoholgehalt und trockenen Geschmack oder einen gegenteiligen süßlichen Eindruck eingesetzt werden kann als auch für die Karbonisierung.&lt;/p&gt;&lt;p&gt;Gewöhnlich erfolgt die Zugabe weiterer Zutaten nach der Hauptgärung. Hefenährstoffe etwa werden oft schon beim Kochen hinzugegeben.&lt;/p&gt;&lt;p&gt;Der Zugabezeitpunkt ist eine Stellschraube beim Ausbau der Geschmacksidee. Bei Zweifeln hilft vorab die einschlägige Literatur oder die bekannten Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit geeft de extraktietijd van andere toevoegingen aan vanaf het tijdstip van toevoeging. De &lt;span style=&quot; font-weight:600;&quot;&gt;Toevoegingstijd&lt;/span&gt; kan doorslaggevend zijn voor het gistingsproces en de smaak.&lt;/p&gt;&lt;p&gt;Een populair voorbeeld hiervan is suiker, dat kan worden gebruikt voor het alcoholgehalte en de droge smaak of een tegenovergestelde zoete indruk, maar ook voor de koolzuurvorming.&lt;/p&gt;&lt;p&gt;Het tijdstip van toevoeging is een stelschroef in de ontwikkeling van het smaakidee. Raadpleeg in geval van twijfel de relevante literatuur of de bekende gespecialiseerde forums..&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="562"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="569"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier definiert der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Zugabedatum&lt;/span&gt; der Zugabe, abhängig vom gewählten Zugabezeitpunkt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier bepaalt de Kleiner Brauhelfer de &lt;span style=&quot; font-weight:600;&quot;&gt;Datum van Toevoeging&lt;/span&gt; , afhankelijk van de gekozen toevoegingstijd.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="575"/>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="582"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="589"/>
         <source>Tage</source>
         <translation>Dagen</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="608"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="615"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier definiert der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahmedatum&lt;/span&gt; der Zugabe, abhängig vom gewählten Entnahmezeitpunkt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="624"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="631"/>
         <source>Entnehmen</source>
         <translation>verwijderen</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="634"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="641"/>
         <source>keine Entnahme</source>
         <translatorcomment>No removal</translatorcomment>
         <translation>geen extractie</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="641"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="648"/>
         <source>Entnahme nach</source>
         <translation>Verwijderen na</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="663"/>
+        <location filename="../widgets/wdgweiterezutatgabe.ui" line="670"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist ein Freitextfeld für einen &lt;span style=&quot; font-weight:600;&quot;&gt;Kommentar&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit is een vrij tekstveld voor een &lt;span style=&quot; font-weight:600;&quot;&gt;Commentaar&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="157"/>
+        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="164"/>
         <source>mg/l</source>
         <translation>mg/l</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="164"/>
+        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="171"/>
         <source>Stk./l</source>
         <translation>Stk./l</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="171"/>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="178"/>
+        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="185"/>
         <source>ml/l</source>
         <translation>ml/l</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="235"/>
+        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="242"/>
         <source>Hopfen</source>
         <translation>Hoppen</translation>
     </message>

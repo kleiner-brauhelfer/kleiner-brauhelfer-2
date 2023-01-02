@@ -31,7 +31,7 @@ div.r {
 }
 
 div.rm {
-  border: 2px solid #353535;
+  border: 1px solid #353535;
   border-radius: 10px;
   margin-bottom: 5px;
   padding: 5px;
@@ -53,8 +53,16 @@ h2 {
   margin-bottom: 5px;
 }
 
+h3 {
+  font-size: 11pt;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0px;
+  margin: 0px;
+}
+
 .underline {
-  border-bottom: 0.5pt solid #353535;
+  border-top: 0.5pt solid #353535;
 }
 
 .value {
@@ -102,7 +110,6 @@ img.star_grey {
 }
 
 .kommentar {
-  color: #999999;
   word-wrap: break-word;
 }
 

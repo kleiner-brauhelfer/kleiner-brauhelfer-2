@@ -3884,6 +3884,7 @@ p, li { white-space: pre-wrap; }
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>scrollArea</tabstop>
   <tabstop>tbSudname</tabstop>
   <tabstop>tbSudnummer</tabstop>
   <tabstop>cbKategorie</tabstop>
@@ -3975,7 +3976,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>tbAnlageVolumenKochen</tabstop>
   <tabstop>tbVolumenKochen</tabstop>
   <tabstop>tbSWHefestarter</tabstop>
-  <tabstop>scrollArea</tabstop>
   <tabstop>splitterHelp</tabstop>
   <tabstop>scrollArea_6</tabstop>
   <tabstop>tbHelp</tabstop>

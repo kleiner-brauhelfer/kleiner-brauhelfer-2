@@ -83,6 +83,7 @@ void WdgWeitereZutatGabe::checkEnabled()
 void WdgWeitereZutatGabe::updateValues()
 {
     QString zusatzname = name();
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
     Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
     Brauhelfer::ZusatzEntnahmeindex entnahmeindex = static_cast<Brauhelfer::ZusatzEntnahmeindex>(data(ModelWeitereZutatenGaben::ColEntnahmeindex).toInt());
@@ -92,6 +93,11 @@ void WdgWeitereZutatGabe::updateValues()
 
     checkEnabled();
 
+    bool bVal = mEnabled && (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung) && (status == Brauhelfer::SudStatus::Gebraut);
+    ui->cbAnstellmenge->setVisible(bVal);
+    if (!bVal)
+        ui->cbAnstellmenge->setCheckState(Qt::Unchecked);
+
     ui->btnZutat->setEnabled(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
     ui->tbVorhanden->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
@@ -100,7 +106,7 @@ void WdgWeitereZutatGabe::updateValues()
     ui->btnAufbrauchen->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
     ui->cbEntnahme->setEnabled(mEnabled);
     ui->tbMenge->setReadOnly(!mEnabled);
-    ui->tbMengeTotal->setReadOnly(!mEnabled);
+    ui->tbMengeTotal->setReadOnly(!mEnabled || ui->cbAnstellmenge->isChecked());
     ui->tbExtrakt->setReadOnly(!mEnabled);
     ui->tbExtraktProzent->setReadOnly(!mEnabled);
     ui->btnKorrekturExtrakt->setVisible(mEnabled);
@@ -137,6 +143,7 @@ void WdgWeitereZutatGabe::updateValues()
         QString str = MainWindow::Einheiten[static_cast<int>(einheit)];
         ui->lblEinheit->setText(str);
         ui->lblVorhandenEinheit->setText(str);
+        int colMengeTotal = ui->cbAnstellmenge->isChecked() ? ModelWeitereZutatenGaben::Colerg_MengeIst : ModelWeitereZutatenGaben::Colerg_Menge;
         switch (einheit)
         {
         case Brauhelfer::Einheit::Kg:
@@ -144,42 +151,42 @@ void WdgWeitereZutatGabe::updateValues()
             ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);
-            ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000);
+            ui->tbMengeTotal->setValue(data(colMengeTotal).toDouble() / 1000);
             break;
         case Brauhelfer::Einheit::g:
             ui->lblEinheitProLiter->setText(tr("g/l"));
             ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);
-            ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
+            ui->tbMengeTotal->setValue(data(colMengeTotal).toDouble());
             break;
         case Brauhelfer::Einheit::mg:
             ui->lblEinheitProLiter->setText(tr("mg/l"));
             ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);
-            ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000);
+            ui->tbMengeTotal->setValue(data(colMengeTotal).toDouble() * 1000);
             break;
         case Brauhelfer::Einheit::Stk:
             ui->lblEinheitProLiter->setText(tr("Stk./l"));
             ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(0);
-            ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
+            ui->tbMengeTotal->setValue(data(colMengeTotal).toDouble());
             break;
         case Brauhelfer::Einheit::l:
             ui->lblEinheitProLiter->setText(tr("ml/l"));
             ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);
-            ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000);
+            ui->tbMengeTotal->setValue(data(colMengeTotal).toDouble() / 1000);
             break;
         case Brauhelfer::Einheit::ml:
             ui->lblEinheitProLiter->setText(tr("ml/l"));
             ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);
-            ui->tbMengeTotal->setValue(data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble());
+            ui->tbMengeTotal->setValue(data(colMengeTotal).toDouble());
             break;
         }
     }
@@ -201,7 +208,7 @@ void WdgWeitereZutatGabe::updateValues()
     ui->lblExtraktEinheit->setVisible(visible);
     ui->lblExtraktProzent->setVisible(visible);
     ui->tbExtraktProzent->setError(ui->tbExtraktProzent->value() == 0.0 || mFehlProzentExtrakt != 0.0);
-    ui->btnKorrekturExtrakt->setVisible(visible && mFehlProzentExtrakt != 0.0);
+    ui->btnKorrekturExtrakt->setVisible(mEnabled && visible && mFehlProzentExtrakt != 0.0);
 
     ui->cbEntnahme->setChecked(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
     if (!ui->tbZugabeNach->hasFocus())
@@ -265,26 +272,33 @@ void WdgWeitereZutatGabe::updateValues()
                 ui->tbVorhanden->setValue(bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColMenge).toInt());
             else
                 ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->data(rowRohstoff, ModelWeitereZutaten::ColMenge).toDouble());
-            double benoetigt = 0.0;
-            for (int i = 0; i < mModel->rowCount(); ++i)
+            if (!ui->cbAnstellmenge->isChecked())
             {
-                if (mModel->data(i, ModelWeitereZutatenGaben::ColName).toString() == zusatzname)
-                    benoetigt += mModel->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
-            }
-            if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-            {
-                ProxyModel* model = bh->sud()->modelHopfengaben();
-                for (int i = 0; i < model->rowCount(); ++i)
+                double benoetigt = 0.0;
+                for (int i = 0; i < mModel->rowCount(); ++i)
                 {
-                    if (model->data(i, ModelHopfengaben::ColName).toString() == zusatzname)
-                        benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
+                    if (mModel->data(i, ModelWeitereZutatenGaben::ColName).toString() == zusatzname)
+                        benoetigt += mModel->data(i, ModelWeitereZutatenGaben::Colerg_Menge).toDouble();
                 }
+                if (typ == Brauhelfer::ZusatzTyp::Hopfen)
+                {
+                    ProxyModel* model = bh->sud()->modelHopfengaben();
+                    for (int i = 0; i < model->rowCount(); ++i)
+                    {
+                        if (model->data(i, ModelHopfengaben::ColName).toString() == zusatzname)
+                            benoetigt += model->data(i, ModelHopfengaben::Colerg_Menge).toDouble();
+                    }
+                }
+                if (einheit == Brauhelfer::Einheit::Kg || einheit == Brauhelfer::Einheit::l)
+                    benoetigt /= 1000;
+                else if (einheit == Brauhelfer::Einheit::mg)
+                    benoetigt *= 1000;
+                ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
             }
-            if (einheit == Brauhelfer::Einheit::Kg || einheit == Brauhelfer::Einheit::l)
-                benoetigt /= 1000;
-            else if (einheit == Brauhelfer::Einheit::mg)
-                benoetigt *= 1000;
-            ui->tbVorhanden->setError(benoetigt - ui->tbVorhanden->value() > 0.001);
+            else
+            {
+                ui->tbVorhanden->setError(false);
+            }
         }
         ui->btnEntnehmen->setPalette(gSettings->palette);
         switch (zugabestatus)
@@ -295,7 +309,7 @@ void WdgWeitereZutatGabe::updateValues()
                 ui->tbVorhanden->setVisible(true);
                 ui->lblVorhanden->setVisible(true);
                 ui->lblVorhandenEinheit->setVisible(true);
-                ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMengeTotal->value()) > 0.001);
+                ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMengeTotal->value()) > 0.001 && !ui->cbAnstellmenge->isChecked());
             }
             ui->btnLoeschen->setVisible(true);
             ui->btnNachOben->setVisible(true);
@@ -306,7 +320,9 @@ void WdgWeitereZutatGabe::updateValues()
             ui->tbDauerTage->setReadOnly(false);
             ui->cbEntnahme->setEnabled(true);
             ui->tbMenge->setReadOnly(false);
-            ui->tbMengeTotal->setReadOnly(false);
+            ui->tbMengeTotal->setReadOnly(ui->cbAnstellmenge->isChecked());
+            ui->tbExtrakt->setReadOnly(false);
+            ui->tbExtraktProzent->setReadOnly(false);
             ui->btnZutat->setEnabled(true);
             if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
             {
@@ -330,6 +346,9 @@ void WdgWeitereZutatGabe::updateValues()
             ui->cbEntnahme->setEnabled(true);
             ui->tbMenge->setReadOnly(true);
             ui->tbMengeTotal->setReadOnly(true);
+            ui->tbExtrakt->setReadOnly(true);
+            ui->tbExtraktProzent->setReadOnly(true);
+            ui->btnKorrekturExtrakt->setVisible(false);
             ui->btnZutat->setEnabled(false);
             if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
             {
@@ -353,6 +372,9 @@ void WdgWeitereZutatGabe::updateValues()
             ui->cbEntnahme->setEnabled(false);
             ui->tbMenge->setReadOnly(true);
             ui->tbMengeTotal->setReadOnly(true);
+            ui->tbExtrakt->setReadOnly(true);
+            ui->tbExtraktProzent->setReadOnly(true);
+            ui->btnKorrekturExtrakt->setVisible(false);
             ui->btnZutat->setEnabled(false);
             break;
         }
@@ -375,6 +397,8 @@ void WdgWeitereZutatGabe::updateValues()
         ui->cbEntnahme->setEnabled(true);
         ui->tbMenge->setReadOnly(false);
         ui->tbMengeTotal->setReadOnly(false);
+        ui->tbExtrakt->setReadOnly(false);
+        ui->tbExtraktProzent->setReadOnly(false);
         ui->btnZutat->setEnabled(true);
     }
 
@@ -384,7 +408,6 @@ void WdgWeitereZutatGabe::updateValues()
     ui->tbDauerTage->setVisible(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
     ui->lblDauerTage->setVisible(entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
     ui->tbDatumBis->setVisible(braudatum.isValid() && entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     ui->btnZugeben->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == Brauhelfer::ZusatzStatus::NichtZugegeben);
     ui->btnEntnehmen->setVisible(status == Brauhelfer::SudStatus::Gebraut && zugabestatus == Brauhelfer::ZusatzStatus::Zugegeben && entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
 
@@ -511,9 +534,10 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
     {
         Brauhelfer::ZusatzTyp zusatztyp = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
         Brauhelfer::RohstoffTyp typ = zusatztyp == Brauhelfer::ZusatzTyp::Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz;
+        int colMengeTotal = ui->cbAnstellmenge->isChecked() ? ModelWeitereZutatenGaben::Colerg_MengeIst : ModelWeitereZutatenGaben::Colerg_Menge;
         DlgRohstoffeAbziehen dlg(true, typ,
                                  data(ModelWeitereZutatenGaben::ColName).toString(),
-                                 data(ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
+                                 data(colMengeTotal).toDouble(),
                                  this);
         dlg.exec();
     }
@@ -602,4 +626,10 @@ void WdgWeitereZutatGabe::on_btnNachOben_clicked()
 void WdgWeitereZutatGabe::on_btnNachUnten_clicked()
 {
     moveDown();
+}
+
+void WdgWeitereZutatGabe::on_cbAnstellmenge_clicked(bool checked)
+{
+    Q_UNUSED(checked)
+    updateValues();
 }

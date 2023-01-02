@@ -32,6 +32,7 @@ public:
         ColUnvergaerbar,
         // virtual
         ColDeleted,
+        Colerg_MengeIst,
         ColExtrakt,
         ColExtraktProzent,
         ColZugabeDatum,

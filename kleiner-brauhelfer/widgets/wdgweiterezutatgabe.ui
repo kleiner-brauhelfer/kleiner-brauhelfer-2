@@ -145,7 +145,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="14">
+        <item row="0" column="15">
          <widget class="DoubleSpinBox" name="tbVorhanden">
           <property name="minimumSize">
            <size>
@@ -234,7 +234,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="15">
+        <item row="0" column="16">
          <widget class="QLabel" name="lblVorhandenEinheit">
           <property name="minimumSize">
            <size>
@@ -244,6 +244,13 @@
           </property>
           <property name="text">
            <string>g</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="6" colspan="2">
+         <widget class="QCheckBox" name="cbAnstellmenge">
+          <property name="text">
+           <string>Bezogen auf Anstellmenge</string>
           </property>
          </widget>
         </item>
@@ -275,14 +282,14 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="11">
+        <item row="0" column="12">
          <widget class="QLabel" name="lblVorhanden">
           <property name="text">
            <string>Vorhanden</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="8">
+        <item row="0" column="9">
          <widget class="QPushButton" name="btnAufbrauchen">
           <property name="minimumSize">
            <size>
@@ -331,7 +338,7 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="7">
+        <item row="0" column="8">
          <spacer name="horizontalSpacer_3">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>

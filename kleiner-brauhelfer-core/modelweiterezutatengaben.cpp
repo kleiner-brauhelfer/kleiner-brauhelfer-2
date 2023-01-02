@@ -9,6 +9,7 @@ ModelWeitereZutatenGaben::ModelWeitereZutatenGaben(Brauhelfer* bh, QSqlDatabase 
     SqlTableModel(bh, db),
     bh(bh)
 {
+    mVirtualField.append("erg_MengeIst");
     mVirtualField.append("Extrakt");
     mVirtualField.append("ExtraktProzent");
     mVirtualField.append("ZugabeDatum");
@@ -22,6 +23,12 @@ QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &idx) const
 {
     switch(idx.column())
     {
+    case Colerg_MengeIst:
+    {
+        double mengeIst = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColWuerzemengeAnstellen).toDouble();
+        double mengeProLiter = data(idx.row(), ColMenge).toDouble();
+        return mengeIst * mengeProLiter;
+    }
     case ColExtrakt:
     {
         double ausbeute = data(idx.row(), ColAusbeute).toDouble();

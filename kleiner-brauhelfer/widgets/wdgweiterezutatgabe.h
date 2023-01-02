@@ -30,6 +30,7 @@ private slots:
     void on_btnLoeschen_clicked();
     void on_tbMenge_valueChanged(double value);
     void on_tbMengeTotal_valueChanged(double value);
+    void on_cbAnstellmenge_clicked(bool checked);
     void on_tbKochdauer_valueChanged(int value);
     void on_tbExtrakt_valueChanged(double value);
     void on_tbExtraktProzent_valueChanged(double value);

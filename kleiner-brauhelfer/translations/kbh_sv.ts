@@ -6,27 +6,27 @@
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="11"/>
         <source>Anstellen</source>
-        <translation type="unfinished">Jästtillsättning</translation>
+        <translation>Jästgiva</translation>
     </message>
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="11"/>
         <source>Jungbier</source>
-        <translation type="unfinished"></translation>
+        <translation>Ungt öl</translation>
     </message>
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="11"/>
         <source>Abgefüllt</source>
-        <translation type="unfinished">Tappat på flaska/fat</translation>
+        <translation>Tappat på flaska/fat</translation>
     </message>
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="11"/>
         <source>Rezept</source>
-        <translation type="unfinished">Recept</translation>
+        <translation>Recept</translation>
     </message>
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="14"/>
         <source>Würzemenge [L]</source>
-        <translation type="unfinished"></translation>
+        <translation>Vörtmängd [l]</translation>
     </message>
     <message>
         <source>Menge</source>
@@ -38,22 +38,22 @@
     <message>
         <location filename="../charts/chartviewausbeute.cpp" line="12"/>
         <source>SHA</source>
-        <translation type="unfinished"></translation>
+        <translation>Utbyte</translation>
     </message>
     <message>
         <location filename="../charts/chartviewausbeute.cpp" line="12"/>
         <source>Eff. SHA</source>
-        <translation type="unfinished"></translation>
+        <translation>Effektivt utbyte</translation>
     </message>
     <message>
         <location filename="../charts/chartviewausbeute.cpp" line="12"/>
         <source>Rezept</source>
-        <translation type="unfinished">Recept</translation>
+        <translation>Recept</translation>
     </message>
     <message>
         <location filename="../charts/chartviewausbeute.cpp" line="15"/>
         <source>Ausbeute [%]</source>
-        <translation type="unfinished">Utbye [%]</translation>
+        <translation>Utbye [%]</translation>
     </message>
 </context>
 <context>
@@ -61,52 +61,52 @@
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="11"/>
         <source>Kochbeginn</source>
-        <translation type="unfinished">Kokstart</translation>
+        <translation>Kokstart</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="11"/>
         <source>Kochende</source>
-        <translation type="unfinished">Kokslut</translation>
+        <translation>Kokslut</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="11"/>
         <source>Nach Hopfenseihen</source>
-        <translation type="unfinished"></translation>
+        <translation>Efter humlefiltrering</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="11"/>
         <source>Anstellen</source>
-        <translation type="unfinished">Jästtillsättning</translation>
+        <translation>Jästtillsättning</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="14"/>
         <source>Würzemenge [L]</source>
-        <translation type="unfinished"></translation>
+        <translation>Vörtmängd [l]</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="19"/>
         <source>Stammwürze [°P]</source>
-        <translation type="unfinished">Stamvört [°P]</translation>
+        <translation>Stamvört [°P]</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="24"/>
         <source>Menge ist</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd verklig</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="26"/>
         <source>Menge soll</source>
-        <translation type="unfinished"></translation>
+        <translation>Mängd enligt plan</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="41"/>
         <source>SW soll</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört enligt plan</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="51"/>
         <source>SW ist</source>
-        <translation type="unfinished"></translation>
+        <translation>Stamvört verklig</translation>
     </message>
 </context>
 <context>
@@ -114,7 +114,7 @@
     <message>
         <location filename="../charts/chartviewrestextrakt.cpp" line="14"/>
         <source>Restextrakt [°P]</source>
-        <translation type="unfinished">Resterande extrakthalt [°P]</translation>
+        <translation>Resterande extrakthalt [°P]</translation>
     </message>
     <message>
         <source>Restextrakt</source>
@@ -123,25 +123,25 @@
     <message>
         <location filename="../charts/chartviewrestextrakt.cpp" line="43"/>
         <source>Schnellgärprobe</source>
-        <translation type="unfinished"></translation>
+        <translation>Snabbjäsningsprov</translation>
     </message>
     <message>
         <location filename="../charts/chartviewrestextrakt.cpp" line="43"/>
         <location filename="../charts/chartviewrestextrakt.cpp" line="54"/>
         <source>Gemessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Uppmätt</translation>
     </message>
     <message>
         <location filename="../charts/chartviewrestextrakt.cpp" line="43"/>
         <location filename="../charts/chartviewrestextrakt.cpp" line="54"/>
         <source>Erwartet</source>
-        <translation type="unfinished"></translation>
+        <translation>Förväntat</translation>
     </message>
     <message>
         <location filename="../charts/chartviewrestextrakt.cpp" line="43"/>
         <location filename="../charts/chartviewrestextrakt.cpp" line="54"/>
         <source>Rezept</source>
-        <translation type="unfinished">Recept</translation>
+        <translation>Recept</translation>
     </message>
 </context>
 <context>
@@ -835,7 +835,7 @@
     <message>
         <location filename="../dialogs/dlgconsole.ui" line="20"/>
         <source>Hier werden Änderungen im Kleinen Brauhelfer aufgelistet.</source>
-        <translation type="unfinished"></translation>
+        <translation>Här listas ändringarna i KBH.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgconsole.ui" line="35"/>
@@ -2800,7 +2800,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="28"/>
         <source>Hier wird der konzentrationsgrad der Säure oder des gelösten Salzes angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Saltkoncentration</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="53"/>
@@ -3973,7 +3973,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <location filename="../mainwindow.cpp" line="865"/>
         <source>Unvergärbar</source>
-        <translation type="unfinished"></translation>
+        <translation>Ojäsbar</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="870"/>
@@ -4660,7 +4660,7 @@ Installerad version: %2</translation>
         <location filename="../tababfuellen.ui" line="1183"/>
         <location filename="../tababfuellen.ui" line="1256"/>
         <source>pro Flasche</source>
-        <translation type="unfinished"></translation>
+        <translation>per Flaska</translation>
     </message>
     <message>
         <source>Temperatur</source>
@@ -4674,12 +4674,12 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="1596"/>
         <source>Abfüllen</source>
-        <translation type="unfinished"></translation>
+        <translation>Tappning</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1674"/>
         <source>Abgefüllte Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Paketerad mängd</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1786"/>
@@ -4863,7 +4863,7 @@ Installerad version: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="1235"/>
         <source>Temperatur für Karbonisierung</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur för kolsyrejäsning</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1394"/>
@@ -5285,7 +5285,7 @@ Tid för flasktappning: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="816"/>
         <source>Antrunk</source>
-        <translation type="unfinished"></translation>
+        <translation>Första intryck</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="825"/>
@@ -6019,7 +6019,7 @@ Tid för flasktappning: %1</translation>
     <message>
         <location filename="../tabbraudaten.ui" line="2527"/>
         <source>Hefestarter</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäststartare</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2704"/>
@@ -7321,7 +7321,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../tabrezept.ui" line="1036"/>
         <location filename="../tabrezept.ui" line="1317"/>
         <source>Ausgleichen</source>
-        <translation type="unfinished">Jämn ut</translation>
+        <translation>Jämn ut</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1266"/>
@@ -7337,7 +7337,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../tabrezept.ui" line="1607"/>
         <location filename="../tabrezept.ui" line="2973"/>
         <source>Hefestarter</source>
-        <translation type="unfinished"></translation>
+        <translation>Jäststartare</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2054"/>
@@ -7666,12 +7666,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tabrezept.cpp" line="698"/>
         <source>Die Summe der angegebenen Hopfenmengen entspricht nicht der Gesamtmenge.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Summan av angiva maltmängder motsvarar inte totalmängden.</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="702"/>
         <source>Die Summe der angegebenen Anteile an Bittere entspricht nicht der Gesamtbittere.</source>
-        <translation type="unfinished"></translation>
+        <translation>Summan av beska-värdena matchar inte totala beskan.</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="1307"/>
@@ -8164,32 +8164,32 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../widgets/tableview.cpp" line="139"/>
         <source>Alles kopieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera allt</translation>
     </message>
     <message>
         <location filename="../widgets/tableview.cpp" line="142"/>
         <source>Auswahl kopieren</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiera valda</translation>
     </message>
     <message>
         <location filename="../widgets/tableview.cpp" line="146"/>
         <source>Alles drucken</source>
-        <translation type="unfinished"></translation>
+        <translation>Skriv ut allt</translation>
     </message>
     <message>
         <location filename="../widgets/tableview.cpp" line="149"/>
         <source>Auswahl drucken</source>
-        <translation type="unfinished"></translation>
+        <translation>Skriv ut valda</translation>
     </message>
     <message>
         <location filename="../widgets/tableview.cpp" line="392"/>
         <source>Drucken</source>
-        <translation type="unfinished">Skriv ut</translation>
+        <translation>Skriv ut</translation>
     </message>
     <message>
         <location filename="../widgets/tableview.cpp" line="393"/>
         <source>Überschrift:</source>
-        <translation type="unfinished"></translation>
+        <translation>Rubrik:</translation>
     </message>
 </context>
 <context>
@@ -8244,7 +8244,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../widgets/wdgbemerkung.ui" line="35"/>
         <source>Bemerkung</source>
-        <translation type="unfinished">Anmärkningar</translation>
+        <translation>Anmärkning</translation>
     </message>
 </context>
 <context>
@@ -8290,7 +8290,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="154"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Klick auf diesen Button teilt dem Kleinen Brauhelfer mit, dass eine &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Hefegabe &lt;/span&gt;erfolgt ist.&lt;/p&gt;&lt;p&gt;An verschiedenen Stellen des Programms wird diese Aktion nun berücksichtigt. So kann damit ein Sud später als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="157"/>
@@ -9391,7 +9391,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="253"/>
         <source>Bezogen auf Anstellmenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Relativt till mängden vid jästgivan</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="266"/>

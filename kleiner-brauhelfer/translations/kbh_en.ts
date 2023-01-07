@@ -6,27 +6,27 @@
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="11"/>
         <source>Anstellen</source>
-        <translation type="unfinished">Pitch</translation>
+        <translation>Pitch</translation>
     </message>
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="11"/>
         <source>Jungbier</source>
-        <translation type="unfinished"></translation>
+        <translation>Young beer</translation>
     </message>
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="11"/>
         <source>Abgefüllt</source>
-        <translation type="unfinished">bottled/kegged</translation>
+        <translation>bottled/kegged</translation>
     </message>
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="11"/>
         <source>Rezept</source>
-        <translation type="unfinished">Recipe</translation>
+        <translation>Recipe</translation>
     </message>
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="14"/>
         <source>Würzemenge [L]</source>
-        <translation type="unfinished"></translation>
+        <translation>Wort quantity [l]</translation>
     </message>
     <message>
         <source>Menge</source>
@@ -38,22 +38,22 @@
     <message>
         <location filename="../charts/chartviewausbeute.cpp" line="12"/>
         <source>SHA</source>
-        <translation type="unfinished"></translation>
+        <translation>Efficiency</translation>
     </message>
     <message>
         <location filename="../charts/chartviewausbeute.cpp" line="12"/>
         <source>Eff. SHA</source>
-        <translation type="unfinished"></translation>
+        <translation>Total efficiency</translation>
     </message>
     <message>
         <location filename="../charts/chartviewausbeute.cpp" line="12"/>
         <source>Rezept</source>
-        <translation type="unfinished">Recipe</translation>
+        <translation>Recipe</translation>
     </message>
     <message>
         <location filename="../charts/chartviewausbeute.cpp" line="15"/>
         <source>Ausbeute [%]</source>
-        <translation type="unfinished">Efficiency [%]</translation>
+        <translation>Efficiency [%]</translation>
     </message>
 </context>
 <context>
@@ -61,52 +61,52 @@
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="11"/>
         <source>Kochbeginn</source>
-        <translation type="unfinished">Begin of boil</translation>
+        <translation>Begin of boil</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="11"/>
         <source>Kochende</source>
-        <translation type="unfinished">End of boil</translation>
+        <translation>End of boil</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="11"/>
         <source>Nach Hopfenseihen</source>
-        <translation type="unfinished"></translation>
+        <translation>After hop filter</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="11"/>
         <source>Anstellen</source>
-        <translation type="unfinished">Pitch</translation>
+        <translation>Pitch</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="14"/>
         <source>Würzemenge [L]</source>
-        <translation type="unfinished"></translation>
+        <translation>Wort quantity [l]</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="19"/>
         <source>Stammwürze [°P]</source>
-        <translation type="unfinished">OG [°P]</translation>
+        <translation>OG [°P]</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="24"/>
         <source>Menge ist</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount as is</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="26"/>
         <source>Menge soll</source>
-        <translation type="unfinished"></translation>
+        <translation>Amount as planned</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="41"/>
         <source>SW soll</source>
-        <translation type="unfinished"></translation>
+        <translation>OG as planned</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="51"/>
         <source>SW ist</source>
-        <translation type="unfinished"></translation>
+        <translation>OG real</translation>
     </message>
 </context>
 <context>
@@ -114,30 +114,30 @@
     <message>
         <location filename="../charts/chartviewrestextrakt.cpp" line="14"/>
         <source>Restextrakt [°P]</source>
-        <translation type="unfinished">Residual extract [°P]</translation>
+        <translation>Residual extract [°P]</translation>
     </message>
     <message>
         <location filename="../charts/chartviewrestextrakt.cpp" line="43"/>
         <source>Schnellgärprobe</source>
-        <translation type="unfinished">Fast fermentation sample</translation>
+        <translation>Fast fermentation sample</translation>
     </message>
     <message>
         <location filename="../charts/chartviewrestextrakt.cpp" line="43"/>
         <location filename="../charts/chartviewrestextrakt.cpp" line="54"/>
         <source>Gemessen</source>
-        <translation type="unfinished"></translation>
+        <translation>Measured</translation>
     </message>
     <message>
         <location filename="../charts/chartviewrestextrakt.cpp" line="43"/>
         <location filename="../charts/chartviewrestextrakt.cpp" line="54"/>
         <source>Erwartet</source>
-        <translation type="unfinished"></translation>
+        <translation>Expected</translation>
     </message>
     <message>
         <location filename="../charts/chartviewrestextrakt.cpp" line="43"/>
         <location filename="../charts/chartviewrestextrakt.cpp" line="54"/>
         <source>Rezept</source>
-        <translation type="unfinished">Recipe</translation>
+        <translation>Recipe</translation>
     </message>
 </context>
 <context>
@@ -831,7 +831,7 @@
     <message>
         <location filename="../dialogs/dlgconsole.ui" line="20"/>
         <source>Hier werden Änderungen im Kleinen Brauhelfer aufgelistet.</source>
-        <translation type="unfinished"></translation>
+        <translation>List of changes to KBH.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgconsole.ui" line="35"/>
@@ -2765,7 +2765,7 @@ For brewed brews, the summary summarizes all relevant information.</translation>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="28"/>
         <source>Hier wird der konzentrationsgrad der Säure oder des gelösten Salzes angegeben.</source>
-        <translation type="unfinished"></translation>
+        <translation>Salt concentration</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="53"/>
@@ -4625,7 +4625,7 @@ Version installiert: %2</translation>
         <location filename="../tababfuellen.ui" line="1183"/>
         <location filename="../tababfuellen.ui" line="1256"/>
         <source>pro Flasche</source>
-        <translation type="unfinished"></translation>
+        <translation>per bottle</translation>
     </message>
     <message>
         <source>Temperatur</source>
@@ -4639,12 +4639,12 @@ Version installiert: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="1596"/>
         <source>Abfüllen</source>
-        <translation type="unfinished"></translation>
+        <translation>Packaging</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1674"/>
         <source>Abgefüllte Menge</source>
-        <translation type="unfinished"></translation>
+        <translation>Packaged amount</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1786"/>
@@ -4828,7 +4828,7 @@ Version installiert: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="1235"/>
         <source>Temperatur für Karbonisierung</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperature for carbonisation</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1394"/>
@@ -5983,7 +5983,7 @@ Bottling date: %1</translation>
     <message>
         <location filename="../tabbraudaten.ui" line="2527"/>
         <source>Hefestarter</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeast starter</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="2704"/>
@@ -7301,7 +7301,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../tabrezept.ui" line="1607"/>
         <location filename="../tabrezept.ui" line="2973"/>
         <source>Hefestarter</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeast starter</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2054"/>
@@ -7630,12 +7630,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tabrezept.cpp" line="698"/>
         <source>Die Summe der angegebenen Hopfenmengen entspricht nicht der Gesamtmenge.</source>
-        <translation type="unfinished"></translation>
+        <translation>The sum of the malts does not match the total.</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="702"/>
         <source>Die Summe der angegebenen Anteile an Bittere entspricht nicht der Gesamtbittere.</source>
-        <translation type="unfinished"></translation>
+        <translation>The sum of bitternes values does not match the total.</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="1307"/>
@@ -8204,7 +8204,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../widgets/wdgbemerkung.ui" line="35"/>
         <source>Bemerkung</source>
-        <translation type="unfinished">Remarks</translation>
+        <translation>Remark</translation>
     </message>
 </context>
 <context>
@@ -9319,7 +9319,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="253"/>
         <source>Bezogen auf Anstellmenge</source>
-        <translation type="unfinished"></translation>
+        <translation>Relative to amount at pitch</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="266"/>

@@ -281,6 +281,7 @@ void TabBraudaten::updateValues()
     ui->tbSWSollKochendeBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochende()));
     ui->tbSWAnstellenSollBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollAnstellen()));
 
+    ui->tbSWHefestarterBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWHefestarter()));
     ui->wdgHefestarter->setVisible(bh->sud()->getMengeHefestarter() > 0.0);
 
     ui->chartBraudaten->update();

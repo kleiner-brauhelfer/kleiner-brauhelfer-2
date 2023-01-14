@@ -44,8 +44,8 @@ WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
     setPalette(pal);
     ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
 
-    updateListe();
     updateValues();
+    updateListe();
     connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
     connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
     connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));

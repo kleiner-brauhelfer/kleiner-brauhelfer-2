@@ -1827,14 +1827,14 @@
             </widget>
            </item>
            <item row="4" column="0" colspan="8">
-            <widget class="WdgBemerkung" name="wdgBemerkungAbfuellen" native="true">
+            <widget class="WdgBemerkung" name="wdgBemerkungGaerung" native="true">
              <property name="focusPolicy">
               <enum>Qt::StrongFocus</enum>
              </property>
             </widget>
            </item>
            <item row="7" column="0" colspan="8">
-            <widget class="WdgBemerkung" name="wdgBemerkungGaerung" native="true">
+            <widget class="WdgBemerkung" name="wdgBemerkungAbfuellen" native="true">
              <property name="focusPolicy">
               <enum>Qt::StrongFocus</enum>
              </property>
@@ -1897,7 +1897,7 @@
            <item row="3" column="0">
             <widget class="QLabel" name="label">
              <property name="text">
-              <string>Bemerkung Abfüllen</string>
+              <string>Bemerkung Gärung &amp; Reifung</string>
              </property>
             </widget>
            </item>
@@ -1914,7 +1914,7 @@
            <item row="6" column="0">
             <widget class="QLabel" name="label_5">
              <property name="text">
-              <string>Bemerkung Gärung</string>
+              <string>Bemerkung Abfüllen</string>
              </property>
             </widget>
            </item>
@@ -2167,8 +2167,8 @@
   <tabstop>tbFlaschen</tabstop>
   <tabstop>tbNebenkosten</tabstop>
   <tabstop>tbKosten</tabstop>
-  <tabstop>wdgBemerkungAbfuellen</tabstop>
   <tabstop>wdgBemerkungGaerung</tabstop>
+  <tabstop>wdgBemerkungAbfuellen</tabstop>
   <tabstop>btnSudAbgefuellt</tabstop>
   <tabstop>btnSudVerbraucht</tabstop>
   <tabstop>splitterCharts</tabstop>

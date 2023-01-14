@@ -6,7 +6,7 @@
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="11"/>
         <source>Anstellen</source>
-        <translation>Pitch</translation>
+        <translation>Pitching</translation>
     </message>
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="11"/>
@@ -16,7 +16,7 @@
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="11"/>
         <source>Abgefüllt</source>
-        <translation>bottled/kegged</translation>
+        <translation>Bottled/kegged</translation>
     </message>
     <message>
         <location filename="../charts/chartviewabfuelldaten.cpp" line="11"/>
@@ -38,12 +38,12 @@
     <message>
         <location filename="../charts/chartviewausbeute.cpp" line="12"/>
         <source>SHA</source>
-        <translation>Efficiency</translation>
+        <translation>Mash efficiency</translation>
     </message>
     <message>
         <location filename="../charts/chartviewausbeute.cpp" line="12"/>
         <source>Eff. SHA</source>
-        <translation>Total efficiency</translation>
+        <translation>Brewhouse efficiency</translation>
     </message>
     <message>
         <location filename="../charts/chartviewausbeute.cpp" line="12"/>
@@ -71,12 +71,12 @@
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="11"/>
         <source>Nach Hopfenseihen</source>
-        <translation>After hop filter</translation>
+        <translation>After hop straining</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="11"/>
         <source>Anstellen</source>
-        <translation>Pitch</translation>
+        <translation>Pitching</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="14"/>
@@ -90,23 +90,39 @@
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="24"/>
-        <source>Menge ist</source>
-        <translation>Amount as is</translation>
+        <source>Menge</source>
+        <translation>Amount</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="26"/>
-        <source>Menge soll</source>
-        <translation>Amount as planned</translation>
+        <source>Menge Rezept</source>
+        <translation>Amount recipe</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="41"/>
-        <source>SW soll</source>
-        <translation>OG as planned</translation>
+        <source>SW Rezept</source>
+        <translation>OG recipe</translation>
     </message>
     <message>
         <location filename="../charts/chartviewbraudaten.cpp" line="51"/>
+        <source>SW</source>
+        <translation>OG</translation>
+    </message>
+    <message>
+        <source>Menge ist</source>
+        <translation type="vanished">Amount batch</translation>
+    </message>
+    <message>
+        <source>Menge soll</source>
+        <translation type="vanished">Amount recipe</translation>
+    </message>
+    <message>
+        <source>SW soll</source>
+        <translation type="vanished">OG recipe</translation>
+    </message>
+    <message>
         <source>SW ist</source>
-        <translation>OG real</translation>
+        <translation type="vanished">OG batch</translation>
     </message>
 </context>
 <context>
@@ -613,7 +629,7 @@
     <message>
         <location filename="../dialogs/dlgbrauuebersicht.ui" line="32"/>
         <source>Gebraut zwischen</source>
-        <translation>Brew date between</translation>
+        <translation>Brewed between</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgbrauuebersicht.ui" line="48"/>
@@ -2765,7 +2781,7 @@ For brewed brews, the summary summarizes all relevant information.</translation>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="28"/>
         <source>Hier wird der konzentrationsgrad der Säure oder des gelösten Salzes angegeben.</source>
-        <translation>Salt concentration</translation>
+        <translation>Salt concentration.</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="53"/>
@@ -4639,12 +4655,12 @@ Version installiert: %2</translation>
     <message>
         <location filename="../tababfuellen.ui" line="1596"/>
         <source>Abfüllen</source>
-        <translation>Packaging</translation>
+        <translation>Bottling/kegging</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1674"/>
         <source>Abgefüllte Menge</source>
-        <translation>Packaged amount</translation>
+        <translation>Bottled/kegged amount</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1786"/>
@@ -4862,13 +4878,17 @@ Version installiert: %2</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1900"/>
+        <source>Bemerkung Gärung &amp; Reifung</source>
+        <translation>Remarks fermentation &amp; aging</translation>
+    </message>
+    <message>
+        <location filename="../tababfuellen.ui" line="1917"/>
         <source>Bemerkung Abfüllen</source>
         <translation>Remarks bottling</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1917"/>
         <source>Bemerkung Gärung</source>
-        <translation>Remarks fermentation</translation>
+        <translation type="vanished">Remarks fermentation</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1963"/>
@@ -5524,7 +5544,7 @@ Bottling date: %1</translation>
         <location filename="../tabbraudaten.ui" line="2193"/>
         <location filename="../tabbraudaten.ui" line="2207"/>
         <location filename="../tabbraudaten.ui" line="2376"/>
-        <location filename="../tabbraudaten.ui" line="2560"/>
+        <location filename="../tabbraudaten.ui" line="2592"/>
         <location filename="../tabbraudaten.cpp" line="45"/>
         <source>l</source>
         <translation>l</translation>
@@ -5595,7 +5615,7 @@ Bottling date: %1</translation>
         <location filename="../tabbraudaten.ui" line="1648"/>
         <location filename="../tabbraudaten.ui" line="1864"/>
         <location filename="../tabbraudaten.ui" line="2439"/>
-        <location filename="../tabbraudaten.ui" line="2567"/>
+        <location filename="../tabbraudaten.ui" line="2599"/>
         <source>°P</source>
         <translation>°P</translation>
     </message>
@@ -5615,6 +5635,7 @@ Bottling date: %1</translation>
         <location filename="../tabbraudaten.ui" line="761"/>
         <location filename="../tabbraudaten.ui" line="1249"/>
         <location filename="../tabbraudaten.ui" line="2091"/>
+        <location filename="../tabbraudaten.ui" line="2559"/>
         <source>°Brix</source>
         <translation>°Brix</translation>
     </message>
@@ -5650,12 +5671,12 @@ Bottling date: %1</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2773"/>
+        <location filename="../tabbraudaten.ui" line="2805"/>
         <source>Bemerkung</source>
         <translation>Remarks</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2828"/>
+        <location filename="../tabbraudaten.ui" line="2860"/>
         <source>Dieser Sud enthält Zusätze, welche die Stammwürze verändern. Dies kann die Durchschnittsberechnung verfälschen.</source>
         <translation>This batch contains additional ingredients that change the OG. This can distort mean values.</translation>
     </message>
@@ -5927,7 +5948,6 @@ Bottling date: %1</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1808"/>
-        <location filename="../tabbraudaten.ui" line="2580"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer den erwarteten &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Restextrakt&lt;/span&gt; des Jungbiers beim Abfüllen für die Schätzung der benötigten &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge&lt;/span&gt; aus.&lt;/p&gt;&lt;p&gt;Der vorgeschlagene Wert ergibt sich aus den Angaben zur Karbonisierung im Tab Rezept. Über den Regler rechts kann er verändert werden. Die Funktion Sud gebraut sperrt diese Möglichkeit. &lt;/p&gt;&lt;p&gt;Im SRE fixiert sich der &lt;span style=&quot; font-weight:600;&quot;&gt;Vergärungsgrad&lt;/span&gt; der Hefe. Ein zu niedriger Wert ist Indiz für Störungen im Gärprozess. Biere mit zu wenig Hefe, von &lt;span style=&quot; font-weight:600;&quot;&gt;underpitched &lt;/span&gt;genannt, sind oft unausgewogen süß und mastig. Eine übermäßige Hefegabe, die Fachwelt spricht von &lt;span style=&quot; font-weight:600;&quot;&gt;overpitched&lt;/span&gt;, ist weniger problematisch. Sie wird auch bewusst eingesetzt. Overpitching kann auch Geschmacksabweichungen zur Folge haben, etwa weil mehr Alkohol produziert, das Bier trockener wird. Biere, die overpitched wurden, schmecken oft dünner und &amp;quot;flacher&amp;quot; als solche mit der richtigen Hefemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5952,7 +5972,6 @@ Bottling date: %1</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1897"/>
-        <location filename="../tabbraudaten.ui" line="2611"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die geschätzte &lt;span style=&quot; font-weight:600;&quot;&gt;notwendige Speisemenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert beruht auf der gewählten Karbonisierung im Rezept sowie auf anderen Faktoren. Zu diesem Zeitpunkt ist er jedoch nur ein Näherungswert, da unter anderem die Hefearbeit und damit der Endvergärungsgrad unberücksichtigt sind.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Speise neigt zur Infektion bei der Lagerung. Es besteht erhöhte Gefahr unerwünschter Keime oder Fehlgeschmäcker bei der späteren Gabe ins Jungbier einzutragen. Eine hygienische Aufbewahrung und eine baldige Kühlung schützt vor Enttäuschungen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5986,22 +6005,22 @@ Bottling date: %1</translation>
         <translation>Yeast starter</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2704"/>
+        <location filename="../tabbraudaten.ui" line="2736"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der einzelne &lt;span style=&quot; font-weight:600;&quot;&gt;Sud für Durschnittsberechnungen&lt;/span&gt; ignoriert werden.&lt;/p&gt;&lt;p&gt;Diese Funktion wird genutzt, wenn der Sud stark von den bisherigen Suden abweicht und die Durchschnittsberechnung negativ beeinflussen würde. Ist dem nicht der Fall, sollte diese Funktion ignoriert werden.&lt;/p&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; ist die Durchschnittsberechung möglich sowie Filtermöglichkeiten für die Sude vorhanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2751"/>
+        <location filename="../tabbraudaten.ui" line="2783"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten pro Liter&lt;/span&gt; ergibt sich aus den Kosten für Malz, Hopfen, Hefe und Zusätze, den sudspezifischen zusätzlichen Kosten und dem im Tab Ausrüstung definierten Betriebskosten.&lt;/p&gt;&lt;p&gt;Basale betriebswirtschaftliche Grundsätze schaden indes nicht, wenn es darum geht einen Überblick über die Kosten seines Hobbys zu erhalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2786"/>
+        <location filename="../tabbraudaten.ui" line="2818"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische zusätzliche Kosten&lt;/span&gt; angegeben werden.&lt;/p&gt;&lt;p&gt;Beispielsweise können hier die Kosten für Malz, Hopfen und Zusätze zusammengefasst werden. Was der Brauer hier einrechnet, ist ihm überlassen. Betriebswirtschaftliche Grundsätze schaden aber nicht, wenn es darum geht einen Überblick über die Kosten seines Hobbys zu erhalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2863"/>
+        <location filename="../tabbraudaten.ui" line="2895"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; als &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Nach Klick wird der Button Sud gebraut ausgegraut und inaktiv. Der Kleine Brauhelfer fragt, ob die verwendeten Zutaten von den Rohstoffvorräten abgezogen werden sollen. Bei Korrekturen ist diese Frage zu verneinen und die Rohstoffvorräte bleiben unverändert. Popups fragen zur Sicherheit nach, ob beim Zrücksetzen Zutaten zurückgebucht werden sollen oder nicht.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Unaufmerksamkeit kann eine Inkonsistenz im Rohstofflager nach sich ziehen.Im schlimmsten Fall stellt sich dann am Brautag ein Rohstoff als nicht in ausreichender Menge oder gar nicht vorhanden heraus!&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud gebraut &lt;/span&gt;schaltet weitere Aktionen im Kleinen Brauhelfer frei. So legt diese Aktion den ersten Eintrag im Tab Gärdaten an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6021,22 +6040,22 @@ Bottling date: %1</translation>
         <translation>Effective brewhouse efficiency</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2642"/>
+        <location filename="../tabbraudaten.ui" line="2674"/>
         <source>Sonstiges</source>
         <translation>Miscellaneous</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2651"/>
+        <location filename="../tabbraudaten.ui" line="2683"/>
         <source>Sud für Durchschnittsberechnung ignorieren</source>
         <translation>Ignore this batch for calculating average</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2724"/>
+        <location filename="../tabbraudaten.ui" line="2756"/>
         <source>Zusätzliche Kosten</source>
         <translation>Additional costs</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2738"/>
+        <location filename="../tabbraudaten.ui" line="2770"/>
         <source>Gesamtkosten</source>
         <translation>Total cost</translation>
     </message>
@@ -6045,7 +6064,7 @@ Bottling date: %1</translation>
         <translation type="vanished">This batch contains additional ingredients that change the OG. This can distort mean values.</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="2869"/>
+        <location filename="../tabbraudaten.ui" line="2901"/>
         <source>Sud gebraut</source>
         <translation>Batch brewed</translation>
     </message>
@@ -6054,12 +6073,12 @@ Bottling date: %1</translation>
         <translation type="vanished">Split batch</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.cpp" line="448"/>
+        <location filename="../tabbraudaten.cpp" line="449"/>
         <source>Sud als gebraut markieren?</source>
         <translation>Mark batch as brewed?</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.cpp" line="449"/>
+        <location filename="../tabbraudaten.cpp" line="450"/>
         <source>Soll der Sud als gebraut markiert werden?
 
 Braudatum: %1</source>
@@ -6453,7 +6472,7 @@ Brew date: %1</translation>
     <message>
         <location filename="../tabgaerverlauf.ui" line="358"/>
         <source>zugeben</source>
-        <translation>add</translation>
+        <translation>Add</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="397"/>
@@ -6468,7 +6487,7 @@ Brew date: %1</translation>
     <message>
         <location filename="../tabgaerverlauf.ui" line="407"/>
         <source>entnehmen</source>
-        <translation>remove</translation>
+        <translation>Remove</translation>
     </message>
     <message>
         <location filename="../tabgaerverlauf.ui" line="436"/>
@@ -6706,7 +6725,7 @@ Date2;Pressure2;Temperature2[;Comment2]</translation>
     <message>
         <location filename="../tabrezept.ui" line="273"/>
         <source>Empf.</source>
-        <translation>Recomm.</translation>
+        <translation>recomm.</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="286"/>
@@ -7630,12 +7649,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tabrezept.cpp" line="698"/>
         <source>Die Summe der angegebenen Hopfenmengen entspricht nicht der Gesamtmenge.</source>
-        <translation>The sum of the malts does not match the total.</translation>
+        <translation>The sum of the hops does not correspond to the required amount.</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="702"/>
         <source>Die Summe der angegebenen Anteile an Bittere entspricht nicht der Gesamtbittere.</source>
-        <translation>The sum of bitternes values does not match the total.</translation>
+        <translation>The sum of the bitterness values does not match the total bitterness.</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="1307"/>
@@ -7668,7 +7687,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tabsudauswahl.ui" line="68"/>
         <source>Rezept</source>
-        <translation>Recipe</translation>
+        <translation>recipe</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="78"/>
@@ -7688,7 +7707,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tabsudauswahl.ui" line="129"/>
         <source>Merkliste</source>
-        <translation>Pinned</translation>
+        <translation>pinned</translation>
     </message>
     <message>
         <source>Braudatum zwischen</source>
@@ -7747,7 +7766,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tabsudauswahl.ui" line="156"/>
         <source>Gebraut zwischen</source>
-        <translation>Brew date between</translation>
+        <translation>Brewed between</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="215"/>
@@ -7842,7 +7861,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tabsudauswahl.ui" line="482"/>
         <source>Vergessen</source>
-        <translation>Forget</translation>
+        <translation>Unpin</translation>
     </message>
     <message>
         <location filename="../tabsudauswahl.ui" line="516"/>
@@ -8204,7 +8223,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../widgets/wdgbemerkung.ui" line="35"/>
         <source>Bemerkung</source>
-        <translation>Remark</translation>
+        <translation>Remarks</translation>
     </message>
 </context>
 <context>
@@ -8310,7 +8329,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="281"/>
         <source>Tage</source>
-        <translation>Days</translation>
+        <translation>days</translation>
     </message>
     <message>
         <location filename="../widgets/wdghefegabe.ui" line="307"/>
@@ -9375,7 +9394,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="582"/>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="589"/>
         <source>Tage</source>
-        <translation>Days</translation>
+        <translation>days</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="615"/>

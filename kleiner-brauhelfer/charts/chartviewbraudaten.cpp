@@ -21,9 +21,9 @@ ChartViewBraudaten::ChartViewBraudaten(QWidget *parent) :
     axisY2->setMax(20);
     chart()->addAxis(axisY2, Qt::AlignRight);
 
-    setMengeIst = new QBarSet(tr("Menge ist"));
+    setMengeIst = new QBarSet(tr("Menge"));
     *setMengeIst << 0 << 0 << 0 << 0;
-    setMengeSoll = new QBarSet(tr("Menge soll"));
+    setMengeSoll = new QBarSet(tr("Menge Rezept"));
     *setMengeSoll << 0 << 0 << 0 << 0;
 
     QBarSeries* seriesMenge = new QBarSeries();
@@ -38,7 +38,7 @@ ChartViewBraudaten::ChartViewBraudaten(QWidget *parent) :
     seriesMenge->attachAxis(axisY);
 
     seriesSwSoll = new QLineSeries();
-    seriesSwSoll->setName(tr("SW soll"));
+    seriesSwSoll->setName(tr("SW Rezept"));
     *seriesSwSoll << QPointF(0,0) <<  QPointF(1,0) <<  QPointF(2,0) <<  QPointF(3,0);
     chart()->addSeries(seriesSwSoll);
     QPen pen = seriesSwSoll->pen();
@@ -48,7 +48,7 @@ ChartViewBraudaten::ChartViewBraudaten(QWidget *parent) :
     seriesSwSoll->attachAxis(axisY2);
 
     seriesSwIst = new QLineSeries();
-    seriesSwIst->setName(tr("SW ist"));
+    seriesSwIst->setName(tr("SW"));
     *seriesSwIst << QPointF(0,0) <<  QPointF(1,0) <<  QPointF(2,0) <<  QPointF(3,0);
     chart()->addSeries(seriesSwIst);
     seriesSwIst->attachAxis(axisX);

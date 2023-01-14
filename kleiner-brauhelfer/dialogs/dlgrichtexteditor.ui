@@ -239,7 +239,7 @@
         </size>
        </property>
        <property name="text">
-        <string>*,*,...</string>
+        <string notr="true">*,*,...</string>
        </property>
        <property name="checkable">
         <bool>true</bool>
@@ -255,7 +255,7 @@
         </size>
        </property>
        <property name="text">
-        <string>1,2...</string>
+        <string notr="true">1,2...</string>
        </property>
        <property name="checkable">
         <bool>true</bool>

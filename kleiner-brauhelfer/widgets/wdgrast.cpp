@@ -1,5 +1,6 @@
 #include "wdgrast.h"
 #include "ui_wdgrast.h"
+#include <QLineEdit>
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -21,7 +22,8 @@ const QList<WdgRast::Rast> WdgRast::rasten = {
 WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
     WdgAbstractProxy(bh->sud()->modelRasten(), row, parentLayout, parent),
     ui(new Ui::WdgRast),
-    mEnabled(true)
+    mEnabled(true),
+    mRastNameManuallyEdited(false)
 {
     ui->setupUi(this);
     if (gSettings->theme() == Settings::Theme::Dark)
@@ -43,6 +45,10 @@ WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
     pal.setColor(QPalette::Window, gSettings->colorRast);
     setPalette(pal);
     ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
+
+    ui->cbRast->setCompleter(nullptr);
+    connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
+    connect(ui->cbRast->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(cbRastTextEdited()));
 
     updateValues();
     updateListe();
@@ -258,6 +264,18 @@ void WdgRast::updateValues()
     }
 }
 
+void WdgRast::focusChanged(QWidget *old, QWidget *now)
+{
+    Q_UNUSED(old)
+    if (now == ui->cbRast)
+        mRastNameManuallyEdited = false;
+}
+
+void WdgRast::cbRastTextEdited()
+{
+    mRastNameManuallyEdited = true;
+}
+
 void WdgRast::on_cbRast_currentTextChanged(const QString &text)
 {
     if (ui->cbRast->hasFocus())
@@ -266,7 +284,7 @@ void WdgRast::on_cbRast_currentTextChanged(const QString &text)
 
 void WdgRast::on_cbRast_currentIndexChanged(int index)
 {
-    if (ui->cbRast->hasFocus())
+    if (ui->cbRast->hasFocus() && !mRastNameManuallyEdited)
         updateValuesFromListe(index);
 }
 

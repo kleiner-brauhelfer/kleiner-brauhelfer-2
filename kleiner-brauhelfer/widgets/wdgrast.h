@@ -23,6 +23,8 @@ public slots:
     void updateValues();
 
 private slots:
+    void focusChanged(QWidget *old, QWidget *now);
+    void cbRastTextEdited();
     void on_cbRast_currentTextChanged(const QString &text);
     void on_cbRast_currentIndexChanged(int index);
     void on_cbTyp_currentIndexChanged(int index);
@@ -65,6 +67,7 @@ private:
 private:
     Ui::WdgRast *ui;
     bool mEnabled;
+    bool mRastNameManuallyEdited;
 };
 
 #endif // WDGRAST_H

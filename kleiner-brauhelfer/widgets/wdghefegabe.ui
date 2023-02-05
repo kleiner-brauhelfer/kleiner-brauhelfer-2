@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>563</width>
-    <height>100</height>
+    <width>599</width>
+    <height>133</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -151,7 +151,7 @@
         <item row="1" column="6" colspan="2">
          <widget class="QPushButton" name="btnZugeben">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Klick auf diesen Button teilt dem Kleinen Brauhelfer mit, dass eine &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Hefegabe &lt;/span&gt;erfolgt ist.&lt;/p&gt;&lt;p&gt;An verschiedenen Stellen des Programms wird diese Aktion nun berücksichtigt. So kann damit ein Sud später als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Klick auf diesen Button teilt dem Kleinen Brauhelfer mit, dass die&lt;span style=&quot; font-weight:600;&quot;&gt; Hefegabe &lt;/span&gt;erfolgt ist. Automatisch geschieht dies mit „Sud gebraut“ im Reiter Braudaten. &lt;/p&gt;&lt;p&gt;An verschiedenen Stellen des Programms wird diese Aktion nun berücksichtigt. So kann damit ein Sud später als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="text">
            <string>Zugeben</string>

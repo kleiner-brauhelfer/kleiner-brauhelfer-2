@@ -10,6 +10,9 @@
     <height>781</height>
    </rect>
   </property>
+  <property name="toolTip">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden Anmerkungen, Besonderheiten eingetragen, die für die Gärung und die Reifung wichtig sind. Dies kann z.B. doppeltes Hopfenstopen sein, das mehrere Gebinde bis zum endgültigen Reifefass nötig macht.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer hält aber nur einmal Abfüllen fest und berechnet ab diesem Zeitpunkt die Reifung, egal wie unterteilt und feinjustiert diese ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>4</number>
@@ -34,8 +37,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1020</width>
-         <height>924</height>
+         <width>1014</width>
+         <height>1021</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -588,7 +591,7 @@
            <item row="2" column="0">
             <widget class="QCheckBox" name="cbSchnellgaerprobeAktiv">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mithilfe der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt; kann der Endvergärungsgrad während der Gärung bestimmt werden.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe steht an einem wärmeren Ort als die Hauptgärung des Jungbiers. Mit ihr lassen sich Werte des Jungbiers vorhersagen, u.a. der Abfüllzeitpunkt für Flaschengärung (Grünschlauchen).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mithilfe der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe&lt;/span&gt; kann der Endvergärungsgrad während der Gärung vorherbestimmt werden.&lt;/p&gt;&lt;p&gt;Die Schnellgärprobe steht an einem wärmeren Ort als die Hauptgärung des Jungbiers. Dies bewirkt eine schnellere Gärung. Mit ihr lassen sich Werte des Jungbiers vorhersagen, u.a. der Abfüllzeitpunkt für Flaschengärung (Grünschlauchen).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>Restextrakt der Schnellgärprobe</string>
@@ -1507,7 +1510,7 @@
            <item row="3" column="1">
             <widget class="DoubleSpinBox" name="tbZuckerFaktor">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Süßkraft&lt;/span&gt; beschreibt die Süße eines Zuckers. Benchmark ist Haushaltszucker mit Süßkraft = 1.&lt;/p&gt;&lt;p&gt;Haushaltszucker (Saccharose | Zweifachzucker): 1,00&lt;br/&gt;Traubenzucker (Dextrose | Einfachzucker): 0,5 – 0,91&lt;br/&gt;Fruchtzucker (Fructose | Einfachzucker): 1,0 – 1,8&lt;/p&gt;&lt;p&gt;Es gibt bis heute keine Laborinstrumente zur Messung der Süßkraft. Die Süßkraft ist je nach Zucker unterschiedlich. Dies hängt u.a. mit dem Wassergehalt eines Zuckers zusammen. Traubenzucker enthält 9% mehr Wasser als Haushaltszucker. Folglich muss dieser Wert bei der Mengenbemessung berücksichtigt werden.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer verrechnet für die Karbonisierung mit Zucker das bereits gelöste CO₂ der Hauptgärung. Das &lt;span style=&quot; font-weight:600;&quot;&gt;Temperaturoptimium&lt;/span&gt; muss vom Brauer bestimmt werden. Näheres dazu im Feld Temperatur.&lt;/p&gt;&lt;p&gt;Bei weiteren Fragen ist die Fachliteratur oder ein Fachforum Mittel der Wahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Süßkraft&lt;/span&gt; beschreibt die Süße eines Zuckers. Benchmark ist Haushaltszucker mit Süßkraft = 1.&lt;/p&gt;&lt;p&gt;Haushaltszucker (Saccharose | Zweifachzucker): 1,00&lt;br/&gt;Traubenzucker (Dextrose | Einfachzucker): 0,69&lt;br/&gt;Fruchtzucker (Fructose | Einfachzucker): 1,14 (gelöste Form – 1,8 (kristalline Form)&lt;/p&gt;&lt;p&gt;Es gibt bis heute keine Laborinstrumente zur Messung der Süßkraft. Die Süßkraft ist je nach Zucker unterschiedlich. Dies hängt u.a. mit dem Wassergehalt eines Zuckers zusammen. Traubenzucker enthält 9% mehr Wasser als Haushaltszucker. Folglich muss dieser Wert bei der Mengenbemessung berücksichtigt werden.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer verrechnet für die Karbonisierung mit Zucker das bereits gelöste CO₂ der Hauptgärung. Das &lt;span style=&quot; font-weight:600;&quot;&gt;Temperaturoptimium&lt;/span&gt; muss vom Brauer bestimmt werden. Näheres dazu im Feld Temperatur.&lt;/p&gt;&lt;p&gt;Bei weiteren Fragen ist die Fachliteratur oder ein Fachforum Mittel der Wahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -1592,6 +1595,9 @@
         </item>
         <item>
          <widget class="QGroupBox" name="groupBox_5">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden Anmerkungen, Besonderheiten eingetragen, die fürs Abfüllen wichtig sind&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="title">
            <string>Abfüllen</string>
           </property>

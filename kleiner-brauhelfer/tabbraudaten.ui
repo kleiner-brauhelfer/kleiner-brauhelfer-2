@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1222</width>
-         <height>1016</height>
+         <width>1228</width>
+         <height>949</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -66,7 +66,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf den Button setzt das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum &lt;/span&gt;auf die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Computerzeit &lt;/span&gt;im Feld nebenan.&lt;/p&gt;&lt;p&gt;Damit wird dieser reiter gesperrt, und dieser Prozessschritt gilt als abgeschlossen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ein Klick auf den Button setzt das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum &lt;/span&gt;auf die &lt;span style=&quot; font-weight:600;&quot;&gt;aktuelle Computerzeit &lt;/span&gt;im Feld nebenan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>Jetzt</string>
@@ -141,7 +141,7 @@
               </size>
              </property>
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum&lt;/span&gt; bezeichnet den Zeitpunkt, zu demb die Hefe  zur Würzehinzugegeben wurde. Mit dem Braudatum endet der eigentliche Brauprozess und die Gärphase beginnt.&lt;/p&gt;&lt;p&gt;Die Zugabe der Hefe wird &lt;span style=&quot; font-weight:700;&quot;&gt;Anstellen&lt;/span&gt; genannt. Der Kleine Brauhelfer interpretiert die erste Zugabe als maßgebend, unabhängig von fortfolgenden Hefegaben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum&lt;/span&gt; bezeichnet den Zeitpunkt, zu dem zur Würze die Hefe hinzugegeben wurde. Mit dem Braudatum endet der eigentliche Brauprozess und die Gärphase beginnt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -2097,7 +2097,7 @@
            <item row="2" column="6">
             <widget class="DoubleSpinBoxSud" name="tbHopfenseihenVerlust">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Würzeverlust durch das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenseihen&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Die Verlustmenge ist neben baulichen Faktoren der Anlage vom Hopfen selbst abhängig. &lt;span style=&quot; font-weight:600;&quot;&gt;Doldenhopfen&lt;/span&gt; binden deutlich mehr Flüssigkeit als Hopfenpellets wie &lt;span style=&quot; font-weight:600;&quot;&gt;T90&lt;/span&gt; oder &lt;span style=&quot; font-weight:600;&quot;&gt;T45&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;^^^</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Würzeverlust durch das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenseihen&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Die Verlustmenge ist neben baulichen Faktoren der Anlage vom Hopfen selbst abhängig. &lt;span style=&quot; font-weight:600;&quot;&gt;Doldenhopfen&lt;/span&gt; binden deutlich mehr Flüssigkeit als Hopfenpellets wie &lt;span style=&quot; font-weight:600;&quot;&gt;T90&lt;/span&gt; oder &lt;span style=&quot; font-weight:600;&quot;&gt;T45&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -2528,16 +2528,13 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="2">
+	      <item row="0" column="2">
                <widget class="DoubleSpinBoxSud" name="tbSWHefestarterBrix">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
                   <height>0</height>
                  </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Stammwürze des Hefestarters in °Brix angegeben. Die Übernahme des Wertes erfolgt automatisch aus dem &lt;span style=&quot; font-weight:700;&quot;&gt;Submenü Gärung &lt;/span&gt;im Reiter Rezept.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -2583,7 +2580,7 @@
                 </property>
                </spacer>
               </item>
-              <item row="0" column="8">
+	      <item row="0" column="8">
                <widget class="QLabel" name="lblSpeisemengeNoetigEinheit_2">
                 <property name="minimumSize">
                  <size>
@@ -2610,9 +2607,6 @@
                   <width>50</width>
                   <height>0</height>
                  </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Stammwürze des Hefestarters in °P eingetragen. Die Übernahme des Wertes erfolgt automatisch aus dem &lt;span style=&quot; font-weight:700;&quot;&gt;Submenü Gärung &lt;/span&gt;im Reiter Rezept.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -2647,9 +2641,6 @@
                   <width>80</width>
                   <height>0</height>
                  </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Menge des Hefestarterw automatisiert angegeben. Die Übernahme des Wertes erfolgt automatisch aus dem &lt;span style=&quot; font-weight:700;&quot;&gt;Submenü Gärung &lt;/span&gt;im Reiter Rezept.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -2958,17 +2949,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>WdgBemerkung</class>
-   <extends>QWidget</extends>
-   <header>widgets/wdgbemerkung.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>DateEdit</class>
-   <extends>QDateEdit</extends>
-   <header>widgets/dateedit.h</header>
-  </customwidget>
-  <customwidget>
    <class>PushButton</class>
    <extends>QPushButton</extends>
    <header>widgets/pushbutton.h</header>
@@ -2979,9 +2959,20 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
+   <class>WdgBemerkung</class>
+   <extends>QWidget</extends>
+   <header>widgets/wdgbemerkung.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>DoubleSpinBoxSud</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinboxsud.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
   </customwidget>
   <customwidget>
    <class>TimeEdit</class>

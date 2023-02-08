@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1222</width>
-         <height>1016</height>
+         <width>1228</width>
+         <height>949</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -1677,7 +1677,7 @@
               <string notr="true">uebertrag_links</string>
              </property>
              <property name="icon">
-              <iconset resource="../../../../../Cella/SynologyDrive/GitHub/kleiner-brauhelfer-2/kleiner-brauhelfer/images.qrc">
+              <iconset resource="images.qrc">
                <normaloff>:/images/light/uebertrag_links.svg</normaloff>
                <disabledoff>:/images/disabled/uebertrag_links.svg</disabledoff>:/images/light/uebertrag_links.svg</iconset>
              </property>
@@ -2408,7 +2408,7 @@
               <string notr="true">uebertrag_links</string>
              </property>
              <property name="icon">
-              <iconset resource="../../../../../Cella/SynologyDrive/GitHub/kleiner-brauhelfer-2/kleiner-brauhelfer/images.qrc">
+              <iconset resource="images.qrc">
                <normaloff>:/images/light/uebertrag_links.svg</normaloff>
                <disabledoff>:/images/disabled/uebertrag_links.svg</disabledoff>:/images/light/uebertrag_links.svg</iconset>
              </property>
@@ -2528,16 +2528,13 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="2">
+	      <item row="0" column="2">
                <widget class="DoubleSpinBoxSud" name="tbSWHefestarterBrix">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
                   <height>0</height>
                  </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:700;&quot;&gt;Stammwürze des Starters &lt;/span&gt;in &lt;span style=&quot; font-weight:700;&quot;&gt;°Brix &lt;/span&gt;eingetragen. Der Wert kann vom angenommenen Wert im Reiter Rezept, Unterreiter Gärung, abweichen. In jedem Fall wird die Stammwürze mit der Stammwürze beim Anstellen verrechnet und gegebenenfalls daraus die Verdünnungsmenge abgeleitet. &lt;/p&gt;&lt;p&gt;Es emphiehlt sich daher die vorab errechneten Werte mit Vorsicht zu betrachten und besser den Nachguss in zwei oder mehreren Teilmengen aufzubringen und dabei ständig zu Spindeln oder mit dem Refraktometer nachmessen.&lt;/p&gt;&lt;p&gt;Ein Hefestarter hat üblicherweise 9,5 – 12,5 °Brix.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -2583,7 +2580,7 @@
                 </property>
                </spacer>
               </item>
-              <item row="0" column="8">
+	      <item row="0" column="8">
                <widget class="QLabel" name="lblSpeisemengeNoetigEinheit_2">
                 <property name="minimumSize">
                  <size>
@@ -2610,9 +2607,6 @@
                   <width>50</width>
                   <height>0</height>
                  </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:700;&quot;&gt;Stammwürze des Starters &lt;/span&gt;in &lt;span style=&quot; font-weight:700;&quot;&gt;°Plato &lt;/span&gt;eingetragen. Der Wert kann vom angenommenen Wert im Reiter Rezept, Unterreiter Gärung, abweichen. In jedem Fall wird die Stammwürze mit der Stammwürze beim Anstellen verrechnet und gegebenenfalls daraus die Verdünnungsmenge abgeleitet. &lt;/p&gt;&lt;p&gt;Es emphiehlt sich daher die vorab errechneten Werte mit Vorsicht zu betrachten und besser den Nachguss in zwei oder mehreren Teilmengen aufzubringen und dabei ständig zu Spindeln oder mit dem Refraktometer nachmessen.&lt;/p&gt;&lt;p&gt;Ein Hefestarter hat üblicherweise 9 - 12 °Plato.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -2647,9 +2641,6 @@
                   <width>80</width>
                   <height>0</height>
                  </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:700;&quot;&gt;Menge des Starters &lt;/span&gt;eingetragen. Der Wert kann vom angenommenen Wert im Reiter Rezept, Unterreiter Gärung, abweichen. In jedem Fall wird die &lt;span style=&quot; font-weight:700;&quot;&gt;Menge mit &lt;/span&gt;der &lt;span style=&quot; font-weight:700;&quot;&gt;Würzmenge beim Anstellen &lt;/span&gt;verrechnet und gegebenenfalls daraus die Verdünnungsmenge abgeleitet. &lt;/p&gt;&lt;p&gt;Es emphiehlt sich daher die vorab errechneten Werte mit Vorsicht zu betrachten und besser den Nachguss in zwei oder mehreren Teilmengen aufzubringen und dabei ständig zu Spindeln oder mit dem Refraktometer nachmessen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignCenter</set>
@@ -2910,7 +2901,7 @@
              <string>Sud gebraut</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../../../Cella/SynologyDrive/GitHub/kleiner-brauhelfer-2/kleiner-brauhelfer/images.qrc">
+             <iconset resource="images.qrc">
               <normaloff>:/images/light/sud_gebraut.svg</normaloff>
               <disabledoff>:/images/disabled/sud_gebraut.svg</disabledoff>:/images/light/sud_gebraut.svg</iconset>
             </property>
@@ -2958,19 +2949,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>DateEdit</class>
-   <extends>QDateEdit</extends>
-   <header>widgets/dateedit.h</header>
-  </customwidget>
-  <customwidget>
    <class>PushButton</class>
    <extends>QPushButton</extends>
    <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
    <class>WdgBemerkung</class>
@@ -2982,6 +2968,11 @@
    <class>DoubleSpinBoxSud</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinboxsud.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
   </customwidget>
   <customwidget>
    <class>TimeEdit</class>
@@ -3065,7 +3056,7 @@
   <tabstop>splitterCharts</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../../../Cella/SynologyDrive/GitHub/kleiner-brauhelfer-2/kleiner-brauhelfer/images.qrc"/>
+  <include location="images.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>365</width>
-         <height>700</height>
+         <width>438</width>
+         <height>688</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
@@ -753,7 +753,7 @@ p, li { white-space: pre-wrap; }
             <item>
              <widget class="WdgBemerkung" name="wdgBemerkung" native="true">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Bereich &lt;span style=&quot; font-weight:600;&quot;&gt;Bemerkung&lt;/span&gt; ist ein Freiformfeld für Anmerkungen aller Art.&lt;/p&gt;&lt;p&gt;Er eignet sich hervorragend alle für prozessnotwendigen Schritte, die im Programm nicht abgebildet werden, aber auch für theoretische Anmerkungen wie Historie oder als Quellensammlung. &lt;/p&gt;&lt;p&gt;In veröffentlichten Rezepten nutzen Hobbybrauer Anmerkungen traditionell, um Verständnisfehler und damit Nachfragen zu vermeiden.&lt;/p&gt;&lt;p&gt;Gerne wird das Feld für spezielle Wasserprofile und besondere Prozessschritte genutzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Bereich &lt;span style=&quot; font-weight:600;&quot;&gt;Bemerkung&lt;/span&gt; ist ein Freiformfeld für Anmerkungen aller Art.&lt;/p&gt;&lt;p&gt;Er eignet sich hervorragend alle für prozessnotwendigen Schritte, die im Programm nicht abgebildet werden, aber auch für theoretische Anmerkungen wie Historie oder als Quellensammlung. &lt;/p&gt;&lt;p&gt;In veröffentlichten Rezepten nutzen Hobbybrauer Anmerkungen traditionell, um Verständnisfehler und damit Nachfragen zu vermeiden.&lt;/p&gt;&lt;p&gt;Gerne wird das Feld für spezielle Wasserprofile und besondere Prozessschritte genutzt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Neu: &lt;/span&gt;Die meisten Feler für Bemerkungen unterstützen jetzt HTML. Ein Klick in das Feld öffnet die Eingabemaske. Werden Schrift und Schriftgröße gewählt, merkt sich das der Kleine Brauhelfer für die anderen Felder.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
             </item>
@@ -884,8 +884,8 @@ p, li { white-space: pre-wrap; }
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>337</width>
-                 <height>182</height>
+                 <width>368</width>
+                 <height>105</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -982,8 +982,11 @@ p, li { white-space: pre-wrap; }
         <height>200</height>
        </size>
       </property>
+      <property name="toolTip">
+       <string/>
+      </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tabMalz">
        <attribute name="title">
@@ -1063,8 +1066,8 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>341</width>
-              <height>379</height>
+              <width>429</width>
+              <height>311</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1113,7 +1116,11 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="ChartView" name="diagramMalz"/>
+          <widget class="ChartView" name="diagramMalz">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum Prozessschritt Maischen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
           <widget class="WdgBemerkung" name="wdgBemerkungMaischen" native="true"/>
          </widget>
         </item>
@@ -1311,7 +1318,7 @@ p, li { white-space: pre-wrap; }
            <item>
             <widget class="PushButton" name="btnHopfenAusgleichen">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Summe der angegebenen Hopfenmengen (Bitteren) mit der erforderlichen Gesamtmenge (Gesamtbittere) verglichen und die &lt;span style=&quot; font-weight:600;&quot;&gt;Einzeleinträge prozentual angepasst&lt;/span&gt;. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Summe der angegebenen Hopfenmengen (Bitteren) mit der erforderlichen Gesamtmenge (Gesamtbittere) verglichen und die &lt;span style=&quot; font-weight:600;&quot;&gt;Einzeleinträge prozentual angepasst&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;Wie beim Malz können jetzt auch Hopfengaben ausgeglichen verteilt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="text">
               <string>Ausgleichen</string>
@@ -1344,8 +1351,8 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>341</width>
-              <height>357</height>
+              <width>429</width>
+              <height>287</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1394,7 +1401,11 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="ChartView" name="diagramHopfen"/>
+          <widget class="ChartView" name="diagramHopfen">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum &lt;span style=&quot; font-weight:700;&quot;&gt;Prozessschritt Hopfenkochen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
           <widget class="WdgBemerkung" name="wdgBemerkungKochen" native="true"/>
          </widget>
         </item>
@@ -1471,7 +1482,7 @@ p, li { white-space: pre-wrap; }
              <item>
               <widget class="QPushButton" name="btnNeueZusatzGabeKochen">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Wichtig: &lt;/span&gt;Zusätze werden jetzt auch mit ihrem anteil zur Stammwürze in der Kalkulation berücksichtigt. Dazu muss die Ausbeute in der Rohstoffliste definiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="whatsThis">
                 <string notr="true">plus</string>
@@ -1489,7 +1500,7 @@ p, li { white-space: pre-wrap; }
              <item>
               <widget class="QPushButton" name="btnZusazGabenUebernehmenKochen">
                <property name="toolTip">
-                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zusatzgaben&lt;/span&gt; aus einem bestehenden Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;übernommen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zusatzgaben&lt;/span&gt; aus einem bestehenden Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;übernommen&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Wichtig: &lt;/span&gt;Zusätze werden jetzt auch mit ihrem anteil zur Stammwürze in der Kalkulation berücksichtigt. Dazu muss die Ausbeute in der Rohstoffliste definiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="whatsThis">
                 <string notr="true">import</string>
@@ -1626,6 +1637,9 @@ p, li { white-space: pre-wrap; }
               <height>0</height>
              </size>
             </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Statt der zuvor im Rezept festgelegten Werte, kann hier die &lt;span style=&quot; font-weight:700;&quot;&gt;tatsächlich benötigte Menge&lt;/span&gt; der Zutat anhand der Daten im &lt;span style=&quot; font-weight:700;&quot;&gt;Reiter Braudaten &lt;/span&gt;herangezogen werden&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Eine geänderte Gabe ist nur nach dem Anstellen möglich. Dazu muss der Sud im Reiter Braudaten als gebraut markiert sein.&lt;/p&gt;&lt;p&gt;Rezept und Braudaten unterscheiden sich in vielen Fällen, etwa wegen einer unpassend geschätzten Sudhausausbeute, einer anderen Verdampfungsrate, wie es oft nach einer Konfigurationsänderung der Braugerätschaften der Fall ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>l</string>
             </property>
@@ -1656,8 +1670,8 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>341</width>
-              <height>502</height>
+              <width>429</width>
+              <height>446</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1706,7 +1720,11 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="WdgBemerkung" name="wdgBemerkungGaerung" native="true"/>
+          <widget class="WdgBemerkung" name="wdgBemerkungGaerung" native="true">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum &lt;span style=&quot; font-weight:700;&quot;&gt;Prozessschritt Gärung&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </widget>
         </item>
         <item>
@@ -1893,8 +1911,8 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>341</width>
-              <height>407</height>
+              <width>429</width>
+              <height>360</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -1936,7 +1954,11 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="ChartView" name="diagramRasten"/>
+          <widget class="ChartView" name="diagramRasten">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum Maischeplan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
           <widget class="WdgBemerkung" name="wdgBemerkungMaischplan" native="true"/>
          </widget>
         </item>
@@ -2297,6 +2319,9 @@ p, li { white-space: pre-wrap; }
               <height>0</height>
              </size>
             </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier öffnet man die Eingabemaske für das detaillierte &lt;span style=&quot; font-weight:700;&quot;&gt;Wasserprofil.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Über nebenstehendes Pop-p-Menü kann dann das Wunschprofil für das Rezept bequem ausgewählt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="whatsThis">
              <string notr="true">edit</string>
             </property>
@@ -2331,8 +2356,8 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>341</width>
-              <height>350</height>
+              <width>429</width>
+              <height>288</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -2374,7 +2399,11 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="WdgBemerkung" name="wdgBemerkungWasseraufbereitung" native="true"/>
+          <widget class="WdgBemerkung" name="wdgBemerkungWasseraufbereitung" native="true">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum &lt;span style=&quot; font-weight:700;&quot;&gt;Prozessschritt Wasseraufbereitung&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </widget>
         </item>
         <item>
@@ -2449,8 +2478,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>332</width>
-          <height>835</height>
+          <width>416</width>
+          <height>872</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -2502,7 +2531,7 @@ p, li { white-space: pre-wrap; }
             <item row="14" column="2">
              <widget class="DoubleSpinBoxSud" name="tbRestextrakt">
               <property name="toolTip">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der berechnete Anteil an &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; nach der Gärung in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;p&gt;Aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Differenz&lt;/span&gt; zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze beim Anstellen&lt;/span&gt; und Restextrakt wird wiederum der scheinbare Endvergärungsgrad (sEVG) gebildet, der die Gärfähigkeit einer Hefe beschreibt. Durchschnittlich sind 60 – 80% bei einer vitalen Hefe üblich, bei sogenannten Supervergärern auch mehr. &lt;/p&gt;&lt;p&gt;Der Restextrakt ist zunächst ein theoretischer Sollwert, den der Kleine Brauhelfer für ein erfolgreich vergorenes Jungbier festlegt. Der Restextrakt berechnet sich - in Verbindung mit der Stammwürze - aus den Angaben im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Vergärungsgrad&lt;/span&gt; links.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Zum Zeitpunkt der Rezepterstellung ist der Vergärungsgrad nur eine theoretische Größe&lt;span style=&quot; font-weight:600;&quot;&gt;. &lt;/span&gt;Der reale in der Braupraxis wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Gärverlauf&lt;/span&gt;, hier: Hauptgärung,ermittelt und im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der berechnete Anteil an &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; nach der Gärung in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato&lt;/span&gt; ausgegeben. Auch negative Werte sind möglich.&lt;/p&gt;&lt;p&gt;Aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Differenz&lt;/span&gt; zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze beim Anstellen&lt;/span&gt; und Restextrakt wird wiederum der scheinbare Endvergärungsgrad (sEVG) gebildet, der die Gärfähigkeit einer Hefe beschreibt. Durchschnittlich sind 60 – 80% bei einer vitalen Hefe üblich, bei sogenannten Supervergärern auch mehr. &lt;/p&gt;&lt;p&gt;Der Restextrakt ist zunächst ein theoretischer Sollwert, den der Kleine Brauhelfer für ein erfolgreich vergorenes Jungbier festlegt. Der Restextrakt berechnet sich - in Verbindung mit der Stammwürze - aus den Angaben im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Vergärungsgrad&lt;/span&gt; links.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Zum Zeitpunkt der Rezepterstellung ist der Vergärungsgrad nur eine theoretische Größe&lt;span style=&quot; font-weight:600;&quot;&gt;. &lt;/span&gt;Der reale in der Braupraxis wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Gärverlauf&lt;/span&gt;, hier: Hauptgärung,ermittelt und im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -3842,6 +3871,16 @@ p, li { white-space: pre-wrap; }
  </widget>
  <customwidgets>
   <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
    <class>PushButton</class>
    <extends>QPushButton</extends>
    <header>widgets/pushbutton.h</header>
@@ -3861,16 +3900,6 @@ p, li { white-space: pre-wrap; }
    <class>DoubleSpinBoxSud</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinboxsud.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
    <class>ChartView</class>

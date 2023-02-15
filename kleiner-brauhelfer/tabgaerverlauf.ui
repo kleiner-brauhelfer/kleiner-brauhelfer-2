@@ -20,7 +20,7 @@
    <item>
     <widget class="QToolBox" name="toolBox_Gaerverlauf">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="pageSchnellgaerung">
       <property name="geometry">
@@ -211,6 +211,9 @@
            </property>
            <item>
             <widget class="TableView" name="tableWidget_Hauptgaerverlauf">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden die Messerte der Gärung eingetragen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Durch Rechtsklick kann jdie Tabellenbreite zurückgesetzt werden, können alle Felder kopiert oder ausgedruckt werden. Durch Shift kann eine Auswahl von Einträgen kopiertund ausgeruckt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
              </property>

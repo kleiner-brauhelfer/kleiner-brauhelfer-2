@@ -1,4 +1,7 @@
 # kleiner-brauhelfer v2
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/kleiner-brauhelfer/kleiner-brauhelfer-2)](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
+[![GitHub Release Date](https://img.shields.io/github/release-date/kleiner-brauhelfer/kleiner-brauhelfer-2)](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)
+
 Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und Verwalten von Biersuden. Die Version 2 ist die Weiterentwicklung vom [kleinen-brauhelfer](http://github.com/Gremmel/kleiner-brauhelfer).
 
 - <img src="kleiner-brauhelfer/images/de.svg" width="16"> verfügbar auf Deutsch

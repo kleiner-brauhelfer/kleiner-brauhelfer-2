@@ -12,15 +12,15 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: sudo apt-get update -y && sudo apt-get install build-essential mesa-common-dev libgl1-mesa-dev libfontconfig1 fuse qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libqt5charts5* libqt5webengine* libqt5svg5* qtwebengine5-dev* libqt5webenginecore5 libqt5webenginewidgets5 libqt5wayland* -y
-        
+
       - name: Load FUSE module
         run: sudo modprobe fuse
 
@@ -36,7 +36,7 @@ jobs:
           cp ./kleiner-brauhelfer-2-x86_64.AppImage deploy/
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: kleiner-brauhelfer-2
           path: deploy

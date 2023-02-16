@@ -16,13 +16,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v3
         with:
+          version: 5.15.2
           modules: qtcharts qtwebengine
-    
+
       - name: Build kleiner-brauhelfer-2
         shell: cmd
         run: |
@@ -36,9 +37,9 @@ jobs:
           cd bin
           copy "kleiner-brauhelfer-2.exe" "../../deploy"
           cd ../..
-          
+
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: kleiner-brauhelfer-2
           path: deploy

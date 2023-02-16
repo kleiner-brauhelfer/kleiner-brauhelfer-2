@@ -12,18 +12,19 @@ on:
 jobs:
   build:
 
-    runs-on: macos-10.15
+    runs-on: macos-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-            setup-python: 'false'
-            modules: 'qtcharts qtwebengine'
-        
+          setup-python: 'false'
+          version: 5.15.2
+          modules: qtcharts qtwebengine
+
       - name: Build kleiner-brauhelfer-2
         run: |
           chmod +x ./build_macos.sh
@@ -32,7 +33,7 @@ jobs:
           cp build-macos/bin/kbh2_*.zip deploy/
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v3
         with:
           name: kleiner-brauhelfer-2
           path: deploy

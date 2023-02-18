@@ -13,6 +13,7 @@
 - Neu: Unvergärbare Zusätze
 - Neu: Menge der Zusätze für die Gärung inklusive Stopfhofen können sich auf die Anstellmenge beziehen
 - Fix: Übermäßige Zeilenumbrüche für die Bemerkungsfelder im Spickzettel
+- Fix: Absturz beim Ändern eines Eintrags in der Hauptgärung und Schnellgärprobe
 
 ## Version 2.4.0 (26.05.2022)
 - Neu: Datenbankversion **2007**

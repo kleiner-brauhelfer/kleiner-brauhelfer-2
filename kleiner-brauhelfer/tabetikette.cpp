@@ -387,7 +387,10 @@ void TabEtikette::on_btnExport_clicked()
             fileRead.open(QIODevice::ReadOnly | QIODevice::Text);
             QString svg_template = fileRead.readAll();
             fileRead.close();
-            file.write(generateSvg(svg_template).toUtf8());
+            if (ui->cbTagsErsetzen->isChecked())
+                file.write(generateSvg(svg_template).toUtf8());
+            else
+                file.write(svg_template.toUtf8());
             file.close();
         }
         else
@@ -614,7 +617,6 @@ void TabEtikette::updateValues()
         }
     }
     ui->scrollArea->setEnabled(ui->cbAuswahl->currentIndex() != 0);
-    ui->wdgEdit->setEnabled(ui->cbAuswahl->currentIndex() != 0);
     if (!ui->tbAnzahl->hasFocus())
         ui->tbAnzahl->setValue(data(ModelEtiketten::ColAnzahl).toInt());
     if (!ui->tbLabelBreite->hasFocus())

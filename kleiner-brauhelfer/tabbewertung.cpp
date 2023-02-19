@@ -110,7 +110,6 @@ void TabBewertung::updateValues()
     ui->tbDatum->setMaximumDate(QDate::currentDate());
     if (!ui->tbDatum->hasFocus())
         ui->tbDatum->setDate(data(ModelBewertungen::ColDatum).toDate());
-    ui->lblWoche->setText(data(ModelBewertungen::ColWoche).toString());
     ui->wdgBemerkung->setHtml(data(ModelBewertungen::ColBemerkung).toString());
 
     int value = data(ModelBewertungen::ColFarbe).toInt();

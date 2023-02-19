@@ -290,7 +290,7 @@ void DlgRohstoffe::build()
 
 void DlgRohstoffe::keyPressEvent(QKeyEvent* event)
 {
-    QWidget::keyPressEvent(event);
+    DlgAbstract::keyPressEvent(event);
     QTableView *table;
     switch (ui->toolBoxRohstoffe->currentIndex())
     {

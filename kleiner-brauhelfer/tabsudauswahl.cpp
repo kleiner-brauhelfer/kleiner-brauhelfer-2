@@ -174,7 +174,7 @@ void TabSudAuswahl::selectionChanged()
 
 void TabSudAuswahl::keyPressEvent(QKeyEvent *event)
 {
-    QWidget::keyPressEvent(event);
+    TabAbstract::keyPressEvent(event);
     if (ui->tableSudauswahl->hasFocus())
     {
         switch (event->key())

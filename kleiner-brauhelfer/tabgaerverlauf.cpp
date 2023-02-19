@@ -213,7 +213,7 @@ void TabGaerverlauf::modulesChanged(Settings::Modules modules)
 
 void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
 {
-    QWidget::keyPressEvent(event);
+    TabAbstract::keyPressEvent(event);
     if (ui->tableWidget_Schnellgaerverlauf->hasFocus())
     {
         switch (event->key())

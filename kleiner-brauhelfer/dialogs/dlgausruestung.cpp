@@ -172,7 +172,7 @@ void DlgAusruestung::showEvent(QShowEvent *event)
 
 void DlgAusruestung::keyPressEvent(QKeyEvent* event)
 {
-    QWidget::keyPressEvent(event);
+    DlgAbstract::keyPressEvent(event);
     if (ui->tableViewAnlagen->hasFocus())
     {
         switch (event->key())

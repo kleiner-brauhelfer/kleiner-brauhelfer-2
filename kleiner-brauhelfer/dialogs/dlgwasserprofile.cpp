@@ -101,7 +101,7 @@ void DlgWasserprofile::select(const QString& profile)
 
 void DlgWasserprofile::keyPressEvent(QKeyEvent* event)
 {
-    QWidget::keyPressEvent(event);
+    DlgAbstract::keyPressEvent(event);
     if (ui->tableWasser->hasFocus())
     {
         switch (event->key())

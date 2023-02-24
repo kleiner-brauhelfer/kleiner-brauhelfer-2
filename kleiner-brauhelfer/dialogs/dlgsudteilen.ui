@@ -28,14 +28,14 @@
      <item>
       <widget class="QLineEdit" name="lineEdit_Name1">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Popup-Menü wird der vorliegende Sudin &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Sude aufgeteilt &lt;/span&gt;. Dieses Feld bezeichnet die &lt;span style=&quot; font-weight:600;&quot;&gt;erste Teilmenge&lt;/span&gt;. Es empfiehlt sich einen aussagekräftigen Namen in Abgrenzung zum zweiten Sud zu wählen, um Verwechselungen vorzubeugen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen ab Gärbeginn zeit- und kostengünstig umzusetzen. Dies können verschiedene Hefen, aber auch Zusätze wie verschiedene Zucker und Gewürze und natürlich kaltgestopfte Hopfensorten sein.&lt;/p&gt;&lt;p&gt;Die Funktion empfiehlt sich auch bei Rezepten nach der &lt;span style=&quot; font-weight:700;&quot;&gt;Parti-Gyle-Methode&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Popup-Menü wird der vorliegende Sud&lt;span style=&quot; font-weight:600;&quot;&gt; aufgeteilt &lt;/span&gt;in &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Sude&lt;/span&gt;. Dieses Feld bezeichnet die &lt;span style=&quot; font-weight:600;&quot;&gt;erste Teilmenge&lt;/span&gt;. Es empfiehlt sich einen aussagekräftigen Namen in Abgrenzung zum zweiten Sud zu wählen, um Verwechselungen vorzubeugen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen ab Gärbeginn zeit- und kostengünstig umzusetzen. Dies können verschiedene Hefen, aber auch Zusätze wie verschiedene Zucker und Gewürze und natürlich kaltgestopfte Hopfensorten sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLineEdit" name="lineEdit_Name2">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Popup-Menü wird der vorliegende Sud&lt;span style=&quot; font-weight:600;&quot;/&gt;in &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Sude aufgeteilt &lt;/span&gt;. Dieses Feld bezeichnet die &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Teilmenge&lt;/span&gt;. Es empfiehlt sich einen aussagekräftigen Namen in Abgrenzung zum zweiten Sud zu wählen, um Verwechselungen vorzubeugen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen ab Gärbeginn zeit- und kostengünstig umzusetzen. Dies können verschiedene Hefen, aber auch Zusätze wie verschiedene Zucker und Gewürze und natürlich kaltgestopfte Hopfensorten sein.&lt;/p&gt;&lt;p&gt;Die Funktion empfiehlt sich auch bei Rezepten nach der &lt;span style=&quot; font-weight:700;&quot;&gt;Parti-Gyle-Methode&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Popup-Menü wird der vorliegende Sud&lt;span style=&quot; font-weight:600;&quot;&gt; aufgeteilt &lt;/span&gt;in &lt;span style=&quot; font-weight:600;&quot;&gt;zwei Sude&lt;/span&gt;. Dieses Feld bezeichnet die &lt;span style=&quot; font-weight:600;&quot;&gt;zweite Teilmenge&lt;/span&gt;. Es empfiehlt sich einen aussagekräftigen Namen in Abgrenzung zum zweiten Sud zu wählen, um Verwechselungen vorzubeugen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sude teilen&lt;/span&gt; ist eine gute Methode, um Variationen ab Gärbeginn zeit- und kostengünstig umzusetzen. Dies können verschiedene Hefen, aber auch Zusätze wie verschiedene Zucker und Gewürze und natürlich kaltgestopfte Hopfensorten sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -114,7 +114,7 @@
      <item row="1" column="3">
       <widget class="DoubleSpinBox" name="doubleSpinBox_Amount2">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die zweite Menge des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;nach Menge&lt;/span&gt; bestimmt. Die erste Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;p&gt;Die Funktion empfiehlt sich auch bei Rezepten nach der &lt;span style=&quot; font-weight:700;&quot;&gt;Parti-Gyle-Methode&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die zweite Menge des geteilten Sudes &lt;span style=&quot; font-weight:600;&quot;&gt;nach Menge&lt;/span&gt; bestimmt. Die erste Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -159,7 +159,7 @@
      <item row="1" column="0">
       <widget class="DoubleSpinBox" name="doubleSpinBox_Amount1">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die erste Menge vom geteilten Sud &lt;span style=&quot; font-weight:600;&quot;&gt;nach Menge&lt;/span&gt; bestimmt. Die zweite Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;p&gt;Die Funktion empfiehlt sich auch bei Rezepten nach der &lt;span style=&quot; font-weight:700;&quot;&gt;Parti-Gyle-Methode&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die erste Menge vom geteilten Sud &lt;span style=&quot; font-weight:600;&quot;&gt;nach Menge&lt;/span&gt; bestimmt. Die zweite Teilmenge wird automatisch ermittelt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>

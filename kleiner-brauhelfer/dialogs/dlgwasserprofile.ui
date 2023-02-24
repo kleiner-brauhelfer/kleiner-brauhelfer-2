@@ -151,8 +151,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>574</width>
-         <height>666</height>
+         <width>576</width>
+         <height>496</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -726,9 +726,6 @@
         <italic>true</italic>
        </font>
       </property>
-      <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In dieses Feld können Bemerkungen eingetragen werden, die vom Programm nicht erfasst werden. Anwendungsmöglichkeiten gibt es bei angestrebten Wasserprofilen, Rechenwegen und so fort.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Grundsätzlich gilt: Der Maische-pH-Wert ist oberste Instanz. Alsdann folgt die Zusammensetzung der Salze. Lässt sich ein Wasserprofil durch Salze und Säuren nicht exakt einstellen, hilft es oft ein Mischwasser aus dem Leitungswasser und Osmosewasser herzustellen oder gleich 100 % Osmosewasser zu nehmen und dieses wie gewünscht aufzusalzen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Die Dokumentation an dieser Stelle ist hilfreich, wenn es gilt, Routinen bei der Wasseraufbereitung zu entwickeln.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
       <property name="readOnly">
        <bool>true</bool>
       </property>
@@ -742,14 +739,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
    <class>WdgBemerkung</class>

@@ -31,7 +31,7 @@
        <item>
         <widget class="TableView" name="tableViewAnlagen">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle Brauan&lt;span style=&quot; font-weight:600;&quot;&gt;lagen&lt;/span&gt; aufgeführt, nicht aber zusätzliches Equipment. Dieses wird gesondert erfasst.&lt;/p&gt;&lt;p&gt;Anlagen sind definiert als unabdingbare Gerätschaften, mit denen man Malz maischt und Hopfen kocht. Eine Brauanlage beginnt mit dem größten Topf in der Küche und endet mit Systemen aus drei und mehr Kesseln. Sie ist definiert durch die Hauptschritte Maischen - Läutern - Kochen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Anlagen&lt;/span&gt; aufgeführt.&lt;/p&gt;&lt;p&gt;Anlagen sind definiert als unabdingbare Gerätschaften, mit denen man Malz maischt und Hopfen kocht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
@@ -135,8 +135,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>574</width>
-         <height>1137</height>
+         <width>576</width>
+         <height>1048</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -418,7 +418,7 @@
            <item row="7" column="1" colspan="2">
             <widget class="QSlider" name="sliderAusbeuteSude">
              <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica Neue';&quot;&gt;Über den &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:700;&quot;&gt;Schieberegler&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue';&quot;&gt; kann die Anzahl der Sude für die &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:700;&quot;&gt;Durchschnittsberechnung&lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue';&quot;&gt; festgelegt werden.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica Neue';&quot;&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Helvetica Neue'; font-weight:700; color:#ff9300;&quot;&gt;Tipp: &lt;/span&gt;&lt;span style=&quot; font-family:'Helvetica Neue';&quot;&gt;Werden Prozesse in der Prozesskette geändert, empfiehlt es sich frührere Sude auszuschließen; so gelangt man eher zu einem aussagekrätigen Mittelwert beim aktuellen Brauprozess.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über den &lt;span style=&quot; font-weight:600;&quot;&gt;Schieberegler&lt;/span&gt; kann die Anzahl der Sude für die &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittsberechnung&lt;/span&gt; festgelegt werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -1288,7 +1288,7 @@
               <bool>false</bool>
              </attribute>
              <attribute name="verticalHeaderDefaultSectionSize">
-              <number>24</number>
+              <number>20</number>
              </attribute>
             </widget>
            </item>
@@ -1312,16 +1312,10 @@
       </widget>
      </widget>
      <widget class="QTextBrowser" name="tbHelp">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
       <property name="font">
        <font>
         <italic>true</italic>
        </font>
-      </property>
-      <property name="toolTip">
-       <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle Sud ungefiltert augeführt, die mit der Anlage verknüpft sind. Mehr Suchkomfort bietet der Reiter Sudauswahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>

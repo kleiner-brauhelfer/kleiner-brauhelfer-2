@@ -35,6 +35,7 @@
        </property>
        <property name="font">
         <font>
+         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -47,9 +48,6 @@
    </item>
    <item>
     <widget class="QTextEdit" name="textEdit">
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden die Versionsänderungen augeführt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>
@@ -80,7 +78,7 @@
      <item>
       <widget class="QCheckBox" name="cbCheckForUpdates">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird gerpüft, ob ein Update vorliegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird gerpüft, ob ein Update vorliegt.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="text">
         <string>Auf Updates prüfen</string>

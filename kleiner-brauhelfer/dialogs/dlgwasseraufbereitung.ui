@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>488</width>
-    <height>170</height>
+    <height>134</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
         </size>
        </property>
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:700;&quot;&gt;Konzentrationsgrad der Säure &lt;/span&gt;oder des gelösten &lt;span style=&quot; font-weight:700;&quot;&gt;Salzes&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>Hier wird der konzentrationsgrad der Säure oder des gelösten Salzes angegeben.</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -50,7 +50,7 @@
         </sizepolicy>
        </property>
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld sind zur &lt;span style=&quot; font-weight:700;&quot;&gt;Wasseraufbereitung&lt;/span&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Säuren, Salze &lt;/span&gt;und &lt;span style=&quot; font-weight:700;&quot;&gt;gesäuerte Malze &lt;/span&gt;gesammelt aufgeführt. Zusätzlich können unter dem Punkt &amp;lt;manuell&amp;gt; weitere Zutaten, etwa zur Wasservorbehandlung durch gebrannten oder gelöschten Kalk hinzugefügt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Vorgehen: &lt;/span&gt;Auf die übliche Trennung dieser Kategorien wird im Kleinen Brauhelfer aus Gründen der Übersichtlichkeit verzichtet. Dennoch ist es nicht ratsam Salze und Säuren wahllos durcheinder zu würfeln. Will man ein bestimmtes Wasser einer Region nachbauen und aufbereiten, sollten zuerst die Salze eingestellt werden. Diese wirken stark auf den Calcium-, Sulfat- oder Chloridgehalt. Mit der Säure wird dann im zweiten Schritt der Wasseraufbereitung der gewünscht pH-Gehalt eingestellt und die Wasseraufbereitung abgeschlossen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung 1: &lt;/span&gt;Zum Umgang mit aggressiven &lt;span style=&quot; font-weight:600;&quot;&gt;Kalklösungen&lt;/span&gt; bei der Wassevorbehandlung sollte vorher ein Fachbuch oder ein Fachforum konsultiert sowie entsprechende Schutzausrüstung wie Handschuhe, Laborbrille besorgt werden. Aber auch Salze wie Calciumchlorid sind nicht unbedenklich, lässt es doch selbst Edelstahl korrodieren. Stark ätzenden Säuren sollten nur in entsprechender Verdünnung angewandt werden. Bei Salz- und Schwefelsäure ist ein Mundschutz unentbehrlich.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung 2: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Calciumchlorid&lt;/span&gt; wird im Handel als Anhydrat, als Dihydrat und als 33%-ige Lösung amgeboten. Entgegen anderen Salzen ist das so gut wie bei keinem Händler ausgewiesen und dementsprechend fehleranfällig kann sein Einsatz sein: Bei einem &lt;span style=&quot; font-weight:600;&quot;&gt;Anhydrat&lt;/span&gt; braucht es nur die Hälfte der Menge eines Dihydrats, da ein Wassermolekül entzogen wurde. Üblich ist im Handel Calciumchlorid als &lt;span style=&quot; font-weight:600;&quot;&gt;DihydratCaCl₂ x 2H₂O&lt;/span&gt;. Calciumchlorid Dihydrat wird auch als &lt;span style=&quot; font-weight:600;&quot;&gt;E509&lt;/span&gt; bezichnet.&lt;/p&gt;&lt;p&gt;Als &lt;span style=&quot; font-weight:600;&quot;&gt;Anhydrat&lt;/span&gt; ist es fein kristallin und hygroskopisch. Diese Anfällig für Feuchtigkeit ist ein Nachteil, da es dadurch unbrauchbar wird. Je höher die Raumtemperatur, desto mehr Feuchtigkeit wird eingelagert. Man kann das mit einer kleinen Menge im Ofen oder der Mikrowelle testen.&lt;/p&gt;&lt;p&gt;Als &lt;span style=&quot; font-weight:600;&quot;&gt;Dihydrat&lt;/span&gt; liegt Calciumchlorid oft in Kügelchen vor und ist weniger anfällig für Raumfeuchtigkeit. Das Dihydrat ist eindeutig zu bevorzugen. Auch wenn nicht ausgewiesen, die Aufbereitungsform Kügelchen ist ein zuverlässiger Indikator für die richtige Dosage. ist man sich unsicher, sind Fachforen wie &lt;a href=&quot;hobbybrauer.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;hobbybrauer.de&lt;/span&gt;&lt;/a&gt; Anlaufstelle der Wahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld sind zur Wasseraufbereitung Säuren, Salze und gesäuerte Malze gesammelt aufgeführt. Zusätzlich können unter dem Punkt &amp;lt;manuell&amp;gt; weitere Zutaten, etwa zur Wasservorbehandlung durch gebrannten oder gelöschten Kalk hinzugefügt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Vorgehen: &lt;/span&gt;Auf die übliche Trennung dieser Kategorien wird im Kleinen Brauhelfer aus Gründen der Übersichtlichkeit verzichtet. Dennoch ist es nicht ratsam Salze und Säuren wahllos durcheinder zu würfeln. Will man ein bestimmtes Wasser einer Region nachbauen und aufbereiten, sollten zuerst die Salze eingestellt werden. Diese wirken stark auf den Calcium-, Sulfat- oder Chloridgehalt. Mit der Säure wird dann im zweiten Schritt der Wasseraufbereitung der gewünscht pH-Gehalt eingestellt und die Wasseraufbereitung abgeschlossen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung 1: &lt;/span&gt;Zum Umgang mit aggressiven &lt;span style=&quot; font-weight:600;&quot;&gt;Kalklösungen&lt;/span&gt; bei der Wassevorbehandlung sollte vorher ein Fachbuch oder ein Fachforum konsultiert sowie entsprechende Schutzausrüstung wie Handschuhe, Laborbrille besorgt werden. Aber auch Salze wie Calciumchlorid sind nicht unbedenklich, lässt es doch selbst Edelstahl korrodieren. Stark ätzenden Säuren sollten nur in entsprechender Verdünnung angewandt werden. Bei Salz- und Schwefelsäure ist ein Mundschutz unentbehrlich.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung 2: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Calciumchlorid&lt;/span&gt; wird im Handel als Anhydrat, als Dihydrat und als 33%-ige Lösung amgeboten. Entgegen anderen Salzen ist das so gut wie bei keinem Händler ausgewiesen und dementsprechend fehleranfällig kann sein Einsatz sein: Bei einem &lt;span style=&quot; font-weight:600;&quot;&gt;Anhydrat&lt;/span&gt; braucht es nur die Hälfte der Menge eines Dihydrats, da ein Wassermolekül entzogen wurde. Üblich ist im Handel Calciumchlorid als &lt;span style=&quot; font-weight:600;&quot;&gt;Dihydrat&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;CaCl₂ x 2H₂O&lt;/span&gt;. Calciumchlorid Dihydrat wird auch als &lt;span style=&quot; font-weight:600;&quot;&gt;E509&lt;/span&gt; bezichnet.&lt;/p&gt;&lt;p&gt;Als &lt;span style=&quot; font-weight:600;&quot;&gt;Anhydrat&lt;/span&gt; ist es fein kristallin und hygroskopisch. Diese Anfällig für Feuchtigkeit ist ein Nachteil, da es dadurch unbrauchbar wird. Je höher die Raumtemperatur, desto mehr Feuchtigkeit wird eingelagert. Man kann das mit einer kleinen Menge im Ofen oder der Mikrowelle testen.&lt;/p&gt;&lt;p&gt;Als &lt;span style=&quot; font-weight:600;&quot;&gt;Dihydrat&lt;/span&gt; liegt Calciumchlorid oft in Kügelchen vor und ist weniger anfällig für Raumfeuchtigkeit. Das Dihydrat ist eindeutig zu bevorzugen. Auch wenn nicht ausgewiesen, die Aufbereitungsform Kügelchen ist ein zuverlässiger Indikator für die richtige Dosage. ist man sich unsicher, sind Fachforen wie &lt;a href=&quot;hobbybrauer.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;hobbybrauer.de&lt;/span&gt;&lt;/a&gt; Anlaufstelle der Wahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
@@ -70,7 +70,7 @@
      <item row="1" column="2">
       <widget class="ComboBox" name="cbEinheit">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können dieverse &lt;span style=&quot; font-weight:700;&quot;&gt;Maßeinheiten zur Wasseraufbereitung &lt;/span&gt;gewählt werden. Voreingestellt ist kg, tatsächlich üblich sind aber Mengenangaben im Gramm- und Milliliterbereich. Zusätzlich können sogar Stückzahlen verwendet werden, wenn etwa mit normierten Tabletten gearbeitet wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>Hier können dieverse Maßeinheiten zur Wasseraufbereitung gewählt werden. Voreingestellt ist kg, tatsächlich üblich sind aber Mengenangaben im Gramm- und Milliliterbereich. Zusätzlich können sogar Stückzahlen verwendet werden, wenn etwa mit normierten Tabletten gearbeitet wird.</string>
        </property>
        <item>
         <property name="text">
@@ -145,7 +145,7 @@
      <item row="1" column="0" colspan="2">
       <widget class="QLineEdit" name="tbName">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die gewählte &lt;span style=&quot; font-weight:700;&quot;&gt;Zutat für die Wasseraufbereitung &lt;/span&gt;samt Konzentration ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>In diesem Feld wird die gewählte Zutat für die Wasseraufbereitung samt Konznetration ausgegeben.</string>
        </property>
       </widget>
      </item>
@@ -183,14 +183,14 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

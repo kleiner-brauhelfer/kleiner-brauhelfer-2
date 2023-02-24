@@ -51,7 +51,7 @@
      <item>
       <widget class="QLineEdit" name="lineEditFilter">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird nach Zutaten für die &lt;span style=&quot; font-weight:600;&quot;&gt;gewählte Rohstoffliste &lt;/span&gt;gesucht.&lt;/p&gt;&lt;p&gt;Meistens genügen schon drei Zeichen. Die Suche beschränkt sich auf die gewählte Rohstoffliste und nicht auf die Gesamtheit aller Rohstoffe in der Datenbank. Angezeigt werden Ergebnisse, die sich auf den Namen des Rohstoffs oder auf Einträge in den Felder Eigenschaften und Bemerkungen beziehen.&lt;/p&gt;&lt;p&gt;Damit Zutaten hier aufscheinen, müssen sie vorher im Reiter Rohstoffe eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird nach Zutaten für die &lt;span style=&quot; font-weight:600;&quot;&gt;gewählte Rohstoffliste &lt;/span&gt;gesucht.&lt;/p&gt;&lt;p&gt;Meistens genügen schon drei Zeichen. Die Suche beschränkt sich auf die gewählte Rohstoffliste und nicht auf die Gesamtheit aller Rohstoffe in der Datenbank. Angezeigt werden Ergebnisse, die sich auf den Namen des Rohstoffs oder auf Einträge in den Felder Eigenschaften und Bemerkungen beziehen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Damit Zutaten hier aufscheinen, müssen sie vorher im tab Rohstoffe eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="placeholderText">
         <string>Suche</string>
@@ -65,9 +65,6 @@
    </item>
    <item>
     <widget class="TableView" name="tableView">
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das zentrale Rohstofffenster, mit dem eine Zutat ausgewählt oder gewechselt werden kann. Es erscheint, wenn im Reiter Rohstoffe eine Zutat angefordert wird und listet alle verfügbaren Rohstoffe im Lager auf, getrennt nach Malz, Hopfen, Hefe und Zusätzen. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Achtung. &lt;/span&gt;Damit der Kleine Brauhelfer korrekt arbeiten kann, ist die Nutzung dieses Fensters auf eine korrekte Datenerfassung im Rohstofflager angewiesen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>

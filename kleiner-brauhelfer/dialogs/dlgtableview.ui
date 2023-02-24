@@ -17,7 +17,7 @@
    <item>
     <widget class="QLineEdit" name="tbFilter">
      <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird nach angelegten &lt;span style=&quot; font-weight:600;&quot;&gt;Kategorien&lt;/span&gt; gesucht. Kategorien dienen dazu, die verschiedenen Sude zu klassifizieren und damit besser unterscheidbar zu machen. Sinnvoll ist dies, wenn aus dem Biernamen z.B. nicht der Bierstil hervorgeht.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Kategorien können grob nach unter- oder obergärig oder international nach den Kategorien des &lt;a href=&quot;https://www.bjcp.org/docs/2015_Guidelines_Beer.pdf&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;BJCP Style Guidelines von 2015 &lt;/span&gt;&lt;/a&gt;unterschieden werden. Gerne werden von der Brau-Community auch Namen genutzt, die als &amp;quot;außer Kategorie&amp;quot; klassifziert werden und mehr ein Gefühl kommunizieren. Die beliebten Weihnachtsbiere gehören beispielsweise dazu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird nach angelegten &lt;span style=&quot; font-weight:600;&quot;&gt;Kategorien&lt;/span&gt; gesucht. Kategorien dienen dazu, die verschiedenen Sude zu klassifizieren und damit besser unterscheidbar zu machen. Sinnvoll ist dies, wenn aus dem Biernamen z.B. nicht der Bierstil hervorgeht.&lt;/p&gt;&lt;p&gt;Kategorien können grob nach unter- oder obergärig oder international nach den Kategorien des &lt;a href=&quot;https://www.bjcp.org/docs/2015_Guidelines_Beer.pdf&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;BJCP Style Guidelines von 2015 &lt;/span&gt;&lt;/a&gt;unterschieden werden. Gerne werden von der Brau-Community auch Namen genutzt, die als &amp;quot;außer Kategorie&amp;quot; klassifziert werden und mehr ein Gefühl kommunizieren. Die beliebten Weihnachtsbiere gehören beispielsweise dazu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="placeholderText">
       <string>Suche</string>
@@ -30,7 +30,7 @@
    <item>
     <widget class="TableView" name="tableView">
      <property name="toolTip">
-      <string>Hier werden alle angelegten Kategorien angezeigt und mittels der Pfeile unten sortiert.</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle angelegten &lt;span style=&quot; font-weight:700;&quot;&gt;Kategorien von Bierstilen&lt;/span&gt; angezeigt und mittels der Pfeile unten sortiert.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Eine bewährte Hilfe international gebräuchlicher Bezeichnungen von Bierstilen gibt es im Beer Style Guide der amerikanischen BJCP-Organisation. Sie sind als &lt;a href=&quot;https://www.bjcp.org/news/bjcp-releases-2021-beer-style-guidelines/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#094fd1;&quot;&gt;PDF und Word-Dokument &lt;/span&gt;&lt;/a&gt;abrufbar.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="alternatingRowColors">
       <bool>true</bool>
@@ -83,11 +83,11 @@
             <height>16777215</height>
            </size>
           </property>
-          <property name="whatsThis">
-           <string notr="true">plus</string>
-          </property>
           <property name="toolTip">
            <string>Hiermit wird eine neue Kategorie angelegt. Dazu erscheint ein eigenes Pop-up-Fenster.</string>
+          </property>
+          <property name="whatsThis">
+           <string notr="true">plus</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -110,11 +110,11 @@
             <height>16777215</height>
            </size>
           </property>
-          <property name="whatsThis">
-           <string notr="true">minus</string>
-          </property>
           <property name="toolTip">
            <string>Hiermit wird eine neue Kategorie entfernt. Eine oder mehrere Kategorien müssen dazu markiert sein.</string>
+          </property>
+          <property name="whatsThis">
+           <string notr="true">minus</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -137,11 +137,11 @@
             <height>16777215</height>
            </size>
           </property>
-          <property name="whatsThis">
-           <string notr="true">nach_oben</string>
-          </property>
           <property name="toolTip">
            <string>Hiermit wird eine Kategorie nach oben verschoben.</string>
+          </property>
+          <property name="whatsThis">
+           <string notr="true">nach_oben</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">
@@ -164,11 +164,11 @@
             <height>16777215</height>
            </size>
           </property>
-          <property name="whatsThis">
-           <string notr="true">nach_unten</string>
-          </property>
           <property name="toolTip">
            <string>Hiermit wird eine Kategorie nach unten verschoben.</string>
+          </property>
+          <property name="whatsThis">
+           <string notr="true">nach_unten</string>
           </property>
           <property name="icon">
            <iconset resource="../images.qrc">

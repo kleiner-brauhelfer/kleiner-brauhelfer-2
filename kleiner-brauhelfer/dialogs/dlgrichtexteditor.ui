@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
+    <width>758</width>
     <height>300</height>
    </rect>
   </property>
@@ -49,10 +49,17 @@
       </widget>
      </item>
      <item>
-      <widget class="QFontComboBox" name="cbFont"/>
+      <widget class="QFontComboBox" name="cbFont">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:700;&quot;&gt;Standardschriftart &lt;/span&gt;gewählt. Die Einstellung gilt für &lt;span style=&quot; font-weight:700;&quot;&gt;alle Freitextfelder &lt;/span&gt;bis zur nächsten Änderung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QComboBox" name="cbSize">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:700;&quot;&gt;Standardschriftgröße &lt;/span&gt;gewählt. Die Einstellung gilt für &lt;span style=&quot; font-weight:700;&quot;&gt;alle Freitextfelder &lt;/span&gt;bis zur nächsten Änderung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="editable">
         <bool>true</bool>
        </property>
@@ -60,6 +67,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="btnColorText">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:700;&quot;&gt;Standardschriftfarbe &lt;/span&gt;gewählt. Die Einstellung gilt für &lt;span style=&quot; font-weight:700;&quot;&gt;alle Freitextfelder &lt;/span&gt;bis zur nächsten Änderung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="text">
         <string>Textfarbe</string>
        </property>
@@ -334,8 +344,16 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-     <widget class="QTextEdit" name="tbRichText"/>
-     <widget class="QPlainTextEdit" name="tbSource"/>
+     <widget class="QTextEdit" name="tbRichText">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist die eigentlihe Layoutfläche. Hier werden Texte, Links, Graphiken und Bilder erfasst.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Bei Copy und Paste etwa aus einer Webseite oder einer Textverarbeitung werden unsichtbare Formatierungselemente mit übernommen. Dies kann zu unerwünschten Effekten führen und ist im Code rechts nur schwer zu entfernen. Es empfiehlt sich daher Text vorab in einem Texteditor ohne Formatierung zu speichern und erst dann hier einzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="tbSource">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Text in &lt;span style=&quot; font-weight:700;&quot;&gt;HTML&lt;/span&gt; umgestellt. Man kann die Formatierung hier manuell vornehmen, dies ist aber wegen des Zeitaufwands nicht zu empfehlen. Externe Lösungen sind hier zeitsparender. Bei Fragen helfen hier Fachforen zu Webdesign.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
    </item>
    <item>

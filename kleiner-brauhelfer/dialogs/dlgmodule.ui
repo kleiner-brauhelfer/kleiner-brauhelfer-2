@@ -40,8 +40,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>386</width>
-        <height>536</height>
+        <width>374</width>
+        <height>676</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -50,6 +50,9 @@
        </property>
        <item>
         <widget class="QGroupBox" name="gbModuleGaerverlauf">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Gärverlauf gehört zu den wichtigsten Schritten nach dem Anstellen. Der Kleine Brauhelfer trennt in Schnellgärprobe, Hauptgärung und Nachgärung.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Die graphische Auswertung lässt gute Rückschlüsse über die Gärbedingungen zu. Störungen oder Eigenarten bestimmter Hefen, die sich schon einmal &amp;quot;schlafen legen&amp;quot;,  lassen sich so auf einen Blick identifizieren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="title">
           <string>Gärverlauf</string>
          </property>
@@ -84,6 +87,9 @@
           </item>
           <item>
            <widget class="QCheckBox" name="cbSchnellgaerprobe">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die Schnellgärprobe ist  wichtig, wenn es etwa um die Vorhersage des richtigen Zeitpunktes beim Grünschlauchen geht. Auch lässt sich damit das Verhalten unbekannter Hefen beurteilen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="text">
              <string>Schnellgärprobe</string>
             </property>
@@ -246,6 +252,9 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
        </item>
        <item>
         <widget class="QGroupBox" name="gbModuleAusruestung">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses Modul ist unverzichtbar, um eine möglichst exakte Vorhersage zu Sudhausausbeute, Farbe und anderer Parameter bis Brauende zu bekommen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Gut gepflegt, entscheidet sich hiermit wie genau der Kleine Brauhelfer arbeitet. Zu Beginn sind Standardwerte eingetragen. Sie sollten aber zeitnah mit den Daten der eigenen Brauanlage ersetzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="title">
           <string>Ausrüstung</string>
          </property>
@@ -283,6 +292,9 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
        </item>
        <item>
         <widget class="QGroupBox" name="gbModuleLagerverwaltung">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses Modul ist das Rohstofflager des Brauhauses. Es ist unabdingbar, um ein Rezept anzulegen. Viele Felder im Rezepttteil können erst ausgefüllt werden, wenn man hier Einträge wie Malz, Hopfen, Hefe und Zusätze gemacht hat.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Einträge hier sind unabdingbar, um mit dem Kleinen Brauhelfer loslegen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="title">
           <string>Lagerverwaltung</string>
          </property>
@@ -320,6 +332,9 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
        </item>
        <item>
         <widget class="QGroupBox" name="gbModuleSpeise">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der Anteil an Speise verrechnet, der später in Reifeprozess für die Nachägrung  – entweder in Flasche oder Fass – verwendet wird. Bei Problemen mit diesem Modul bitte den Warnhinweis lesen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Unter Speise versteht man einen zurückgehltenen Teil der Würze, der vor dem Anstellen entnommen wird. Aus seinem Volumen und Zuckergehalt lässt sich die Karbonisierung berechnen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Viele ältere Rezepte ohne Speise warnen beim Öffnen vor einer fehlenden oder fehlerhaften Speiseberechnung. Der Fehler wird behoben, indem man das Modul Speiseberechnung aktiviert, das Rezept sichert, das Modul deaktiviert und erneut sichert. In neueren Rezepten tritt dieser Fehler nicht mehr auf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="title">
           <string>Speiseberechnung</string>
          </property>

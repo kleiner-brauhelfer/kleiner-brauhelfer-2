@@ -17,7 +17,7 @@
    <item>
     <widget class="QPlainTextEdit" name="textEdit">
      <property name="toolTip">
-      <string>Hier werden Änderungen im Kleinen Brauhelfer aufgelistet.</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden Prozesse im Kleinen Brauhelfer aufgelistet. Die sogenannten Logs lassen Rückschlüsse bei etwaigen Problemen zu.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Dieses Tool solltenur von technisch versierten Anwendern verwendet werden, insbesondere war die Log-Tiefe anlangt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="lineWrapMode">
       <enum>QPlainTextEdit::NoWrap</enum>

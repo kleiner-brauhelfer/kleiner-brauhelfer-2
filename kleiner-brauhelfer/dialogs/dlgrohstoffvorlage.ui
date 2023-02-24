@@ -26,7 +26,7 @@
    <item>
     <widget class="QLineEdit" name="lineEditFilter">
      <property name="toolTip">
-      <string>Hier kann vollkommen frei in der aktiven rohstoffliste gesucht wrden. Es genügen Wortbestandteile, auch mitten in einem Begriff.</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann vollkommen frei in der aktiven Rohstoffliste gesucht werden. Es genügen Wortbestandteile, auch mitten in einem Begriff.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="placeholderText">
       <string>Suche</string>
@@ -39,7 +39,7 @@
    <item>
     <widget class="TableView" name="tableView">
      <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden Rohstoffvorlagen aufgeführt. Oben angegebene Quellen sind dabei  gute Adressen für die Recherche im deutschsprachigen und angelsächsischen Raum.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden &lt;span style=&quot; font-weight:700;&quot;&gt;Rohstoffvorlagen&lt;/span&gt; aufgeführt.&lt;/p&gt;&lt;p&gt;Die Einträge enthalten Eigen- und Markenbezeichnungen der Hersteller, die umgangssprachlich oder in Shops anders geläufig sein können. Dies gilt für Malz und Hopfen gleichermaßen. Hefen haben prinzipiell Eigennamen, auch wenn sie auf einem identischen Hefestamm fußen. Durch Mutationen kann jedoch ein Hefestamm von Hersteller zu Hersteller unterschiedlich sein.&lt;/p&gt;&lt;p&gt;Besonders zwischen Mälzereien ist die Bezeichnung nicht einheitlich. Berühmtes Beispiel ist &amp;quot;Münchener Dunkel&amp;quot;, das in seiner modernen Version &amp;quot;Münchener Typ II&amp;quot; heißt. Ferner können sich aus markenrechtlichen Gründen die Bezeichnungen unterscheiden. Ein Beispiel ist das helle Karamellmalz Cara Pils, das in Amerika Cara Foam heißt.&lt;/p&gt;&lt;p&gt;Durch klimatische Bedingungen wiederum kann sich eine Hopfenart auseinanderentwickeln. Berühmtes Beispiel ist Hallertauer Cascade und der neuseeländische Cascade, Super-Cascade genannt. Unterdessen heißt der Taiheke.&lt;/p&gt;&lt;p&gt;Angegebene Quellen sind indes gute Adressen für eine eigene Recherche im deutschsprachigen und angelsächsischen Raum.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>

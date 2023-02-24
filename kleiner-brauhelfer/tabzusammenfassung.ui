@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TabZusammenfassung</class>
+ <widget class="QWidget" name="TabZusammenfassung">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>627</width>
+    <height>564</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>4</number>
+   </property>
+   <item>
+    <widget class="QComboBox" name="cbAuswahl">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die Spalte Zusammenfassung ist eine der wichtigsten Neuerungen im Kleinen Brauhelfer v2. Sie ist extrem nützlich, wenn es um einen Abgleich zwischen ungebrauten Suden und dem Rohstofflager geht. augeschlüsselt nach Malz, Hopfen, Hefe und Zutaten werden zu wenig oder nicht vorhandene Rohstoffe rot dargestellt. Dies alle kumuliert. Entscheiden ist dabei eine eindeutige Benennung von Zutaten im &lt;span style=&quot; font-weight:700;&quot;&gt;Reiter Rohstoffe.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sude für die rechte Spalte werden per Shift ausgewählt und auf dem gleichen Weg abgewählt. Eine wertvolle Hilfe, wenn es um Nachbestellungen und Orientierung über das persönliche Braugeschehen geht.&lt;/p&gt;&lt;p&gt;Über die Buttons unten lässt sich die generierte &lt;span style=&quot; font-weight:700;&quot;&gt;Zutatenliste&lt;/span&gt; als &lt;span style=&quot; font-weight:700;&quot;&gt;PDF&lt;/span&gt; abspeichern oder &lt;span style=&quot; font-weight:700;&quot;&gt;ausdrucken.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="WdgWebViewEditable" name="webview" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über die Buttons unten lässt sich die generierte &lt;span style=&quot; font-weight:700;&quot;&gt;Zutatenliste&lt;/span&gt; als &lt;span style=&quot; font-weight:700;&quot;&gt;PDF&lt;/span&gt; abspeichern oder &lt;span style=&quot; font-weight:700;&quot;&gt;ausdrucken.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff9300;&quot;&gt;Tipp:&lt;/span&gt;&lt;span style=&quot; font-weight:700;&quot;/&gt;Eignet sich hervorragend als Einkaufszettel.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>WdgWebViewEditable</class>
+   <extends>QWidget</extends>
+   <header>widgets/wdgwebvieweditable.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

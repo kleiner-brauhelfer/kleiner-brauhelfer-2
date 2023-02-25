@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>711</width>
+    <width>814</width>
     <height>670</height>
    </rect>
   </property>
@@ -55,6 +55,13 @@
           </property>
           <property name="text">
            <string>BeerXML (xml)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="rbFormatBrautomat">
+          <property name="text">
+           <string>Brautomat (json)</string>
           </property>
          </widget>
         </item>

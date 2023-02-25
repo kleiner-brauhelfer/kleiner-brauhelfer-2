@@ -25,6 +25,7 @@ private slots:
     void on_rbFormatKbh_clicked();
     void on_rbFormatMmum_clicked();
     void on_rbFormatBeerxml_clicked();
+    void on_rbFormatBrautomat_clicked();
 
 private:
     bool importieren();

@@ -12,6 +12,7 @@
 - Neu: Spickzettel überarbeitet (nicht alles rückwärtskompatibel!)
 - Neu: Unvergärbare Zusätze
 - Neu: Menge der Zusätze für die Gärung inklusive Stopfhofen können sich auf die Anstellmenge beziehen
+- Neu: Exportformat Brautomat
 - Fix: Übermäßige Zeilenumbrüche für die Bemerkungsfelder im Spickzettel
 - Fix: Absturz beim Ändern eines Eintrags in der Hauptgärung und Schnellgärprobe
 

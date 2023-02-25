@@ -454,7 +454,7 @@ QMap<int, QVariant> SqlTableModel::copyValues(int row) const
     return values;
 }
 
-QVariantMap SqlTableModel::toVariantMap(int row, QList<int> ignoreCols) const
+QVariantMap SqlTableModel::toVariantMap(int row, QList<int> cols, QList<int> ignoreCols) const
 {
     QVariantMap map;
     QSqlRecord rec = record(row);
@@ -462,7 +462,8 @@ QVariantMap SqlTableModel::toVariantMap(int row, QList<int> ignoreCols) const
     {
         if (ignoreCols.contains(i))
             continue;
-        map.insert(rec.fieldName(i), rec.value(i));
+        if (cols.isEmpty() || cols.contains(i))
+            map.insert(rec.fieldName(i), rec.value(i));
     }
     return map;
 }

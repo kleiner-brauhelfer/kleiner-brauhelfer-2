@@ -27,7 +27,7 @@ DlgImportExport::DlgImportExport(bool import, int row, QWidget *parent) :
     QSize size = gSettings->value("size").toSize();
     if (size.isValid())
         resize(size);
-    switch (gSettings->value("format", 0).toInt())
+    switch (gSettings->value(mImport ? "formatImport" : "formatExport", 0).toInt())
     {
     case 0:
         ui->rbFormatKbh->setChecked(true);
@@ -41,6 +41,10 @@ DlgImportExport::DlgImportExport(bool import, int row, QWidget *parent) :
         ui->rbFormatBeerxml->setChecked(true);
         on_rbFormatBeerxml_clicked();
         break;
+    case 3:
+        ui->rbFormatBrautomat->setChecked(true);
+        on_rbFormatBrautomat_clicked();
+        break;
     }
     gSettings->endGroup();
     ui->textEdit->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
@@ -52,6 +56,7 @@ DlgImportExport::DlgImportExport(bool import, int row, QWidget *parent) :
    #endif
   #endif
     setWindowTitle(mImport ? tr("Rezept importieren") : tr("\"%1\" exportieren").arg(bh->modelSud()->data(mRow, ModelSud::ColSudname).toString()));
+    ui->rbFormatBrautomat->setVisible(!mImport);
     ui->gpImport->setVisible(mImport);
 
     connect(ui->cbSud, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
@@ -75,11 +80,13 @@ DlgImportExport::~DlgImportExport()
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("size", geometry().size());
     if (ui->rbFormatKbh->isChecked())
-        gSettings->setValue("format", 0);
+        gSettings->setValue(mImport ? "formatImport" : "formatExport", 0);
     else if (ui->rbFormatMmum->isChecked())
-        gSettings->setValue("format", 1);
-    else
-        gSettings->setValue("format", 2);
+        gSettings->setValue(mImport ? "formatImport" : "formatExport", 1);
+    else if (ui->rbFormatBeerxml->isChecked())
+        gSettings->setValue(mImport ? "formatImport" : "formatExport", 2);
+    else if (ui->rbFormatBrautomat->isChecked())
+        gSettings->setValue(mImport ? "formatImport" : "formatExport", 3);
     gSettings->endGroup();
     delete ui;
 }
@@ -278,8 +285,10 @@ bool DlgImportExport::exportieren()
         filter = "kleiner-brauhelfer (*.json)";
     else if (ui->rbFormatMmum->isChecked())
         filter = "MaischeMalzundMehr (*.json)";
-    else
+    else if (ui->rbFormatBeerxml->isChecked())
         filter = "BeerXML (*.xml)";
+    else if (ui->rbFormatBrautomat->isChecked())
+        filter = "kleiner-brauhelfer (*.json)";
     QString sudname = bh->modelSud()->data(mRow, ModelSud::ColSudname).toString();
     QString filePath = QFileDialog::getSaveFileName(this, tr("Sud Export"),
                                      path + "/" + sudname, filter);
@@ -302,3 +311,14 @@ bool DlgImportExport::exportieren()
     gSettings->endGroup();
     return ret;
 }
+
+void DlgImportExport::on_rbFormatBrautomat_clicked()
+{
+    if (!mImport)
+    {
+        QByteArray content = ImportExport::exportBrautomat(bh, mRow);
+        ui->textEdit->setPlainText(QString::fromUtf8(content));
+        ui->gpKbhExport->setVisible(false);
+    }
+}
+

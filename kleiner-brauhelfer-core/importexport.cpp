@@ -646,8 +646,11 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
 
     root["Global"] = QJsonObject({{"db_Version", bh->databaseVersion()}});
 
-    if (!exclude.contains(bh->modelSud()->tableName()))
-        root[bh->modelSud()->tableName()] = QJsonObject::fromVariantMap(bh->modelSud()->toVariantMap(sudRow, {ModelSud::ColID}));
+    model = bh->modelSud();
+    if (!exclude.contains(model->tableName()))
+    {
+        root[model->tableName()] = QJsonObject::fromVariantMap(model->toVariantMap(sudRow, QList<int>(), {ModelSud::ColID}));
+    }
 
     model = bh->modelRasten();
     if (!exclude.contains(model->tableName()))
@@ -657,7 +660,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         proxy.setFilterRegularExpression(regExpId);
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
-            list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelRasten::ColID, ModelRasten::ColSudID}));
+            list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelRasten::ColID, ModelRasten::ColSudID}));
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
@@ -671,7 +674,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         proxy.setFilterRegularExpression(regExpId);
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
-            list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelMalzschuettung::ColID, ModelMalzschuettung::ColSudID}));
+            list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelMalzschuettung::ColID, ModelMalzschuettung::ColSudID}));
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
@@ -685,7 +688,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         proxy.setFilterRegularExpression(regExpId);
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
-            list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelHopfengaben::ColID, ModelHopfengaben::ColSudID}));
+            list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelHopfengaben::ColID, ModelHopfengaben::ColSudID}));
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
@@ -699,7 +702,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         proxy.setFilterRegularExpression(regExpId);
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
-            list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelHefegaben::ColID, ModelHefegaben::ColSudID}));
+            list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelHefegaben::ColID, ModelHefegaben::ColSudID}));
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
@@ -713,7 +716,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         proxy.setFilterRegularExpression(regExpId);
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
-            list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelWeitereZutatenGaben::ColID, ModelWeitereZutatenGaben::ColSudID}));
+            list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelWeitereZutatenGaben::ColID, ModelWeitereZutatenGaben::ColSudID}));
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
@@ -727,7 +730,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         proxy.setFilterRegularExpression(regExpId);
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
-            list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelSchnellgaerverlauf::ColID, ModelSchnellgaerverlauf::ColSudID}));
+            list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelSchnellgaerverlauf::ColID, ModelSchnellgaerverlauf::ColSudID}));
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
@@ -741,7 +744,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         proxy.setFilterRegularExpression(regExpId);
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
-            list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelHauptgaerverlauf::ColID, ModelHauptgaerverlauf::ColSudID}));
+            list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelHauptgaerverlauf::ColID, ModelHauptgaerverlauf::ColSudID}));
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
@@ -755,7 +758,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         proxy.setFilterRegularExpression(regExpId);
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
-            list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelNachgaerverlauf::ColID, ModelNachgaerverlauf::ColSudID}));
+            list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelNachgaerverlauf::ColID, ModelNachgaerverlauf::ColSudID}));
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
@@ -769,7 +772,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         proxy.setFilterRegularExpression(regExpId);
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
-            list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelBewertungen::ColID, ModelBewertungen::ColSudID}));
+            list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelBewertungen::ColID, ModelBewertungen::ColSudID}));
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
@@ -783,7 +786,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         proxy.setFilterRegularExpression(regExpId);
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
-            list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelAnhang::ColID, ModelAnhang::ColSudID}));
+            list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelAnhang::ColID, ModelAnhang::ColSudID}));
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
@@ -797,7 +800,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         proxy.setFilterRegularExpression(regExpId);
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
-            list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelEtiketten::ColID, ModelEtiketten::ColSudID}));
+            list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelEtiketten::ColID, ModelEtiketten::ColSudID}));
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
@@ -812,7 +815,7 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
         {
-            QVariantMap values = model->toVariantMap(proxy.mapRowToSource(row), {ModelTags::ColID, ModelTags::ColSudID});
+            QVariantMap values = model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelTags::ColID, ModelTags::ColSudID});
             values["Global"] = proxy.data(row, ModelTags::ColGlobal).toBool();
             list.append(values);
         }
@@ -829,11 +832,57 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         proxy.setFilterRegularExpression(regExpId);
         list.clear();
         for (int row = 0; row < proxy.rowCount(); ++row)
-            list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelWasseraufbereitung::ColID, ModelWasseraufbereitung::ColSudID}));
+            list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelWasseraufbereitung::ColID, ModelWasseraufbereitung::ColSudID}));
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
         }
+
+    QJsonDocument doc(root);
+    return doc.toJson();
+}
+
+QByteArray ImportExport::exportBrautomat(Brauhelfer* bh, int sudRow)
+{
+    QJsonObject root;
+    SqlTableModel* model;
+    ProxyModel proxy;
+    QVariantList list;
+
+    int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
+    QRegularExpression regExpId(QString("^%1$").arg(sudId));
+
+    model = bh->modelSud();
+    root[model->tableName()] = QJsonObject::fromVariantMap(model->toVariantMap(sudRow, {ModelSud::ColSudname, ModelSud::ColKochdauer, ModelSud::ColNachisomerisierungszeit}));
+
+    model = bh->modelRasten();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelRasten::ColSudID);
+    proxy.setFilterRegularExpression(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+    {
+        QVariantMap map = model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelRasten::ColID, ModelRasten::ColSudID});
+        if (map["Param1"].toInt() == 0)
+            map.remove("Param1");
+        if (map["Param2"].toInt() == 0)
+            map.remove("Param2");
+        if (map["Param3"].toInt() == 0)
+            map.remove("Param3");
+        if (map["Param4"].toInt() == 0)
+            map.remove("Param4");
+        list.append(map);
+    }
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
+
+    model = bh->modelHopfengaben();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelHopfengaben::ColSudID);
+    proxy.setFilterRegularExpression(regExpId);
+    list.clear();
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelHopfengaben::ColName, ModelHopfengaben::ColZeit, ModelHopfengaben::ColZeitpunkt}));
+    root[model->tableName()] = QJsonArray::fromVariantList(list);
 
     QJsonDocument doc(root);
     return doc.toJson();

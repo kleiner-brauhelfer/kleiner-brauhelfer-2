@@ -217,12 +217,13 @@ public:
     virtual QMap<int, QVariant> copyValues(int row) const;
 
     /**
-     * @brief toVariantMap
-     * @param row
-     * @param ignoreCols
-     * @return
+     * @brief Get values from a given row as a variant map
+     * @param row  Row number
+     * @param cols Columns to add to variant map (empty for all)
+     * @param ignoreCols Columns to ignore
+     * @return Variant map
      */
-    QVariantMap toVariantMap(int row, QList<int> ignoreCols = QList<int>()) const;
+    QVariantMap toVariantMap(int row, QList<int> cols = QList<int>(), QList<int> ignoreCols = QList<int>()) const;
 
     /**
      * @brief getNextId

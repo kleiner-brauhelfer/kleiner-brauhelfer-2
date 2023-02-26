@@ -135,8 +135,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>574</width>
-         <height>1137</height>
+         <width>576</width>
+         <height>1048</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1288,7 +1288,7 @@
               <bool>false</bool>
              </attribute>
              <attribute name="verticalHeaderDefaultSectionSize">
-              <number>24</number>
+              <number>20</number>
              </attribute>
             </widget>
            </item>
@@ -1312,9 +1312,6 @@
       </widget>
      </widget>
      <widget class="QTextBrowser" name="tbHelp">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
       <property name="font">
        <font>
         <italic>true</italic>

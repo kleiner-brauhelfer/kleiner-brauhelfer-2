@@ -233,7 +233,7 @@
           <enum>Qt::CustomContextMenu</enum>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Sude&lt;/span&gt; ausgeführt und können nach &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;gemerkt&lt;/span&gt; abgefüllt werden. Es stehen mehrere versteckte Funktionen zu Verfügung:&lt;/p&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Rechtsklick&lt;/span&gt; auf den einzelnen Sud oder die Spalte lassen sich Spalten mit diversen Parametern hinzufügen oder entfernen.&lt;/p&gt;&lt;p&gt;Ferner kann mit Rechtsklick ein markierter Sud jederzeit der Merkliste hinzugefügt sowie als nicht verbraucht markiert werden.&lt;/p&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Shift&lt;/span&gt; können alle oder mehrere Sude zusammen angewählt und ihre Mengenwerte im rechten Fensterteil ausgegeben werden.&lt;/p&gt;&lt;p&gt;Dabei wird für jede einzelne Zutat die Gesamtmenge in Benötigt, Vorhanden und Rest berechnet. Besonders hilfreich für die Sudplanung ist der Hinweis auf &lt;span style=&quot; font-weight:600;&quot;&gt;Fehlmengen&lt;/span&gt;, als &lt;span style=&quot; font-weight:600;&quot;&gt;negativer Wert &lt;/span&gt;mit pinkener Einfärbung angegeben.&lt;/p&gt;&lt;p&gt;Nicht in der Rohstofliste vorhandene Zutaten werden ausgegraut mit 0 angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Sude&lt;/span&gt; ausgeführt und können nach &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;gemerkt&lt;/span&gt; abgefüllt werden. Es stehen mehrere versteckte Funktionen zu Verfügung:&lt;/p&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Rechtsklick&lt;/span&gt; auf den einzelnen Sud oder die Spalte lassen sich Spalten mit diversen Parametern hinzufügen oder entfernen.&lt;/p&gt;&lt;p&gt;Ferner kann mit Rechtsklick ein markierter Sud jederzeit der Merkliste hinzugefügt sowie als nicht verbraucht markiert werden.&lt;/p&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Shift&lt;/span&gt; können alle oder mehrere Sude zusammen angewählt und ihre Mengenwerte im rechten Fensterteil ausgegeben werden.&lt;/p&gt;&lt;p&gt;Dabei wird für jede einzelne Zutat die Gesamtmenge in Benötigt, Vorhanden und Rest berechnet. Besonders hilfreich für die Sudplanung ist der Hinweis auf &lt;span style=&quot; font-weight:600;&quot;&gt;Fehlmengen&lt;/span&gt;, als &lt;span style=&quot; font-weight:600;&quot;&gt;negativer Wert &lt;/span&gt;mit pinkener Einfärbung angegeben.&lt;/p&gt;&lt;p&gt;Nicht in der Rohstofliste vorhandene Zutaten werden ausgegraut mit 0 angezeigt.&lt;/p&gt;&lt;p&gt;Alle Einträge können jetzt kopiert und ausgdruckt werden. Per Shift lassen sich auch Auszüge kopieren und ausdrucken.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="editTriggers">
           <set>QAbstractItemView::NoEditTriggers</set>
@@ -263,7 +263,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Sud&lt;/span&gt; angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer &lt;/span&gt;Sud angelegt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Aus Gründen der Konsistenz der Datenbank ist es ratsam Namensgleichheiten zu vermeiden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="whatsThis">
             <string notr="true">sud_neu</string>
@@ -412,7 +412,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;geteilt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Diese Funktion ist auch in den &lt;span style=&quot; font-weight:600;&quot;&gt;Tabs Braudaten&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Abfülldaten&lt;/span&gt; vorhanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;geteilt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Diese Funktion ist auch in den &lt;span style=&quot; font-weight:600;&quot;&gt;Tabs Braudaten&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Abfülldaten&lt;/span&gt; vorhanden.&lt;/p&gt;&lt;p&gt;Es gibt viele Anwendungsfälle für einen gteiliten Sud. Diese reichen von unterschiedlichen Gaben bei der Nachgärung, über Aspekte der Hopfung bis hin zum Parti-Gyle-Verfahren oder Notwendigkeiten der Sudanlage. Bei Fragen zu diesem Anwendungsszenarien sind die Fachforen die beste Anlaufstelle.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="whatsThis">
             <string notr="true">sud_teilen</string>
@@ -507,7 +507,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud &lt;span style=&quot; font-weight:600;&quot;&gt;geladen&lt;/span&gt;. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;p&gt;Hiermit springt man automatisch in den &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud &lt;span style=&quot; font-weight:600;&quot;&gt;geladen&lt;/span&gt;. Es öffnet sich eine Maske, bei der auf das Dateiformat zu achten ist. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;p&gt;Hiermit springt man automatisch in den &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="whatsThis">
             <string notr="true">sud_laden</string>

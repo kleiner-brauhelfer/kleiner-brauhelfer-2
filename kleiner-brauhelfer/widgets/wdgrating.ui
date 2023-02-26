@@ -10,6 +10,9 @@
     <height>34</height>
    </rect>
   </property>
+  <property name="toolTip">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden Sterne für die &lt;span style=&quot; font-weight:600;&quot;&gt;Bewertung&lt;/span&gt; vergeben.&lt;/p&gt;&lt;p&gt;Nähere Informationen zur Bewertung finden sich bei Brauervereinen, Fachforen, Büchern oder dem amerikanischen Beer Judging Certificate Program (BJCP).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff9300;&quot;&gt;Tipp: &lt;/span&gt;Der subjektive Faktor ist beim Selbstgebrautem groß. Es empfehlen sich daher Verkostungsbögen, die man Freunden zum Ausfüllen vorlegt. Nebenbei erweitert man so sein sensorisches Vokabular, dass dann über „lecker“ hinausgeht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
     <number>0</number>
@@ -92,7 +95,7 @@
       </sizepolicy>
      </property>
      <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden Sterne für die &lt;span style=&quot; font-weight:600;&quot;&gt;Bewertung&lt;/span&gt; vergeben.&lt;/p&gt;&lt;p&gt;Nähere Informationen zur Bewertung finden sich bei Brauervereinen, Fachforen, Büchern oder dem amerikanischen Beer Judging Certificate Program (BJCP).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string/>
      </property>
      <property name="iconSize">
       <size>

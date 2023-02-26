@@ -31,7 +31,7 @@
        <item>
         <widget class="TableView" name="tableViewAnlagen">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle Brauan&lt;span style=&quot; font-weight:600;&quot;&gt;lagen&lt;/span&gt; aufgeführt, nicht aber zusätzliches Equipment. Dieses wird gesondert erfasst.&lt;/p&gt;&lt;p&gt;Anlagen sind definiert als unabdingbare Gerätschaften, mit denen man Malz maischt und Hopfen kocht. Eine Brauanlage beginnt mit dem größten Topf in der Küche und endet mit Systemen aus drei und mehr Kesseln. Sie ist definiert durch die Hauptschritte Maischen - Läutern - Kochen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlagen&lt;/span&gt; aufgeführt, nicht aber zusätzliches Equipment. Dieses wird gesondert erfasst.&lt;/p&gt;&lt;p&gt;Anlagen sind definiert als unabdingbare Gerätschaften, mit denen man Malz maischt und Hopfen kocht. Eine Brauanlage beginnt mit dem größten Topf in der Küche und endet mit Systemen aus drei und mehr Kesseln. Sie ist definiert durch die Hauptschritte Maischen - Läutern - Kochen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>908</width>
-    <height>100</height>
+    <height>111</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -52,7 +52,7 @@
         <item>
          <widget class="QLineEdit" name="tbName">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein Brausalz oder eine Brausäure gewählt. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer bietet dabei degebräuchlisten Zusätze fertig konfiguriert an. Es besteht aber auch die Möglichkeit einen unbekannten Zusatz zu definieren.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Alle Zusätze können angepasst werden. Ohne entsprechende Fachkenntnis kann davon von nur abgeraten werden. Im guten Fall muss man das Bier nur wegschütten, im schlimmsten Fall drohen &lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;gesundheitliche Schäden&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:700;&quot;&gt;Brausalz&lt;/span&gt; oder eine &lt;span style=&quot; font-weight:700;&quot;&gt;Brausäure&lt;/span&gt; gewählt. &lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer bietet dabei die gebräuchlisten Zusätze fertig konfiguriert an. Es besteht aber auch die Möglichkeit einen unbekannten Zusatz zu definieren.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Alle Zusätze können angepasst werden. Ohne entsprechende Fachkenntnis kann davon von nur abgeraten werden. Im guten Fall muss man das Bier nur wegschütten, im schlimmsten Fall drohen &lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;gesundheitliche Schäden&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>

@@ -28,6 +28,9 @@
    </property>
    <item>
     <widget class="BemerkungTextBrowser" name="tbRichText">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das &lt;span style=&quot; font-weight:700;&quot;&gt;Freitextfeld &lt;/span&gt;des Kleinen Brauhelfers. Es eignet sich für Anmerkungen jeder Art, insbesondere für Prozesse und Funktionen, die im Programm nicht abgebildet werden.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Der Editor wird entweder über den Bleistift rechts unten oder per Doppeklick auf die Fläche geöffnet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
      <property name="readOnly">
       <bool>true</bool>
      </property>

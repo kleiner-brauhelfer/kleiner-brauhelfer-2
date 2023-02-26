@@ -51,6 +51,9 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fünf Sterne kann man im Kleinen Brauhelfer maximal vergeben.&lt;/p&gt;&lt;p&gt;Diese Freude wird dem Brauer aber erst zuteil, wenn er den Sud im Reiter Abfülldaten als abgefüllt markiert hat.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
          </widget>
         </item>
         <item>

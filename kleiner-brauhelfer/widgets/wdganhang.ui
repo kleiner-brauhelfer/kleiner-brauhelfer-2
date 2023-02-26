@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>389</width>
-    <height>70</height>
+    <width>440</width>
+    <height>76</height>
    </rect>
   </property>
   <property name="autoFillBackground">
@@ -128,7 +128,7 @@
       <item row="0" column="1" colspan="3">
        <widget class="QLineEdit" name="lineEdit_Pfad">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der Pfad zum gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang &lt;/span&gt;angegeben.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Die Pfadangabe bleibt auch bei einem ungültigen Pfad bestehen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der Pfad zum gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang &lt;/span&gt;angegeben.&lt;/p&gt;&lt;p&gt;Es können Bilder, Textdokumente, PDF und sogar Filme eingefügt werden, es können in den Bemerkungen aber nur Bilder im Feld für Bemerkungen weiterverarbeitet werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Die Pfadangabe bleibt auch bei einem ungültigen Pfad bestehen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </item>

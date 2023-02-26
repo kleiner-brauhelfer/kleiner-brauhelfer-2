@@ -19,7 +19,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: sudo apt-get update -y && sudo apt-get install build-essential mesa-common-dev libgl1-mesa-dev libfontconfig1 fuse qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libqt5charts5* libqt5webengine* libqt5svg5* qtwebengine5-dev* libqt5webenginecore5 libqt5webenginewidgets5 libqt5wayland* -y
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install build-essential mesa-common-dev libgl1-mesa-dev libxkbcommon-x11-dev libfontconfig1 fuse -y
+
+      - name: Install Qt
+        run: sudo apt-get install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libqt5charts5* libqt5webengine* libqt5svg5* qtwebengine5-dev* libqt5webenginecore5 libqt5webenginewidgets5 libqt5wayland* -y
 
       - name: Load FUSE module
         run: sudo modprobe fuse

@@ -19,7 +19,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: sudo apt-get update -y && sudo apt-get install build-essential libgl1-mesa-dev fuse -y
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install build-essential mesa-common-dev libgl1-mesa-dev libxkbcommon-x11-dev libfontconfig1 fuse -y
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v3

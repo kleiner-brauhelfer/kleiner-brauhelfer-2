@@ -83,7 +83,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine im&lt;span style=&quot; font-weight:600;&quot;&gt; Tab Rohstoffe &lt;/span&gt;(Reiter Malz) gespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; ausgewählt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Grundsätzlich können im Kleinen Brauhelfer nur Zutaten verwendet werden,  die in den Rohstofflisten im Tab Rohstoffe erfasst sind.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine im&lt;span style=&quot; font-weight:600;&quot;&gt; Tab Rohstoffe &lt;/span&gt;(Reiter Malz) gespeicherte &lt;span style=&quot; font-weight:600;&quot;&gt;Malzsorte&lt;/span&gt; ausgewählt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Grundsätzlich können im Kleinen Brauhelfer nur Zutaten verwendet werden, die in den Rohstofflisten im Reiter Rohstoffe erfasst sind. Fehlt ein Rohstoff, der nicht in der Liste ist, fragt der Kleine Brauhelfer beim erstmaligen Öffnen eines zuvor kopierten oder importierten Rezeptes, ob dieser Rohstoff dem Vorratslager hinzugefügt werden soll.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;w</string>
           </property>
          </widget>
         </item>

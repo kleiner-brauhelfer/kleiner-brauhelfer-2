@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>Über</string>
   </property>
+  <property name="toolTip">
+   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier versteckt sich eine Bierspende.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+  </property>
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>

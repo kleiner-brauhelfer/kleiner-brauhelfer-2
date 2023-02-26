@@ -39,7 +39,7 @@
      <item>
       <widget class="QLineEdit" name="tbDatenbankPfad">
        <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses Feld gibt Auskunft zum Pfad der gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses Feld zeigt den absoluten Pfad der gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank&lt;/span&gt;. Die ist hilfreich, wenn man mit mehreren Datenbanken arbeitet oder den Speicherort vergessen hat.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -136,7 +136,7 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angezeigte &lt;span style=&quot; font-weight:600;&quot;&gt;globale&lt;/span&gt; Datenbanktabelle ausgewählt.&lt;/p&gt;&lt;p&gt;Unter einer globalen Tabelle versteht man eine nicht-sudspezifische Tabelle.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angezeigte &lt;span style=&quot; font-weight:600;&quot;&gt;globale&lt;/span&gt; Datenbanktabelle ausgewählt.&lt;/p&gt;&lt;p&gt;Der Reiter listet alle Spalten und damit Instanzen von Datentypen auf, die in der aktuellen Version verwendet werden und nichtsudspezifische Angaben enthalten, dazu gehören beispielsweise Sudnummer oder Hauptguss. Die Anzahl der Spalten ist abhängig von der Datenbankversion&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -144,6 +144,9 @@
        </item>
        <item>
         <widget class="TableView" name="tableView">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle Datenbankeinträge aufgeführt, die für jeden Sud einheitlich sind.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
          </property>
@@ -189,7 +192,7 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angezeigte &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische&lt;/span&gt; Datenbanktabelle ausgewählt.&lt;/p&gt;&lt;p&gt;Eine sudspezifische Tabelle ist ein Ausschnitt einer globalen Tabelle, welche nur die Einträge des geladenen Sudes anzeigt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die angezeigte &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische&lt;/span&gt; Datenbanktabelle ausgewählt.&lt;/p&gt;&lt;p&gt;Eine sudspezifische Tabelle enthält nur Angaben, die für einen einzelnen Sud entscheidend sind, beispielsweise Angaben zur Schüttung oder zur Hopfung. Gibt es Probleme mit einem einzelnen Rezept, liegt es nah, hier zuerst nachzuschauen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -197,6 +200,9 @@
        </item>
        <item>
         <widget class="TableView" name="tableViewSud">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle Datenbankeinträge aufgeführt, die nur für diesen Sud bestimmend sind.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
          </property>

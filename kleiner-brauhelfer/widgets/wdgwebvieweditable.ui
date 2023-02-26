@@ -270,7 +270,7 @@
          </property>
          <widget class="QPlainTextEdit" name="tbTemplate">
           <property name="toolTip">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld ist der Spickzettel im &lt;span style=&quot; font-weight:600;&quot;&gt;HTML&lt;/span&gt; definiert. Platzhalter nehmen die Tags rechts auf und verabeiten sie.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld ist der &lt;span style=&quot; font-weight:700;&quot;&gt;Spickzettel&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;HTML&lt;/span&gt; definiert. Platzhalter nehmen die Tags rechts auf und verabeiten sie.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="lineWrapMode">
            <enum>QPlainTextEdit::NoWrap</enum>

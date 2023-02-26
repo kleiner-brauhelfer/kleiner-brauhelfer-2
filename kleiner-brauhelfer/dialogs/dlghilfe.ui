@@ -61,6 +61,9 @@
      </property>
      <item>
       <widget class="QPushButton" name="btnHome">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit gelangt man zur Startseite der Dokumentation und Hilfe.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
        <property name="icon">
         <iconset resource="../images.qrc">
          <normaloff>:/images/logo.svg</normaloff>:/images/logo.svg</iconset>

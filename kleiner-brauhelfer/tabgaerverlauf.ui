@@ -211,6 +211,9 @@
            </property>
            <item>
             <widget class="TableView" name="tableWidget_Hauptgaerverlauf">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden die Messerte der Gärung eingetragen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Durch Rechtsklick kann jdie Tabellenbreite zurückgesetzt werden, können alle Felder kopiert oder ausgedruckt werden. Durch Shift kann eine Auswahl von Einträgen kopiertund ausgeruckt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
              </property>
@@ -246,7 +249,7 @@
                  </size>
                 </property>
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;p&gt;Der erste Messeintrag erfolgt automaisch, wenn im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; die Schnellgärprobe aktiviert ist. Der erste Eintrag ist dabei identisch mit der Stammwürze beim Anstellen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Braudaten&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgärung&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;p&gt;Der erste Messeintrag erfolgt automaisch, wenn im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; die Schnellgärprobe aktiviert ist. Der erste Eintrag ist dabei identisch mit der Stammwürze beim Anstellen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Braudaten&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Bei einer nachträglichen Änderung des Eintrags ist Vorsicht geboten,&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="whatsThis">
                  <string notr="true">plus</string>
@@ -345,14 +348,14 @@
                  <item>
                   <widget class="ComboBox" name="comboBox_GaerungEwzAuswahl">
                    <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermir wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; festgelegt, welcher &lt;span style=&quot; font-weight:600;&quot;&gt;zugegeben &lt;/span&gt;werden soll.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermir wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; festgelegt, welcher &lt;span style=&quot; font-weight:600;&quot;&gt;zugegeben &lt;/span&gt;werden soll.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde. Ein Zusatz kann auch über den Unterreiter Gärung im Reiter Rezept zugegeben werden. Dort ist zusätzlich das korrekte Datum und seine entnahme angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="btnGaerungEwzZugeben">
                    <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;ausgewählter Zusatz &lt;/span&gt;zugegeben. &lt;/p&gt;&lt;p&gt;Im Reiter Rezept kann man die &lt;span style=&quot; font-weight:600;&quot;&gt;Zutat &lt;/span&gt;ebenfalls zugeben (und entnehmen).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;ausgewählter Zusatz &lt;/span&gt;zugegeben. &lt;/p&gt;&lt;p&gt;Im Reiter Rezept kann man die &lt;span style=&quot; font-weight:600;&quot;&gt;Zutat &lt;/span&gt;ebenfalls zugeben (und entnehmen).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde. Ein Zusatz kann auch über den Unterreiter Gärung im Reiter Rezept zugegeben werden. Dort ist zusätzlich das korrekte Datum und seine entnahme angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="text">
                     <string>zugeben</string>
@@ -394,14 +397,14 @@
                  <item>
                   <widget class="ComboBox" name="comboBox_GaerungEwzAuswahlEntnahme">
                    <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; festgelegt, welcher &lt;span style=&quot; font-weight:600;&quot;&gt;entnommen&lt;/span&gt; werden soll.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; festgelegt, welcher &lt;span style=&quot; font-weight:600;&quot;&gt;entnommen&lt;/span&gt; werden soll.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde. Ein Zusatz kann auch über den Unterreiter Gärung im Reiter Rezept zugegeben werden. Dort ist zusätzlich das korrekte Datum und seine entnahme angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QPushButton" name="btnGaerungEwzEntnehmen">
                    <property name="toolTip">
-                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein ausgewählter&lt;span style=&quot; font-weight:600;&quot;&gt; Zusatz &lt;/span&gt;entnommen. &lt;/p&gt;&lt;p&gt;Im Tab Rezept kann man den &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;ebenfalls entnehmen (und zugeben).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein ausgewählter&lt;span style=&quot; font-weight:600;&quot;&gt; Zusatz &lt;/span&gt;entnommen. &lt;/p&gt;&lt;p&gt;Im Tab Rezept kann man den &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;ebenfalls entnehmen (und zugeben).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde. Ein Zusatz kann auch über den Unterreiter Gärung im Reiter Rezept zugegeben werden. Dort ist zusätzlich das korrekte Datum und seine entnahme angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="text">
                     <string>entnehmen</string>

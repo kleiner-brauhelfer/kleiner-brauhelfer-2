@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 2.5.0 (in Entwicklung)
+## Version 2.5.0 (27.02.2023)
 - Neu: Datenbankversion **2008**
 - Neu: Niederländische Übersetzung der Tooltips (vielen Dank dachouffe)
 - Neu: Knopf, um Hopfengaben auszugleichen (analog wie Malzgaben)

@@ -15,8 +15,14 @@ mkdir ${BUILD_DIR}
 cd ${BUILD_DIR}
 "${QT_DIR}/qmake" "../${PRO}" -config release
 make -j 8
+if [ $? -ne 0 ]; then
+  echo "Failed to build." >&2
+  exit 1
+fi
 cd -
 
 if [ ${DEPLOY} = "1" ]; then
   ./deployment/linux/64bit/deploy.sh "${BUILD_DIR}/bin" "${QT_DIR}"
 fi
+
+exit 0

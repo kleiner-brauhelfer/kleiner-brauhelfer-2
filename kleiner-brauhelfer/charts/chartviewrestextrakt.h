@@ -11,9 +11,11 @@ public:
 public slots:
     void update() Q_DECL_OVERRIDE;
 private:
+  #ifdef QT_CHARTS_LIB
     QBarSet* setExtrakt;
     QBarCategoryAxis* axisX;
     QValueAxis* axisY;
+  #endif
 };
 
 #endif // CHARTVIEWRESTEXTRAKT_H

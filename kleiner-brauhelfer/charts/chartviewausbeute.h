@@ -11,7 +11,9 @@ public:
 public slots:
     void update() Q_DECL_OVERRIDE;
 private:
+  #ifdef QT_CHARTS_LIB
     QBarSet* setAusbeute;
+  #endif
 };
 
 #endif // CHARTVIEWAUSBEUTE_H

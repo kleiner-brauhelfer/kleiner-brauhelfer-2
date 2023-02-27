@@ -11,8 +11,10 @@ public:
 public slots:
     void update() Q_DECL_OVERRIDE;
 private:
+  #ifdef QT_CHARTS_LIB
     QBarSet* setMenge;
     QValueAxis* axisY;
+  #endif
 };
 
 #endif // CHARTVIEWABFUELLDATEN_H

@@ -54,7 +54,8 @@ void TabZusammenfassung::updateAuswahl()
     while (it.hasNext())
     {
         it.next();
-        QString filename = it.fileName().chopped(5);
+        QString filename = it.fileName();
+        filename.chop(5);
         int lastUnderscore = filename.lastIndexOf('_');
         if (filename.length() - lastUnderscore == 3)
             filename = filename.left(lastUnderscore);

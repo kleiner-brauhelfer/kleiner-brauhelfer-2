@@ -11,12 +11,14 @@ public:
 public slots:
     void update() Q_DECL_OVERRIDE;
 private:
+  #ifdef QT_CHARTS_LIB
     QBarSet* setMengeIst;
     QBarSet* setMengeSoll;
     QLineSeries* seriesSwIst;
     QLineSeries* seriesSwSoll;
     QValueAxis* axisY;
     QValueAxis* axisY2;
+  #endif
 };
 
 #endif // CHARTVIEWBRAUDATEN_H

@@ -397,7 +397,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                 model = bh->sud()->modelWeitereZutatenGaben();
                 for (int row = 0; row < model->rowCount(); ++row)
                 {
-                    QVariantList* listePtr;
+                    QVariantList* listePtr = nullptr;
                     QVariantMap map;
                     int dauer;
                     map.insert("Name", model->data(row, ModelWeitereZutatenGaben::ColName));
@@ -495,7 +495,8 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                         map.insert("Typ", MainWindow::ZusatzTypname[static_cast<int>(typ)]);
                         listeZusatzAlle << map;
                     }
-                    *listePtr << map;
+                    if (listePtr)
+                        *listePtr << map;
                 }                
                 if (!listeZusatzAlle.empty())
                     ctxZutaten["Zusatz"] = QVariantMap({{"Liste", listeZusatzAlle}});

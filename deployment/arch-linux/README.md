@@ -5,7 +5,7 @@ This deployment method does not build the kleiner-brauhelfer-2 application for b
 
 Instead, it allows the enduser very easily to build and install kleiner-brauhelfer-2 by himself. The method uses [makepkg](https://wiki.archlinux.org/title/makepkg) to build and install the Arch-Linux package. 
 
-The information for building the package is contained in the two files *PKGBUILD* and *kleiner-brauhelfer-2.desktop* stored and stored in the [Arch-Linux User Repository](https://aur.archlinux.org/packages/kleiner-brauhelfer), also called AUR. 
+The information for building the package is contained in the two files **PKGBUILD** and **kleiner-brauhelfer-2.desktop** stored and stored in the [Arch-Linux User Repository](https://aur.archlinux.org/packages/kleiner-brauhelfer), also called AUR. 
 
 ## Prerequisit:
 
@@ -28,7 +28,7 @@ git clone https://aur.archlinux.org/kleiner-brauhelfer.git
 cd kleiner-brauhelfer
 makepkg -s
 ```
-Proceed to Install the Package.
+Proceed to [Install the Package](#install-the-package).
 
 If you want to build and install a different version:
 - mkdir kleiner-brauhelfer-2.build
@@ -51,12 +51,15 @@ Have a lot of fun with kleiner-brauhelfer-2
 
 ## Upgrade the Package 
 
-If you still auf the local build directory (assumed: kb-builddir) from an previous installation:
+If you still have access to the local build directory from an previous installation:
+
+Execute following commands in a shell:
+
 ```bash
-cd kb-builddir
+cd kleiner-brauhelfer #(the directory of the previous installation)
 git pull
 makepkg -s
 makepkg -i
 ```
 
-If the directory was deleted, follow the instructions *Build the Installation Packag* and *Install the Packate*.
+If the directory was deleted, follow the instructions [Build the Installation Package](#building-the-installation-package) and [Install the Package](#install-the-package)

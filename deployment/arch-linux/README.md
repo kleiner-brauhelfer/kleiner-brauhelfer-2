@@ -3,7 +3,7 @@ Arch-Linux and followers do not support the debian package format, they have the
 
 This deployment method does not build the kleiner-brauhelfer-2 application for being downloaded from github.  
 
-Instead, it allows the enduser very easily to build and install kleiner-brauhelfer-2 by himself. The method uses [makepkg](https://wiki.archlinux.org/title/makepkg) to build and install the Arch-Linux package. 
+Instead, it allows the enduser very easily to build and install kleiner-brauhelfer-2 by himself. This method uses [makepkg](https://wiki.archlinux.org/title/makepkg) to download the sources from a specific kleiner-brauhelfer-2 version at github, build the executable and create and install the Arch-Linux package. 
 
 The information for building the package is contained in the two files **PKGBUILD** and **kleiner-brauhelfer-2.desktop**. They are stored in the [Arch-Linux User Repository](https://aur.archlinux.org/packages/kleiner-brauhelfer), also called AUR. 
 

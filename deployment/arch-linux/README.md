@@ -5,7 +5,7 @@ This deployment method does not build the kleiner-brauhelfer-2 application for b
 
 Instead, it allows the enduser very easily to build and install kleiner-brauhelfer-2 by himself. The method uses [makepkg](https://wiki.archlinux.org/title/makepkg) to build and install the Arch-Linux package. 
 
-The information for building the package is contained in the two files **PKGBUILD** and **kleiner-brauhelfer-2.desktop** stored and stored in the [Arch-Linux User Repository](https://aur.archlinux.org/packages/kleiner-brauhelfer), also called AUR. 
+The information for building the package is contained in the two files **PKGBUILD** and **kleiner-brauhelfer-2.desktop**. They are stored in the [Arch-Linux User Repository](https://aur.archlinux.org/packages/kleiner-brauhelfer), also called AUR. 
 
 ## Prerequisit:
 

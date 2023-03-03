@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Encoding=UTF-8
-Name=kleiner-brauhelfer
+Name=kleiner-brauhelfer-2
 Comment=Program to calculate and manage beer brewing
 Comment[de]=Ein Programm zum Berechnen und Verwalten von Biersuden
 Exec=kleiner-brauhelfer-2

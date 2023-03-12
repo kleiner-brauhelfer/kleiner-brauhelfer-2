@@ -1113,7 +1113,7 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="ChartView" name="diagramMalz">
+          <widget class="ChartMalz" name="diagramMalz">
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum Prozessschritt Maischen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
@@ -1398,7 +1398,7 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="ChartView" name="diagramHopfen">
+          <widget class="ChartHopfen" name="diagramHopfen">
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum &lt;span style=&quot; font-weight:700;&quot;&gt;Prozessschritt Hopfenkochen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
@@ -1951,7 +1951,7 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="ChartView" name="diagramRasten">
+          <widget class="ChartMaischplan" name="diagramRasten">
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum Maischeplan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
@@ -3899,14 +3899,24 @@ p, li { white-space: pre-wrap; }
    <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
-   <class>ChartView</class>
-   <extends>QGraphicsView</extends>
-   <header>charts/chartview.h</header>
-  </customwidget>
-  <customwidget>
    <class>SpinBoxSud</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinboxsud.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ChartMalz</class>
+   <extends>QWidget</extends>
+   <header>charts/chartmalz.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ChartHopfen</class>
+   <extends>QWidget</extends>
+   <header>charts/charthopfen.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ChartMaischplan</class>
+   <extends>QWidget</extends>
+   <header>charts/chartmaischplan.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -1,9 +1,9 @@
 #ifndef CHART3_H
 #define CHART3_H
 
-#include "qcustomplot.h"
+#include "chartbase.h"
 
-class Chart3 : public QCustomPlot
+class Chart3 : public ChartBase
 {
     Q_OBJECT
 

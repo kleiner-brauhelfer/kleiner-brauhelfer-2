@@ -59,12 +59,15 @@ SOURCES += \
     tabzusammenfassung.cpp \
     templatetags.cpp \
     charts/chart3.cpp \
+    charts/chartabfuelldaten.cpp \
+    charts/chartausbeute.cpp \
+    charts/chartbase.cpp \
+    charts/chartbraudaten.cpp \
+    charts/charthopfen.cpp \
+    charts/chartmaischplan.cpp \
+    charts/chartmalz.cpp \
+    charts/chartrestextrakt.cpp \
     charts/qcustomplot.cpp \
-    charts/chartview.cpp \
-    charts/chartviewabfuelldaten.cpp \
-    charts/chartviewausbeute.cpp \
-    charts/chartviewbraudaten.cpp \
-    charts/chartviewrestextrakt.cpp \
     dialogs/dlgabout.cpp \
     dialogs/dlgabstract.cpp \
     dialogs/dlgausruestung.cpp \
@@ -150,12 +153,15 @@ HEADERS += \
     tabzusammenfassung.h \
     templatetags.h \
     charts/chart3.h \
+    charts/chartabfuelldaten.h \
+    charts/chartausbeute.h \
+    charts/chartbase.h \
+    charts/chartbraudaten.h \
+    charts/charthopfen.h \
+    charts/chartmaischplan.h \
+    charts/chartmalz.h \
+    charts/chartrestextrakt.h \
     charts/qcustomplot.h \
-    charts/chartview.h \
-    charts/chartviewabfuelldaten.h \
-    charts/chartviewausbeute.h \
-    charts/chartviewbraudaten.h \
-    charts/chartviewrestextrakt.h \
     dialogs/dlgabout.h \
     dialogs/dlgabstract.h \
     dialogs/dlgabstract-inl.h \

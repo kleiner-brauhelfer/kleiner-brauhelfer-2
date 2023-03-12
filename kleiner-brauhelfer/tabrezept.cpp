@@ -123,10 +123,6 @@ TabRezept::TabRezept(QWidget *parent) :
     mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Settings::Theme::Dark ? ":/images/dark/bier.svg" : ":/images/light/bier.svg");
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("l"));
 
-  #ifdef QT_CHARTS_LIB
-    ui->diagramRasten->chart()->legend()->hide();
-  #endif
-
     ProxyModel* proxy = new ProxyModel(this);
     proxy->setSourceModel(bh->modelKategorien());
     ui->cbKategorie->setModel(proxy);
@@ -773,97 +769,7 @@ void TabRezept::rasten_modified()
 
 void TabRezept::updateRastenDiagram()
 {
-  #ifdef QT_CHARTS_LIB
-    QLineSeries *series = new QLineSeries();
-    QLineSeries *seriesAux;
-    int tTotal = 0;
-    int TMin = 30;
-    int TMax = 80;
-    int t, T, T2, lastT = 0, temp;
-
-    QChart *chart = ui->diagramRasten->chart();
-    chart->removeAllSeries();
-    chart->addSeries(series);
-
-    for (int i = 0; i < ui->layoutRasten->count(); ++i)
-    {
-        const WdgRast* wdg = static_cast<WdgRast*>(ui->layoutRasten->itemAt(i)->widget());
-        T = wdg->data(ModelRasten::ColTemp).toInt();
-        t = wdg->data(ModelRasten::ColDauer).toInt();
-        switch (static_cast<Brauhelfer::RastTyp>(wdg->data(ModelRasten::ColTyp).toInt()))
-        {
-        case Brauhelfer::RastTyp::Infusion:
-            seriesAux = new QLineSeries();
-            seriesAux->setPen(QPen(QBrush(gSettings->DiagramLinie3), 2, Qt::DashLine));
-            T2 = wdg->data(ModelRasten::ColParam1).toInt();
-            seriesAux->append(tTotal, T2);
-            seriesAux->append(tTotal, T);
-            chart->addSeries(seriesAux);
-            TMax = 100;
-            if (T2 < TMin)
-                TMin = T2;
-            if (T2 > TMax)
-                TMax = T2;
-            break;
-        case Brauhelfer::RastTyp::Dekoktion:
-            seriesAux = new QLineSeries();
-            seriesAux->setPen(QPen(QBrush(gSettings->DiagramLinie2), 2, Qt::DashLine));
-            seriesAux->append(tTotal, lastT);
-            temp = wdg->data(ModelRasten::ColParam4).toInt();
-            if (temp > 0)
-            {
-                int T3 = wdg->data(ModelRasten::ColParam3).toInt();
-                seriesAux->append(tTotal, T3);
-                tTotal += temp;
-                seriesAux->append(tTotal, T3);
-                if (T3 < TMin)
-                    TMin = T3;
-                if (T3 > TMax)
-                    TMax = T3;
-            }
-            temp = wdg->data(ModelRasten::ColParam2).toInt();
-            if (temp > 0)
-            {
-                T2 = wdg->data(ModelRasten::ColParam1).toInt();
-                seriesAux->append(tTotal, T2);
-                tTotal += temp;
-                seriesAux->append(tTotal, T2);
-                TMax = 100;
-                if (T2 < TMin)
-                    TMin = T2;
-                if (T2 > TMax)
-                    TMax = T2;
-            }
-            seriesAux->append(tTotal, T);
-            chart->addSeries(seriesAux);
-            series->append(tTotal, lastT);
-            break;
-        default:
-            break;
-        }
-
-        series->append(tTotal, T);
-        tTotal += t;
-        series->append(tTotal, T);
-
-        if (T < TMin)
-            TMin = T;
-        if (T > TMax)
-            TMax = T;
-
-        lastT = T;
-    }
-
-    chart->createDefaultAxes();
-    QList<QAbstractAxis*> axes = chart->axes(Qt::Horizontal);
-    QValueAxis *axis = static_cast<QValueAxis*>(axes.back());
-    axis->setRange(0, tTotal);
-    axis->setLabelFormat("%d min");
-    axes = chart->axes(Qt::Vertical);
-    axis = static_cast<QValueAxis*>(axes.back());
-    axis->setRange(TMin, TMax);
-    axis->setLabelFormat("%d C");
-  #endif
+    ui->diagramRasten->update();
 }
 
 void TabRezept::on_btnNeueRast_clicked()
@@ -986,17 +892,7 @@ void TabRezept::updateMalzGaben()
 
 void TabRezept::updateMalzDiagram()
 {
-  #ifdef QT_CHARTS_LIB
-    QPieSeries *series = new QPieSeries();
-    for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
-    {
-        const WdgMalzGabe* wdg = static_cast<WdgMalzGabe*>(ui->layoutMalzGaben->itemAt(i)->widget());
-        series->append(wdg->name(), wdg->prozent());
-    }
-    QChart *chart = ui->diagramMalz->chart();
-    chart->removeAllSeries();
-    chart->addSeries(series);
-  #endif
+    ui->diagramMalz->update();
 }
 
 void TabRezept::on_btnNeueMalzGabe_clicked()
@@ -1112,17 +1008,7 @@ void TabRezept::hopfenGaben_modified()
 
 void TabRezept::updateHopfenDiagram()
 {
-  #ifdef QT_CHARTS_LIB
-    QPieSeries *series = new QPieSeries();
-    for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
-    {
-        const WdgHopfenGabe* wdg = static_cast<WdgHopfenGabe*>(ui->layoutHopfenGaben->itemAt(i)->widget());
-        series->append(wdg->name(), wdg->prozent());
-    }
-    QChart *chart = ui->diagramHopfen->chart();
-    chart->removeAllSeries();
-    chart->addSeries(series);
-  #endif
+    ui->diagramHopfen->update();
 }
 
 void TabRezept::updateHopfenGaben()

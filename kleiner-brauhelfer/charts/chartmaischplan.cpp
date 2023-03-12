@@ -1,0 +1,100 @@
+#include "chartmaischplan.h"
+#include "brauhelfer.h"
+#include "settings.h"
+
+extern Brauhelfer* bh;
+extern Settings* gSettings;
+
+ChartMaischplan::ChartMaischplan(QWidget *parent) :
+    ChartBase(parent)
+{
+    xAxis->setLabel(tr("Zeit (min)"));
+    yAxis->setLabel(tr("Temperatur (°C)"));
+}
+
+void ChartMaischplan::update()
+{
+    clearPlottables();
+    clearItems();
+
+    QCPGraph *graph = new QCPGraph(xAxis, yAxis);
+    QCPGraph *graphAux;
+
+    double tTotal = 0;
+    double TMin = 30;
+    double TMax = 80;
+    double t, T, T2, lastT = 0, temp;
+
+    graph->setPen(QPen(QBrush(QColor(32,159,223)), 2, Qt::SolidLine));
+
+    ProxyModel* model = bh->sud()->modelRasten();
+    for (int row = 0; row < model->rowCount(); ++row)
+    {
+        T = model->data(row, ModelRasten::ColTemp).toInt();
+        t = model->data(row, ModelRasten::ColDauer).toInt();
+        switch (static_cast<Brauhelfer::RastTyp>(model->data(row, ModelRasten::ColTyp).toInt()))
+        {
+        case Brauhelfer::RastTyp::Infusion:
+            graphAux = new QCPGraph(xAxis, yAxis);
+            graphAux->setPen(QPen(QBrush(gSettings->DiagramLinie3), 2, Qt::DashLine));
+            T2 = model->data(row, ModelRasten::ColParam1).toInt();
+            graphAux->setData({tTotal, tTotal}, {T2, T}, true);
+            TMax = 100;
+            if (T2 < TMin)
+                TMin = T2;
+            if (T2 > TMax)
+                TMax = T2;
+            break;
+        case Brauhelfer::RastTyp::Dekoktion:
+            graphAux = new QCPGraph(xAxis, yAxis);
+            graphAux->setPen(QPen(QBrush(gSettings->DiagramLinie2), 2, Qt::DashLine));
+            graphAux->setPen(QPen(graph->pen().brush(), 2, Qt::DashLine));
+            graphAux->addData(tTotal, lastT);
+            temp = model->data(row, ModelRasten::ColParam4).toInt();
+            if (temp > 0)
+            {
+                int T3 = model->data(row, ModelRasten::ColParam3).toInt();
+                graphAux->addData(tTotal, T3);
+                tTotal += temp;
+                graphAux->addData(tTotal, T3);
+                if (T3 < TMin)
+                    TMin = T3;
+                if (T3 > TMax)
+                    TMax = T3;
+            }
+            temp = model->data(row, ModelRasten::ColParam2).toInt();
+            if (temp > 0)
+            {
+                T2 = model->data(row, ModelRasten::ColParam1).toInt();
+                graphAux->addData(tTotal, T2);
+                tTotal += temp;
+                graphAux->addData(tTotal, T2);
+                TMax = 100;
+                if (T2 < TMin)
+                    TMin = T2;
+                if (T2 > TMax)
+                    TMax = T2;
+            }
+            graphAux->addData(tTotal, T);
+            graph->addData(tTotal, lastT);
+            break;
+        default:
+            break;
+        }
+
+        graph->addData(tTotal, T);
+        tTotal += t;
+        graph->addData(tTotal, T);
+
+        if (T < TMin)
+            TMin = T;
+        if (T > TMax)
+            TMax = T;
+
+        lastT = T;
+    }
+
+    xAxis->setRange(0, tTotal);
+    yAxis->setRange(TMin, TMax);
+    replot();
+}

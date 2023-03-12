@@ -2919,8 +2919,8 @@
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="ChartViewBraudaten" name="chartBraudaten"/>
-      <widget class="ChartViewAusbeute" name="chartAusbeute"/>
+      <widget class="ChartBraudaten" name="chartBraudaten"/>
+      <widget class="ChartAusbeute" name="chartAusbeute"/>
       <widget class="QWidget" name="wdgEmpty" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -2980,14 +2980,14 @@
    <header>widgets/timeedit.h</header>
   </customwidget>
   <customwidget>
-   <class>ChartViewBraudaten</class>
-   <extends>QGraphicsView</extends>
-   <header>charts/chartviewbraudaten.h</header>
+   <class>ChartBraudaten</class>
+   <extends>QWidget</extends>
+   <header>charts/chartbraudaten.h</header>
   </customwidget>
   <customwidget>
-   <class>ChartViewAusbeute</class>
-   <extends>QGraphicsView</extends>
-   <header>charts/chartviewausbeute.h</header>
+   <class>ChartAusbeute</class>
+   <extends>QWidget</extends>
+   <header>charts/chartausbeute.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

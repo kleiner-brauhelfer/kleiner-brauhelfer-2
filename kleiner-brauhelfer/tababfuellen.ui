@@ -2051,8 +2051,8 @@
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="ChartViewAbfuelldaten" name="chartAbfuelldaten"/>
-      <widget class="ChartViewRestextrakt" name="chartRestextrakt"/>
+      <widget class="ChartAbfuelldaten" name="chartAbfuelldaten"/>
+      <widget class="ChartRestextrakt" name="chartRestextrakt"/>
       <widget class="QWidget" name="wdgEmpty" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -2122,14 +2122,14 @@
    <header>widgets/spinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>ChartViewAbfuelldaten</class>
-   <extends>QGraphicsView</extends>
-   <header>charts/chartviewabfuelldaten.h</header>
+   <class>ChartAbfuelldaten</class>
+   <extends>QWidget</extends>
+   <header>charts/chartabfuelldaten.h</header>
   </customwidget>
   <customwidget>
-   <class>ChartViewRestextrakt</class>
-   <extends>QGraphicsView</extends>
-   <header>charts/chartviewrestextrakt.h</header>
+   <class>ChartRestextrakt</class>
+   <extends>QWidget</extends>
+   <header>charts/chartrestextrakt.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

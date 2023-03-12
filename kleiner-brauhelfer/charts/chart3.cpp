@@ -4,7 +4,7 @@
 extern Settings* gSettings;
 
 Chart3::Chart3(QWidget *parent) :
-    QCustomPlot(parent)
+    ChartBase(parent)
 {
     QColor color1 = gSettings->DiagramLinie1;
     QColor color2 = gSettings->DiagramLinie2;

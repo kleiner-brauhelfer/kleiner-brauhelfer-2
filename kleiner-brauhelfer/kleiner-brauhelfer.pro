@@ -4,11 +4,8 @@ QT += network
 isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 4) {
  QT += webenginewidgets
 }
-isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 7) {
- QT += charts
-}
 isEqual(QT_MAJOR_VERSION, 6) {
- QT += svgwidgets webenginewidgets charts
+ QT += svgwidgets webenginewidgets
 }
 
 ORGANIZATION = kleiner-brauhelfer

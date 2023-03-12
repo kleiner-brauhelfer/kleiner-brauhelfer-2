@@ -36,7 +36,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ### Linux
 - **kbh2_v2.x.x_linux_x64.deb**: Installationsdatei für 64bit System
   - Benötigt zusätzlich Installation von [Qt 5.15.2](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
-    - Desktop gcc 64-bit, Qt Charts, Qt WebEngine
+    - Desktop gcc 64-bit, Qt WebEngine
   - Benötigt OpenSSL 1.1.1b oder höher
 - **kleiner-brauhelfer-2-x86_64.AppImage**: Portable Version (AppImage) für 64bit System
 - **kbh2_v2.x.x_linux_x32.deb**: Installationsdatei für 32bit System
@@ -68,7 +68,7 @@ cd /tmp/aqt
 sudo pip install aqtinstall
 
 # Install Qt
-sudo python3 -m aqt install --outputdir ${QT_PATH} ${VERSION} linux desktop -m qtcharts qtwebengine
+sudo python3 -m aqt install --outputdir ${QT_PATH} ${VERSION} linux desktop -m qtwebengine
 
 # Set ENV variables
 export PATH=${QT_PATH}/${VERSION}/clang_64/bin/:$PATH

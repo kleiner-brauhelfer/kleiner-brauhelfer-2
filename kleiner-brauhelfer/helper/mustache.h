@@ -273,6 +273,6 @@ private:
 /** A convenience function which renders a template using the given data. */
 QString renderTemplate(const QString& templateString, const QVariantHash& args);
 
-};
+}
 
 Q_DECLARE_METATYPE(Mustache::QtVariantContext::fn_t)

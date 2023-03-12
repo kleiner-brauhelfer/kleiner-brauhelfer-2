@@ -401,7 +401,7 @@ void TabGaerverlauf::updateDiagramm()
     }
     diag = ui->widget_DiaNachgaerverlauf;
     diag->clear();
-    diag->setData1(x, y1, tr("CO₂"), tr("g/l"), 1);
+    diag->setData1(x, y1, tr("CO₂"), tr("g/L"), 1);
     diag->setData2(x, y2, tr("Druck"), tr("bar"), 2);
     diag->setData3(x, y3, tr("Temperatur"), tr("°C"), 1);
     diag->setData1Limit(bh->sud()->getCO2());

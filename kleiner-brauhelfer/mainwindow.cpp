@@ -782,7 +782,7 @@ void MainWindow::initLabels()
     HefeTypname = QStringList({"", tr("obergärig"), tr("untergärig")});
     HefeTypFlTrName = QStringList({"", tr("trocken"), tr("flüssig")});
     ZusatzTypname = QStringList({tr("Honig"), tr("Zucker"), tr("Gewürz"), tr("Frucht"), tr("Sonstiges"), tr("Kraut"), tr("Wasseraufbereitung"), tr("Klärmittel")});
-    Einheiten = QStringList({tr("kg"), tr("g"), tr("mg"), tr("Stk."), tr("l"), tr("ml")});
+    Einheiten = QStringList({tr("kg"), tr("g"), tr("mg"), tr("Stk."), tr("L"), tr("mL")});
 
     model = bh->modelSud();
     model->setHeaderData(ModelSud::ColID, Qt::Horizontal, tr("Sud ID"));
@@ -795,10 +795,10 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelSud::ColGespeichert, Qt::Horizontal, tr("Gespeichert"));
     model->setHeaderData(ModelSud::ColWoche, Qt::Horizontal, tr("Woche"));
     model->setHeaderData(ModelSud::ColBewertungMittel, Qt::Horizontal, tr("Bewertung"));
-    model->setHeaderData(ModelSud::ColMenge, Qt::Horizontal, tr("Menge [l]"));
+    model->setHeaderData(ModelSud::ColMenge, Qt::Horizontal, tr("Menge [L]"));
     model->setHeaderData(ModelSud::ColSW, Qt::Horizontal, tr("SW [°P]"));
     model->setHeaderData(ModelSud::ColIBU, Qt::Horizontal, tr("Bittere [IBU]"));
-    model->setHeaderData(ModelSud::Colerg_AbgefuellteBiermenge, Qt::Horizontal, tr("Menge [l]"));
+    model->setHeaderData(ModelSud::Colerg_AbgefuellteBiermenge, Qt::Horizontal, tr("Menge [L]"));
     model->setHeaderData(ModelSud::Colerg_Sudhausausbeute, Qt::Horizontal, tr("SHA [%]"));
     model->setHeaderData(ModelSud::ColSWIst, Qt::Horizontal, tr("SW [°P]"));
     model->setHeaderData(ModelSud::ColSREIst, Qt::Horizontal, tr("Restextrakt [°P]"));
@@ -846,7 +846,7 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelHefe::ColEigenschaften, Qt::Horizontal, tr("Eigenschaften"));
     model->setHeaderData(ModelHefe::ColTypOGUG, Qt::Horizontal, tr("OG/UG"));
     model->setHeaderData(ModelHefe::ColTypTrFl, Qt::Horizontal, tr("Trocken/Flüssig"));
-    model->setHeaderData(ModelHefe::ColWuerzemenge, Qt::Horizontal, tr("Würzemenge [l]"));
+    model->setHeaderData(ModelHefe::ColWuerzemenge, Qt::Horizontal, tr("Würzemenge [L]"));
     model->setHeaderData(ModelHefe::ColSedimentation, Qt::Horizontal, tr("Sedimentation"));
     model->setHeaderData(ModelHefe::ColEVG, Qt::Horizontal, tr("Vergärungsgrad"));
     model->setHeaderData(ModelHefe::ColTemperatur, Qt::Horizontal, tr("Temperatur"));
@@ -867,7 +867,7 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelWeitereZutaten::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
     model->setHeaderData(ModelWeitereZutaten::ColEigenschaften, Qt::Horizontal, tr("Eigenschaften"));
     model->setHeaderData(ModelWeitereZutaten::ColAlternativen, Qt::Horizontal, tr("Alternativen"));
-    model->setHeaderData(ModelWeitereZutaten::ColPreis, Qt::Horizontal, tr("Preis [%1/[kg/l/Stk]]").arg(QLocale().currencySymbol()));
+    model->setHeaderData(ModelWeitereZutaten::ColPreis, Qt::Horizontal, tr("Preis [%1/[kg/L/Stk]]").arg(QLocale().currencySymbol()));
     model->setHeaderData(ModelWeitereZutaten::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
     model->setHeaderData(ModelWeitereZutaten::ColMindesthaltbar, Qt::Horizontal, tr("Haltbarkeit"));
     model->setHeaderData(ModelWeitereZutaten::ColLink, Qt::Horizontal, tr("Link"));
@@ -898,13 +898,13 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelNachgaerverlauf::ColZeitstempel, Qt::Horizontal, tr("Datum"));
     model->setHeaderData(ModelNachgaerverlauf::ColDruck, Qt::Horizontal, tr("Druck [bar]"));
     model->setHeaderData(ModelNachgaerverlauf::ColTemp, Qt::Horizontal, tr("Temp. [°C]"));
-    model->setHeaderData(ModelNachgaerverlauf::ColCO2, Qt::Horizontal, tr("CO2 [g/l]"));
+    model->setHeaderData(ModelNachgaerverlauf::ColCO2, Qt::Horizontal, tr("CO2 [g/L]"));
     model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
 
     model = bh->modelAusruestung();
     model->setHeaderData(ModelAusruestung::ColName, Qt::Horizontal, tr("Anlage"));
     model->setHeaderData(ModelAusruestung::ColTyp, Qt::Horizontal, tr("Typ"));
-    model->setHeaderData(ModelAusruestung::ColVermoegen, Qt::Horizontal, tr("Vermögen [l]"));
+    model->setHeaderData(ModelAusruestung::ColVermoegen, Qt::Horizontal, tr("Vermögen [L]"));
     model->setHeaderData(ModelAusruestung::ColAnzahlSude, Qt::Horizontal, tr("Anzahl Sude"));
     model->setHeaderData(ModelAusruestung::ColAnzahlGebrauteSude, Qt::Horizontal, tr("Anzahl gebraute Sude"));
 

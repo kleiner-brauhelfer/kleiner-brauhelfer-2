@@ -113,7 +113,7 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
         model->setFilterKeyColumn(ModelWasseraufbereitung::ColSudID);
         ui->tableViewItem->appendCol({ModelWasseraufbereitung::ColName, true, false, -1, nullptr});
         ui->tableViewItem->appendCol({ModelWasseraufbereitung::ColMenge, true, false, -1, new DoubleSpinBoxDelegate(2, ui->tableViewItem)});
-        ui->tableViewItem->appendCol({ModelWasseraufbereitung::ColEinheit, true, false, 100, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk."), tr("l"), tr("ml")}, ui->tableViewItem)});
+        ui->tableViewItem->appendCol({ModelWasseraufbereitung::ColEinheit, true, false, 100, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk."), tr("L"), tr("mL")}, ui->tableViewItem)});
         break;
     case WZutatenMaischen:
         model = new ProxyModelZusatz(Brauhelfer::ZusatzZeitpunkt::Maischen, this);

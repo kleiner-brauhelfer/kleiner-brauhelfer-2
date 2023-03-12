@@ -42,7 +42,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
     ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
     ui->lblNebenkostenEinheit->setText(QLocale().currencySymbol());
-    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("l"));
+    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("L"));
     ui->lblDurchschnittWarnung->setPalette(gSettings->paletteErrorLabel);
 
     QPalette palette = ui->tbHelp->palette();

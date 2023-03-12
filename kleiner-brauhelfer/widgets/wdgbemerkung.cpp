@@ -24,6 +24,11 @@ void WdgBemerkung::setToolTip(const QString &text)
     ui->tbRichText->setToolTip(text);
 }
 
+void WdgBemerkung::setPlaceholderText(const QString &text)
+{
+    ui->tbRichText->setPlaceholderText(text);
+}
+
 void WdgBemerkung::setHtml(const QString& html)
 {
     if (Qt::mightBeRichText(html))

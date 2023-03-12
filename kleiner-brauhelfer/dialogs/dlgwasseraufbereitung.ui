@@ -94,12 +94,12 @@
        </item>
        <item>
         <property name="text">
-         <string>l</string>
+         <string>L</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>ml</string>
+         <string>mL</string>
         </property>
        </item>
       </widget>

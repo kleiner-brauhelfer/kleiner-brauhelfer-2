@@ -121,7 +121,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->btnNeuerAnhang->setPalette(pal);
 
     mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Settings::Theme::Dark ? ":/images/dark/bier.svg" : ":/images/light/bier.svg");
-    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("l"));
+    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("L"));
 
     ProxyModel* proxy = new ProxyModel(this);
     proxy->setSourceModel(bh->modelKategorien());
@@ -132,6 +132,13 @@ TabRezept::TabRezept(QWidget *parent) :
     pal.setBrush(QPalette::Base, pal.brush(QPalette::ToolTipBase));
     pal.setBrush(QPalette::Text, pal.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(pal);
+
+    ui->wdgBemerkung->setPlaceholderText(tr("Bemerkung allgemein"));
+    ui->wdgBemerkungMaischen->setPlaceholderText(tr("Bemerkung Maischen"));
+    ui->wdgBemerkungKochen->setPlaceholderText(tr("Bemerkung Kochen"));
+    ui->wdgBemerkungGaerung->setPlaceholderText(tr("Bemerkung Gärung"));
+    ui->wdgBemerkungMaischplan->setPlaceholderText(tr("Bemerkung Maischplan"));
+    ui->wdgBemerkungWasseraufbereitung->setPlaceholderText(tr("Bemerkung Wasseraufbereitung"));
 
     gSettings->beginGroup("TabRezept");
 

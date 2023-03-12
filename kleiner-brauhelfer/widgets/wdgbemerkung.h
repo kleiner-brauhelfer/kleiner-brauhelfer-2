@@ -37,6 +37,7 @@ public:
     explicit WdgBemerkung(QWidget *parent = nullptr);
     ~WdgBemerkung();
     void setToolTip(const QString &text);
+    void setPlaceholderText(const QString &text);
     void setHtml(const QString& html);
     QString toHtml() const;
 

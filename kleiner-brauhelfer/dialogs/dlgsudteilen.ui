@@ -65,7 +65,7 @@
      <item row="1" column="1">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Liter</string>
+        <string>L</string>
        </property>
       </widget>
      </item>
@@ -91,7 +91,7 @@
      <item row="1" column="4">
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Liter</string>
+        <string>L</string>
        </property>
       </widget>
      </item>

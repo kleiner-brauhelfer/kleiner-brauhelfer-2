@@ -312,7 +312,7 @@
            <item row="3" column="2">
             <widget class="QLabel" name="label_114">
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
@@ -629,7 +629,7 @@
            <item row="3" column="7">
             <widget class="QLabel" name="label_181">
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
@@ -672,7 +672,7 @@
            <item row="4" column="7">
             <widget class="QLabel" name="label_166">
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
@@ -1077,7 +1077,7 @@
            <item row="3" column="7">
             <widget class="QLabel" name="label_170">
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
@@ -1156,7 +1156,7 @@
            <item row="8" column="7">
             <widget class="QLabel" name="label_161">
              <property name="text">
-              <string>l/h</string>
+              <string>L/h</string>
              </property>
             </widget>
            </item>
@@ -1262,7 +1262,7 @@
            <item row="2" column="7">
             <widget class="QLabel" name="label_164">
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
@@ -1399,7 +1399,7 @@
            <item row="2" column="2">
             <widget class="QLabel" name="label_14">
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
@@ -1488,7 +1488,7 @@
            <item row="7" column="7">
             <widget class="QLabel" name="label_160">
              <property name="text">
-              <string>l/h</string>
+              <string>L/h</string>
              </property>
             </widget>
            </item>
@@ -1606,7 +1606,7 @@
            <item row="2" column="2">
             <widget class="QLabel" name="label_34">
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
@@ -1652,7 +1652,7 @@
            <item row="5" column="2">
             <widget class="QLabel" name="lblWuerzemengeAnstellenTotalEinheit">
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
@@ -1881,7 +1881,7 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>l</string>
+                 <string>L</string>
                 </property>
                </widget>
               </item>
@@ -2021,7 +2021,7 @@
            <item row="2" column="7">
             <widget class="QLabel" name="label_174">
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
@@ -2183,14 +2183,14 @@
               </size>
              </property>
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
            <item row="6" column="2">
             <widget class="QLabel" name="lblSpeisemengeEinheit">
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
@@ -2204,7 +2204,7 @@
            <item row="3" column="2">
             <widget class="QLabel" name="label_38">
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
@@ -2373,7 +2373,7 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>l</string>
+                 <string>L</string>
                 </property>
                </widget>
               </item>
@@ -2528,7 +2528,7 @@
                 </property>
                </widget>
               </item>
-	      <item row="0" column="2">
+              <item row="0" column="2">
                <widget class="DoubleSpinBoxSud" name="tbSWHefestarterBrix">
                 <property name="minimumSize">
                  <size>
@@ -2580,7 +2580,7 @@
                 </property>
                </spacer>
               </item>
-	      <item row="0" column="8">
+              <item row="0" column="8">
                <widget class="QLabel" name="lblSpeisemengeNoetigEinheit_2">
                 <property name="minimumSize">
                  <size>
@@ -2589,7 +2589,7 @@
                  </size>
                 </property>
                 <property name="text">
-                 <string>l</string>
+                 <string>L</string>
                 </property>
                </widget>
               </item>
@@ -2919,8 +2919,8 @@
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="ChartBraudaten" name="chartBraudaten"/>
-      <widget class="ChartAusbeute" name="chartAusbeute"/>
+      <widget class="ChartBraudaten" name="chartBraudaten" native="true"/>
+      <widget class="ChartAusbeute" name="chartAusbeute" native="true"/>
       <widget class="QWidget" name="wdgEmpty" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">

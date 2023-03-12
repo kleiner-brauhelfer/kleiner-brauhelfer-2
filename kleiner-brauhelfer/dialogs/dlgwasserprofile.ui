@@ -207,14 +207,14 @@
            </size>
           </property>
           <property name="text">
-           <string>mg/l</string>
+           <string>mg/L</string>
           </property>
          </widget>
         </item>
         <item row="5" column="3">
          <widget class="QLabel" name="label_137">
           <property name="text">
-           <string>mmol/l</string>
+           <string>mmol/L</string>
           </property>
          </widget>
         </item>
@@ -364,7 +364,7 @@
         <item row="12" column="3">
          <widget class="QLabel" name="label_150">
           <property name="text">
-           <string>mmol/l</string>
+           <string>mmol/L</string>
           </property>
          </widget>
         </item>
@@ -433,14 +433,14 @@
         <item row="1" column="3">
          <widget class="QLabel" name="label_132">
           <property name="text">
-           <string>mmol/l</string>
+           <string>mmol/L</string>
           </property>
          </widget>
         </item>
         <item row="15" column="3">
          <widget class="QLabel" name="label_151">
           <property name="text">
-           <string>mg/l</string>
+           <string>mg/L</string>
           </property>
          </widget>
         </item>
@@ -477,7 +477,7 @@
         <item row="11" column="3">
          <widget class="QLabel" name="label_145">
           <property name="text">
-           <string>mg/l</string>
+           <string>mg/L</string>
           </property>
          </widget>
         </item>
@@ -491,14 +491,14 @@
         <item row="18" column="3">
          <widget class="QLabel" name="label_153">
           <property name="text">
-           <string>mg/l</string>
+           <string>mg/L</string>
           </property>
          </widget>
         </item>
         <item row="4" column="3">
          <widget class="QLabel" name="label_136">
           <property name="text">
-           <string>mg/l</string>
+           <string>mg/L</string>
           </property>
          </widget>
         </item>
@@ -545,7 +545,7 @@
         <item row="20" column="3">
          <widget class="QLabel" name="label_154">
           <property name="text">
-           <string>mmol/l</string>
+           <string>mmol/L</string>
           </property>
          </widget>
         </item>
@@ -577,14 +577,14 @@
         <item row="16" column="3">
          <widget class="QLabel" name="label_152">
           <property name="text">
-           <string>mmol/l</string>
+           <string>mmol/L</string>
           </property>
          </widget>
         </item>
         <item row="8" column="3">
          <widget class="QLabel" name="label_143">
           <property name="text">
-           <string>mg/l</string>
+           <string>mg/L</string>
           </property>
          </widget>
         </item>
@@ -690,7 +690,7 @@
         <item row="9" column="3">
          <widget class="QLabel" name="label_141">
           <property name="text">
-           <string>mmol/l</string>
+           <string>mmol/L</string>
           </property>
          </widget>
         </item>

@@ -147,18 +147,18 @@ void DlgBrauUebersicht::build()
 {
     mAuswahlListe.clear();
     mAuswahlListe.append({-1, 0, tr("<keine>"), ""});
-    mAuswahlListe.append({ModelSud::Colerg_AbgefuellteBiermenge, 1, tr("Abgefüllte Biermenge"), tr("l")});
+    mAuswahlListe.append({ModelSud::Colerg_AbgefuellteBiermenge, 1, tr("Abgefüllte Biermenge"), tr("L")});
     mAuswahlListe.append({ModelSud::Colerg_S_Gesamt, 2, tr("Schüttung"), tr("kg")});
     mAuswahlListe.append({ModelSud::ColSWIst, 1, tr("Stammwürze"), tr("°P")});
     mAuswahlListe.append({ModelSud::Colerg_Sudhausausbeute, 0, tr("Sudhausausbeute"), tr("%")});
     mAuswahlListe.append({ModelSud::Colerg_EffektiveAusbeute, 0, tr("Effektive Sudhausausbeute"), tr("%")});
-    mAuswahlListe.append({ModelSud::ColVerdampfungsrateIst, 1, tr("Verdampfungsrate"), tr("l/h")});
+    mAuswahlListe.append({ModelSud::ColVerdampfungsrateIst, 1, tr("Verdampfungsrate"), tr("L/h")});
     mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol"), tr("%")});
     mAuswahlListe.append({ModelSud::ColSREIst, 1, tr("Scheinbarer Restextrakt"), tr("°P")});
     mAuswahlListe.append({ModelSud::ColsEVG, 0, tr("Scheinbarer Endvergärungsgrad"), tr("%")});
     mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad"), tr("%")});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
-        mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten"), tr("%1/l").arg(QLocale().currencySymbol())});
+        mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten"), tr("%1/L").arg(QLocale().currencySymbol())});
 
     ui->tableView->clearCols();
     ui->tableView->appendCol({ModelSud::ColSudname, true, false, 200, nullptr});

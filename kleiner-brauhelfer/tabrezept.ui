@@ -191,7 +191,7 @@
            <item row="16" column="0" colspan="2">
             <widget class="QLabel" name="label_6">
              <property name="text">
-              <string>CO2 Gehalt</string>
+              <string>Karbonisierung (CO₂)</string>
              </property>
             </widget>
            </item>
@@ -450,7 +450,7 @@
            <item row="12" column="3">
             <widget class="QLabel" name="label_52">
              <property name="text">
-              <string>l/h</string>
+              <string>L/h</string>
              </property>
             </widget>
            </item>
@@ -463,7 +463,7 @@
               </size>
              </property>
              <property name="text">
-              <string>l</string>
+              <string>L</string>
              </property>
             </widget>
            </item>
@@ -493,7 +493,7 @@
            <item row="16" column="3">
             <widget class="QLabel" name="label_21">
              <property name="text">
-              <string>g/l</string>
+              <string>g/L</string>
              </property>
             </widget>
            </item>
@@ -1113,7 +1113,7 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="ChartMalz" name="diagramMalz">
+          <widget class="ChartMalz" name="diagramMalz" native="true">
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum Prozessschritt Maischen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
@@ -1398,7 +1398,7 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="ChartHopfen" name="diagramHopfen">
+          <widget class="ChartHopfen" name="diagramHopfen" native="true">
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum &lt;span style=&quot; font-weight:700;&quot;&gt;Prozessschritt Hopfenkochen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
@@ -1638,7 +1638,7 @@ p, li { white-space: pre-wrap; }
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Statt der zuvor im Rezept festgelegten Werte, kann hier die &lt;span style=&quot; font-weight:700;&quot;&gt;tatsächlich benötigte Menge&lt;/span&gt; der Zutat anhand der Daten im &lt;span style=&quot; font-weight:700;&quot;&gt;Reiter Braudaten &lt;/span&gt;herangezogen werden&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Eine geänderte Gabe ist nur nach dem Anstellen möglich. Dazu muss der Sud im Reiter Braudaten als gebraut markiert sein.&lt;/p&gt;&lt;p&gt;Rezept und Braudaten unterscheiden sich in vielen Fällen, etwa wegen einer unpassend geschätzten Sudhausausbeute, einer anderen Verdampfungsrate, wie es oft nach einer Konfigurationsänderung der Braugerätschaften der Fall ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
-             <string>l</string>
+             <string>L</string>
             </property>
            </widget>
           </item>
@@ -1951,7 +1951,7 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="ChartMaischplan" name="diagramRasten">
+          <widget class="ChartMaischplan" name="diagramRasten" native="true">
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum Maischeplan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
@@ -3500,7 +3500,7 @@ p, li { white-space: pre-wrap; }
             <item row="4" column="4">
              <widget class="QLabel" name="label_35">
               <property name="text">
-               <string>l/h</string>
+               <string>L/h</string>
               </property>
              </widget>
             </item>
@@ -3591,7 +3591,7 @@ p, li { white-space: pre-wrap; }
             <item row="9" column="4">
              <widget class="QLabel" name="label_31">
               <property name="text">
-               <string>l</string>
+               <string>L</string>
               </property>
              </widget>
             </item>
@@ -3681,7 +3681,7 @@ p, li { white-space: pre-wrap; }
             <item row="6" column="4">
              <widget class="QLabel" name="label_44">
               <property name="text">
-               <string>l</string>
+               <string>L</string>
               </property>
              </widget>
             </item>
@@ -3711,14 +3711,14 @@ p, li { white-space: pre-wrap; }
             <item row="7" column="4">
              <widget class="QLabel" name="label_30">
               <property name="text">
-               <string>l</string>
+               <string>L</string>
               </property>
              </widget>
             </item>
             <item row="8" column="4">
              <widget class="QLabel" name="label_45">
               <property name="text">
-               <string>l</string>
+               <string>L</string>
               </property>
              </widget>
             </item>
@@ -3822,7 +3822,7 @@ p, li { white-space: pre-wrap; }
                   </size>
                  </property>
                  <property name="text">
-                  <string>l</string>
+                  <string>L</string>
                  </property>
                 </widget>
                </item>

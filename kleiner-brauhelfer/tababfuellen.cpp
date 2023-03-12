@@ -34,12 +34,15 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->tbWassserZuckerloesung->setColumn(ModelSud::ColVerschneidungAbfuellen);
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
     ui->lblNebenkostenEinheit->setText(QLocale().currencySymbol());
-    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("l"));
+    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("L"));
 
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
+
+    ui->wdgBemerkungAbfuellen->setPlaceholderText(tr("Bemerkung Abfüllen"));
+    ui->wdgBemerkungGaerung->setPlaceholderText(tr("Bemerkung Gärung & Reifung"));
 
     gSettings->beginGroup("TabAbfuellen");
 

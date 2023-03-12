@@ -171,7 +171,7 @@
       <item row="1" column="3">
        <widget class="QLabel" name="label_19">
         <property name="text">
-         <string>g/ml</string>
+         <string>g/mL</string>
         </property>
        </widget>
       </item>

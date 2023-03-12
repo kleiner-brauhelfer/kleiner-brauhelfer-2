@@ -14,6 +14,7 @@
 
 #include "mustache.h"
 
+#include <QtCore/QDebug>
 #include <QtCore/QFile>
 #include <QtCore/QStringList>
 #include <QtCore/QTextStream>
@@ -30,7 +31,7 @@ QString Mustache::renderTemplate(const QString& templateString, const QVariantHa
 QString escapeHtml(const QString& input)
 {
 	QString escaped(input);
-	for (int i=0; i < escaped.count();) {
+	for (int i=0; i < escaped.length();) {
 		const char* replacement = 0;
 		ushort ch = escaped.at(i).unicode();
 		if (ch == '&') {
@@ -101,7 +102,7 @@ QtVariantContext::QtVariantContext(const QVariant& root, PartialResolver* resolv
 
 QVariant variantMapValue(const QVariant& value, const QString& key)
 {
-	if (value.userType() == QVariant::Map) {
+	if (value.userType() == QMetaType::QVariantMap) {
 		return value.toMap().value(key);
 	} else {
 		return value.toHash().value(key);
@@ -138,21 +139,24 @@ bool QtVariantContext::isFalse(const QString& key) const
 {
 	QVariant value = this->value(key);
 	switch (value.userType()) {
-	case QMetaType::QChar:
 	case QMetaType::Double:
 	case QMetaType::Float:
+		// QVariant::toBool() rounds floats to the nearest int and then compares
+		// against 0, which is not the falsiness behavior we want.
+		return value.toDouble() == 0.;
+	case QMetaType::QChar:
 	case QMetaType::Int:
 	case QMetaType::UInt:
 	case QMetaType::LongLong:
 	case QMetaType::ULongLong:
-	case QVariant::Bool:
+	case QMetaType::Bool:
 		return !value.toBool();
-	case QVariant::List:
-	case QVariant::StringList:
+	case QMetaType::QVariantList:
+	case QMetaType::QStringList:
 		return value.toList().isEmpty();
-	case QVariant::Hash:
+	case QMetaType::QVariantHash:
 		return value.toHash().isEmpty();
-	case QVariant::Map:
+	case QMetaType::QVariantMap:
 		return value.toMap().isEmpty();
 	default:
 		return value.toString().isEmpty();
@@ -161,9 +165,6 @@ bool QtVariantContext::isFalse(const QString& key) const
 
 QString QtVariantContext::stringValue(const QString& key) const
 {
-	if (isFalse(key) && value(key).userType() != QVariant::Bool) {
-		return QString();
-	}
 	return value(key).toString();
 }
 
@@ -274,10 +275,10 @@ QString Renderer::render(const QString& _template, int startPos, int endPos, Con
 	while (m_errorPos == -1) {
 		Tag tag = findTag(_template, lastTagEnd, endPos);
 		if (tag.type == Tag::Null) {
-            output += _template.mid(lastTagEnd, endPos - lastTagEnd); // clazy:exclude=qstring-ref
+			output += QStringView(_template).mid(lastTagEnd, endPos - lastTagEnd);
 			break;
 		}
-        output += _template.mid(lastTagEnd, tag.start - lastTagEnd); // clazy:exclude=qstring-ref
+		output += QStringView(_template).mid(lastTagEnd, tag.start - lastTagEnd);
 		switch (tag.type) {
 		case Tag::Value:
 		{

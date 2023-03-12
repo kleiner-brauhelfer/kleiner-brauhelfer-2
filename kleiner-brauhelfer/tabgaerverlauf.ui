@@ -46,7 +46,7 @@
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
-         <widget class="WdgDiagramView" name="widget_DiaSchnellgaerverlauf" native="true">
+         <widget class="Chart3" name="widget_DiaSchnellgaerverlauf" native="true">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -196,7 +196,7 @@
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
-         <widget class="WdgDiagramView" name="widget_DiaHauptgaerverlauf" native="true">
+         <widget class="Chart3" name="widget_DiaHauptgaerverlauf" native="true">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -447,7 +447,7 @@
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
-         <widget class="WdgDiagramView" name="widget_DiaNachgaerverlauf" native="true">
+         <widget class="Chart3" name="widget_DiaNachgaerverlauf" native="true">
           <property name="minimumSize">
            <size>
             <width>0</width>
@@ -589,9 +589,9 @@
    <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
-   <class>WdgDiagramView</class>
+   <class>Chart3</class>
    <extends>QWidget</extends>
-   <header>widgets/wdgdiagramview.h</header>
+   <header>charts/chart3.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

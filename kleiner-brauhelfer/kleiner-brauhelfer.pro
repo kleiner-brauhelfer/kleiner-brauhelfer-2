@@ -16,7 +16,7 @@ TARGET = kleiner-brauhelfer-2
 
 VER_MAJ = 2
 VER_MIN = 5
-VER_PAT = 0
+VER_PAT = 1
 VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
 
@@ -58,6 +58,8 @@ SOURCES += \
     tabsudauswahl_sudinfo.cpp \
     tabzusammenfassung.cpp \
     templatetags.cpp \
+    charts/chart3.cpp \
+    charts/qcustomplot.cpp \
     charts/chartview.cpp \
     charts/chartviewabfuelldaten.cpp \
     charts/chartviewausbeute.cpp \
@@ -122,7 +124,6 @@ SOURCES += \
     widgets/wdganhang.cpp \
     widgets/wdgbemerkung.cpp \
     widgets/wdgbewertung.cpp \
-    widgets/wdgdiagramview.cpp \
     widgets/wdghefegabe.cpp \
     widgets/wdghopfengabe.cpp \
     widgets/wdgmalzgabe.cpp \
@@ -148,6 +149,8 @@ HEADERS += \
     tabsudauswahl.h \
     tabzusammenfassung.h \
     templatetags.h \
+    charts/chart3.h \
+    charts/qcustomplot.h \
     charts/chartview.h \
     charts/chartviewabfuelldaten.h \
     charts/chartviewausbeute.h \
@@ -213,7 +216,6 @@ HEADERS += \
     widgets/wdganhang.h \
     widgets/wdgbemerkung.h \
     widgets/wdgbewertung.h \
-    widgets/wdgdiagramview.h \
     widgets/wdghefegabe.h \
     widgets/wdghopfengabe.h \
     widgets/wdgmalzgabe.h \

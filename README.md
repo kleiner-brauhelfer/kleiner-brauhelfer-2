@@ -17,8 +17,11 @@ Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und V
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 **Credits:**
+- Bibliothek für Diagramme: [QCustomPlot](http://www.qcustomplot.com)
+- Code für Mustache Templates: [Qt Mustache](http://github.com/robertknight/qt-mustache)
+- Code HTML Syntaxhighlighting: [Evgenii Legotckoi](http://evileg.com/en/post/218/)
+- Flaggenicons: [Freepik](http://www.flaticon.com/authors/freepik) von [www.flaticon.com](http://www.flaticon.com/)
 
-Flaggenicons erstellt von [Freepik](https://www.flaticon.com/authors/freepik) von [www.flaticon.com](http://www.flaticon.com/).
 
 ## Download
 - [Download](https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2/releases/latest/)

@@ -27,36 +27,6 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->widget_DiaSchnellgaerverlauf->BezeichnungL1 = tr("Restextrakt [°P]");
-    ui->widget_DiaSchnellgaerverlauf->KurzbezeichnungL1 = tr("°P");
-    ui->widget_DiaSchnellgaerverlauf->L1Precision = 1;
-    ui->widget_DiaSchnellgaerverlauf->BezeichnungL2 = tr("Alkohol [%]");
-    ui->widget_DiaSchnellgaerverlauf->KurzbezeichnungL2 = tr("%");
-    ui->widget_DiaSchnellgaerverlauf->L2Precision = 1;
-    ui->widget_DiaSchnellgaerverlauf->BezeichnungL3 = tr("Temperatur [°C]");
-    ui->widget_DiaSchnellgaerverlauf->KurzbezeichnungL3 = tr("°C");
-    ui->widget_DiaSchnellgaerverlauf->L3Precision = 1;
-
-    ui->widget_DiaHauptgaerverlauf->BezeichnungL1 = tr("Restextrakt [°P]");
-    ui->widget_DiaHauptgaerverlauf->KurzbezeichnungL1 = tr("°P");
-    ui->widget_DiaHauptgaerverlauf->L1Precision = 1;
-    ui->widget_DiaHauptgaerverlauf->BezeichnungL2 = tr("Alkohol [%]");
-    ui->widget_DiaHauptgaerverlauf->KurzbezeichnungL2 = tr("%");
-    ui->widget_DiaHauptgaerverlauf->L2Precision = 1;
-    ui->widget_DiaHauptgaerverlauf->BezeichnungL3 = tr("Temperatur °C");
-    ui->widget_DiaHauptgaerverlauf->KurzbezeichnungL3 = tr("°C");
-    ui->widget_DiaHauptgaerverlauf->L3Precision = 1;
-
-    ui->widget_DiaNachgaerverlauf->BezeichnungL1 = tr("CO₂-Gehalt [g/l]");
-    ui->widget_DiaNachgaerverlauf->KurzbezeichnungL1 = tr("g/l");
-    ui->widget_DiaNachgaerverlauf->L1Precision = 1;
-    ui->widget_DiaNachgaerverlauf->BezeichnungL2 = tr("Druck [bar]");
-    ui->widget_DiaNachgaerverlauf->KurzbezeichnungL2 = tr("bar");
-    ui->widget_DiaNachgaerverlauf->L2Precision = 2;
-    ui->widget_DiaNachgaerverlauf->BezeichnungL3 = tr("Temperatur [°C]");
-    ui->widget_DiaNachgaerverlauf->KurzbezeichnungL3 = tr("°C");
-    ui->widget_DiaNachgaerverlauf->L3Precision = 1;
-
     gSettings->beginGroup("TabGaerverlauf");
 
     TableView *table = ui->tableWidget_Schnellgaerverlauf;
@@ -73,7 +43,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->restoreState(gSettings->value("tableStateSchnellgaerung").toByteArray());
     connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(table_selectionChanged(QItemSelection)));
-    connect(ui->widget_DiaSchnellgaerverlauf, SIGNAL(sig_selectionChanged(int)),
+    connect(ui->widget_DiaSchnellgaerverlauf, SIGNAL(selectionChanged(int)),
             this, SLOT(diagram_selectionChanged(int)));
 
     table = ui->tableWidget_Hauptgaerverlauf;
@@ -90,7 +60,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->restoreState(gSettings->value("tableStateHauptgaerung").toByteArray());
     connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(table_selectionChanged(QItemSelection)));
-    connect(ui->widget_DiaHauptgaerverlauf, SIGNAL(sig_selectionChanged(int)),
+    connect(ui->widget_DiaHauptgaerverlauf, SIGNAL(selectionChanged(int)),
             this, SLOT(diagram_selectionChanged(int)));
 
     table = ui->tableWidget_Nachgaerverlauf;
@@ -105,7 +75,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->restoreState(gSettings->value("tableStateNachgaerung").toByteArray());
     connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(table_selectionChanged(QItemSelection)));
-    connect(ui->widget_DiaNachgaerverlauf, SIGNAL(sig_selectionChanged(int)),
+    connect(ui->widget_DiaNachgaerverlauf, SIGNAL(selectionChanged(int)),
             this, SLOT(diagram_selectionChanged(int)));
 
     mDefaultSplitterStateSchnellgaerung = ui->splitterSchnellgaerung->saveState();
@@ -368,65 +338,80 @@ void TabGaerverlauf::dataChangedNachgaerverlauf(const QModelIndex& index)
 
 void TabGaerverlauf::updateDiagramm()
 {
-    WdgDiagramView *diag = ui->widget_DiaSchnellgaerverlauf;
+    Chart3 *diag;
     ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
-    diag->DiagrammLeeren();
+    QVector<double> x(model->rowCount());
+    QVector<double> y1(model->rowCount());
+    QVector<double> y2(model->rowCount());
+    QVector<double> y3(model->rowCount());
     for (int row = 0; row < model->rowCount(); row++)
     {
         QDateTime dt = model->index(row, ModelSchnellgaerverlauf::ColZeitstempel).data().toDateTime();
-        diag->Ids.append(row);
-        diag->L1Datum.append(dt);
-        diag->L2Datum.append(dt);
-        diag->L3Datum.append(dt);
-        diag->L1Daten.append(model->index(row, ModelSchnellgaerverlauf::ColRestextrakt).data().toDouble());
-        diag->L2Daten.append(model->index(row, ModelSchnellgaerverlauf::ColAlc).data().toDouble());
-        diag->L3Daten.append(model->index(row, ModelSchnellgaerverlauf::ColTemp).data().toDouble());
+        x[row] = dt.toSecsSinceEpoch();
+        y1[row] = model->index(row, ModelSchnellgaerverlauf::ColRestextrakt).data().toDouble();
+        y2[row] = model->index(row, ModelSchnellgaerverlauf::ColAlc).data().toDouble();
+        y3[row] = model->index(row, ModelSchnellgaerverlauf::ColTemp).data().toDouble();
     }
-    double sreSoll = bh->sud()->getSREErwartet();
-    diag->setWertLinie1(sreSoll);
-    diag->repaint();
+    diag = ui->widget_DiaSchnellgaerverlauf;
+    diag->clear();
+    diag->setData1(x, y1, tr("Restextrakt"), tr("°P"), 1);
+    diag->setData2(x, y2, tr("Alkohol"), tr("%"), 1);
+    diag->setData3(x, y3, tr("Temperatur"), tr("°C"), 1);
+    diag->setData1Limit(bh->sud()->getSREErwartet());
+    diag->rescale();
+    diag->replot();
 
-    diag = ui->widget_DiaHauptgaerverlauf;
     model = bh->sud()->modelHauptgaerverlauf();
-    diag->DiagrammLeeren();
+    x = QVector<double>(model->rowCount());
+    y1 = QVector<double>(model->rowCount());
+    y2 = QVector<double>(model->rowCount());
+    y3 = QVector<double>(model->rowCount());
     for (int row = 0; row < model->rowCount(); row++)
     {
         QDateTime dt = model->index(row, ModelHauptgaerverlauf::ColZeitstempel).data().toDateTime();
-        diag->Ids.append(row);
-        diag->L1Datum.append(dt);
-        diag->L2Datum.append(dt);
-        diag->L3Datum.append(dt);
-        diag->L1Daten.append(model->index(row, ModelHauptgaerverlauf::ColRestextrakt).data().toDouble());
-        diag->L2Daten.append(model->index(row, ModelHauptgaerverlauf::ColAlc).data().toDouble());
-        diag->L3Daten.append(model->index(row, ModelHauptgaerverlauf::ColTemp).data().toDouble());
+        x[row] = dt.toSecsSinceEpoch();
+        y1[row] = model->index(row, ModelHauptgaerverlauf::ColRestextrakt).data().toDouble();
+        y2[row] = model->index(row, ModelHauptgaerverlauf::ColAlc).data().toDouble();
+        y3[row] = model->index(row, ModelHauptgaerverlauf::ColTemp).data().toDouble();
     }
+    diag = ui->widget_DiaHauptgaerverlauf;
+    diag->clear();
+    diag->setData1(x, y1, tr("Restextrakt"), tr("°P"), 1);
+    diag->setData2(x, y2, tr("Alkohol"), tr("%"), 1);
+    diag->setData3(x, y3, tr("Temperatur"), tr("°C"), 1);
     if (bh->sud()->getSchnellgaerprobeAktiv())
-        diag->setWertLinie1(bh->sud()->getGruenschlauchzeitpunkt());
+        diag->setData1Limit(bh->sud()->getGruenschlauchzeitpunkt());
     else
-        diag->setWertLinie1(sreSoll);
-    diag->repaint();
+        diag->setData1Limit(bh->sud()->getSREErwartet());
+    diag->rescale();
+    diag->replot();
 
-    diag = ui->widget_DiaNachgaerverlauf;
     model = bh->sud()->modelNachgaerverlauf();
-    diag->DiagrammLeeren();
+    x = QVector<double>(model->rowCount());
+    y1 = QVector<double>(model->rowCount());
+    y2 = QVector<double>(model->rowCount());
+    y3 = QVector<double>(model->rowCount());
     for (int row = 0; row < model->rowCount(); row++)
     {
         QDateTime dt = model->index(row, ModelNachgaerverlauf::ColZeitstempel).data().toDateTime();
-        diag->Ids.append(row);
-        diag->L1Datum.append(dt);
-        diag->L2Datum.append(dt);
-        diag->L3Datum.append(dt);
-        diag->L1Daten.append(model->index(row, ModelNachgaerverlauf::ColCO2).data().toDouble());
-        diag->L2Daten.append(model->index(row, ModelNachgaerverlauf::ColDruck).data().toDouble());
-        diag->L3Daten.append(model->index(row, ModelNachgaerverlauf::ColTemp).data().toDouble());
+        x[row] = dt.toSecsSinceEpoch();
+        y1[row] = model->index(row, ModelNachgaerverlauf::ColCO2).data().toDouble();
+        y2[row] = model->index(row, ModelNachgaerverlauf::ColDruck).data().toDouble();
+        y3[row] = model->index(row, ModelNachgaerverlauf::ColTemp).data().toDouble();
     }
-    diag->setWertLinie1(bh->sud()->getCO2());
-    diag->repaint();
+    diag = ui->widget_DiaNachgaerverlauf;
+    diag->clear();
+    diag->setData1(x, y1, tr("CO₂"), tr("g/l"), 1);
+    diag->setData2(x, y2, tr("Druck"), tr("bar"), 2);
+    diag->setData3(x, y3, tr("Temperatur"), tr("°C"), 1);
+    diag->setData1Limit(bh->sud()->getCO2());
+    diag->rescale();
+    diag->replot();
 }
 
 void TabGaerverlauf::table_selectionChanged(const QItemSelection &selected)
 {
-    WdgDiagramView *diag;
+    Chart3 *diag;
     const QWidget* currentWidget = ui->toolBox_Gaerverlauf->currentWidget();
     if (currentWidget == ui->pageSchnellgaerung)
         diag = ui->widget_DiaSchnellgaerverlauf;
@@ -436,13 +421,13 @@ void TabGaerverlauf::table_selectionChanged(const QItemSelection &selected)
         diag = ui->widget_DiaNachgaerverlauf;
     else
         return;
-    int id = -1;
+    int index = -1;
     if (selected.indexes().count() > 0)
-        id = selected.indexes()[0].row();
-    diag->MarkierePunkt(id);
+        index = selected.indexes()[0].row();
+    diag->select(index);
 }
 
-void TabGaerverlauf::diagram_selectionChanged(int id)
+void TabGaerverlauf::diagram_selectionChanged(int index)
 {
     QTableView *table;
     const QWidget* currentWidget = ui->toolBox_Gaerverlauf->currentWidget();
@@ -454,7 +439,7 @@ void TabGaerverlauf::diagram_selectionChanged(int id)
         table = ui->tableWidget_Nachgaerverlauf;
     else
         return;
-    table->selectRow(id);
+    table->selectRow(index);
 }
 
 void TabGaerverlauf::on_btnAddSchnellgaerMessung_clicked()

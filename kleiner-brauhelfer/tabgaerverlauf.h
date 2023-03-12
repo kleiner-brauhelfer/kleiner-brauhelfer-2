@@ -41,7 +41,7 @@ private slots:
     void updateValues();
     void updateWeitereZutaten();
     void table_selectionChanged(const QItemSelection &selected);
-    void diagram_selectionChanged(int id);
+    void diagram_selectionChanged(int index);
     void on_btnAddSchnellgaerMessung_clicked();
     void on_btnDelSchnellgaerMessung_clicked();
     void on_btnImportSchnellgaerMessung_clicked();

@@ -17,7 +17,10 @@ class ProxyModelBrauuebersicht : public ProxyModelSud
 {
 public:
     ProxyModelBrauuebersicht(QObject* parent = nullptr) :
-        ProxyModelSud(parent)
+        ProxyModelSud(parent),
+        mColAuswahl1(-1),
+        mColAuswahl2(-1),
+        mColAuswahl3(-1)
     {
     }
 
@@ -65,10 +68,6 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
 
     ui->splitter->setSizes({INT_MAX, INT_MAX});
 
-    ui->diagram->colorL1 = gSettings->DiagramLinie1;
-    ui->diagram->colorL2 = gSettings->DiagramLinie2;
-    ui->diagram->colorL3 = gSettings->DiagramLinie3;
-
     ProxyModelBrauuebersicht *model = new ProxyModelBrauuebersicht(this);
     model->setSourceModel(bh->modelSud());
     model->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
@@ -83,7 +82,7 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
     connect(bh->modelSud(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagram()));
     connect(bh->modelSud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)), this, SLOT(modelDataChanged(QModelIndex)));
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(table_selectionChanged(QItemSelection)));
-    connect(ui->diagram, SIGNAL(sig_selectionChanged(int)), this, SLOT(diagram_selectionChanged(int)));
+    connect(ui->diagram, SIGNAL(selectionChanged(int)), this, SLOT(diagram_selectionChanged(int)));
 
     on_cbDatumAlle_stateChanged(ui->cbDatumAlle->isChecked());
 }
@@ -147,19 +146,19 @@ void DlgBrauUebersicht::modulesChanged(Settings::Modules modules)
 void DlgBrauUebersicht::build()
 {
     mAuswahlListe.clear();
-    mAuswahlListe.append({-1, 0, tr("<keine>"), "", 0, 0});
-    mAuswahlListe.append({ModelSud::Colerg_AbgefuellteBiermenge, 1, tr("Abgefüllte Biermenge"), tr("l"), 0, 0});
-    mAuswahlListe.append({ModelSud::Colerg_S_Gesamt, 2, tr("Schüttung"), tr("kg"), 0, 0});
-    mAuswahlListe.append({ModelSud::ColSWIst, 1, tr("Stammwürze"), tr("°P"), 0, 0});
-    mAuswahlListe.append({ModelSud::Colerg_Sudhausausbeute, 0, tr("Sudhausausbeute"), tr("%"), 0, 90});
-    mAuswahlListe.append({ModelSud::Colerg_EffektiveAusbeute, 0, tr("Effektive Sudhausausbeute"), tr("%"), 0, 90});
-    mAuswahlListe.append({ModelSud::ColVerdampfungsrateIst, 1, tr("Verdampfungsrate"), tr("l/h"), 0, 10});
-    mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol"), tr("%"), 0, 0});
-    mAuswahlListe.append({ModelSud::ColSREIst, 1, tr("Scheinbarer Restextrakt"), tr("°P"), 0, 0});
-    mAuswahlListe.append({ModelSud::ColsEVG, 0, tr("Scheinbarer Endvergärungsgrad"), tr("%"), 0, 90});
-    mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad"), tr("%"), 0, 90});
+    mAuswahlListe.append({-1, 0, tr("<keine>"), ""});
+    mAuswahlListe.append({ModelSud::Colerg_AbgefuellteBiermenge, 1, tr("Abgefüllte Biermenge"), tr("l")});
+    mAuswahlListe.append({ModelSud::Colerg_S_Gesamt, 2, tr("Schüttung"), tr("kg")});
+    mAuswahlListe.append({ModelSud::ColSWIst, 1, tr("Stammwürze"), tr("°P")});
+    mAuswahlListe.append({ModelSud::Colerg_Sudhausausbeute, 0, tr("Sudhausausbeute"), tr("%")});
+    mAuswahlListe.append({ModelSud::Colerg_EffektiveAusbeute, 0, tr("Effektive Sudhausausbeute"), tr("%")});
+    mAuswahlListe.append({ModelSud::ColVerdampfungsrateIst, 1, tr("Verdampfungsrate"), tr("l/h")});
+    mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol"), tr("%")});
+    mAuswahlListe.append({ModelSud::ColSREIst, 1, tr("Scheinbarer Restextrakt"), tr("°P")});
+    mAuswahlListe.append({ModelSud::ColsEVG, 0, tr("Scheinbarer Endvergärungsgrad"), tr("%")});
+    mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad"), tr("%")});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
-        mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten"), tr("%1/l").arg(QLocale().currencySymbol()), 0, 0});
+        mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten"), tr("%1/l").arg(QLocale().currencySymbol())});
 
     ui->tableView->clearCols();
     ui->tableView->appendCol({ModelSud::ColSudname, true, false, 200, nullptr});
@@ -196,85 +195,84 @@ void DlgBrauUebersicht::modelDataChanged(const QModelIndex& index)
 
 void DlgBrauUebersicht::updateDiagram()
 {
-    ui->diagram->DiagrammLeeren();
+    ui->diagram->clear();
     ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
     if (model->rowCount() > 1)
     {
-        int i = ui->cbAuswahlL1->currentIndex() + 1;
-        if (i >= 0 && i < mAuswahlListe.size())
+        int index = ui->cbAuswahlL1->currentIndex() + 1;
+        if (index >= 0 && index < mAuswahlListe.size())
         {
-            AuswahlType *auswahl1 = &mAuswahlListe[i];
+            AuswahlType *auswahl1 = &mAuswahlListe[index];
             model->mColAuswahl1 = auswahl1->col;
-            ui->diagram->BezeichnungL1 = auswahl1->label + " [" + auswahl1->unit + "]";
-            ui->diagram->KurzbezeichnungL1 = auswahl1->unit;
-            ui->diagram->L1Precision = auswahl1->precision;
-            ui->diagram->L1Min = auswahl1->min;
-            ui->diagram->L1Max = auswahl1->max;
-        }
-        i = ui->cbAuswahlL2->currentIndex();
-        if (i >= 0 && i < mAuswahlListe.size())
-        {
-            AuswahlType *auswahl2 = &mAuswahlListe[i];
-            model->mColAuswahl2 = auswahl2->col;
-            ui->diagram->BezeichnungL2 = auswahl2->label + " [" + auswahl2->unit + "]";
-            ui->diagram->KurzbezeichnungL2 = auswahl2->unit;
-            ui->diagram->L2Precision = auswahl2->precision;
-            ui->diagram->L2Min = auswahl2->min;
-            ui->diagram->L2Max = auswahl2->max;
-        }
-        i = ui->cbAuswahlL3->currentIndex();
-        if (i >= 0 && i < mAuswahlListe.size())
-        {
-            AuswahlType *auswahl3 = &mAuswahlListe[i];
-            model->mColAuswahl3 = auswahl3->col;
-            ui->diagram->BezeichnungL3 = auswahl3->label + " [" + auswahl3->unit + "]";
-            ui->diagram->KurzbezeichnungL3 = auswahl3->unit;
-            ui->diagram->L3Precision = auswahl3->precision;
-            ui->diagram->L3Min = auswahl3->min;
-            ui->diagram->L3Max = auswahl3->max;
-        }
-        for (int row = model->rowCount() - 1; row >= 0; --row)
-        {
-            QDateTime dt = model->index(row, ModelSud::ColBraudatum).data().toDateTime();
-            ui->diagram->Ids.append(model->index(row, ModelSud::ColID).data().toInt());
-            ui->diagram->L1Daten.append(model->index(row, model->mColAuswahl1).data().toDouble());
-            ui->diagram->L1Datum.append(dt);
-            if (model->mColAuswahl2 >= 0)
+            QVector<double> x(model->rowCount());
+            QVector<double> y(model->rowCount());
+            int i = 0;
+            for (int row = model->rowCount() - 1; row >= 0; --row)
             {
-                ui->diagram->L2Daten.append(model->index(row, model->mColAuswahl2).data().toDouble());
-                ui->diagram->L2Datum.append(dt);
+                QDateTime dt = model->index(row, ModelSud::ColBraudatum).data().toDateTime();
+                x[i] = dt.toSecsSinceEpoch();
+                y[i] = model->index(row, auswahl1->col).data().toDouble();
+                i++;
             }
-            if (model->mColAuswahl3 >= 0)
+            ui->diagram->setData1(x, y, auswahl1->label, auswahl1->unit, auswahl1->precision);
+        }
+        index = ui->cbAuswahlL2->currentIndex();
+        if (index >= 0 && index < mAuswahlListe.size())
+        {
+            AuswahlType *auswahl2 = &mAuswahlListe[index];
+            model->mColAuswahl2 = auswahl2->col;
+            if (auswahl2->col >= 0)
             {
-                ui->diagram->L3Daten.append(model->index(row, model->mColAuswahl3).data().toDouble());
-                ui->diagram->L3Datum.append(dt);
+                QVector<double> x(model->rowCount());
+                QVector<double> y(model->rowCount());
+                int i = 0;
+                for (int row = model->rowCount() - 1; row >= 0; --row)
+                {
+                    QDateTime dt = model->index(row, ModelSud::ColBraudatum).data().toDateTime();
+                    x[i] = dt.toSecsSinceEpoch();
+                    y[i] = model->index(row, auswahl2->col).data().toDouble();
+                    i++;
+                }
+                ui->diagram->setData2(x, y, auswahl2->label, auswahl2->unit, auswahl2->precision);
+            }
+        }
+        index = ui->cbAuswahlL3->currentIndex();
+        if (index >= 0 && index < mAuswahlListe.size())
+        {
+            AuswahlType *auswahl3 = &mAuswahlListe[index];
+            model->mColAuswahl3 = auswahl3->col;
+            if (auswahl3->col >= 0)
+            {
+                QVector<double> x(model->rowCount());
+                QVector<double> y(model->rowCount());
+                int i = 0;
+                for (int row = model->rowCount() - 1; row >= 0; --row)
+                {
+                    QDateTime dt = model->index(row, ModelSud::ColBraudatum).data().toDateTime();
+                    x[i] = dt.toSecsSinceEpoch();
+                    y[i] = model->index(row, auswahl3->col).data().toDouble();
+                    i++;
+                }
+                ui->diagram->setData3(x, y, auswahl3->label, auswahl3->unit, auswahl3->precision);
             }
         }
     }
-    ui->diagram->repaint();
+    table_selectionChanged(ui->tableView->selectionModel()->selection());
+    ui->diagram->rescale();
+    ui->diagram->replot();
 }
 
 void DlgBrauUebersicht::table_selectionChanged(const QItemSelection &selected)
 {
-    int sudId = -1;
+    int index = -1;
     if (selected.indexes().count() > 0)
-    {
-        const QModelIndex index = selected.indexes()[0];
-        sudId = index.sibling(index.row(), ModelSud::ColID).data().toInt();
-    }
-    ui->diagram->MarkierePunkt(sudId);
+        index = ui->tableView->model()->rowCount() - 1 - selected.indexes()[0].row();
+    ui->diagram->select(index);
 }
 
-void DlgBrauUebersicht::diagram_selectionChanged(int sudId)
+void DlgBrauUebersicht::diagram_selectionChanged(int index)
 {
-    for (int row = 0; row < ui->tableView->model()->rowCount(); ++row)
-    {
-        if (ui->tableView->model()->index(row, ModelSud::ColID).data().toInt() == sudId)
-        {
-            ui->tableView->selectRow(row);
-            break;
-        }
-    }
+    ui->tableView->selectRow(ui->tableView->model()->rowCount() - 1 - index);
 }
 
 void DlgBrauUebersicht::on_cbAuswahlL1_currentIndexChanged(int)

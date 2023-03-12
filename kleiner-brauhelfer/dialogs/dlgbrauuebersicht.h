@@ -28,7 +28,7 @@ private slots:
     void updateDiagram();
     void modelDataChanged(const QModelIndex& index);
     void table_selectionChanged(const QItemSelection &selected);
-    void diagram_selectionChanged(int sudId);
+    void diagram_selectionChanged(int index);
     void on_cbAuswahlL1_currentIndexChanged(int);
     void on_cbAuswahlL2_currentIndexChanged(int);
     void on_cbAuswahlL3_currentIndexChanged(int);
@@ -47,8 +47,6 @@ private:
         int precision;
         QString label;
         QString unit;
-        double min;
-        double max;
     };
 
 private:

@@ -107,7 +107,7 @@
      <property name="childrenCollapsible">
       <bool>false</bool>
      </property>
-     <widget class="WdgDiagramView" name="diagram" native="true">
+     <widget class="Chart3" name="diagram" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
@@ -203,9 +203,9 @@
    <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
-   <class>WdgDiagramView</class>
+   <class>Chart3</class>
    <extends>QWidget</extends>
-   <header>widgets/wdgdiagramview.h</header>
+   <header>charts/chart3.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

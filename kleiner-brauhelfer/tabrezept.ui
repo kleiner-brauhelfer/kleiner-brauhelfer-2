@@ -1113,12 +1113,12 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="ChartMalz" name="diagramMalz" native="true">
+          <widget class="ChartMalz" name="diagramMalz" native="true"/>
+          <widget class="WdgBemerkung" name="wdgBemerkungMaischen" native="true">
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum Prozessschritt Maischen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
-          <widget class="WdgBemerkung" name="wdgBemerkungMaischen" native="true"/>
          </widget>
         </item>
         <item>
@@ -1398,12 +1398,12 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="ChartHopfen" name="diagramHopfen" native="true">
+          <widget class="ChartHopfen" name="diagramHopfen" native="true"/>
+          <widget class="WdgBemerkung" name="wdgBemerkungKochen" native="true">
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum &lt;span style=&quot; font-weight:700;&quot;&gt;Prozessschritt Hopfenkochen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
-          <widget class="WdgBemerkung" name="wdgBemerkungKochen" native="true"/>
          </widget>
         </item>
         <item>
@@ -1951,12 +1951,12 @@ p, li { white-space: pre-wrap; }
             </layout>
            </widget>
           </widget>
-          <widget class="ChartMaischplan" name="diagramRasten" native="true">
+          <widget class="ChartMaischplan" name="diagramRasten" native="true"/>
+          <widget class="WdgBemerkung" name="wdgBemerkungMaischplan" native="true">
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum Maischeplan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für Bemerkungen zum Maischplan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
-          <widget class="WdgBemerkung" name="wdgBemerkungMaischplan" native="true"/>
          </widget>
         </item>
         <item>

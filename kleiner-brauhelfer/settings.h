@@ -29,7 +29,7 @@ public:
         ModuleBraudaten             = 0x00000004,
         ModuleAbfuellen             = 0x00000008,
         ModuleGaerverlauf           = 0x00000010,
-        ModuleZusammenfassung       = 0x00000020,
+        ModuleAusdruck              = 0x00000020,
         ModuleEtikette              = 0x00000040,
         ModuleBewertung             = 0x00000080,
         ModuleBrauuebersicht        = 0x00000100,
@@ -44,8 +44,8 @@ public:
         ModuleSchnellgaerprobe      = 0x00100000,
         //
         ModuleDefault               = ModuleSudauswahl | ModuleRezept | ModuleBraudaten | ModuleAbfuellen |
-                                      ModuleGaerverlauf | ModuleZusammenfassung | ModuleRohstoffe |
-                                      ModuleLagerverwaltung,
+                                      ModuleGaerverlauf | ModuleAusdruck | ModuleRohstoffe |
+                                      ModuleLagerverwaltung | ModuleBrauuebersicht,
         ModuleAlle                  = 0xffffffff,
     };
     Q_DECLARE_FLAGS(Modules, Module)

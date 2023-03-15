@@ -23,7 +23,7 @@
    <item>
     <widget class="QLabel" name="label_12">
      <property name="text">
-      <string>Hier können Module ein- und ausgeschaltet werden. Diese Einstellung lässt sich jederzeit anpassen.</string>
+      <string>Module bieten erweiterte Funktionalitäten. Diese lassen sich hier jederzeit ein- oder ausschalten.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
@@ -104,7 +104,7 @@
        <item>
         <widget class="QGroupBox" name="gbModuleZusammenfassung">
          <property name="title">
-          <string>Spickzettel / Zusammenfassung</string>
+          <string>Ausdruck</string>
          </property>
          <property name="checkable">
           <bool>true</bool>

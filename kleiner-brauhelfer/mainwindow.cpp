@@ -313,10 +313,10 @@ void MainWindow::updateTabs(Settings::Modules modules)
     }
     if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
         nextIndex++;
-    if (modules.testFlag(Settings::ModuleZusammenfassung))
+    if (modules.testFlag(Settings::ModuleAusdruck))
     {
         int index = ui->tabMain->indexOf(ui->tabZusammenfassung);
-        if (gSettings->isModuleEnabled(Settings::ModuleZusammenfassung))
+        if (gSettings->isModuleEnabled(Settings::ModuleAusdruck))
         {
             if (index < 0)
                 ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed("tabzusammenfassung", gSettings->theme() == Settings::Theme::Bright), tr("Ausdruck"));
@@ -324,7 +324,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         else
             ui->tabMain->removeTab(index);
     }
-    if (gSettings->isModuleEnabled(Settings::ModuleZusammenfassung))
+    if (gSettings->isModuleEnabled(Settings::ModuleAusdruck))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleEtikette))
     {

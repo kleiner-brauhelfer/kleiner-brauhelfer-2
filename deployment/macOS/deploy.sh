@@ -77,7 +77,7 @@ echo "* Patching '${PLIST}'..."
 /usr/libexec/PlistBuddy -c "Add :CFBundleVersion string '${VERSION}'" ${PLIST} || exit 1
 
 /usr/libexec/PlistBuddy -c "Delete :NSHumanReadableCopyright" ${PLIST}
-/usr/libexec/PlistBuddy -c "Add :NSHumanReadableCopyright string 'Copyright © 2018-2020 Gremmelsoft. All rights reserved.'" ${PLIST} || exit 1
+/usr/libexec/PlistBuddy -c "Add :NSHumanReadableCopyright string 'Copyright © 2018-2023 Gremmelsoft. All rights reserved.'" ${PLIST} || exit 1
 
 
 

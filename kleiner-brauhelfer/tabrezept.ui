@@ -3223,14 +3223,14 @@ p, li { white-space: pre-wrap; }
             <item row="1" column="4">
              <widget class="QLabel" name="label_32">
               <property name="text">
-               <string>l</string>
+               <string>L</string>
               </property>
              </widget>
             </item>
             <item row="3" column="4">
              <widget class="QLabel" name="label_33">
               <property name="text">
-               <string>l</string>
+               <string>L</string>
               </property>
              </widget>
             </item>
@@ -3310,7 +3310,7 @@ p, li { white-space: pre-wrap; }
                   </size>
                  </property>
                  <property name="text">
-                  <string>l</string>
+                  <string>L</string>
                  </property>
                 </widget>
                </item>
@@ -3326,7 +3326,7 @@ p, li { white-space: pre-wrap; }
                </size>
               </property>
               <property name="text">
-               <string>l</string>
+               <string>L</string>
               </property>
              </widget>
             </item>
@@ -3455,7 +3455,7 @@ p, li { white-space: pre-wrap; }
                   </size>
                  </property>
                  <property name="text">
-                  <string>l</string>
+                  <string>L</string>
                  </property>
                 </widget>
                </item>

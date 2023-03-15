@@ -40,10 +40,7 @@ WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
     ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
 
     updateValues();
-    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
 WdgMalzGabe::~WdgMalzGabe()

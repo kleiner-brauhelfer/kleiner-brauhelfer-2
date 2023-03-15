@@ -2,6 +2,7 @@
 
 ## Version 2.5.1 (in Entwicklung)
 - Neu: Diagramme überarbeitet (neu mit QCustomPlot, Qt Charts nicht mehr benötigt)
+- Fix: Gaben & Rasten im Rezeptreiter nicht immer aktualisiert 
 
 ## Version 2.5.0 (27.02.2023)
 - Neu: Datenbankversion **2008**

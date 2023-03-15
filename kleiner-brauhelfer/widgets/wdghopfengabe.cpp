@@ -42,9 +42,7 @@ WdgHopfenGabe::WdgHopfenGabe(int row, QLayout* parentLayout, QWidget *parent) :
     ui->tbMengeProLiter->setErrorOnLimit(true);
 
     updateValues();
-    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
 WdgHopfenGabe::~WdgHopfenGabe()
@@ -72,6 +70,7 @@ void WdgHopfenGabe::checkEnabled()
 
 void WdgHopfenGabe::updateValues()
 {
+    qDebug() << "updateValues()" << bh->sud()->row();
     QString hopfenname = name();
 
     checkEnabled();

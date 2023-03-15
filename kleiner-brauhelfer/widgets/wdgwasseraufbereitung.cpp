@@ -33,9 +33,7 @@ WdgWasseraufbereitung::WdgWasseraufbereitung(int row, QLayout *parentLayout, QWi
     setPalette(pal);
 
     updateValues();
-    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
 WdgWasseraufbereitung::~WdgWasseraufbereitung()

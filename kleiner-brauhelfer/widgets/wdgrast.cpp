@@ -52,9 +52,7 @@ WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
 
     updateValues();
     updateListe();
-    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(mModel, SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
 WdgRast::~WdgRast()

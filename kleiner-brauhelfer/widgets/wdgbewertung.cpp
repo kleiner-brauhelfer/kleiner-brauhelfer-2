@@ -20,9 +20,7 @@ WdgBewertung::WdgBewertung(int index, QWidget *parent) :
     ui->wdgRating->setReadOnly(true);
     ui->wdgRating->installEventFilter(this);
     updateValues();
-    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelBewertungen(), SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
 }
 
 WdgBewertung::~WdgBewertung()

@@ -34,7 +34,7 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ### Linux
 - **kbh2_v2.x.x_linux_x64.deb**: Debian Packet für 64bit System
   - Benötigt zusätzlich:
-    - [Qt 6](https://www.qt.io/download-qt-installer) inklusiv WebEngine Modul
+    - [Qt 6](https://www.qt.io/download-qt-installer) inklusiv Qt WebEngine, Qt WebChannel und Qt Positioning
     - OpenSSL 1.1.1b oder höher
 - **kleiner-brauhelfer-2-x86_64.AppImage**: Portable Version (AppImage) für 64bit System
   

@@ -187,7 +187,11 @@ void QtVariantContext::pop()
 int QtVariantContext::listCount(const QString& key) const
 {
 	const QVariant& item = value(key);
+#if QT_VERSION >= 0x060000
+	if (item.canConvert<QVariantList>() && item.typeId() != QMetaType::QString) {
+#else
 	if (item.canConvert<QVariantList>()) {
+#endif
 		return item.toList().count();
 	}
 	return 0;

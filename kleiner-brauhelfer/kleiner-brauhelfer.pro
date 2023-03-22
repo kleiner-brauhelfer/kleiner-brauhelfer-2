@@ -1,12 +1,9 @@
-QT += core sql gui widgets svg xml
+!versionAtLeast(QT_VERSION, 6):error("Use at least Qt 6.0")
+
+QT += core sql gui widgets svg svgwidgets xml
 QT += printsupport
 QT += network
-isEqual(QT_MAJOR_VERSION, 5):!lessThan(QT_MINOR_VERSION, 4) {
- QT += webenginewidgets
-}
-isEqual(QT_MAJOR_VERSION, 6) {
- QT += svgwidgets webenginewidgets
-}
+QT += webenginewidgets
 
 ORGANIZATION = kleiner-brauhelfer
 TARGET = kleiner-brauhelfer-2

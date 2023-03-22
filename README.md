@@ -30,20 +30,13 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ### Windows
 - **kbh2_v2.x.x_setup_win_x64.exe**: Installationsdatei für 64bit System
 - **kbh2_v2.x.x_portable_win_x64.zip**: Portable Version für 64bit System
-- **kbh2_v2.x.x_setup_win_x86.exe**: Installationsdatei für 32bit System
-- **kbh2_v2.x.x_portable_win_x86.zip**: Portable Version für 32bit System
 
 ### Linux
-- **kbh2_v2.x.x_linux_x64.deb**: Installationsdatei für 64bit System
-  - Benötigt zusätzlich Installation von [Qt 5.15.2](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
-    - Desktop gcc 64-bit, Qt WebEngine
-  - Benötigt OpenSSL 1.1.1b oder höher
+- **kbh2_v2.x.x_linux_x64.deb**: Debian Packet für 64bit System
+  - Benötigt zusätzlich:
+    - [Qt 6](https://www.qt.io/download-qt-installer) inklusiv WebEngine Modul
+    - OpenSSL 1.1.1b oder höher
 - **kleiner-brauhelfer-2-x86_64.AppImage**: Portable Version (AppImage) für 64bit System
-- **kbh2_v2.x.x_linux_x32.deb**: Installationsdatei für 32bit System
-  - Neuere Qt Versionen werden für Linux 32bit nicht mehr angeboten. Deshalb werden nicht alle Features unterstüzt.
-  - Benötigt zusätzlich Installation von [Qt 5.5](https://www.qt.io/download-qt-installer) mit folgenden Komponenten
-    - Desktop gcc, Qt WebEngine
-  - Benötigt OpenSSL 1.1.1b oder höher
   
 ### Mac OS
 - **kbh2_v2.x.x_macos.zip**: Installationsdatei für Mac OS

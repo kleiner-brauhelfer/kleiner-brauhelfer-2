@@ -1479,7 +1479,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
         Anteil.appendChild(element);
 
         element = doc.createElement("YIELD");
-        text = doc.createTextNode("100");
+        text = doc.createTextNode("77");
         element.appendChild(text);
         Anteil.appendChild(element);
 

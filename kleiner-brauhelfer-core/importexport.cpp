@@ -1479,7 +1479,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
         Anteil.appendChild(element);
 
         element = doc.createElement("YIELD");
-        text = doc.createTextNode("100");
+        text = doc.createTextNode("77");
         element.appendChild(text);
         Anteil.appendChild(element);
 
@@ -1809,7 +1809,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
         switch (typ)
         {
         case Brauhelfer::RastTyp::Einmaischen:
-            text = doc.createTextNode("Temperature");
+            text = doc.createTextNode("Infusion");
             break;
         case Brauhelfer::RastTyp::Temperatur:
             text = doc.createTextNode("Temperature");
@@ -1834,7 +1834,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
         element.appendChild(text);
         Anteil.appendChild(element);
 
-        if (typ == Brauhelfer::RastTyp::Infusion)
+        if (typ == Brauhelfer::RastTyp::Infusion || typ == Brauhelfer::RastTyp::Einmaischen)
         {
             element = doc.createElement("INFUSE_AMOUNT");
             text = doc.createTextNode(QString::number(model.data(row, ModelRasten::ColMenge).toDouble(), 'f', 1));

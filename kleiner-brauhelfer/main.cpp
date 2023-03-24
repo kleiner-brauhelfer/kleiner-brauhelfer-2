@@ -70,7 +70,7 @@ static bool chooseDatabase()
     {
         QString databasePath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Datenbank anlegen"),
                                                             dir + "/kb_daten.sqlite",
-                                                            QObject::tr("Datenbank") + " (*.sqlite)");
+                                                            QObject::tr("Datenbank (*.sqlite);;Alle Dateien (*.*)"));
         if (!databasePath.isEmpty())
         {
             QFile file(databasePath);
@@ -539,7 +539,7 @@ int main(int argc, char *argv[])
         delete bh;
     delete gSettings;
 
-    qInfo("--- Application end (%d)---", ret);
+    qInfo("--- Application end (%d) ---", ret);
 
     // close log
     if (logFile)

@@ -487,12 +487,14 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
             QImage image(labelWidth, labelHeight, QImage::Format_ARGB32_Premultiplied);
             QPainter imagePainter(&image);
             image.fill(Qt::transparent);
-            svgView.renderer()->render(&imagePainter);
+            if (svgView.renderer())
+                svgView.renderer()->render(&imagePainter);
             painter.drawImage(rect, image);
         }
         else
         {
-            svgView.renderer()->render(&painter, rect);
+            if (svgView.renderer())
+                svgView.renderer()->render(&painter, rect);
         }
 
         x += labelWidth + labelDistHor;

@@ -30,6 +30,12 @@ SvgView::SvgView(QWidget *parent)
     setBackgroundBrush(tilePixmap);
 }
 
+SvgView::~SvgView()
+{
+    if (mSvgItem)
+        delete mSvgItem;
+}
+
 void SvgView::drawBackground(QPainter *p, const QRectF &)
 {
     p->save();
@@ -47,23 +53,28 @@ QRectF SvgView::viewBoxF() const
 
 void SvgView::clear()
 {
+    if (mSvgItem) {
+        delete mSvgItem;
+        mSvgItem = nullptr;
+    }
     scene()->clear();
-    mSvgItem = nullptr;
 }
 
 template <class T> bool SvgView::load_impl(const T& arg)
 {
     try
     {
-        QScopedPointer<QGraphicsSvgItem> svgItem(new QGraphicsSvgItem());
-        if (!svgItem->renderer()->load(arg))
-            return false;
-        svgItem->setElementId("");
-
-        scene()->clear();
+        clear();
         resetTransform();
 
-        mSvgItem = svgItem.take();
+        mSvgItem = new QGraphicsSvgItem();
+        if (!mSvgItem->renderer()->load(arg))
+        {
+            clear();
+            return false;
+        }
+
+        mSvgItem->setElementId("");
         mSvgItem->setFlags(QGraphicsItem::ItemClipsToShape);
         mSvgItem->setCacheMode(QGraphicsItem::NoCache);
         mSvgItem->setZValue(0);
@@ -96,6 +107,7 @@ template <class T> bool SvgView::load_impl(const T& arg)
     }
     catch (...)
     {
+        clear();
         return false;
     }
 }
@@ -130,9 +142,8 @@ void SvgView::wheelEvent(QWheelEvent *event)
 void SvgView::mouseDoubleClickEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
-    if (!mSvgItem)
-        return;
-    fitInView(mSvgItem, Qt::KeepAspectRatio);
+    if (mSvgItem)
+        fitInView(mSvgItem, Qt::KeepAspectRatio);
 }
 
 QSvgRenderer *SvgView::renderer() const

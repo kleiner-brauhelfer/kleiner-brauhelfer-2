@@ -1188,16 +1188,16 @@ void TabRezept::on_btnNeueHefeGabe_clicked()
 void TabRezept::vergaerungsgradUebernehmen(const QString& hefe)
 {
     QString str = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, hefe, ModelHefe::ColEVG).toString();
-    QRegularExpression regxExp("[-+]?[0-9]*[.,]?[0-9]+");
+    static QRegularExpression regxExp("[-+]?[0-9]*[.,]?[0-9]+");
     QRegularExpressionMatchIterator i = regxExp.globalMatch(str);
     double mean = 0;
     int N = 0;
     while (i.hasNext())
     {
-         QRegularExpressionMatch match = i.next();
-         double val = match.captured().replace(',', '.').toDouble();
-         mean += val;
-         N++;
+        QRegularExpressionMatch match = i.next();
+        double val = match.captured().replace(',', '.').toDouble();
+        mean += val;
+        N++;
     }
     if (N > 0 && mean > 0)
     {

@@ -28,7 +28,7 @@ public:
             QVariant data = index.data();
             if (!data.isValid() || data.isNull())
                 return gSettings->ErrorBase;
-            if (data.type() == QVariant::Type::String && data.toString().isEmpty())
+            if (data.typeId() == QMetaType::QString && data.toString().isEmpty())
                 return gSettings->ErrorBase;
         }
         return ProxyModel::data(index, role);
@@ -47,7 +47,7 @@ protected:
             QVariant data = index.data();
             if (!data.isValid() || data.isNull())
                 return true;
-            if (data.type() == QVariant::Type::String)
+            if (data.typeId() == QMetaType::QString)
                 return data.toString().isEmpty();
         }
         return false;

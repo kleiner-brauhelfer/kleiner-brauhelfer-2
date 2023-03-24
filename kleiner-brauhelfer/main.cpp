@@ -53,9 +53,8 @@ static bool chooseDatabase()
         dir = gSettings->databaseDir();
     }
 
-    int ret = QMessageBox::question(nullptr, QApplication::applicationName(), text,
-                                    QObject::tr("Anlegen"), QObject::tr("Öffnen"), QObject::tr("Abbrechen"));
-    if (ret == 1)
+    QMessageBox::StandardButton ret = QMessageBox::question(nullptr, QApplication::applicationName(), text, QMessageBox::Save | QMessageBox::Open | QMessageBox::Cancel);
+    if (ret == QMessageBox::Open)
     {
         QString databasePath = QFileDialog::getOpenFileName(nullptr, QObject::tr("Datenbank auswählen"),
                                                             dir,
@@ -66,7 +65,7 @@ static bool chooseDatabase()
             return true;
         }
     }
-    else if (ret == 0)
+    else if (ret == QMessageBox::Save)
     {
         QString databasePath = QFileDialog::getSaveFileName(nullptr, QObject::tr("Datenbank anlegen"),
                                                             dir + "/kb_daten.sqlite",
@@ -115,12 +114,12 @@ static bool connectDatabase()
             }
             else if (version < bh->supportedDatabaseVersion)
             {
-                int ret = QMessageBox::warning(nullptr, QApplication::applicationName(),
-                                               QObject::tr("Die Datenbank muss aktualisiert werden (Version %1 -> %2).").arg(version).arg(bh->supportedDatabaseVersion) + "\n\n" +
-                                               QObject::tr("Soll die Datenbank jetzt aktualisiert werden?") + " " +
-                                               QObject::tr("ACHTUNG, die Änderungen können nicht rückgängig gemacht werden!"),
-                                               QMessageBox::Yes | QMessageBox::No,
-                                               QMessageBox::Yes);
+                QMessageBox::StandardButton ret = QMessageBox::warning(nullptr, QApplication::applicationName(),
+                                                                       QObject::tr("Die Datenbank muss aktualisiert werden (Version %1 -> %2).").arg(version).arg(bh->supportedDatabaseVersion) + "\n\n" +
+                                                                       QObject::tr("Soll die Datenbank jetzt aktualisiert werden?") + " " +
+                                                                       QObject::tr("ACHTUNG, die Änderungen können nicht rückgängig gemacht werden!"),
+                                                                       QMessageBox::Yes | QMessageBox::No,
+                                                                       QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
                 {
                     // create copy of database
@@ -389,7 +388,7 @@ static void installTranslator(QApplication &a, QTranslator &translator, const QS
         a.installTranslator(&translator);
     else if (translator.load(locale, filename, "_", ":/translations"))
         a.installTranslator(&translator);
-    else if (translator.load(locale, filename, "_", QLibraryInfo::location(QLibraryInfo::TranslationsPath)))
+    else if (translator.load(locale, filename, "_", QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
         a.installTranslator(&translator);
 }
 

@@ -202,7 +202,7 @@ void TableView::keyPressEvent(QKeyEvent* event)
 QString TableView::indexValue(const QModelIndex& index) const
 {
     QString value;
-    QStyledItemDelegate* delegate = dynamic_cast<QStyledItemDelegate*>(itemDelegate(index));
+    QStyledItemDelegate* delegate = dynamic_cast<QStyledItemDelegate*>(itemDelegateForIndex(index));
     if (delegate)
         value = delegate->displayText(index.data(Qt::DisplayRole), locale());
     if (value.isEmpty())

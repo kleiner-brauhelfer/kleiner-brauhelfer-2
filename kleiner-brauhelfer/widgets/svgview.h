@@ -16,6 +16,7 @@ class SvgView : public QGraphicsView
 
 public:
     explicit SvgView(QWidget *parent = nullptr);
+    ~SvgView();
 
     void clear();
     bool load(const QString &filename);

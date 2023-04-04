@@ -28,18 +28,19 @@ dpkg-deb --build "${DEPLOY_DIR}"
 mv "${DEPLOY_DIR}/../deb.deb" "./kbh2_v2.x.x_linux_x64.deb"
 
 
+# !! temporary disabled !!
 # create portable AppImage
-mkdir -p "${BUILD_DIR}/AppImage/usr/bin"
-cp "${BUILD_DIR}/kleiner-brauhelfer-2" "${BUILD_DIR}/AppImage/usr/bin"
-cp "${SCRIPT_DIR}/AppImage/AppRun" "${BUILD_DIR}/AppImage"
-
-mkdir -p "${BUILD_DIR}/AppImage/usr/share/applications"
-cp "${SCRIPT_DIR}/AppImage/kleiner-brauhelfer-2.desktop" "${BUILD_DIR}/AppImage/usr/share/applications"
-
-mkdir -p "${BUILD_DIR}/AppImage/usr/share/icons"
-cp "${SCRIPT_DIR}/../../kleiner-brauhelfer-2.svg" "${BUILD_DIR}/AppImage/usr/share/icons"
-
-cd "${BUILD_DIR}/AppImage"
-ARCH=x86_64 "${SCRIPT_DIR}/AppImage/linuxdeployqt-6-x86_64.AppImage" "./usr/share/applications/kleiner-brauhelfer-2.desktop" -qmake="${QT_DIR}/qmake" -no-copy-copyright-files -no-translations -appimage -unsupported-allow-new-glibc -extra-plugins=platforms/
-cd -
-mv ${BUILD_DIR}/AppImage/kleiner-brauhelfer-2-*-x86_64.AppImage ./kleiner-brauhelfer-2-x86_64.AppImage
+#mkdir -p "${BUILD_DIR}/AppImage/usr/bin"
+#cp "${BUILD_DIR}/kleiner-brauhelfer-2" "${BUILD_DIR}/AppImage/usr/bin"
+#cp "${SCRIPT_DIR}/AppImage/AppRun" "${BUILD_DIR}/AppImage"
+#
+#mkdir -p "${BUILD_DIR}/AppImage/usr/share/applications"
+#cp "${SCRIPT_DIR}/AppImage/kleiner-brauhelfer-2.desktop" "${BUILD_DIR}/AppImage/usr/share/applications"
+#
+#mkdir -p "${BUILD_DIR}/AppImage/usr/share/icons"
+#cp "${SCRIPT_DIR}/../../kleiner-brauhelfer-2.svg" "${BUILD_DIR}/AppImage/usr/share/icons"
+#
+#cd "${BUILD_DIR}/AppImage"
+#ARCH=x86_64 "${SCRIPT_DIR}/AppImage/linuxdeployqt-6-x86_64.AppImage" "./usr/share/applications/kleiner-brauhelfer-2.desktop" -qmake="${QT_DIR}/qmake" -no-copy-copyright-files -no-translations -appimage -unsupported-allow-new-glibc -extra-plugins=platforms/
+#cd -
+#mv ${BUILD_DIR}/AppImage/kleiner-brauhelfer-2-*-x86_64.AppImage ./kleiner-brauhelfer-2-x86_64.AppImage

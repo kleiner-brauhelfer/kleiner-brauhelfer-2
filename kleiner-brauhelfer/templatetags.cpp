@@ -64,7 +64,6 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
         double fval, mengeMaischen, mengeKochbeginn100, mengeKochende100;
         QVariantMap ctxRezept;
         BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
-
         ctxRezept["SW"] = locale.toString(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble()), 'f', gSettings->GravityDecimals());
             fval = bh->modelSud()->data(sudRow, ModelSud::ColSWAnteilMalz).toDouble();
         if (fval > 0)

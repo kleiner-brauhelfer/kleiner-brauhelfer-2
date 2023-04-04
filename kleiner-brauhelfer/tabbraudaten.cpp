@@ -49,9 +49,6 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
-    for (auto& lbl : findChildren<LabelGrV*>())
-        lbl->setText(gSettings->GravityUnitString());
-
     gSettings->beginGroup("TabBraudaten");
 
     ui->splitter->setSizes({100, 400});

@@ -1102,14 +1102,11 @@ void MainWindow::on_actionGravityUnit_P_triggered()
   restart(1001);
 }
 
-
 void MainWindow::on_actionGravityUnit_SG_triggered()
 {
   gSettings->setGravityUnit(1);
   restart(1001);
 }
-
-
 
 void MainWindow::on_actionZahlenformat_triggered(bool checked)
 {

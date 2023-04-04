@@ -60,8 +60,8 @@ void ChartRestextrakt::update()
          xAxis->setRange(0, 5);
         val1 = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getSWSchnellgaerprobe());
          textLabel1->position->setCoords(1, (val1/2)+coordC);
-            textLabel1->setText(locale.toString(val1, 'f', gSettings->GravityDecimals()) + tr(" ") + gSettings->GravityUnitString());
-        textLabel1->setVisible(true);
+         textLabel1->setText(locale.toString(val1, 'f', gSettings->GravityDecimals()) + tr(" ") + gSettings->GravityUnitString());
+         textLabel1->setVisible(true);
     }
     else
     {

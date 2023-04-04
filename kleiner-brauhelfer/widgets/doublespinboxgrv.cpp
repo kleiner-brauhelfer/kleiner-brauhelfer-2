@@ -9,7 +9,6 @@ DoubleSpinBoxGrV::DoubleSpinBoxGrV(QWidget *parent) :
   DoubleSpinBox(parent),
   mCol(-1)
 {
-
 }
 
 void DoubleSpinBoxGrV::setColumn(int col)

@@ -50,7 +50,7 @@ Standardmässig wird der kleine-brauhelfer automatisch anhand der Pixeldichte de
 Alternativ zum offiziellen Qt Installer (https://www.qt.io/download-qt-installer) kann Qt mit [Another Qt installer(aqt)](https://github.com/miurahr/aqtinstall) installiert werden:
 ```
 # Configure
-VERSION='5.15.2'
+VERSION='6.5.0'
 QT_PATH="/opt/Qt"
 
 # Location for logs and download files
@@ -61,7 +61,7 @@ cd /tmp/aqt
 sudo pip install aqtinstall
 
 # Install Qt
-sudo python3 -m aqt install --outputdir ${QT_PATH} ${VERSION} linux desktop -m qtwebengine
+sudo python3 -m aqt install --outputdir ${QT_PATH} ${VERSION} linux desktop -m qtwebengine qtwebchannel qtpositioning
 
 # Set ENV variables
 export PATH=${QT_PATH}/${VERSION}/clang_64/bin/:$PATH

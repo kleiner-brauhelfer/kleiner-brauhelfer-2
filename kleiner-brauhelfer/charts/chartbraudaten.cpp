@@ -64,6 +64,7 @@ void ChartBraudaten::update()
     double val3 = bh->sud()->getWuerzemengeKochende();
     double val4 = bh->sud()->getWuerzemengeAnstellen();
     barsMengeIst->setData({0.8, 1.8, 2.8, 3.8}, {val1, val2, val3, val4}, true);
+
     double maxVal = qMax(val1, qMax(val2, qMax(val3, val4)));
 
     val1 = bh->sud()->getMengeSollKochbeginn();

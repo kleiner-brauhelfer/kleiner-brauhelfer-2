@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <QFileDialog>
@@ -1108,7 +1108,6 @@ void MainWindow::on_actionGravityUnit_SG_triggered()
     Units::setGravityUnit(Units::SG);
     restart(1001);
 }
-
 
 void MainWindow::on_actionZahlenformat_triggered(bool checked)
 {

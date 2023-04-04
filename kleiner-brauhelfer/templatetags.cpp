@@ -53,7 +53,9 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
     QVariantMap ctxApp;
     ctxApp["Name"] = QCoreApplication::applicationName();
     ctxApp["Version"] = QCoreApplication::applicationVersion();
+    ctxApp["GravityUnit"] = gSettings->GravityUnit();
     ctx["App"] = ctxApp;
+
 
     if (sudRow >= 0)
     {
@@ -61,8 +63,9 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
         int ival;
         double fval, mengeMaischen, mengeKochbeginn100, mengeKochende100;
         QVariantMap ctxRezept;
-        ctxRezept["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble(), 'f', 1);
-        fval = bh->modelSud()->data(sudRow, ModelSud::ColSWAnteilMalz).toDouble();
+        ctxRezept["SW"] = locale.toString(bh->convertGravity("Plato",gSettings->GravityName(),bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble()), 'f', gSettings->GravityDecimals());
+            fval = bh->modelSud()->data(sudRow, ModelSud::ColSWAnteilMalz).toDouble();
+
         if (fval > 0)
             ctxRezept["SWAnteilMalz"] = locale.toString(fval, 'f', 1);
         fval = bh->modelSud()->data(sudRow, ModelSud::ColSWAnteilZusatzMaischen).toDouble();
@@ -115,10 +118,10 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
         ctxRezept["MengeKochende"] = locale.toString(fval, 'f', 1);
         mengeKochende100 = BierCalc::volumenWasser(20.0, 100.0, fval);
         ctxRezept["MengeKochende100"] = locale.toString(mengeKochende100, 'f', 1);
-        ctxRezept["SWKochbeginn"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginn).toDouble(), 'f', 1);
-        ctxRezept["SWKochbeginnMitWz"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginnMitWz).toDouble(), 'f', 1);
-        ctxRezept["SWKochende"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochende).toDouble(), 'f', 1);
-        ctxRezept["SWAnstellen"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWSollAnstellen).toDouble(), 'f', 1);
+        ctxRezept["SWKochbeginn"] = locale.toString(bh->convertGravity("Plato",gSettings->GravityName(),bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginn).toDouble()), 'f', gSettings->GravityDecimals());
+        ctxRezept["SWKochbeginnMitWz"] = locale.toString(bh->convertGravity("Plato",gSettings->GravityName(),bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochbeginnMitWz).toDouble()), 'f', gSettings->GravityDecimals());
+        ctxRezept["SWKochende"] = locale.toString(bh->convertGravity("Plato",gSettings->GravityName(),bh->modelSud()->data(sudRow, ModelSud::ColSWSollKochende).toDouble()), 'f', gSettings->GravityDecimals());
+        ctxRezept["SWAnstellen"] = locale.toString(bh->convertGravity("Plato",gSettings->GravityName(),bh->modelSud()->data(sudRow, ModelSud::ColSWSollAnstellen).toDouble()), 'f', gSettings->GravityDecimals());
         ctxRezept["plato2brix"] = BierCalc::faktorPlatoToBrix;
         ctxRezept["SHA"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSudhausausbeute).toDouble(), 'f', 1);
         ctxRezept["EVG"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColVergaerungsgrad).toInt());
@@ -126,7 +129,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
         if (fval > 0)
         {
             ctxRezept["MengeHefestarter"] = locale.toString(fval, 'f', 1);
-            ctxRezept["SWHefestarter"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWHefestarter).toDouble(), 'f', 1);
+            ctxRezept["SWHefestarter"] = locale.toString(bh->convertGravity("Plato",gSettings->GravityName(),bh->modelSud()->data(sudRow, ModelSud::ColSWHefestarter).toDouble()), 'f', gSettings->GravityDecimals());
             ctxRezept["SWAnteilHefestarter"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWAnteilHefestarter).toDouble(), 'f', 1);
         }
         if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
@@ -165,7 +168,8 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
             ctxSud["StatusVerbraucht"] = 1;
             break;
         }
-        ctxSud["SW"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColSWIst).toDouble(), 'f', 1);
+
+        ctxSud["SW"] = locale.toString(bh->convertGravity("Plato",gSettings->GravityName(),bh->modelSud()->data(sudRow, ModelSud::ColSWIst).toDouble()), 'f', gSettings->GravityDecimals());
         ctxSud["Menge"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColMengeIst).toDouble(), 'f', 1);
         ctxSud["Bittere"] = QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIbuIst).toInt());
         ctxSud["CO2"] = locale.toString(bh->modelSud()->data(sudRow, ModelSud::ColCO2Ist).toDouble(), 'f', 1);

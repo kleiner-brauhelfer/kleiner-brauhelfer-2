@@ -1095,6 +1095,29 @@ void MainWindow::on_actionNiederlaendisch_triggered()
     restart(1001);
 }
 
+
+void MainWindow::on_action_P_triggered()
+{
+  gSettings->setGravity("Plato");
+  restart(1001);
+}
+
+
+void MainWindow::on_actionBrix_triggered()
+{
+  gSettings->setGravity("Brix");
+  restart(1001);
+}
+
+
+void MainWindow::on_actionSpezifische_Dichte_triggered()
+{
+  gSettings->setGravity("SG");
+  restart(1001);
+}
+
+
+
 void MainWindow::on_actionZahlenformat_triggered(bool checked)
 {
     gSettings->setValueInGroup("General", "UseLanguageLocale", checked);

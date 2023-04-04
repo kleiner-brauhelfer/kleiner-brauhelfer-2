@@ -514,3 +514,33 @@ bool Brauhelfer::rohstoffAbziehen(RohstoffTyp typ, const QString& name, double m
     }
     return false;
 }
+
+double Brauhelfer::convertGravity(const QString srcunit , const QString destunit, double value) {
+    double retval=0;
+    if (srcunit == "Plato") {
+        if (destunit == "SG") {
+            retval = BierCalc::platoToDichte(value);
+        } else if (destunit == "Brix") {
+            retval = BierCalc::platoToBrix(value);
+        } else {
+            retval = value;
+        }
+    } else if (srcunit == "Brix") {
+        if (destunit == "SG") {
+            retval = BierCalc::platoToDichte(BierCalc::brixToPlato(value));
+        } else if (srcunit == "Plato") {
+            retval = BierCalc::brixToPlato(value);
+        } else {
+            retval = value;
+        }
+    } else if (srcunit == "SG") {
+        if (destunit == "Plato") {
+            retval = BierCalc::dichteToPlato(value);
+        } else if (destunit == "Brix") {
+            retval = BierCalc::platoToBrix(BierCalc::dichteToPlato(value));
+        } else {
+            retval = value;
+        }
+    }
+     return retval;
+}

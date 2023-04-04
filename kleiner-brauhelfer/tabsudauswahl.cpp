@@ -57,8 +57,10 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     table->appendCol({ModelSud::ColWoche, true, true, 80, nullptr});
     table->appendCol({ModelSud::ColBewertungMittel, true, true, 80, new RatingDelegate(table)});
     table->appendCol({ModelSud::ColMenge, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
-    table->appendCol({ModelSud::ColSW, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
+    table->appendCol({ModelSud::ColSW, false, true, 80, new DoubleSpinBoxDelegate(gSettings->GravityDecimals(),true, table)});
+    proxyModel->setHeaderData(ModelSud::ColSW,Qt::Horizontal,"SW[" + gSettings->GravityUnit() + "]");
     table->appendCol({ModelSud::ColIBU, false, true, 80, new SpinBoxDelegate(table)});
+
     table->build();
 
     table->horizontalHeader()->setContextMenuPolicy(Qt::CustomContextMenu);

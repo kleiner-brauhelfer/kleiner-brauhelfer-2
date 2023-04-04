@@ -17,7 +17,7 @@ ChartBraudaten::ChartBraudaten(QWidget *parent) :
     xAxis->setRange(0, 5);
     xAxis->setTickPen(Qt::NoPen);
     yAxis->setLabel(tr("Würzemenge (L)"));
-    yAxis2->setLabel(tr("Stammwürze (°P)"));
+    yAxis2->setLabel(tr("Stammwürze (")+gSettings->GravityUnit()+tr(")"));
     yAxis2->setVisible(true);
 
     barsMengeIst = new QCPBars(xAxis, yAxis);
@@ -65,6 +65,7 @@ void ChartBraudaten::update()
     double val2 = bh->sud()->getWuerzemengeVorHopfenseihen();
     double val3 = bh->sud()->getWuerzemengeKochende();
     double val4 = bh->sud()->getWuerzemengeAnstellen();
+
     barsMengeIst->setData({1, 2, 3, 4}, {val1, val2, val3, val4}, true);
     double maxVal = qMax(val1, qMax(val2, qMax(val3, val4)));
 
@@ -86,21 +87,22 @@ void ChartBraudaten::update()
 
     yAxis->setRange(0, int(maxVal/10)*10+10);
 
-    val1 = bh->sud()->getSWKochbeginn();
-    val2 = bh->sud()->getSWKochende();
-    val3 = bh->sud()->getSWKochende();
-    val4 = bh->sud()->getSWAnstellen();
+    val1 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWKochbeginn());
+    val2 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWKochende());
+    val3 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWKochende());
+    val4 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWAnstellen());
     graphSwIst->setData({1, 2, 3, 4}, {val1, val2, val3, val4}, true);
     maxVal = qMax(val1, qMax(val2, qMax(val3, val4)));
-
-    val1 = bh->sud()->getSWSollKochbeginn();
-    val2 = bh->sud()->getSWSollKochende();
-    val3 = bh->sud()->getSWSollKochende();
-    val4 = bh->sud()->getSWSollAnstellen();
+    val1 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWSollKochbeginn());
+    val2 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWSollKochende());
+    val3 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWSollKochende());
+    val4 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWSollAnstellen());
     graphSwSoll->setData({1, 2, 3, 4}, {val1, val2, val3, val4}, true);
     maxVal = qMax(maxVal, qMax(val1, qMax(val2, qMax(val3, val4))));
-
+    if (gSettings->GravityName() == "SG") {
+        yAxis2->setRange(1.000, maxVal+(maxVal/10));
+    } else {
     yAxis2->setRange(0, int(maxVal/10)*10+10);
-
+    }
     replot();
 }

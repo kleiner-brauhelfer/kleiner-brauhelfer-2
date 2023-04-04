@@ -38,7 +38,7 @@
               <td>Stamwort</td>
               <td class="value" align="center">{{Sud.SW}}</td>
               <td class="value" align="center">{{Rezept.SW}}</td>
-              <td>&deg;P</td>
+              <td>{{App.GravityUnit}}</td>
             </tr>
             <tr>
               <td>Bitterheid</td>
@@ -250,7 +250,7 @@
     </table>
     {{/Zutaten.Hefe}}
     {{#Rezept.MengeHefestarter}}
-    <p>Giststarter: <span class="value">{{Rezept.MengeHefestarter}}</span> Liter <span class="value">{{Rezept.SWHefestarter}}</span> &deg;P</p>
+    <p>Giststarter: <span class="value">{{Rezept.MengeHefestarter}}</span> Liter <span class="value">{{Rezept.SWHefestarter}}</span> {{App.GravityUnit}}</p>
     {{/Rezept.MengeHefestarter}}
   </div>
 

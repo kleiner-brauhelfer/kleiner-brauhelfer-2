@@ -49,6 +49,8 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
+    for (auto& lbl : findChildren<LabelGrV*>())
+        lbl->setText(gSettings->GravityUnit());
 
     gSettings->beginGroup("TabBraudaten");
 
@@ -219,6 +221,8 @@ void TabBraudaten::updateValues()
     if (!isTabActive())
         return;
 
+    for (auto& wdg : findChildren<DoubleSpinBoxGrV*>())
+        wdg->updateValue();
     for (auto& wdg : findChildren<DoubleSpinBoxSud*>())
         wdg->updateValue();
 

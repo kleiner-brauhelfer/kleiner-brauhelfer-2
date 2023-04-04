@@ -112,8 +112,10 @@ SOURCES += \
     widgets/dateedit.cpp \
     widgets/datetimeedit.cpp \
     widgets/doublespinbox.cpp \
+    widgets/doublespinboxgrv.cpp \
     widgets/doublespinboxsud.cpp \
     widgets/iconthemed.cpp \
+    widgets/labelgrv.cpp \
     widgets/pushbutton.cpp \
     widgets/spinbox.cpp \
     widgets/spinboxsud.cpp \
@@ -207,8 +209,10 @@ HEADERS += \
     widgets/dateedit.h \
     widgets/datetimeedit.h \
     widgets/doublespinbox.h \
+    widgets/doublespinboxgrv.h \
     widgets/doublespinboxsud.h \
     widgets/iconthemed.h \
+    widgets/labelgrv.h \
     widgets/pushbutton.h \
     widgets/spinbox.h \
     widgets/spinboxsud.h \

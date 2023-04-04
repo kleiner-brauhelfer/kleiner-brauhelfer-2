@@ -41,7 +41,7 @@
          <x>0</x>
          <y>0</y>
          <width>800</width>
-         <height>459</height>
+         <height>446</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -60,7 +60,7 @@
         <item>
          <widget class="QTabWidget" name="tabMain">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="TabSudAuswahl" name="tabSudAuswahl">
            <attribute name="icon">
@@ -156,7 +156,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -246,6 +246,14 @@
      <addaction name="actionSchwedisch"/>
      <addaction name="actionNiederlaendisch"/>
     </widget>
+    <widget class="QMenu" name="menuEinheit_der_Stammw_rze">
+     <property name="title">
+      <string>Anzeige des Extraktgehalts</string>
+     </property>
+     <addaction name="action_P"/>
+     <addaction name="actionBrix"/>
+     <addaction name="actionSpezifische_Dichte"/>
+    </widget>
     <addaction name="actionOeffnen"/>
     <addaction name="separator"/>
     <addaction name="actionBestaetigungBeenden"/>
@@ -253,6 +261,7 @@
     <addaction name="actionTooltips"/>
     <addaction name="actionAnimationen"/>
     <addaction name="separator"/>
+    <addaction name="menuEinheit_der_Stammw_rze"/>
     <addaction name="menuSprache"/>
     <addaction name="actionZahlenformat"/>
     <addaction name="separator"/>
@@ -719,6 +728,30 @@
    </property>
    <property name="text">
     <string>Datenbank</string>
+   </property>
+  </action>
+  <action name="action_P">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Plato (°P)</string>
+   </property>
+  </action>
+  <action name="actionBrix">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Brix (°B)</string>
+   </property>
+  </action>
+  <action name="actionSpezifische_Dichte">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Spezifische Dichte (SG)</string>
    </property>
   </action>
  </widget>

@@ -38,7 +38,7 @@
               <td>original gravity</td>
               <td class="value" align="center">{{Sud.SW}}</td>
               <td class="value" align="center">{{Rezept.SW}}</td>
-              <td>&deg;P</td>
+              <td>{{App.GravityUnit}}</td>
             </tr>
             <tr>
               <td>bitterness</td>
@@ -250,7 +250,7 @@
     </table>
     {{/Zutaten.Hefe}}
     {{#Rezept.MengeHefestarter}}
-    <p>Yeast starter: <span class="value">{{Rezept.MengeHefestarter}}</span> l <span class="value">{{Rezept.SWHefestarter}}</span> &deg;P</p>
+    <p>Yeast starter: <span class="value">{{Rezept.MengeHefestarter}}</span> l <span class="value">{{Rezept.SWHefestarter}}</span> {{App.GravityUnit}}</p>
     {{/Rezept.MengeHefestarter}}
   </div>
 

@@ -36,7 +36,7 @@ TabRezept::TabRezept(QWidget *parent) :
 {
     QPalette pal;
 
-    ui->setupUi(this);
+  ui->setupUi(this);
     ui->tbCO2->setColumn(ModelSud::ColCO2);
     ui->tbSW->setColumn(ModelSud::ColSW);
     ui->tbMenge->setColumn(ModelSud::ColMenge);
@@ -600,7 +600,10 @@ void TabRezept::updateValues()
 
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     bool enabled = status == Brauhelfer::SudStatus::Rezept || gSettings->ForceEnabled;
-
+    for (auto& lbl : findChildren<LabelGrV*>())
+        lbl->setText(gSettings->GravityUnit());
+    for (auto& wdg : findChildren<DoubleSpinBoxGrV*>())
+        wdg->updateValue();
     for (auto& wdg : findChildren<DoubleSpinBoxSud*>())
         wdg->updateValue();
     for (auto& wdg : findChildren<SpinBoxSud*>())
@@ -662,12 +665,17 @@ void TabRezept::updateValues()
     ui->tbPhMaischeSoll->setError(enabled && (ui->tbPhMaischeSoll->value() < 5.2 || ui->tbPhMaischeSoll->value() > 5.8));
     diff = ui->tbPhMaischeSoll->value() - ui->tbPhMaische->value();
     ui->tbPhMaische->setError(enabled && qAbs(diff) > 0.005);
-
-    ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > 0.0);
-    ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > 0.0);
-    ui->wdgSWWZKochen->setVisible(ui->tbSWWZKochen->value() > 0.0);
-    ui->wdgSWWZGaerung->setVisible(ui->tbSWWZGaerung->value() > 0.0);
-    ui->wdgSWAnteilHefestarter->setVisible(ui->tbSWAnteilHefestarter->value() > 0.0);
+        double minVal;
+    if (gSettings->GravityName() == "SG") {
+        minVal = 1.000;
+    } else {
+        minVal = 0.0;
+    }
+    ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > minVal);
+    ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > minVal);
+    ui->wdgSWWZKochen->setVisible(ui->tbSWWZKochen->value() > minVal);
+    ui->wdgSWWZGaerung->setVisible(ui->tbSWWZGaerung->value() > minVal);
+    ui->wdgSWAnteilHefestarter->setVisible(ui->tbSWAnteilHefestarter->value() > minVal);
     fVal = bh->sud()->getIBU() / bh->sud()->getSW();
     if (fVal <= 1)
         ui->lblBittere->setText(tr("sehr mild"));

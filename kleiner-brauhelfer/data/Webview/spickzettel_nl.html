@@ -51,34 +51,34 @@
             <tr>
               <td>Stamwort</td>
               <td class="value" align="center">{{SW}}</td>
-              <td>&deg;P</td>
+              <td>{{App.GravityUnit}}</td>
             </tr>
             {{#SWAnteilZusatzMaischen}}
             <tr>
               <td>&nbsp;&nbsp;&nbsp;Overige ingrediënten <em>Maischen</em></td>
               <td class="value" align="center">{{SWAnteilZusatzMaischen}}</td>
-              <td>&deg;P</td>
+              <td>{{App.GravityUnit}}</td>
             </tr>
             {{/SWAnteilZusatzMaischen}}
             {{#SWAnteilZusatzKochen}}
             <tr>
               <td>&nbsp;&nbsp;&nbsp;Overige ingrediënten <em>Koken</em></td>
               <td class="value" align="center">{{SWAnteilZusatzKochen}}</td>
-              <td>&deg;P</td>
+              <td>{{App.GravityUnit}}</td>
             </tr>
             {{/SWAnteilZusatzKochen}}
             {{#SWAnteilZusatzGaerung}}
             <tr>
               <td>&nbsp;&nbsp;&nbsp;Overige ingrediënten <em>Vergisting</em></td>
               <td class="value" align="center">{{SWAnteilZusatzGaerung}}</td>
-              <td>&deg;P</td>
+              <td>{{App.GravityUnit}}</td>
             </tr>
             {{/SWAnteilZusatzGaerung}}
             {{#SWAnteilHefestarter}}
             <tr>
               <td>&nbsp;&nbsp;&nbsp;Giststarter</td>
               <td class="value" align="center">{{SWAnteilHefestarter}}</td>
-              <td>&deg;P</td>
+              <td>{{App.GravityUnit}}</td>
             </tr>
             {{/SWAnteilHefestarter}}
             <tr>
@@ -488,10 +488,10 @@
             <col width="200">
             <col width="*">
             <tr>
-              <td>____ &deg;P/&deg;Brix</td>
+              <td>____ {{App.GravityUnit}}/&deg;Brix</td>
               <td>
-                 Streefwaarde: <span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginn}}")</script></span>&deg;Brix
-                 {{#Zutaten.HatZusatzKochen}} / Met andere ingrediënten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginnMitWz}}")</script></span>&deg;Brix{{/Zutaten.HatZusatzKochen}}
+                 Streefwaarde: <span class="value">{{Rezept.SWKochbeginn}}</span>{{App.GravityUnit}} / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginn}}")</script></span>&deg;Brix
+                 {{#Zutaten.HatZusatzKochen}} / Met andere ingrediënten: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>{{App.GravityUnit}} / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginnMitWz}}")</script></span>&deg;Brix{{/Zutaten.HatZusatzKochen}}
               </td>
             </tr>
           </table>
@@ -569,8 +569,8 @@
             <col width="200">
             <col width="*">
             <tr>
-              <td>____ &deg;P/&deg;Brix</td>
-              <td>Streefwaarde: <span class="value">{{Rezept.SWKochende}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochende}}")</script></span>&deg;Brix</td>
+              <td>____ {{App.GravityUnit}}/&deg;Brix</td>
+              <td>Streefwaarde: <span class="value">{{Rezept.SWKochende}}</span>{{App.GravityUnit}} / <span class="value"><script>writeBrix("{{Rezept.SWKochende}}")</script></span>&deg;Brix</td>
             </tr>
           </table>
         </td>
@@ -664,8 +664,8 @@
             <col width="200">
             <col width="*">
             <tr>
-              <td>____ &deg;P/&deg;Brix</td>
-              <td>Streefwaarde: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWAnstellen}}")</script></span>&deg;Brix</td>
+              <td>____ {{App.GravityUnit}}/&deg;Brix</td>
+              <td>Streefwaarde: <span class="value">{{Rezept.SWAnstellen}}</span>{{App.GravityUnit}} / <span class="value"><script>writeBrix("{{Rezept.SWAnstellen}}")</script></span>&deg;Brix</td>
             </tr>
           </table>
           Verdun het Wort om to de gewenste Stamwort te komen.
@@ -697,7 +697,7 @@
       {{#Rezept.MengeHefestarter}}
       <tr>
         <td class="underline" valign="top"><strong>Giststarter</strong></td>
-        <td class="underline"><span class="value">{{Rezept.MengeHefestarter}}</span> Liter (<span class="value">{{Rezept.SWHefestarter}}</span> &deg;P)</td>
+        <td class="underline"><span class="value">{{Rezept.MengeHefestarter}}</span> Liter (<span class="value">{{Rezept.SWHefestarter}}</span> {{App.GravityUnit}})</td>
       </tr>
       {{/Rezept.MengeHefestarter}}
       <tr>

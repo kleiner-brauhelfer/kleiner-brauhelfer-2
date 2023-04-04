@@ -34,6 +34,7 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     mVirtualField.append("SWAnteilZusatzGaerung");
     mVirtualField.append("SWAnteilHefestarter");
     mVirtualField.append("SWAnteilZutaten");
+    mVirtualField.append("SWSG");
     mVirtualField.append("SRESoll");
     mVirtualField.append("AlkoholSoll");
     mVirtualField.append("SWIst");
@@ -266,6 +267,10 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
     case ColSWIst:
     {
         return data(idx.row(), ColSWAnstellen).toDouble() + swWzGaerungCurrent[idx.row()];
+    }
+    case ColSWSG:
+    {
+        return BierCalc::platoToDichte(data(idx.row(),ColSW).toDouble());
     }
     case ColSREErwartet:
     {

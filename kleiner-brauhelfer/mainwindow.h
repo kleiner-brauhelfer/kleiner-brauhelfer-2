@@ -78,6 +78,9 @@ private slots:
     void on_actionSchwedisch_triggered();
     void on_actionNiederlaendisch_triggered();
     void on_actionZahlenformat_triggered(bool checked);
+    void on_action_P_triggered();
+    void on_actionBrix_triggered();
+    void on_actionSpezifische_Dichte_triggered();
     void on_actionModule_triggered();
     void on_actionHilfe_triggered();
     void on_actionFormelsammlung_triggered();

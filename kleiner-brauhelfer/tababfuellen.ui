@@ -37,8 +37,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1020</width>
-         <height>924</height>
+         <width>1009</width>
+         <height>1134</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -356,14 +356,14 @@
             </widget>
            </item>
            <item row="2" column="2">
-            <widget class="QLabel" name="lblSWSchnellgaerprobeEinheit">
+            <widget class="LabelGrV" name="lblSWSchnellgaerprobeEinheit">
              <property name="text">
               <string>°P</string>
              </property>
             </widget>
            </item>
            <item row="2" column="6">
-            <widget class="DoubleSpinBoxSud" name="tbGruenschlauchzeitpunkt">
+            <widget class="DoubleSpinBoxGrV" name="tbGruenschlauchzeitpunkt">
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Zeitpunkt für die &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt; in der Flasche (Flaschengärung) angezeigt. Im Fachsprech wird dieses Verfahren &lt;span style=&quot; font-weight:600;&quot;&gt;Grünschlauchen &lt;/span&gt;genannt.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Grünschlachzeitpunkt &lt;/span&gt;wird aus der Stammwürze und der Schnellgärprobe ermittelt. Er liegt geringfügig vor dem Zeitpunkt des endvergorenen Bieres und über dem Wert der Schnellgärprobe. Der Grünschlauchzeitpunkt nutzt eine geringfügige Gäraktiviät, um auf diese Weise Kohlensäure in die Flasche einzutragen. Er beschreibt ein Zeitfenster für eine natürliche Karbonisierung.&lt;/p&gt;&lt;p&gt;Grünschlauchen ist unter Hobbybrauern wegen der berüchtigten &lt;span style=&quot; font-weight:600;&quot;&gt;Flaschenbomben &lt;/span&gt;umstritten. Ein falsch gewählter, verfrühter &lt;span style=&quot; font-weight:600;&quot;&gt;Abfüllzeitpunkt &lt;/span&gt;birgt die Gefahr explodierender Flaschen mit einem erheblichen Verletzungspotenzial. Beim Grünschlauchen sollte akkurat und umsichtig gearbeitet werden; ein Abweichen von den Berechnungen sollte unterlassen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -423,7 +423,7 @@
             </widget>
            </item>
            <item row="1" column="6">
-            <widget class="DoubleSpinBoxSud" name="tbSWJungbierSoll">
+            <widget class="DoubleSpinBoxGrV" name="tbSWJungbierSoll">
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;erwartete Restextrakt &lt;/span&gt;am Ende der Gärung angezeigt. Dieser Wert beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;verbleibende Stammwürze &lt;/span&gt;im abfüllbereiten Bier, die gespindelt oder per Refraktometer ermittelt wird. Sie berechnet sich aus dem Vergärungsgrad der gewählten Hefe im Tab Rohstoffe.&lt;/p&gt;&lt;p&gt;Die Angabe des erwarteten Restextraktes ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;Hilfswert&lt;/span&gt;, der Auskunft darüber gibt, dass die Gärung am Ende des Gärpozresses innerhalb der berechneten Parameter erfolgt ist. Aus dem erwarteten Restextrakt ergibt sich der &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbare Endvergärungsgrad(sEVG) &lt;/span&gt;als Maßeinheit für die Gäreffektivität der Hefe.&lt;/p&gt;&lt;p&gt;Der erwartete Restextrakt ist als Sollwert ein Benchmark, der nicht zwangsläufig mit den tatsächlichen Werten übereinstimmen muss. Eine starke Abweichung ist aber ein &lt;span style=&quot; font-weight:600;&quot;&gt;Indiz &lt;/span&gt;für zu erwartende Geschmacksabweichungen und daher ein Hinweis, dass der Brauprozess oder die Angaben für Zutaten im Tab Rohstoffe optimiert werden müssen.&lt;/p&gt;&lt;p&gt;Da hier im Einzelfall viele Parameter hineinspielen können, empfiehlt es sich die einschlägige Fachliteratur oder ein Fachforum im Fall von Problemen heranzuziehen.&lt;/p&gt;&lt;p&gt;Aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Differenz&lt;/span&gt; zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze beim Anstellen&lt;/span&gt; der Hefe und &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; berechnet sich der Vergärungsgrad der Hefe sowie der Alkoholgehalt des Bieres.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -478,7 +478,7 @@
             </spacer>
            </item>
            <item row="1" column="7">
-            <widget class="QLabel" name="label_12">
+            <widget class="LabelGrV" name="label_12">
              <property name="text">
               <string>°P</string>
              </property>
@@ -516,7 +516,7 @@
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="DoubleSpinBoxSud" name="tbSWSchnellgaerprobe">
+            <widget class="DoubleSpinBoxGrV" name="tbSWSchnellgaerprobe">
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der scheinbare Restextrakt (sEVG) der &lt;span style=&quot; font-weight:600;&quot;&gt;Schnellgärprobe &lt;/span&gt;eingetragen.&lt;/p&gt;&lt;p&gt;Mit der Schnellgärprobe kann der zu erwartende Restextrakt und damit der – umgangssprachlich – &lt;span style=&quot; font-weight:600;&quot;&gt;Endvergärungsgrad (EVG) &lt;/span&gt;des Jungbieres vorab berechnet werden. Die Schnellgärprobe wird immer an einem wärmeren Ort als der eigentliche Sud durchgeführt. Der Trick ist einfach: Hefe vergärt unter wärmeren Bedingungen schneller.&lt;/p&gt;&lt;p&gt;Als Restextrakt wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;unvergorener Zuckergehalt &lt;/span&gt;im Bier während und nach der Gärung bezeichnet. Der Restextrakt wird geläufig mit Spindel oder Refraktometer ermittelt. Der Wert des scheinbaren Restextraktes ist durch die geringere Dichte von Alkohol allerdings verfälscht, wird aber dennoch zur Beurteilung herangzogen. Den Alkoholwert berücksichtigt korrekt der sogenannte tatsächliche Endvergärungsgrad (tEVG).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Exkurs:&lt;/span&gt; In Hobbybrauerkreisen hat sich der Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Endvergärungsgrad (sEVG) &lt;/span&gt;oder vereinfacht &lt;span style=&quot; font-weight:600;&quot;&gt;Endvergärungsgrad (EVG)&lt;/span&gt; eingebürgert, tatsächlich handelt es sich aber um einen Begriff aus der Profiwelt, der nur im Labor bei einem vollständig vergorenen Sud zu ermitteln ist. Fachlich richtig wäre hier der Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Ausstoßvergärungsgrad (AVG)&lt;/span&gt;, der den Vergärungsgrad zum Zeitpunkt des Abfüllens beschreibt. Der KBH nutzt den gebräuchlichen Begriff sEVG statt des fachlich richtigen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -548,7 +548,7 @@
             </widget>
            </item>
            <item row="0" column="7">
-            <widget class="QLabel" name="label_8">
+            <widget class="LabelGrV" name="label_8">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -561,7 +561,7 @@
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="DoubleSpinBoxSud" name="tbSWJungbier">
+            <widget class="DoubleSpinBoxGrV" name="tbSWJungbier">
              <property name="minimumSize">
               <size>
                <width>80</width>
@@ -599,7 +599,7 @@
             </widget>
            </item>
            <item row="1" column="2">
-            <widget class="QLabel" name="label_54">
+            <widget class="LabelGrV" name="label_54">
              <property name="minimumSize">
               <size>
                <width>40</width>
@@ -619,7 +619,7 @@
             </widget>
            </item>
            <item row="2" column="7">
-            <widget class="QLabel" name="lblGruenschlauchzeitpunktEinheit">
+            <widget class="LabelGrV" name="lblGruenschlauchzeitpunktEinheit">
              <property name="text">
               <string>°P</string>
              </property>
@@ -697,7 +697,7 @@
             </widget>
            </item>
            <item row="0" column="6">
-            <widget class="DoubleSpinBoxSud" name="tbSw">
+            <widget class="DoubleSpinBoxGrV" name="tbSw">
              <property name="minimumSize">
               <size>
                <width>80</width>
@@ -2130,6 +2130,16 @@
    <class>ChartRestextrakt</class>
    <extends>QWidget</extends>
    <header>charts/chartrestextrakt.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBoxGrV</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinboxgrv.h</header>
+  </customwidget>
+  <customwidget>
+   <class>LabelGrV</class>
+   <extends>QLabel</extends>
+   <header>widgets/labelgrv.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

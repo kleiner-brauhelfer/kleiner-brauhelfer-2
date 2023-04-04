@@ -1097,7 +1097,6 @@ void MainWindow::on_actionNiederlaendisch_triggered()
     restart(1001);
 }
 
-
 void MainWindow::on_actionGravityUnit_P_triggered()
 {
     Units::setGravityUnit(Units::Plato);

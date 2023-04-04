@@ -91,6 +91,13 @@ public:
     void enableModule(Module module, bool enabled);
     bool isModuleEnabled(Module module) const;
 
+    QString GravityName();
+    QString GravityUnit();
+    int GravityDecimals();
+    void setGravity(QString name);
+
+
+
     QString lastProgramVersion();
     bool isNewProgramVersion();
 

@@ -338,6 +338,41 @@ void Settings::setLanguage(QString lang)
     setValueInGroup("General", "language", lang);
 }
 
+QString Settings::GravityName()
+{
+    return valueInGroup("Gravity", "unit", "Plato" ).toString();
+}
+
+QString Settings::GravityUnit()
+{
+  QString unit;
+  if (GravityName() ==  "Plato") {
+        unit = "°P";
+  } else if (GravityName() == "Brix") {
+        unit = "°B";
+  } else if (GravityName() == "SG") {
+        unit = "SG";
+  }
+  return unit;
+}
+
+int Settings::GravityDecimals() {
+  if (GravityName() ==  "Plato") {
+        return 1;
+  } else if (GravityName() == "Brix") {
+        return 1;
+  } else if (GravityName() == "SG") {
+        return 3;
+  }
+}
+
+void Settings::setGravity(QString name)
+{
+  setValueInGroup("Gravity", "unit", name );
+};
+
+
+
 QString Settings::settingsDir() const
 {
     return QFileInfo(fileName()).absolutePath() + "/";

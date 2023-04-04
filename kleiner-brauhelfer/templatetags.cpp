@@ -58,6 +58,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
     ctxApp["GravityUnit"] = Units::text(grvunit);
     ctx["App"] = ctxApp;
 
+
     if (sudRow >= 0)
     {
         // Rezept

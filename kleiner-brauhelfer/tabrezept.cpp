@@ -36,7 +36,7 @@ TabRezept::TabRezept(QWidget *parent) :
 {
     QPalette pal;
 
-    ui->setupUi(this);
+  ui->setupUi(this);
     ui->tbCO2->setColumn(ModelSud::ColCO2);
     ui->tbSW->setColumn(ModelSud::ColSW);
     ui->tbMenge->setColumn(ModelSud::ColMenge);
@@ -663,7 +663,6 @@ void TabRezept::updateValues()
     ui->tbPhMaischeSoll->setError(enabled && (ui->tbPhMaischeSoll->value() < 5.2 || ui->tbPhMaischeSoll->value() > 5.8));
     diff = ui->tbPhMaischeSoll->value() - ui->tbPhMaische->value();
     ui->tbPhMaische->setError(enabled && qAbs(diff) > 0.005);
-
     ui->wdgSWMalz->setVisible(bh->sud()->getSWAnteilMalz() > 0.0);
     ui->wdgSWWZMaischen->setVisible(bh->sud()->getSWAnteilZusatzMaischen() > 0.0);
     ui->wdgSWWZKochen->setVisible(bh->sud()->getSWAnteilZusatzKochen() > 0.0);

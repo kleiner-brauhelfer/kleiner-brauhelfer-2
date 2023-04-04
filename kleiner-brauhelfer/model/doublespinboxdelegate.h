@@ -10,6 +10,7 @@ class DoubleSpinBoxDelegate : public QStyledItemDelegate
 public:
     explicit DoubleSpinBoxDelegate(int decimals, double min, double max, double step = 0.1, bool zeroRed = false, QObject *parent = nullptr);
     DoubleSpinBoxDelegate(int decimals, QObject *parent = nullptr);
+    DoubleSpinBoxDelegate(int decimals,bool conv, QObject *parent = nullptr);
     QWidget* createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
     void setEditorData(QWidget *editor, const QModelIndex &index) const Q_DECL_OVERRIDE;
     void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const Q_DECL_OVERRIDE;
@@ -23,6 +24,7 @@ protected:
     double mMax;
     double mStep;
     bool mZeroRed;
+    bool mConvert;
 };
 
 #endif // DOUBLESPINBOXDELEGATE_H

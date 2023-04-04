@@ -37,8 +37,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1020</width>
-         <height>924</height>
+         <width>1009</width>
+         <height>1134</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -2062,6 +2062,16 @@
    <class>ChartRestextrakt</class>
    <extends>QWidget</extends>
    <header>charts/chartrestextrakt.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBoxGrV</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinboxgrv.h</header>
+  </customwidget>
+  <customwidget>
+   <class>LabelGrV</class>
+   <extends>QLabel</extends>
+   <header>widgets/labelgrv.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

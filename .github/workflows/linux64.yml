@@ -38,7 +38,7 @@ jobs:
           ./build_linux64.sh "${Qt6_DIR}/bin/" 1
           mkdir -p deploy
           cp ./kbh2_*.deb deploy/
-          cp ./kleiner-brauhelfer-2-x86_64.AppImage deploy/
+          # cp ./kleiner-brauhelfer-2-x86_64.AppImage deploy/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3

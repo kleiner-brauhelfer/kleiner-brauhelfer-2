@@ -1,4 +1,4 @@
-!versionAtLeast(QT_VERSION, 6):error("Use at least Qt 6.0")
+!versionAtLeast(QT_VERSION, 6.5.0):error("Use at least Qt 6.5.0")
 
 QT += core sql gui widgets svg svgwidgets xml
 QT += printsupport

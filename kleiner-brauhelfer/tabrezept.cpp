@@ -777,6 +777,7 @@ void TabRezept::rasten_modified()
 void TabRezept::updateRastenDiagram()
 {
     ui->diagramRasten->update();
+    ui->diagramRasten->setVisible(bh->sud()->modelRasten()->rowCount() > 0);
 }
 
 void TabRezept::on_btnNeueRast_clicked()
@@ -900,6 +901,7 @@ void TabRezept::updateMalzGaben()
 void TabRezept::updateMalzDiagram()
 {
     ui->diagramMalz->update();
+    ui->diagramMalz->setVisible(bh->sud()->modelMalzschuettung()->rowCount() > 0);
 }
 
 void TabRezept::on_btnNeueMalzGabe_clicked()
@@ -1016,6 +1018,7 @@ void TabRezept::hopfenGaben_modified()
 void TabRezept::updateHopfenDiagram()
 {
     ui->diagramHopfen->update();
+    ui->diagramHopfen->setVisible(bh->sud()->modelHopfengaben()->rowCount() > 0);
 }
 
 void TabRezept::updateHopfenGaben()

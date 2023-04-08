@@ -176,17 +176,17 @@ void Chart3::select(int index)
             lblValueX->setText(locale.toString(QCPAxisTickerDateTime::keyToDateTime(x).date(), QLocale::ShortFormat));
             lblValueX->position->setCoords(x, 0.55);
             lblValueY1->setText(locale.toString(graph1->data()->at(index)->value, 'f', precision1) + " " + unit1);
-            lblValueY1->position->setCoords(x, yAxisSelection->pixelToCoord(py0 + 22));
+            lblValueY1->position->setCoords(x, yAxisSelection->pixelToCoord(py0 + 24));
         }
         if (graph2->visible())
         {
             lblValueY2->setText(locale.toString(graph2->data()->at(index)->value, 'f', precision2) + " " + unit2);
-            lblValueY2->position->setCoords(x, yAxisSelection->pixelToCoord(py0 + 2*22));
+            lblValueY2->position->setCoords(x, yAxisSelection->pixelToCoord(py0 + 2*24));
         }
         if (graph3->visible())
         {
             lblValueY3->setText(locale.toString(graph3->data()->at(index)->value, 'f', precision3) + " " + unit3);
-            lblValueY3->position->setCoords(x, yAxisSelection->pixelToCoord(py0 + 3*22));
+            lblValueY3->position->setCoords(x, yAxisSelection->pixelToCoord(py0 + 3*24));
         }
     }
     graphSelection->setVisible(graph1->visible() && visible);

@@ -16,7 +16,7 @@ ChartRestextrakt::ChartRestextrakt(QWidget *parent) :
     xAxis->setTicker(textTicker);
     xAxis->setRange(0,5);
     xAxis->setTickPen(Qt::NoPen);
-    yAxis->setLabel(tr("Restextrakt"));
+    yAxis->setLabel(tr("Restextrakt (°P)"));
 
     bars = new QCPBars(xAxis, yAxis);
     bars->setPen(Qt::NoPen);

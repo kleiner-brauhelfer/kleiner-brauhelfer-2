@@ -12,6 +12,8 @@ ChartMalz::ChartMalz(QWidget *parent) :
     xAxis->setTicker(textTicker);
     xAxis->setTickPen(Qt::NoPen);
     yAxis->setLabel(tr("Anteil (%)"));
+    yAxis2->setLabel(tr("Menge (kg)"));
+    yAxis2->setVisible(true);
 }
 
 void ChartMalz::update()
@@ -36,6 +38,7 @@ void ChartMalz::update()
         yMax = qMax(yMax, val);
     }
     yAxis->setRange(0, int(yMax)+1);
+    yAxis2->setRange(0, (int(yMax)+1)*bh->sud()->geterg_S_Gesamt()/100);
     xAxis->setRange(0, model->rowCount()+1);
     replot();
 }

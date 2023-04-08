@@ -10,15 +10,17 @@ ChartBase::ChartBase(QWidget *parent) :
     {
         setBackground(gSettings->palette.color(QPalette::Active, QPalette::Base));
         QColor colorForeground = gSettings->palette.color(QPalette::Active, QPalette::Text);
-        xAxis->setBasePen(QPen(colorForeground, 1));
-        yAxis->setBasePen(QPen(colorForeground, 1));
-        xAxis->setTickPen(QPen(colorForeground, 1));
-        yAxis->setTickPen(QPen(colorForeground, 1));
-        xAxis->setSubTickPen(QPen(colorForeground, 1));
-        yAxis->setSubTickPen(QPen(colorForeground, 1));
+        QPen penForeground = QPen(colorForeground, 1);
+        xAxis->setBasePen(penForeground);
+        yAxis->setBasePen(penForeground);
+        xAxis->setTickPen(penForeground);
+        yAxis->setTickPen(penForeground);
+        xAxis->setSubTickPen(penForeground);
+        yAxis->setSubTickPen(penForeground);
         xAxis->setTickLabelColor(colorForeground);
         yAxis->setTickLabelColor(colorForeground);
         xAxis->setLabelColor(colorForeground);
         yAxis->setLabelColor(colorForeground);
+        legend->setTextColor(colorForeground);
     }
 }

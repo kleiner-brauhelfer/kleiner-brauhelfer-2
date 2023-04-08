@@ -18,10 +18,6 @@ private:
     QCPBars *barsMengeSoll;
     QCPGraph *graphSwIst;
     QCPGraph *graphSwSoll;
-    QCPItemText *textLabel1;
-    QCPItemText *textLabel2;
-    QCPItemText *textLabel3;
-    QCPItemText *textLabel4;
 };
 
 #endif // CHARTBRAUDATEN_H

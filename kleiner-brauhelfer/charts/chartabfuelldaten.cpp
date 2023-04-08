@@ -16,7 +16,7 @@ ChartAbfuelldaten::ChartAbfuelldaten(QWidget *parent) :
     xAxis->setTicker(textTicker);
     xAxis->setRange(0, 5);
     xAxis->setTickPen(Qt::NoPen);
-    yAxis->setLabel(tr("Würzemenge"));
+    yAxis->setLabel(tr("Würzemenge (L)"));
 
     bars = new QCPBars(xAxis, yAxis);
     bars->setPen(Qt::NoPen);

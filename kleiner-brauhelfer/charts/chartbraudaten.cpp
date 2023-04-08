@@ -8,6 +8,17 @@ extern Settings* gSettings;
 ChartBraudaten::ChartBraudaten(QWidget *parent) :
     ChartBase(parent)
 {
+    legend->setFillOrder(QCPLayoutGrid::foColumnsFirst);
+    legend->setVisible(true);
+    legend->setBorderPen(Qt::NoPen);
+    legend->setBrush(Qt::NoBrush);
+    QCPLayoutGrid *subLayout = new QCPLayoutGrid;
+    plotLayout()->addElement(1, 0, subLayout);
+    subLayout->addElement(0, 0, new QCPLayoutElement);
+    subLayout->addElement(0, 1, legend);
+    subLayout->addElement(0, 2, new QCPLayoutElement);
+    plotLayout()->setRowStretchFactor(1, 0.001);
+
     QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
     textTicker->addTick(1, tr("Kochbeginn"));
     textTicker->addTick(2, tr("Kochende"));
@@ -21,68 +32,44 @@ ChartBraudaten::ChartBraudaten(QWidget *parent) :
     yAxis2->setVisible(true);
 
     barsMengeIst = new QCPBars(xAxis, yAxis);
-    barsMengeIst->setPen(Qt::NoPen);
     barsMengeIst->setName(tr("Menge"));
+    barsMengeIst->setPen(Qt::NoPen);
     barsMengeIst->setBrush(QColor(32,159,223));
+    barsMengeIst->setWidthType(QCPBars::WidthType::wtPlotCoords);
+    barsMengeIst->setWidth(0.4);
     barsMengeSoll = new QCPBars(xAxis, yAxis);
     barsMengeSoll->setName(tr("Menge Rezept"));
+    barsMengeSoll->setBrush(QColor(137,193,221));
     barsMengeSoll->setPen(Qt::NoPen);
-    //setMengeSoll->setColor(setMengeIst->color().darker(200));
+    barsMengeSoll->setWidthType(QCPBars::WidthType::wtPlotCoords);
+    barsMengeSoll->setWidth(0.4);
 
     graphSwSoll = new QCPGraph(xAxis, yAxis2);
     graphSwSoll->setName(tr("SW Rezept"));
-    graphSwSoll->setPen(QPen(QColor(232,163,95).darker(200), 2, Qt::DashLine));
+    graphSwSoll->setPen(QPen(Qt::gray, 3, Qt::DashLine));
+    graphSwSoll->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, Qt::gray, Qt::white, 6));
     graphSwIst = new QCPGraph(xAxis, yAxis2);
     graphSwIst->setName(tr("SW"));
-    graphSwIst->setPen(QPen(QColor(232,163,95), 2, Qt::SolidLine));
-    //seriesSwSoll->setColor(seriesSwIst->color());
-
-    textLabel1 = new QCPItemText(this);
-    textLabel1->position->setAxes(xAxis,yAxis);
-    textLabel1->setPen(Qt::NoPen);
-    textLabel1->setColor(Qt::white);
-    textLabel2 = new QCPItemText(this);
-    textLabel2->position->setAxes(xAxis,yAxis);
-    textLabel2->setPen(Qt::NoPen);
-    textLabel2->setColor(Qt::white);
-    textLabel3 = new QCPItemText(this);
-    textLabel3->position->setAxes(xAxis,yAxis);
-    textLabel3->setPen(Qt::NoPen);
-    textLabel3->setColor(Qt::white);
-    textLabel4 = new QCPItemText(this);
-    textLabel4->position->setAxes(xAxis,yAxis);
-    textLabel4->setPen(Qt::NoPen);
-    textLabel4->setColor(Qt::white);
-
-    legend->setVisible(true);
+    graphSwIst->setPen(QPen(QColor(232,163,95), 3, Qt::SolidLine));
+    graphSwIst->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QColor(232,163,95), Qt::white, 6));
 }
 
 void ChartBraudaten::update()
 {
-    QLocale locale = QLocale();
     BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
     double val1 = bh->sud()->getWuerzemengeKochbeginn();
     double val2 = bh->sud()->getWuerzemengeVorHopfenseihen();
     double val3 = bh->sud()->getWuerzemengeKochende();
     double val4 = bh->sud()->getWuerzemengeAnstellen();
 
-    barsMengeIst->setData({1, 2, 3, 4}, {val1, val2, val3, val4}, true);
+    barsMengeIst->setData({0.8, 1.8, 2.8, 3.8}, {val1, val2, val3, val4}, true);
     double maxVal = qMax(val1, qMax(val2, qMax(val3, val4)));
-
-    textLabel1->position->setCoords(1, val1/2);
-    textLabel1->setText(locale.toString(val1, 'f', 1) + tr(" L"));
-    textLabel2->position->setCoords(2, val2/2);
-    textLabel2->setText(locale.toString(val2, 'f', 1) + tr(" L"));
-    textLabel3->position->setCoords(3, val3/2);
-    textLabel3->setText(locale.toString(val3, 'f', 1) + tr(" L"));
-    textLabel4->position->setCoords(4, val4/2);
-    textLabel4->setText(locale.toString(val4, 'f', 1) + tr(" L"));
 
     val1 = bh->sud()->getMengeSollKochbeginn();
     val2 = bh->sud()->getMengeSollKochende();
     val3 = bh->sud()->getMengeSollKochende();
     val4 = bh->sud()->getMenge();
-    barsMengeSoll->setData({1, 2, 3, 4}, {val1, val2, val3, val4}, true);
+    barsMengeSoll->setData({1.2, 2.2, 3.2, 4.2}, {val1, val2, val3, val4}, true);
     maxVal = qMax(maxVal, qMax(val1, qMax(val2, qMax(val3, val4))));
 
     yAxis->setRange(0, int(maxVal/10)*10+10);

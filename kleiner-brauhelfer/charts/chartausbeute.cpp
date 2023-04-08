@@ -15,7 +15,7 @@ ChartAusbeute::ChartAusbeute(QWidget *parent) :
     xAxis->setTicker(textTicker);
     xAxis->setRange(0, 4);
     xAxis->setTickPen(Qt::NoPen);
-    yAxis->setLabel(tr("Ausbeute"));
+    yAxis->setLabel(tr("Ausbeute (%)"));
     yAxis->setRange(0, 100);
 
     bars = new QCPBars(xAxis, yAxis);

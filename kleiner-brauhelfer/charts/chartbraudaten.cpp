@@ -58,7 +58,6 @@ ChartBraudaten::ChartBraudaten(QWidget *parent) :
 void ChartBraudaten::update()
 {
     Units::Unit grvunit = Units::GravityUnit();
-
     double val1 = bh->sud()->getWuerzemengeKochbeginn();
     double val2 = bh->sud()->getWuerzemengeVorHopfenseihen();
     double val3 = bh->sud()->getWuerzemengeKochende();

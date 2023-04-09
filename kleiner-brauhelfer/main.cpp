@@ -12,9 +12,6 @@
 #if QT_NETWORK_LIB
 #include <QSslSocket>
 #endif
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
-#include <QOperatingSystemVersion>
-#endif
 #include "brauhelfer.h"
 #include "settings.h"
 #include "widgets/webview.h"
@@ -295,22 +292,7 @@ static void copyResources()
 
 static void checkWebView()
 {
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
-    if (QOperatingSystemVersion::currentType() == QOperatingSystemVersion::Windows &&
-        QOperatingSystemVersion::current() <= QOperatingSystemVersion::Windows7)
-    {
-        if (gSettings->isNewProgramVersion())
-        {
-                int ret = QMessageBox::warning(nullptr, QApplication::applicationName(),
-                                               QObject::tr("Unter Umständen stürzt das Programm unter Windows 7 ab!\n") +
-                                               QObject::tr("Sollen Sudinformationen und Spickzettel/Zusammenfassung deaktiviert werden?"),
-                                               QMessageBox::Yes | QMessageBox::No,
-                                               QMessageBox::Yes);
-                gSettings->setValueInGroup("General", "WebViewEnabled", ret == QMessageBox::No);
-        }
-    }
     WebView::setSupported(gSettings->valueInGroup("General", "WebViewEnabled", true).toBool());
-  #endif
 }
 
 static void checkSSL()
@@ -368,11 +350,7 @@ static void messageHandler(QtMsgType type, const QMessageLogContext &context, co
         out << entry;
         if (context.file)
             out << " | " << context.file << ":" << context.line << ", " << context.function;
-      #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
         out << Qt::endl;
-      #else
-        out << endl;
-      #endif
     }
     if (DlgConsole::Dialog)
     {
@@ -395,41 +373,6 @@ static void installTranslator(QApplication &a, QTranslator &translator, const QS
 int main(int argc, char *argv[])
 {
     int ret = EXIT_FAILURE;
-
-    // parse arguments
-  #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    bool highDpi = true;
-    QString scale_factor;
-    for (int i = 1; i < argc; i++)
-    {
-      QString arg(argv[i]);
-      arg = arg.toLower();
-      while (arg[0] == '-')
-          arg.remove(0,1);
-      QStringList list({"qt_auto_screen_scale_factor=0",
-                        "qt_auto_screen_scale_factor=false",
-                        "qt_auto_screen_scale_factor=off"});
-      if (list.contains(arg))
-          highDpi = false;
-      if (arg.startsWith("qt_scale_factor="))
-          scale_factor = arg.mid(16);
-    }
-    if (highDpi)
-    {
-      #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
-        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-      #endif
-        QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-    }
-    if (!scale_factor.isEmpty())
-    {
-        qputenv("QT_SCALE_FACTOR", scale_factor.toStdString().c_str());
-    }
-  #endif
-
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0) && QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
-    QApplication::setAttribute(Qt::AA_DisableWindowContextHelpButton);
-  #endif
 
     QApplication a(argc, argv);
 

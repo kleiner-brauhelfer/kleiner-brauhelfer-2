@@ -126,43 +126,52 @@ Database::~Database()
 
 bool Database::connect(const QString &dbPath, bool readonly)
 {
-    if (!isConnected())
+    if (isConnected())
+        return false;
+
+    if (!QFile::exists(dbPath))
     {
-        if (QFile::exists(dbPath))
+        qCritical(Brauhelfer::loggingCategory) << "Database file not found.";
+        return false;
+    }
+
+    QSqlDatabase db = QSqlDatabase::database("kbh", false);
+    if (!db.isValid())
+    {
+        qCritical(Brauhelfer::loggingCategory) << "Database connection is invalid.";
+        return false;
+    }
+
+    db.close();
+    db.setDatabaseName(dbPath);
+    if (readonly)
+        db.setConnectOptions("QSQLITE_OPEN_READONLY");
+
+    if (!db.open())
+    {
+        qCritical(Brauhelfer::loggingCategory) << "Failed to open database connection.";
+        return false;
+    }
+
+    try
+    {
+        QSqlQuery query = sqlExec(db, "SELECT db_Version FROM Global");
+        if (query.first())
         {
-            QSqlDatabase db = QSqlDatabase::database("kbh", false);
-            if (!db.isValid())
+            int version = query.value(0).toInt();
+            if (version > 0)
             {
-                qCritical(Brauhelfer::loggingCategory) << "Database connection is invalid.";
-                return false;
+                mVersion = version;
+                return true;
             }
-            db.close();
-            db.setDatabaseName(dbPath);
-            db.open();
-            if (readonly)
-                db.setConnectOptions("QSQLITE_OPEN_READONLY");
-            if (db.open())
-            {
-                try
-                {
-                    QSqlQuery query = sqlExec(db, "SELECT db_Version FROM Global");
-                    if (query.first())
-                    {
-                        int version = query.value(0).toInt();
-                        if (version > 0)
-                        {
-                            mVersion = version;
-                            return true;
-                        }
-                    }
-                }
-                catch (...)
-                {
-                }
-            }
-            disconnect();
         }
     }
+    catch (...)
+    {
+    }
+
+    qCritical(Brauhelfer::loggingCategory) << "Failed to query database version.";
+    disconnect();
     return false;
 }
 

@@ -4,7 +4,6 @@
 #include <QString>
 #include <QSqlDatabase>
 #include <QSqlError>
-#include "sqltablemodel.h"
 #include "modelsud.h"
 #include "modelmalz.h"
 #include "modelhopfen.h"

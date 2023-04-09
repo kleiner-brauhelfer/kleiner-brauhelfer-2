@@ -12,7 +12,7 @@ Der kleine-brauhelfer ist ein Hilfsprogramm für Hobbybrauer zum Erstellen und V
 
 <img src="doc/sudauswahl.png" width="240"><img src="doc/rezept.png" width="240"><img src="doc/braudaten.png" width="240"><img src="doc/abfuelldaten.png" width="240"><img src="doc/gaerverlauf.png" width="240"><img src="doc/spickzettel.png" width="240"><img src="doc/zusammenfassung.png" width="240"><img src="doc/etikett.png" width="240"><img src="doc/bewertung.png" width="240"><img src="doc/brauuebersicht.png" width="240"><img src="doc/ausruestung.png" width="240"><img src="doc/rohstoffe.png" width="240">
 
-**Diskussionsthread:**
+**Diskussion auf Hobbybrauer.de:**
 
 https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
@@ -43,11 +43,8 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 
 ## Hinweise
 
-### Skalierung anpassen
-Standardmässig wird der kleine-brauhelfer automatisch anhand der Pixeldichte des Monitors skaliert. Ist dies nicht erwünscht, kann diese Option mit dem Startparameter *QT_AUTO_SCREEN_SCALE_FACTOR=0* deaktiviert werden. Zusätzlich kann mit dem Startparameter *QT_SCALE_FACTOR=1.5* einen beliebigen Skalierungsfaktor angegeben werden (hier 150%).
-
 ### Qt Installation unter Linux
-Alternativ zum offiziellen Qt Installer (https://www.qt.io/download-qt-installer) kann Qt mit [Another Qt installer(aqt)](https://github.com/miurahr/aqtinstall) installiert werden:
+Alternativ zum offiziellen [Qt Installer](http://www.qt.io/download-qt-installer) kann Qt mit [Another Qt installer (aqt)](http://github.com/miurahr/aqtinstall) installiert werden:
 ```
 # Configure
 VERSION='6.5.0'

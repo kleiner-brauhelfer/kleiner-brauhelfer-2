@@ -3,7 +3,8 @@
 #include "proxymodel.h"
 
 IngredientNameDelegate::IngredientNameDelegate(QObject *parent) :
-    QStyledItemDelegate(parent)
+    QStyledItemDelegate(parent),
+    mColInUsed(-1)
 {
 }
 
@@ -17,11 +18,21 @@ void IngredientNameDelegate::paint(QPainter *painter, const QStyleOptionViewItem
 
 bool IngredientNameDelegate::isUsed(const QModelIndex &index) const
 {
-    const SqlTableModel *model = dynamic_cast<const SqlTableModel*>(index.model());
-    if (model)
-        return model->data(index.row(), model->fieldIndex("InGebrauch")).toBool();
-    const ProxyModel *proxyModel = static_cast<const ProxyModel*>(index.model());
-    if (proxyModel)
-        return proxyModel->data(index.row(), proxyModel->fieldIndex("InGebrauch")).toBool();
-    return false;
+    if (mColInUsed == -1)
+    {
+        const SqlTableModel *model = dynamic_cast<const SqlTableModel*>(index.model());
+        if (model)
+        {
+            mColInUsed = model->fieldIndex("InGebrauch");
+        }
+        else
+        {
+            const ProxyModel *proxyModel = static_cast<const ProxyModel*>(index.model());
+            if (proxyModel)
+            {
+                mColInUsed = proxyModel->fieldIndex("InGebrauch");
+            }
+        }
+    }
+    return index.siblingAtColumn(mColInUsed).data().toBool();
 }

@@ -5,7 +5,6 @@
 #include "model/datedelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/ebcdelegate.h"
-#include "model/ingredientnamedelegate.h"
 #include "model/spinboxdelegate.h"
 #include "brauhelfer.h"
 #include "settings.h"

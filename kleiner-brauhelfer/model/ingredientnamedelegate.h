@@ -12,6 +12,8 @@ public:
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
 private:
     bool isUsed(const QModelIndex &index) const;
+private:
+    mutable int mColInUsed;
 };
 
 #endif // INGREDIENTNAMEDELEGATE_H

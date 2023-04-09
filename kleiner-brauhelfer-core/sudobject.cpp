@@ -274,7 +274,6 @@ void SudObject::setWasserData(int col, const QVariant &value)
     bh->modelSud()->setDataWasser(mRowSud, col, value);
 }
 
-
 void SudObject::brauzutatenAbziehen()
 {
     ProxyModel *model = modelMalzschuettung();

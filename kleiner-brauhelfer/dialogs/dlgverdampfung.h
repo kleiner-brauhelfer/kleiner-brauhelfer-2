@@ -1,13 +1,13 @@
 #ifndef DLGVERDAMPFUNG_H
 #define DLGVERDAMPFUNG_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 
 namespace Ui {
 class DlgVerdampfung;
 }
 
-class DlgVerdampfung : public QDialog
+class DlgVerdampfung : public DlgAbstract
 {
 	Q_OBJECT
 

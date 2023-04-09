@@ -2,14 +2,14 @@
 #define DLGROHSTOFFAUSWAHL_H
 
 #include "ui_dlgrohstoffauswahl.h"
-#include <QDialog>
+#include "dlgabstract.h"
 #include "brauhelfer.h"
 
 namespace Ui {
 class DlgRohstoffAuswahl;
 }
 
-class DlgRohstoffAuswahl : public QDialog
+class DlgRohstoffAuswahl : public DlgAbstract
 {
 	Q_OBJECT
 	

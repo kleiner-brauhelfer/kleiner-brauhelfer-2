@@ -13,15 +13,12 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 DlgRichTextEditor::DlgRichTextEditor(QWidget *parent) :
-    QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgRichTextEditor)
 {
     ui->setupUi(this);
     adjustSize();
     gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
     gSettings->endGroup();
 
@@ -57,7 +54,6 @@ DlgRichTextEditor::DlgRichTextEditor(QWidget *parent) :
 DlgRichTextEditor::~DlgRichTextEditor()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->setValue("font", ui->cbFont->currentIndex());
     gSettings->setValue("fontsize", ui->cbSize->currentIndex());

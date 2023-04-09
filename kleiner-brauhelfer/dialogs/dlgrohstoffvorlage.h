@@ -2,13 +2,13 @@
 #define DLGROHSTOFFVORLAGE_H
 
 #include "ui_dlgrohstoffvorlage.h"
-#include <QDialog>
+#include "dlgabstract.h"
 
 namespace Ui {
 class DlgRohstoffVorlage;
 }
 
-class DlgRohstoffVorlage : public QDialog
+class DlgRohstoffVorlage : public DlgAbstract
 {
 	Q_OBJECT
 	

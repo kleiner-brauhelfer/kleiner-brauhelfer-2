@@ -3,7 +3,7 @@
 
 #if QT_NETWORK_LIB
 
-#include <QDialog>
+#include "dlgabstract.h"
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QUrl>
@@ -12,7 +12,7 @@ namespace Ui {
 class DlgCheckUpdate;
 }
 
-class DlgCheckUpdate : public QDialog
+class DlgCheckUpdate : public DlgAbstract
 {
     Q_OBJECT
 

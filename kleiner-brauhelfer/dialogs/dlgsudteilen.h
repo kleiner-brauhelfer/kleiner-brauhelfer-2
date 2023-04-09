@@ -1,13 +1,13 @@
 #ifndef DLGSUDTEILEN_H
 #define DLGSUDTEILEN_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 
 namespace Ui {
 class DlgSudTeilen;
 }
 
-class DlgSudTeilen : public QDialog
+class DlgSudTeilen : public DlgAbstract
 {
     Q_OBJECT
 

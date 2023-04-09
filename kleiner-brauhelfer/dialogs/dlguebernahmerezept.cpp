@@ -60,7 +60,7 @@ private:
 };
 
 DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
-    QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgUebernahmeRezept),
     mArt(art),
     mSudId(-1)
@@ -173,9 +173,6 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
     adjustSize();
     gSettings->beginGroup(staticMetaObject.className());
     ui->tableViewSud->restoreState(gSettings->value("tableStateSud").toByteArray());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
     gSettings->endGroup();
 
     ui->tableViewSud->selectRow(0);
@@ -185,7 +182,6 @@ DlgUebernahmeRezept::~DlgUebernahmeRezept()
 {
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("tableStateSud", ui->tableViewSud->horizontalHeader()->saveState());
-    gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
     delete ui;
 }

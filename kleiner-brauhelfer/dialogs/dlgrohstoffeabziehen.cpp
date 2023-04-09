@@ -6,10 +6,8 @@
 #include "model/textdelegate.h"
 #include "model/spinboxdelegate.h"
 #include "brauhelfer.h"
-#include "settings.h"
 
 extern Brauhelfer* bh;
-extern Settings* gSettings;
 
 class RohstoffeAbziehenModel : public QStandardItemModel
 {
@@ -32,7 +30,7 @@ DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(bool abziehen, QWidget *parent) :
 }
 
 DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(bool abziehen, Brauhelfer::RohstoffTyp typ, const QString &name, double menge, QWidget *parent) :
-    QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgRohstoffeAbziehen),
     mAbziehen(abziehen),
     mAbgezogen(false)
@@ -45,18 +43,10 @@ DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(bool abziehen, Brauhelfer::RohstoffTy
     else
         setModels(false, typ, name, menge);
     adjustSize();
-    gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
-    gSettings->endGroup();
 }
 
 DlgRohstoffeAbziehen::~DlgRohstoffeAbziehen()
 {
-    gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
-    gSettings->endGroup();
     delete ui;
 }
 

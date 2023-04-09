@@ -1,7 +1,7 @@
 #ifndef DLGRICHTEXTEDITOR_H
 #define DLGRICHTEXTEDITOR_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 #include <QTextCharFormat>
 #include "helper/htmlhighlighter.h"
 
@@ -9,7 +9,7 @@ namespace Ui {
 class DlgRichTextEditor;
 }
 
-class DlgRichTextEditor : public QDialog
+class DlgRichTextEditor : public DlgAbstract
 {
     Q_OBJECT
 

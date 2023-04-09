@@ -127,7 +127,7 @@ private:
 };
 
 DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
-    QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgDatabaseCleaner)
 {
     ui->setupUi(this);
@@ -187,18 +187,10 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
     mItTestFncs = mTestFncs.begin();
     next();
     adjustSize();
-    gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
-    gSettings->endGroup();
 }
 
 DlgDatabaseCleaner::~DlgDatabaseCleaner()
 {
-    gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
-    gSettings->endGroup();
     delete ui;
 }
 

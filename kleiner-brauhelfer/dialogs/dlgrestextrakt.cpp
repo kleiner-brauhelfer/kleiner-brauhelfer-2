@@ -7,7 +7,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, const QDateTime& dt, QWidget *parent) :
-    QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgRestextrakt)
 {
     ui->setupUi(this);
@@ -77,9 +77,6 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, const QDate
     gSettings->beginGroup(staticMetaObject.className());
     ui->cbAuswahl->setCurrentIndex(gSettings->value("type", 0).toInt());
     on_cbAuswahl_currentIndexChanged(ui->cbAuswahl->currentIndex());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
     gSettings->endGroup();
 }
 
@@ -87,7 +84,6 @@ DlgRestextrakt::~DlgRestextrakt()
 {
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("type", ui->cbAuswahl->currentIndex());
-    gSettings->setValue("size", geometry().size());
     gSettings->endGroup();
     delete ui;
 }

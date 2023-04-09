@@ -1,16 +1,13 @@
 #include "dlgwasseraufbereitung.h"
 #include "ui_dlgwasseraufbereitung.h"
 #include "brauhelfer.h"
-#include "settings.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
 #endif
 
-extern Settings* gSettings;
-
 DlgWasseraufbereitung::DlgWasseraufbereitung(QWidget *parent) :
-    QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgWasseraufbereitung)
 {
     ui->setupUi(this);
@@ -29,11 +26,6 @@ DlgWasseraufbereitung::DlgWasseraufbereitung(QWidget *parent) :
     for (const auto& it : qAsConst(mList))
         ui->cbAuswahl->addItem(it.name);
     adjustSize();
-    gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
-    gSettings->endGroup();
 }
 
 DlgWasseraufbereitung::DlgWasseraufbereitung(const QString& name, int einheit, double faktor, QWidget *parent) :
@@ -47,9 +39,6 @@ DlgWasseraufbereitung::DlgWasseraufbereitung(const QString& name, int einheit, d
 
 DlgWasseraufbereitung::~DlgWasseraufbereitung()
 {
-    gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
-    gSettings->endGroup();
     delete ui;
 }
 

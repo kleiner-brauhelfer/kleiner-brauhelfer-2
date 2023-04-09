@@ -1,13 +1,13 @@
 #ifndef DLGABOUT_H
 #define DLGABOUT_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 
 namespace Ui {
 class DlgAbout;
 }
 
-class DlgAbout : public QDialog
+class DlgAbout : public DlgAbstract
 {
     Q_OBJECT
 

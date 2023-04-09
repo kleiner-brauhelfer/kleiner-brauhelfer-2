@@ -1,13 +1,13 @@
 #ifndef DLGVOLUMEN_H
 #define DLGVOLUMEN_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 
 namespace Ui {
 class DlgVolumen;
 }
 
-class DlgVolumen : public QDialog
+class DlgVolumen : public DlgAbstract
 {
     Q_OBJECT
     

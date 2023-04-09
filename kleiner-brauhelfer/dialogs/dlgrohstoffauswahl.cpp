@@ -24,11 +24,10 @@ void DlgRohstoffAuswahl::restoreView()
 }
 
 DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget *parent) :
-	QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgRohstoffAuswahl),
     mRohstoff(rohstoff)
 {
-    QSize size;
     ui->setupUi(this);
     adjustSize();
     ui->tableView->setFocus();
@@ -62,9 +61,6 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         }
         table->build();
         table->restoreState(gSettings->value("tableStateMalz").toByteArray());
-        size = gSettings->value("sizeMalz").toSize();
-        if (size.isValid())
-            resize(size);
         break;
 
     case Brauhelfer::RohstoffTyp::Hopfen:
@@ -87,9 +83,6 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         }
         table->build();
         table->restoreState(gSettings->value("tableStateHopfen").toByteArray());
-        size = gSettings->value("sizeHopfen").toSize();
-        if (size.isValid())
-            resize(size);
         break;
 
     case Brauhelfer::RohstoffTyp::Hefe:
@@ -114,9 +107,6 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         }
         table->build();
         table->restoreState(gSettings->value("tableStateHefe").toByteArray());
-        size = gSettings->value("sizeHefe").toSize();
-        if (size.isValid())
-            resize(size);
         break;
 
     case Brauhelfer::RohstoffTyp::Zusatz:
@@ -140,9 +130,6 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         }
         table->build();
         table->restoreState(gSettings->value("tableStateWeitereZutaten").toByteArray());
-        size = gSettings->value("sizeWeitereZutaten").toSize();
-        if (size.isValid())
-            resize(size);
         break;
     }
     table->setDefaultContextMenu();
@@ -165,19 +152,15 @@ DlgRohstoffAuswahl::~DlgRohstoffAuswahl()
     {
     case Brauhelfer::RohstoffTyp::Malz:
         gSettings->setValue("tableStateMalz", ui->tableView->horizontalHeader()->saveState());
-        gSettings->setValue("sizeMalz", geometry().size());
         break;
     case Brauhelfer::RohstoffTyp::Hopfen:
         gSettings->setValue("tableStateHopfen", ui->tableView->horizontalHeader()->saveState());
-        gSettings->setValue("sizeHopfen", geometry().size());
         break;
     case Brauhelfer::RohstoffTyp::Hefe:
         gSettings->setValue("tableStateHefe", ui->tableView->horizontalHeader()->saveState());
-        gSettings->setValue("sizeHefe", geometry().size());
         break;
     case Brauhelfer::RohstoffTyp::Zusatz:
         gSettings->setValue("tableStateWeitereZutaten", ui->tableView->horizontalHeader()->saveState());
-        gSettings->setValue("sizeWeitereZutaten", geometry().size());
         break;
     }
     gSettings->setValue("filter", ui->radioButtonVorhanden->isChecked() ? 1 : 0);

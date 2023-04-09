@@ -1,13 +1,13 @@
 #ifndef DLGRESTEXTRAKT_H
 #define DLGRESTEXTRAKT_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 
 namespace Ui {
 class DlgRestextrakt;
 }
 
-class DlgRestextrakt : public QDialog
+class DlgRestextrakt : public DlgAbstract
 {
     Q_OBJECT
 

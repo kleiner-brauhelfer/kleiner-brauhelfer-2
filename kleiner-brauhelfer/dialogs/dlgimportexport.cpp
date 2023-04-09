@@ -15,7 +15,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 DlgImportExport::DlgImportExport(bool import, int row, QWidget *parent) :
-    QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgImportExport),
     mImport(import),
     mRow(row)
@@ -24,9 +24,6 @@ DlgImportExport::DlgImportExport(bool import, int row, QWidget *parent) :
     ui->gpKbhExport->setVisible(false);
     adjustSize();
     gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
     switch (gSettings->value(mImport ? "formatImport" : "formatExport", 0).toInt())
     {
     case 0:
@@ -78,7 +75,6 @@ DlgImportExport::DlgImportExport(bool import, int row, QWidget *parent) :
 DlgImportExport::~DlgImportExport()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
     if (ui->rbFormatKbh->isChecked())
         gSettings->setValue(mImport ? "formatImport" : "formatExport", 0);
     else if (ui->rbFormatMmum->isChecked())

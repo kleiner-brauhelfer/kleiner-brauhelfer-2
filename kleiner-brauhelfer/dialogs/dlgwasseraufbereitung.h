@@ -1,13 +1,13 @@
 #ifndef DLGWASSERAUFBEREITUNG_H
 #define DLGWASSERAUFBEREITUNG_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 
 namespace Ui {
 class DlgWasseraufbereitung;
 }
 
-class DlgWasseraufbereitung : public QDialog
+class DlgWasseraufbereitung : public DlgAbstract
 {
     Q_OBJECT
 

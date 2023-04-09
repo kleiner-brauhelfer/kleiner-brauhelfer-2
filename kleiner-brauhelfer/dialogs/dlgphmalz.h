@@ -1,13 +1,13 @@
 #ifndef DLGPHMALZ_H
 #define DLGPHMALZ_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 
 namespace Ui {
 class DlgPhMalz;
 }
 
-class DlgPhMalz : public QDialog
+class DlgPhMalz : public DlgAbstract
 {
     Q_OBJECT
 

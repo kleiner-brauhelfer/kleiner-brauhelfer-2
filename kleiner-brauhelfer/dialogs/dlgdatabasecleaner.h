@@ -1,7 +1,7 @@
 #ifndef DLGDATABASECLEANER_H
 #define DLGDATABASECLEANER_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 #include <functional>
 #include "sqltablemodel.h"
 
@@ -9,7 +9,7 @@ namespace Ui {
 class DlgDatabaseCleaner;
 }
 
-class DlgDatabaseCleaner : public QDialog
+class DlgDatabaseCleaner : public DlgAbstract
 {
     Q_OBJECT
 

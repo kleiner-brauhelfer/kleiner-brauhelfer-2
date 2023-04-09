@@ -13,14 +13,13 @@ extern Settings* gSettings;
 void DlgTableView::restoreView()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    gSettings->remove("size");
     gSettings->remove("tableState");
     gSettings->endGroup();
 }
 
 
 DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefinition> columns, QMap<int, QVariant> defaultValues, int filterColumn, QWidget *parent) :
-    QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgTableView),
     mDefaultValues(defaultValues)
 {
@@ -54,9 +53,6 @@ DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefiniti
 
     adjustSize();
     gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
     ui->tableView->restoreState(gSettings->value("tableState").toByteArray());
     gSettings->endGroup();
 }
@@ -64,7 +60,6 @@ DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefiniti
 DlgTableView::~DlgTableView()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
     gSettings->setValue("tableState", ui->tableView->horizontalHeader()->saveState());
     gSettings->endGroup();
     delete ui;

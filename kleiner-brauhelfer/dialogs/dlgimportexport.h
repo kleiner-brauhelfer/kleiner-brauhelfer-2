@@ -1,13 +1,13 @@
 #ifndef DLGIMPORTEXPORT_H
 #define DLGIMPORTEXPORT_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 
 namespace Ui {
 class DlgImportExport;
 }
 
-class DlgImportExport : public QDialog
+class DlgImportExport : public DlgAbstract
 {
     Q_OBJECT
 

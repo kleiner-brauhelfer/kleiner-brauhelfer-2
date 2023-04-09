@@ -1,30 +1,19 @@
 #include "dlgverdampfung.h"
 #include "ui_dlgverdampfung.h"
 #include <qmath.h>
-#include "brauhelfer.h"
-#include "settings.h"
-
-extern Settings* gSettings;
+#include "biercalc.h"
 
 DlgVerdampfung::DlgVerdampfung(QWidget *parent) :
-	QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgVerdampfung),
     mFlaeche(0)
 {
 	ui->setupUi(this);
     adjustSize();
-    gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
-    gSettings->endGroup();
 }
 
 DlgVerdampfung::~DlgVerdampfung()
 {
-    gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
-    gSettings->endGroup();
 	delete ui;
 }
 

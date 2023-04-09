@@ -1,11 +1,8 @@
 #include "dlgsudteilen.h"
 #include "ui_dlgsudteilen.h"
-#include "settings.h"
-
-extern Settings* gSettings;
 
 DlgSudTeilen::DlgSudTeilen(const QString &name, double amount, QWidget *parent) :
-    QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgSudTeilen),
     mTotalAmount(amount)
 {
@@ -17,18 +14,10 @@ DlgSudTeilen::DlgSudTeilen(const QString &name, double amount, QWidget *parent) 
     on_horizontalSlider_Percent_valueChanged(50);
     ui->horizontalSlider_Percent->setFocus();
     adjustSize();
-    gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
-    gSettings->endGroup();
 }
 
 DlgSudTeilen::~DlgSudTeilen()
 {
-    gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
-    gSettings->endGroup();
     delete ui;
 }
 

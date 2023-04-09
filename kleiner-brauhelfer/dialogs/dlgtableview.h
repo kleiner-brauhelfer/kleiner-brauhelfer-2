@@ -1,7 +1,7 @@
 #ifndef DLGTABLEVIEW_H
 #define DLGTABLEVIEW_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 #include <QMap>
 
 #include "widgets/tableview.h"
@@ -12,7 +12,7 @@ namespace Ui {
 class DlgTableView;
 }
 
-class DlgTableView : public QDialog
+class DlgTableView : public DlgAbstract
 {
     Q_OBJECT
 

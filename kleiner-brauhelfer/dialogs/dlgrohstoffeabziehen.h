@@ -1,14 +1,14 @@
 #ifndef DLGROHSTOFFEABZIEHEN_H
 #define DLGROHSTOFFEABZIEHEN_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 #include "brauhelfer.h"
 
 namespace Ui {
 class DlgRohstoffeAbziehen;
 }
 
-class DlgRohstoffeAbziehen : public QDialog
+class DlgRohstoffeAbziehen : public DlgAbstract
 {
     Q_OBJECT
 

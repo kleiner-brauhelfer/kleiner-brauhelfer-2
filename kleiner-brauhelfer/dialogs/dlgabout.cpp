@@ -2,12 +2,9 @@
 #include "ui_dlgabout.h"
 #include <QCoreApplication>
 #include "definitionen.h"
-#include "settings.h"
-
-extern Settings* gSettings;
 
 DlgAbout::DlgAbout(QWidget *parent) :
-    QDialog(parent),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgAbout)
 {
     ui->setupUi(this);
@@ -17,18 +14,10 @@ DlgAbout::DlgAbout(QWidget *parent) :
     ui->lblHomepage->setText(generateLink(URL_HOMEPAGE));
     ui->lblForum->setText(generateLink(URL_FORUM, URL_FORUM_NAME));
     adjustSize();
-    gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
-    gSettings->endGroup();
 }
 
 DlgAbout::~DlgAbout()
 {
-    gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
-    gSettings->endGroup();
     delete ui;
 }
 

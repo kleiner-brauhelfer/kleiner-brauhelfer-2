@@ -1,13 +1,13 @@
 #ifndef DLGUEBERNAHMEREZEPT_H
 #define DLGUEBERNAHMEREZEPT_H
 
-#include <QDialog>
+#include "dlgabstract.h"
 
 namespace Ui {
 class DlgUebernahmeRezept;
 }
 
-class DlgUebernahmeRezept : public QDialog
+class DlgUebernahmeRezept : public DlgAbstract
 {
     Q_OBJECT
 

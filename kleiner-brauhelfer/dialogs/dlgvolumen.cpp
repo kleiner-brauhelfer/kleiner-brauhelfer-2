@@ -1,13 +1,10 @@
 #include "dlgvolumen.h"
 #include "ui_dlgvolumen.h"
 #include <qmath.h>
-#include "brauhelfer.h"
-#include "settings.h"
+#include "biercalc.h"
 
-extern Settings* gSettings;
-
-DlgVolumen::DlgVolumen(double durchmesser, double hoehe, QWidget *parent) : 
-	QDialog(parent),
+DlgVolumen::DlgVolumen(double durchmesser, double hoehe, QWidget *parent) :
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgVolumen)
 {
     ui->setupUi(this);
@@ -31,11 +28,6 @@ DlgVolumen::DlgVolumen(double durchmesser, double hoehe, QWidget *parent) :
     }
 
     adjustSize();
-    gSettings->beginGroup(staticMetaObject.className());
-    QSize size = gSettings->value("size").toSize();
-    if (size.isValid())
-        resize(size);
-    gSettings->endGroup();
 }
 
 DlgVolumen::DlgVolumen(QWidget *parent) :
@@ -45,9 +37,6 @@ DlgVolumen::DlgVolumen(QWidget *parent) :
 
 DlgVolumen::~DlgVolumen()
 {
-    gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("size", geometry().size());
-    gSettings->endGroup();
     delete ui;
 }
 

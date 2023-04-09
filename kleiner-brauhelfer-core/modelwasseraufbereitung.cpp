@@ -2,7 +2,7 @@
 #include "modelwasseraufbereitung.h"
 #include "brauhelfer.h"
 
-ModelWasseraufbereitung::ModelWasseraufbereitung(Brauhelfer* bh, QSqlDatabase db) :
+ModelWasseraufbereitung::ModelWasseraufbereitung(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
@@ -64,7 +64,7 @@ double ModelWasseraufbereitung::restalkalitaet(const QVariant& sudId) const
     ProxyModel model;
     model.setSourceModel(const_cast<ModelWasseraufbereitung*>(this));
     model.setFilterKeyColumn(ColSudID);
-    model.setFilterRegularExpression(QString("^%1$").arg(sudId.toInt()));
+    model.setFilterRegularExpression(QStringLiteral("^%1$").arg(sudId.toInt()));
     for (int r = 0; r < model.rowCount(); r++)
         ra += model.data(r, ColRestalkalitaet).toDouble();
     return ra;

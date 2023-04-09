@@ -3,12 +3,12 @@
 #include "brauhelfer.h"
 #include <QDate>
 
-ModelHefe::ModelHefe(Brauhelfer* bh, QSqlDatabase db) :
+ModelHefe::ModelHefe(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("InGebrauch");
-    mVirtualField.append("InGebrauchListe");
+    mVirtualField.append(QStringLiteral("InGebrauch"));
+    mVirtualField.append(QStringLiteral("InGebrauchListe"));
 }
 
 QVariant ModelHefe::dataExt(const QModelIndex &idx) const

@@ -3,15 +3,15 @@
 #include <math.h>
 #include "brauhelfer.h"
 #include "proxymodelsud.h"
+#include "biercalc.h"
 
-ModelHopfengaben::ModelHopfengaben(Brauhelfer* bh, QSqlDatabase db) :
+ModelHopfengaben::ModelHopfengaben(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("IBUAnteil");
-    mVirtualField.append("Ausbeute");
-    connect(bh->modelSud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(onSudDataChanged(QModelIndex)));
+    mVirtualField.append(QStringLiteral("IBUAnteil"));
+    mVirtualField.append(QStringLiteral("Ausbeute"));
+    connect(bh->modelSud(), &SqlTableModel::dataChanged, this, &ModelHopfengaben::onSudDataChanged);
 }
 
 QVariant ModelHopfengaben::dataExt(const QModelIndex &idx) const

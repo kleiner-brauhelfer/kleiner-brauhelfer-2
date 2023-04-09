@@ -3,7 +3,6 @@
 #include <cmath>
 #include <limits>
 
-
 double BierCalc::faktorPlatoToBrix = 1.03;
 
 double BierCalc::brixToPlato(double brix)

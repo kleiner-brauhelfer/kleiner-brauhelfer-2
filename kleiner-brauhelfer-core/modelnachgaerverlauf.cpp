@@ -1,8 +1,9 @@
 // clazy:excludeall=skipped-base-method
 #include "modelnachgaerverlauf.h"
 #include "brauhelfer.h"
+#include "biercalc.h"
 
-ModelNachgaerverlauf::ModelNachgaerverlauf(Brauhelfer* bh, QSqlDatabase db) :
+ModelNachgaerverlauf::ModelNachgaerverlauf(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
@@ -53,7 +54,7 @@ int ModelNachgaerverlauf::getLastRow(const QVariant &sudId) const
     QDateTime lastDt;
     for (int r = 0; r < rowCount(); ++r)
     {
-        if (data(r, ColSudID).toInt() == sudId && !data(r, fieldIndex("deleted")).toBool())
+        if (data(r, ColSudID).toInt() == sudId && !data(r, fieldIndex(QStringLiteral("deleted"))).toBool())
         {
             QDateTime dt = data(r, ColZeitstempel).toDateTime();
             if (!lastDt.isValid() || dt > lastDt)

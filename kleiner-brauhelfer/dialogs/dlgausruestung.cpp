@@ -3,6 +3,7 @@
 #include <QKeyEvent>
 #include <QMessageBox>
 #include "brauhelfer.h"
+#include "biercalc.h"
 #include "settings.h"
 #include "proxymodel.h"
 #include "model/proxymodelsudcolored.h"

@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QLoggingCategory>
 #include "kleiner-brauhelfer-core_global.h"
-#include "biercalc.h"
 #include "sudobject.h"
 #include "sqltablemodel.h"
 #include "modelsud.h"
@@ -40,32 +39,32 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(bool readonly READ readonly WRITE setReadonly NOTIFY readonlyChanged)
     Q_PROPERTY(bool connected READ isConnectedDatabase NOTIFY connectionChanged)
     Q_PROPERTY(int databaseVersionSupported READ databaseVersionSupported CONSTANT)
-    Q_PROPERTY(int databaseVersion READ databaseVersion NOTIFY connectionChanged)
+    Q_PROPERTY(int databaseVersion READ databaseVersion NOTIFY databaseVersionChanged)
     Q_PROPERTY(bool modified READ isDirty NOTIFY modified)
 
     Q_PROPERTY(SudObject* sud READ sud CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelSud READ modelSud CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelMalz READ modelMalz CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelHopfen READ modelHopfen CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelHefe READ modelHefe CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelWeitereZutaten READ modelWeitereZutaten CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelAusruestung READ modelAusruestung CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelGeraete READ modelGeraete CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelWasser READ modelWasser CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelRasten READ modelRasten CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelMalzschuettung READ modelMalzschuettung CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelHopfengaben READ modelHopfengaben CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelHefegaben READ modelHefegaben CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelWeitereZutatenGaben READ modelWeitereZutatenGaben CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelSchnellgaerverlauf READ modelSchnellgaerverlauf CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelHauptgaerverlauf READ modelHauptgaerverlauf CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelNachgaerverlauf READ modelNachgaerverlauf CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelBewertungen READ modelBewertungen CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelAnhang READ modelAnhang CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelEtiketten READ modelEtiketten CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelTags READ modelTags CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelKategorien READ modelKategorien CONSTANT)
-    Q_PROPERTY(SqlTableModel* modelWasseraufbereitung READ modelWasseraufbereitung CONSTANT)
+    Q_PROPERTY(ModelSud* modelSud READ modelSud CONSTANT)
+    Q_PROPERTY(ModelMalz* modelMalz READ modelMalz CONSTANT)
+    Q_PROPERTY(ModelHopfen* modelHopfen READ modelHopfen CONSTANT)
+    Q_PROPERTY(ModelHefe* modelHefe READ modelHefe CONSTANT)
+    Q_PROPERTY(ModelWeitereZutaten* modelWeitereZutaten READ modelWeitereZutaten CONSTANT)
+    Q_PROPERTY(ModelAusruestung* modelAusruestung READ modelAusruestung CONSTANT)
+    Q_PROPERTY(ModelGeraete* modelGeraete READ modelGeraete CONSTANT)
+    Q_PROPERTY(ModelWasser* modelWasser READ modelWasser CONSTANT)
+    Q_PROPERTY(ModelRasten* modelRasten READ modelRasten CONSTANT)
+    Q_PROPERTY(ModelMalzschuettung* modelMalzschuettung READ modelMalzschuettung CONSTANT)
+    Q_PROPERTY(ModelHopfengaben* modelHopfengaben READ modelHopfengaben CONSTANT)
+    Q_PROPERTY(ModelHefegaben* modelHefegaben READ modelHefegaben CONSTANT)
+    Q_PROPERTY(ModelWeitereZutatenGaben* modelWeitereZutatenGaben READ modelWeitereZutatenGaben CONSTANT)
+    Q_PROPERTY(ModelSchnellgaerverlauf* modelSchnellgaerverlauf READ modelSchnellgaerverlauf CONSTANT)
+    Q_PROPERTY(ModelHauptgaerverlauf* modelHauptgaerverlauf READ modelHauptgaerverlauf CONSTANT)
+    Q_PROPERTY(ModelNachgaerverlauf* modelNachgaerverlauf READ modelNachgaerverlauf CONSTANT)
+    Q_PROPERTY(ModelBewertungen* modelBewertungen READ modelBewertungen CONSTANT)
+    Q_PROPERTY(ModelAnhang* modelAnhang READ modelAnhang CONSTANT)
+    Q_PROPERTY(ModelEtiketten* modelEtiketten READ modelEtiketten CONSTANT)
+    Q_PROPERTY(ModelTags* modelTags READ modelTags CONSTANT)
+    Q_PROPERTY(ModelKategorien* modelKategorien READ modelKategorien CONSTANT)
+    Q_PROPERTY(ModelWasseraufbereitung* modelWasseraufbereitung READ modelWasseraufbereitung CONSTANT)
 
 public:
 
@@ -262,6 +261,7 @@ signals:
     void databasePathChanged(const QString &databasePath);
     void readonlyChanged(bool readonly);
     void connectionChanged(bool connected);
+    void databaseVersionChanged(int version);
     void modified();
     void saved();
     void discarded();

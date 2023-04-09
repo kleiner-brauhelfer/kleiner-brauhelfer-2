@@ -2,6 +2,7 @@
 #include "ui_wdgmalzgabe.h"
 #include <QStandardItemModel>
 #include "brauhelfer.h"
+#include "biercalc.h"
 #include "settings.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 

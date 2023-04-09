@@ -6,6 +6,7 @@
 #include <QStyleFactory>
 #include <QDesktopServices>
 #include "brauhelfer.h"
+#include "biercalc.h"
 #include "definitionen.h"
 #include "tababstract.h"
 #include "dialogs/dlgabout.h"

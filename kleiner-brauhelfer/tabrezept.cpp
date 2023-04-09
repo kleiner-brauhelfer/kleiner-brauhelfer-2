@@ -6,6 +6,7 @@
 #include <QStandardItemModel>
 #include <QMessageBox>
 #include <QScrollBar>
+#include "biercalc.h"
 #include "settings.h"
 #include "mainwindow.h"
 #include "model/textdelegate.h"

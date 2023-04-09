@@ -2,11 +2,11 @@
 #include "modeltags.h"
 #include "brauhelfer.h"
 
-ModelTags::ModelTags(Brauhelfer* bh, QSqlDatabase db) :
+ModelTags::ModelTags(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("Global");
+    mVirtualField.append(QStringLiteral("Global"));
 }
 
 QVariant ModelTags::dataExt(const QModelIndex &idx) const

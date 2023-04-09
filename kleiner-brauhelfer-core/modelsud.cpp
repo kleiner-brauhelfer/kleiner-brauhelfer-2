@@ -3,8 +3,9 @@
 #include "brauhelfer.h"
 #include <math.h>
 #include <qmath.h>
+#include "biercalc.h"
 
-ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
+ModelSud::ModelSud(Brauhelfer *bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh),
     mUpdating(false),
@@ -15,69 +16,63 @@ ModelSud::ModelSud(Brauhelfer *bh, QSqlDatabase db) :
     swWzGaerungCurrent(QVector<double>()),
     swWzUnvergaerbarRecipe(QVector<double>())
 {
-    connect(this, SIGNAL(modelReset()), this, SLOT(onModelReset()));
-    connect(this, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(onModelReset()));
-    connect(this, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(onModelReset()));
-    connect(this, SIGNAL(rowChanged(QModelIndex)), this, SLOT(onRowChanged(QModelIndex)));
-    mVirtualField.append("MengeSollAnstellen");
-    mVirtualField.append("MengeSollKochende");
-    mVirtualField.append("MengeSollKochbeginn");
-    mVirtualField.append("MengeSollVerdampfung");
-    mVirtualField.append("MengeSollHgf");
-    mVirtualField.append("SWSollAnstellen");
-    mVirtualField.append("SWSollKochende");
-    mVirtualField.append("SWSollKochbeginn");
-    mVirtualField.append("SWSollKochbeginnMitWz");
-    mVirtualField.append("SWAnteilMalz");
-    mVirtualField.append("SWAnteilZusatzMaischen");
-    mVirtualField.append("SWAnteilZusatzKochen");
-    mVirtualField.append("SWAnteilZusatzGaerung");
-    mVirtualField.append("SWAnteilHefestarter");
-    mVirtualField.append("SWAnteilZutaten");
-    mVirtualField.append("SRESoll");
-    mVirtualField.append("AlkoholSoll");
-    mVirtualField.append("SWIst");
-    mVirtualField.append("SREErwartet");
-    mVirtualField.append("SREIst");
-    mVirtualField.append("MengeIst");
-    mVirtualField.append("IbuIst");
-    mVirtualField.append("FarbeIst");
-    mVirtualField.append("CO2Ist");
-    mVirtualField.append("Spundungsdruck");
-    mVirtualField.append("Gruenschlauchzeitpunkt");
-    mVirtualField.append("SpeiseNoetig");
-    mVirtualField.append("SpeiseAnteil");
-    mVirtualField.append("ZuckerAnteil");
-    mVirtualField.append("Woche");
-    mVirtualField.append("ReifezeitDelta");
-    mVirtualField.append("AbfuellenBereitZutaten");
-    mVirtualField.append("WuerzemengeAnstellenTotal");
-    mVirtualField.append("VerdampfungsrateIst");
-    mVirtualField.append("sEVG");
-    mVirtualField.append("tEVG");
-    mVirtualField.append("RestalkalitaetWasser");
-    mVirtualField.append("RestalkalitaetIst");
-    mVirtualField.append("PhMalz");
-    mVirtualField.append("PhMaische");
-    mVirtualField.append("PhMaischeSoll");
-    mVirtualField.append("WHauptgussEmpfehlung");
-    mVirtualField.append("BewertungMittel");
+    mVirtualField.append(QStringLiteral("MengeSollAnstellen"));
+    mVirtualField.append(QStringLiteral("MengeSollKochende"));
+    mVirtualField.append(QStringLiteral("MengeSollKochbeginn"));
+    mVirtualField.append(QStringLiteral("MengeSollVerdampfung"));
+    mVirtualField.append(QStringLiteral("MengeSollHgf"));
+    mVirtualField.append(QStringLiteral("SWSollAnstellen"));
+    mVirtualField.append(QStringLiteral("SWSollKochende"));
+    mVirtualField.append(QStringLiteral("SWSollKochbeginn"));
+    mVirtualField.append(QStringLiteral("SWSollKochbeginnMitWz"));
+    mVirtualField.append(QStringLiteral("SWAnteilMalz"));
+    mVirtualField.append(QStringLiteral("SWAnteilZusatzMaischen"));
+    mVirtualField.append(QStringLiteral("SWAnteilZusatzKochen"));
+    mVirtualField.append(QStringLiteral("SWAnteilZusatzGaerung"));
+    mVirtualField.append(QStringLiteral("SWAnteilHefestarter"));
+    mVirtualField.append(QStringLiteral("SWAnteilZutaten"));
+    mVirtualField.append(QStringLiteral("SRESoll"));
+    mVirtualField.append(QStringLiteral("AlkoholSoll"));
+    mVirtualField.append(QStringLiteral("SWIst"));
+    mVirtualField.append(QStringLiteral("SREErwartet"));
+    mVirtualField.append(QStringLiteral("SREIst"));
+    mVirtualField.append(QStringLiteral("MengeIst"));
+    mVirtualField.append(QStringLiteral("IbuIst"));
+    mVirtualField.append(QStringLiteral("FarbeIst"));
+    mVirtualField.append(QStringLiteral("CO2Ist"));
+    mVirtualField.append(QStringLiteral("Spundungsdruck"));
+    mVirtualField.append(QStringLiteral("Gruenschlauchzeitpunkt"));
+    mVirtualField.append(QStringLiteral("SpeiseNoetig"));
+    mVirtualField.append(QStringLiteral("SpeiseAnteil"));
+    mVirtualField.append(QStringLiteral("ZuckerAnteil"));
+    mVirtualField.append(QStringLiteral("Woche"));
+    mVirtualField.append(QStringLiteral("ReifezeitDelta"));
+    mVirtualField.append(QStringLiteral("AbfuellenBereitZutaten"));
+    mVirtualField.append(QStringLiteral("WuerzemengeAnstellenTotal"));
+    mVirtualField.append(QStringLiteral("VerdampfungsrateIst"));
+    mVirtualField.append(QStringLiteral("sEVG"));
+    mVirtualField.append(QStringLiteral("tEVG"));
+    mVirtualField.append(QStringLiteral("RestalkalitaetWasser"));
+    mVirtualField.append(QStringLiteral("RestalkalitaetIst"));
+    mVirtualField.append(QStringLiteral("PhMalz"));
+    mVirtualField.append(QStringLiteral("PhMaische"));
+    mVirtualField.append(QStringLiteral("PhMaischeSoll"));
+    mVirtualField.append(QStringLiteral("WHauptgussEmpfehlung"));
+    mVirtualField.append(QStringLiteral("BewertungMittel"));
+    connect(this, &SqlTableModel::modelReset, this, &ModelSud::onModelReset);
+    connect(this, &SqlTableModel::rowsInserted, this, &ModelSud::onModelReset);
+    connect(this, &SqlTableModel::rowsRemoved, this, &ModelSud::onModelReset);
+    connect(this, &SqlTableModel::rowChanged, this, &ModelSud::onRowChanged);
 }
 
 void ModelSud::createConnections()
 {
-    connect(bh->modelMalzschuettung(), SIGNAL(rowChanged(QModelIndex)),
-            this, SLOT(onOtherModelRowChanged(QModelIndex)));
-    connect(bh->modelHopfengaben(), SIGNAL(rowChanged(QModelIndex)),
-            this, SLOT(onOtherModelRowChanged(QModelIndex)));
-    connect(bh->modelHefegaben(), SIGNAL(rowChanged(QModelIndex)),
-            this, SLOT(onOtherModelRowChanged(QModelIndex)));
-    connect(bh->modelWeitereZutatenGaben(), SIGNAL(rowChanged(QModelIndex)),
-            this, SLOT(onOtherModelRowChanged(QModelIndex)));
-    connect(bh->modelRasten(), SIGNAL(rowChanged(QModelIndex)),
-            this, SLOT(onOtherModelRowChanged(QModelIndex)));
-    connect(bh->modelAusruestung(), SIGNAL(rowChanged(QModelIndex)),
-            this, SLOT(onAnlageRowChanged(QModelIndex)));
+    connect(bh->modelMalzschuettung(), &SqlTableModel::rowChanged, this, &ModelSud::onOtherModelRowChanged);
+    connect(bh->modelHopfengaben(), &SqlTableModel::rowChanged, this, &ModelSud::onOtherModelRowChanged);
+    connect(bh->modelHefegaben(), &SqlTableModel::rowChanged, this, &ModelSud::onOtherModelRowChanged);
+    connect(bh->modelWeitereZutatenGaben(), &SqlTableModel::rowChanged, this, &ModelSud::onOtherModelRowChanged);
+    connect(bh->modelRasten(), &SqlTableModel::rowChanged, this, &ModelSud::onOtherModelRowChanged);
+    connect(bh->modelAusruestung(), &SqlTableModel::rowChanged, this, &ModelSud::onAnlageRowChanged);
 }
 
 void ModelSud::onModelReset()
@@ -103,7 +98,7 @@ void ModelSud::onOtherModelRowChanged(const QModelIndex &idx)
     if (mSkipUpdateOnOtherModelChanged)
         return;
     const SqlTableModel* model = static_cast<const SqlTableModel*>(idx.model());
-    int row = getRowWithValue(ColID, model->data(idx.row(), model->fieldIndex("SudID")));
+    int row = getRowWithValue(ColID, model->data(idx.row(), model->fieldIndex(QStringLiteral("SudID"))));
     update(row);
 }
 
@@ -409,7 +404,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         ProxyModel modelHefegaben;
         modelHefegaben.setSourceModel(bh->modelHefegaben());
         modelHefegaben.setFilterKeyColumn(bh->modelHefegaben()->ColSudID);
-        modelHefegaben.setFilterRegularExpression(QString("^%1$").arg(data(idx.row(), ColID).toInt()));
+        modelHefegaben.setFilterRegularExpression(QStringLiteral("^%1$").arg(data(idx.row(), ColID).toInt()));
         for (int r = 0; r < modelHefegaben.rowCount(); ++r)
         {
             if (!modelHefegaben.data(r, ModelHefegaben::ColAbfuellbereit).toBool())
@@ -418,7 +413,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         ProxyModel modelWeitereZutatenGaben;
         modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
         modelWeitereZutatenGaben.setFilterKeyColumn(bh->modelWeitereZutatenGaben()->ColSudID);
-        modelWeitereZutatenGaben.setFilterRegularExpression(QString("^%1$").arg(data(idx.row(), ColID).toInt()));
+        modelWeitereZutatenGaben.setFilterRegularExpression(QStringLiteral("^%1$").arg(data(idx.row(), ColID).toInt()));
         for (int r = 0; r < modelWeitereZutatenGaben.rowCount(); ++r)
         {
             if (!modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColAbfuellbereit).toBool())
@@ -465,7 +460,7 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         ProxyModel proxy;
         proxy.setSourceModel(bh->modelMalzschuettung());
         proxy.setFilterKeyColumn(ModelMalzschuettung::ColSudID);
-        proxy.setFilterRegularExpression(QString("^%1$").arg(data(idx.row(), ColID).toInt()));
+        proxy.setFilterRegularExpression(QStringLiteral("^%1$").arg(data(idx.row(), ColID).toInt()));
         for (int r = 0; r < proxy.rowCount(); ++r)
         {
             double ph = proxy.data(r, ModelMalzschuettung::ColpH).toDouble();
@@ -766,7 +761,7 @@ Qt::ItemFlags ModelSud::flags(const QModelIndex &idx) const
     return itemFlags;
 }
 
-QVariant ModelSud::dataSud(QVariant sudId, int col)
+QVariant ModelSud::dataSud(const QVariant &sudId, int col)
 {
     return getValueFromSameRow(ModelSud::ColID, sudId, col);
 }
@@ -880,7 +875,7 @@ void ModelSud::updateSwWeitereZutaten(int row)
     ProxyModel modelWeitereZutatenGaben;
     modelWeitereZutatenGaben.setSourceModel(bh->modelWeitereZutatenGaben());
     modelWeitereZutatenGaben.setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
-    modelWeitereZutatenGaben.setFilterRegularExpression(QRegularExpression(QString("^%1$").arg(data(row, ColID).toInt())));
+    modelWeitereZutatenGaben.setFilterRegularExpression(QRegularExpression(QStringLiteral("^%1$").arg(data(row, ColID).toInt())));
     for (int r = 0; r < modelWeitereZutatenGaben.rowCount(); ++r)
     {
         Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelWeitereZutatenGaben.data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
@@ -955,7 +950,7 @@ void ModelSud::updateWasser(int row)
 
 void ModelSud::updateFarbe(int row)
 {
-    QRegularExpression sudReg(QString("^%1$").arg(data(row, ColID).toInt()));
+    QRegularExpression sudReg(QStringLiteral("^%1$").arg(data(row, ColID).toInt()));
     double ebc = 0.0;
     double d = 0.0;
     double gs = 0.0;
@@ -1005,7 +1000,7 @@ void ModelSud::updateFarbe(int row)
 
 void ModelSud::updatePreis(int row)
 {
-    QRegularExpression sudReg(QString("^%1$").arg(data(row, ColID).toInt()));
+    QRegularExpression sudReg(QStringLiteral("^%1$").arg(data(row, ColID).toInt()));
     double summe = 0.0;
 
     double kostenSchuettung = 0.0;
@@ -1090,9 +1085,9 @@ void ModelSud::updatePreis(int row)
 
 bool ModelSud::removeRows(int row, int count, const QModelIndex &parent)
 {
-    QList<int> sudIds;
+    QList<int> sudIds(count);
     for (int i = 0; i < count; ++i)
-        sudIds.append(data(row + i, ColID).toInt());
+        sudIds[i] = data(row + i, ColID).toInt();
     if (SqlTableModel::removeRows(row, count, parent))
     {
         removeRowsFrom(bh->modelRasten(), ModelRasten::ColSudID, sudIds);

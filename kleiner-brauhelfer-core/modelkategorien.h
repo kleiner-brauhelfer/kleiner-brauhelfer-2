@@ -26,7 +26,7 @@ public:
 
 public:
 
-    ModelKategorien(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    ModelKategorien(Brauhelfer* bh, const QSqlDatabase &db = QSqlDatabase());
     bool setDataExt(const QModelIndex &idx, const QVariant &value) Q_DECL_OVERRIDE;
     void defaultValues(QMap<int, QVariant> &values) const Q_DECL_OVERRIDE;
 

@@ -18,7 +18,7 @@ DateTimeEdit::DateTimeEdit(QWidget *parent) :
 void DateTimeEdit::wheelEvent(QWheelEvent *event)
 {
     if (hasFocus())
-        return QDateTimeEdit::wheelEvent(event);
+        QDateTimeEdit::wheelEvent(event);
 }
 
 void DateTimeEdit::updatePalette()

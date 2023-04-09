@@ -3,12 +3,12 @@
 #include "brauhelfer.h"
 #include <QDate>
 
-ModelMalz::ModelMalz(Brauhelfer* bh, QSqlDatabase db) :
+ModelMalz::ModelMalz(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("InGebrauch");
-    mVirtualField.append("InGebrauchListe");
+    mVirtualField.append(QStringLiteral("InGebrauch"));
+    mVirtualField.append(QStringLiteral("InGebrauchListe"));
 }
 
 QVariant ModelMalz::dataExt(const QModelIndex &idx) const

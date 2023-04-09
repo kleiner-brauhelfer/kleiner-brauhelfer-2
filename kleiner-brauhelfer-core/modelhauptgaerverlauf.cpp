@@ -1,13 +1,14 @@
 // clazy:excludeall=skipped-base-method
 #include "modelhauptgaerverlauf.h"
 #include "brauhelfer.h"
+#include "biercalc.h"
 
-ModelHauptgaerverlauf::ModelHauptgaerverlauf(Brauhelfer* bh, QSqlDatabase db) :
+ModelHauptgaerverlauf::ModelHauptgaerverlauf(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("sEVG");
-    mVirtualField.append("tEVG");
+    mVirtualField.append(QStringLiteral("sEVG"));
+    mVirtualField.append(QStringLiteral("tEVG"));
 }
 
 QVariant ModelHauptgaerverlauf::dataExt(const QModelIndex &idx) const
@@ -87,7 +88,7 @@ int ModelHauptgaerverlauf::getLastRow(const QVariant &sudId) const
     QDateTime lastDt;
     for (int r = 0; r < rowCount(); ++r)
     {
-        if (data(r, ColSudID) == sudId && !data(r, fieldIndex("deleted")).toBool())
+        if (data(r, ColSudID) == sudId && !data(r, fieldIndex(QStringLiteral("deleted"))).toBool())
         {
             QDateTime dt = data(r, ColZeitstempel).toDateTime();
             if (!lastDt.isValid() || dt > lastDt)
@@ -105,7 +106,7 @@ double ModelHauptgaerverlauf::getHighestTemp(const QVariant &sudId) const
     double tempMax = 0;
     for (int r = 0; r < rowCount(); ++r)
     {
-        if (data(r, ColSudID) == sudId && !data(r, fieldIndex("deleted")).toBool())
+        if (data(r, ColSudID) == sudId && !data(r, fieldIndex(QStringLiteral("deleted"))).toBool())
         {
             double temp = data(r, ColTemp).toDouble();
             if (temp > tempMax)

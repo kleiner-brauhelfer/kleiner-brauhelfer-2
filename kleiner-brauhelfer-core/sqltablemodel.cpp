@@ -5,14 +5,14 @@
 
 QLoggingCategory SqlTableModel::loggingCategory("SqlTableModel", QtWarningMsg);
 
-SqlTableModel::SqlTableModel(QObject *parent, QSqlDatabase db) :
+SqlTableModel::SqlTableModel(QObject *parent, const QSqlDatabase &db) :
     QSqlTableModel(parent, db),
     mSignalModifiedBlocked(false),
     mRoles(QHash<int, QByteArray>()),
     mSetDataCnt(0)
 {
     setEditStrategy(EditStrategy::OnManualSubmit);
-    mVirtualField.append("deleted");
+    mVirtualField.append(QStringLiteral("deleted"));
 }
 
 QVariant SqlTableModel::data(const QModelIndex &idx, int role) const
@@ -22,7 +22,7 @@ QVariant SqlTableModel::data(const QModelIndex &idx, int role) const
         int col = (role > Qt::UserRole) ? (role - Qt::UserRole - 1) : idx.column();
         if (col == QSqlTableModel::columnCount())
         {
-            return headerData(idx.row(), Qt::Vertical).toString() == "!";
+            return headerData(idx.row(), Qt::Vertical).toString() == QStringLiteral("!");
         }
         else
         {
@@ -201,7 +201,7 @@ bool SqlTableModel::removeRows(int row, int count, const QModelIndex &parent)
     {
         for (int i = 0; i < count; ++i)
         {
-            QModelIndex idx = index(row + i, fieldIndex("deleted"));
+            QModelIndex idx = index(row + i, fieldIndex(QStringLiteral("deleted")));
             if (idx.isValid())
             {
                 emit dataChanged(idx, idx, QVector<int>());
@@ -358,7 +358,7 @@ int SqlTableModel::getRowWithValue(int col, const QVariant &value) const
     {
         for (int row = 0; row < rowCount(); ++row)
         {
-            if (data(row, col) == value && !data(row, fieldIndex("deleted")).toBool())
+            if (data(row, col) == value && !data(row, fieldIndex(QStringLiteral("deleted"))).toBool())
                 return row;
         }
     }
@@ -400,7 +400,7 @@ bool SqlTableModel::isUnique(const QModelIndex &index, const QVariant &value, bo
     {
         if (!ignoreIndexRow && row == index.row())
             continue;
-        if (data(row, fieldIndex("deleted")).toBool())
+        if (data(row, fieldIndex(QStringLiteral("deleted"))).toBool())
             continue;
         if (data(row, index.column()) == value)
             return false;
@@ -454,7 +454,7 @@ QMap<int, QVariant> SqlTableModel::copyValues(int row) const
     return values;
 }
 
-QVariantMap SqlTableModel::toVariantMap(int row, QList<int> cols, QList<int> ignoreCols) const
+QVariantMap SqlTableModel::toVariantMap(int row, const QList<int> &cols, const QList<int> &ignoreCols) const
 {
     QVariantMap map;
     QSqlRecord rec = record(row);

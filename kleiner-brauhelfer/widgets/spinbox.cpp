@@ -17,7 +17,7 @@ SpinBox::SpinBox(QWidget *parent) :
 void SpinBox::wheelEvent(QWheelEvent *event)
 {
     if (hasFocus())
-        return QSpinBox::wheelEvent(event);
+        QSpinBox::wheelEvent(event);
 }
 
 void SpinBox::updatePalette()

@@ -17,7 +17,7 @@ ComboBox::ComboBox(QWidget *parent) :
 void ComboBox::wheelEvent(QWheelEvent *event)
 {
     if (hasFocus())
-        return QComboBox::wheelEvent(event);
+        QComboBox::wheelEvent(event);
 }
 
 void ComboBox::updatePalette()

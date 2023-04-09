@@ -34,9 +34,7 @@ DlgRichTextEditor::DlgRichTextEditor(QWidget *parent) :
   #endif
     mHtmlHightLighter = new HtmlHighLighter(ui->tbSource->document());
 
-    QFontDatabase db;
-    const QList<int>& standardSizes = db.standardSizes();
-    for(int size : standardSizes)
+    for(int size : QFontDatabase::standardSizes())
         ui->cbSize->addItem(QString::number(size));
 
     gSettings->beginGroup(staticMetaObject.className());

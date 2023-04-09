@@ -8,12 +8,12 @@ Database::Database() :
     mVersion(-1),
     mLastError(QString())
 {
-    QSqlDatabase::addDatabase("QSQLITE", "kbh");
+    QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("kbh"));
 }
 
 void Database::createTables(Brauhelfer* bh)
 {
-    QSqlDatabase db = QSqlDatabase::database("kbh", false);
+    QSqlDatabase db = QSqlDatabase::database(QStringLiteral("kbh"), false);
     if (!db.isValid())
         qCritical(Brauhelfer::loggingCategory) << "Database connection is invalid.";
     modelSud = new ModelSud(bh, db);
@@ -43,33 +43,33 @@ void Database::createTables(Brauhelfer* bh)
 
 void Database::setTables()
 {
-    modelSud->setTable("Sud");
+    modelSud->setTable(QStringLiteral("Sud"));
     modelSud->setSort(ModelSud::ColBraudatum, Qt::DescendingOrder);
-    modelRasten->setTable("Rasten");
-    modelMalzschuettung->setTable("Malzschuettung");
-    modelHopfengaben->setTable("Hopfengaben");
-    modelHefegaben->setTable("Hefegaben");
-    modelWeitereZutatenGaben->setTable("WeitereZutatenGaben");
-    modelSchnellgaerverlauf->setTable("Schnellgaerverlauf");
+    modelRasten->setTable(QStringLiteral("Rasten"));
+    modelMalzschuettung->setTable(QStringLiteral("Malzschuettung"));
+    modelHopfengaben->setTable(QStringLiteral("Hopfengaben"));
+    modelHefegaben->setTable(QStringLiteral("Hefegaben"));
+    modelWeitereZutatenGaben->setTable(QStringLiteral("WeitereZutatenGaben"));
+    modelSchnellgaerverlauf->setTable(QStringLiteral("Schnellgaerverlauf"));
     modelSchnellgaerverlauf->setSort(ModelSchnellgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
-    modelHauptgaerverlauf->setTable("Hauptgaerverlauf");
+    modelHauptgaerverlauf->setTable(QStringLiteral("Hauptgaerverlauf"));
     modelHauptgaerverlauf->setSort(ModelHauptgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
-    modelNachgaerverlauf->setTable("Nachgaerverlauf");
+    modelNachgaerverlauf->setTable(QStringLiteral("Nachgaerverlauf"));
     modelNachgaerverlauf->setSort(ModelNachgaerverlauf::ColZeitstempel, Qt::AscendingOrder);
-    modelBewertungen->setTable("Bewertungen");
+    modelBewertungen->setTable(QStringLiteral("Bewertungen"));
     modelBewertungen->setSort(ModelBewertungen::ColDatum, Qt::AscendingOrder);
-    modelMalz->setTable("Malz");
-    modelHopfen->setTable("Hopfen");
-    modelHefe->setTable("Hefe");
-    modelWeitereZutaten->setTable("WeitereZutaten");
-    modelAnhang->setTable("Anhang");
-    modelAusruestung->setTable("Ausruestung");
-    modelGeraete->setTable("Geraete");
-    modelWasser->setTable("Wasser");
-    modelEtiketten->setTable("Etiketten");
-    modeTags->setTable("Tags");
-    modelKategorien->setTable("Kategorien");
-    modelWasseraufbereitung->setTable("Wasseraufbereitung");
+    modelMalz->setTable(QStringLiteral("Malz"));
+    modelHopfen->setTable(QStringLiteral("Hopfen"));
+    modelHefe->setTable(QStringLiteral("Hefe"));
+    modelWeitereZutaten->setTable(QStringLiteral("WeitereZutaten"));
+    modelAnhang->setTable(QStringLiteral("Anhang"));
+    modelAusruestung->setTable(QStringLiteral("Ausruestung"));
+    modelGeraete->setTable(QStringLiteral("Geraete"));
+    modelWasser->setTable(QStringLiteral("Wasser"));
+    modelEtiketten->setTable(QStringLiteral("Etiketten"));
+    modeTags->setTable(QStringLiteral("Tags"));
+    modelKategorien->setTable(QStringLiteral("Kategorien"));
+    modelWasseraufbereitung->setTable(QStringLiteral("Wasseraufbereitung"));
 
     // sanity check
     Q_ASSERT(modelSud->columnCount() == ModelSud::NumCols);
@@ -121,7 +121,7 @@ Database::~Database()
     delete modeTags;
     delete modelKategorien;
     delete modelWasseraufbereitung;
-    QSqlDatabase::removeDatabase("kbh");
+    QSqlDatabase::removeDatabase(QStringLiteral("kbh"));
 }
 
 bool Database::connect(const QString &dbPath, bool readonly)
@@ -135,7 +135,7 @@ bool Database::connect(const QString &dbPath, bool readonly)
         return false;
     }
 
-    QSqlDatabase db = QSqlDatabase::database("kbh", false);
+    QSqlDatabase db = QSqlDatabase::database(QStringLiteral("kbh"), false);
     if (!db.isValid())
     {
         qCritical(Brauhelfer::loggingCategory) << "Database connection is invalid.";
@@ -145,7 +145,7 @@ bool Database::connect(const QString &dbPath, bool readonly)
     db.close();
     db.setDatabaseName(dbPath);
     if (readonly)
-        db.setConnectOptions("QSQLITE_OPEN_READONLY");
+        db.setConnectOptions(QStringLiteral("QSQLITE_OPEN_READONLY"));
 
     if (!db.open())
     {
@@ -155,7 +155,7 @@ bool Database::connect(const QString &dbPath, bool readonly)
 
     try
     {
-        QSqlQuery query = sqlExec(db, "SELECT db_Version FROM Global");
+        QSqlQuery query = sqlExec(db, QStringLiteral("SELECT db_Version FROM Global"));
         if (query.first())
         {
             int version = query.value(0).toInt();
@@ -409,7 +409,7 @@ void Database::discard()
     modelSud->revertAll();
 }
 
-QSqlQuery Database::sqlExec(QSqlDatabase& db, const QString &query)
+QSqlQuery Database::sqlExec(const QSqlDatabase &db, const QString &query)
 {
     QSqlQuery sqlQuery = db.exec(query);
     QSqlError error = db.lastError();

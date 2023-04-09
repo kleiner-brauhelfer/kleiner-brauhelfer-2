@@ -108,11 +108,11 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
         }
         if (!accept)
         {
-            ModelSud* modelSud = dynamic_cast<ModelSud*>(sourceModel());
+            ModelSud* modelSud = qobject_cast<ModelSud*>(sourceModel());
             if (modelSud)
             {
                 idx = sourceModel()->index(source_row, ModelSud::ColID, source_parent);
-                QRegularExpression sudReg(QString("^%1$").arg(sourceModel()->data(idx).toInt()));
+                QRegularExpression sudReg(QStringLiteral("^%1$").arg(sourceModel()->data(idx).toInt()));
 
                 ProxyModel modelMalzschuettung;
                 modelMalzschuettung.setSourceModel(modelSud->bh->modelMalzschuettung());
@@ -173,7 +173,7 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
                     ProxyModel modelTags;
                     modelTags.setSourceModel(modelSud->bh->modelTags());
                     modelTags.setFilterKeyColumn(ModelTags::ColSudID);
-                    modelTags.setFilterRegularExpression(QString("^(%1|-.*)$").arg(sourceModel()->data(idx).toInt()));
+                    modelTags.setFilterRegularExpression(QStringLiteral("^(%1|-.*)$").arg(sourceModel()->data(idx).toInt()));
                     for (int i = 0; i < modelTags.rowCount(); i++)
                     {
                         QString text = modelTags.index(i, ModelTags::ColKey).data().toString();

@@ -18,7 +18,7 @@ void DlgTableView::restoreView()
 }
 
 
-DlgTableView::DlgTableView(SqlTableModel *model, QList<TableView::ColumnDefinition> columns, QMap<int, QVariant> defaultValues, int filterColumn, QWidget *parent) :
+DlgTableView::DlgTableView(SqlTableModel *model, const QList<TableView::ColumnDefinition> &columns, const QMap<int, QVariant> &defaultValues, int filterColumn, QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgTableView),
     mDefaultValues(defaultValues)

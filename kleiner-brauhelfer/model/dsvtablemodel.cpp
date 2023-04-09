@@ -231,7 +231,7 @@ QString DsvTableModel::fieldName(int fieldIndex) const
     return QString();
 }
 
-void DsvTableModel::checkString(QString &value, QList<QString> &row, const QChar &character, bool &isHeaderRow)
+void DsvTableModel::checkString(QString &value, QList<QString> &row, QChar character, bool &isHeaderRow)
 {
     if(value.count("\"") % 2 == 0)
     {

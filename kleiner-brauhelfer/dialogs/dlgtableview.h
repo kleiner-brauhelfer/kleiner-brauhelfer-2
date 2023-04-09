@@ -21,8 +21,8 @@ public:
     static void restoreView();
 
     explicit DlgTableView(SqlTableModel* model,
-                          QList<TableView::ColumnDefinition> columns,
-                          QMap<int, QVariant> defaultValues = QMap<int, QVariant>(),
+                          const QList<TableView::ColumnDefinition> &columns,
+                          const QMap<int, QVariant> &defaultValues = QMap<int, QVariant>(),
                           int filterColumn = -1,
                           QWidget *parent = nullptr);
     ~DlgTableView();

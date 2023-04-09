@@ -31,7 +31,7 @@ public:
 
 public:
 
-    ModelNachgaerverlauf(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    ModelNachgaerverlauf(Brauhelfer* bh, const QSqlDatabase &db = QSqlDatabase());
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     void defaultValues(QMap<int, QVariant> &values) const Q_DECL_OVERRIDE;

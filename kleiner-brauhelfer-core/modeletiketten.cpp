@@ -2,7 +2,7 @@
 #include "modeletiketten.h"
 #include "brauhelfer.h"
 
-ModelEtiketten::ModelEtiketten(Brauhelfer* bh, QSqlDatabase db) :
+ModelEtiketten::ModelEtiketten(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db)
 {
 }
@@ -13,7 +13,7 @@ int ModelEtiketten::getLastRow(const QVariant& pfad, int excludeRow) const
     {
         if (row == excludeRow)
             continue;
-        if (data(row, ColPfad) == pfad && !data(row, fieldIndex("deleted")).toBool())
+        if (data(row, ColPfad) == pfad && !data(row, fieldIndex(QStringLiteral("deleted"))).toBool())
             return row;
     }
     return -1;

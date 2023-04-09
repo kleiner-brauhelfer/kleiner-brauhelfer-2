@@ -3,13 +3,13 @@
 #include "brauhelfer.h"
 #include <QDate>
 
-ModelWeitereZutaten::ModelWeitereZutaten(Brauhelfer* bh, QSqlDatabase db) :
+ModelWeitereZutaten::ModelWeitereZutaten(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("MengeNormiert");
-    mVirtualField.append("InGebrauch");
-    mVirtualField.append("InGebrauchListe");
+    mVirtualField.append(QStringLiteral("MengeNormiert"));
+    mVirtualField.append(QStringLiteral("InGebrauch"));
+    mVirtualField.append(QStringLiteral("InGebrauchListe"));
 }
 
 QVariant ModelWeitereZutaten::dataExt(const QModelIndex &idx) const

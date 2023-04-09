@@ -32,7 +32,7 @@ public:
     bool save(const QString &fileName, bool withHeaderLine = false, QChar delim = QChar());
 
 private:
-    void checkString(QString &col, QList<QString> &row, const QChar &character, bool &isHeaderRow);
+    void checkString(QString &value, QList<QString> &row, QChar character, bool &isHeaderRow);
 
 private:
     QList<QString> mHeaderData;

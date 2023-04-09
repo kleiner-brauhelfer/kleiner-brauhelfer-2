@@ -46,7 +46,7 @@ public:
 
 public:
 
-    ModelAusruestung(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    ModelAusruestung(Brauhelfer* bh, const QSqlDatabase &db = QSqlDatabase());
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     bool removeRows(int row, int count = 1, const QModelIndex &parent = QModelIndex()) Q_DECL_OVERRIDE;

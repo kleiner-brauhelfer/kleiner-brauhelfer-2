@@ -6,6 +6,7 @@
 #include <QTextDocument>
 #include <qmath.h>
 #include "brauhelfer.h"
+#include "biercalc.h"
 #include "settings.h"
 #include "mainwindow.h"
 #include "widgets/wdganhang.h"

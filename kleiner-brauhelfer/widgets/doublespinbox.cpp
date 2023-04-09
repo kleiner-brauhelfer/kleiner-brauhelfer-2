@@ -17,7 +17,7 @@ DoubleSpinBox::DoubleSpinBox(QWidget *parent) :
 void DoubleSpinBox::wheelEvent(QWheelEvent *event)
 {
     if (hasFocus())
-        return QDoubleSpinBox::wheelEvent(event);
+        QDoubleSpinBox::wheelEvent(event);
 }
 
 void DoubleSpinBox::updatePalette()

@@ -31,7 +31,7 @@ public:
 
 public:
 
-    ModelHefegaben(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    ModelHefegaben(Brauhelfer* bh, const QSqlDatabase &db = QSqlDatabase());
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     void update(const QVariant &name, int col, const QVariant &value);

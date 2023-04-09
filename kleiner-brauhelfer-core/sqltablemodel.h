@@ -20,7 +20,7 @@ public:
      * @param parent Parent
      * @param db Database
      */
-    explicit SqlTableModel(QObject *parent = nullptr, QSqlDatabase db = QSqlDatabase());
+    explicit SqlTableModel(QObject *parent = nullptr, const QSqlDatabase &db = QSqlDatabase());
 
     /**
      * @brief Gets data from the model
@@ -223,7 +223,7 @@ public:
      * @param ignoreCols Columns to ignore
      * @return Variant map
      */
-    QVariantMap toVariantMap(int row, QList<int> cols = QList<int>(), QList<int> ignoreCols = QList<int>()) const;
+    QVariantMap toVariantMap(int row, const QList<int> &cols = QList<int>(), const QList<int> &ignoreCols = QList<int>()) const;
 
     /**
      * @brief getNextId

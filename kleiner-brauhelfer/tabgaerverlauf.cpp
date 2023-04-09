@@ -6,6 +6,7 @@
 #include <QMimeData>
 #include <QFileDialog>
 #include "brauhelfer.h"
+#include "biercalc.h"
 #include "settings.h"
 #include "model/datetimedelegate.h"
 #include "model/doublespinboxdelegate.h"

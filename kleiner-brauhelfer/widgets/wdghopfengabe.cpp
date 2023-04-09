@@ -70,7 +70,6 @@ void WdgHopfenGabe::checkEnabled()
 
 void WdgHopfenGabe::updateValues()
 {
-    qDebug() << "updateValues()" << bh->sud()->row();
     QString hopfenname = name();
 
     checkEnabled();

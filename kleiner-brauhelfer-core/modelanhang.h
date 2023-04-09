@@ -26,7 +26,7 @@ public:
 
 public:
 
-    ModelAnhang(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    ModelAnhang(Brauhelfer* bh, const QSqlDatabase &db = QSqlDatabase());
 };
 
 #endif // MODELANHANG_H

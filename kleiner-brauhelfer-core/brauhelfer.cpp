@@ -19,28 +19,28 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     mDb->createTables(this);
     mSud = new SudObject(this);
 
-    connect(mDb->modelSud, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelMalz, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelHopfen, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelHefe, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelWeitereZutaten, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelAusruestung, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelGeraete, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelWasser, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelRasten, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelMalzschuettung, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelHopfengaben, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelHefegaben, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelWeitereZutatenGaben, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelSchnellgaerverlauf, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelHauptgaerverlauf, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelNachgaerverlauf, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelBewertungen, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelAnhang, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelEtiketten, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modeTags, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelKategorien, SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(mDb->modelWasseraufbereitung, SIGNAL(modified()), this, SIGNAL(modified()));
+    connect(mDb->modelSud, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelMalz, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelHopfen, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelHefe, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelWeitereZutaten, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelAusruestung, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelGeraete, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelWasser, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelRasten, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelMalzschuettung, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelHopfengaben, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelHefegaben, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelWeitereZutatenGaben, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelSchnellgaerverlauf, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelHauptgaerverlauf, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelNachgaerverlauf, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelBewertungen, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelAnhang, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelEtiketten, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modeTags, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelKategorien, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelWasseraufbereitung, &SqlTableModel::modified, this, &Brauhelfer::modified);
 }
 
 Brauhelfer::~Brauhelfer()
@@ -69,6 +69,7 @@ bool Brauhelfer::connectDatabase()
             mSud->init();
         }
     }
+    emit databaseVersionChanged(mDb->version());
     emit connectionChanged(isConnectedDatabase());
     return isConnectedDatabase();
 }
@@ -80,6 +81,7 @@ void Brauhelfer::disconnectDatabase()
         qInfo(loggingCategory) << "Brauhelfer::disconnectDatabase()";
         mSud->unload();
         mDb->disconnect();
+        emit databaseVersionChanged(mDb->version());
         emit connectionChanged(isConnectedDatabase());
     }
 }

@@ -26,7 +26,7 @@ public:
 
 public:
 
-    ModelGeraete(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    ModelGeraete(Brauhelfer* bh, const QSqlDatabase &db = QSqlDatabase());
 };
 
 #endif // MODELGERAETE_H

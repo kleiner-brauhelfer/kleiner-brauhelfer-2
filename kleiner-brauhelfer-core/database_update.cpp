@@ -5,7 +5,7 @@
 bool Database::update()
 {
     QSqlQuery query;
-    QSqlDatabase db = QSqlDatabase::database("kbh", false);
+    QSqlDatabase db = QSqlDatabase::database(QStringLiteral("kbh"), false);
     if (!db.isValid())
     {
         qCritical(Brauhelfer::loggingCategory) << "Database connection is invalid.";
@@ -19,8 +19,8 @@ bool Database::update()
             ++version;
             qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
-            sqlExec(db, "ALTER TABLE 'WeitereZutatenGaben' ADD COLUMN 'Zugabedauer' NUMERIC DEFAULT 0");
-            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            sqlExec(db, QStringLiteral("ALTER TABLE 'WeitereZutatenGaben' ADD COLUMN 'Zugabedauer' NUMERIC DEFAULT 0"));
+            sqlExec(db, QStringLiteral("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }
 
@@ -29,9 +29,9 @@ bool Database::update()
             ++version;
             qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
-            sqlExec(db, "CREATE TABLE IF NOT EXISTS 'Flaschenlabel' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Auswahl' Text, 'BreiteLabel' INTEGER, 'AnzahlLabels' INTEGER, 'AbstandLabels' INTEGER, 'SRandOben' INTEGER, 'SRandLinks' INTEGER, 'SRandRechts' INTEGER, 'SRandUnten' INTEGER)");
-            sqlExec(db, "CREATE TABLE IF NOT EXISTS 'FlaschenlabelTags' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Tagname' Text, 'Value' Text)");
-            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            sqlExec(db, QStringLiteral("CREATE TABLE IF NOT EXISTS 'Flaschenlabel' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Auswahl' Text, 'BreiteLabel' INTEGER, 'AnzahlLabels' INTEGER, 'AbstandLabels' INTEGER, 'SRandOben' INTEGER, 'SRandLinks' INTEGER, 'SRandRechts' INTEGER, 'SRandUnten' INTEGER)"));
+            sqlExec(db, QStringLiteral("CREATE TABLE IF NOT EXISTS 'FlaschenlabelTags' ('ID' INTEGER PRIMARY KEY  NOT NULL ,'SudID' INTEGER, 'Tagname' Text, 'Value' Text)"));
+            sqlExec(db, QStringLiteral("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }
 
@@ -40,8 +40,8 @@ bool Database::update()
             ++version;
             qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
             db.transaction();
-            sqlExec(db, "ALTER TABLE 'Sud' ADD COLUMN 'Sudnummer' NUMERIC DEFAULT 0");
-            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            sqlExec(db, QStringLiteral("ALTER TABLE 'Sud' ADD COLUMN 'Sudnummer' NUMERIC DEFAULT 0"));
+            sqlExec(db, QStringLiteral("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }
 
@@ -55,9 +55,9 @@ bool Database::update()
             //  - neue Spalte 'Typ'
             //                'KorrekturMenge'
             //  - Spalte gelöscht 'AnlagenID'
-            sqlExec(db, "UPDATE Geraete SET AusruestungAnlagenID=(SELECT rowid FROM Ausruestung WHERE AnlagenID=AusruestungAnlagenID)");
-            sqlExec(db, "ALTER TABLE Ausruestung RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Ausruestung ("
+            sqlExec(db, QStringLiteral("UPDATE Geraete SET AusruestungAnlagenID=(SELECT rowid FROM Ausruestung WHERE AnlagenID=AusruestungAnlagenID)"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Ausruestung RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Ausruestung ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT,"
                 "Typ INTEGER DEFAULT 0,"
@@ -72,8 +72,8 @@ bool Database::update()
                 "Sudpfanne_Hoehe REAL DEFAULT 0,"
                 "Sudpfanne_Durchmesser REAL DEFAULT 0,"
                 "Sudpfanne_MaxFuellhoehe REAL DEFAULT 0,"
-                "Kosten REAL DEFAULT 0)");
-            sqlExec(db, "INSERT INTO Ausruestung ("
+                "Kosten REAL DEFAULT 0)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Ausruestung ("
                 "Name,"
                 "Sudhausausbeute,"
                 "Verdampfungsziffer,"
@@ -99,19 +99,19 @@ bool Database::update()
                 "Sudpfanne_Durchmesser,"
                 "Sudpfanne_MaxFuellhoehe,"
                 "Kosten"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Wasser
             //  - neue Spalte 'Name'
-            sqlExec(db, "ALTER TABLE Wasser RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Wasser ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Wasser RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Wasser ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT,"
                 "Calcium REAL DEFAULT 0,"
                 "Magnesium REAL DEFAULT 0,"
-                "Saeurekapazitaet REAL DEFAULT 0)");
-            sqlExec(db, "INSERT INTO Wasser ("
+                "Saeurekapazitaet REAL DEFAULT 0)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Wasser ("
                 "Calcium,"
                 "Magnesium,"
                 "Saeurekapazitaet"
@@ -119,14 +119,14 @@ bool Database::update()
                 "Calcium,"
                 "Magnesium,"
                 "Saeurekapazitaet"
-                " FROM TempTable");
-            sqlExec(db, "UPDATE Wasser SET Name='Profil 1'");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("UPDATE Wasser SET Name='Profil 1'"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Hefe
             //  - Spalte gelöscht 'Enheiten'
-            sqlExec(db, "ALTER TABLE Hefe RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Hefe ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Hefe RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Hefe ("
                 "ID INTEGER PRIMARY KEY,"
                 "Beschreibung TEXT,"
                 "Menge INTEGER DEFAULT 0,"
@@ -142,8 +142,8 @@ bool Database::update()
                 "Temperatur TEXT,"
                 "Eingelagert DATETIME,"
                 "Mindesthaltbar DATETIME,"
-                "Link TEXT)");
-            sqlExec(db, "INSERT INTO Hefe ("
+                "Link TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Hefe ("
                 "Beschreibung,"
                 "Menge,"
                 "Preis,"
@@ -175,14 +175,14 @@ bool Database::update()
                 "Eingelagert,"
                 "Mindesthaltbar,"
                 "Link"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Hopfengaben
             //  - Spalte gelöscht 'Aktiv'
             //                    'erg_Hopfentext'
-            sqlExec(db, "ALTER TABLE Hopfengaben RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Hopfengaben ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Hopfengaben RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Hopfengaben ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER,"
                 "Name TEXT,"
@@ -191,8 +191,8 @@ bool Database::update()
                 "erg_Menge REAL DEFAULT 0,"
                 "Alpha REAL DEFAULT 0,"
                 "Pellets INTEGER DEFAULT 0,"
-                "Vorderwuerze INTEGER DEFAULT 0)");
-            sqlExec(db, "INSERT INTO Hopfengaben ("
+                "Vorderwuerze INTEGER DEFAULT 0)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Hopfengaben ("
                 "SudID,"
                 "Name,"
                 "Prozent,"
@@ -210,19 +210,19 @@ bool Database::update()
                 "Alpha,"
                 "Pellets,"
                 "Vorderwuerze"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Hefegaben
             //  - neue Tabelle
-            sqlExec(db, "CREATE TABLE Hefegaben ("
+            sqlExec(db, QStringLiteral("CREATE TABLE Hefegaben ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER,"
                 "Name TEXT,"
                 "Menge INTEGER DEFAULT 0,"
                 "Zugegeben INTEGER DEFAULT 0,"
-                "ZugabeNach INTEGER DEFAULT 0)");
-            sqlExec(db, "INSERT INTO Hefegaben ("
+                "ZugabeNach INTEGER DEFAULT 0)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Hefegaben ("
                 "SudID,"
                 "Name,"
                 "Menge,"
@@ -232,32 +232,32 @@ bool Database::update()
                 "AuswahlHefe,"
                 "HefeAnzahlEinheiten,"
                 "BierWurdeGebraut"
-                " FROM Sud WHERE AuswahlHefe IS NOT NULL AND AuswahlHefe <> ''");
+                " FROM Sud WHERE AuswahlHefe IS NOT NULL AND AuswahlHefe <> ''"));
 
             // WeitereZutatenGaben
             //  - Spalte gelöscht 'Zeitpunkt_von'
             //                    'Zeitpunkt_bis'
             //  - neue Spalte 'ZugabeNach'
-            sqlExec(db, "ALTER TABLE WeitereZutatenGaben ADD ZugabeNach INTEGER DEFAULT 0");
-            query = sqlExec(db, "SELECT ID, SudID, Zeitpunkt_von, Typ FROM WeitereZutatenGaben");
+            sqlExec(db, QStringLiteral("ALTER TABLE WeitereZutatenGaben ADD ZugabeNach INTEGER DEFAULT 0"));
+            query = sqlExec(db, QStringLiteral("SELECT ID, SudID, Zeitpunkt_von, Typ FROM WeitereZutatenGaben"));
             while (query.next())
             {
                 int id = query.value(0).toInt();
                 int sudId = query.value(1).toInt();
                 QDateTime zeitpunkt = query.value(2).toDateTime();
                 int typ = query.value(3).toInt();
-                QSqlQuery query2 = sqlExec(db, QString("SELECT Braudatum FROM Sud WHERE ID=%1").arg(sudId));
+                QSqlQuery query2 = sqlExec(db, QStringLiteral("SELECT Braudatum FROM Sud WHERE ID=%1").arg(sudId));
                 if (query2.first())
                 {
                     QDateTime braudatum = query2.value(0).toDateTime();
                     qint64 tage = braudatum.daysTo(zeitpunkt);
-                    sqlExec(db, QString("UPDATE WeitereZutatenGaben SET ZugabeNach=%1 WHERE ID=%2").arg(tage).arg(id));
+                    sqlExec(db, QStringLiteral("UPDATE WeitereZutatenGaben SET ZugabeNach=%1 WHERE ID=%2").arg(tage).arg(id));
                 }
                 if (typ < 0)
-                    sqlExec(db, QString("UPDATE WeitereZutatenGaben SET Typ=%1 WHERE ID=%2").arg(static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen)).arg(id));
+                    sqlExec(db, QStringLiteral("UPDATE WeitereZutatenGaben SET Typ=%1 WHERE ID=%2").arg(static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen)).arg(id));
             }
-            sqlExec(db, "ALTER TABLE WeitereZutatenGaben RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE WeitereZutatenGaben ("
+            sqlExec(db, QStringLiteral("ALTER TABLE WeitereZutatenGaben RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE WeitereZutatenGaben ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER,"
                 "Name TEXT,"
@@ -272,9 +272,8 @@ bool Database::update()
                 "ZugabeNach INTEGER DEFAULT 0,"
                 "Zugabedauer INTEGER DEFAULT 0,"
                 "Entnahmeindex INTEGER DEFAULT 0,"
-                "Zugabestatus INTEGER DEFAULT 0)"
-                );
-            sqlExec(db, "INSERT INTO WeitereZutatenGaben ("
+                "Zugabestatus INTEGER DEFAULT 0)"));
+            sqlExec(db, QStringLiteral("INSERT INTO WeitereZutatenGaben ("
                 "SudID,"
                 "Name,"
                 "Menge,"
@@ -304,21 +303,21 @@ bool Database::update()
                 "Zugabedauer,"
                 "Entnahmeindex,"
                 "Zugabestatus"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Rasten
             //  - Spalte gelöscht 'RastAktiv'
             //  - Spalte unbenannt 'RastTemp' -> 'Temp'
             //                     'RastDauer' -> 'Dauer'
-            sqlExec(db, "ALTER TABLE Rasten RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Rasten ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Rasten RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Rasten ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER,"
                 "Name TEXT,"
                 "Temp REAL DEFAULT 0,"
-                "Dauer REAL DEFAULT 0)");
-            sqlExec(db, "INSERT INTO Rasten ("
+                "Dauer REAL DEFAULT 0)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Rasten ("
                 "SudID,"
                 "Name,"
                 "Temp,"
@@ -328,8 +327,8 @@ bool Database::update()
                 "RastName,"
                 "RastTemp,"
                 "RastDauer"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Sud
             //  - neue Spalte 'Wasserprofil'
@@ -351,8 +350,8 @@ bool Database::update()
             //  - Spalte unbenannt 'erg_S_Gesammt' -> 'erg_S_Gesamt'
             //                     'erg_W_Gesammt' -> 'erg_W_Gesamt'
             //                     'AuswahlBrauanlageName' -> 'Anlage'
-            sqlExec(db, "ALTER TABLE Sud ADD Status INTEGER DEFAULT 0");
-            query = sqlExec(db, "SELECT ID, BierWurdeGebraut, BierWurdeAbgefuellt, BierWurdeVerbraucht FROM Sud");
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD Status INTEGER DEFAULT 0"));
+            query = sqlExec(db, QStringLiteral("SELECT ID, BierWurdeGebraut, BierWurdeAbgefuellt, BierWurdeVerbraucht FROM Sud"));
             while (query.next())
             {
                 int id = query.value(0).toInt();
@@ -372,10 +371,10 @@ bool Database::update()
                         }
                     }
                 }
-                sqlExec(db, QString("UPDATE Sud SET Status=%1 WHERE ID=%2").arg(static_cast<int>(status)).arg(id));
+                sqlExec(db, QStringLiteral("UPDATE Sud SET Status=%1 WHERE ID=%2").arg(static_cast<int>(status)).arg(id));
             }
-            sqlExec(db, "ALTER TABLE Sud RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Sud ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Sud ("
                 "ID INTEGER PRIMARY KEY,"
                 "Sudname TEXT,"
                 "Sudnummer INTEGER DEFAULT 0,"
@@ -423,8 +422,8 @@ bool Database::update()
                 "erg_Preis REAL DEFAULT 0,"
                 "erg_Alkohol REAL DEFAULT 0,"
                 "AusbeuteIgnorieren INTEGER DEFAULT 0,"
-                "MerklistenID INTEGER DEFAULT 0)");
-            sqlExec(db, "INSERT INTO Sud ("
+                "MerklistenID INTEGER DEFAULT 0)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Sud ("
                 "ID,"
                 "Sudname,"
                 "Sudnummer,"
@@ -520,23 +519,23 @@ bool Database::update()
                 "erg_Alkohol,"
                 "AusbeuteIgnorieren,"
                 "MerklistenID"
-                " FROM TempTable");
-            sqlExec(db, "UPDATE Sud SET Wasserprofil='Profil 1'");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("UPDATE Sud SET Wasserprofil='Profil 1'"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // IgnorMsgID
             //  - Tabelle gelöscht
-            sqlExec(db, "DROP TABLE IgnorMsgID");
+            sqlExec(db, QStringLiteral("DROP TABLE IgnorMsgID"));
 
             // Rastauswahl
             //  - Tabelle gelöscht
-            sqlExec(db, "DROP TABLE Rastauswahl");
+            sqlExec(db, QStringLiteral("DROP TABLE Rastauswahl"));
 
             // Global
             //  - Spalte gelöscht 'db_NeuBerechnen'
-            sqlExec(db, "DROP TABLE Global");
-            sqlExec(db, "CREATE TABLE Global (db_Version INTEGER)");
-            sqlExec(db, QString("INSERT INTO Global (db_Version) VALUES (%1)").arg(version));
+            sqlExec(db, QStringLiteral("DROP TABLE Global"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Global (db_Version INTEGER)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Global (db_Version) VALUES (%1)").arg(version));
 
             db.commit();
         }
@@ -549,8 +548,8 @@ bool Database::update()
 
             // Malz
             //  - NUMERIC -> REAL
-            sqlExec(db, "ALTER TABLE Malz RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Malz ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Malz RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Malz ("
                 "ID INTEGER PRIMARY KEY,"
                 "Beschreibung TEXT NOT NULL UNIQUE,"
                 "Farbe REAL DEFAULT 0,"
@@ -561,8 +560,8 @@ bool Database::update()
                 "Anwendung TEXT,"
                 "Eingelagert DATETIME,"
                 "Mindesthaltbar DATETIME,"
-                "Link TEXT)");
-            sqlExec(db, "INSERT INTO Malz ("
+                "Link TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Malz ("
                 "Beschreibung,"
                 "Farbe,"
                 "MaxProzent,"
@@ -584,13 +583,13 @@ bool Database::update()
                 "Eingelagert,"
                 "Mindesthaltbar,"
                 "Link"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Hopfen
             //  - NUMERIC -> REAL
-            sqlExec(db, "ALTER TABLE Hopfen RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Hopfen ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Hopfen RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Hopfen ("
                 "ID INTEGER PRIMARY KEY,"
                 "Beschreibung TEXT NOT NULL UNIQUE,"
                 "Alpha REAL DEFAULT 0,"
@@ -602,8 +601,8 @@ bool Database::update()
                 "Typ INTEGER DEFAULT 0,"
                 "Eingelagert DATETIME,"
                 "Mindesthaltbar DATETIME,"
-                "Link TEXT)");
-            sqlExec(db, "INSERT INTO Hopfen ("
+                "Link TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Hopfen ("
                 "Beschreibung,"
                 "Alpha,"
                 "Menge,"
@@ -627,13 +626,13 @@ bool Database::update()
                 "Eingelagert,"
                 "Mindesthaltbar,"
                 "Link"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Hefe
             //  - NUMERIC -> REAL
-            sqlExec(db, "ALTER TABLE Hefe RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Hefe ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Hefe RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Hefe ("
                 "ID INTEGER PRIMARY KEY,"
                 "Beschreibung TEXT NOT NULL UNIQUE,"
                 "Menge INTEGER DEFAULT 0,"
@@ -649,8 +648,8 @@ bool Database::update()
                 "Temperatur TEXT,"
                 "Eingelagert DATETIME,"
                 "Mindesthaltbar DATETIME,"
-                "Link TEXT)");
-            sqlExec(db, "INSERT INTO Hefe ("
+                "Link TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Hefe ("
                 "Beschreibung,"
                 "Menge,"
                 "Preis,"
@@ -682,13 +681,13 @@ bool Database::update()
                 "Eingelagert,"
                 "Mindesthaltbar,"
                 "Link"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // WeitereZutaten
             //  - NUMERIC -> REAL
-            sqlExec(db, "ALTER TABLE WeitereZutaten RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE WeitereZutaten ("
+            sqlExec(db, QStringLiteral("ALTER TABLE WeitereZutaten RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE WeitereZutaten ("
                 "ID INTEGER PRIMARY KEY,"
                 "Beschreibung TEXT NOT NULL UNIQUE,"
                 "Menge REAL DEFAULT 0,"
@@ -700,8 +699,8 @@ bool Database::update()
                 "Bemerkung TEXT,"
                 "Eingelagert DATETIME,"
                 "Mindesthaltbar DATETIME,"
-                "Link TEXT)");
-            sqlExec(db, "INSERT INTO WeitereZutaten ("
+                "Link TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO WeitereZutaten ("
                 "Beschreibung ,"
                 "Menge,"
                 "Einheiten,"
@@ -725,23 +724,23 @@ bool Database::update()
                 "Eingelagert,"
                 "Mindesthaltbar,"
                 "Link"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Schnellgaerverlauf
             //  - NUMERIC -> REAL
             //  - Spalte unbenannt SW -> Restextrakt
             //  - Neue Spalte Bemerkung
-            sqlExec(db, "ALTER TABLE Schnellgaerverlauf RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Schnellgaerverlauf ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Schnellgaerverlauf RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Schnellgaerverlauf ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER NOT NULL,"
                 "Zeitstempel DATETIME,"
                 "Restextrakt REAL DEFAULT 0,"
                 "Alc REAL DEFAULT 0,"
                 "Temp REAL DEFAULT 18,"
-                "Bemerkung TEXT)");
-            sqlExec(db, "INSERT INTO Schnellgaerverlauf ("
+                "Bemerkung TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Schnellgaerverlauf ("
                 "SudID,"
                 "Zeitstempel,"
                 "Restextrakt,"
@@ -753,23 +752,23 @@ bool Database::update()
                 "SW,"
                 "Alc,"
                 "Temp"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Hauptgaerverlauf
             //  - NUMERIC -> REAL
             //  - Spalte unbenannt SW -> Restextrakt
             //  - Neue Spalte Bemerkung
-            sqlExec(db, "ALTER TABLE Hauptgaerverlauf RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Hauptgaerverlauf ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Hauptgaerverlauf RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Hauptgaerverlauf ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER NOT NULL,"
                 "Zeitstempel DATETIME,"
                 "Restextrakt REAL DEFAULT 0,"
                 "Alc REAL DEFAULT 0,"
                 "Temp REAL DEFAULT 18,"
-                "Bemerkung TEXT)");
-            sqlExec(db, "INSERT INTO Hauptgaerverlauf ("
+                "Bemerkung TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Hauptgaerverlauf ("
                 "SudID,"
                 "Zeitstempel,"
                 "Restextrakt,"
@@ -781,22 +780,22 @@ bool Database::update()
                 "SW,"
                 "Alc,"
                 "Temp"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Nachgaerverlauf
             //  - NUMERIC -> REAL
             //  - Neue Spalte Bemerkung
-            sqlExec(db, "ALTER TABLE Nachgaerverlauf RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Nachgaerverlauf ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Nachgaerverlauf RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Nachgaerverlauf ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER NOT NULL,"
                 "Zeitstempel DATETIME,"
                 "Druck REAL DEFAULT 0,"
                 "Temp REAL DEFAULT 18,"
                 "CO2 REAL DEFAULT 0,"
-                "Bemerkung TEXT)");
-            sqlExec(db, "INSERT INTO Nachgaerverlauf ("
+                "Bemerkung TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Nachgaerverlauf ("
                 "SudID,"
                 "Zeitstempel,"
                 "Druck,"
@@ -808,13 +807,13 @@ bool Database::update()
                 "Druck,"
                 "Temp,"
                 "CO2"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Flaschenlabel -> Etiketten
             //  - Tabelle unbenannt Flaschenlabel -> Etiketten
             //  - Spalten komplett überarbeitet
-            sqlExec(db, "CREATE TABLE Etiketten ("
+            sqlExec(db, QStringLiteral("CREATE TABLE Etiketten ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER NOT NULL,"
                 "Pfad TEXT NOT NULL,"
@@ -826,8 +825,8 @@ bool Database::update()
                 "RandOben INTEGER DEFAULT 10,"
                 "RandLinks INTEGER DEFAULT 5,"
                 "RandRechts INTEGER DEFAULT 5,"
-                "RandUnten INTEGER DEFAULT 15)");
-            sqlExec(db, "INSERT INTO Etiketten ("
+                "RandUnten INTEGER DEFAULT 15)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Etiketten ("
                 "SudID,"
                 "Pfad,"
                 "Anzahl,"
@@ -849,18 +848,18 @@ bool Database::update()
                 "SRandLinks,"
                 "SRandRechts,"
                 "SRandUnten"
-                " FROM Flaschenlabel");
-            sqlExec(db, "DROP TABLE Flaschenlabel");
+                " FROM Flaschenlabel"));
+            sqlExec(db, QStringLiteral("DROP TABLE Flaschenlabel"));
 
             // FlaschenlabelTags -> Tags
             //  - Tabelle unbenannt FlaschenlabelTags -> Tags
             //  - Spalte unbenannt Tagname -> Key
-            sqlExec(db, "CREATE TABLE Tags ("
+            sqlExec(db, QStringLiteral("CREATE TABLE Tags ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER NOT NULL,"
                 "Key TEXT NOT NULL,"
-                "Value TEXT)");
-            sqlExec(db, "INSERT INTO Tags ("
+                "Value TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Tags ("
                 "SudID,"
                 "Key,"
                 "Value"
@@ -868,11 +867,11 @@ bool Database::update()
                 "SudID,"
                 "Tagname,"
                 "Value"
-                " FROM FlaschenlabelTags");
-            sqlExec(db, "DROP TABLE FlaschenlabelTags");
+                " FROM FlaschenlabelTags"));
+            sqlExec(db, QStringLiteral("DROP TABLE FlaschenlabelTags"));
 
             // Global
-            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            sqlExec(db, QStringLiteral("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }
 
@@ -886,14 +885,14 @@ bool Database::update()
             //  - neue Spalte 'Sudhausausbeute'
             //  - neue Spalte 'Verdampfungsrate'
             //  - neue Spalte 'Vergaerungsgrad'
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN Sudhausausbeute REAL DEFAULT 60");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN Verdampfungsrate REAL DEFAULT 10");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN Vergaerungsgrad REAL DEFAULT 70");
-            sqlExec(db, "UPDATE Sud SET Sudhausausbeute = (SELECT Sudhausausbeute FROM Ausruestung WHERE Name = Anlage)");
-            sqlExec(db, "UPDATE Sud SET Verdampfungsrate = (SELECT Verdampfungsziffer FROM Ausruestung WHERE Name = Anlage)");
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN Sudhausausbeute REAL DEFAULT 60"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN Verdampfungsrate REAL DEFAULT 10"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN Vergaerungsgrad REAL DEFAULT 70"));
+            sqlExec(db, QStringLiteral("UPDATE Sud SET Sudhausausbeute = (SELECT Sudhausausbeute FROM Ausruestung WHERE Name = Anlage)"));
+            sqlExec(db, QStringLiteral("UPDATE Sud SET Verdampfungsrate = (SELECT Verdampfungsziffer FROM Ausruestung WHERE Name = Anlage)"));
 
             // Global
-            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            sqlExec(db, QStringLiteral("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }
 
@@ -906,11 +905,11 @@ bool Database::update()
             // Sud
             //  - neue Spalte 'WuerzemengeKochbeginn'
             //  - neue Spalte 'SWKochbeginn'
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN WuerzemengeKochbeginn REAL DEFAULT 0");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN SWKochbeginn REAL DEFAULT 0");
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN WuerzemengeKochbeginn REAL DEFAULT 0"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN SWKochbeginn REAL DEFAULT 0"));
 
             // Global
-            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            sqlExec(db, QStringLiteral("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }
 
@@ -926,8 +925,8 @@ bool Database::update()
             //  - neue Spalte 'Alternativen'
             //  - Spalte unbenannt 'Beschreibung' -> 'Name'
             //  - Spalte unbenannt 'Anwendung' -> 'Eigenschaften'
-            sqlExec(db, "ALTER TABLE Malz RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Malz ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Malz RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Malz ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT NOT NULL UNIQUE,"
                 "Menge REAL DEFAULT 0,"
@@ -941,8 +940,8 @@ bool Database::update()
                 "Preis REAL DEFAULT 0,"
                 "Eingelagert DATETIME,"
                 "Mindesthaltbar DATETIME,"
-                "Link TEXT)");
-            sqlExec(db, "INSERT INTO Malz ("
+                "Link TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Malz ("
                 "Name,"
                 "Menge,"
                 "Farbe,"
@@ -964,14 +963,14 @@ bool Database::update()
                 "Eingelagert,"
                 "Mindesthaltbar,"
                 "Link"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Hopfen
             //  - neue Spalte 'Alternativen'
             //  - Spalte unbenannt 'Beschreibung' -> 'Name'
-            sqlExec(db, "ALTER TABLE Hopfen RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Hopfen ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Hopfen RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Hopfen ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT NOT NULL UNIQUE,"
                 "Menge REAL DEFAULT 0,"
@@ -984,8 +983,8 @@ bool Database::update()
                 "Preis REAL DEFAULT 0,"
                 "Eingelagert DATETIME,"
                 "Mindesthaltbar DATETIME,"
-                "Link TEXT)");
-            sqlExec(db, "INSERT INTO Hopfen ("
+                "Link TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Hopfen ("
                 "Name,"
                 "Menge,"
                 "Alpha,"
@@ -1009,20 +1008,20 @@ bool Database::update()
                 "Eingelagert,"
                 "Mindesthaltbar,"
                 "Link"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Hefe
             //  - neue Spalte 'Alternativen'
             //  - Spalte gelöscht 'Verpackungsmenge'
             //  - Spalte unbenannt 'Beschreibung' -> 'Name'
             //  - Spalte unbenannt 'SED' -> 'Sedimentation' TEXT
-            sqlExec(db, "ALTER TABLE Hefe RENAME TO TempTable");
-            sqlExec(db, "ALTER TABLE TempTable ADD COLUMN Sedimentation TEXT");
-            sqlExec(db, "UPDATE TempTable SET Sedimentation = 'Hoch' WHERE SED = '1'");
-            sqlExec(db, "UPDATE TempTable SET Sedimentation = 'Mittel' WHERE SED = '2'");
-            sqlExec(db, "UPDATE TempTable SET Sedimentation = 'Niedrig' WHERE SED = '3'");
-            sqlExec(db, "CREATE TABLE Hefe ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Hefe RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("ALTER TABLE TempTable ADD COLUMN Sedimentation TEXT"));
+            sqlExec(db, QStringLiteral("UPDATE TempTable SET Sedimentation = 'Hoch' WHERE SED = '1'"));
+            sqlExec(db, QStringLiteral("UPDATE TempTable SET Sedimentation = 'Mittel' WHERE SED = '2'"));
+            sqlExec(db, QStringLiteral("UPDATE TempTable SET Sedimentation = 'Niedrig' WHERE SED = '3'"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Hefe ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT NOT NULL UNIQUE,"
                 "Menge INTEGER DEFAULT 0,"
@@ -1038,8 +1037,8 @@ bool Database::update()
                 "Preis REAL DEFAULT 0,"
                 "Eingelagert DATETIME,"
                 "Mindesthaltbar DATETIME,"
-                "Link TEXT)");
-            sqlExec(db, "INSERT INTO Hefe ("
+                "Link TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Hefe ("
                 "Name,"
                 "Menge,"
                 "TypOGUG,"
@@ -1069,8 +1068,8 @@ bool Database::update()
                 "Eingelagert,"
                 "Mindesthaltbar,"
                 "Link"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // WeitereZutaten
             //  - neue Spalte 'Eigenschaften'
@@ -1078,8 +1077,8 @@ bool Database::update()
             //  - Spalte unbenannt 'Beschreibung' -> 'Name'
             //  - Spalte unbenannt 'Einheiten' -> 'Einheit'
             //  - Spalte unbenannt 'EBC' -> 'Farbe'
-            sqlExec(db, "ALTER TABLE WeitereZutaten RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE WeitereZutaten ("
+            sqlExec(db, QStringLiteral("ALTER TABLE WeitereZutaten RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE WeitereZutaten ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT NOT NULL UNIQUE,"
                 "Menge REAL DEFAULT 0,"
@@ -1093,8 +1092,8 @@ bool Database::update()
                 "Preis REAL DEFAULT 0,"
                 "Eingelagert DATETIME,"
                 "Mindesthaltbar DATETIME,"
-                "Link TEXT)");
-            sqlExec(db, "INSERT INTO WeitereZutaten ("
+                "Link TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO WeitereZutaten ("
                 "Name ,"
                 "Menge,"
                 "Einheit,"
@@ -1118,8 +1117,8 @@ bool Database::update()
                 "Eingelagert,"
                 "Mindesthaltbar,"
                 "Link"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Wasser
             //  - Spalte unbenannt 'Saeurekapazitaet' -> 'Hydrogencarbonat'
@@ -1128,8 +1127,8 @@ bool Database::update()
             //  - neue Spalte 'Natrium'
             //  - neue Spalte 'RestalkalitaetAdd'
             //  - neue Spalte 'Bemerkung'
-            sqlExec(db, "ALTER TABLE Wasser RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Wasser ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Wasser RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Wasser ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT NOT NULL UNIQUE,"
                 "Hydrogencarbonat REAL DEFAULT 0,"
@@ -1139,8 +1138,8 @@ bool Database::update()
                 "Chlorid REAL DEFAULT 0,"
                 "Natrium REAL DEFAULT 0,"
                 "RestalkalitaetAdd REAL DEFAULT 0,"
-                "Bemerkung TEXT)");
-            sqlExec(db, "INSERT INTO Wasser ("
+                "Bemerkung TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Wasser ("
                 "Name,"
                 "Hydrogencarbonat,"
                 "Calcium,"
@@ -1150,16 +1149,16 @@ bool Database::update()
                 "Saeurekapazitaet * 61.02,"
                 "Calcium,"
                 "Magnesium"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Ausruestung
             //  - neue Spalte 'Bemerkung'
             //  - Spalte unbenannt 'Verdampfungsziffer' -> 'Verdampfungsrate'
-            sqlExec(db, "ALTER TABLE Ausruestung RENAME TO TempTable");
-            sqlExec(db, "ALTER TABLE TempTable ADD COLUMN Verdampfungsrate TEXT");
-            sqlExec(db, "UPDATE TempTable SET Verdampfungsrate = Sudpfanne_Durchmesser*Sudpfanne_Durchmesser/4*3.141592*Sudpfanne_MaxFuellhoehe*Verdampfungsziffer/100000");
-            sqlExec(db, "CREATE TABLE Ausruestung ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Ausruestung RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("ALTER TABLE TempTable ADD COLUMN Verdampfungsrate TEXT"));
+            sqlExec(db, QStringLiteral("UPDATE TempTable SET Verdampfungsrate = Sudpfanne_Durchmesser*Sudpfanne_Durchmesser/4*3.141592*Sudpfanne_MaxFuellhoehe*Verdampfungsziffer/100000"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Ausruestung ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT NOT NULL UNIQUE,"
                 "Typ INTEGER DEFAULT 0,"
@@ -1175,8 +1174,8 @@ bool Database::update()
                 "Sudpfanne_Durchmesser REAL DEFAULT 0,"
                 "Sudpfanne_MaxFuellhoehe REAL DEFAULT 0,"
                 "Kosten REAL DEFAULT 0,"
-                "Bemerkung TEXT)");
-            sqlExec(db, "INSERT INTO Ausruestung ("
+                "Bemerkung TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Ausruestung ("
                 "Name,"
                 "Typ,"
                 "Sudhausausbeute,"
@@ -1206,14 +1205,14 @@ bool Database::update()
                 "Sudpfanne_Durchmesser,"
                 "Sudpfanne_MaxFuellhoehe,"
                 "Kosten"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Malzschuettung
             //  - neue Spalte 'Potential'
             //  - neue Spalte 'pH'
-            sqlExec(db, "ALTER TABLE Malzschuettung ADD COLUMN Potential REAL DEFAULT 0");
-            sqlExec(db, "ALTER TABLE Malzschuettung ADD COLUMN pH REAL DEFAULT 0");
+            sqlExec(db, QStringLiteral("ALTER TABLE Malzschuettung ADD COLUMN Potential REAL DEFAULT 0"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Malzschuettung ADD COLUMN pH REAL DEFAULT 0"));
 
             // Rasten
             //  - neue Spalte 'Typ'
@@ -1222,8 +1221,8 @@ bool Database::update()
             //  - neue Spalte 'Param2'
             //  - neue Spalte 'Param3'
             //  - neue Spalte 'Param4'
-            sqlExec(db, "ALTER TABLE Rasten RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Rasten ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Rasten RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Rasten ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER NOT NULL,"
                 "Typ INTEGER DEFAULT 1,"
@@ -1234,20 +1233,20 @@ bool Database::update()
                 "Param1 REAL DEFAULT 0,"
                 "Param2 REAL DEFAULT 0,"
                 "Param3 REAL DEFAULT 0,"
-                "Param4 REAL DEFAULT 0)");
-            query = sqlExec(db, "SELECT SudID, Temp FROM TempTable GROUP BY SudID HAVING MIN(ROWID)");
+                "Param4 REAL DEFAULT 0)"));
+            query = sqlExec(db, QStringLiteral("SELECT SudID, Temp FROM TempTable GROUP BY SudID HAVING MIN(ROWID)"));
             while (query.next())
             {
                 int einmaischenTemp = 0;
-                QSqlQuery query2 = sqlExec(db, QString("SELECT EinmaischenTemp FROM Sud WHERE ID=%1").arg(query.value(0).toInt()));
+                QSqlQuery query2 = sqlExec(db, QStringLiteral("SELECT EinmaischenTemp FROM Sud WHERE ID=%1").arg(query.value(0).toInt()));
                 if (query2.first())
                     einmaischenTemp = query2.value(0).toInt();
-                sqlExec(db, QString("INSERT INTO Rasten (SudID,Typ,Name,Temp,Mengenfaktor,Param1) VALUES (%1,0,'Einmaischen',%2,1,%3)")
+                sqlExec(db, QStringLiteral("INSERT INTO Rasten (SudID,Typ,Name,Temp,Mengenfaktor,Param1) VALUES (%1,0,'Einmaischen',%2,1,%3)")
                         .arg(query.value(0).toInt())
                         .arg(query.value(1).toInt())
                         .arg(einmaischenTemp));
             }
-            sqlExec(db, "INSERT INTO Rasten ("
+            sqlExec(db, QStringLiteral("INSERT INTO Rasten ("
                 "SudID,"
                 "Name,"
                 "Temp,"
@@ -1257,33 +1256,33 @@ bool Database::update()
                 "Name,"
                 "Temp,"
                 "Dauer"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Etiketten
             //  - neue Spalte 'Papiergroesse'
             //  - neue Spalte 'Ausrichtung'
-            sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Papiergroesse INTEGER DEFAULT 0");
-            sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Ausrichtung INTEGER DEFAULT 0");
+            sqlExec(db, QStringLiteral("ALTER TABLE Etiketten ADD COLUMN Papiergroesse INTEGER DEFAULT 0"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Etiketten ADD COLUMN Ausrichtung INTEGER DEFAULT 0"));
 
             // Kategorien
             //  - neue Tabelle
-            sqlExec(db, "CREATE TABLE Kategorien ("
+            sqlExec(db, QStringLiteral("CREATE TABLE Kategorien ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT UNIQUE,"
-                "Bemerkung TEXT)");
-            sqlExec(db, "INSERT INTO Kategorien (Name) VALUES ('')");
+                "Bemerkung TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Kategorien (Name) VALUES ('')"));
 
             // Wasseraufbereitung
             //  - neue Tabelle
-            sqlExec(db, "CREATE TABLE Wasseraufbereitung ("
+            sqlExec(db, QStringLiteral("CREATE TABLE Wasseraufbereitung ("
                 "ID INTEGER PRIMARY KEY,"
                 "SudID INTEGER NOT NULL,"
                 "Name TEXT NOT NULL,"
                 "Menge REAL DEFAULT 0,"
                 "Einheit INTEGER DEFAULT 0,"
                 "Faktor REAL DEFAULT 0,"
-                "Restalkalitaet REAL DEFAULT 0)");
+                "Restalkalitaet REAL DEFAULT 0)"));
 
             // Sud
             //  - Spalte gelöscht 'EinmaischenTemp'
@@ -1291,8 +1290,8 @@ bool Database::update()
             //  - neue Spalte 'VerschneidungAbfuellen'
             //  - Spalte unbenannt KochdauerNachBitterhopfung -> Kochdauer
             //  - 'Verdampfungsrate' in l/h statt %
-            sqlExec(db, "ALTER TABLE Sud RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Sud ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Sud ("
                 "ID INTEGER PRIMARY KEY,"
                 "Sudname TEXT NOT NULL,"
                 "Sudnummer INTEGER DEFAULT 0,"
@@ -1346,8 +1345,8 @@ bool Database::update()
                 "Vergaerungsgrad REAL DEFAULT 70,"
                 "WuerzemengeKochbeginn REAL DEFAULT 0,"
                 "SWKochbeginn REAL DEFAULT 0,"
-                "VerschneidungAbfuellen REAL DEFAULT 0)");
-            sqlExec(db, "INSERT INTO Sud ("
+                "VerschneidungAbfuellen REAL DEFAULT 0)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Sud ("
                 "ID,"
                 "Sudname,"
                 "Sudnummer,"
@@ -1453,11 +1452,11 @@ bool Database::update()
                 "Vergaerungsgrad,"
                 "WuerzemengeKochbeginn,"
                 "SWKochbeginn"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Global
-            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            sqlExec(db, QStringLiteral("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }
 
@@ -1469,22 +1468,22 @@ bool Database::update()
 
             // Kategorien
             //  - 'Name' nicht mehr UNIQUE (wegen swap())
-            sqlExec(db, "ALTER TABLE Kategorien RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Kategorien ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Kategorien RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Kategorien ("
                 "ID INTEGER PRIMARY KEY,"
                 "Name TEXT,"
-                "Bemerkung TEXT)");
-            sqlExec(db, "INSERT INTO Kategorien ("
+                "Bemerkung TEXT)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Kategorien ("
                 "Name,"
                 "Bemerkung"
                 ") SELECT "
                 "Name,"
                 "Bemerkung"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Global
-            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            sqlExec(db, QStringLiteral("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }
 
@@ -1500,22 +1499,22 @@ bool Database::update()
             //  - neue Spalte 'BemerkungAbfuellen'
             //  - neue Spalte 'BemerkungGaerung'
             //  - neue Spalte 'ReifungStart'
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN TemperaturKarbonisierung REAL DEFAULT 12");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungBrauen TEXT");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungAbfuellen TEXT");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungGaerung TEXT");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN ReifungStart DATETIME");
-            sqlExec(db, "UPDATE Sud SET ReifungStart = Abfuelldatum");
-            query = sqlExec(db, "SELECT SudID, Zeitstempel FROM Nachgaerverlauf GROUP BY SudID HAVING MAX(Zeitstempel)");
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN TemperaturKarbonisierung REAL DEFAULT 12"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN BemerkungBrauen TEXT"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN BemerkungAbfuellen TEXT"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN BemerkungGaerung TEXT"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN ReifungStart DATETIME"));
+            sqlExec(db, QStringLiteral("UPDATE Sud SET ReifungStart = Abfuelldatum"));
+            query = sqlExec(db, QStringLiteral("SELECT SudID, Zeitstempel FROM Nachgaerverlauf GROUP BY SudID HAVING MAX(Zeitstempel)"));
             while (query.next())
             {
                 QString sudId = query.value(0).toString();
                 QString dt = query.value(1).toString();
-                 sqlExec(db, QString("UPDATE Sud SET ReifungStart = '%2' WHERE ID = %1 AND ReifungStart < '%2'").arg(sudId, dt));
+                 sqlExec(db, QStringLiteral("UPDATE Sud SET ReifungStart = '%2' WHERE ID = %1 AND ReifungStart < '%2'").arg(sudId, dt));
             }
 
             // Global
-            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            sqlExec(db, QStringLiteral("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }
 
@@ -1528,8 +1527,8 @@ bool Database::update()
             // Sud
             //  - neue Spalte 'VerduennungAnstellen'
             //  - Spalte 'Speisemenge' default 0
-            sqlExec(db, "ALTER TABLE Sud RENAME TO TempTable");
-            sqlExec(db, "CREATE TABLE Sud ("
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud RENAME TO TempTable"));
+            sqlExec(db, QStringLiteral("CREATE TABLE Sud ("
                 "ID INTEGER PRIMARY KEY,"
                 "Sudname TEXT NOT NULL,"
                 "Sudnummer INTEGER DEFAULT 0,"
@@ -1589,8 +1588,8 @@ bool Database::update()
                 "BemerkungAbfuellen TEXT,"
                 "BemerkungGaerung TEXT,"
                 "ReifungStart DATETIME,"
-                "VerduennungAnstellen REAL DEFAULT 0)");
-            sqlExec(db, "INSERT INTO Sud ("
+                "VerduennungAnstellen REAL DEFAULT 0)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Sud ("
                 "ID,"
                 "Sudname,"
                 "Sudnummer,"
@@ -1710,15 +1709,15 @@ bool Database::update()
                 "BemerkungAbfuellen,"
                 "BemerkungGaerung,"
                 "ReifungStart"
-                " FROM TempTable");
-            sqlExec(db, "DROP TABLE TempTable");
+                " FROM TempTable"));
+            sqlExec(db, QStringLiteral("DROP TABLE TempTable"));
 
             // Etiketten
             //  - neue Spalte 'Hintergrundfarbe'
-            sqlExec(db, "ALTER TABLE Etiketten ADD COLUMN Hintergrundfarbe INTEGER DEFAULT 0xffffff");
+            sqlExec(db, QStringLiteral("ALTER TABLE Etiketten ADD COLUMN Hintergrundfarbe INTEGER DEFAULT 0xffffff"));
 
             // Global
-            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            sqlExec(db, QStringLiteral("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }
 
@@ -1736,20 +1735,20 @@ bool Database::update()
             //  - neue Spalte 'BemerkungWasseraufbereitung'
             //  - neue Spalte 'MengeHefestarter'
             //  - neue Spalte 'SWHefestarter'
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungZutatenMaischen TEXT");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungZutatenKochen TEXT");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungZutatenGaerung TEXT");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungMaischplan TEXT");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN BemerkungWasseraufbereitung TEXT");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN MengeHefestarter REAL DEFAULT 0");
-            sqlExec(db, "ALTER TABLE Sud ADD COLUMN SWHefestarter REAL DEFAULT 0");
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN BemerkungZutatenMaischen TEXT"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN BemerkungZutatenKochen TEXT"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN BemerkungZutatenGaerung TEXT"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN BemerkungMaischplan TEXT"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN BemerkungWasseraufbereitung TEXT"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN MengeHefestarter REAL DEFAULT 0"));
+            sqlExec(db, QStringLiteral("ALTER TABLE Sud ADD COLUMN SWHefestarter REAL DEFAULT 0"));
 
             // WeitereZutaten & WeitereZutatenGaben
             //  - neue Spalte 'Unvergaerbar'
-            sqlExec(db, "ALTER TABLE WeitereZutaten ADD COLUMN Unvergaerbar INTEGER");
-            sqlExec(db, "ALTER TABLE WeitereZutatenGaben ADD COLUMN Unvergaerbar INTEGER");
+            sqlExec(db, QStringLiteral("ALTER TABLE WeitereZutaten ADD COLUMN Unvergaerbar INTEGER"));
+            sqlExec(db, QStringLiteral("ALTER TABLE WeitereZutatenGaben ADD COLUMN Unvergaerbar INTEGER"));
 
-            sqlExec(db, QString("UPDATE Global SET db_Version=%1").arg(version));
+            sqlExec(db, QStringLiteral("UPDATE Global SET db_Version=%1").arg(version));
             db.commit();
         }
 

@@ -135,7 +135,7 @@ public:
 
 public:
 
-    ModelSud(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    ModelSud(Brauhelfer* bh, const QSqlDatabase &db = QSqlDatabase());
     void createConnections();
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
@@ -143,7 +143,7 @@ public:
     bool removeRows(int row, int count = 1, const QModelIndex &parent = QModelIndex()) Q_DECL_OVERRIDE;
     void defaultValues(QMap<int, QVariant> &values) const Q_DECL_OVERRIDE;
     QMap<int, QVariant> copyValues(int row) const Q_DECL_OVERRIDE;
-    QVariant dataSud(QVariant sudId, int col);
+    QVariant dataSud(const QVariant &sudId, int col);
     QVariant dataAnlage(int row, int col) const;
     void setDataAnlage(int row, int col, const QVariant& value);
     QVariant dataWasser(int row, int col) const;

@@ -5,14 +5,13 @@
 #include <QDateTime>
 #include <cmath>
 
-ModelHefegaben::ModelHefegaben(Brauhelfer* bh, QSqlDatabase db) :
+ModelHefegaben::ModelHefegaben(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("ZugabeDatum");
-    mVirtualField.append("Abfuellbereit");
-    connect(bh->modelSud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(onSudDataChanged(QModelIndex)));
+    mVirtualField.append(QStringLiteral("ZugabeDatum"));
+    mVirtualField.append(QStringLiteral("Abfuellbereit"));
+    connect(bh->modelSud(), &SqlTableModel::dataChanged, this, &ModelHefegaben::onSudDataChanged);
 }
 
 QVariant ModelHefegaben::dataExt(const QModelIndex &idx) const

@@ -2,7 +2,7 @@
 #include "modelanhang.h"
 #include "brauhelfer.h"
 
-ModelAnhang::ModelAnhang(Brauhelfer* bh, QSqlDatabase db) :
+ModelAnhang::ModelAnhang(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db)
 {
 }

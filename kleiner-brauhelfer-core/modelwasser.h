@@ -47,7 +47,7 @@ public:
 
 public:
 
-    ModelWasser(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    ModelWasser(Brauhelfer* bh, const QSqlDatabase &db = QSqlDatabase());
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE;

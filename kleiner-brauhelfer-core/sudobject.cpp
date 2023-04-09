@@ -23,11 +23,10 @@ SudObject::SudObject(Brauhelfer *bh) :
     proxyModelEtiketten(new ProxyModel(this)),
     proxyModelTags(new ProxyModel(this))
 {
-    connect(bh, SIGNAL(saved()), this, SLOT(onSudLayoutChanged()));
-    connect(bh->modelSud(), SIGNAL(modified()), this, SIGNAL(modified()));
-    connect(bh->modelSud(), SIGNAL(layoutChanged()), this, SLOT(onSudLayoutChanged()));
-    connect(bh->modelSud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(onSudDataChanged(QModelIndex,QModelIndex,QVector<int>)));
+    connect(bh, &Brauhelfer::saved, this, &SudObject::onSudLayoutChanged);
+    connect(bh->modelSud(), &SqlTableModel::modified, this, &SudObject::modified);
+    connect(bh->modelSud(), &SqlTableModel::layoutChanged, this, &SudObject::onSudLayoutChanged);
+    connect(bh->modelSud(), &SqlTableModel::dataChanged, this, &SudObject::onSudDataChanged);
 }
 
 SudObject::~SudObject()
@@ -80,7 +79,7 @@ void SudObject::init()
     modelTags()->setSourceModel(bh->modelTags());
     modelTags()->setFilterKeyColumn(ModelTags::ColSudID);
 
-    QRegularExpression regExpId(QString("^%1$").arg(mId));
+    QRegularExpression regExpId(QStringLiteral("^%1$").arg(mId));
     modelRasten()->setFilterRegularExpression(regExpId);
     modelMalzschuettung()->setFilterRegularExpression(regExpId);
     modelHopfengaben()->setFilterRegularExpression(regExpId);
@@ -93,7 +92,7 @@ void SudObject::init()
     modelBewertungen()->setFilterRegularExpression(regExpId);
     modelAnhang()->setFilterRegularExpression(regExpId);
     modelEtiketten()->setFilterRegularExpression(regExpId);
-    modelTags()->setFilterRegularExpression(QRegularExpression(QString("^(%1|-.*)$").arg(mId)));
+    modelTags()->setFilterRegularExpression(QRegularExpression(QStringLiteral("^(%1|-.*)$").arg(mId)));
 }
 
 void SudObject::load(int id)
@@ -108,7 +107,7 @@ void SudObject::load(int id)
         else
             qInfo(Brauhelfer::loggingCategory) << "SudObject::unload()";
 
-        QRegularExpression regExpId(QString("^%1$").arg(mId));
+        QRegularExpression regExpId(QStringLiteral("^%1$").arg(mId));
         modelRasten()->setFilterRegularExpression(regExpId);
         modelMalzschuettung()->setFilterRegularExpression(regExpId);
         modelHopfengaben()->setFilterRegularExpression(regExpId);
@@ -121,7 +120,7 @@ void SudObject::load(int id)
         modelBewertungen()->setFilterRegularExpression(regExpId);
         modelAnhang()->setFilterRegularExpression(regExpId);
         modelEtiketten()->setFilterRegularExpression(regExpId);
-        modelTags()->setFilterRegularExpression(QRegularExpression(QString("^(%1|-.*)$").arg(mId)));
+        modelTags()->setFilterRegularExpression(QRegularExpression(QStringLiteral("^(%1|-.*)$").arg(mId)));
 
         if (isLoaded())
         {

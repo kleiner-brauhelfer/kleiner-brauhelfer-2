@@ -2,20 +2,20 @@
 #include "modelwasser.h"
 #include "brauhelfer.h"
 
-ModelWasser::ModelWasser(Brauhelfer* bh, QSqlDatabase db) :
+ModelWasser::ModelWasser(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("HydrogencarbonatMmol");
-    mVirtualField.append("CalciumMmol");
-    mVirtualField.append("MagnesiumMmol");
-    mVirtualField.append("SulfatMmol");
-    mVirtualField.append("ChloridMmol");
-    mVirtualField.append("NatriumMmol");
-    mVirtualField.append("CarbonatHaerte");
-    mVirtualField.append("CalciumHaerte");
-    mVirtualField.append("MagnesiumHaerte");
-    mVirtualField.append("Restalkalitaet");
+    mVirtualField.append(QStringLiteral("HydrogencarbonatMmol"));
+    mVirtualField.append(QStringLiteral("CalciumMmol"));
+    mVirtualField.append(QStringLiteral("MagnesiumMmol"));
+    mVirtualField.append(QStringLiteral("SulfatMmol"));
+    mVirtualField.append(QStringLiteral("ChloridMmol"));
+    mVirtualField.append(QStringLiteral("NatriumMmol"));
+    mVirtualField.append(QStringLiteral("CarbonatHaerte"));
+    mVirtualField.append(QStringLiteral("CalciumHaerte"));
+    mVirtualField.append(QStringLiteral("MagnesiumHaerte"));
+    mVirtualField.append(QStringLiteral("Restalkalitaet"));
 }
 
 QVariant ModelWasser::dataExt(const QModelIndex &idx) const

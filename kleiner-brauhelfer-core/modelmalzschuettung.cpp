@@ -4,14 +4,13 @@
 #include "modelsud.h"
 #include "proxymodelsud.h"
 
-ModelMalzschuettung::ModelMalzschuettung(Brauhelfer* bh, QSqlDatabase db) :
+ModelMalzschuettung::ModelMalzschuettung(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    connect(bh->modelSud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(onSudDataChanged(QModelIndex)));
-    mVirtualField.append("Extrakt");
-    mVirtualField.append("ExtraktProzent");
+    mVirtualField.append(QStringLiteral("Extrakt"));
+    mVirtualField.append(QStringLiteral("ExtraktProzent"));
+    connect(bh->modelSud(), &SqlTableModel::dataChanged, this, &ModelMalzschuettung::onSudDataChanged);
 }
 
 QVariant ModelMalzschuettung::dataExt(const QModelIndex &idx) const

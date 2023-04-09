@@ -5,18 +5,17 @@
 #include <QDateTime>
 #include <cmath>
 
-ModelWeitereZutatenGaben::ModelWeitereZutatenGaben(Brauhelfer* bh, QSqlDatabase db) :
+ModelWeitereZutatenGaben::ModelWeitereZutatenGaben(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("erg_MengeIst");
-    mVirtualField.append("Extrakt");
-    mVirtualField.append("ExtraktProzent");
-    mVirtualField.append("ZugabeDatum");
-    mVirtualField.append("EntnahmeDatum");
-    mVirtualField.append("Abfuellbereit");
-    connect(bh->modelSud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(onSudDataChanged(QModelIndex)));
+    mVirtualField.append(QStringLiteral("erg_MengeIst"));
+    mVirtualField.append(QStringLiteral("Extrakt"));
+    mVirtualField.append(QStringLiteral("ExtraktProzent"));
+    mVirtualField.append(QStringLiteral("ZugabeDatum"));
+    mVirtualField.append(QStringLiteral("EntnahmeDatum"));
+    mVirtualField.append(QStringLiteral("Abfuellbereit"));
+    connect(bh->modelSud(), &SqlTableModel::dataChanged, this, &ModelWeitereZutatenGaben::onSudDataChanged);
 }
 
 QVariant ModelWeitereZutatenGaben::dataExt(const QModelIndex &idx) const

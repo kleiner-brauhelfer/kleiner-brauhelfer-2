@@ -7,26 +7,26 @@ ProxyModelRohstoff::ProxyModelRohstoff(QObject *parent) :
     mInUsedColumn(-1),
     mFilter(Filter::Alle)
 {
-    connect(this, SIGNAL(sourceModelChanged()), this, SLOT(onSourceModelChanged()));
+    connect(this, &ProxyModelRohstoff::sourceModelChanged, this, &ProxyModelRohstoff::onSourceModelChanged);
 }
 
 void ProxyModelRohstoff::onSourceModelChanged()
 {
-    if(SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel()))
+    if(SqlTableModel* model = qobject_cast<SqlTableModel*>(sourceModel()))
     {
         setFilterKeyColumns({model->fieldIndex("Name"),
                              model->fieldIndex("Bemerkung"),
                              model->fieldIndex("Eigenschaften")});
-        mAmountColumn = model->fieldIndex("Menge");
-        mInUsedColumn = model->fieldIndex("InGebrauch");
+        mAmountColumn = model->fieldIndex(QStringLiteral("Menge"));
+        mInUsedColumn = model->fieldIndex(QStringLiteral("InGebrauch"));
     }
-    else if(ProxyModel* model = dynamic_cast<ProxyModel*>(sourceModel()))
+    else if(ProxyModel* model = qobject_cast<ProxyModel*>(sourceModel()))
     {
         setFilterKeyColumns({model->fieldIndex("Name"),
                              model->fieldIndex("Bemerkung"),
                              model->fieldIndex("Eigenschaften")});
-        mAmountColumn = model->fieldIndex("Menge");
-        mInUsedColumn = model->fieldIndex("InGebrauch");
+        mAmountColumn = model->fieldIndex(QStringLiteral("Menge"));
+        mInUsedColumn = model->fieldIndex(QStringLiteral("InGebrauch"));
     }
     else
     {

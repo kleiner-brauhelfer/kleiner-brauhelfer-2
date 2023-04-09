@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <qmath.h>
 #include "brauhelfer.h"
+#include "biercalc.h"
 #include "settings.h"
 #include "dialogs/dlgrestextrakt.h"
 

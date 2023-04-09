@@ -1,13 +1,14 @@
 // clazy:excludeall=skipped-base-method
 #include "modelrasten.h"
 #include "brauhelfer.h"
+#include "biercalc.h"
 
-ModelRasten::ModelRasten(Brauhelfer* bh, QSqlDatabase db) :
+ModelRasten::ModelRasten(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh),
     mUpdating(false)
 {
-    mVirtualField.append("Menge");
+    mVirtualField.append(QStringLiteral("Menge"));
 }
 
 QVariant ModelRasten::dataExt(const QModelIndex &idx) const
@@ -228,7 +229,7 @@ double ModelRasten::getPreviousTemp(const QVariant &sudId, int fromRow) const
     ProxyModel model;
     model.setSourceModel(const_cast<ModelRasten*>(this));
     model.setFilterKeyColumn(ColSudID);
-    model.setFilterRegularExpression(QString("^%1$").arg(sudId.toInt()));
+    model.setFilterRegularExpression(QStringLiteral("^%1$").arg(sudId.toInt()));
     fromRow = model.mapRowFromSource(fromRow);
     if (fromRow > 0)
         return model.data(fromRow - 1, ColTemp).toDouble();
@@ -240,7 +241,7 @@ double ModelRasten::getPreviousMenge(const QVariant &sudId, int fromRow) const
     ProxyModel model;
     model.setSourceModel(const_cast<ModelRasten*>(this));
     model.setFilterKeyColumn(ColSudID);
-    model.setFilterRegularExpression(QString("^%1$").arg(sudId.toInt()));
+    model.setFilterRegularExpression(QStringLiteral("^%1$").arg(sudId.toInt()));
     if (fromRow >= 0)
         fromRow = model.mapRowFromSource(fromRow);
     else
@@ -269,7 +270,7 @@ void ModelRasten::update(const QVariant &sudId)
     ProxyModel model;
     model.setSourceModel(const_cast<ModelRasten*>(this));
     model.setFilterKeyColumn(ColSudID);
-    model.setFilterRegularExpression(QString("^%1$").arg(sudId.toInt()));
+    model.setFilterRegularExpression(QStringLiteral("^%1$").arg(sudId.toInt()));
     mSignalModifiedBlocked = true;
     for (int r = 0; r < model.rowCount(); r++)
     {

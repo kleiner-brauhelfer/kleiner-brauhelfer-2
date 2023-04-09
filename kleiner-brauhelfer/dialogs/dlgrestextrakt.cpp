@@ -1,6 +1,7 @@
 #include "dlgrestextrakt.h"
 #include "ui_dlgrestextrakt.h"
 #include "brauhelfer.h"
+#include "biercalc.h"
 #include "settings.h"
 
 extern Brauhelfer* bh;

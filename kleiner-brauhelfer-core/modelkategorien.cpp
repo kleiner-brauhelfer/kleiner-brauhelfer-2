@@ -2,7 +2,7 @@
 #include "modelkategorien.h"
 #include "brauhelfer.h"
 
-ModelKategorien::ModelKategorien(Brauhelfer *bh, QSqlDatabase db) :
+ModelKategorien::ModelKategorien(Brauhelfer *bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {

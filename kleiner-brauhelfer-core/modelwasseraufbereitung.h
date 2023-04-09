@@ -30,7 +30,7 @@ public:
 
 public:
 
-    ModelWasseraufbereitung(Brauhelfer* bh, QSqlDatabase db = QSqlDatabase());
+    ModelWasseraufbereitung(Brauhelfer* bh, const QSqlDatabase &db = QSqlDatabase());
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
     double restalkalitaet(const QVariant &sudId) const;
 

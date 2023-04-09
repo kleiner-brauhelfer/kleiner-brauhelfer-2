@@ -3,12 +3,12 @@
 #include "brauhelfer.h"
 #include <QDate>
 
-ModelHopfen::ModelHopfen(Brauhelfer* bh, QSqlDatabase db) :
+ModelHopfen::ModelHopfen(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    mVirtualField.append("InGebrauch");
-    mVirtualField.append("InGebrauchListe");
+    mVirtualField.append(QStringLiteral("InGebrauch"));
+    mVirtualField.append(QStringLiteral("InGebrauchListe"));
 }
 
 QVariant ModelHopfen::dataExt(const QModelIndex &idx) const

@@ -18,26 +18,29 @@ void ProxyModel::setSourceModel(QAbstractItemModel *model)
     QAbstractItemModel *prevModel = sourceModel();
     if (prevModel)
     {
-        disconnect(prevModel, SIGNAL(modelReset()), this, SLOT(invalidate()));
-        disconnect(prevModel, SIGNAL(modified()), this, SIGNAL(modified()));
+        disconnect(prevModel, &QAbstractItemModel::modelReset, this, &ProxyModel::invalidate);
+        if(SqlTableModel* m = qobject_cast<SqlTableModel*>(prevModel))
+            disconnect(m, &SqlTableModel::modified, this, &ProxyModel::modified);
+        else if(ProxyModel* m = qobject_cast<ProxyModel*>(model))
+            disconnect(m, &ProxyModel::modified, this, &ProxyModel::modified);
     }
 
     QSortFilterProxyModel::setSourceModel(model);
-    if(SqlTableModel* m = dynamic_cast<SqlTableModel*>(model))
+    if(SqlTableModel* m = qobject_cast<SqlTableModel*>(model))
     {
-        mDeletedColumn = m->fieldIndex("deleted");
-        connect(model, SIGNAL(modified()), this, SIGNAL(modified()));
+        mDeletedColumn = m->fieldIndex(QStringLiteral("deleted"));
+        connect(m, &SqlTableModel::modified, this, &ProxyModel::modified);
     }
-    else if(ProxyModel* m = dynamic_cast<ProxyModel*>(model))
+    else if(ProxyModel* m = qobject_cast<ProxyModel*>(model))
     {
-        mDeletedColumn = m->fieldIndex("deleted");
-        connect(model, SIGNAL(modified()), this, SIGNAL(modified()));
+        mDeletedColumn = m->fieldIndex(QStringLiteral("deleted"));
+        connect(m, &ProxyModel::modified, this, &ProxyModel::modified);
     }
     else
     {
         mDeletedColumn = -1;
     }
-    connect(model, SIGNAL(modelReset()), this, SLOT(invalidate()));
+    connect(model, &QAbstractItemModel::modelReset, this, &ProxyModel::invalidate);
 }
 
 QVariant ProxyModel::data(int row, int col, int role) const
@@ -72,14 +75,14 @@ bool ProxyModel::removeRow(int arow, const QModelIndex &parent)
 
 int ProxyModel::append(const QMap<int, QVariant> &values)
 {
-    SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel());
+    SqlTableModel* model = qobject_cast<SqlTableModel*>(sourceModel());
     if (model)
     {
         int idx = model->append(values);
         invalidate();
         return mapRowFromSource(idx);
     }
-    ProxyModel* proxyModel = dynamic_cast<ProxyModel*>(sourceModel());
+    ProxyModel* proxyModel = qobject_cast<ProxyModel*>(sourceModel());
     if (proxyModel)
     {
         int idx = proxyModel->append(values);
@@ -91,14 +94,14 @@ int ProxyModel::append(const QMap<int, QVariant> &values)
 
 int ProxyModel::append(const QVariantMap &values)
 {
-    SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel());
+    SqlTableModel* model = qobject_cast<SqlTableModel*>(sourceModel());
     if (model)
     {
         int idx = model->append(values);
         invalidate();
         return mapRowFromSource(idx);
     }
-    ProxyModel* proxyModel = dynamic_cast<ProxyModel*>(sourceModel());
+    ProxyModel* proxyModel = qobject_cast<ProxyModel*>(sourceModel());
     if (proxyModel)
     {
         int idx = proxyModel->append(values);
@@ -110,14 +113,14 @@ int ProxyModel::append(const QVariantMap &values)
 
 bool ProxyModel::swap(int row1, int row2)
 {
-    SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel());
+    SqlTableModel* model = qobject_cast<SqlTableModel*>(sourceModel());
     if (model)
     {
         bool ret = model->swap(mapRowToSource(row1), mapRowToSource(row2));
         invalidate();
         return ret;
     }
-    ProxyModel* proxyModel = dynamic_cast<ProxyModel*>(sourceModel());
+    ProxyModel* proxyModel = qobject_cast<ProxyModel*>(sourceModel());
     if (proxyModel)
     {
         bool ret = proxyModel->swap(mapRowToSource(row1), mapRowToSource(row2));
@@ -141,10 +144,10 @@ int ProxyModel::mapRowFromSource(int row) const
 
 int ProxyModel::fieldIndex(const QString &fieldName) const
 {
-    SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel());
+    SqlTableModel* model = qobject_cast<SqlTableModel*>(sourceModel());
     if (model)
         return model->fieldIndex(fieldName);
-    ProxyModel* proxyModel = dynamic_cast<ProxyModel*>(sourceModel());
+    ProxyModel* proxyModel = qobject_cast<ProxyModel*>(sourceModel());
     if (proxyModel)
         return proxyModel->fieldIndex(fieldName);
     return -1;
@@ -152,10 +155,10 @@ int ProxyModel::fieldIndex(const QString &fieldName) const
 
 int ProxyModel::getRowWithValue(int col, const QVariant &value)
 {
-    SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel());
+    SqlTableModel* model = qobject_cast<SqlTableModel*>(sourceModel());
     if (model)
         return mapRowFromSource(model->getRowWithValue(col, value));
-    ProxyModel* proxyModel = dynamic_cast<ProxyModel*>(sourceModel());
+    ProxyModel* proxyModel = qobject_cast<ProxyModel*>(sourceModel());
     if (proxyModel)
         return mapRowFromSource(proxyModel->getRowWithValue(col, value));
     return -1;
@@ -163,10 +166,10 @@ int ProxyModel::getRowWithValue(int col, const QVariant &value)
 
 QVariant ProxyModel::getValueFromSameRow(int colKey, const QVariant &valueKey, int col)
 {
-    SqlTableModel* model = dynamic_cast<SqlTableModel*>(sourceModel());
+    SqlTableModel* model = qobject_cast<SqlTableModel*>(sourceModel());
     if (model)
         return model->getValueFromSameRow(colKey, valueKey, col);
-    ProxyModel* proxyModel = dynamic_cast<ProxyModel*>(sourceModel());
+    ProxyModel* proxyModel = qobject_cast<ProxyModel*>(sourceModel());
     if (proxyModel)
         return proxyModel->getValueFromSameRow(colKey, valueKey, col);
     return QVariant();

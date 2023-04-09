@@ -2,7 +2,7 @@
 #include "modelbewertungen.h"
 #include "brauhelfer.h"
 
-ModelBewertungen::ModelBewertungen(Brauhelfer* bh, QSqlDatabase db) :
+ModelBewertungen::ModelBewertungen(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {

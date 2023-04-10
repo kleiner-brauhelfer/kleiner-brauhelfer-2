@@ -17,7 +17,6 @@ private slots:
     void on_valueChanged(double value);
 private:
     int mCol;
-    QString mSource;
 };
 
 #endif // DOUBLESPINBOXGRV_H

@@ -33,7 +33,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-261</y>
+         <y>0</y>
          <width>1217</width>
          <height>1152</height>
         </rect>
@@ -2924,11 +2924,6 @@
    <class>TimeEdit</class>
    <extends>QTimeEdit</extends>
    <header>widgets/timeedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>LabelGrV</class>
-   <extends>QLabel</extends>
-   <header>widgets/labelgrv.h</header>
   </customwidget>
   <customwidget>
    <class>ChartBraudaten</class>

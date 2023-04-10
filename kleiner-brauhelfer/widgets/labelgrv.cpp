@@ -6,3 +6,4 @@ LabelGrV::LabelGrV(QWidget *parent) :
 {
     setText(Units::text(Units::GravityUnit()));
 }
+

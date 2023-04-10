@@ -668,6 +668,7 @@ void TabRezept::updateValues()
     ui->wdgSWWZKochen->setVisible(bh->sud()->getSWAnteilZusatzKochen() > 0.0);
     ui->wdgSWWZGaerung->setVisible(bh->sud()->getSWAnteilZusatzGaerung() > 0.0);
     ui->wdgSWAnteilHefestarter->setVisible(bh->sud()->getSWAnteilHefestarter() > 0.0);
+
     fVal = bh->sud()->getIBU() / bh->sud()->getSW();
     if (fVal <= 1)
         ui->lblBittere->setText(tr("sehr mild"));

@@ -14,6 +14,7 @@ StammWuerzeDelegate::StammWuerzeDelegate(bool readonly, QObject *parent) :
     mMin =  Units::minimum(grvunit);
     mMax =  Units::maximum(grvunit);
     mStep =  Units::singleStep(grvunit);
+
 }
 
 void StammWuerzeDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
@@ -27,9 +28,11 @@ void StammWuerzeDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
     QDoubleSpinBox *w = static_cast<QDoubleSpinBox*>(editor);
     w->interpretText();
     model->setData(index, Units::convert(Units::GravityUnit(), Units::Plato, w->value()), Qt::EditRole);
+
 }
 
 QString StammWuerzeDelegate::displayText(const QVariant &value, const QLocale &locale) const
 {
     return Units::convertStr(Units::Plato, Units::GravityUnit(), value.toDouble(), locale);
 }
+

@@ -69,6 +69,7 @@ void WdgMalzGabe::checkEnabled()
 
 void WdgMalzGabe::updateValues()
 {
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
     QString malzname = name();
     double extGh;
 
@@ -90,7 +91,7 @@ void WdgMalzGabe::updateValues()
     ui->btnNachUnten->setVisible(mEnabled);
     ui->lblWarnung->setVisible(false);
 
-    if (gSettings->GravityName() == "SG") {
+    if (gSettings->GravityUnit() == BierCalc::GravityUnit::SG) {
         ui->tbExtrakt->setDecimals(3);
         ui->tbExtrakt->setMinimum(1.000);
         ui->tbExtrakt->setSingleStep(0.001);
@@ -99,7 +100,7 @@ void WdgMalzGabe::updateValues()
         ui->tbExtrakt->setMinimum(0);
         ui->tbExtrakt->setSingleStep(0.1);
     }
-    extGh = bh->convertGravity("Plato",gSettings->GravityName(),data(ModelMalzschuettung::ColExtrakt).toDouble());
+    extGh = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,data(ModelMalzschuettung::ColExtrakt).toDouble());
 
     int rowRohstoff = bh->modelMalz()->getRowWithValue(ModelMalz::ColName, malzname);
     mValid = !mEnabled || rowRohstoff >= 0;

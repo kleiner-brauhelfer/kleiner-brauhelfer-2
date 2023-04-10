@@ -50,7 +50,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
     for (auto& lbl : findChildren<LabelGrV*>())
-        lbl->setText(gSettings->GravityUnit());
+        lbl->setText(gSettings->GravityUnitString());
 
     gSettings->beginGroup("TabBraudaten");
 

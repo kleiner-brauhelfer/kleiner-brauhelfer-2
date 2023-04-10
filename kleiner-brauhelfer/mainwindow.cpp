@@ -1109,6 +1109,7 @@ void MainWindow::on_actionGravityUnit_SG_triggered()
     restart(1001);
 }
 
+
 void MainWindow::on_actionZahlenformat_triggered(bool checked)
 {
     gSettings->setValueInGroup("General", "UseLanguageLocale", checked);

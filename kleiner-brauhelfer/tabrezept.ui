@@ -619,11 +619,7 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item row="5" column="3">
-            <widget class="LabelGrV" name="label_20">
-             <property name="text">
-              <string>°P</string>
-             </property>
-            </widget>
+            <widget class="LabelGrV" name="label_20"/>
            </item>
            <item row="6" column="2">
             <widget class="DoubleSpinBoxSud" name="tbSudhausausbeute">

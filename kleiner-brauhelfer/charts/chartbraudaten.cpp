@@ -58,6 +58,7 @@ ChartBraudaten::ChartBraudaten(QWidget *parent) :
 void ChartBraudaten::update()
 {
     Units::Unit grvunit = Units::GravityUnit();
+
     double val1 = bh->sud()->getWuerzemengeKochbeginn();
     double val2 = bh->sud()->getWuerzemengeVorHopfenseihen();
     double val3 = bh->sud()->getWuerzemengeKochende();
@@ -88,6 +89,7 @@ void ChartBraudaten::update()
     graphSwSoll->setData({1, 2, 3, 4}, {val1, val2, val3, val4}, true);
     maxVal = qMax(maxVal, qMax(val1, qMax(val2, qMax(val3, val4))));
     if (grvunit == Units::SG)
+
         yAxis2->setRange(1.000, maxVal+(maxVal/10));
     else
         yAxis2->setRange(0, int(maxVal/10)*10+10);

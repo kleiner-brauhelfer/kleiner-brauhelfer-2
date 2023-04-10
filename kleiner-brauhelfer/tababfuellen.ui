@@ -36,7 +36,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-373</y>
          <width>1009</width>
          <height>1134</height>
         </rect>
@@ -2003,14 +2003,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>PushButton</class>
    <extends>QPushButton</extends>
    <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
    <class>WdgBemerkung</class>
@@ -2062,16 +2062,6 @@
    <class>ChartRestextrakt</class>
    <extends>QWidget</extends>
    <header>charts/chartrestextrakt.h</header>
-  </customwidget>
-  <customwidget>
-   <class>DoubleSpinBoxGrV</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinboxgrv.h</header>
-  </customwidget>
-  <customwidget>
-   <class>LabelGrV</class>
-   <extends>QLabel</extends>
-   <header>widgets/labelgrv.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -5,6 +5,7 @@
 
 
 class StammWuerzeDelegate : public DoubleSpinBoxDelegate
+
 {
     Q_OBJECT
 

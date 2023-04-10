@@ -7,15 +7,15 @@ extern Settings* gSettings;
 
 DoubleSpinBoxGrV::DoubleSpinBoxGrV(QWidget *parent) :
   DoubleSpinBox(parent),
-  mCol(-1),
-  mSource("Plato")
+  mCol(-1)
 {
+
 }
 
 void DoubleSpinBoxGrV::setColumn(int col)
 {
   mCol = col;
-    if (gSettings->GravityName() == "SG") {
+  if (gSettings->GravityUnit() == BierCalc::GravityUnit::SG) {
         this->setDecimals(3);
         this->setMinimum(0.000);
         this->setSingleStep(0.001);
@@ -36,20 +36,22 @@ int DoubleSpinBoxGrV::column() const
 
 void DoubleSpinBoxGrV::updateValue()
 {
+  BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
   if (mCol == -1) {
     return;
   }
   if (!hasFocus() || isReadOnly()) {
-    this->setValue(bh->convertGravity(mSource,gSettings->GravityName(),bh->sud()->getValue(mCol).toDouble()));
+    this->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getValue(mCol).toDouble()));
 }
 }
 
 void DoubleSpinBoxGrV::on_valueChanged(double value)
 {
+  BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
   if (mCol == -1) {
    return;
   }
   if (hasFocus() && !isReadOnly()) {
-   bh->sud()->setValue(mCol, bh->convertGravity(gSettings->GravityName(),mSource,value));
+   bh->sud()->setValue(mCol, BierCalc::convertGravity(grvunit,BierCalc::GravityUnit::Plato,value));
 }
 }

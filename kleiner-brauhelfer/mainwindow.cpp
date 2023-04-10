@@ -1096,23 +1096,16 @@ void MainWindow::on_actionNiederlaendisch_triggered()
 }
 
 
-void MainWindow::on_action_P_triggered()
+void MainWindow::on_actionGravityUnit_P_triggered()
 {
-  gSettings->setGravity("Plato");
+  gSettings->setGravityUnit(0);
   restart(1001);
 }
 
 
-void MainWindow::on_actionBrix_triggered()
+void MainWindow::on_actionGravityUnit_SG_triggered()
 {
-  gSettings->setGravity("Brix");
-  restart(1001);
-}
-
-
-void MainWindow::on_actionSpezifische_Dichte_triggered()
-{
-  gSettings->setGravity("SG");
+  gSettings->setGravityUnit(1);
   restart(1001);
 }
 

@@ -60,7 +60,7 @@ ChartBraudaten::ChartBraudaten(QWidget *parent) :
 void ChartBraudaten::update()
 {
     QLocale locale = QLocale();
-
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
     double val1 = bh->sud()->getWuerzemengeKochbeginn();
     double val2 = bh->sud()->getWuerzemengeVorHopfenseihen();
     double val3 = bh->sud()->getWuerzemengeKochende();
@@ -87,19 +87,19 @@ void ChartBraudaten::update()
 
     yAxis->setRange(0, int(maxVal/10)*10+10);
 
-    val1 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWKochbeginn());
-    val2 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWKochende());
-    val3 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWKochende());
-    val4 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWAnstellen());
+    val1 = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getSWKochbeginn());
+    val2 = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getSWKochende());
+    val3 = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getSWKochende());
+    val4 = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getSWAnstellen());
     graphSwIst->setData({1, 2, 3, 4}, {val1, val2, val3, val4}, true);
     maxVal = qMax(val1, qMax(val2, qMax(val3, val4)));
-    val1 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWSollKochbeginn());
-    val2 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWSollKochende());
-    val3 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWSollKochende());
-    val4 = bh->convertGravity("Plato",gSettings->GravityName(),bh->sud()->getSWSollAnstellen());
+    val1 = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getSWSollKochbeginn());
+    val2 = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getSWSollKochende());
+    val3 = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getSWSollKochende());
+    val4 = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getSWSollAnstellen());
     graphSwSoll->setData({1, 2, 3, 4}, {val1, val2, val3, val4}, true);
     maxVal = qMax(maxVal, qMax(val1, qMax(val2, qMax(val3, val4))));
-    if (gSettings->GravityName() == "SG") {
+    if (grvunit == BierCalc::GravityUnit::SG) {
         yAxis2->setRange(1.000, maxVal+(maxVal/10));
     } else {
     yAxis2->setRange(0, int(maxVal/10)*10+10);

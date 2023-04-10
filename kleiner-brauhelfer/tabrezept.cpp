@@ -600,8 +600,6 @@ void TabRezept::updateValues()
 
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     bool enabled = status == Brauhelfer::SudStatus::Rezept || gSettings->ForceEnabled;
-    for (auto& lbl : findChildren<LabelGrV*>())
-        lbl->setText(gSettings->GravityUnit());
     for (auto& wdg : findChildren<DoubleSpinBoxGrV*>())
         wdg->updateValue();
     for (auto& wdg : findChildren<DoubleSpinBoxSud*>())
@@ -666,7 +664,7 @@ void TabRezept::updateValues()
     diff = ui->tbPhMaischeSoll->value() - ui->tbPhMaische->value();
     ui->tbPhMaische->setError(enabled && qAbs(diff) > 0.005);
         double minVal;
-    if (gSettings->GravityName() == "SG") {
+    if (gSettings->GravityUnit() == BierCalc::GravityUnit::SG) {
         minVal = 1.000;
     } else {
         minVal = 0.0;

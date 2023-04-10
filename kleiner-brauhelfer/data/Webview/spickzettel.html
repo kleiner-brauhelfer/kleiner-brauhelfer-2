@@ -2,13 +2,6 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="{{Style}}">
-  <script type="text/javascript">
-    <!--
-    function writeBrix(plato) {
-      document.write((parseFloat(String(plato).replace(',','.'))*{{Rezept.plato2brix}}).toFixed(1))
-    }
-    -->
-  </script>
 </head>
 <body>
 
@@ -57,28 +50,28 @@
             <tr>
               <td>&nbsp;&nbsp;&nbsp;Zus&auml;tze <em>Maischen</em></td>
               <td class="value" align="center">{{SWAnteilZusatzMaischen}}</td>
-              <td>&deg;P</td>
+              <td>{{App.GravityUnit}}</td>
             </tr>
             {{/SWAnteilZusatzMaischen}}
             {{#SWAnteilZusatzKochen}}
             <tr>
               <td>&nbsp;&nbsp;&nbsp;Zus&auml;tze <em>Kochen</em></td>
               <td class="value" align="center">{{SWAnteilZusatzKochen}}</td>
-              <td>&deg;P</td>
+              <td>{{App.GravityUnit}}</td>
             </tr>
             {{/SWAnteilZusatzKochen}}
             {{#SWAnteilZusatzGaerung}}
             <tr>
               <td>&nbsp;&nbsp;&nbsp;Zus&auml;tze <em>G&auml;rung</em></td>
               <td class="value" align="center">{{SWAnteilZusatzGaerung}}</td>
-              <td>&deg;P</td>
+              <td>{{App.GravityUnit}}</td>
             </tr>
             {{/SWAnteilZusatzGaerung}}
             {{#SWAnteilHefestarter}}
             <tr>
               <td>&nbsp;&nbsp;&nbsp;Hefestarter</td>
               <td class="value" align="center">{{SWAnteilHefestarter}}</td>
-              <td>&deg;P</td>
+              <td>{{App.GravityUnit}}</td>
             </tr>
             {{/SWAnteilHefestarter}}
             <tr>
@@ -488,10 +481,10 @@
             <col width="200">
             <col width="*">
             <tr>
-              <td>____ &deg;P/&deg;Brix</td>
+              <td>____ {{App.GravityUnit}}/&deg;Brix</td>
               <td>
-                 Zielwert: <span class="value">{{Rezept.SWKochbeginn}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginn}}")</script></span>&deg;Brix
-                 {{#Zutaten.ZusatzKochen}} / mit Zus&auml;tzen: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochbeginnMitWz}}")</script></span>&deg;Brix{{/Zutaten.ZusatzKochen}}
+                 Zielwert: <span class="value">{{Rezept.SWKochbeginn}}</span>{{App.GravityUnit}} / <span class="value">{{Rezept.SWKochbeginnBx}}</span>&deg;Brix
+                 {{#Zutaten.ZusatzKochen}} / mit Zus&auml;tzen: <span class="value">{{Rezept.SWKochbeginnMitWz}}</span>{{App.GravityUnit}} / <span class="value">{{Rezept.SWKochbeginnMitWzBx}}</span>&deg;Brix{{/Zutaten.ZusatzKochen}}
               </td>
             </tr>
           </table>
@@ -569,8 +562,8 @@
             <col width="200">
             <col width="*">
             <tr>
-              <td>____ &deg;P/&deg;Brix</td>
-              <td>Zielwert: <span class="value">{{Rezept.SWKochende}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWKochende}}")</script></span>&deg;Brix</td>
+              <td>____ {{App.GravityUnit}}/&deg;Brix</td>
+              <td>Zielwert: <span class="value">{{Rezept.SWKochende}}</span>{{App.GravityUnit}} / <span class="value">{{Rezept.SWKochendeBx}}</span>&deg;Brix</td>
             </tr>
           </table>
         </td>
@@ -664,8 +657,8 @@
             <col width="200">
             <col width="*">
             <tr>
-              <td>____ &deg;P/&deg;Brix</td>
-              <td>Zielwert: <span class="value">{{Rezept.SWAnstellen}}</span>&deg;P / <span class="value"><script>writeBrix("{{Rezept.SWAnstellen}}")</script></span>&deg;Brix</td>
+              <td>____ {{App.GravityUnit}}/&deg;Brix</td>
+              <td>Zielwert: <span class="value">{{Rezept.SWAnstellen}}</span>{{App.GravityUnit}} / <span class="value">{{Rezept.SWAnstellenBx}}</span>&deg;Brix</td>
             </tr>
           </table>
           W&uuml;rze mit Wasser auf Zielstammw&uuml;rze verd&uuml;nnen.
@@ -697,7 +690,7 @@
       {{#Rezept.MengeHefestarter}}
       <tr>
         <td class="underline" valign="top"><strong>Hefestarter</strong></td>
-        <td class="underline"><span class="value">{{Rezept.MengeHefestarter}}</span> Liter (<span class="value">{{Rezept.SWHefestarter}}</span> &deg;P)</td>
+        <td class="underline"><span class="value">{{Rezept.MengeHefestarter}}</span> Liter (<span class="value">{{Rezept.SWHefestarter}}</span> {{App.GravityUnit}})</td>
       </tr>
       {{/Rezept.MengeHefestarter}}
       <tr>

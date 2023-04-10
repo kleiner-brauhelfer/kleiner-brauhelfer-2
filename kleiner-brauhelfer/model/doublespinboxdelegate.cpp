@@ -5,7 +5,6 @@
 #include "settings.h"
 
 extern Settings* gSettings;
-extern Brauhelfer* bh;
 
 DoubleSpinBoxDelegate::DoubleSpinBoxDelegate(int decimals, double min, double max, double step, bool zeroRed, QObject *parent) :
     QStyledItemDelegate(parent),
@@ -14,8 +13,7 @@ DoubleSpinBoxDelegate::DoubleSpinBoxDelegate(int decimals, double min, double ma
     mMin(min),
     mMax(max),
     mStep(step),
-    mZeroRed(zeroRed),
-    mConvert(false)
+    mZeroRed(zeroRed)
 {
 }
 
@@ -25,12 +23,6 @@ DoubleSpinBoxDelegate::DoubleSpinBoxDelegate(int decimals, QObject *parent) :
     mReadonly = true;
 }
 
-DoubleSpinBoxDelegate::DoubleSpinBoxDelegate(int decimals,bool conv, QObject *parent) :
-    DoubleSpinBoxDelegate(decimals, 0.0, 100.0, 0.1, false, parent)
-{
-    mReadonly = true;
-    mConvert = conv;
-}
 
 QWidget* DoubleSpinBoxDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
@@ -50,22 +42,14 @@ QWidget* DoubleSpinBoxDelegate::createEditor(QWidget *parent, const QStyleOption
 void DoubleSpinBoxDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     QDoubleSpinBox *w = static_cast<QDoubleSpinBox*>(editor);
-    if (mConvert) {
-        w->setValue(bh->convertGravity("Plato",gSettings->GravityName(),index.data(Qt::EditRole).toDouble()));
-    } else {
     w->setValue(index.data(Qt::EditRole).toDouble());
-    }
 }
 
 void DoubleSpinBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
 {
     QDoubleSpinBox *w = static_cast<QDoubleSpinBox*>(editor);
     w->interpretText();
-    if (mConvert) {
-    model->setData(index, bh->convertGravity(gSettings->GravityName(),"Plato",w->value()), Qt::EditRole);
-    } else {
     model->setData(index, w->value(), Qt::EditRole);
-    }
 }
 
 void DoubleSpinBoxDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const
@@ -89,9 +73,5 @@ void DoubleSpinBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem 
 
 QString DoubleSpinBoxDelegate::displayText(const QVariant &value, const QLocale &locale) const
 {
-    if (mConvert) {
-        return locale.toString(bh->convertGravity("Plato",gSettings->GravityName(),value.toDouble()), 'f', mDecimals);
-    } else {
     return locale.toString(value.toDouble(), 'f', mDecimals);
-    }
 }

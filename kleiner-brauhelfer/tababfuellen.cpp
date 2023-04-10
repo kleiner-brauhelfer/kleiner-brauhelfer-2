@@ -201,8 +201,6 @@ void TabAbfuellen::updateValues()
         return;
     for (auto& wdg : findChildren<DoubleSpinBoxGrV*>())
         wdg->updateValue();
-    for (auto& lbl : findChildren<LabelGrV*>())
-        lbl->setText(gSettings->GravityUnit());
     for (auto& wdg : findChildren<DoubleSpinBoxSud*>())
         wdg->updateValue();
     for (auto& wdg : findChildren<SpinBoxSud*>())

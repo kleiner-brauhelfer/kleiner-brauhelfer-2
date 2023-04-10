@@ -626,11 +626,7 @@ p, li { white-space: pre-wrap; }
             </widget>
            </item>
            <item row="5" column="3">
-            <widget class="LabelGrV" name="label_20">
-             <property name="text">
-              <string>°P</string>
-             </property>
-            </widget>
+            <widget class="LabelGrV" name="label_20"/>
            </item>
            <item row="6" column="2">
             <widget class="DoubleSpinBoxSud" name="tbSudhausausbeute">
@@ -2739,9 +2735,6 @@ p, li { white-space: pre-wrap; }
                    <height>0</height>
                   </size>
                  </property>
-                 <property name="text">
-                  <string>°P</string>
-                 </property>
                 </widget>
                </item>
               </layout>
@@ -2858,9 +2851,6 @@ p, li { white-space: pre-wrap; }
                    <height>0</height>
                   </size>
                  </property>
-                 <property name="text">
-                  <string>°P</string>
-                 </property>
                 </widget>
                </item>
               </layout>
@@ -2874,11 +2864,7 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
             <item row="14" column="3">
-             <widget class="LabelGrV" name="label_64">
-              <property name="text">
-               <string>°P</string>
-              </property>
-             </widget>
+             <widget class="LabelGrV" name="label_64"/>
             </item>
             <item row="1" column="2">
              <widget class="SpinBoxSud" name="tbFarbe">
@@ -2974,7 +2960,7 @@ p, li { white-space: pre-wrap; }
                   </size>
                  </property>
                  <property name="text">
-                  <string>°P</string>
+                  <string/>
                  </property>
                 </widget>
                </item>
@@ -3048,9 +3034,6 @@ p, li { white-space: pre-wrap; }
                    <width>40</width>
                    <height>0</height>
                   </size>
-                 </property>
-                 <property name="text">
-                  <string>°P</string>
                  </property>
                 </widget>
                </item>
@@ -3131,9 +3114,6 @@ p, li { white-space: pre-wrap; }
                    <width>40</width>
                    <height>0</height>
                   </size>
-                 </property>
-                 <property name="text">
-                  <string>°P</string>
                  </property>
                 </widget>
                </item>

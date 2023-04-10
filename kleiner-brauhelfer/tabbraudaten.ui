@@ -33,7 +33,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-261</y>
+         <y>0</y>
          <width>1217</width>
          <height>1152</height>
         </rect>
@@ -301,9 +301,6 @@
                   <height>0</height>
                  </size>
                 </property>
-                <property name="text">
-                 <string>°P</string>
-                </property>
                </widget>
               </item>
              </layout>
@@ -447,9 +444,6 @@
                <height>0</height>
               </size>
              </property>
-             <property name="text">
-              <string>°P</string>
-             </property>
             </widget>
            </item>
            <item row="0" column="2">
@@ -459,9 +453,6 @@
                <width>40</width>
                <height>0</height>
               </size>
-             </property>
-             <property name="text">
-              <string>°P</string>
              </property>
             </widget>
            </item>
@@ -1175,9 +1166,6 @@
                <height>0</height>
               </size>
              </property>
-             <property name="text">
-              <string>°P</string>
-             </property>
             </widget>
            </item>
            <item row="9" column="5">
@@ -1390,9 +1378,6 @@
                <width>40</width>
                <height>0</height>
               </size>
-             </property>
-             <property name="text">
-              <string>°P</string>
              </property>
             </widget>
            </item>
@@ -1643,9 +1628,6 @@
                <width>40</width>
                <height>0</height>
               </size>
-             </property>
-             <property name="text">
-              <string>°P</string>
              </property>
             </widget>
            </item>
@@ -2434,11 +2416,7 @@
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="LabelGrV" name="label_46">
-             <property name="text">
-              <string>°P</string>
-             </property>
-            </widget>
+            <widget class="LabelGrV" name="label_46"/>
            </item>
            <item row="0" column="1">
             <widget class="DoubleSpinBoxGrV" name="tbSWAnstellen">
@@ -2975,6 +2953,11 @@
    <header>widgets/doublespinboxgrv.h</header>
   </customwidget>
   <customwidget>
+   <class>LabelGrV</class>
+   <extends>QLabel</extends>
+   <header>widgets/labelgrv.h</header>
+  </customwidget>
+  <customwidget>
    <class>DateEdit</class>
    <extends>QDateEdit</extends>
    <header>widgets/dateedit.h</header>
@@ -2983,11 +2966,6 @@
    <class>TimeEdit</class>
    <extends>QTimeEdit</extends>
    <header>widgets/timeedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>LabelGrV</class>
-   <extends>QLabel</extends>
-   <header>widgets/labelgrv.h</header>
   </customwidget>
   <customwidget>
    <class>ChartBraudaten</class>

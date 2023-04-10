@@ -246,13 +246,12 @@
      <addaction name="actionSchwedisch"/>
      <addaction name="actionNiederlaendisch"/>
     </widget>
-    <widget class="QMenu" name="menuEinheit_der_Stammw_rze">
+    <widget class="QMenu" name="menuGravityUnit">
      <property name="title">
       <string>Anzeige des Extraktgehalts</string>
      </property>
-     <addaction name="action_P"/>
-     <addaction name="actionBrix"/>
-     <addaction name="actionSpezifische_Dichte"/>
+     <addaction name="actionGravityUnit_P"/>
+     <addaction name="actionGravityUnit_SG"/>
     </widget>
     <addaction name="actionOeffnen"/>
     <addaction name="separator"/>
@@ -261,7 +260,7 @@
     <addaction name="actionTooltips"/>
     <addaction name="actionAnimationen"/>
     <addaction name="separator"/>
-    <addaction name="menuEinheit_der_Stammw_rze"/>
+    <addaction name="menuGravityUnit"/>
     <addaction name="menuSprache"/>
     <addaction name="actionZahlenformat"/>
     <addaction name="separator"/>
@@ -730,7 +729,7 @@
     <string>Datenbank</string>
    </property>
   </action>
-  <action name="action_P">
+  <action name="actionGravityUnit_P">
    <property name="checkable">
     <bool>false</bool>
    </property>
@@ -742,11 +741,14 @@
    <property name="checkable">
     <bool>false</bool>
    </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Brix (°B)</string>
    </property>
   </action>
-  <action name="actionSpezifische_Dichte">
+  <action name="actionGravityUnit_SG">
    <property name="checkable">
     <bool>false</bool>
    </property>

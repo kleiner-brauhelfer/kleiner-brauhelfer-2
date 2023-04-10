@@ -59,6 +59,7 @@ void Settings::initTheme()
     if (mTheme == Unused)
         mTheme = Bright;
 
+
     // colors
     QColor colorChanged;
     switch (mTheme)
@@ -338,40 +339,51 @@ void Settings::setLanguage(QString lang)
     setValueInGroup("General", "language", lang);
 }
 
-QString Settings::GravityName()
+void Settings::setGravityUnit(int unit) {
+    setValueInGroup("Gravity", "unit", unit);
+};
+
+int Settings::GravityUnit()
 {
-    return valueInGroup("Gravity", "unit", "Plato" ).toString();
+    return valueInGroup("Gravity", "unit", 0 ).toInt();
 }
 
-QString Settings::GravityUnit()
+QString Settings::GravityUnitString()
 {
-  QString unit;
-  if (GravityName() ==  "Plato") {
-        unit = "°P";
-  } else if (GravityName() == "Brix") {
-        unit = "°B";
-  } else if (GravityName() == "SG") {
-        unit = "SG";
+  QString unitstr;
+  switch (GravityUnit()) {
+  case 0 :
+    unitstr = "°P";
+    break;
+  case 1:
+    unitstr = "SG";
+    break;
+  case 2:
+    unitstr = "°B";
+    break;
+  default:
+    unitstr = "Unknown";
   }
-  return unit;
+  return unitstr;
 }
 
 int Settings::GravityDecimals() {
-  if (GravityName() ==  "Plato") {
-        return 1;
-  } else if (GravityName() == "Brix") {
-        return 1;
-  } else if (GravityName() == "SG") {
-        return 3;
+  int deci;
+  switch (GravityUnit()) {
+  case 0:
+    deci = 1;
+    break;
+  case 1:
+    deci = 3;
+    break;
+  case 2:
+    deci = 1;
+    break;
+  default:
+    deci = 1;
   }
+  return deci;
 }
-
-void Settings::setGravity(QString name)
-{
-  setValueInGroup("Gravity", "unit", name );
-};
-
-
 
 QString Settings::settingsDir() const
 {

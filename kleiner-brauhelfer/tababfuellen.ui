@@ -36,7 +36,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>0</y>
+         <y>-373</y>
          <width>1009</width>
          <height>1134</height>
         </rect>
@@ -356,11 +356,7 @@
             </widget>
            </item>
            <item row="2" column="2">
-            <widget class="LabelGrV" name="lblSWSchnellgaerprobeEinheit">
-             <property name="text">
-              <string>°P</string>
-             </property>
-            </widget>
+            <widget class="LabelGrV" name="lblSWSchnellgaerprobeEinheit"/>
            </item>
            <item row="2" column="6">
             <widget class="DoubleSpinBoxGrV" name="tbGruenschlauchzeitpunkt">
@@ -478,11 +474,7 @@
             </spacer>
            </item>
            <item row="1" column="7">
-            <widget class="LabelGrV" name="label_12">
-             <property name="text">
-              <string>°P</string>
-             </property>
-            </widget>
+            <widget class="LabelGrV" name="label_12"/>
            </item>
            <item row="5" column="7">
             <widget class="QLabel" name="label_esevg_2">
@@ -555,9 +547,6 @@
                <height>0</height>
               </size>
              </property>
-             <property name="text">
-              <string>°P</string>
-             </property>
             </widget>
            </item>
            <item row="1" column="1">
@@ -606,9 +595,6 @@
                <height>0</height>
               </size>
              </property>
-             <property name="text">
-              <string>°P</string>
-             </property>
             </widget>
            </item>
            <item row="3" column="0" colspan="4">
@@ -619,11 +605,7 @@
             </widget>
            </item>
            <item row="2" column="7">
-            <widget class="LabelGrV" name="lblGruenschlauchzeitpunktEinheit">
-             <property name="text">
-              <string>°P</string>
-             </property>
-            </widget>
+            <widget class="LabelGrV" name="lblGruenschlauchzeitpunktEinheit"/>
            </item>
            <item row="4" column="5">
             <widget class="QLabel" name="label_sevg">
@@ -2081,14 +2063,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>PushButton</class>
    <extends>QPushButton</extends>
    <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
    <class>WdgBemerkung</class>
@@ -2105,6 +2087,16 @@
    <class>SpinBoxSud</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinboxsud.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBoxGrV</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinboxgrv.h</header>
+  </customwidget>
+  <customwidget>
+   <class>LabelGrV</class>
+   <extends>QLabel</extends>
+   <header>widgets/labelgrv.h</header>
   </customwidget>
   <customwidget>
    <class>DateEdit</class>
@@ -2130,16 +2122,6 @@
    <class>ChartRestextrakt</class>
    <extends>QWidget</extends>
    <header>charts/chartrestextrakt.h</header>
-  </customwidget>
-  <customwidget>
-   <class>DoubleSpinBoxGrV</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinboxgrv.h</header>
-  </customwidget>
-  <customwidget>
-   <class>LabelGrV</class>
-   <extends>QLabel</extends>
-   <header>widgets/labelgrv.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

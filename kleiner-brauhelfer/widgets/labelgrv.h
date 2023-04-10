@@ -9,6 +9,7 @@ class LabelGrV : public QLabel
 
  public:
   LabelGrV(QWidget *parent = nullptr);
+  //void paintEvent(QPaintEvent *event);
 };
 
 

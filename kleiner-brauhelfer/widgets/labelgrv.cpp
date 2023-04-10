@@ -12,3 +12,8 @@ LabelGrV::LabelGrV(QWidget *parent) :
     setText(gSettings->GravityUnitString());
 }
 
+//void LabelGrV::paintEvent(QPaintEvent *event)
+//{
+//    this->clear();
+//    this->setText(gSettings->GravityUnitString());
+//}

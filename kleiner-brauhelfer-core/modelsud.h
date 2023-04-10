@@ -100,7 +100,6 @@ public:
         ColSWAnteilZusatzGaerung,
         ColSWAnteilHefestarter,
         ColSWAnteilZutaten,
-        ColSWSG,
         ColSRESoll,
         ColAlkoholSoll,
         ColSWIst,

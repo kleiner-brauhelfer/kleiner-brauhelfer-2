@@ -2968,11 +2968,6 @@
    <header>widgets/timeedit.h</header>
   </customwidget>
   <customwidget>
-   <class>LabelGrV</class>
-   <extends>QLabel</extends>
-   <header>widgets/labelgrv.h</header>
-  </customwidget>
-  <customwidget>
    <class>ChartBraudaten</class>
    <extends>QWidget</extends>
    <header>charts/chartbraudaten.h</header>

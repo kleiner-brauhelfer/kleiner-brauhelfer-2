@@ -2123,16 +2123,6 @@
    <extends>QWidget</extends>
    <header>charts/chartrestextrakt.h</header>
   </customwidget>
-  <customwidget>
-   <class>DoubleSpinBoxGrV</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinboxgrv.h</header>
-  </customwidget>
-  <customwidget>
-   <class>LabelGrV</class>
-   <extends>QLabel</extends>
-   <header>widgets/labelgrv.h</header>
-  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>scrollArea_3</tabstop>

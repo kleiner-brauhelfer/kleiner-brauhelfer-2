@@ -44,7 +44,7 @@ WdgWeitereZutatGabe::WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt zeitpunkt, 
     ui->btnKorrekturExtrakt->setError(true);
 
     updateValues();
-    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh, &Brauhelfer::modified, this, &WdgWeitereZutatGabe::updateValues);
 }
 
 WdgWeitereZutatGabe::~WdgWeitereZutatGabe()

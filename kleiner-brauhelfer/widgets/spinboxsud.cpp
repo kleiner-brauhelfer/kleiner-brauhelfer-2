@@ -13,7 +13,7 @@ void SpinBoxSud::setColumn(int col)
 {
     mCol = col;
     if (mCol != -1)
-        connect(this, SIGNAL(valueChanged(int)), SLOT(on_valueChanged(int)));
+        connect(this, &SpinBox::valueChanged, this, &SpinBoxSud::on_valueChanged);
 }
 
 int SpinBoxSud::column() const

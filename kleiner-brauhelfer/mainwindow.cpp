@@ -118,19 +118,18 @@ MainWindow::MainWindow(QWidget *parent) :
     gSettings->endGroup();
     ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
 
-    connect(gSettings, SIGNAL(modulesChanged(Settings::Modules)), this, SLOT(modulesChanged(Settings::Modules)));
+    connect(gSettings, &Settings::modulesChanged, this, &MainWindow::modulesChanged);
 
-    connect(ui->tabSudAuswahl, SIGNAL(clicked(int)), this, SLOT(loadSud(int)));
+    connect(ui->tabSudAuswahl, &TabSudAuswahl::clicked, this, &MainWindow::loadSud);
 
-    connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()));
-    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
-    connect(bh->sud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(sudDataChanged(QModelIndex)));
+    connect(bh, &Brauhelfer::modified, this, &MainWindow::databaseModified);
+    connect(bh, &Brauhelfer::discarded, this, &MainWindow::updateValues);
+    connect(bh->sud(), &SudObject::loadedChanged, this, &MainWindow::sudLoaded);
+    connect(bh->sud(), &SudObject::dataChanged, this, &MainWindow::sudDataChanged);
 
-    connect(ui->actionRohstoffe, SIGNAL(triggered()), this, SLOT(showDialogRohstoffe()));
-    connect(ui->actionBrauUebersicht, SIGNAL(triggered()), this, SLOT(showDialogBrauUebersicht()));
-    connect(ui->actionAusruestung, SIGNAL(triggered()), this, SLOT(showDialogAusruestung()));
+    connect(ui->actionRohstoffe, &QAction::triggered, this, &MainWindow::showDialogRohstoffe);
+    connect(ui->actionBrauUebersicht, &QAction::triggered, this, &MainWindow::showDialogBrauUebersicht);
+    connect(ui->actionAusruestung, &QAction::triggered, this, &MainWindow::showDialogAusruestung);
 
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
@@ -747,7 +746,7 @@ void MainWindow::checkForUpdate(bool force)
     gSettings->endGroup();
 
     DlgCheckUpdate *dlg = new DlgCheckUpdate(url, since, this);
-    connect(dlg, SIGNAL(checkUpdatefinished()), this, SLOT(checkMessageFinished()));
+    connect(dlg, &DlgCheckUpdate::checkUpdatefinished, this, &MainWindow::checkMessageFinished);
     dlg->checkForUpdate();
   #else
     Q_UNUSED(force)

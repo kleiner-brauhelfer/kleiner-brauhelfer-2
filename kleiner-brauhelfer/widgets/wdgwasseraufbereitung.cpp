@@ -33,7 +33,7 @@ WdgWasseraufbereitung::WdgWasseraufbereitung(int row, QLayout *parentLayout, QWi
     setPalette(pal);
 
     updateValues();
-    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh, &Brauhelfer::modified, this, &WdgWasseraufbereitung::updateValues);
 }
 
 WdgWasseraufbereitung::~WdgWasseraufbereitung()

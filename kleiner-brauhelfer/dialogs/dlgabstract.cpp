@@ -7,7 +7,7 @@ DlgAbstract::DlgAbstract(const QString &settingsGroup, QWidget *parent, Qt::Wind
     QDialog(parent,f),
     mSettingsGroup(settingsGroup)
 {
-    connect(this, SIGNAL(finished(int)), this, SLOT(on_finished(int)));
+    connect(this, &QDialog::finished, this, &DlgAbstract::on_finished);
 }
 
 void DlgAbstract::showEvent(QShowEvent *event)

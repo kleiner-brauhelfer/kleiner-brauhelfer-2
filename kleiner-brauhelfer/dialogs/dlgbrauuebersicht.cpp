@@ -60,7 +60,7 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
             QIcon icon = button->icon();
             if (!icon.isNull() && !name.isEmpty())
             {
-                icon.addFile(QString(":/images/dark/%1.svg").arg(name));
+                icon.addFile(QStringLiteral(":/images/dark/%1.svg").arg(name));
                 button->setIcon(icon);
             }
         }
@@ -75,14 +75,14 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
     ui->tableView->setModel(model);
 
     modulesChanged(Settings::ModuleAlle);
-    connect(gSettings, SIGNAL(modulesChanged(Settings::Modules)), this, SLOT(modulesChanged(Settings::Modules)));
+    connect(gSettings, &Settings::modulesChanged, this, &DlgBrauUebersicht::modulesChanged);
 
-    connect(bh->modelSud(), SIGNAL(layoutChanged()), this, SLOT(updateDiagram()));
-    connect(bh->modelSud(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagram()));
-    connect(bh->modelSud(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagram()));
-    connect(bh->modelSud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)), this, SLOT(modelDataChanged(QModelIndex)));
-    connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), this, SLOT(table_selectionChanged(QItemSelection)));
-    connect(ui->diagram, SIGNAL(selectionChanged(int)), this, SLOT(diagram_selectionChanged(int)));
+    connect(bh->modelSud(), &ModelSud::layoutChanged, this, &DlgBrauUebersicht::updateDiagram);
+    connect(bh->modelSud(), &ModelSud::rowsInserted, this, &DlgBrauUebersicht::updateDiagram);
+    connect(bh->modelSud(), &ModelSud::rowsRemoved, this, &DlgBrauUebersicht::updateDiagram);
+    connect(bh->modelSud(), &ModelSud::dataChanged, this, &DlgBrauUebersicht::modelDataChanged);
+    connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,this, &DlgBrauUebersicht::table_selectionChanged);
+    connect(ui->diagram, &Chart3::selectionChanged, this, &DlgBrauUebersicht::diagram_selectionChanged);
 
     on_cbDatumAlle_stateChanged(ui->cbDatumAlle->isChecked());
 }

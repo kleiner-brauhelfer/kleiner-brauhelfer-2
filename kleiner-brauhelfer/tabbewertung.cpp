@@ -14,16 +14,15 @@ TabBewertung::TabBewertung(QWidget *parent) :
     mIndex(-1)
 {
     ui->setupUi(this);
-    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
-    connect(bh->sud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(sudDataChanged(QModelIndex)));
-    connect(bh->sud()->modelBewertungen(), SIGNAL(layoutChanged()), this, SLOT(modelModified()));
-    connect(bh->sud()->modelBewertungen(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(modelModified()));
-    connect(bh->sud()->modelBewertungen(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(modelModified()));
-    connect(bh->sud()->modelBewertungen(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh, &Brauhelfer::discarded, this, &TabBewertung::updateValues);
+    connect(bh->sud(), &SudObject::loadedChanged, this, &TabBewertung::sudLoaded);
+    connect(bh->sud(), &SudObject::dataChanged, this, &TabBewertung::sudDataChanged);
+    connect(bh->sud()->modelBewertungen(), &ProxyModel::layoutChanged, this, &TabBewertung::modelModified);
+    connect(bh->sud()->modelBewertungen(), &ProxyModel::rowsInserted, this, &TabBewertung::modelModified);
+    connect(bh->sud()->modelBewertungen(), &ProxyModel::rowsRemoved, this, &TabBewertung::modelModified);
+    connect(bh->sud()->modelBewertungen(), &ProxyModel::modified, this, &TabBewertung::updateValues);
     updateValues();
-    connect(ui->wdgRating, SIGNAL(clicked(int)), this, SLOT(sterneChanged(int)));
+    connect(ui->wdgRating, &WdgRating::clicked, this, &TabBewertung::sterneChanged);
 
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setData(ModelBewertungen::ColBemerkung, html);});
 }
@@ -57,7 +56,7 @@ void TabBewertung::modelModified()
     while (nLayout < nModel)
     {
         WdgBewertung *wdg = new WdgBewertung(nLayout++);
-        connect(wdg, SIGNAL(clicked(int)), this, SLOT(clicked(int)));
+        connect(wdg, &WdgBewertung::clicked, this, &TabBewertung::clicked);
         ui->layoutBewertungen->addWidget(wdg);
     }
     while (ui->layoutBewertungen->count() != nModel)

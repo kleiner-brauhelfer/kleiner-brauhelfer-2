@@ -42,10 +42,8 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateSchnellgaerung").toByteArray());
-    connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            this, SLOT(table_selectionChanged(QItemSelection)));
-    connect(ui->widget_DiaSchnellgaerverlauf, SIGNAL(selectionChanged(int)),
-            this, SLOT(diagram_selectionChanged(int)));
+    connect(table->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TabGaerverlauf::table_selectionChanged);
+    connect(ui->widget_DiaSchnellgaerverlauf, &Chart3::selectionChanged, this, &TabGaerverlauf::diagram_selectionChanged);
 
     table = ui->tableWidget_Hauptgaerverlauf;
     table->setModel(bh->sud()->modelHauptgaerverlauf());
@@ -59,10 +57,8 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateHauptgaerung").toByteArray());
-    connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            this, SLOT(table_selectionChanged(QItemSelection)));
-    connect(ui->widget_DiaHauptgaerverlauf, SIGNAL(selectionChanged(int)),
-            this, SLOT(diagram_selectionChanged(int)));
+    connect(table->selectionModel(),  &QItemSelectionModel::selectionChanged, this,  &TabGaerverlauf::table_selectionChanged);
+    connect(ui->widget_DiaHauptgaerverlauf, &Chart3::selectionChanged, this, &TabGaerverlauf::diagram_selectionChanged);
 
     table = ui->tableWidget_Nachgaerverlauf;
     table->setModel(bh->sud()->modelNachgaerverlauf());
@@ -74,10 +70,8 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateNachgaerung").toByteArray());
-    connect(table->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            this, SLOT(table_selectionChanged(QItemSelection)));
-    connect(ui->widget_DiaNachgaerverlauf, SIGNAL(selectionChanged(int)),
-            this, SLOT(diagram_selectionChanged(int)));
+    connect(table->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TabGaerverlauf::table_selectionChanged);
+    connect(ui->widget_DiaNachgaerverlauf, &Chart3::selectionChanged, this, &TabGaerverlauf::diagram_selectionChanged);
 
     mDefaultSplitterStateSchnellgaerung = ui->splitterSchnellgaerung->saveState();
     ui->splitterSchnellgaerung->restoreState(gSettings->value("splitterStateSchnellgaerung").toByteArray());
@@ -90,36 +84,30 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
 
     gSettings->endGroup();
 
-    connect(bh, SIGNAL(discarded()), this, SLOT(sudLoaded()));
-    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
-    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(bh->sud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-                    this, SLOT(sudDataChanged(QModelIndex)));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelSchnellgaerverlauf(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(dataChangedSchnellgaerverlauf(QModelIndex)));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelHauptgaerverlauf(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(dataChangedHauptgaerverlauf(QModelIndex)));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(layoutChanged()), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateDiagramm()));
-    connect(bh->sud()->modelNachgaerverlauf(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(dataChangedNachgaerverlauf(QModelIndex)));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(layoutChanged()), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateWeitereZutaten()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(updateWeitereZutaten()));
+    connect(bh, &Brauhelfer::discarded, this, &TabGaerverlauf::sudLoaded);
+    connect(bh->sud(), &SudObject::loadedChanged, this, &TabGaerverlauf::sudLoaded);
+    connect(bh->sud(), &SudObject::modified, this, &TabGaerverlauf::updateValues);
+    connect(bh->sud(), &SudObject::dataChanged, this, &TabGaerverlauf::sudDataChanged);
+    connect(bh->sud()->modelSchnellgaerverlauf(), &ProxyModel::layoutChanged, this, &TabGaerverlauf::updateDiagramm);
+    connect(bh->sud()->modelSchnellgaerverlauf(), &ProxyModel::rowsInserted, this, &TabGaerverlauf::updateDiagramm);
+    connect(bh->sud()->modelSchnellgaerverlauf(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf::updateDiagramm);
+    connect(bh->sud()->modelSchnellgaerverlauf(), &ProxyModel::dataChanged, this, &TabGaerverlauf::dataChangedSchnellgaerverlauf);
+    connect(bh->sud()->modelHauptgaerverlauf(), &ProxyModel::layoutChanged, this, &TabGaerverlauf::updateDiagramm);
+    connect(bh->sud()->modelHauptgaerverlauf(), &ProxyModel::rowsInserted, this, &TabGaerverlauf::updateDiagramm);
+    connect(bh->sud()->modelHauptgaerverlauf(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf::updateDiagramm);
+    connect(bh->sud()->modelHauptgaerverlauf(), &ProxyModel::dataChanged, this, &TabGaerverlauf::dataChangedHauptgaerverlauf);
+    connect(bh->sud()->modelNachgaerverlauf(), &ProxyModel::layoutChanged, this, &TabGaerverlauf::updateDiagramm);
+    connect(bh->sud()->modelNachgaerverlauf(), &ProxyModel::rowsInserted,this, &TabGaerverlauf::updateDiagramm);
+    connect(bh->sud()->modelNachgaerverlauf(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf::updateDiagramm);
+    connect(bh->sud()->modelNachgaerverlauf(), &ProxyModel::dataChanged, this, &TabGaerverlauf::dataChangedNachgaerverlauf);
+    connect(bh->sud()->modelHefegaben(), &ProxyModel::layoutChanged, this, &TabGaerverlauf::updateWeitereZutaten);
+    connect(bh->sud()->modelHefegaben(), &ProxyModel::rowsInserted, this, &TabGaerverlauf::updateWeitereZutaten);
+    connect(bh->sud()->modelHefegaben(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf::updateWeitereZutaten);
+    connect(bh->sud()->modelHefegaben(), &ProxyModel::dataChanged, this, &TabGaerverlauf::updateWeitereZutaten);
+    connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::layoutChanged, this, &TabGaerverlauf::updateWeitereZutaten);
+    connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::rowsInserted, this, &TabGaerverlauf::updateWeitereZutaten);
+    connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf::updateWeitereZutaten);
+    connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::dataChanged, this, &TabGaerverlauf::updateWeitereZutaten);
 
     updateDiagramm();
     updateValues();

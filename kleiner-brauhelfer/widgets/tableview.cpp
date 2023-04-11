@@ -64,6 +64,8 @@ bool TableView::restoreState(const QByteArray &state)
     {
         QList<int> mustHave;
         QList<int> canHave;
+        mustHave.reserve(mCols.size());
+        canHave.reserve(mCols.size());
         for (const ColumnDefinition& col : qAsConst(mCols))
         {
             canHave.append(col.col);
@@ -111,8 +113,8 @@ void TableView::setDefaultContextMenu()
         QHeaderView *header = horizontalHeader();
         setContextMenuPolicy(Qt::CustomContextMenu);
         header->setContextMenuPolicy(Qt::CustomContextMenu);
-        connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(onCustomContextMenuRequested(QPoint)));
-        connect(header, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(onCustomContextMenuRequested(QPoint)));
+        connect(this, &QWidget::customContextMenuRequested, this, &TableView::onCustomContextMenuRequested);
+        connect(header, &QWidget::customContextMenuRequested, this, &TableView::onCustomContextMenuRequested);
     }
 }
 
@@ -127,27 +129,27 @@ void TableView::buildContextMenu(QMenu& menu) const
             action->setCheckable(true);
             action->setChecked(!isColumnHidden(col.col));
             action->setData(col.col);
-            connect(action, SIGNAL(triggered(bool)), this, SLOT(setColumnVisible(bool)));
+            connect(action, &QAction::triggered, this, &TableView::setColumnVisible);
             menu.addAction(action);
         }
     }
     menu.addSeparator();
     action = new QAction(tr("Zurücksetzen"), &menu);
-    connect(action, SIGNAL(triggered()), this, SLOT(restoreDefaultState()));
+    connect(action, &QAction::triggered, this, &TableView::restoreDefaultState);
     menu.addAction(action);
     menu.addSeparator();
     action = new QAction(tr("Alles kopieren"), &menu);
-    connect(action, SIGNAL(triggered()), this, SLOT(copyToClipboard()));
+    connect(action, &QAction::triggered, this, &TableView::copyToClipboard);
     menu.addAction(action);
     action = new QAction(tr("Auswahl kopieren"), &menu);
-    connect(action, SIGNAL(triggered()), this, SLOT(copyToClipboardSelection()));
+    connect(action, &QAction::triggered, this, &TableView::copyToClipboardSelection);
     menu.addAction(action);
   #ifdef QT_PRINTSUPPORT_LIB
     action = new QAction(tr("Alles drucken"), &menu);
-    connect(action, SIGNAL(triggered()), this, SLOT(printPreview()));
+    connect(action, &QAction::triggered, this, &TableView::printPreview);
     menu.addAction(action);
     action = new QAction(tr("Auswahl drucken"), &menu);
-    connect(action, SIGNAL(triggered()), this, SLOT(printPreviewSelection()));
+    connect(action, &QAction::triggered, this, &TableView::printPreviewSelection);
     menu.addAction(action);
   #endif
 }
@@ -202,7 +204,7 @@ void TableView::keyPressEvent(QKeyEvent* event)
 QString TableView::indexValue(const QModelIndex& index) const
 {
     QString value;
-    QStyledItemDelegate* delegate = dynamic_cast<QStyledItemDelegate*>(itemDelegateForIndex(index));
+    QStyledItemDelegate* delegate = qobject_cast<QStyledItemDelegate*>(itemDelegateForIndex(index));
     if (delegate)
         value = delegate->displayText(index.data(Qt::DisplayRole), locale());
     if (value.isEmpty())

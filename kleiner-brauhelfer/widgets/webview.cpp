@@ -92,7 +92,7 @@ void WebView::printToPdf(const QString& filePath, const QMarginsF& margins)
 {
   #if defined(QT_WEBENGINECORE_LIB) && (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
     QEventLoop loop;
-    connect(page(), SIGNAL(pdfPrintingFinished(QString,bool)), &loop, SLOT(quit()));
+    connect(page(), &QWebEnginePage::pdfPrintingFinished, &loop, &QEventLoop::quit);
     page()->printToPdf(filePath, QPageLayout(QPageSize(QPageSize::A4), QPageLayout::Portrait, margins));
     loop.exec();
   #else

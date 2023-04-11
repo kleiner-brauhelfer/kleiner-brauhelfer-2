@@ -8,7 +8,7 @@ PushButton::PushButton(QWidget *parent) :
     WidgetDecorator(),
     mError(false)
 {
-    connect(this, SIGNAL(clicked(bool)), SLOT(on_valueChanged()));
+    connect(this, &QAbstractButton::clicked, this, &PushButton::on_valueChanged);
 }
 
 void PushButton::updatePalette()

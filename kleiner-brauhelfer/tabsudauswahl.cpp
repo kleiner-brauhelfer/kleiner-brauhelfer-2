@@ -62,7 +62,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     table->build();
 
     table->horizontalHeader()->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(table->horizontalHeader(), SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(on_tableSudauswahl_customContextMenuRequested(QPoint)));
+    connect(table->horizontalHeader(), &QWidget::customContextMenuRequested, this, &TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested);
 
     gSettings->beginGroup("TabSudAuswahl");
 
@@ -90,12 +90,11 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
 
     gSettings->endGroup();
 
-    connect(bh, SIGNAL(modified()), this, SLOT(databaseModified()), Qt::QueuedConnection);
-    connect(proxyModel, SIGNAL(layoutChanged()), this, SLOT(filterChanged()));
-    connect(proxyModel, SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(filterChanged()));
-    connect(proxyModel, SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(filterChanged()));
-    connect(ui->tableSudauswahl->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            this, SLOT(selectionChanged()));
+    connect(bh, &Brauhelfer::modified, this, &TabSudAuswahl::databaseModified, Qt::QueuedConnection);
+    connect(proxyModel, &ProxyModel::layoutChanged, this, &TabSudAuswahl::filterChanged);
+    connect(proxyModel, &ProxyModel::rowsInserted, this, &TabSudAuswahl::filterChanged);
+    connect(proxyModel, &ProxyModel::rowsRemoved, this, &TabSudAuswahl::filterChanged);
+    connect(ui->tableSudauswahl->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TabSudAuswahl::selectionChanged);
 
     ui->tableSudauswahl->selectRow(0);
     filterChanged();
@@ -226,7 +225,7 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
     action = new QAction(tr("Sud merken"), &menu);
     action->setCheckable(true);
     action->setChecked(model->data(index.row(), ModelSud::ColMerklistenID).toBool());
-    connect(action, SIGNAL(triggered(bool)), this, SLOT(onMerkliste_clicked(bool)));
+    connect(action, &QAction::triggered, this, &TabSudAuswahl::onMerkliste_clicked);
     menu.addAction(action);
 
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(model->data(index.row(), ModelSud::ColStatus).toInt());
@@ -235,7 +234,7 @@ void TabSudAuswahl::on_tableSudauswahl_customContextMenuRequested(const QPoint &
         action = new QAction(tr("Sud verbraucht"), &menu);
         action->setCheckable(true);
         action->setChecked(status == Brauhelfer::SudStatus::Verbraucht);
-        connect(action, SIGNAL(triggered(bool)), this, SLOT(onVerbraucht_clicked(bool)));
+        connect(action, &QAction::triggered, this, &TabSudAuswahl::onVerbraucht_clicked);
         menu.addAction(action);
     }
 
@@ -508,6 +507,7 @@ void TabSudAuswahl::sudLoeschen(bool loadedSud)
     else
     {
         QList<int> sudIds;
+        sudIds.reserve(ui->tableSudauswahl->selectionModel()->selectedRows().count());
         for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
             sudIds.append(model->data(index.row(), ModelSud::ColID).toInt());
         for (int sudId : sudIds)
@@ -577,6 +577,7 @@ void TabSudAuswahl::rezeptExportieren(bool loadedSud)
     }
     else
     {
+        list.reserve(ui->tableSudauswahl->selectionModel()->selectedRows().count());
         ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
         for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
             list.append(model->mapRowToSource(index.row()));

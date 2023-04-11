@@ -41,7 +41,7 @@ WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
     ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
 
     updateValues();
-    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh, &Brauhelfer::modified, this, &WdgMalzGabe::updateValues);
 }
 
 WdgMalzGabe::~WdgMalzGabe()

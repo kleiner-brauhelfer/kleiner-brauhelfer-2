@@ -169,49 +169,44 @@ TabRezept::TabRezept(QWidget *parent) :
 
     gSettings->endGroup();
 
-    connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
+    connect(qApp, &QApplication::focusChanged, this, &TabRezept::focusChanged);
 
-    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(bh, SIGNAL(discarded()), this, SLOT(sudLoaded()));
-    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
-    connect(bh->sud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(sudDataChanged(QModelIndex)));
+    connect(bh, &Brauhelfer::modified, this, &TabRezept::updateValues);
+    connect(bh, &Brauhelfer::discarded, this, &TabRezept::sudLoaded);
+    connect(bh->sud(), &SudObject::loadedChanged, this, &TabRezept::sudLoaded);
+    connect(bh->sud(), &SudObject::dataChanged, this, &TabRezept::sudDataChanged);
 
-    connect(bh->sud()->modelRasten(), SIGNAL(layoutChanged()), this, SLOT(rasten_modified()));
-    connect(bh->sud()->modelRasten(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(rasten_modified()));
-    connect(bh->sud()->modelRasten(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(rasten_modified()));
-    connect(bh->sud()->modelRasten(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(updateRastenDiagram()));
+    connect(bh->sud()->modelRasten(), &ProxyModel::layoutChanged,this, &TabRezept::rasten_modified);
+    connect(bh->sud()->modelRasten(), &ProxyModel::rowsInserted, this, &TabRezept::rasten_modified);
+    connect(bh->sud()->modelRasten(), &ProxyModel::rowsRemoved, this, &TabRezept::rasten_modified);
+    connect(bh->sud()->modelRasten(), &ProxyModel::dataChanged, this, &TabRezept::updateRastenDiagram);
 
-    connect(bh->sud()->modelMalzschuettung(), SIGNAL(layoutChanged()), this, SLOT(malzGaben_modified()));
-    connect(bh->sud()->modelMalzschuettung(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(malzGaben_modified()));
-    connect(bh->sud()->modelMalzschuettung(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(malzGaben_modified()));
-    connect(bh->sud()->modelMalzschuettung(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(updateMalzGaben()));
+    connect(bh->sud()->modelMalzschuettung(), &ProxyModel::layoutChanged, this, &TabRezept::malzGaben_modified);
+    connect(bh->sud()->modelMalzschuettung(), &ProxyModel::rowsInserted, this, &TabRezept::malzGaben_modified);
+    connect(bh->sud()->modelMalzschuettung(), &ProxyModel::rowsRemoved, this, &TabRezept::malzGaben_modified);
+    connect(bh->sud()->modelMalzschuettung(), &ProxyModel::dataChanged, this, &TabRezept::updateMalzGaben);
 
-    connect(bh->sud()->modelHopfengaben(), SIGNAL(layoutChanged()), this, SLOT(hopfenGaben_modified()));
-    connect(bh->sud()->modelHopfengaben(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(hopfenGaben_modified()));
-    connect(bh->sud()->modelHopfengaben(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(hopfenGaben_modified()));
-    connect(bh->sud()->modelHopfengaben(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(updateHopfenGaben()));
+    connect(bh->sud()->modelHopfengaben(), &ProxyModel::layoutChanged, this, &TabRezept::hopfenGaben_modified);
+    connect(bh->sud()->modelHopfengaben(), &ProxyModel::rowsInserted, this, &TabRezept::hopfenGaben_modified);
+    connect(bh->sud()->modelHopfengaben(), &ProxyModel::rowsRemoved, this, &TabRezept::hopfenGaben_modified);
+    connect(bh->sud()->modelHopfengaben(), &ProxyModel::dataChanged, this, &TabRezept::updateHopfenGaben);
 
-    connect(bh->sud()->modelHefegaben(), SIGNAL(layoutChanged()), this, SLOT(hefeGaben_modified()));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(hefeGaben_modified()));
-    connect(bh->sud()->modelHefegaben(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(hefeGaben_modified()));
+    connect(bh->sud()->modelHefegaben(), &ProxyModel::layoutChanged, this, &TabRezept::hefeGaben_modified);
+    connect(bh->sud()->modelHefegaben(), &ProxyModel::rowsInserted, this, &TabRezept::hefeGaben_modified);
+    connect(bh->sud()->modelHefegaben(), &ProxyModel::rowsRemoved, this, &TabRezept::hefeGaben_modified);
 
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(layoutChanged()), this, SLOT(weitereZutatenGaben_modified()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(weitereZutatenGaben_modified()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(weitereZutatenGaben_modified()));
-    connect(bh->sud()->modelWeitereZutatenGaben(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-            this, SLOT(updateExtrakt()));
+    connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::layoutChanged, this, &TabRezept::weitereZutatenGaben_modified);
+    connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::rowsInserted, this, &TabRezept::weitereZutatenGaben_modified);
+    connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::rowsRemoved, this, &TabRezept::weitereZutatenGaben_modified);
+    connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::dataChanged, this, &TabRezept::updateExtrakt);
 
-    connect(bh->sud()->modelWasseraufbereitung(), SIGNAL(layoutChanged()), this, SLOT(wasseraufbereitung_modified()));
-    connect(bh->sud()->modelWasseraufbereitung(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(wasseraufbereitung_modified()));
-    connect(bh->sud()->modelWasseraufbereitung(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(wasseraufbereitung_modified()));
+    connect(bh->sud()->modelWasseraufbereitung(), &ProxyModel::layoutChanged, this, &TabRezept::wasseraufbereitung_modified);
+    connect(bh->sud()->modelWasseraufbereitung(), &ProxyModel::rowsInserted, this, &TabRezept::wasseraufbereitung_modified);
+    connect(bh->sud()->modelWasseraufbereitung(), &ProxyModel::rowsRemoved, this, &TabRezept::wasseraufbereitung_modified);
 
-    connect(bh->sud()->modelAnhang(), SIGNAL(layoutChanged()), this, SLOT(anhaenge_modified()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(anhaenge_modified()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(anhaenge_modified()));
+    connect(bh->sud()->modelAnhang(), &ProxyModel::layoutChanged, this, &TabRezept::anhaenge_modified);
+    connect(bh->sud()->modelAnhang(), &ProxyModel::rowsInserted, this, &TabRezept::anhaenge_modified);
+    connect(bh->sud()->modelAnhang(), &ProxyModel::rowsRemoved, this, &TabRezept::anhaenge_modified);
 
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setKommentar(html);});
     connect(ui->wdgBemerkungMaischen, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungZutatenMaischen(html);});
@@ -220,7 +215,7 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(ui->wdgBemerkungMaischplan, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungMaischplan(html);});
     connect(ui->wdgBemerkungWasseraufbereitung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungWasseraufbereitung(html);});
 
-    connect(ui->btnAnlage, SIGNAL(clicked()), MainWindow::getInstance(), SLOT(showDialogAusruestung()));
+    connect(ui->btnAnlage, &QAbstractButton::clicked, MainWindow::getInstance(), &MainWindow::showDialogAusruestung);
 
     TableView *table = ui->tableTags;
     table->setModel(bh->sud()->modelTags());

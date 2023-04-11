@@ -25,7 +25,7 @@ void ChartHopfen::update()
     bars->setBrush(gSettings->colorHopfen);
 
     QSharedPointer<QCPAxisTickerText> textTicker = qSharedPointerDynamicCast<QCPAxisTickerText>(xAxis->ticker());
-    textTicker.data()->clear();
+    textTicker->clear();
     ProxyModel* model = bh->sud()->modelHopfengaben();
     switch ((Brauhelfer::BerechnungsartHopfen)bh->sud()->getberechnungsArtHopfen())
     {
@@ -34,7 +34,7 @@ void ChartHopfen::update()
         for (int row = 0; row < model->rowCount(); ++row)
         {
             yVal = model->data(row, ModelHopfengaben::Colerg_Menge).toDouble();
-            textTicker.data()->addTick(row+1, model->data(row, ModelHopfengaben::ColName).toString());
+            textTicker->addTick(row+1, model->data(row, ModelHopfengaben::ColName).toString());
             bars->addData(row+1, yVal);
             yMax = qMax(yMax, yVal);
         }
@@ -47,7 +47,7 @@ void ChartHopfen::update()
         for (int row = 0; row < model->rowCount(); ++row)
         {
             yVal = model->data(row, ModelHopfengaben::ColProzent).toDouble();
-            textTicker.data()->addTick(row+1, model->data(row, ModelHopfengaben::ColName).toString());
+            textTicker->addTick(row+1, model->data(row, ModelHopfengaben::ColName).toString());
             bars->addData(row+1, yVal);
             yMax = qMax(yMax, yVal);
         }
@@ -60,7 +60,7 @@ void ChartHopfen::update()
         for (int row = 0; row < model->rowCount(); ++row)
         {
             yVal = model->data(row, ModelHopfengaben::ColProzent).toDouble();
-            textTicker.data()->addTick(row+1, model->data(row, ModelHopfengaben::ColName).toString());
+            textTicker->addTick(row+1, model->data(row, ModelHopfengaben::ColName).toString());
             bars->addData(row+1, yVal);
             yMax = qMax(yMax, yVal);
         }

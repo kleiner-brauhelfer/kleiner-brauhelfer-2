@@ -50,6 +50,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     QList<int> ListSudID;
     QLocale locale;
 
+    ListSudID.reserve(ui->tableSudauswahl->selectionModel()->selectedRows().count());
     for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
         int SudID = proxyModel->data(index.row(), ModelSud::ColID).toInt();
@@ -184,6 +185,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     if (ListMalz.count() > 0)
     {
         QVariantList liste;
+        liste.reserve(ListMalz.count());
         ProxyModel modelMalz;
         modelMalz.setSourceModel(bh->modelMalz());
         modelMalz.setFilterKeyColumn(ModelMalz::ColName);
@@ -219,6 +221,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     if (ListHopfen.count() > 0)
     {
         QVariantList liste;
+        liste.reserve(ListHopfen.count());
         ProxyModel modelHopfen;
         modelHopfen.setSourceModel(bh->modelHopfen());
         modelHopfen.setFilterKeyColumn(ModelHopfen::ColName);
@@ -254,6 +257,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     if (ListHefe.count() > 0)
     {
         QVariantList liste;
+        liste.reserve(ListHefe.count());
         ProxyModel modelHefe;
         modelHefe.setSourceModel(bh->modelHefe());
         modelHefe.setFilterKeyColumn(ModelHefe::ColName);

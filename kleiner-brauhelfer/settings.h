@@ -76,7 +76,7 @@ public:
     void setAnimationsEnabled(bool enabled);
 
     QString language();
-    void setLanguage(QString lang);
+    void setLanguage(const QString &lang);
 
     QString settingsDir() const;
 

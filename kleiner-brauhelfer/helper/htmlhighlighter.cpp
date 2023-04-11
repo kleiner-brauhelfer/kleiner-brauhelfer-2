@@ -70,6 +70,7 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
                     << "<\\btr\\b" << "<\\btrack\\b" << "<\\btt\\b" << "<\\bu\\b" << "<\\bul\\b" << "<\\bvar\\b"
                     << "<\\bvideo\\b" << "<\\bwbr\\b" << "<\\bxmp\\b";
 
+    startTagRules.reserve(keywordPatterns.size());
     for (int i = 0; i < keywordPatterns.size(); ++i)
     {
         rule.pattern = QRegularExpression(keywordPatterns[i]);
@@ -107,6 +108,7 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
                         << "</\\btr\\b" << "</\\btrack\\b" << "</\\btt\\b" << "</\\bu\\b" << "</\\bul\\b" << "</\\bvar\\b"
                         << "</\\bvideo\\b" << "</\\bwbr\\b" << "</\\bxmp\\b";
 
+    endTagRules.reserve(keywordPatterns_end.size());
     for (int i = 0; i < keywordPatterns_end.size(); ++i)
     {
         rule.pattern = QRegularExpression(keywordPatterns_end[i]);

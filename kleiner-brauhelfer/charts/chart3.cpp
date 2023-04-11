@@ -71,8 +71,8 @@ Chart3::Chart3(QWidget *parent) :
     setInteraction(QCP::iRangeZoom, true);
     axisRect()->setRangeZoomAxes({xAxis});
 
-    connect(this, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(onMousePress(QMouseEvent*)));
-    connect(this, SIGNAL(mouseDoubleClick(QMouseEvent*)), this, SLOT(onMouseDoubleClick(QMouseEvent*)));
+    connect(this, &QCustomPlot::mousePress, this, &Chart3::onMousePress);
+    connect(this, &QCustomPlot::mouseDoubleClick, this, &Chart3::onMouseDoubleClick);
 }
 
 void Chart3::clear()

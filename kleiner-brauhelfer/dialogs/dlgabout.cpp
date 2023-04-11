@@ -9,10 +9,10 @@ DlgAbout::DlgAbout(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->lblMain->setText(QCoreApplication::applicationName() + " v" + QCoreApplication::applicationVersion());
-    ui->lblQtVersion->setText("Qt " + QString(QT_VERSION_STR));
-    ui->lblEntwickler->setText(ENTWICKLER);
-    ui->lblHomepage->setText(generateLink(URL_HOMEPAGE));
-    ui->lblForum->setText(generateLink(URL_FORUM, URL_FORUM_NAME));
+    ui->lblQtVersion->setText(QStringLiteral("Qt " QT_VERSION_STR));
+    ui->lblEntwickler->setText(QStringLiteral(ENTWICKLER));
+    ui->lblHomepage->setText(generateLink(QStringLiteral(URL_HOMEPAGE)));
+    ui->lblForum->setText(generateLink(QStringLiteral(URL_FORUM), QStringLiteral(URL_FORUM_NAME)));
     adjustSize();
 }
 

@@ -28,12 +28,12 @@ void ChartMalz::update()
     bars->setBrush(gSettings->colorMalz);
 
     QSharedPointer<QCPAxisTickerText> textTicker = qSharedPointerDynamicCast<QCPAxisTickerText>(xAxis->ticker());
-    textTicker.data()->clear();
+    textTicker->clear();
     ProxyModel* model = bh->sud()->modelMalzschuettung();
     for (int row = 0; row < model->rowCount(); ++row)
     {
         double val = model->data(row, ModelMalzschuettung::ColProzent).toDouble();
-        textTicker.data()->addTick(row+1, model->data(row, ModelMalzschuettung::ColName).toString());
+        textTicker->addTick(row+1, model->data(row, ModelMalzschuettung::ColName).toString());
         bars->addData(row+1, val);
         yMax = qMax(yMax, val);
     }

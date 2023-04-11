@@ -65,14 +65,14 @@ TabEtikette::TabEtikette(QWidget *parent) :
     table->appendCol({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
     table->build();
 
-    connect(bh, SIGNAL(discarded()), this, SLOT(updateAll()));
-    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(updateAll()));
-    connect(bh->sud(), SIGNAL(modified()), this, SLOT(updateTemplateTags()));
-    connect(bh->sud()->modelTags(), SIGNAL(modified()), this, SLOT(updateTemplateTags()));
-    connect(bh->sud()->modelEtiketten(), SIGNAL(modified()),this, SLOT(updateValues()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(layoutChanged()), this, SLOT(updateAuswahlListe()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(rowsInserted(QModelIndex,int,int)), this, SLOT(updateAuswahlListe()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(rowsRemoved(QModelIndex,int,int)), this, SLOT(updateAuswahlListe()));
+    connect(bh, &Brauhelfer::discarded, this, &TabEtikette::updateAll);
+    connect(bh->sud(), &SudObject::loadedChanged, this, &TabEtikette::updateAll);
+    connect(bh->sud(), &SudObject::modified, this, &TabEtikette::updateTemplateTags);
+    connect(bh->sud()->modelTags(), &ProxyModel::modified, this, &TabEtikette::updateTemplateTags);
+    connect(bh->sud()->modelEtiketten(), &ProxyModel::modified, this, &TabEtikette::updateValues);
+    connect(bh->sud()->modelAnhang(), &ProxyModel::layoutChanged, this, &TabEtikette::updateAuswahlListe);
+    connect(bh->sud()->modelAnhang(), &ProxyModel::rowsInserted, this, &TabEtikette::updateAuswahlListe);
+    connect(bh->sud()->modelAnhang(), &ProxyModel::rowsRemoved, this, &TabEtikette::updateAuswahlListe);
 
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
     updateAll();
@@ -560,7 +560,7 @@ void TabEtikette::printPreview()
     printer.setOutputFileName("");
     printer.setOutputFormat(QPrinter::NativeFormat);
     QPrintPreviewDialog dlg(&printer, this);
-    connect(&dlg, SIGNAL(paintRequested(QPrinter*)), this, SLOT(onPrinterPaintRequested(QPrinter*)));
+    connect(&dlg, &QPrintPreviewDialog::paintRequested, this, &TabEtikette::onPrinterPaintRequested);
     dlg.exec();
     savePageLayout(&printer);
     gSettings->beginGroup("General");

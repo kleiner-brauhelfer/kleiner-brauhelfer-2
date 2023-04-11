@@ -47,12 +47,12 @@ WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
     ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
 
     ui->cbRast->setCompleter(nullptr);
-    connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
-    connect(ui->cbRast->lineEdit(), SIGNAL(textEdited(QString)), this, SLOT(cbRastTextEdited()));
+    connect(qApp, &QApplication::focusChanged, this, &WdgRast::focusChanged);
+    connect(ui->cbRast->lineEdit(), &QLineEdit::textEdited, this, &WdgRast::cbRastTextEdited);
 
     updateValues();
     updateListe();
-    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh, &Brauhelfer::modified, this, &WdgRast::updateValues);
 }
 
 WdgRast::~WdgRast()

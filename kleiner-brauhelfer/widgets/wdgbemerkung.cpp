@@ -11,7 +11,7 @@ WdgBemerkung::WdgBemerkung(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->tbRichText->document()->setBaseUrl(QUrl::fromLocalFile(gSettings->databaseDir()));
-    connect(ui->tbRichText,SIGNAL(doubleClicked(QMouseEvent*)),this,SLOT(on_btnEdit_clicked()));
+    connect(ui->tbRichText, &BemerkungTextBrowser::doubleClicked, this, &WdgBemerkung::on_btnEdit_clicked);
 }
 
 WdgBemerkung::~WdgBemerkung()

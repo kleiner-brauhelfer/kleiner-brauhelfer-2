@@ -26,8 +26,8 @@ WdgAnhang::WdgAnhang(int index, QWidget *parent) :
     pal.setColor(QPalette::Window, gSettings->colorAnhang);
     setPalette(pal);
     updateValues();
-    connect(bh, SIGNAL(discarded()), this, SLOT(updateValues()));
-    connect(bh->sud()->modelAnhang(), SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh, &Brauhelfer::discarded, this, &WdgAnhang::updateValues);
+    connect(bh->sud()->modelAnhang(), &ProxyModel::modified, this, &WdgAnhang::updateValues);
 }
 
 WdgAnhang::~WdgAnhang()

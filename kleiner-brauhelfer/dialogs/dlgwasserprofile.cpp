@@ -50,11 +50,9 @@ DlgWasserprofile::DlgWasserprofile(QWidget *parent) :
 
     ui->splitter->setSizes({200, 200, 50});
 
-    connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
-    connect(ui->tableWasser->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            this, SLOT(wasser_selectionChanged(QItemSelection)));
-
-    connect(bh->modelWasser(), SIGNAL(modified()), this, SLOT(updateWasser()));
+    connect(qApp, &QApplication::focusChanged, this, &DlgWasserprofile::focusChanged);
+    connect(ui->tableWasser->selectionModel(), &QItemSelectionModel::selectionChanged, this, &DlgWasserprofile::wasser_selectionChanged);
+    connect(bh->modelWasser(), &ModelWasser::modified, this, &DlgWasserprofile::updateWasser);
 
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setDataWasser(ModelWasser::ColBemerkung, html);});
 

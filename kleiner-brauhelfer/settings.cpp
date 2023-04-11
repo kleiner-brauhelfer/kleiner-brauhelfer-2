@@ -333,7 +333,7 @@ QString Settings::language()
     return valueInGroup("General", "language", "de").toString();
 }
 
-void Settings::setLanguage(QString lang)
+void Settings::setLanguage(const QString& lang)
 {
     setValueInGroup("General", "language", lang);
 }

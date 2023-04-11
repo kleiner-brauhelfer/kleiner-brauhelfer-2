@@ -28,7 +28,7 @@ void DlgCheckUpdate::checkForUpdate()
 {
     mHasUpdate = false;
     reply = qnam.get(QNetworkRequest(url));
-    connect(reply, SIGNAL(finished()), this, SLOT(httpFinished()));
+    connect(reply, &QNetworkReply::finished, this, &DlgCheckUpdate::httpFinished);
 }
 
 bool DlgCheckUpdate::hasUpdate() const

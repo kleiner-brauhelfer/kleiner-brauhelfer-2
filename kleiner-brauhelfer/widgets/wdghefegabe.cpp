@@ -40,7 +40,7 @@ WdgHefeGabe::WdgHefeGabe(int row, QLayout* parentLayout, QWidget *parent) :
     ui->tbMenge->setErrorOnLimit(true);
 
     updateValues();
-    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
+    connect(bh, &Brauhelfer::modified, this, &WdgHefeGabe::updateValues);
 }
 
 WdgHefeGabe::~WdgHefeGabe()

@@ -60,12 +60,11 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
 
     gSettings->endGroup();
 
-    connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
-    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(bh, SIGNAL(discarded()), this, SLOT(sudLoaded()));
-    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
-    connect(bh->sud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-                    this, SLOT(sudDataChanged(QModelIndex)));
+    connect(qApp, &QApplication::focusChanged, this, &TabAbfuellen::focusChanged);
+    connect(bh, &Brauhelfer::modified, this, &TabAbfuellen::updateValues);
+    connect(bh, &Brauhelfer::discarded, this, &TabAbfuellen::sudLoaded);
+    connect(bh->sud(), &SudObject::loadedChanged, this, &TabAbfuellen::sudLoaded);
+    connect(bh->sud(), &SudObject::dataChanged, this, &TabAbfuellen::sudDataChanged);
 
     connect(ui->wdgBemerkungAbfuellen, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungAbfuellen(html);});
     connect(ui->wdgBemerkungGaerung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungGaerung(html);});

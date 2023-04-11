@@ -20,14 +20,14 @@ bool IngredientNameDelegate::isUsed(const QModelIndex &index) const
 {
     if (mColInUsed == -1)
     {
-        const SqlTableModel *model = dynamic_cast<const SqlTableModel*>(index.model());
+        const SqlTableModel *model = qobject_cast<const SqlTableModel*>(index.model());
         if (model)
         {
             mColInUsed = model->fieldIndex("InGebrauch");
         }
         else
         {
-            const ProxyModel *proxyModel = static_cast<const ProxyModel*>(index.model());
+            const ProxyModel *proxyModel = qobject_cast<const ProxyModel*>(index.model());
             if (proxyModel)
             {
                 mColInUsed = proxyModel->fieldIndex("InGebrauch");

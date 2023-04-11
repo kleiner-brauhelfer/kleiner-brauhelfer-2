@@ -20,7 +20,7 @@ double WdgWebViewEditable::gZoomFactor = 1.0;
 WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WdgWebViewEditable),
-    mTempCssFile(QDir::tempPath() + "/" + QCoreApplication::applicationName() + QLatin1String(".XXXXXX.css"))
+    mTempCssFile(QDir::tempPath() + "/" + QCoreApplication::applicationName() + QStringLiteral(".XXXXXX.css"))
 {
     ui->setupUi(this);
     ui->webview->setLinksExternal(true);
@@ -43,7 +43,7 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
   #endif
     ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
     mTimerWebViewUpdate.setSingleShot(true);
-    connect(&mTimerWebViewUpdate, SIGNAL(timeout()), this, SLOT(updateWebView()), Qt::QueuedConnection);
+    connect(&mTimerWebViewUpdate, &QTimer::timeout, this, &WdgWebViewEditable::updateWebView, Qt::QueuedConnection);
     updateEditMode();
     ui->splitterEditmode->setHandleWidth(0);
     ui->splitterEditmode->setSizes({1, 0});
@@ -96,7 +96,7 @@ void WdgWebViewEditable::onPrinterPaintRequested(QPrinter *printer)
     QEventLoop loop;
   #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
     ui->webview->print(printer);
-    connect(ui->webview, SIGNAL(printFinished(bool)), &loop, SLOT(quit()));
+    connect(ui->webview, &QWebEngineView::printFinished, &loop, &QEventLoop::quit);
   #else
     ui->webview->page()->print(printer, [&](bool) { loop.quit(); });
   #endif
@@ -120,14 +120,14 @@ void WdgWebViewEditable::printPreview()
         ui->webview->setUpdatesEnabled(false);
 
         QEventLoop loop;
-        connect(ui->webview, SIGNAL(loadFinished(bool)), &loop, SLOT(quit()));
+        connect(ui->webview, &QWebEngineView::loadFinished, &loop, &QEventLoop::quit);
         ui->webview->renderTemplate(mTemplateTags);
         loop.exec();
     }
 
     QPrinter* printer = gSettings->createPrinter();
     QPrintPreviewDialog dlg(printer, ui->webview);
-    connect(&dlg, SIGNAL(paintRequested(QPrinter*)), this, SLOT(onPrinterPaintRequested(QPrinter*)));
+    connect(&dlg, &QPrintPreviewDialog::paintRequested, this, &WdgWebViewEditable::onPrinterPaintRequested);
     dlg.exec();
     gSettings->savePrinter(printer);
     delete printer;
@@ -166,7 +166,7 @@ void WdgWebViewEditable::printToPdf()
             ui->webview->setUpdatesEnabled(false);
 
             QEventLoop loop;
-            connect(ui->webview, SIGNAL(loadFinished(bool)), &loop, SLOT(quit()));
+            connect(ui->webview, &QWebEngineView::loadFinished, &loop, &QEventLoop::quit);
             ui->webview->renderTemplate(mTemplateTags);
             loop.exec();
 

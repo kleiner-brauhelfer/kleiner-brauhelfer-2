@@ -1085,9 +1085,10 @@ void ModelSud::updatePreis(int row)
 
 bool ModelSud::removeRows(int row, int count, const QModelIndex &parent)
 {
-    QList<int> sudIds(count);
+    QList<int> sudIds;
+    sudIds.reserve(count);
     for (int i = 0; i < count; ++i)
-        sudIds[i] = data(row + i, ColID).toInt();
+        sudIds.append(data(row + i, ColID).toInt());
     if (SqlTableModel::removeRows(row, count, parent))
     {
         removeRowsFrom(bh->modelRasten(), ModelRasten::ColSudID, sudIds);

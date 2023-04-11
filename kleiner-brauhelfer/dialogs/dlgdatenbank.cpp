@@ -58,7 +58,7 @@ DlgDatenbank::DlgDatenbank(QWidget *parent) :
     ui->comboBoxSud->addItem(bh->modelWeitereZutatenGaben()->tableName());
     ui->comboBoxSud->setCurrentIndex(7);
 
-    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
+    connect(bh->sud(), &SudObject::loadedChanged, this, &DlgDatenbank::sudLoaded);
 
     updateValues();
 }
@@ -155,8 +155,7 @@ void DlgDatenbank::on_comboBox_currentTextChanged(const QString &table)
             ui->tableView->setColumnHidden(col, false);
         ui->tableView->setColumnHidden(model->fieldIndex("deleted"), true);
         if (model == bh->modelSud())
-            connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-                    this, SLOT(tableView_selectionChanged()));
+            connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &DlgDatenbank::tableView_selectionChanged);
     }
 }
 

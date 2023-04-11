@@ -11,7 +11,7 @@ SpinBox::SpinBox(QWidget *parent) :
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
-    connect(this, SIGNAL(valueChanged(int)), SLOT(on_valueChanged()));
+    connect(this, &QSpinBox::valueChanged, this, &SpinBox::on_valueChanged);
 }
 
 void SpinBox::wheelEvent(QWheelEvent *event)

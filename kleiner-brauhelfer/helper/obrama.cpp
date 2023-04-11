@@ -23,7 +23,7 @@ QByteArray OBraMa::download(const QString& table, const QString& format)
     QString url = mUrl.arg(table, format);
     QNetworkRequest request(url);
     QNetworkReply *reply = mNetManager.get(request);
-    connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+    connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec();
     if (reply->error() == QNetworkReply::NoError)
         data = reply->readAll();
@@ -76,8 +76,8 @@ bool OBraMa::getTable(const QString& table, const QString& suffix, const QString
     QFileInfo fileInfo = QFileInfo(file);
     if (file.exists())
     {
-        auto it = mUpdateDates.find(table);
-        if (it == mUpdateDates.end())
+        const auto& it = mUpdateDates.constFind(table);
+        if (it == mUpdateDates.constEnd())
             return false;
         if (fileInfo.lastModified() >= it.value())
             return true;

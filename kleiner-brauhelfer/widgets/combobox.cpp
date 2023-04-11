@@ -10,8 +10,8 @@ ComboBox::ComboBox(QWidget *parent) :
     mError(false)
 {
     setFocusPolicy(Qt::StrongFocus);
-    connect(this, SIGNAL(currentIndexChanged(int)), SLOT(on_valueChanged()));
-    connect(this, SIGNAL(currentTextChanged(QString)), SLOT(on_valueChanged()));
+    connect(this, &QComboBox::currentIndexChanged, this, &ComboBox::on_valueChanged);
+    connect(this, &QComboBox::currentTextChanged, this, &ComboBox::on_valueChanged);
 }
 
 void ComboBox::wheelEvent(QWheelEvent *event)

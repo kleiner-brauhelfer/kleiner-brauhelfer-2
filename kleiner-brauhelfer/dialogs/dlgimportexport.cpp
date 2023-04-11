@@ -56,20 +56,20 @@ DlgImportExport::DlgImportExport(bool import, int row, QWidget *parent) :
     ui->rbFormatBrautomat->setVisible(!mImport);
     ui->gpImport->setVisible(mImport);
 
-    connect(ui->cbSud, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbMalzschuettung, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbHopfengaben, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbHefegaben, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbWeitereZutatenGaben, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbRasten, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbWasseraufbereitung, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbSchnellgaerverlauf, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbHauptgaerverlauf, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbNachgaerverlauf, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbBewertungen, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbEtiketten, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbAnhang, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
-    connect(ui->cbTags, SIGNAL(clicked()), this, SLOT(on_rbFormatKbh_clicked()));
+    connect(ui->cbSud, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbMalzschuettung, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbHopfengaben, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbHefegaben, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbWeitereZutatenGaben, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbRasten, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbWasseraufbereitung, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbSchnellgaerverlauf, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbHauptgaerverlauf, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbNachgaerverlauf, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbBewertungen, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbEtiketten, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbAnhang, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
+    connect(ui->cbTags, &QCheckBox::clicked, this, &DlgImportExport::on_rbFormatKbh_clicked);
 }
 
 DlgImportExport::~DlgImportExport()
@@ -225,7 +225,7 @@ bool DlgImportExport::download(const QString &url)
     mNetManager.setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
   #endif
     QNetworkReply *reply = mNetManager.get(request);
-    connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+    connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
     loop.exec();
     if (reply->error() == QNetworkReply::NoError)
         content = reply->readAll();

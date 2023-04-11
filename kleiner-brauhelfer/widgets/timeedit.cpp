@@ -10,7 +10,7 @@ TimeEdit::TimeEdit(QWidget *parent) :
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
-    connect(this, SIGNAL(timeChanged(QTime)), SLOT(on_valueChanged()));
+    connect(this, &QDateTimeEdit::timeChanged, this, &TimeEdit::on_valueChanged);
 }
 
 void TimeEdit::wheelEvent(QWheelEvent *event)

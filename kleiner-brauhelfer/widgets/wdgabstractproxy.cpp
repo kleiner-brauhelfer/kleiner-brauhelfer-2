@@ -48,12 +48,12 @@ bool WdgAbstractProxy::remove()
             move(value.toPoint());
         });
         QEventLoop loop;
-        connect(animation, SIGNAL(finished()), &loop, SLOT(quit()));
+        connect(animation, &QAbstractAnimation::finished, &loop, &QEventLoop::quit);
         animation->start(QAbstractAnimation::DeleteWhenStopped);
         loop.exec();
     }
 
-    if (ProxyModel* m = dynamic_cast<ProxyModel*>(mModel->sourceModel()))
+    if (ProxyModel* m = qobject_cast<ProxyModel*>(mModel->sourceModel()))
         return m->removeRow(mModel->mapRowToSource(mRow));
     else
         return mModel->removeRow(mRow);
@@ -86,7 +86,7 @@ bool WdgAbstractProxy::moveUp()
             move(p);
         });
         QEventLoop loop;
-        connect(animation, SIGNAL(finished()), &loop, SLOT(quit()));
+        connect(animation, &QAbstractAnimation::finished, &loop, &QEventLoop::quit);
         animation->start(QAbstractAnimation::DeleteWhenStopped);
         loop.exec();
         mParentLayout->update();
@@ -122,7 +122,7 @@ bool WdgAbstractProxy::moveDown()
             w->move(p);
         });
         QEventLoop loop;
-        connect(animation, SIGNAL(finished()), &loop, SLOT(quit()));
+        connect(animation, &QAbstractAnimation::finished, &loop, &QEventLoop::quit);
         animation->start(QAbstractAnimation::DeleteWhenStopped);
         loop.exec();
         mParentLayout->update();

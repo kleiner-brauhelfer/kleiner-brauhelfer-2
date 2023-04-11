@@ -212,9 +212,10 @@ bool ModelAusruestung::setDataExt(const QModelIndex &idx, const QVariant &value)
 
 bool ModelAusruestung::removeRows(int row, int count, const QModelIndex &parent)
 {
-    QList<int> ids(count);
+    QList<int> ids;
+    ids.reserve(count);
     for (int i = 0; i < count; ++i)
-        ids[i] = data(row + i, ColID).toInt();
+        ids.append(data(row + i, ColID).toInt());
     if (SqlTableModel::removeRows(row, count, parent))
     {
         for (int r = 0; r < bh->modelGeraete()->rowCount(); ++r)

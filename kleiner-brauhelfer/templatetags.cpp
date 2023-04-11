@@ -277,6 +277,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                 if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
                 {
                     liste.clear();
+                    liste.reserve(model->rowCount());
                     model = bh->sud()->modelWasseraufbereitung();
                     for (int row = 0; row < model->rowCount(); ++row)
                     {
@@ -325,6 +326,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     ctxZutaten["Malz"] = QVariantMap({{"Liste", liste}});
 
                 liste.clear();
+                liste.reserve(model->rowCount());
                 model = bh->sud()->modelHopfengaben();
                 for (int row = 0; row < model->rowCount(); ++row)
                 {
@@ -523,11 +525,12 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
             ctxAnlage["Name"] = anlageName;
             ctxAnlage["KorrekturMenge"] = bh->modelAusruestung()->data(anlageIndex, ModelAusruestung::ColKorrekturMenge).toInt();
             ctxAnlage["Bemerkung"] = bh->modelAusruestung()->data(anlageIndex, ModelAusruestung::ColBemerkung).toString();
-            liste.clear();
             ProxyModel modelGeraete;
             modelGeraete.setSourceModel(bh->modelGeraete());
             modelGeraete.setFilterKeyColumn(ModelGeraete::ColAusruestungAnlagenID);
             modelGeraete.setFilterRegularExpression(QString("^%1$").arg(anlageId.toInt()));
+            liste.clear();
+            liste.reserve(modelGeraete.rowCount());
             for (int row = 0; row < modelGeraete.rowCount(); ++row)
             {
                 liste << QVariantMap({{"Name", modelGeraete.data(row, ModelGeraete::ColBezeichnung)}});
@@ -539,11 +542,12 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
 
         // Anhang
         QDir databasePath = QDir(gSettings->databaseDir());
-        liste.clear();
         ProxyModel modelAnhang;
         modelAnhang.setSourceModel(bh->modelAnhang());
         modelAnhang.setFilterKeyColumn(ModelAnhang::ColSudID);
         modelAnhang.setFilterRegularExpression(QString("^%1$").arg(sudId));
+        liste.clear();
+        liste.reserve(modelAnhang.rowCount());
         for (int row = 0; row < modelAnhang.rowCount(); ++row)
         {
             QVariantMap map;

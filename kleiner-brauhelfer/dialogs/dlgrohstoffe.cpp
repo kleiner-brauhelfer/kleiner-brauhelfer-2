@@ -61,10 +61,10 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     menu->addSeparator();
     menu->addAction(ui->actionNeuKopie);
     ui->buttonAdd->setMenu(menu);
-    connect(ui->actionNeu, SIGNAL(triggered()), this, SLOT(buttonAdd_clicked()));
-    connect(ui->actionNeuVorlage, SIGNAL(triggered()), this, SLOT(buttonNeuVorlage_clicked()));
-    connect(ui->actionNeuObrama, SIGNAL(triggered()), this, SLOT(buttonNeuVorlageObrama_clicked()));
-    connect(ui->actionNeuKopie, SIGNAL(triggered()), this, SLOT(buttonCopy_clicked()));
+    connect(ui->actionNeu, &QAction::triggered, this, &DlgRohstoffe::buttonAdd_clicked);
+    connect(ui->actionNeuVorlage, &QAction::triggered, this, &DlgRohstoffe::buttonNeuVorlage_clicked);
+    connect(ui->actionNeuObrama, &QAction::triggered, this, &DlgRohstoffe::buttonNeuVorlageObrama_clicked);
+    connect(ui->actionNeuKopie, &QAction::triggered, this, &DlgRohstoffe::buttonCopy_clicked);
 
     pal = ui->tableMalz->palette();
     pal.setColor(QPalette::Button, gSettings->colorMalz);
@@ -114,7 +114,7 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     table->setModel(proxyModel);
 
     modulesChanged(Settings::ModuleAlle);
-    connect(gSettings, SIGNAL(modulesChanged(Settings::Modules)), this, SLOT(modulesChanged(Settings::Modules)));
+    connect(gSettings, &Settings::modulesChanged, this, &DlgRohstoffe::modulesChanged);
 }
 
 DlgRohstoffe::~DlgRohstoffe()

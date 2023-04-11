@@ -63,12 +63,11 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
 
     gSettings->endGroup();
 
-    connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
-    connect(bh, SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(bh, SIGNAL(discarded()), this, SLOT(sudLoaded()));
-    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
-    connect(bh->sud(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)),
-                    this, SLOT(sudDataChanged(QModelIndex)));
+    connect(qApp, &QApplication::focusChanged, this, &TabBraudaten::focusChanged);
+    connect(bh, &Brauhelfer::modified, this, &TabBraudaten::updateValues);
+    connect(bh, &Brauhelfer::discarded, this, &TabBraudaten::sudLoaded);
+    connect(bh->sud(), &SudObject::loadedChanged, this, &TabBraudaten::sudLoaded);
+    connect(bh->sud(), &SudObject::dataChanged, this, &TabBraudaten::sudDataChanged);
 
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungBrauen(html);});
 }

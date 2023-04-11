@@ -19,9 +19,9 @@ TabZusammenfassung::TabZusammenfassung(QWidget *parent) :
     ui->cbAuswahl->setCurrentText(gSettings->value("auswahl", "spickzettel").toString());
     gSettings->endGroup();
 
-    connect(bh, SIGNAL(modified()), this, SLOT(updateWebView()), Qt::QueuedConnection);
-    connect(bh, SIGNAL(discarded()), this, SLOT(updateWebView()), Qt::QueuedConnection);
-    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(updateWebView()), Qt::QueuedConnection);
+    connect(bh, &Brauhelfer::modified, this, &TabZusammenfassung::updateWebView, Qt::QueuedConnection);
+    connect(bh, &Brauhelfer::discarded,this, &TabZusammenfassung::updateWebView, Qt::QueuedConnection);
+    connect(bh->sud(), &SudObject::loadedChanged, this, &TabZusammenfassung::updateWebView, Qt::QueuedConnection);
 }
 
 TabZusammenfassung::~TabZusammenfassung()

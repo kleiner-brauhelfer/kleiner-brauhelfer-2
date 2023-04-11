@@ -9,7 +9,7 @@ DlgHilfe::DlgHilfe(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->webview->setContextMenuPolicy(Qt::DefaultContextMenu);
-    connect(ui->webview, SIGNAL(urlChanged(QUrl)), this, SLOT(urlChanged(QUrl)));
+    connect(ui->webview, &WebView::urlChanged, this, &DlgHilfe::urlChanged);
 }
 
 DlgHilfe::~DlgHilfe()

@@ -53,7 +53,7 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
             QIcon icon = button->icon();
             if (!icon.isNull() && !name.isEmpty())
             {
-                icon.addFile(QString(":/images/dark/%1.svg").arg(name));
+                icon.addFile(QStringLiteral(":/images/dark/%1.svg").arg(name));
                 button->setIcon(icon);
             }
         }
@@ -104,14 +104,13 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     ui->splitter->setSizes({200, 200, 50});
 
     modulesChanged(Settings::ModuleAlle);
-    connect(gSettings, SIGNAL(modulesChanged(Settings::Modules)), this, SLOT(modulesChanged(Settings::Modules)));
+    connect(gSettings, &Settings::modulesChanged, this, &DlgAusruestung::modulesChanged);
 
-    connect(qApp, SIGNAL(focusChanged(QWidget*,QWidget*)), this, SLOT(focusChanged(QWidget*,QWidget*)));
-    connect(bh->sud(), SIGNAL(loadedChanged()), this, SLOT(sudLoaded()));
-    connect(bh->modelSud(), SIGNAL(modified()), this, SLOT(updateDurchschnitt()));
-    connect(bh->modelAusruestung(), SIGNAL(modified()), this, SLOT(updateValues()));
-    connect(ui->tableViewAnlagen->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
-            this, SLOT(anlage_selectionChanged()));
+    connect(qApp, &QApplication::focusChanged, this, &DlgAusruestung::focusChanged);
+    connect(bh->sud(), &SudObject::loadedChanged, this, &DlgAusruestung::sudLoaded);
+    connect(bh->modelSud(), &ModelSud::modified, this, &DlgAusruestung::updateDurchschnitt);
+    connect(bh->modelAusruestung(), &ModelAusruestung::modified, this, &DlgAusruestung::updateValues);
+    connect(ui->tableViewAnlagen->selectionModel(), &QItemSelectionModel::selectionChanged, this, &DlgAusruestung::anlage_selectionChanged);
 
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setData(ModelAusruestung::ColBemerkung, html);});
 }
@@ -230,14 +229,14 @@ void DlgAusruestung::anlage_selectionChanged()
         mRow = selectedRows[0].row();
         ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
         QString anlage = model->data(model->index(mRow, ModelAusruestung::ColName)).toString();
-        regExpId = QRegularExpression(QString("^%1$").arg(QRegularExpression::escape(anlage)));
-        regExpId2 = QRegularExpression(QString("^%1$").arg(model->data(model->index(mRow, ModelAusruestung::ColID)).toInt()));
+        regExpId = QRegularExpression(QStringLiteral("^%1$").arg(QRegularExpression::escape(anlage)));
+        regExpId2 = QRegularExpression(QStringLiteral("^%1$").arg(model->data(model->index(mRow, ModelAusruestung::ColID)).toInt()));
         ui->scrollArea->setEnabled(true);
     }
     else
     {
-        regExpId = QRegularExpression(QString("--dummy--"));
-        regExpId2 = QRegularExpression(QString("--dummy--"));
+        regExpId = QRegularExpression(QStringLiteral("--dummy--"));
+        regExpId2 = QRegularExpression(QStringLiteral("--dummy--"));
         ui->scrollArea->setEnabled(false);
     }
     static_cast<ProxyModel*>(ui->tableViewGeraete->model())->setFilterRegularExpression(regExpId2);
@@ -372,7 +371,7 @@ void DlgAusruestung::updateDurchschnitt()
     QString anlage = data(ModelAusruestung::ColName).toString();
     ProxyModelSud modelSud;
     modelSud.setSourceModel(bh->modelSud());
-    QRegularExpression regExp(QString("^%1$").arg(QRegularExpression::escape(anlage)));
+    QRegularExpression regExp(QStringLiteral("^%1$").arg(QRegularExpression::escape(anlage)));
     modelSud.setFilterKeyColumn(ModelSud::ColAnlage);
     modelSud.setFilterRegularExpression(regExp);
     modelSud.setFilterStatus(ProxyModelSud::Gebraut | ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);

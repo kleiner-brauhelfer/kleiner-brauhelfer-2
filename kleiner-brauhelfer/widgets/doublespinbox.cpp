@@ -11,7 +11,7 @@ DoubleSpinBox::DoubleSpinBox(QWidget *parent) :
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
-    connect(this, SIGNAL(valueChanged(double)), SLOT(on_valueChanged()));
+    connect(this, &QDoubleSpinBox::valueChanged, this, &DoubleSpinBox::on_valueChanged);
 }
 
 void DoubleSpinBox::wheelEvent(QWheelEvent *event)

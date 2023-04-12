@@ -228,8 +228,6 @@ public:
     QString lastError() const;
     bool updateDatabase();
 
-    double convertGravity(const QString srcunit, const QString destunit, double value);
-
     SudObject* sud() const;
 
     ModelSud* modelSud() const;

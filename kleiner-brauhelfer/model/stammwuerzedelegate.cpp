@@ -50,9 +50,10 @@ void StammWuerzeDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
 
 void StammWuerzeDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
 {
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
     QDoubleSpinBox *w = static_cast<QDoubleSpinBox*>(editor);
     w->interpretText();
-    model->setData(index, w->value(), Qt::EditRole);
+    model->setData(index,BierCalc::convertGravity(grvunit,BierCalc::GravityUnit::Plato, w->value()), Qt::EditRole);
 }
 
 void StammWuerzeDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const

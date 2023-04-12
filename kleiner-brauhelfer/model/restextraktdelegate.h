@@ -13,6 +13,7 @@ public:
     void setEditorData(QWidget *editor, const QModelIndex &index) const Q_DECL_OVERRIDE;
     void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const Q_DECL_OVERRIDE;
     void updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
+    QString displayText(const QVariant &value, const QLocale &locale) const Q_DECL_OVERRIDE;
 private:
     const bool mHauptgaerung;
 };

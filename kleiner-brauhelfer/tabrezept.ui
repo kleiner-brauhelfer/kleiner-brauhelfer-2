@@ -982,7 +982,7 @@ p, li { white-space: pre-wrap; }
        </size>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tabMalz">
        <attribute name="title">
@@ -1580,14 +1580,14 @@ p, li { white-space: pre-wrap; }
            </widget>
           </item>
           <item row="2" column="3">
-           <widget class="QLabel" name="label_46">
+           <widget class="LabelGrV" name="label_46">
             <property name="text">
-             <string>°P</string>
+             <string/>
             </property>
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="DoubleSpinBoxSud" name="tbSWHefestarter">
+           <widget class="DoubleSpinBoxGrV" name="tbSWHefestarter">
             <property name="minimumSize">
              <size>
               <width>80</width>

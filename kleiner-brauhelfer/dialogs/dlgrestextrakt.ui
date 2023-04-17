@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>333</width>
-    <height>443</height>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -710,15 +710,12 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_16">
+       <widget class="LabelGrV" name="label_16">
         <property name="minimumSize">
          <size>
           <width>40</width>
           <height>0</height>
          </size>
-        </property>
-        <property name="text">
-         <string>°P</string>
         </property>
        </widget>
       </item>
@@ -798,15 +795,12 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_20">
+       <widget class="LabelGrV" name="label_20">
         <property name="minimumSize">
          <size>
           <width>40</width>
           <height>0</height>
          </size>
-        </property>
-        <property name="text">
-         <string>°P</string>
         </property>
        </widget>
       </item>
@@ -853,6 +847,11 @@
    <class>DateTimeEdit</class>
    <extends>QDateTimeEdit</extends>
    <header>widgets/datetimeedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>LabelGrV</class>
+   <extends>QLabel</extends>
+   <header>widgets/labelgrv.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

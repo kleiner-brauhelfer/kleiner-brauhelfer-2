@@ -9,7 +9,10 @@ extern Settings* gSettings;
 DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, const QDateTime& dt, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DlgRestextrakt)
+
 {
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+
     ui->setupUi(this);
 
     gSettings->beginGroup("General");
@@ -19,21 +22,21 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, const QDate
     ui->cbEinheit->setCurrentIndex(gSettings->value("RefraktometerEinheit", 0).toInt());
     ui->tbKorrekturFaktor->setValue(BierCalc::faktorPlatoToBrix);
     gSettings->endGroup();
-
+    ui->tbSw->setDecimals(gSettings->GravityDecimals());
+    ui->tbExtrakt->setDecimals(gSettings->GravityDecimals());
     if (sw == 0.0)
     {
         setWindowTitle(tr("Stammwürze"));
         ui->WdgExtrakt->setVisible(false);
         ui->comboBox_FormelBrixPlato->setVisible(false);
         ui->label_FormelBrixPlato->setVisible(false);
-        ui->tbSw->setValue(value);
+        ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,value));
         mSw = true;
     }
     else
     {
         setWindowTitle(tr("Restextrakt"));
-        ui->tbSw->setValue(sw);
-        ui->tbExtrakt->setValue(value);
+        ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,sw));
         mSw = false;
     }
 
@@ -104,16 +107,20 @@ void DlgRestextrakt::on_DlgRestextrakt_accepted()
 
 double DlgRestextrakt::value() const
 {
-    return mSw ? ui->tbSw->value() : ui->tbExtrakt->value();
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+    return mSw ? BierCalc::convertGravity(grvunit,BierCalc::GravityUnit::Plato,ui->tbSw->value()) : BierCalc::convertGravity(grvunit,BierCalc::GravityUnit::Plato,ui->tbExtrakt->value());
 }
 
 void DlgRestextrakt::setValue(double value)
 {
-    if (mSw)
-        ui->tbSw->setValue(value);
-    else
-        ui->tbExtrakt->setValue(value);
-}
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+    if (mSw)  {
+        ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,value));
+    } else {
+        ui->tbExtrakt->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,value));
+    }
+    }
+
 
 double DlgRestextrakt::temperatur() const
 {
@@ -147,54 +154,65 @@ void DlgRestextrakt::on_cbAuswahl_currentIndexChanged(int index)
 
 void DlgRestextrakt::on_tbPlato_valueChanged(double value)
 {
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+
     if (ui->tbPlato->hasFocus())
     {
         ui->tbDichte->setValue(BierCalc::platoToDichte(value));
         if (mSw)
-            ui->tbSw->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value()));
+            ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
         else
-            ui->tbExtrakt->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value()));
+            ui->tbExtrakt->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
     }
 }
 
 void DlgRestextrakt::on_tbDichte_valueChanged(double value)
 {
+
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+
     if (ui->tbDichte->hasFocus())
     {
         ui->tbPlato->setValue(BierCalc::dichteToPlato(value));
         if (mSw)
-            ui->tbSw->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value()));
+            ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
         else
-            ui->tbExtrakt->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value()));
+            ui->tbExtrakt->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
     }
 }
 
 void DlgRestextrakt::on_tbTemp_valueChanged(double value)
 {
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+
     if (ui->tbTemp->hasFocus())
     {
         ui->tbTempRefraktometer->setValue(value);
         ui->tbTempManuell->setValue(value);
         if (mSw)
-            ui->tbSw->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value()));
+            ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
         else
-            ui->tbExtrakt->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value()));
+            ui->tbExtrakt->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
     }
 }
 
 void DlgRestextrakt::on_tbEichtemp_valueChanged(double value)
 {
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+
     if (ui->tbEichtemp->hasFocus())
     {
         if (mSw)
-            ui->tbSw->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), value));
+            ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), value)));
         else
-            ui->tbExtrakt->setValue(BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), value));
+            ui->tbExtrakt->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), value)));
     }
 }
 
 void DlgRestextrakt::calculateFromRefraktometer()
 {
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+
     double plato, dichte;
     if (mSw)
     {
@@ -202,7 +220,7 @@ void DlgRestextrakt::calculateFromRefraktometer()
             plato = BierCalc::brixToPlato(ui->tbBrix->value());
         else
             plato = ui->tbBrix->value();
-        ui->tbSw->setValue(plato);
+        ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,plato));
     }
     else
     {
@@ -211,7 +229,7 @@ void DlgRestextrakt::calculateFromRefraktometer()
         else
             dichte = BierCalc::brixToDichte(ui->tbSw->value(), BierCalc::platoToBrix(ui->tbBrix->value()), (BierCalc::FormulaBrixToPlato)ui->comboBox_FormelBrixPlato->currentIndex());
         plato = BierCalc::dichteToPlato(dichte);
-        ui->tbExtrakt->setValue(plato);
+        ui->tbExtrakt->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,plato));
     }
 }
 

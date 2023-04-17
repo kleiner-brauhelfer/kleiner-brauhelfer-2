@@ -21,9 +21,10 @@ QWidget* RestextraktDelegate::createEditor(QWidget *parent, const QStyleOptionVi
     if (mReadonly)
         return nullptr;
     QDateTime dt;
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
     double T;
     double re = index.data().toDouble();
-    double sw = bh->sud()->getSWIst();
+    double sw = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getSWIst());
     if (mHauptgaerung)
     {
         dt = index.sibling(index.row(), ModelHauptgaerverlauf::ColZeitstempel).data().toDateTime();
@@ -41,7 +42,8 @@ QWidget* RestextraktDelegate::createEditor(QWidget *parent, const QStyleOptionVi
 void RestextraktDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     DlgRestextrakt *w = static_cast<DlgRestextrakt*>(editor);
-    w->setValue(index.data(Qt::EditRole).toDouble());
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+    w->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,index.data(Qt::EditRole).toDouble()));
     if (mHauptgaerung)
     {
         w->setDatum(index.sibling(index.row(), ModelHauptgaerverlauf::ColZeitstempel).data().toDateTime());
@@ -56,10 +58,11 @@ void RestextraktDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
 
 void RestextraktDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
 {
+    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
     DlgRestextrakt *w = static_cast<DlgRestextrakt*>(editor);
     if (w->result() == QDialog::Accepted)
     {
-        model->setData(index,w->value(), Qt::EditRole);
+    model->setData(index,BierCalc::convertGravity(grvunit,BierCalc::GravityUnit::Plato,w->value()), Qt::EditRole);
         if (mHauptgaerung)
         {
             model->setData(index.sibling(index.row(), ModelHauptgaerverlauf::ColTemp), w->temperatur(), Qt::EditRole);

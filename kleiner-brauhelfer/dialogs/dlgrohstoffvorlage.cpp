@@ -24,16 +24,16 @@ DlgRohstoffVorlage::DlgRohstoffVorlage(Art art, QWidget *parent) :
         switch (mRohstoffart)
         {
         case MalzOBraMa:
-            obrama.getTable("fermentables", "_full", gSettings->dataDir(2) + "obrama/fermentables_full.csv");
+            obrama.getTable(QStringLiteral("fermentables"), QStringLiteral("_full"), gSettings->dataDir(2) + "obrama/fermentables_full.csv");
             break;
         case HopfenOBraMa:
-            obrama.getTable("hops", "_full", gSettings->dataDir(2) + "obrama/hops_full.csv");
+            obrama.getTable(QStringLiteral("hops"), QStringLiteral("_full"), gSettings->dataDir(2) + "obrama/hops_full.csv");
             break;
         case HefeOBraMa:
-            obrama.getTable("yeasts", "_full", gSettings->dataDir(2) + "obrama/yeasts_full.csv");
+            obrama.getTable(QStringLiteral("yeasts"), QStringLiteral("_full"), gSettings->dataDir(2) + "obrama/yeasts_full.csv");
             break;
         case WZutatenOBraMa:
-            obrama.getTable("adjuncts", "", gSettings->dataDir(2) + "obrama/adjuncts.csv");
+            obrama.getTable(QStringLiteral("adjuncts"),  QStringLiteral(""),  gSettings->dataDir(2) + "obrama/adjuncts.csv");
             break;
         default:
             break;
@@ -67,31 +67,31 @@ QString DlgRohstoffVorlage::getFileName(bool withPath) const
     switch (mRohstoffart)
     {
     case Malz:
-        fileName = "Malz.csv";
+        fileName = QStringLiteral("Malz.csv");
         break;
     case Hopfen:
-        fileName = "Hopfen.csv";
+        fileName = QStringLiteral("Hopfen.csv");
         break;
     case Hefe:
-        fileName = "Hefe.csv";
+        fileName = QStringLiteral("Hefe.csv");
         break;
     case WZutaten:
-        fileName = "WeitereZutaten.csv";
+        fileName = QStringLiteral("WeitereZutaten.csv");
         break;
     case MalzOBraMa:
-        fileName = "obrama/fermentables_full.csv";
+        fileName = QStringLiteral("obrama/fermentables_full.csv");
         break;
     case HopfenOBraMa:
-        fileName = "obrama/hops_full.csv";
+        fileName = QStringLiteral("obrama/hops_full.csv");
         break;
     case HefeOBraMa:
-        fileName = "obrama/yeasts_full.csv";
+        fileName = QStringLiteral("obrama/yeasts_full.csv");
         break;
     case WZutatenOBraMa:
-        fileName = "obrama/adjuncts.csv";
+        fileName = QStringLiteral("obrama/adjuncts.csv");
         break;
     case Wasserprofil:
-        fileName = "Wasserprofile.csv";
+        fileName = QStringLiteral("Wasserprofile.csv");
         break;
     }
     return withPath ? gSettings->dataDir(2) + fileName : fileName;
@@ -119,78 +119,78 @@ void DlgRohstoffVorlage::setModel()
             switch (mRohstoffart)
             {
             case MalzOBraMa:
-                col = model->fieldIndex("name");
+                col = model->fieldIndex(QStringLiteral("name"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
                 filterColumns.append(col);
-                col = model->fieldIndex("alias_name");
+                col = model->fieldIndex(QStringLiteral("alias_name"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Aliasname"));
                 filterColumns.append(col);
-                col = model->fieldIndex("color");
+                col = model->fieldIndex(QStringLiteral("color"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Farbe [EBC]"));
-                col = model->fieldIndex("max_in_batch");
+                col = model->fieldIndex(QStringLiteral("max_in_batch"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Max. Anteil [%]"));
-                col = model->fieldIndex("notes");
+                col = model->fieldIndex(QStringLiteral("notes"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
                 filterColumns.append(col);
                 break;
             case HopfenOBraMa:
-                col = model->fieldIndex("name");
+                col = model->fieldIndex(QStringLiteral("name"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
                 filterColumns.append(col);
-                col = model->fieldIndex("category");
+                col = model->fieldIndex(QStringLiteral("category"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Typ"));
-                col = model->fieldIndex("alpha");
+                col = model->fieldIndex(QStringLiteral("alpha"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alpha [%]"));
-                col = model->fieldIndex("aroma");
+                col = model->fieldIndex(QStringLiteral("aroma"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
                 filterColumns.append(col);
-                col = model->fieldIndex("replacement");
+                col = model->fieldIndex(QStringLiteral("replacement"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alternativen"));
                 filterColumns.append(col);
                 break;
             case HefeOBraMa:
-                col = model->fieldIndex("name");
+                col = model->fieldIndex(QStringLiteral("name"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
                 filterColumns.append(col);
-                col = model->fieldIndex("category");
+                col = model->fieldIndex(QStringLiteral("category"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Kategorie"));
-                col = model->fieldIndex("sub_category");
+                col = model->fieldIndex(QStringLiteral("sub_category"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Trocken/Flüssig"));
-                col = model->fieldIndex("notes");
+                col = model->fieldIndex(QStringLiteral("notes"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
                 filterColumns.append(col);
-                col = model->fieldIndex("use_for");
+                col = model->fieldIndex(QStringLiteral("use_for"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Bierstil"));
                 filterColumns.append(col);
-                col = model->fieldIndex("replacement");
+                col = model->fieldIndex(QStringLiteral("replacement"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alternativen"));
                 filterColumns.append(col);
                 break;
             case WZutatenOBraMa:
-                col = model->fieldIndex("name");
+                col = model->fieldIndex(QStringLiteral("name"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Name"));
                 filterColumns.append(col);
-                col = model->fieldIndex("category");
+                col = model->fieldIndex(QStringLiteral("category"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Typ"));
-                col = model->fieldIndex("use_for");
+                col = model->fieldIndex(QStringLiteral("use_for"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Verwendung"));
                 filterColumns.append(col);
@@ -248,7 +248,7 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
 
         case MalzOBraMa:
             mValues.insert(ModelMalz::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
-            mValues.insert(ModelMalz::ColPotential, index.sibling(index.row(), model->fieldIndex("potential")).data().toDouble());
+            mValues.insert(ModelMalz::ColPotential, index.sibling(index.row(), model->fieldIndex(QStringLiteral("potential"))).data().toDouble());
             mValues.insert(ModelMalz::ColFarbe, index.sibling(index.row(), header->logicalIndex(2)).data().toDouble());
             fVal = index.sibling(index.row(), header->logicalIndex(3)).data().toDouble();
             if (fVal > 0)
@@ -259,11 +259,11 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
         case Hopfen:
             mValues.insert(ModelHopfen::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
-            if (typ == "aroma")
+            if (typ == QStringLiteral("aroma"))
                 mValues.insert(ModelHopfen::ColTyp, 1);
-            else if (typ == "bitter")
+            else if (typ == QStringLiteral("bitter"))
                 mValues.insert(ModelHopfen::ColTyp, 2);
-            else if (typ == "universal" || typ == "mischung")
+            else if (typ == QStringLiteral("universal") || typ == QStringLiteral("mischung"))
                 mValues.insert(ModelHopfen::ColTyp, 3);
             mValues.insert(ModelHopfen::ColAlpha, index.sibling(index.row(), header->logicalIndex(2)).data().toDouble());
             mValues.insert(ModelHopfen::ColEigenschaften, index.sibling(index.row(), header->logicalIndex(3)).data());
@@ -272,11 +272,11 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
         case HopfenOBraMa:
             mValues.insert(ModelHopfen::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
-            if (typ == "aroma")
+            if (typ == QStringLiteral("aroma"))
                 mValues.insert(ModelHopfen::ColTyp, 1);
-            else if (typ == "bitter")
+            else if (typ == QStringLiteral("bitter"))
                 mValues.insert(ModelHopfen::ColTyp, 2);
-            else if (typ == "universal" || typ == "mischung")
+            else if (typ == QStringLiteral("universal") || typ == QStringLiteral("mischung"))
                 mValues.insert(ModelHopfen::ColTyp, 3);
             mValues.insert(ModelHopfen::ColAlpha, index.sibling(index.row(), header->logicalIndex(2)).data().toDouble());
             mValues.insert(ModelHopfen::ColEigenschaften, index.sibling(index.row(), header->logicalIndex(3)).data());
@@ -286,14 +286,14 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
         case Hefe:
             mValues.insert(ModelHefe::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
-            if (typ == "og" || typ == "obergärig")
+            if (typ == QStringLiteral("og") || typ == QStringLiteral("obergärig"))
                 mValues.insert(ModelHefe::ColTypOGUG, 1);
-            else if (typ == "ug" || typ == "untergärig")
+            else if (typ == QStringLiteral("ug") || typ == QStringLiteral("untergärig"))
                 mValues.insert(ModelHefe::ColTypOGUG, 2);
             typ = index.sibling(index.row(), header->logicalIndex(2)).data().toString().toLower();
-            if (typ == "trocken")
+            if (typ == QStringLiteral("trocken"))
                 mValues.insert(ModelHefe::ColTypTrFl, 1);
-            else if (typ == "flüssig")
+            else if (typ == QStringLiteral("flüssig"))
                 mValues.insert(ModelHefe::ColTypTrFl, 2);
             mValues.insert(ModelHefe::ColWuerzemenge, index.sibling(index.row(), header->logicalIndex(4)).data().toInt());
             mValues.insert(ModelHefe::ColTemperatur, index.sibling(index.row(), header->logicalIndex(5)).data());
@@ -305,44 +305,44 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
         case HefeOBraMa:
             mValues.insert(ModelHefe::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
-            if (typ == "og" || typ == "obergärig")
+            if (typ == QStringLiteral("og") || typ == QStringLiteral("obergärig"))
                 mValues.insert(ModelHefe::ColTypOGUG, 1);
-            else if (typ == "ug" || typ == "untergärig")
+            else if (typ == QStringLiteral("ug") || typ == QStringLiteral("untergärig"))
                 mValues.insert(ModelHefe::ColTypOGUG, 2);
             typ = index.sibling(index.row(), header->logicalIndex(2)).data().toString().toLower();
-            if (typ == "trocken")
+            if (typ == QStringLiteral("trocken"))
                 mValues.insert(ModelHefe::ColTypTrFl, 1);
-            else if (typ == "flüssig")
+            else if (typ == QStringLiteral("flüssig"))
                 mValues.insert(ModelHefe::ColTypTrFl, 2);
-            str1 = index.sibling(index.row(), model->fieldIndex("temperature_min")).data().toString();
-            str2 = index.sibling(index.row(), model->fieldIndex("temperature_max")).data().toString();
-            mValues.insert(ModelHefe::ColTemperatur, QString("%1 - %2").arg(str1, str2));
+            str1 = index.sibling(index.row(), model->fieldIndex(QStringLiteral("temperature_min"))).data().toString();
+            str2 = index.sibling(index.row(), model->fieldIndex(QStringLiteral("temperature_max"))).data().toString();
+            mValues.insert(ModelHefe::ColTemperatur, QStringLiteral("%1 - %2").arg(str1, str2));
             mValues.insert(ModelHefe::ColEigenschaften, index.sibling(index.row(), header->logicalIndex(3)).data());
-            mValues.insert(ModelHefe::ColSedimentation, index.sibling(index.row(), model->fieldIndex("flocculation")).data());
-            str1 = index.sibling(index.row(), model->fieldIndex("attenuation_min")).data().toString();
-            str2 = index.sibling(index.row(), model->fieldIndex("attenuation_max")).data().toString();
-            mValues.insert(ModelHefe::ColEVG, QString("%1 - %2").arg(str1, str2));
+            mValues.insert(ModelHefe::ColSedimentation, index.sibling(index.row(), model->fieldIndex(QStringLiteral("flocculation"))).data());
+            str1 = index.sibling(index.row(), model->fieldIndex(QStringLiteral("attenuation_min"))).data().toString();
+            str2 = index.sibling(index.row(), model->fieldIndex(QStringLiteral("attenuation_max"))).data().toString();
+            mValues.insert(ModelHefe::ColEVG, QStringLiteral("%1 - %2").arg(str1, str2));
             mValues.insert(ModelHefe::ColAlternativen, index.sibling(index.row(), header->logicalIndex(5)).data());
             break;
 
         case WZutaten:
             mValues.insert(ModelWeitereZutaten::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
-            if (typ == "honig")
+            if (typ == QStringLiteral("honig"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Honig));
-            else if (typ == "zucker")
+            else if (typ == QStringLiteral("zucker"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Zucker));
-            else if (typ == "gewürz" || typ == "gewürze")
+            else if (typ == QStringLiteral("gewürz") || typ == QStringLiteral("gewürze"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Gewuerz));
-            else if (typ == "frucht")
+            else if (typ == QStringLiteral("frucht"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Frucht));
-            else if (typ == "sonstiges")
+            else if (typ == QStringLiteral("sonstiges"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges));
-            else if (typ == "kraut" || typ == "kräuter")
+            else if (typ == QStringLiteral("kraut") || typ == QStringLiteral("kräuter"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Kraut));
-            else if (typ == "wasseraufbereitung")
+            else if (typ == QStringLiteral("wasseraufbereitung"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Wasseraufbereiung));
-            else if (typ == "klärmittel")
+            else if (typ == QStringLiteral("klärmittel"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Klaermittel));
             mValues.insert(ModelWeitereZutaten::ColAusbeute, index.sibling(index.row(), header->logicalIndex(2)).data().toDouble());
             mValues.insert(ModelWeitereZutaten::ColFarbe, index.sibling(index.row(), header->logicalIndex(3)).data().toDouble());
@@ -351,21 +351,21 @@ void DlgRohstoffVorlage::on_buttonBox_accepted()
         case WZutatenOBraMa:
             mValues.insert(ModelWeitereZutaten::ColName, index.sibling(index.row(), header->logicalIndex(0)).data());
             typ = index.sibling(index.row(), header->logicalIndex(1)).data().toString().toLower();
-            if (typ == "honig")
+            if (typ == QStringLiteral("honig"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Honig));
-            else if (typ == "zucker")
+            else if (typ == QStringLiteral("zucker"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Zucker));
-            else if (typ == "gewürz" || typ == "gewürze")
+            else if (typ == QStringLiteral("gewürz") || typ == QStringLiteral("gewürze"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Gewuerz));
-            else if (typ == "frucht")
+            else if (typ == QStringLiteral("frucht"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Frucht));
-            else if (typ == "sonstiges")
+            else if (typ == QStringLiteral("sonstiges"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Sonstiges));
-            else if (typ == "kraut" || typ == "kräuter")
+            else if (typ == QStringLiteral("kraut") || typ == QStringLiteral("kräuter"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Kraut));
-            else if (typ == "wasseraufbereitung")
+            else if (typ == QStringLiteral("wasseraufbereitung"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Wasseraufbereiung));
-            else if (typ == "klärmittel")
+            else if (typ == QStringLiteral("klärmittel"))
                 mValues.insert(ModelWeitereZutaten::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Klaermittel));
             break;
 

@@ -199,7 +199,7 @@ void DlgDatabaseCleaner::next()
     if (mItTestFncs == mTestFncs.end())
     {
         ui->lblTitle->setText(tr("Keine (weitere) Probleme gefunden."));
-        ui->lblModel->setText("");
+        ui->lblModel->clear();
         ui->lblModel->setVisible(false);
         ui->tableView->setModel(nullptr);
         ui->tableViewIds->setVisible(false);
@@ -277,7 +277,7 @@ bool DlgDatabaseCleaner::testNullField(SqlTableModel *model, const QList<int> &f
 bool DlgDatabaseCleaner::testInvalidId(SqlTableModel* model, const QList<int> &fields, int type)
 {
     InvalidIdProxyModel* proxy = new InvalidIdProxyModel(type == 1 ? mSudIds : mAnlagenIds,
-                                                         model->fieldIndex(type == 1 ? "SudID" : "AusruestungAnlagenID"),
+                                                         model->fieldIndex(type == 1 ? QStringLiteral("SudID") : QStringLiteral("AusruestungAnlagenID")),
                                                          ui->tableView);
     proxy->setSourceModel(model);
     if (proxy->rowCount() != 0)

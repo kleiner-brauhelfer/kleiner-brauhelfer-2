@@ -74,7 +74,7 @@ template <class T> bool SvgView::load_impl(const T& arg)
             return false;
         }
 
-        mSvgItem->setElementId("");
+        mSvgItem->setElementId(QStringLiteral(""));
         mSvgItem->setFlags(QGraphicsItem::ItemClipsToShape);
         mSvgItem->setCacheMode(QGraphicsItem::NoCache);
         mSvgItem->setZValue(0);

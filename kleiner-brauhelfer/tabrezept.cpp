@@ -121,7 +121,7 @@ TabRezept::TabRezept(QWidget *parent) :
     pal.setColor(QPalette::Button, gSettings->colorAnhang);
     ui->btnNeuerAnhang->setPalette(pal);
 
-    mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Settings::Theme::Dark ? ":/images/dark/bier.svg" : ":/images/light/bier.svg");
+    mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Settings::Theme::Dark ? QStringLiteral(":/images/dark/bier.svg") : QStringLiteral(":/images/light/bier.svg"));
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("L"));
 
     ProxyModel* proxy = new ProxyModel(this);
@@ -1181,7 +1181,7 @@ void TabRezept::on_btnNeueHefeGabe_clicked()
 void TabRezept::vergaerungsgradUebernehmen(const QString& hefe)
 {
     QString str = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, hefe, ModelHefe::ColEVG).toString();
-    static QRegularExpression regxExp("[-+]?[0-9]*[.,]?[0-9]+");
+    static QRegularExpression regxExp(QStringLiteral("[-+]?[0-9]*[.,]?[0-9]+"));
     QRegularExpressionMatchIterator i = regxExp.globalMatch(str);
     double mean = 0;
     int N = 0;

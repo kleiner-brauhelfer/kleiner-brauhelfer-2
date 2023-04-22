@@ -65,7 +65,7 @@ void DlgWasseraufbereitung::on_cbAuswahl_currentIndexChanged(int index)
         ui->tbKonzentration->setValue(mList[index].konzentration);
         if (index == mList.size() - 1)
         {
-            ui->tbName->setText("");
+            ui->tbName->clear();
             ui->tbKonzentration->setReadOnly(true);
             ui->tbFaktor->setReadOnly(false);
             ui->cbEinheit->setEnabled(true);

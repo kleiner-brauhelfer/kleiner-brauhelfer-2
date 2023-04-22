@@ -153,7 +153,7 @@ void DlgDatenbank::on_comboBox_currentTextChanged(const QString &table)
         ui->tableView->setModel(model);
         for (int col = 0; col < model->columnCount(); ++col)
             ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setColumnHidden(model->fieldIndex("deleted"), true);
+        ui->tableView->setColumnHidden(model->fieldIndex(QStringLiteral("deleted")), true);
         if (model == bh->modelSud())
             connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &DlgDatenbank::tableView_selectionChanged);
     }
@@ -193,7 +193,7 @@ void DlgDatenbank::on_comboBoxSud_currentTextChanged(const QString &table)
         ui->tableViewSud->setModel(model);
         for (int col = 0; col < model->columnCount(); ++col)
             ui->tableViewSud->setColumnHidden(col, false);
-        ui->tableViewSud->setColumnHidden(model->fieldIndex("deleted"), true);
+        ui->tableViewSud->setColumnHidden(model->fieldIndex(QStringLiteral("deleted")), true);
     }
 }
 

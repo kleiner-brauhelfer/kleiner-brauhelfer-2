@@ -29,14 +29,14 @@ extern Settings* gSettings;
 TabEtikette::TabEtikette(QWidget *parent) :
     TabAbstract(parent),
     ui(new Ui::TabEtikette),
-    mTemplateFilePath("")
+    mTemplateFilePath(QStringLiteral(""))
 {
     ui->setupUi(this);
 
     ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
    #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-    ui->tbTemplate->setTabStopDistance(QFontMetrics(ui->tbTemplate->font()).horizontalAdvance("  "));
+    ui->tbTemplate->setTabStopDistance(QFontMetrics(ui->tbTemplate->font()).horizontalAdvance(QStringLiteral("  ")));
    #else
     ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
    #endif
@@ -45,7 +45,7 @@ TabEtikette::TabEtikette(QWidget *parent) :
     ui->tbTags->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
    #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-    ui->tbTags->setTabStopDistance(QFontMetrics(ui->tbTags->font()).horizontalAdvance("  "));
+    ui->tbTags->setTabStopDistance(QFontMetrics(ui->tbTags->font()).horizontalAdvance(QStringLiteral("  ")));
    #else
     ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTags->font()).width(' '));
    #endif
@@ -108,18 +108,18 @@ void TabEtikette::updateAll()
 void TabEtikette::updateAuswahlListe()
 {
     ui->cbAuswahl->clear();
-    ui->cbAuswahl->addItem("");
+    ui->cbAuswahl->addItem(QStringLiteral(""));
     for (int row = 0; row < bh->sud()->modelAnhang()->rowCount(); ++row)
     {
         QString pfad = bh->sud()->modelAnhang()->index(row, ModelAnhang::ColPfad).data().toString();
-        if (pfad.endsWith(".svg", Qt::CaseInsensitive))
+        if (pfad.endsWith(QStringLiteral(".svg"), Qt::CaseInsensitive))
         {
             QFileInfo fi(pfad);
             ui->cbAuswahl->addItem(fi.fileName(), fi.filePath());
         }
     }
 
-    QDirIterator it(gSettings->dataDir(3), QStringList() << "*.svg");
+    QDirIterator it(gSettings->dataDir(3), QStringList() << QStringLiteral("*.svg"));
     while (it.hasNext())
     {
         it.next();
@@ -213,8 +213,8 @@ void TabEtikette::updateTemplateTags()
         return;
     mTemplateTags.clear();
     TemplateTags::erstelleTagListe(mTemplateTags, bh->sud()->row());
-    mTemplateTags["N"] = "N";
-    mTemplateTags["n"] = "n";
+    mTemplateTags[QStringLiteral("N")] = "N";
+    mTemplateTags[QStringLiteral("n")] = "n";
     updateTags();
     updateSvg();
 }
@@ -295,7 +295,7 @@ void TabEtikette::on_cbAuswahl_activated(int index)
 
 void TabEtikette::on_btnOeffnen_clicked()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("SVG auswählen"), "", tr("SVG (*.svg)"));
+    QString fileName = QFileDialog::getOpenFileName(this, tr("SVG auswählen"), QStringLiteral(""), tr("SVG (*.svg)"));
     if (!fileName.isEmpty())
     {
         QMap<int, QVariant> values({{ModelAnhang::ColSudID, bh->sud()->id()},
@@ -340,12 +340,12 @@ void TabEtikette::on_cbEditMode_clicked(bool checked)
         }
         else
         {
-            ui->tbTemplate->setPlainText("");
+            ui->tbTemplate->setPlainText(QStringLiteral(""));
         }
     }
     else
     {
-        ui->tbTemplate->setPlainText("");
+        ui->tbTemplate->setPlainText(QStringLiteral(""));
     }
     ui->btnSaveTemplate->setVisible(false);
     updateTags();
@@ -376,7 +376,7 @@ void TabEtikette::on_btnExport_clicked()
     gSettings->beginGroup("General");
     QString path = gSettings->value("exportPath", QDir::homePath()).toString();
     QString filePath = QFileDialog::getSaveFileName(this, tr("SVG exportieren"),
-                                     path + "/" + bh->sud()->getSudname() + "_" + tr("Etikett") +  ".svg", "SVG (*.svg)");
+                                                    path + "/" + bh->sud()->getSudname() + "_" + tr("Etikett") + ".svg", QStringLiteral("SVG (*.svg)"));
     if (!filePath.isEmpty())
     {
         gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
@@ -428,8 +428,8 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
     QDir::setCurrent(QFileInfo(mTemplateFilePath).absolutePath());
 
     Mustache::Renderer mustacheRenderer;
-    mTemplateTags["N"] = ui->tbAnzahl->value();
-    bool constSvg = !svg_template.contains("{{n}}");
+    mTemplateTags[QStringLiteral("N")] = ui->tbAnzahl->value();
+    bool constSvg = !svg_template.contains(QStringLiteral("{{n}}"));
     if (constSvg)
     {
         Mustache::QtVariantContext context(mTemplateTags);
@@ -476,7 +476,7 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
 
         if (!constSvg)
         {
-            mTemplateTags["n"] = i + 1;
+            mTemplateTags[QStringLiteral("n")] = i + 1;
             Mustache::QtVariantContext context(mTemplateTags);
             QString svg = mustacheRenderer.render(svg_template, &context);
             svgView.load(svg.toUtf8());
@@ -503,8 +503,8 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
 
     QDir::setCurrent(currentPath);
 
-    mTemplateTags.remove("N");
-    mTemplateTags.remove("n");
+    mTemplateTags.remove(QStringLiteral("N"));
+    mTemplateTags.remove(QStringLiteral("n"));
 
     if(parent)
         parent->setEnabled(true);
@@ -557,7 +557,7 @@ void TabEtikette::printPreview()
     gSettings->endGroup();
 
     loadPageLayout(&printer);
-    printer.setOutputFileName("");
+    printer.setOutputFileName(QStringLiteral(""));
     printer.setOutputFormat(QPrinter::NativeFormat);
     QPrintPreviewDialog dlg(&printer, this);
     connect(&dlg, &QPrintPreviewDialog::paintRequested, this, &TabEtikette::onPrinterPaintRequested);
@@ -581,7 +581,7 @@ void TabEtikette::toPdf()
     gSettings->beginGroup("General");
     QString path = gSettings->value("exportPath", QDir::homePath()).toString();
     QString fileName = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
-                                     path + "/" + bh->sud()->getSudname() + "_" + tr("Etikett") +  ".pdf", "PDF (*.pdf)");
+                                                    path + "/" + bh->sud()->getSudname() + "_" + tr("Etikett") + ".pdf", QStringLiteral("PDF (*.pdf)"));
     if (!fileName.isEmpty())
     {
         loadPageLayout(&printer);

@@ -70,7 +70,7 @@ static bool chooseDatabase()
         if (!databasePath.isEmpty())
         {
             QFile file(databasePath);
-            QFile file2(":/data/kb_daten.sqlite");
+            QFile file2(QStringLiteral(":/data/kb_daten.sqlite"));
             file.remove();
             if (file2.copy(file.fileName()))
                 file.setPermissions(QFile::ReadOwner | QFile::WriteOwner);
@@ -198,11 +198,11 @@ static QByteArray getHash(const QString &fileName)
 static void saveResourcesHash()
 {
     gSettings->beginGroup("ResourcesHashes");
-    QDirIterator it(":/data", QDirIterator::Subdirectories);
+    QDirIterator it(QStringLiteral(":/data"), QDirIterator::Subdirectories);
     while (it.hasNext())
     {
         it.next();
-        if (it.fileName() == "kb_daten.sqlite")
+        if (it.fileName() == QStringLiteral("kb_daten.sqlite"))
             continue;
         if (it.fileInfo().isDir())
             continue;
@@ -214,7 +214,7 @@ static void saveResourcesHash()
 
 static QByteArray getPreviousHash(const QString &fileName)
 {
-    return gSettings->valueInGroup("ResourcesHashes", fileName).toByteArray();
+    return gSettings->valueInGroup(QStringLiteral("ResourcesHashes"), fileName).toByteArray();
 }
 
 static void copyResources()
@@ -231,11 +231,11 @@ static void copyResources()
     }
 
     // copy resources
-    QDirIterator it(":/data", QDirIterator::Subdirectories);
+    QDirIterator it(QStringLiteral(":/data"), QDirIterator::Subdirectories);
     while (it.hasNext())
     {
         it.next();
-        if (it.fileName() == "kb_daten.sqlite")
+        if (it.fileName() == QStringLiteral("kb_daten.sqlite"))
             continue;
 
         // create directory
@@ -292,7 +292,7 @@ static void copyResources()
 
 static void checkWebView()
 {
-    WebView::setSupported(gSettings->valueInGroup("General", "WebViewEnabled", true).toBool());
+    WebView::setSupported(gSettings->valueInGroup(QStringLiteral("General"), QStringLiteral("WebViewEnabled"), true).toBool());
 }
 
 static void checkSSL()
@@ -339,7 +339,7 @@ static void messageHandler(QtMsgType type, const QMessageLogContext &context, co
             out << "FATAL | ";
             break;
         }
-        out << QDateTime::currentDateTime().toString("dd.MM.yy hh::mm::ss.zzz") << " | ";
+        out << QDateTime::currentDateTime().toString(QStringLiteral("dd.MM.yy hh::mm::ss.zzz")) << " | ";
         out << context.category << " | " << msg;
     }
     if (logFile)
@@ -362,11 +362,11 @@ static void installTranslator(QApplication &a, QTranslator &translator, const QS
 {
     QLocale locale(gSettings->language());
     a.removeTranslator(&translator);
-    if (translator.load(locale, filename, "_", a.applicationDirPath() + "/translations"))
+    if (translator.load(locale, filename, QStringLiteral("_"), a.applicationDirPath() + "/translations"))
         a.installTranslator(&translator);
-    else if (translator.load(locale, filename, "_", ":/translations"))
+    else if (translator.load(locale, filename, QStringLiteral("_"), QStringLiteral(":/translations")))
         a.installTranslator(&translator);
-    else if (translator.load(locale, filename, "_", QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
+    else if (translator.load(locale, filename, QStringLiteral("_"), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
         a.installTranslator(&translator);
 }
 
@@ -377,9 +377,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     // set application name, organization and version
-    a.setOrganizationName(QString(ORGANIZATION));
-    a.setApplicationName(QString(TARGET));
-    a.setApplicationVersion(QString(VERSION));
+    a.setOrganizationName(QStringLiteral(ORGANIZATION));
+    a.setApplicationName(QStringLiteral(TARGET));
+    a.setApplicationVersion(QStringLiteral(VERSION));
 
     // load settings
     if (QFile::exists(a.applicationDirPath() + "/portable"))
@@ -404,11 +404,11 @@ int main(int argc, char *argv[])
 
     // language
     QTranslator translatorQt, translatorKbh;
-    installTranslator(a, translatorQt, "qtbase");
-    installTranslator(a, translatorKbh, "kbh");
+    installTranslator(a, translatorQt, QStringLiteral("qtbase"));
+    installTranslator(a, translatorKbh, QStringLiteral("kbh"));
 
     // locale
-    bool useLanguageLocale = gSettings->valueInGroup("General", "UseLanguageLocale", false).toBool();
+    bool useLanguageLocale = gSettings->valueInGroup(QStringLiteral("General"), QStringLiteral("UseLanguageLocale"), false).toBool();
     if (useLanguageLocale)
         QLocale::setDefault(QLocale(gSettings->language()));
 
@@ -449,9 +449,9 @@ int main(int argc, char *argv[])
                 }
                 if (ret == 1001)
                 {
-                    installTranslator(a, translatorQt, "qtbase");
-                    installTranslator(a, translatorKbh, "kbh");
-                    bool useLanguageLocale = gSettings->valueInGroup("General", "UseLanguageLocale", false).toBool();
+                    installTranslator(a, translatorQt, QStringLiteral("qtbase"));
+                    installTranslator(a, translatorKbh, QStringLiteral("kbh"));
+                    bool useLanguageLocale = gSettings->valueInGroup(QStringLiteral("General"), QStringLiteral("UseLanguageLocale"), false).toBool();
                     QLocale::setDefault(useLanguageLocale ? QLocale(gSettings->language()) : QLocale::system());
                     ret = 1000;
                 }

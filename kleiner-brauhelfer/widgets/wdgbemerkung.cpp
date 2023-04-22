@@ -40,7 +40,7 @@ void WdgBemerkung::setHtml(const QString& html)
 QString WdgBemerkung::toHtml() const
 {
     if (ui->tbRichText->toPlainText().isEmpty())
-        return "";
+        return QStringLiteral("");
     return ui->tbRichText->toHtml();
 }
 

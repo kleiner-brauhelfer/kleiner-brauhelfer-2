@@ -41,7 +41,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     pal.setColor(QPalette::Base, gSettings->MekrlisteBackground);
     ui->cbMerkliste->setPalette(pal);
 
-    ui->webview->setHtmlFile("sudinfo");
+    ui->webview->setHtmlFile(QStringLiteral("sudinfo"));
 
     TableView *table = ui->tableSudauswahl;
     ProxyModelSudColored *proxyModel = new ProxyModelSudColored(this);

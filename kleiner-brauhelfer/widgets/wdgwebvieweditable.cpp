@@ -27,7 +27,7 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
    #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-    ui->tbTemplate->setTabStopDistance(QFontMetrics(ui->tbTemplate->font()).horizontalAdvance("  "));
+    ui->tbTemplate->setTabStopDistance(QFontMetrics(ui->tbTemplate->font()).horizontalAdvance(QStringLiteral("  ")));
    #else
     ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
    #endif
@@ -36,7 +36,7 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     ui->tbTags->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
    #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-    ui->tbTags->setTabStopDistance(QFontMetrics(ui->tbTags->font()).horizontalAdvance("  "));
+    ui->tbTags->setTabStopDistance(QFontMetrics(ui->tbTags->font()).horizontalAdvance(QStringLiteral("  ")));
    #else
     ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTags->font()).width(' '));
    #endif
@@ -47,25 +47,25 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     updateEditMode();
     ui->splitterEditmode->setHandleWidth(0);
     ui->splitterEditmode->setSizes({1, 0});
-    gZoomFactor = gSettings->valueInGroup("General", "WebViewZoomFactor", 1.0).toDouble();
+    gZoomFactor = gSettings->valueInGroup(QStringLiteral("General"), QStringLiteral("WebViewZoomFactor"), 1.0).toDouble();
 }
 
 WdgWebViewEditable::~WdgWebViewEditable()
 {
     delete ui;
-    gSettings->setValueInGroup("General", "WebViewZoomFactor", gZoomFactor);
+    gSettings->setValueInGroup(QStringLiteral("General"), QStringLiteral("WebViewZoomFactor"), gZoomFactor);
 }
 
 void WdgWebViewEditable::clear()
 {
-    ui->webview->setHtml("");
+    ui->webview->setHtml(QStringLiteral(""));
 }
 
 void WdgWebViewEditable::setHtmlFile(const QString& file)
 {
     QString fileComplete;
     QString lang = gSettings->language();
-    if (lang == "de")
+    if (lang == QStringLiteral("de"))
     {
         fileComplete = file + ".html";
     }
@@ -115,8 +115,8 @@ void WdgWebViewEditable::printPreview()
     QVariant style;
     if (gSettings->theme() == Settings::Dark)
     {
-        style = mTemplateTags["Style"];
-        mTemplateTags["Style"] = "style_hell.css";
+        style = mTemplateTags[QStringLiteral("Style")];
+        mTemplateTags[QStringLiteral("Style")] = "style_hell.css";
         ui->webview->setUpdatesEnabled(false);
 
         QEventLoop loop;
@@ -134,7 +134,7 @@ void WdgWebViewEditable::printPreview()
 
     if (gSettings->theme() == Settings::Dark)
     {
-        mTemplateTags["Style"] = style;
+        mTemplateTags[QStringLiteral("Style")] = style;
         ui->webview->renderTemplate(mTemplateTags);
         ui->webview->setUpdatesEnabled(true);
     }
@@ -153,7 +153,7 @@ void WdgWebViewEditable::printToPdf()
     QString fileName = pdfName.isEmpty() ? htmlName : pdfName;
     QString path = gSettings->value("exportPath", QDir::homePath()).toString();
     QString filePath = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
-                                     path + "/" + fileName +  ".pdf", "PDF (*.pdf)");
+                                                    path + "/" + fileName + ".pdf",QStringLiteral("PDF (*.pdf)"));
     if (!filePath.isEmpty())
     {
         gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
@@ -161,8 +161,8 @@ void WdgWebViewEditable::printToPdf()
         QMarginsF margins = QMarginsF(rect.left(), rect.top(), rect.width(), rect.height());
         if (gSettings->theme() == Settings::Dark)
         {
-            QVariant style = mTemplateTags["Style"];
-            mTemplateTags["Style"] = "style_hell.css";
+            QVariant style = mTemplateTags[QStringLiteral("Style")];
+            mTemplateTags[QStringLiteral("Style")] = "style_hell.css";
             ui->webview->setUpdatesEnabled(false);
 
             QEventLoop loop;
@@ -172,7 +172,7 @@ void WdgWebViewEditable::printToPdf()
 
             ui->webview->printToPdf(filePath, margins);
 
-            mTemplateTags["Style"] = style;
+            mTemplateTags[QStringLiteral("Style")] = style;
             ui->webview->renderTemplate(mTemplateTags);
             ui->webview->setUpdatesEnabled(true);
         }
@@ -270,7 +270,7 @@ void WdgWebViewEditable::updateWebView()
             mTempCssFile.open();
             mTempCssFile.write(ui->tbTemplate->toPlainText().toUtf8());
             mTempCssFile.flush();
-            mTemplateTags["Style"] = mTempCssFile.fileName();
+            mTemplateTags[QStringLiteral("Style")] = mTempCssFile.fileName();
             ui->webview->renderTemplate(mTemplateTags);
         }
     }

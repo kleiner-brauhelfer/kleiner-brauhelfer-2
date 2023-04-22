@@ -51,7 +51,7 @@ void DlgCheckUpdate::httpFinished()
     if (reply->error() == QNetworkReply::NoError)
     {
         QByteArray byteArray = reply->readAll();
-        if (url.host() == "api.github.com")
+        if (url.host() == QStringLiteral("api.github.com"))
             mHasUpdate = parseReplyGithub(byteArray);
         else
             qWarning() << "DlgCheckUpdate: Unknown host:" << url.host();
@@ -73,18 +73,18 @@ bool DlgCheckUpdate::parseReplyGithub(const QByteArray& str)
         return false;
     }
 
-    QDate dtPublished = QDate::fromString(reply.object().value("published_at").toString(), Qt::ISODate);
+    QDate dtPublished = QDate::fromString(reply.object().value(QStringLiteral("published_at")).toString(), Qt::ISODate);
     if (dtPublished > mDateSince)
     {
         QLocale locale = QLocale();
-        ui->lblName->setText(reply.object().value("name").toString());
+        ui->lblName->setText(reply.object().value(QStringLiteral("name")).toString());
         ui->lblDate->setText(locale.toString(dtPublished, QLocale::ShortFormat));
       #if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
-        ui->textEdit->setMarkdown(reply.object().value("body").toString());
+        ui->textEdit->setMarkdown(reply.object().value(QStringLiteral("body")).toString());
       #else
         ui->textEdit->setText(reply.object().value("body").toString());
       #endif
-        ui->lblUrl->setText("<a href=\"" + reply.object().value("html_url").toString() + "\">Download</a>");
+        ui->lblUrl->setText("<a href=\"" + reply.object().value(QStringLiteral("html_url")).toString() + "\">Download</a>");
         return true;
     }
 

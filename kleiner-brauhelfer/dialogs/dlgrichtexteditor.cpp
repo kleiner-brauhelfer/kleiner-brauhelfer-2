@@ -27,7 +27,7 @@ DlgRichTextEditor::DlgRichTextEditor(QWidget *parent) :
     ui->tbSource->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
    #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-    ui->tbSource->setTabStopDistance(QFontMetrics(ui->tbSource->font()).horizontalAdvance("  "));
+    ui->tbSource->setTabStopDistance(QFontMetrics(ui->tbSource->font()).horizontalAdvance(QStringLiteral("  ")));
    #else
     ui->tbSource->setTabStopDistance(2 * QFontMetrics(ui->tbSource->font()).width(' '));
    #endif
@@ -63,11 +63,11 @@ QString DlgRichTextEditor::extractBody(const QString& html) const
 {
     if (html.isEmpty())
         return html;
-    int start = html.indexOf("<body");
+    int start = html.indexOf(QStringLiteral("<body"));
     if (start == -1)
         return html;
-    start = html.indexOf(">", start) + 2;
-    int end = html.indexOf("</body>");
+    start = html.indexOf(QStringLiteral(">"), start) + 2;
+    int end = html.indexOf(QStringLiteral("</body>"));
     if (end == -1)
         return html.left(start);
     else
@@ -82,7 +82,7 @@ void DlgRichTextEditor::setHtml(const QString& html)
 QString DlgRichTextEditor::toHtml() const
 {
     if (ui->tbRichText->toPlainText().isEmpty())
-        return "";
+        return QStringLiteral("");
     return extractBody(ui->tbRichText->toHtml());
 }
 
@@ -290,7 +290,7 @@ void DlgRichTextEditor::on_btnLink_clicked(bool checked)
     if (checked)
     {
         bool ok = false;
-        QString url = "http://";
+        QString url = QStringLiteral("http://");
         url = QInputDialog::getText(this, tr("Link erstellen"), tr("URL:"), QLineEdit::Normal, url, &ok);
         if (ok && !url.isEmpty())
         {
@@ -373,9 +373,12 @@ void DlgRichTextEditor::on_btnImg_clicked()
     for (int row = 0; row < bh->sud()->modelAnhang()->rowCount(); ++row)
     {
         QString pfad = bh->sud()->modelAnhang()->data(row, ModelAnhang::ColPfad).toString();
-        if (pfad.endsWith(".png", Qt::CaseInsensitive) || pfad.endsWith(".gif", Qt::CaseInsensitive) ||
-            pfad.endsWith(".jpg", Qt::CaseInsensitive) || pfad.endsWith(".jpg", Qt::CaseInsensitive) ||
-            pfad.endsWith(".svg", Qt::CaseInsensitive) || pfad.endsWith(".bmp", Qt::CaseInsensitive))
+        if (pfad.endsWith(QStringLiteral(".png"), Qt::CaseInsensitive)
+            || pfad.endsWith(QStringLiteral(".gif"), Qt::CaseInsensitive)
+            || pfad.endsWith(QStringLiteral(".jpg"), Qt::CaseInsensitive)
+            || pfad.endsWith(QStringLiteral(".jpg"), Qt::CaseInsensitive)
+            || pfad.endsWith(QStringLiteral(".svg"), Qt::CaseInsensitive)
+            || pfad.endsWith(QStringLiteral(".bmp"), Qt::CaseInsensitive))
         {
             imgs.append(pfad);
         }
@@ -388,7 +391,7 @@ void DlgRichTextEditor::on_btnImg_clicked()
         if (ok && !img.isEmpty())
         {
             QTextDocumentFragment fragment;
-            fragment = QTextDocumentFragment::fromHtml(QString("<img src=\"%1\">").arg(img));
+            fragment = QTextDocumentFragment::fromHtml(QStringLiteral("<img src=\"%1\">").arg(img));
             ui->tbRichText->textCursor().insertFragment(fragment);
         }
     }

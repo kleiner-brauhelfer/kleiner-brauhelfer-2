@@ -54,14 +54,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionThemeDunkel->setEnabled(theme != Settings::Theme::Dark);
     if (theme == Settings::Theme::Dark)
     {
-        ui->tabMain->setTabIcon(0, IconThemed("tabsudauswahl", false));
-        ui->tabMain->setTabIcon(1, IconThemed("tabrezept", false));
-        ui->tabMain->setTabIcon(2, IconThemed("tabbraudaten", false));
-        ui->tabMain->setTabIcon(3, IconThemed("tababfuellen", false));
-        ui->tabMain->setTabIcon(4, IconThemed("tabgaerverlauf", false));
-        ui->tabMain->setTabIcon(5, IconThemed("tabzusammenfassung", false));
-        ui->tabMain->setTabIcon(6, IconThemed("tabetikette", false));
-        ui->tabMain->setTabIcon(7, IconThemed("tabbewertung", false));
+        ui->tabMain->setTabIcon(0, IconThemed(QStringLiteral("tabsudauswahl"), false));
+        ui->tabMain->setTabIcon(1, IconThemed(QStringLiteral("tabrezept"), false));
+        ui->tabMain->setTabIcon(2, IconThemed(QStringLiteral("tabbraudaten"), false));
+        ui->tabMain->setTabIcon(3, IconThemed(QStringLiteral("tababfuellen"), false));
+        ui->tabMain->setTabIcon(4, IconThemed(QStringLiteral("tabgaerverlauf"), false));
+        ui->tabMain->setTabIcon(5, IconThemed(QStringLiteral("tabzusammenfassung"), false));
+        ui->tabMain->setTabIcon(6, IconThemed(QStringLiteral("tabetikette"), false));
+        ui->tabMain->setTabIcon(7, IconThemed(QStringLiteral("tabbewertung"), false));
 
         const QList<QAction*> actions = findChildren<QAction*>();
         for (QAction* action : actions)
@@ -70,7 +70,7 @@ MainWindow::MainWindow(QWidget *parent) :
             QIcon icon = action->icon();
             if (!icon.isNull() && !name.isEmpty())
             {
-                icon.addFile(QString(":/images/dark/%1.svg").arg(name));
+                icon.addFile(QStringLiteral(":/images/dark/%1.svg").arg(name));
                 action->setIcon(icon);
             }
         }
@@ -81,7 +81,7 @@ MainWindow::MainWindow(QWidget *parent) :
             QIcon icon = button->icon();
             if (!icon.isNull() && !name.isEmpty())
             {
-                icon.addFile(QString(":/images/dark/%1.svg").arg(name));
+                icon.addFile(QStringLiteral(":/images/dark/%1.svg").arg(name));
                 button->setIcon(icon);
             }
         }
@@ -306,7 +306,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, IconThemed("tabgaerverlauf", gSettings->theme() == Settings::Theme::Bright), tr("Gärverlauf"));
+                ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, IconThemed(QStringLiteral("tabgaerverlauf"), gSettings->theme() == Settings::Theme::Bright), tr("Gärverlauf"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -319,7 +319,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleAusdruck))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed("tabzusammenfassung", gSettings->theme() == Settings::Theme::Bright), tr("Ausdruck"));
+                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed(QStringLiteral("tabzusammenfassung"), gSettings->theme() == Settings::Theme::Bright), tr("Ausdruck"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -332,7 +332,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleEtikette))
         {
             if (index < 0)
-               ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed("tabetikette", gSettings->theme() == Settings::Theme::Bright), tr("Etikett"));
+                ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed(QStringLiteral("tabetikette"), gSettings->theme() == Settings::Theme::Bright), tr("Etikett"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -345,7 +345,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
         {
             if (index < 0)
-               ui->tabMain->insertTab(nextIndex, ui->tabBewertung, IconThemed("tabbewertung", gSettings->theme() == Settings::Theme::Bright), tr("Bewertung"));
+                ui->tabMain->insertTab(nextIndex, ui->tabBewertung, IconThemed(QStringLiteral("tabbewertung"), gSettings->theme() == Settings::Theme::Bright), tr("Bewertung"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -363,7 +363,7 @@ void MainWindow::databaseModified()
     bool modified = bh->isDirty();
     QString title;
     if (modified)
-        title = "* ";
+        title = QStringLiteral("* ");
     if (bh->sud()->isLoaded())
         title += bh->sud()->getSudname() + " - ";
     title += QCoreApplication::applicationName() + " v" + QCoreApplication::applicationVersion();
@@ -731,7 +731,7 @@ void MainWindow::on_actionOeffnen_triggered()
 
 void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)
 {
-    gSettings->setValueInGroup("General", "BeendenAbfrage", checked);
+    gSettings->setValueInGroup(QStringLiteral("General"), QStringLiteral("BeendenAbfrage"), checked);
 }
 
 void MainWindow::checkForUpdate(bool force)
@@ -1053,7 +1053,7 @@ void MainWindow::checkLoadedSud()
 void MainWindow::on_actionCheckUpdate_triggered(bool checked)
 {
   #if QT_NETWORK_LIB
-    gSettings->setValueInGroup("General", "CheckUpdate", checked);
+    gSettings->setValueInGroup(QStringLiteral("General"), QStringLiteral("CheckUpdate"), checked);
     if (checked)
         checkForUpdate(true);
   #else
@@ -1063,7 +1063,7 @@ void MainWindow::on_actionCheckUpdate_triggered(bool checked)
 
 void MainWindow::on_actionTooltips_triggered(bool checked)
 {
-    gSettings->setValueInGroup("General", "TooltipsEnabled", checked);
+    gSettings->setValueInGroup(QStringLiteral("General"), QStringLiteral("TooltipsEnabled"), checked);
 }
 
 void MainWindow::on_actionAnimationen_triggered(bool checked)
@@ -1073,31 +1073,31 @@ void MainWindow::on_actionAnimationen_triggered(bool checked)
 
 void MainWindow::on_actionDeutsch_triggered()
 {
-    gSettings->setLanguage("de");
+    gSettings->setLanguage(QStringLiteral("de"));
     restart(1001);
 }
 
 void MainWindow::on_actionEnglisch_triggered()
 {
-    gSettings->setLanguage("en");
+    gSettings->setLanguage(QStringLiteral("en"));
     restart(1001);
 }
 
 void MainWindow::on_actionSchwedisch_triggered()
 {
-    gSettings->setLanguage("sv");
+    gSettings->setLanguage(QStringLiteral("sv"));
     restart(1001);
 }
 
 void MainWindow::on_actionNiederlaendisch_triggered()
 {
-    gSettings->setLanguage("nl");
+    gSettings->setLanguage(QStringLiteral("nl"));
     restart(1001);
 }
 
 void MainWindow::on_actionZahlenformat_triggered(bool checked)
 {
-    gSettings->setValueInGroup("General", "UseLanguageLocale", checked);
+    gSettings->setValueInGroup(QStringLiteral("General"), QStringLiteral("UseLanguageLocale"), checked);
     restart(1001);
 }
 
@@ -1109,17 +1109,17 @@ void MainWindow::on_actionModule_triggered()
 void MainWindow::on_actionHilfe_triggered()
 {
     DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this);
-    dlg->setHomeUrl(QString(URL_HILFE));
+    dlg->setHomeUrl(QStringLiteral(URL_HILFE));
 }
 
 void MainWindow::on_actionFormelsammlung_triggered()
 {
-    QDesktopServices::openUrl(QUrl(URL_FORMELSAMMLUNG));
+    QDesktopServices::openUrl(QUrl(QStringLiteral(URL_FORMELSAMMLUNG)));
 }
 
 void MainWindow::on_actionAndroidApp_triggered()
 {
-    QDesktopServices::openUrl(QUrl(URL_APP));
+    QDesktopServices::openUrl(QUrl(QStringLiteral(URL_APP)));
 }
 
 void MainWindow::on_actionUeber_triggered()

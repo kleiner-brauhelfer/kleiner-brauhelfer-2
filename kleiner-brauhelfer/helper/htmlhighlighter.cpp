@@ -32,43 +32,85 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
     insideTagFormat.setFontWeight(QFont::Bold);
     tagsFormat.setFontWeight(QFont::Bold);
 
-    openTag = QRegularExpression("<");
-    closeTag = QRegularExpression(">");
-    commentStartExpression = QRegularExpression("<!--");
-    commentEndExpression = QRegularExpression("-->");
-    quotes = QRegularExpression("\"");
-    customTagStartExpression = QRegularExpression("\\{\\{");
-    customTagEndExpression = QRegularExpression("\\}\\}");
+    openTag = QRegularExpression(QStringLiteral("<"));
+    closeTag = QRegularExpression(QStringLiteral(">"));
+    commentStartExpression = QRegularExpression(QStringLiteral("<!--"));
+    commentEndExpression = QRegularExpression(QStringLiteral("-->"));
+    quotes = QRegularExpression(QStringLiteral("\""));
+    customTagStartExpression = QRegularExpression(QStringLiteral("\\{\\{"));
+    customTagEndExpression = QRegularExpression(QStringLiteral("\\}\\}"));
 
     QStringList keywordPatterns;
-    keywordPatterns << "<\\ba\\b" << "<\\babbr\\b" << "<\\bacronym\\b" << "<\\baddress\\b" << "<\\bapplet\\b"
-                    << "<\\barea\\b" << "<\\barticle\\b" << "<\\baside\\b" << "<\\baudio\\b" << "<\\bb\\b"
-                    << "<\\bbase\\b" << "<\\bbasefont\\b" << "<\\bbdi\\b" << "<\\bbdo\\b" << "<\\bbgsound\\b"
-                    << "<\\bblockquote\\b" << "<\\bbig\\b" << "<\\bbody\\b" << "<\\bblink\\b" << "<\\bbr\\b"
-                    << "<\\bbutton\\b" << "<\\bcanvas\\b" << "<\\bcaption\\b" << "<\\bcenter\\b" << "<\\bcite\\b"
-                    << "<\\bcode\\b" << "<\\bcol\\b" << "<\\bcolgroup\\b" << "<\\bcommand\\b" << "<\\bcomment\\b"
-                    << "<\\bdata\\b" << "<\\bdatalist\\b" << "<\\bdd\\b" << "<\\bdel\\b" << "<\\bdetails\\b"
-                    << "<\\bdfn\\b" << "<\\bdialog\\b" << "<\\bdir\\b" << "<\\bdiv\\b" << "<\\bdl\\b"
-                    << "<\\bdt\\b" << "<\\bem\\b" << "<\\bembed\\b" << "<\\bfieldset\\b" << "<\\bfigcaption\\b"
-                    << "<\\bfigure\\b" << "<\\bfont\\b" << "<\\bfooter\\b" << "<\\bform\\b" << "<\\bframe\\b"
-                    << "<\\bframeset\\b" << "<\\bh1\\b" << "<\\bh2\\b" << "<\\bh3\\b" << "<\\bh4\\b"
-                    << "<\\bh5\\b" << "<\\bh6\\b" << "<\\bhead\\b" << "<\\bheader\\b" << "<\\bhgroup\\b"
-                    << "<\\bhr\\b" << "<\\bhtml\\b" << "<\\bi\\b" << "<\\biframe\\b" << "<\\bimg\\b"
-                    << "<\\binput\\b" << "<\\bins\\b" << "<\\bisindex\\b" << "<\\bkbd\\b" << "<\\bkeygen\\b"
-                    << "<\\blabel\\b" << "<\\blegend\\b" << "<\\bli\\b" << "<\\blink\\b" << "<\\blisting\\b"
-                    << "<\\bmain\\b" << "<\\bmap\\b" << "<\\bmarquee\\b" << "<\\bmark\\b" << "<\\bmenu\\b"
-                    << "<\\bamenuitem\\b" << "<\\bmeta\\b" << "<\\bmeter\\b" << "<\\bmulticol\\b" << "<\\bnav\\b"
-                    << "<\\bnobr\\b" << "<\\bnoembed\\b" << "<\\bnoindex\\b" << "<\\bnoframes\\b" << "<\\bnoscript\\b"
-                    << "<\\bobject\\b" << "<\\bol\\b" << "<\\boptgroup\\b" << "<\\boption\\b" << "<\\boutput\\b"
-                    << "<\\bp\\b" << "<\\bparam\\b" << "<\\bpicture\\b" << "<\\bplaintext\\b" << "<\\bpre\\b"
-                    << "<\\bprogress\\b" << "<\\bq\\b" << "<\\brp\\b" << "<\\brt\\b" << "<\\brtc\\b" << "<\\bruby\\b"
-                    << "<\\bs\\b" << "<\\bsamp\\b" << "<\\bscript\\b" << "<\\bsection\\b" << "<\\bselect\\b"
-                    << "<\\bsmall\\b" << "<\\bsource\\b" << "<\\bspacer\\b" << "<\\bspan\\b" << "<\\bstrike\\b"
-                    << "<\\bstrong\\b" << "<\\bstyle\\b" << "<\\bsub\\b" << "<\\bsummary\\b" << "<\\bsup\\b"
-                    << "<\\btable\\b" << "<\\btbody\\b" << "<\\btd\\b" << "<\\btemplate\\b" << "<\\btextarea\\b"
-                    << "<\\btfoot\\b" << "<\\bth\\b" << "<\\bthead\\b" << "<\\btime\\b" << "<\\btitle\\b"
-                    << "<\\btr\\b" << "<\\btrack\\b" << "<\\btt\\b" << "<\\bu\\b" << "<\\bul\\b" << "<\\bvar\\b"
-                    << "<\\bvideo\\b" << "<\\bwbr\\b" << "<\\bxmp\\b";
+    keywordPatterns << QStringLiteral("<\\ba\\b") << QStringLiteral("<\\babbr\\b")
+                    << QStringLiteral("<\\bacronym\\b") << QStringLiteral("<\\baddress\\b")
+                    << QStringLiteral("<\\bapplet\\b") << QStringLiteral("<\\barea\\b")
+                    << QStringLiteral("<\\barticle\\b") << QStringLiteral("<\\baside\\b")
+                    << QStringLiteral("<\\baudio\\b") << QStringLiteral("<\\bb\\b")
+                    << QStringLiteral("<\\bbase\\b") << QStringLiteral("<\\bbasefont\\b")
+                    << QStringLiteral("<\\bbdi\\b") << QStringLiteral("<\\bbdo\\b")
+                    << QStringLiteral("<\\bbgsound\\b") << QStringLiteral("<\\bblockquote\\b")
+                    << QStringLiteral("<\\bbig\\b") << QStringLiteral("<\\bbody\\b")
+                    << QStringLiteral("<\\bblink\\b") << QStringLiteral("<\\bbr\\b")
+                    << QStringLiteral("<\\bbutton\\b") << QStringLiteral("<\\bcanvas\\b")
+                    << QStringLiteral("<\\bcaption\\b") << QStringLiteral("<\\bcenter\\b")
+                    << QStringLiteral("<\\bcite\\b") << QStringLiteral("<\\bcode\\b")
+                    << QStringLiteral("<\\bcol\\b") << QStringLiteral("<\\bcolgroup\\b")
+                    << QStringLiteral("<\\bcommand\\b") << QStringLiteral("<\\bcomment\\b")
+                    << QStringLiteral("<\\bdata\\b") << QStringLiteral("<\\bdatalist\\b")
+                    << QStringLiteral("<\\bdd\\b") << QStringLiteral("<\\bdel\\b")
+                    << QStringLiteral("<\\bdetails\\b") << QStringLiteral("<\\bdfn\\b")
+                    << QStringLiteral("<\\bdialog\\b") << QStringLiteral("<\\bdir\\b")
+                    << QStringLiteral("<\\bdiv\\b") << QStringLiteral("<\\bdl\\b")
+                    << QStringLiteral("<\\bdt\\b") << QStringLiteral("<\\bem\\b")
+                    << QStringLiteral("<\\bembed\\b") << QStringLiteral("<\\bfieldset\\b")
+                    << QStringLiteral("<\\bfigcaption\\b") << QStringLiteral("<\\bfigure\\b")
+                    << QStringLiteral("<\\bfont\\b") << QStringLiteral("<\\bfooter\\b")
+                    << QStringLiteral("<\\bform\\b") << QStringLiteral("<\\bframe\\b")
+                    << QStringLiteral("<\\bframeset\\b") << QStringLiteral("<\\bh1\\b")
+                    << QStringLiteral("<\\bh2\\b") << QStringLiteral("<\\bh3\\b")
+                    << QStringLiteral("<\\bh4\\b") << QStringLiteral("<\\bh5\\b")
+                    << QStringLiteral("<\\bh6\\b") << QStringLiteral("<\\bhead\\b")
+                    << QStringLiteral("<\\bheader\\b") << QStringLiteral("<\\bhgroup\\b")
+                    << QStringLiteral("<\\bhr\\b") << QStringLiteral("<\\bhtml\\b")
+                    << QStringLiteral("<\\bi\\b") << QStringLiteral("<\\biframe\\b")
+                    << QStringLiteral("<\\bimg\\b") << QStringLiteral("<\\binput\\b")
+                    << QStringLiteral("<\\bins\\b") << QStringLiteral("<\\bisindex\\b")
+                    << QStringLiteral("<\\bkbd\\b") << QStringLiteral("<\\bkeygen\\b")
+                    << QStringLiteral("<\\blabel\\b") << QStringLiteral("<\\blegend\\b")
+                    << QStringLiteral("<\\bli\\b") << QStringLiteral("<\\blink\\b")
+                    << QStringLiteral("<\\blisting\\b") << QStringLiteral("<\\bmain\\b")
+                    << QStringLiteral("<\\bmap\\b") << QStringLiteral("<\\bmarquee\\b")
+                    << QStringLiteral("<\\bmark\\b") << QStringLiteral("<\\bmenu\\b")
+                    << QStringLiteral("<\\bamenuitem\\b") << QStringLiteral("<\\bmeta\\b")
+                    << QStringLiteral("<\\bmeter\\b") << QStringLiteral("<\\bmulticol\\b")
+                    << QStringLiteral("<\\bnav\\b") << QStringLiteral("<\\bnobr\\b")
+                    << QStringLiteral("<\\bnoembed\\b") << QStringLiteral("<\\bnoindex\\b")
+                    << QStringLiteral("<\\bnoframes\\b") << QStringLiteral("<\\bnoscript\\b")
+                    << QStringLiteral("<\\bobject\\b") << QStringLiteral("<\\bol\\b")
+                    << QStringLiteral("<\\boptgroup\\b") << QStringLiteral("<\\boption\\b")
+                    << QStringLiteral("<\\boutput\\b") << QStringLiteral("<\\bp\\b")
+                    << QStringLiteral("<\\bparam\\b") << QStringLiteral("<\\bpicture\\b")
+                    << QStringLiteral("<\\bplaintext\\b") << QStringLiteral("<\\bpre\\b")
+                    << QStringLiteral("<\\bprogress\\b") << QStringLiteral("<\\bq\\b")
+                    << QStringLiteral("<\\brp\\b") << QStringLiteral("<\\brt\\b")
+                    << QStringLiteral("<\\brtc\\b") << QStringLiteral("<\\bruby\\b")
+                    << QStringLiteral("<\\bs\\b") << QStringLiteral("<\\bsamp\\b")
+                    << QStringLiteral("<\\bscript\\b") << QStringLiteral("<\\bsection\\b")
+                    << QStringLiteral("<\\bselect\\b") << QStringLiteral("<\\bsmall\\b")
+                    << QStringLiteral("<\\bsource\\b") << QStringLiteral("<\\bspacer\\b")
+                    << QStringLiteral("<\\bspan\\b") << QStringLiteral("<\\bstrike\\b")
+                    << QStringLiteral("<\\bstrong\\b") << QStringLiteral("<\\bstyle\\b")
+                    << QStringLiteral("<\\bsub\\b") << QStringLiteral("<\\bsummary\\b")
+                    << QStringLiteral("<\\bsup\\b") << QStringLiteral("<\\btable\\b")
+                    << QStringLiteral("<\\btbody\\b") << QStringLiteral("<\\btd\\b")
+                    << QStringLiteral("<\\btemplate\\b") << QStringLiteral("<\\btextarea\\b")
+                    << QStringLiteral("<\\btfoot\\b") << QStringLiteral("<\\bth\\b")
+                    << QStringLiteral("<\\bthead\\b") << QStringLiteral("<\\btime\\b")
+                    << QStringLiteral("<\\btitle\\b") << QStringLiteral("<\\btr\\b")
+                    << QStringLiteral("<\\btrack\\b") << QStringLiteral("<\\btt\\b")
+                    << QStringLiteral("<\\bu\\b") << QStringLiteral("<\\bul\\b")
+                    << QStringLiteral("<\\bvar\\b") << QStringLiteral("<\\bvideo\\b")
+                    << QStringLiteral("<\\bwbr\\b") << QStringLiteral("<\\bxmp\\b");
 
     startTagRules.reserve(keywordPatterns.size());
     for (int i = 0; i < keywordPatterns.size(); ++i)
@@ -79,34 +121,77 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
     }
 
     QStringList keywordPatterns_end;
-    keywordPatterns_end << "<!\\bDOCTYPE\\b" << "</\\ba\\b" << "</\\babbr\\b" << "</\\bacronym\\b" << "</\\baddress\\b" << "</\\bapplet\\b"
-                        << "</\\barea\\b" << "</\\barticle\\b" << "</\\baside\\b" << "</\\baudio\\b" << "</\\bb\\b"
-                        << "</\\bbase\\b" << "</\\bbasefont\\b" << "</\\bbdi\\b" << "</\\bbdo\\b" << "</\\bbgsound\\b"
-                        << "</\\bblockquote\\b" << "</\\bbig\\b" << "</\\bbody\\b" << "</\\bblink\\b" << "</\\bbr\\b"
-                        << "</\\bbutton\\b" << "</\\bcanvas\\b" << "</\\bcaption\\b" << "</\\bcenter\\b" << "</\\bcite\\b"
-                        << "</\\bcode\\b" << "</\\bcol\\b" << "</\\bcolgroup\\b" << "</\\bcommand\\b" << "</\\bcomment\\b"
-                        << "</\\bdata\\b" << "</\\bdatalist\\b" << "</\\bdd\\b" << "</\\bdel\\b" << "</\\bdetails\\b"
-                        << "</\\bdfn\\b" << "</\\bdialog\\b" << "</\\bdir\\b" << "</\\bdiv\\b" << "</\\bdl\\b"
-                        << "</\\bdt\\b" << "</\\bem\\b" << "</\\bembed\\b" << "</\\bfieldset\\b" << "</\\bfigcaption\\b"
-                        << "</\\bfigure\\b" << "</\\bfont\\b" << "</\\bfooter\\b" << "</\\bform\\b" << "</\\bframe\\b"
-                        << "</\\bframeset\\b" << "</\\bh1\\b" << "</\\bh2\\b" << "</\\bh3\\b" << "</\\bh4\\b"
-                        << "</\\bh5\\b" << "</\\bh6\\b" << "</\\bhead\\b" << "</\\bheader\\b" << "</\\bhgroup\\b"
-                        << "</\\bhr\\b" << "</\\bhtml\\b" << "</\\bi\\b" << "</\\biframe\\b" << "</\\bimg\\b"
-                        << "</\\binput\\b" << "</\\bins\\b" << "</\\bisindex\\b" << "</\\bkbd\\b" << "</\\bkeygen\\b"
-                        << "</\\blabel\\b" << "</\\blegend\\b" << "</\\bli\\b" << "</\\blink\\b" << "</\\blisting\\b"
-                        << "</\\bmain\\b" << "</\\bmap\\b" << "</\\bmarquee\\b" << "</\\bmark\\b" << "</\\bmenu\\b"
-                        << "</\\bamenuitem\\b" << "</\\bmeta\\b" << "</\\bmeter\\b" << "</\\bmulticol\\b" << "</\\bnav\\b"
-                        << "</\\bnobr\\b" << "</\\bnoembed\\b" << "</\\bnoindex\\b" << "</\\bnoframes\\b" << "</\\bnoscript\\b"
-                        << "</\\bobject\\b" << "</\\bol\\b" << "</\\boptgroup\\b" << "</\\boption\\b" << "</\\boutput\\b"
-                        << "</\\bp\\b" << "</\\bparam\\b" << "</\\bpicture\\b" << "</\\bplaintext\\b" << "</\\bpre\\b"
-                        << "</\\bprogress\\b" << "</\\bq\\b" << "</\\brp\\b" << "</\\brt\\b" << "</\\brtc\\b" << "</\\bruby\\b"
-                        << "</\\bs\\b" << "</\\bsamp\\b" << "</\\bscript\\b" << "</\\bsection\\b" << "</\\bselect\\b"
-                        << "</\\bsmall\\b" << "</\\bsource\\b" << "</\\bspacer\\b" << "</\\bspan\\b" << "</\\bstrike\\b"
-                        << "</\\bstrong\\b" << "</\\bstyle\\b" << "</\\bsub\\b" << "</\\bsummary\\b" << "</\\bsup\\b"
-                        << "</\\btable\\b" << "</\\btbody\\b" << "</\\btd\\b" << "</\\btemplate\\b" << "</\\btextarea\\b"
-                        << "</\\btfoot\\b" << "</\\bth\\b" << "</\\bthead\\b" << "</\\btime\\b" << "</\\btitle\\b"
-                        << "</\\btr\\b" << "</\\btrack\\b" << "</\\btt\\b" << "</\\bu\\b" << "</\\bul\\b" << "</\\bvar\\b"
-                        << "</\\bvideo\\b" << "</\\bwbr\\b" << "</\\bxmp\\b";
+    keywordPatterns_end << QStringLiteral("<!\\bDOCTYPE\\b") << QStringLiteral("</\\ba\\b")
+                        << QStringLiteral("</\\babbr\\b") << QStringLiteral("</\\bacronym\\b")
+                        << QStringLiteral("</\\baddress\\b") << QStringLiteral("</\\bapplet\\b")
+                        << QStringLiteral("</\\barea\\b") << QStringLiteral("</\\barticle\\b")
+                        << QStringLiteral("</\\baside\\b") << QStringLiteral("</\\baudio\\b")
+                        << QStringLiteral("</\\bb\\b") << QStringLiteral("</\\bbase\\b")
+                        << QStringLiteral("</\\bbasefont\\b") << QStringLiteral("</\\bbdi\\b")
+                        << QStringLiteral("</\\bbdo\\b") << QStringLiteral("</\\bbgsound\\b")
+                        << QStringLiteral("</\\bblockquote\\b") << QStringLiteral("</\\bbig\\b")
+                        << QStringLiteral("</\\bbody\\b") << QStringLiteral("</\\bblink\\b")
+                        << QStringLiteral("</\\bbr\\b") << QStringLiteral("</\\bbutton\\b")
+                        << QStringLiteral("</\\bcanvas\\b") << QStringLiteral("</\\bcaption\\b")
+                        << QStringLiteral("</\\bcenter\\b") << QStringLiteral("</\\bcite\\b")
+                        << QStringLiteral("</\\bcode\\b") << QStringLiteral("</\\bcol\\b")
+                        << QStringLiteral("</\\bcolgroup\\b") << QStringLiteral("</\\bcommand\\b")
+                        << QStringLiteral("</\\bcomment\\b") << QStringLiteral("</\\bdata\\b")
+                        << QStringLiteral("</\\bdatalist\\b") << QStringLiteral("</\\bdd\\b")
+                        << QStringLiteral("</\\bdel\\b") << QStringLiteral("</\\bdetails\\b")
+                        << QStringLiteral("</\\bdfn\\b") << QStringLiteral("</\\bdialog\\b")
+                        << QStringLiteral("</\\bdir\\b") << QStringLiteral("</\\bdiv\\b")
+                        << QStringLiteral("</\\bdl\\b") << QStringLiteral("</\\bdt\\b")
+                        << QStringLiteral("</\\bem\\b") << QStringLiteral("</\\bembed\\b")
+                        << QStringLiteral("</\\bfieldset\\b")
+                        << QStringLiteral("</\\bfigcaption\\b") << QStringLiteral("</\\bfigure\\b")
+                        << QStringLiteral("</\\bfont\\b") << QStringLiteral("</\\bfooter\\b")
+                        << QStringLiteral("</\\bform\\b") << QStringLiteral("</\\bframe\\b")
+                        << QStringLiteral("</\\bframeset\\b") << QStringLiteral("</\\bh1\\b")
+                        << QStringLiteral("</\\bh2\\b") << QStringLiteral("</\\bh3\\b")
+                        << QStringLiteral("</\\bh4\\b") << QStringLiteral("</\\bh5\\b")
+                        << QStringLiteral("</\\bh6\\b") << QStringLiteral("</\\bhead\\b")
+                        << QStringLiteral("</\\bheader\\b") << QStringLiteral("</\\bhgroup\\b")
+                        << QStringLiteral("</\\bhr\\b") << QStringLiteral("</\\bhtml\\b")
+                        << QStringLiteral("</\\bi\\b") << QStringLiteral("</\\biframe\\b")
+                        << QStringLiteral("</\\bimg\\b") << QStringLiteral("</\\binput\\b")
+                        << QStringLiteral("</\\bins\\b") << QStringLiteral("</\\bisindex\\b")
+                        << QStringLiteral("</\\bkbd\\b") << QStringLiteral("</\\bkeygen\\b")
+                        << QStringLiteral("</\\blabel\\b") << QStringLiteral("</\\blegend\\b")
+                        << QStringLiteral("</\\bli\\b") << QStringLiteral("</\\blink\\b")
+                        << QStringLiteral("</\\blisting\\b") << QStringLiteral("</\\bmain\\b")
+                        << QStringLiteral("</\\bmap\\b") << QStringLiteral("</\\bmarquee\\b")
+                        << QStringLiteral("</\\bmark\\b") << QStringLiteral("</\\bmenu\\b")
+                        << QStringLiteral("</\\bamenuitem\\b") << QStringLiteral("</\\bmeta\\b")
+                        << QStringLiteral("</\\bmeter\\b") << QStringLiteral("</\\bmulticol\\b")
+                        << QStringLiteral("</\\bnav\\b") << QStringLiteral("</\\bnobr\\b")
+                        << QStringLiteral("</\\bnoembed\\b") << QStringLiteral("</\\bnoindex\\b")
+                        << QStringLiteral("</\\bnoframes\\b") << QStringLiteral("</\\bnoscript\\b")
+                        << QStringLiteral("</\\bobject\\b") << QStringLiteral("</\\bol\\b")
+                        << QStringLiteral("</\\boptgroup\\b") << QStringLiteral("</\\boption\\b")
+                        << QStringLiteral("</\\boutput\\b") << QStringLiteral("</\\bp\\b")
+                        << QStringLiteral("</\\bparam\\b") << QStringLiteral("</\\bpicture\\b")
+                        << QStringLiteral("</\\bplaintext\\b") << QStringLiteral("</\\bpre\\b")
+                        << QStringLiteral("</\\bprogress\\b") << QStringLiteral("</\\bq\\b")
+                        << QStringLiteral("</\\brp\\b") << QStringLiteral("</\\brt\\b")
+                        << QStringLiteral("</\\brtc\\b") << QStringLiteral("</\\bruby\\b")
+                        << QStringLiteral("</\\bs\\b") << QStringLiteral("</\\bsamp\\b")
+                        << QStringLiteral("</\\bscript\\b") << QStringLiteral("</\\bsection\\b")
+                        << QStringLiteral("</\\bselect\\b") << QStringLiteral("</\\bsmall\\b")
+                        << QStringLiteral("</\\bsource\\b") << QStringLiteral("</\\bspacer\\b")
+                        << QStringLiteral("</\\bspan\\b") << QStringLiteral("</\\bstrike\\b")
+                        << QStringLiteral("</\\bstrong\\b") << QStringLiteral("</\\bstyle\\b")
+                        << QStringLiteral("</\\bsub\\b") << QStringLiteral("</\\bsummary\\b")
+                        << QStringLiteral("</\\bsup\\b") << QStringLiteral("</\\btable\\b")
+                        << QStringLiteral("</\\btbody\\b") << QStringLiteral("</\\btd\\b")
+                        << QStringLiteral("</\\btemplate\\b") << QStringLiteral("</\\btextarea\\b")
+                        << QStringLiteral("</\\btfoot\\b") << QStringLiteral("</\\bth\\b")
+                        << QStringLiteral("</\\bthead\\b") << QStringLiteral("</\\btime\\b")
+                        << QStringLiteral("</\\btitle\\b") << QStringLiteral("</\\btr\\b")
+                        << QStringLiteral("</\\btrack\\b") << QStringLiteral("</\\btt\\b")
+                        << QStringLiteral("</\\bu\\b") << QStringLiteral("</\\bul\\b")
+                        << QStringLiteral("</\\bvar\\b") << QStringLiteral("</\\bvideo\\b")
+                        << QStringLiteral("</\\bwbr\\b") << QStringLiteral("</\\bxmp\\b");
 
     endTagRules.reserve(keywordPatterns_end.size());
     for (int i = 0; i < keywordPatterns_end.size(); ++i)

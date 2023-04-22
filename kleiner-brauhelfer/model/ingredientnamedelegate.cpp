@@ -23,14 +23,14 @@ bool IngredientNameDelegate::isUsed(const QModelIndex &index) const
         const SqlTableModel *model = qobject_cast<const SqlTableModel*>(index.model());
         if (model)
         {
-            mColInUsed = model->fieldIndex("InGebrauch");
+            mColInUsed = model->fieldIndex(QStringLiteral("InGebrauch"));
         }
         else
         {
             const ProxyModel *proxyModel = qobject_cast<const ProxyModel*>(index.model());
             if (proxyModel)
             {
-                mColInUsed = proxyModel->fieldIndex("InGebrauch");
+                mColInUsed = proxyModel->fieldIndex(QStringLiteral("InGebrauch"));
             }
         }
     }

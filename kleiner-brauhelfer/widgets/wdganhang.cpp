@@ -12,7 +12,9 @@ bool WdgAnhang::isImage(const QString& pfad)
 {
     QFileInfo fileInfo(pfad);
     QString ext = fileInfo.suffix().toLower();
-    return (ext == "png" || ext == "svg" || ext == "gif" || ext == "jpg" || ext == "jpeg" || ext == "bmp");
+    return (ext == QStringLiteral("png") || ext == QStringLiteral("svg")
+            || ext == QStringLiteral("gif") || ext == QStringLiteral("jpg")
+            || ext == QStringLiteral("jpeg") || ext == QStringLiteral("bmp"));
 }
 
 WdgAnhang::WdgAnhang(int index, QWidget *parent) :

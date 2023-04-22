@@ -393,7 +393,7 @@ void TableView::printPreview(bool selectionOnly) const
 {
     QString title = QInputDialog::getText(nullptr, tr("Drucken"),
                                           tr("Überschrift:"), QLineEdit::Normal,
-                                          QDateTime::currentDateTime().toString("dd.MM.yyyy"));
+                                          QDateTime::currentDateTime().toString(QStringLiteral("dd.MM.yyyy")));
     QPrinter* printer = gSettings->createPrinter();
     QPrintPreviewDialog dlg(printer);
     connect(&dlg, &QPrintPreviewDialog::paintRequested, this, [=]{ printerPaintRequested(printer, selectionOnly, title); });

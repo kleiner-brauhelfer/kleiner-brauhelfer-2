@@ -202,7 +202,7 @@ bool DsvTableModel::insertRows(int row, int count, const QModelIndex &parent)
     QList<QString> list;
     list.reserve(columnCount(parent));
     for (int c = 0; c < columnCount(parent); ++c)
-        list.append("");
+        list.append(QStringLiteral(""));
     for (int r = row; r < row + count; ++r)
         mData->insert(r, list);
     endInsertRows();
@@ -233,14 +233,14 @@ QString DsvTableModel::fieldName(int fieldIndex) const
 
 void DsvTableModel::checkString(QString &value, QList<QString> &row, QChar character, bool &isHeaderRow)
 {
-    if(value.count("\"") % 2 == 0)
+    if (value.count(QStringLiteral("\"")) % 2 == 0)
     {
         if (value.startsWith(QChar('\"')) && value.endsWith( QChar('\"') ) )
         {
             value.remove(0, 1);
             value.chop(1);
         }
-        value.replace("\"\"", "\"");
+        value.replace(QStringLiteral("\"\""), QStringLiteral("\""));
         row.append(value);
         if (character == QChar('\n'))
         {
@@ -266,9 +266,9 @@ bool DsvTableModel::loadFromFile(const QString &fileName, bool hasHeaderLine, QC
     if (delim.isNull())
     {
         QString ext = QFileInfo(file).completeSuffix().toLower();
-        if (ext == "csv")
+        if (ext == QStringLiteral("csv"))
             delim = QChar(',');
-        else if (ext == "tsv")
+        else if (ext == QStringLiteral("tsv"))
             delim = QChar('\t');
         else
             return false;
@@ -337,9 +337,9 @@ bool DsvTableModel::save(const QString &fileName, bool withHeaderLine, QChar del
     if (delim.isNull())
     {
         QString ext = QFileInfo(file).completeSuffix().toLower();
-        if (ext == "csv")
+        if (ext == QStringLiteral("csv"))
             delim = QChar(',');
-        else if (ext == "tsv")
+        else if (ext == QStringLiteral("tsv"))
             delim = QChar('\t');
         else
             return false;
@@ -362,8 +362,8 @@ bool DsvTableModel::save(const QString &fileName, bool withHeaderLine, QChar del
         for (int i = 0; i < mHeaderData.count(); ++i)
         {
             QString value = mHeaderData[i];
-            value.replace("\"", "\"\"");
-            if (value.contains("\"") || value.contains(delim) || value.contains('\r') || value.contains('\n'))
+            value.replace(QStringLiteral("\""), QStringLiteral("\"\""));
+            if (value.contains(QStringLiteral("\"")) || value.contains(delim) || value.contains('\r') || value.contains('\n'))
                 out << "\"" << value << "\"";
             else
                 out << value;
@@ -380,8 +380,8 @@ bool DsvTableModel::save(const QString &fileName, bool withHeaderLine, QChar del
         for (int c = 0; c < mData->columnCount(); ++c)
         {
             QString value = mData->at(r, c);
-            value.replace("\"", "\"\"");
-            if (value.contains("\"") || value.contains(delim) || value.contains('\r') || value.contains('\n'))
+            value.replace(QStringLiteral("\""), QStringLiteral("\"\""));
+            if (value.contains(QStringLiteral("\"")) || value.contains(delim) || value.contains('\r') || value.contains('\n'))
                 out << "\"" << value << "\"";
             else
                 out << value;

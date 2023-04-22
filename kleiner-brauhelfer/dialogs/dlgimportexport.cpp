@@ -47,7 +47,7 @@ DlgImportExport::DlgImportExport(bool import, int row, QWidget *parent) :
     ui->textEdit->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
    #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
-    ui->textEdit->setTabStopDistance(QFontMetrics(ui->textEdit->font()).horizontalAdvance("  "));
+    ui->textEdit->setTabStopDistance(QFontMetrics(ui->textEdit->font()).horizontalAdvance(QStringLiteral("  ")));
    #else
     ui->textEdit->setTabStopDistance(2 * QFontMetrics(ui->textEdit->font()).width(' '));
    #endif
@@ -126,33 +126,33 @@ void DlgImportExport::on_rbFormatKbh_clicked()
     {
         QStringList exclude;
         if (!ui->cbSud->isChecked())
-            exclude.append("Sud");
+            exclude.append(QStringLiteral("Sud"));
         if (!ui->cbMalzschuettung->isChecked())
-            exclude.append("Malzschuettung");
+            exclude.append(QStringLiteral("Malzschuettung"));
         if (!ui->cbHopfengaben->isChecked())
-            exclude.append("Hopfengaben");
+            exclude.append(QStringLiteral("Hopfengaben"));
         if (!ui->cbHefegaben->isChecked())
-            exclude.append("Hefegaben");
+            exclude.append(QStringLiteral("Hefegaben"));
         if (!ui->cbWeitereZutatenGaben->isChecked())
-            exclude.append("WeitereZutatenGaben");
+            exclude.append(QStringLiteral("WeitereZutatenGaben"));
         if (!ui->cbRasten->isChecked())
-            exclude.append("Rasten");
+            exclude.append(QStringLiteral("Rasten"));
         if (!ui->cbWasseraufbereitung->isChecked())
-            exclude.append("Wasseraufbereitung");
+            exclude.append(QStringLiteral("Wasseraufbereitung"));
         if (!ui->cbSchnellgaerverlauf->isChecked())
-            exclude.append("Schnellgaerverlauf");
+            exclude.append(QStringLiteral("Schnellgaerverlauf"));
         if (!ui->cbHauptgaerverlauf->isChecked())
-            exclude.append("Hauptgaerverlauf");
+            exclude.append(QStringLiteral("Hauptgaerverlauf"));
         if (!ui->cbNachgaerverlauf->isChecked())
-            exclude.append("Nachgaerverlauf");
+            exclude.append(QStringLiteral("Nachgaerverlauf"));
         if (!ui->cbBewertungen->isChecked())
-            exclude.append("Bewertungen");
+            exclude.append(QStringLiteral("Bewertungen"));
         if (!ui->cbEtiketten->isChecked())
-            exclude.append("Etiketten");
+            exclude.append(QStringLiteral("Etiketten"));
         if (!ui->cbAnhang->isChecked())
-            exclude.append("Anhang");
+            exclude.append(QStringLiteral("Anhang"));
         if (!ui->cbTags->isChecked())
-            exclude.append("Tags");
+            exclude.append(QStringLiteral("Tags"));
         QByteArray content = ImportExport::exportKbh(bh, mRow, exclude);
         ui->textEdit->setPlainText(QString::fromUtf8(content));
         ui->gpKbhExport->setVisible(true);
@@ -188,7 +188,7 @@ bool DlgImportExport::oeffnen(const QString& filePath_)
     if (filePath.isEmpty())
     {
         filePath = QFileDialog::getOpenFileName(this, tr("Rezept Import"),
-                                                path, "Rezept (*.json *xml);;Alle Dateien (*.*)");
+                                                path, tr("Rezept (*.json *xml);;Alle Dateien (*.*)"));
     }
     ui->tbDatei->setText(filePath);
     ui->textEdit->clear();
@@ -202,7 +202,7 @@ bool DlgImportExport::oeffnen(const QString& filePath_)
             QByteArray content = file.readAll();
             file.close();
             ui->textEdit->setPlainText(QString::fromUtf8(content));
-            if (fileInfo.suffix() == "xml")
+            if (fileInfo.suffix() == QStringLiteral("xml"))
                 ui->rbFormatBeerxml->setChecked(true);
             ret = true;
         }
@@ -278,13 +278,13 @@ bool DlgImportExport::exportieren()
 
     QString filter;
     if (ui->rbFormatKbh->isChecked())
-        filter = "kleiner-brauhelfer (*.json)";
+        filter = QStringLiteral("kleiner-brauhelfer (*.json)");
     else if (ui->rbFormatMmum->isChecked())
-        filter = "MaischeMalzundMehr (*.json)";
+        filter = QStringLiteral("MaischeMalzundMehr (*.json)");
     else if (ui->rbFormatBeerxml->isChecked())
-        filter = "BeerXML (*.xml)";
+        filter = QStringLiteral("BeerXML (*.xml)");
     else if (ui->rbFormatBrautomat->isChecked())
-        filter = "kleiner-brauhelfer (*.json)";
+        filter = QStringLiteral("kleiner-brauhelfer (*.json)");
     QString sudname = bh->modelSud()->data(mRow, ModelSud::ColSudname).toString();
     QString filePath = QFileDialog::getSaveFileName(this, tr("Sud Export"),
                                      path + "/" + sudname, filter);

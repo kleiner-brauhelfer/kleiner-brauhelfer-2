@@ -33,7 +33,7 @@ WdgWeitereZutatGabe::WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt zeitpunkt, 
             QIcon icon = button->icon();
             if (!icon.isNull() && !name.isEmpty())
             {
-                icon.addFile(QString(":/images/dark/%1.svg").arg(name));
+                icon.addFile(QStringLiteral(":/images/dark/%1.svg").arg(name));
                 button->setIcon(icon);
             }
         }
@@ -242,7 +242,7 @@ void WdgWeitereZutatGabe::updateValues()
         else
         {
             ui->frameColor->setPalette(gSettings->palette);
-            ui->frameColor->setToolTip("");
+            ui->frameColor->setToolTip(QStringLiteral(""));
         }
     }
     else
@@ -258,7 +258,7 @@ void WdgWeitereZutatGabe::updateValues()
         else
         {
             ui->frameColor->setPalette(gSettings->palette);
-            ui->frameColor->setToolTip("");
+            ui->frameColor->setToolTip(QStringLiteral(""));
         }
     }
 

@@ -9,7 +9,7 @@ QMap<QString, QDateTime> OBraMa::mUpdateDates = QMap<QString, QDateTime>();
 
 OBraMa::OBraMa(QObject *parent) :
     QObject(parent),
-    mUrl("http://obrama.mueggelland.de/api/obrama.php?table=%1&format=%2")
+    mUrl(QStringLiteral("http://obrama.mueggelland.de/api/obrama.php?table=%1&format=%2"))
 {
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 9, 0))
     mNetManager.setRedirectPolicy(QNetworkRequest::NoLessSafeRedirectPolicy);
@@ -40,7 +40,7 @@ QByteArray OBraMa::download(const QString& table, const QString& format)
 
 bool OBraMa::getUpdateDates()
 {
-    QByteArray data = download("updates", "json");
+    QByteArray data = download(QStringLiteral("updates"), QStringLiteral("json"));
     if (data.isEmpty())
         return false;
 
@@ -83,7 +83,7 @@ bool OBraMa::getTable(const QString& table, const QString& suffix, const QString
             return true;
     }
 
-    QByteArray data = download(table + suffix, "csv");
+    QByteArray data = download(table + suffix, QStringLiteral("csv"));
     if (isValid(data))
     {
         QDir().mkpath(fileInfo.path());

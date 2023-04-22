@@ -47,7 +47,7 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
             QIcon icon = button->icon();
             if (!icon.isNull() && !name.isEmpty())
             {
-                icon.addFile(QString(":/images/dark/%1.svg").arg(name));
+                icon.addFile(QStringLiteral(":/images/dark/%1.svg").arg(name));
                 button->setIcon(icon);
             }
         }
@@ -356,7 +356,7 @@ void DlgRohstoffe::addEntry(QTableView *table, const QMap<int, QVariant> &values
     int row = model->append(values);
     if (row >= 0)
     {
-        table->setCurrentIndex(model->index(row, model->fieldIndex("Name")));
+        table->setCurrentIndex(model->index(row, model->fieldIndex(QStringLiteral("Name"))));
         table->scrollTo(table->currentIndex());
         table->edit(table->currentIndex());
         updateLabelNumItems();
@@ -468,10 +468,10 @@ void DlgRohstoffe::buttonCopy_clicked()
     {
         int row = index.row();
         QMap<int, QVariant> values = sourceModel->copyValues(model->mapRowToSource(row));
-        values.insert(model->fieldIndex("Name"), model->data(row, model->fieldIndex("Name")).toString() + " " + tr("Kopie"));
-        values.remove(model->fieldIndex("Menge"));
-        values.remove(model->fieldIndex("Eingelagert"));
-        values.remove(model->fieldIndex("Mindesthaltbar"));
+        values.insert(model->fieldIndex(QStringLiteral("Name")), model->data(row, model->fieldIndex(QStringLiteral("Name"))).toString() + " " + tr("Kopie"));
+        values.remove(model->fieldIndex(QStringLiteral("Menge")));
+        values.remove(model->fieldIndex(QStringLiteral("Eingelagert")));
+        values.remove(model->fieldIndex(QStringLiteral("Mindesthaltbar")));
         addEntry(table, values);
     }
 }
@@ -502,10 +502,10 @@ void DlgRohstoffe::on_buttonDelete_clicked()
     for (const QModelIndex& index : qAsConst(indices))
     {
         bool del = true;
-        if (model->data(index.row(), model->fieldIndex("InGebrauch")).toBool())
+        if (model->data(index.row(), model->fieldIndex(QStringLiteral("InGebrauch"))).toBool())
         {
-            QStringList liste = model->data(index.row(), model->fieldIndex("InGebrauchListe")).toStringList();
-            QString strListe = "\n\n- " + liste.join("\n- ");
+            QStringList liste = model->data(index.row(), model->fieldIndex(QStringLiteral("InGebrauchListe"))).toStringList();
+            QString strListe = "\n\n- " + liste.join(QStringLiteral("\n- "));
             int ret = QMessageBox::question(this, tr("Rohstoff wird verwendet"),
                                             tr("Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?") + strListe);
             if (ret != QMessageBox::Yes)
@@ -596,7 +596,7 @@ void DlgRohstoffe::updateLabelNumItems()
         filteredModel = ui->tableWeitereZutaten->model();
         break;
     default:
-        ui->lblNumItems->setText("");
+        ui->lblNumItems->setText(QStringLiteral(""));
         return;
     }
     QAbstractItemModel* sourceModel = static_cast<ProxyModel*>(filteredModel)->sourceModel();

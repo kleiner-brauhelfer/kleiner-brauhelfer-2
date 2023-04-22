@@ -25,7 +25,7 @@ Settings::Settings(const QString& dir, QObject *parent) :
 
 Settings::~Settings()
 {
-    setValueInGroup("General", "version", QCoreApplication::applicationVersion());
+    setValueInGroup(QStringLiteral("General"), QStringLiteral("version"), QCoreApplication::applicationVersion());
 }
 
 void Settings::setValueInGroup(const QString &group, const QString &key, const QVariant &value)
@@ -240,12 +240,12 @@ void Settings::initTheme()
 
 int Settings::logLevel()
 {
-    return valueInGroup("General", "LogLevel", 0).toInt();
+    return valueInGroup(QStringLiteral("General"), QStringLiteral("LogLevel"), 0).toInt();
 }
 
 void Settings::setLogLevel(int level)
 {
-    setValueInGroup("General", "LogLevel", level);
+    setValueInGroup(QStringLiteral("General"), QStringLiteral("LogLevel"), level);
     initLogLevel(level);
 }
 
@@ -255,24 +255,24 @@ void Settings::initLogLevel(int level)
     while (level > 100)
         level -= 100;
     if (level <= 0)
-        rules = "*.info=false\n*.debug=false";
+        rules = QStringLiteral("*.info=false\n*.debug=false");
     else if (level == 1)
-        rules = "*.debug=false";
+        rules = QStringLiteral("*.debug=false");
     else if (level == 2)
-        rules = "";
+        rules = QStringLiteral("");
     else if (level < 99)
     {
         if (level >= 3)
-            rules += "kleiner-brauhelfer-core.info=true\n";
+            rules += QStringLiteral("kleiner-brauhelfer-core.info=true\n");
         if (level >= 4)
-            rules += "kleiner-brauhelfer-core.debug=true\n";
+            rules += QStringLiteral("kleiner-brauhelfer-core.debug=true\n");
         if (level >= 5)
-            rules += "SqlTableModel.info=true\n";
+            rules += QStringLiteral("SqlTableModel.info=true\n");
         if (level >= 6)
-            rules += "SqlTableModel.debug=true\n";
+            rules += QStringLiteral("SqlTableModel.debug=true\n");
     }
     else
-        rules = "*.info=true\n*.debug=true";
+        rules = QStringLiteral("*.info=true\n*.debug=true");
     QLoggingCategory::setFilterRules(rules);
 }
 
@@ -283,7 +283,7 @@ Settings::Theme Settings::theme() const
 
 void Settings::setTheme(Theme theme)
 {
-    setValueInGroup("Style", "Theme", theme);
+    setValueInGroup(QStringLiteral("Style"), QStringLiteral("Theme"), theme);
     initTheme();
 }
 
@@ -292,50 +292,50 @@ QString Settings::style()
   #if 0
     return valueInGroup("Style", "Style", "Fusion").toString();
   #else
-    return "Fusion";
+    return QStringLiteral("Fusion");
   #endif
 }
 
 void Settings::setStyle(const QString &style)
 {
-    setValueInGroup("Style", "Style", style);
+    setValueInGroup(QStringLiteral("Style"), QStringLiteral("Style"), style);
 }
 
 bool Settings::useSystemFont()
 {
-    return valueInGroup("Style", "UseSystemFont", true).toBool();
+    return valueInGroup(QStringLiteral("Style"), QStringLiteral("UseSystemFont"), true).toBool();
 }
 
 void Settings::setUseSystemFont(bool system)
 {
-    setValueInGroup("Style", "UseSystemFont", system);
+    setValueInGroup(QStringLiteral("Style"), QStringLiteral("UseSystemFont"), system);
     font = defaultFont;
 }
 
 void Settings::setFont(const QFont &font)
 {
-    setValueInGroup("Style", "Font", font);
+    setValueInGroup(QStringLiteral("Style"), QStringLiteral("Font"), font);
     this->font = font;
 }
 
 bool Settings::animationsEnabled()
 {
-    return valueInGroup("General", "Animations", true).toBool();
+    return valueInGroup(QStringLiteral("General"), QStringLiteral("Animations"), true).toBool();
 }
 
 void Settings::setAnimationsEnabled(bool enabled)
 {
-    setValueInGroup("General", "Animations", enabled);
+    setValueInGroup(QStringLiteral("General"), QStringLiteral("Animations"), enabled);
 }
 
 QString Settings::language()
 {
-    return valueInGroup("General", "language", "de").toString();
+    return valueInGroup(QStringLiteral("General"), QStringLiteral("language"), "de").toString();
 }
 
 void Settings::setLanguage(const QString& lang)
 {
-    setValueInGroup("General", "language", lang);
+    setValueInGroup(QStringLiteral("General"), QStringLiteral("language"), lang);
 }
 
 QString Settings::settingsDir() const
@@ -345,7 +345,7 @@ QString Settings::settingsDir() const
 
 QString Settings::databasePath()
 {
-    QString path = valueInGroup("General", "database").toString();
+    QString path = valueInGroup(QStringLiteral("General"), QStringLiteral("database")).toString();
     if (!path.isEmpty() && QDir::isRelativePath(path))
     {
         QDir dir(settingsDir());
@@ -358,10 +358,10 @@ void Settings::setDatabasePath(const QString& path)
 {
     QDir dir(settingsDir());
     QString pathRel = dir.relativeFilePath(path);
-    if (pathRel.startsWith(".."))
-        setValueInGroup("General", "database", path);
+    if (pathRel.startsWith(QStringLiteral("..")))
+        setValueInGroup(QStringLiteral("General"), QStringLiteral("database"), path);
     else
-        setValueInGroup("General", "database", pathRel);
+        setValueInGroup(QStringLiteral("General"), QStringLiteral("database"), pathRel);
 }
 
 QString Settings::databaseDir()
@@ -424,7 +424,7 @@ void Settings::enableModule(Settings::Module module, bool enabled)
     else
         mModules &= ~module;
   #endif
-    setValueInGroup("General", "Modules", uint(mModules));
+    setValueInGroup(QStringLiteral("General"), QStringLiteral("Modules"), uint(mModules));
     emit modulesChanged(module);
 }
 
@@ -435,7 +435,7 @@ bool Settings::isModuleEnabled(Settings::Module module) const
 
 QString Settings::lastProgramVersion()
 {
-    return valueInGroup("General", "version").toString();
+    return valueInGroup(QStringLiteral("General"), QStringLiteral("version")).toString();
 }
 
 bool Settings::isNewProgramVersion()

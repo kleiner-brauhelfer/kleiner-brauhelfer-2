@@ -463,7 +463,7 @@ void TabGaerverlauf::on_btnDelSchnellgaerMessung_clicked()
 void TabGaerverlauf::on_btnImportSchnellgaerMessung_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("CSV Datei auswählen"),
-                                                    "",
+                                                    QStringLiteral(""),
                                                     tr("CSV Datei (*.csv);;Alle Dateien (*.*)"));
     if (!fileName.isEmpty())
     {
@@ -594,7 +594,7 @@ void TabGaerverlauf::on_btnDelHauptgaerMessung_clicked()
 void TabGaerverlauf::on_btnImportHauptgaerMessung_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("CSV Datei auswählen"),
-                                                    "",
+                                                    QStringLiteral(""),
                                                     tr("CSV Datei (*.csv);;Alle Dateien (*.*)"));
     if (!fileName.isEmpty())
     {
@@ -629,7 +629,7 @@ void TabGaerverlauf::on_btnDelNachgaerMessung_clicked()
 void TabGaerverlauf::on_btnImportNachgaerMessung_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("CSV Datei auswählen"),
-                                                    "",
+                                                    QStringLiteral(""),
                                                     tr("CSV Datei (*.csv);;Alle Dateien (*.*)"));
     if (!fileName.isEmpty())
     {
@@ -660,17 +660,17 @@ QDateTime TabGaerverlauf::toDateTime(QString string) const
         dt = QDateTime::fromString(string, Qt::SystemLocaleLongDate);
   #endif
     if (!dt.isValid())
-        dt = QDateTime::fromString(string, "d.M.yy h:m:s");
+        dt = QDateTime::fromString(string, QStringLiteral("d.M.yy h:m:s"));
     if (!dt.isValid())
-        dt = QDateTime::fromString(string, "d.M.yy h:m");
+        dt = QDateTime::fromString(string, QStringLiteral("d.M.yy h:m"));
     if (!dt.isValid())
-        dt = QDateTime::fromString(string, "d.M.yyyy h:m:s");
+        dt = QDateTime::fromString(string, QStringLiteral("d.M.yyyy h:m:s"));
     if (!dt.isValid())
-        dt = QDateTime::fromString(string, "d.M.yyyy h:m");
+        dt = QDateTime::fromString(string, QStringLiteral("d.M.yyyy h:m"));
     if (!dt.isValid())
-        dt = QDateTime::fromString(string, "M/d/yyyy h:m:s");
+        dt = QDateTime::fromString(string, QStringLiteral("M/d/yyyy h:m:s"));
     if (!dt.isValid())
-        dt = QDateTime::fromString(string, "M/d/yyyy h:m");
+        dt = QDateTime::fromString(string, QStringLiteral("M/d/yyyy h:m"));
     if (dt.isValid())
     {
         if (dt.date().year() < 2000)
@@ -694,7 +694,7 @@ double TabGaerverlauf::toDouble(QString string, bool *ok) const
 void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf(const QString &str)
 {
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
-    QStringList rows = str.split("\n", Qt::SkipEmptyParts);
+    QStringList rows = str.split(QStringLiteral("\n"), Qt::SkipEmptyParts);
   #else
     QStringList rows = str.split("\n", QString::SkipEmptyParts);
   #endif
@@ -705,11 +705,11 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf(const QString &str)
     bool wasBlocked = bh->modelSchnellgaerverlauf()->blockSignals(true);
     for (const QString& row : qAsConst(rows))
     {
-        QStringList cols = row.split("\t");
+        QStringList cols = row.split(QStringLiteral("\t"));
         if (cols.size() == 1)
-            cols = row.split(";");
+            cols = row.split(QStringLiteral(";"));
         if (cols.size() == 1)
-            cols = row.split(",");
+            cols = row.split(QStringLiteral(","));
         if (cols.size() > 1)
         {
             QDateTime dt = toDateTime(cols[0]);
@@ -769,7 +769,7 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf(const QString &str)
 void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf(const QString& str)
 {
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
-    QStringList rows = str.split("\n", Qt::SkipEmptyParts);
+    QStringList rows = str.split(QStringLiteral("\n"), Qt::SkipEmptyParts);
   #else
     QStringList rows = str.split("\n", QString::SkipEmptyParts);
   #endif
@@ -780,11 +780,11 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf(const QString& str)
     bool wasBlocked = bh->modelHauptgaerverlauf()->blockSignals(true);
     for (const QString& row : qAsConst(rows))
     {
-        QStringList cols = row.split("\t");
+        QStringList cols = row.split(QStringLiteral("\t"));
         if (cols.size() == 1)
-            cols = row.split(";");
+            cols = row.split(QStringLiteral(";"));
         if (cols.size() == 1)
-            cols = row.split(",");
+            cols = row.split(QStringLiteral(","));
         if (cols.size() > 1)
         {
             QDateTime dt = toDateTime(cols[0]);
@@ -844,7 +844,7 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf(const QString& str)
 void TabGaerverlauf::pasteFromClipboardNachgaerverlauf(const QString& str)
 {
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
-    QStringList rows = str.split("\n", Qt::SkipEmptyParts);
+    QStringList rows = str.split(QStringLiteral("\n"), Qt::SkipEmptyParts);
   #else
     QStringList rows = str.split("\n", QString::SkipEmptyParts);
   #endif
@@ -855,11 +855,11 @@ void TabGaerverlauf::pasteFromClipboardNachgaerverlauf(const QString& str)
     bool wasBlocked = bh->modelNachgaerverlauf()->blockSignals(true);
     for (const QString& row : qAsConst(rows))
     {
-        QStringList cols = row.split("\t");
+        QStringList cols = row.split(QStringLiteral("\t"));
         if (cols.size() == 1)
-            cols = row.split(";");
+            cols = row.split(QStringLiteral(";"));
         if (cols.size() == 1)
-            cols = row.split(",");
+            cols = row.split(QStringLiteral(","));
         if (cols.size() > 1)
         {
             QDateTime dt = toDateTime(cols[0]);

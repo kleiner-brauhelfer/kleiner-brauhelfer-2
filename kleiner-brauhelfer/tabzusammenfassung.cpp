@@ -50,7 +50,7 @@ void TabZusammenfassung::modulesChanged(Settings::Modules modules)
 void TabZusammenfassung::updateAuswahl()
 {
     QStringList lst;
-    QDirIterator it(gSettings->dataDir(1), QStringList() << "*.html");
+    QDirIterator it(gSettings->dataDir(1), QStringList() << QStringLiteral("*.html"));
     while (it.hasNext())
     {
         it.next();
@@ -59,7 +59,7 @@ void TabZusammenfassung::updateAuswahl()
         int lastUnderscore = filename.lastIndexOf('_');
         if (filename.length() - lastUnderscore == 3)
             filename = filename.left(lastUnderscore);
-        if (!lst.contains(filename) && filename != "sudinfo")
+        if (!lst.contains(filename) && filename != QStringLiteral("sudinfo"))
             lst.append(filename);
     }
     ui->cbAuswahl->clear();

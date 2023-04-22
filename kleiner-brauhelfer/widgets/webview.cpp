@@ -118,7 +118,7 @@ void WebView::renderTemplate()
     QFile file(mTemplateFile);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        setHtml("");
+        setHtml(QStringLiteral(""));
         return;
     }
     renderText(file.readAll());
@@ -134,7 +134,7 @@ void WebView::renderTemplate(QVariantMap &contextVariables)
     QFile file(mTemplateFile);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        setHtml("");
+        setHtml(QStringLiteral(""));
         return;
     }
     renderText(file.readAll(), contextVariables);

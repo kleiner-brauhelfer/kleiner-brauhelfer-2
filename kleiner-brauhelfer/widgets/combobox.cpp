@@ -40,7 +40,7 @@ void ComboBox::paintEvent(QPaintEvent *event)
 
 void ComboBox::on_valueChanged()
 {
-    waValueChanged(this);
+    waValueChanged(this, hasFocus());
 }
 
 void ComboBox::focusOutEvent(QFocusEvent *event)

@@ -227,16 +227,16 @@
          <set>Qt::AlignCenter</set>
         </property>
         <property name="decimals">
-         <number>4</number>
+         <number>3</number>
         </property>
         <property name="minimum">
-         <double>1.000000000000000</double>
+         <double>0.000000000000000</double>
         </property>
         <property name="maximum">
-         <double>1100.000000000000000</double>
+         <double>2.000000000000000</double>
         </property>
         <property name="singleStep">
-         <double>0.000100000000000</double>
+         <double>0.001000000000000</double>
         </property>
        </widget>
       </item>

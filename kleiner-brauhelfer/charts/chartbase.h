@@ -9,7 +9,9 @@ class ChartBase : public QCustomPlot
 
 public:
     explicit ChartBase(QWidget *parent = nullptr);
-
+protected:
+    QColor colorText;
+    QColor colorBack;
 };
 
 #endif // CHARTBASE_H

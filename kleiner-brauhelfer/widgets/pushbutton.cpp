@@ -29,9 +29,9 @@ void PushButton::paintEvent(QPaintEvent *event)
 
 void PushButton::on_valueChanged()
 {
-    waValueChanged(this);
+    waValueChanged(this, hasFocus());
     if (mValueChanged)
-        repaint();
+        update();
 }
 
 void PushButton::focusOutEvent(QFocusEvent *event)

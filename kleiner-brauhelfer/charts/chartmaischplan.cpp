@@ -8,14 +8,48 @@ extern Settings* gSettings;
 ChartMaischplan::ChartMaischplan(QWidget *parent) :
     ChartBase(parent)
 {
+    QColor colRect = gSettings->colorRast;
+    colRect.setAlpha(80);
+
     xAxis->setLabel(tr("Zeit (min)"));
     yAxis->setLabel(tr("Temperatur (°C)"));
+
+    QCPItemRect* rect = new QCPItemRect(this);
+    rect->bottomRight->setAxes(xAxis2, yAxis);
+    rect->topLeft->setAxes(xAxis2, yAxis);
+    rect->bottomRight->setCoords(1, 70);
+    rect->topLeft->setCoords(0, 74);
+    rect->setPen(Qt::NoPen);
+    rect->setBrush(colRect);
+
+    QCPItemText* text = new QCPItemText(this);
+    text->position->setAxes(xAxis2, yAxis);
+    text->position->setCoords(0.01, 72);
+    text->setPositionAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    text->setColor(colorText);
+    text->setText(tr("α-Amylase"));
+
+    rect = new QCPItemRect(this);
+    rect->bottomRight->setAxes(xAxis2, yAxis);
+    rect->topLeft->setAxes(xAxis2, yAxis);
+    rect->bottomRight->setCoords(1, 60);
+    rect->topLeft->setCoords(0, 68);
+    rect->setPen(Qt::NoPen);
+    rect->setBrush(colRect);
+
+    text = new QCPItemText(this);
+    text->position->setAxes(xAxis2, yAxis);
+    text->position->setCoords(0.01, 64);
+    text->setPositionAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    text->setColor(colorText);
+    text->setText(tr("β-Amylase"));
+
+    xAxis2->setRange(0, 1);
 }
 
 void ChartMaischplan::update()
 {
     clearPlottables();
-    clearItems();
 
     QCPGraph *graph = new QCPGraph(xAxis, yAxis);
     QCPGraph *graphAux;
@@ -96,5 +130,6 @@ void ChartMaischplan::update()
 
     xAxis->setRange(0, tTotal);
     yAxis->setRange(TMin, TMax);
+
     replot();
 }

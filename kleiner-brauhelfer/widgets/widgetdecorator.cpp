@@ -10,16 +10,18 @@ WidgetDecorator::WidgetDecorator() :
 {
 }
 
-void WidgetDecorator::suspendValueChanged(bool value)
+bool WidgetDecorator::suspendValueChanged(bool value)
 {
+    bool prevValue = mGlobalSuspendValueChanged;
     mGlobalSuspendValueChanged = value;
+    return prevValue;
 }
 
-void WidgetDecorator::waValueChanged(QWidget *wdg)
+void WidgetDecorator::waValueChanged(QWidget *wdg, bool hasFocus)
 {
     if (mGlobalSuspendValueChanged)
         return;
-    if (wdg->hasFocus())
+    if (hasFocus)
     {
         if (wdg != mGlobalWidget)
         {
@@ -46,7 +48,7 @@ void WidgetDecorator::repaintIfChanged(QWidget *wdg)
         if (wa->mValueChanged)
         {
             wa->mValueChanged = false;
-            wdg->repaint();
+            wdg->update();
         }
     }
     for (int i = 0; i < wdg->children().size(); ++i)

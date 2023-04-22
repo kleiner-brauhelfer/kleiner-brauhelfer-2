@@ -6,21 +6,22 @@ extern Settings *gSettings;
 ChartBase::ChartBase(QWidget *parent) :
     QCustomPlot(parent)
 {
+    colorText = gSettings->palette.color(QPalette::Active, QPalette::Text);
+    colorBack = gSettings->palette.color(QPalette::Active, QPalette::Base);
     if (gSettings->theme() == Settings::Theme::Dark)
     {
-        setBackground(gSettings->palette.color(QPalette::Active, QPalette::Base));
-        QColor colorForeground = gSettings->palette.color(QPalette::Active, QPalette::Text);
-        QPen penForeground = QPen(colorForeground, 1);
+        setBackground(colorBack);
+        QPen penForeground = QPen(colorText, 1);
         xAxis->setBasePen(penForeground);
         yAxis->setBasePen(penForeground);
         xAxis->setTickPen(penForeground);
         yAxis->setTickPen(penForeground);
         xAxis->setSubTickPen(penForeground);
         yAxis->setSubTickPen(penForeground);
-        xAxis->setTickLabelColor(colorForeground);
-        yAxis->setTickLabelColor(colorForeground);
-        xAxis->setLabelColor(colorForeground);
-        yAxis->setLabelColor(colorForeground);
-        legend->setTextColor(colorForeground);
+        xAxis->setTickLabelColor(colorText);
+        yAxis->setTickLabelColor(colorText);
+        xAxis->setLabelColor(colorText);
+        yAxis->setLabelColor(colorText);
+        legend->setTextColor(colorText);
     }
 }

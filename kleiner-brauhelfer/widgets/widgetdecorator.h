@@ -8,11 +8,11 @@ class WidgetDecorator
 {
 public:
     WidgetDecorator();
-    static void suspendValueChanged(bool value);
+    static bool suspendValueChanged(bool value);
 
 protected:
     void waFocusOutEvent();
-    void waValueChanged(QWidget *wdg);
+    void waValueChanged(QWidget *wdg, bool hasFocus);
     bool mValueChanged;
 
 private:

@@ -42,7 +42,7 @@ void SpinBox::paintEvent(QPaintEvent *event)
 
 void SpinBox::on_valueChanged()
 {
-    waValueChanged(this);
+    waValueChanged(this, hasFocus());
 }
 
 void SpinBox::focusOutEvent(QFocusEvent *event)

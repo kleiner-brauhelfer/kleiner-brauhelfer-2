@@ -57,6 +57,7 @@ WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
 
 WdgRast::~WdgRast()
 {
+    disconnect(qApp, &QApplication::focusChanged, this, &WdgRast::focusChanged);
 	delete ui;
 }
 

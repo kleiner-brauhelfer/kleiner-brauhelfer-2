@@ -7,6 +7,7 @@
 #include <QFileDialog>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "units.h"
 #include "model/datetimedelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/restextraktdelegate.h"
@@ -339,7 +340,7 @@ void TabGaerverlauf::dataChangedNachgaerverlauf(const QModelIndex& index)
 void TabGaerverlauf::updateDiagramm()
 {
     Chart3 *diag;
-    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+    Units::Unit grvunit = Units::GravityUnit();
     ProxyModel *model = bh->sud()->modelSchnellgaerverlauf();
     QVector<double> x(model->rowCount());
     QVector<double> y1(model->rowCount());
@@ -349,16 +350,16 @@ void TabGaerverlauf::updateDiagramm()
     {
         QDateTime dt = model->index(row, ModelSchnellgaerverlauf::ColZeitstempel).data().toDateTime();
         x[row] = dt.toSecsSinceEpoch();
-        y1[row] = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,model->index(row, ModelSchnellgaerverlauf::ColRestextrakt).data().toDouble());
+        y1[row] = Units::convert(Units::Plato, grvunit, model->index(row, ModelSchnellgaerverlauf::ColRestextrakt).data().toDouble());
         y2[row] = model->index(row, ModelSchnellgaerverlauf::ColAlc).data().toDouble();
         y3[row] = model->index(row, ModelSchnellgaerverlauf::ColTemp).data().toDouble();
     }
     diag = ui->widget_DiaSchnellgaerverlauf;
     diag->clear();
-    diag->setData1(x, y1, tr("Restextrakt"),gSettings->GravityUnitString(), 1);
+    diag->setData1(x, y1, tr("Restextrakt"), Units::text(grvunit), Units::decimals(grvunit));
     diag->setData2(x, y2, tr("Alkohol"), tr("%"), 1);
     diag->setData3(x, y3, tr("Temperatur"), tr("°C"), 1);
-        diag->setData1Limit(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getSREErwartet()));
+    diag->setData1Limit(Units::convert(Units::Plato, grvunit, bh->sud()->getSREErwartet()));
     diag->rescale();
     diag->replot();
 
@@ -371,19 +372,19 @@ void TabGaerverlauf::updateDiagramm()
     {
         QDateTime dt = model->index(row, ModelHauptgaerverlauf::ColZeitstempel).data().toDateTime();
         x[row] = dt.toSecsSinceEpoch();
-        y1[row] = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,model->index(row, ModelHauptgaerverlauf::ColRestextrakt).data().toDouble());
+        y1[row] = Units::convert(Units::Plato, grvunit, model->index(row, ModelHauptgaerverlauf::ColRestextrakt).data().toDouble());
         y2[row] = model->index(row, ModelHauptgaerverlauf::ColAlc).data().toDouble();
         y3[row] = model->index(row, ModelHauptgaerverlauf::ColTemp).data().toDouble();
     }
     diag = ui->widget_DiaHauptgaerverlauf;
     diag->clear();
-    diag->setData1(x, y1, tr("Restextrakt"), gSettings->GravityUnitString(), 1);
+    diag->setData1(x, y1, tr("Restextrakt"), Units::text(grvunit), Units::decimals(grvunit));
     diag->setData2(x, y2, tr("Alkohol"), tr("%"), 1);
     diag->setData3(x, y3, tr("Temperatur"), tr("°C"), 1);
     if (bh->sud()->getSchnellgaerprobeAktiv())
         diag->setData1Limit(bh->sud()->getGruenschlauchzeitpunkt());
     else
-        diag->setData1Limit(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,bh->sud()->getSREErwartet()));
+        diag->setData1Limit(Units::convert(Units::Plato, grvunit, bh->sud()->getSREErwartet()));
     diag->rescale();
     diag->replot();
 

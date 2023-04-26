@@ -79,7 +79,6 @@ private slots:
     void on_actionNiederlaendisch_triggered();
     void on_actionZahlenformat_triggered(bool checked);
     void on_actionGravityUnit_P_triggered();
-  /* Removed Brix Selection as brix calculation is not accurate for Fermenting Wort  */
     void on_actionGravityUnit_SG_triggered();
     void on_actionModule_triggered();
     void on_actionHilfe_triggered();

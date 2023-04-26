@@ -2,6 +2,7 @@
 #include "ui_dlgrestextrakt.h"
 #include "brauhelfer.h"
 #include "settings.h"
+#include "units.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -9,9 +10,8 @@ extern Settings* gSettings;
 DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, const QDateTime& dt, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DlgRestextrakt)
-
 {
-    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+    Units::Unit grvunit = Units::GravityUnit();
 
     ui->setupUi(this);
 
@@ -22,21 +22,22 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, const QDate
     ui->cbEinheit->setCurrentIndex(gSettings->value("RefraktometerEinheit", 0).toInt());
     ui->tbKorrekturFaktor->setValue(BierCalc::faktorPlatoToBrix);
     gSettings->endGroup();
-    ui->tbSw->setDecimals(gSettings->GravityDecimals());
-    ui->tbExtrakt->setDecimals(gSettings->GravityDecimals());
+    ui->tbSw->setDecimals(Units::decimals(grvunit));
+    ui->tbExtrakt->setDecimals(Units::decimals(grvunit));
     if (sw == 0.0)
     {
         setWindowTitle(tr("Stammwürze"));
         ui->WdgExtrakt->setVisible(false);
         ui->comboBox_FormelBrixPlato->setVisible(false);
         ui->label_FormelBrixPlato->setVisible(false);
-        ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,value));
+        ui->tbSw->setValue(Units::convert(Units::Plato, grvunit, value));
         mSw = true;
     }
     else
     {
         setWindowTitle(tr("Restextrakt"));
-        ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,sw));
+        ui->tbSw->setValue(Units::convert(Units::Plato, grvunit, sw));
+        ui->tbExtrakt->setValue(Units::convert(Units::Plato, grvunit, value));
         mSw = false;
     }
 
@@ -107,20 +108,18 @@ void DlgRestextrakt::on_DlgRestextrakt_accepted()
 
 double DlgRestextrakt::value() const
 {
-    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
-    return mSw ? BierCalc::convertGravity(grvunit,BierCalc::GravityUnit::Plato,ui->tbSw->value()) : BierCalc::convertGravity(grvunit,BierCalc::GravityUnit::Plato,ui->tbExtrakt->value());
+    Units::Unit grvunit = Units::GravityUnit();
+    return mSw ? Units::convert(grvunit, Units::Plato, ui->tbSw->value()) : Units::convert(grvunit, Units::Plato, ui->tbExtrakt->value());
 }
 
 void DlgRestextrakt::setValue(double value)
 {
-    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
-    if (mSw)  {
-        ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,value));
-    } else {
-        ui->tbExtrakt->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,value));
-    }
-    }
-
+    Units::Unit grvunit = Units::GravityUnit();
+    if (mSw)
+        ui->tbSw->setValue(Units::convert(Units::Plato, grvunit, value));
+    else
+        ui->tbExtrakt->setValue(Units::convert(Units::Plato, grvunit, value));
+}
 
 double DlgRestextrakt::temperatur() const
 {
@@ -154,64 +153,64 @@ void DlgRestextrakt::on_cbAuswahl_currentIndexChanged(int index)
 
 void DlgRestextrakt::on_tbPlato_valueChanged(double value)
 {
-    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+    Units::Unit grvunit = Units::GravityUnit();
 
     if (ui->tbPlato->hasFocus())
     {
         ui->tbDichte->setValue(BierCalc::platoToDichte(value));
         if (mSw)
-            ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
+            ui->tbSw->setValue(Units::convert(Units::Plato, grvunit, BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
         else
-            ui->tbExtrakt->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
+            ui->tbExtrakt->setValue(Units::convert(Units::Plato, grvunit, BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
     }
 }
 
 void DlgRestextrakt::on_tbDichte_valueChanged(double value)
 {
 
-    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+    Units::Unit grvunit = Units::GravityUnit();
 
     if (ui->tbDichte->hasFocus())
     {
         ui->tbPlato->setValue(BierCalc::dichteToPlato(value));
         if (mSw)
-            ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
+            ui->tbSw->setValue(Units::convert(Units::Plato, grvunit, BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
         else
-            ui->tbExtrakt->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
+            ui->tbExtrakt->setValue(Units::convert(Units::Plato, grvunit, BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
     }
 }
 
 void DlgRestextrakt::on_tbTemp_valueChanged(double value)
 {
-    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+    Units::Unit grvunit = Units::GravityUnit();
 
     if (ui->tbTemp->hasFocus())
     {
         ui->tbTempRefraktometer->setValue(value);
         ui->tbTempManuell->setValue(value);
         if (mSw)
-            ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
+            ui->tbSw->setValue(Units::convert(Units::Plato, grvunit, BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
         else
-            ui->tbExtrakt->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
+            ui->tbExtrakt->setValue(Units::convert(Units::Plato, grvunit, BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), ui->tbEichtemp->value())));
     }
 }
 
 void DlgRestextrakt::on_tbEichtemp_valueChanged(double value)
 {
-    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+    Units::Unit grvunit = Units::GravityUnit();
 
     if (ui->tbEichtemp->hasFocus())
     {
         if (mSw)
-            ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), value)));
+            ui->tbSw->setValue(Units::convert(Units::Plato, grvunit, BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), value)));
         else
-            ui->tbExtrakt->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), value)));
+            ui->tbExtrakt->setValue(Units::convert(Units::Plato, grvunit, BierCalc::spindelKorrektur(ui->tbPlato->value(), ui->tbTemp->value(), value)));
     }
 }
 
 void DlgRestextrakt::calculateFromRefraktometer()
 {
-    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
+    Units::Unit grvunit = Units::GravityUnit();
 
     double plato, dichte;
     if (mSw)
@@ -220,7 +219,7 @@ void DlgRestextrakt::calculateFromRefraktometer()
             plato = BierCalc::brixToPlato(ui->tbBrix->value());
         else
             plato = ui->tbBrix->value();
-        ui->tbSw->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,plato));
+        ui->tbSw->setValue(Units::convert(Units::Plato, grvunit, plato));
     }
     else
     {
@@ -229,7 +228,7 @@ void DlgRestextrakt::calculateFromRefraktometer()
         else
             dichte = BierCalc::brixToDichte(ui->tbSw->value(), BierCalc::platoToBrix(ui->tbBrix->value()), (BierCalc::FormulaBrixToPlato)ui->comboBox_FormelBrixPlato->currentIndex());
         plato = BierCalc::dichteToPlato(dichte);
-        ui->tbExtrakt->setValue(BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,plato));
+        ui->tbExtrakt->setValue(Units::convert(Units::Plato, grvunit, plato));
     }
 }
 

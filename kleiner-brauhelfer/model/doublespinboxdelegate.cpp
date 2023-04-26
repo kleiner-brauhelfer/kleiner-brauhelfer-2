@@ -1,7 +1,6 @@
 #include "doublespinboxdelegate.h"
 #include <QDoubleSpinBox>
 #include <QPainter>
-#include "brauhelfer.h"
 #include "settings.h"
 
 extern Settings* gSettings;
@@ -22,7 +21,6 @@ DoubleSpinBoxDelegate::DoubleSpinBoxDelegate(int decimals, QObject *parent) :
 {
     mReadonly = true;
 }
-
 
 QWidget* DoubleSpinBoxDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {

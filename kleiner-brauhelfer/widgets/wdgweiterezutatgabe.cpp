@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 #include "brauhelfer.h"
+#include "units.h"
 #include "settings.h"
 #include "mainwindow.h"
 #include "dialogs/dlgrohstoffauswahl.h"
@@ -196,7 +197,7 @@ void WdgWeitereZutatGabe::updateValues()
     }
 
     if (!ui->tbExtrakt->hasFocus())
-        ui->tbExtrakt->setValue(data(ModelWeitereZutatenGaben::ColExtrakt).toDouble());
+        ui->tbExtrakt->setValue(Units::convert(Units::Plato, Units::GravityUnit(), data(ModelWeitereZutatenGaben::ColExtrakt).toDouble()));
     if (!ui->tbExtraktProzent->hasFocus())
         ui->tbExtraktProzent->setValue(data(ModelWeitereZutatenGaben::ColExtraktProzent).toDouble());
     bool visible = data(ModelWeitereZutatenGaben::ColAusbeute).toDouble() > 0;
@@ -482,7 +483,7 @@ void WdgWeitereZutatGabe::on_tbKochdauer_valueChanged(int value)
 void WdgWeitereZutatGabe::on_tbExtrakt_valueChanged(double value)
 {
     if (ui->tbExtrakt->hasFocus())
-        setData(ModelWeitereZutatenGaben::ColExtrakt, value);
+        setData(ModelWeitereZutatenGaben::ColExtrakt, Units::convert(Units::GravityUnit(), Units::Plato, value));
 }
 
 void WdgWeitereZutatGabe::on_tbExtraktProzent_valueChanged(double value)

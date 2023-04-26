@@ -1,17 +1,13 @@
 #ifndef LABELGRV_H
 #define LABELGRV_H
 
+#include <QLabel>
 
-#include "qlabel.h"
 class LabelGrV : public QLabel
 {
-  Q_OBJECT
-
- public:
-  LabelGrV(QWidget *parent = nullptr);
-  //void paintEvent(QPaintEvent *event);
+    Q_OBJECT
+public:
+    LabelGrV(QWidget *parent = nullptr);
 };
 
-
-#endif // LABELGRV_H
- 
+#endif // LABELGRV_H 

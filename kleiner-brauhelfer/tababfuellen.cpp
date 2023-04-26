@@ -304,7 +304,7 @@ void TabAbfuellen::on_cbSchnellgaerprobeAktiv_clicked(bool checked)
 void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
-    DlgRestextrakt dlg(ui->tbSWSchnellgaerprobe->value(),
+    DlgRestextrakt dlg(bh->sud()->getSWSchnellgaerprobe(),
                        bh->sud()->getSWIst(),
                        ui->tbTemperaturJungbier->value(),
                        QDateTime(),
@@ -321,7 +321,7 @@ void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
 void TabAbfuellen::on_btnSWJungbier_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
-    DlgRestextrakt dlg(ui->tbSWJungbier->value(),
+    DlgRestextrakt dlg(bh->sud()->getSWJungbier(),
                        bh->sud()->getSWIst(),
                        ui->tbTemperaturJungbier->value(),
                        QDateTime(),

@@ -36,9 +36,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-373</y>
-         <width>1009</width>
-         <height>1134</height>
+         <y>0</y>
+         <width>1020</width>
+         <height>924</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -372,18 +372,6 @@
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>-99.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>99.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
-             </property>
             </widget>
            </item>
            <item row="3" column="5" colspan="3">
@@ -431,18 +419,6 @@
              </property>
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>-99.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>99.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -515,18 +491,6 @@
              <property name="alignment">
               <set>Qt::AlignCenter</set>
              </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>-99.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>99.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
             </widget>
            </item>
            <item row="7" column="5">
@@ -562,18 +526,6 @@
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>-99.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>99.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
              </property>
             </widget>
            </item>
@@ -697,18 +649,6 @@
              </property>
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>0.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>99.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -2063,14 +2003,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>PushButton</class>
-   <extends>QPushButton</extends>
-   <header>widgets/pushbutton.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
   </customwidget>
   <customwidget>
    <class>WdgBemerkung</class>

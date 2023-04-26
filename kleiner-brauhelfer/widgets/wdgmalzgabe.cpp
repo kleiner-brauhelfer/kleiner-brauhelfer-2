@@ -3,6 +3,7 @@
 #include <QStandardItemModel>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "units.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 
 extern Brauhelfer* bh;
@@ -68,9 +69,7 @@ void WdgMalzGabe::checkEnabled()
 
 void WdgMalzGabe::updateValues()
 {
-    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
     QString malzname = name();
-    double extGh;
 
     checkEnabled();
 
@@ -90,17 +89,6 @@ void WdgMalzGabe::updateValues()
     ui->btnNachUnten->setVisible(mEnabled);
     ui->lblWarnung->setVisible(false);
 
-    if (gSettings->GravityUnit() == BierCalc::GravityUnit::SG) {
-        ui->tbExtrakt->setDecimals(3);
-        ui->tbExtrakt->setMinimum(1.000);
-        ui->tbExtrakt->setSingleStep(0.001);
-    } else {
-        ui->tbExtrakt->setDecimals(1);
-        ui->tbExtrakt->setMinimum(0);
-        ui->tbExtrakt->setSingleStep(0.1);
-    }
-    extGh = BierCalc::convertGravity(BierCalc::GravityUnit::Plato,grvunit,data(ModelMalzschuettung::ColExtrakt).toDouble());
-
     int rowRohstoff = bh->modelMalz()->getRowWithValue(ModelMalz::ColName, malzname);
     mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(malzname);
@@ -110,7 +98,7 @@ void WdgMalzGabe::updateValues()
     if (!ui->tbMenge->hasFocus())
         ui->tbMenge->setValue(data(ModelMalzschuettung::Colerg_Menge).toDouble());
     if (!ui->tbExtrakt->hasFocus())
-        ui->tbExtrakt->setValue(extGh);
+        ui->tbExtrakt->setValue(Units::convert(Units::Plato, Units::GravityUnit(), data(ModelMalzschuettung::ColExtrakt).toDouble()));
     if (!ui->tbExtraktProzent->hasFocus())
         ui->tbExtraktProzent->setValue(data(ModelMalzschuettung::ColExtraktProzent).toDouble());
     bool visible = bh->sud()->getSW() != bh->sud()->getSWAnteilMalz();
@@ -189,20 +177,8 @@ void WdgMalzGabe::on_tbMenge_valueChanged(double value)
 
 void WdgMalzGabe::on_tbExtrakt_valueChanged(double value)
 {
-    BierCalc::GravityUnit grvunit = static_cast<BierCalc::GravityUnit>(gSettings->GravityUnit());
-    if (ui->tbExtrakt->hasFocus()) {
-      double etrv = value;
-        if (grvunit == BierCalc::GravityUnit::SG) {
-            etrv = BierCalc::dichteToPlato(value);
-        }
-        if (grvunit == BierCalc::GravityUnit::Brix) {
-        etrv = BierCalc::brixToPlato(value);
-        }
-        if (grvunit == BierCalc::GravityUnit::Plato) {
-        etrv = value;
-       }
-       setData(ModelMalzschuettung::ColExtrakt, etrv);
-    }
+    if (ui->tbExtrakt->hasFocus())
+        setData(ModelMalzschuettung::ColExtrakt, Units::convert(Units::GravityUnit(), Units::Plato, value));
 }
 
 void WdgMalzGabe::on_tbExtraktProzent_valueChanged(double value)

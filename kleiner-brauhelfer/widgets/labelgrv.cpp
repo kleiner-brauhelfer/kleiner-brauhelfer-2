@@ -1,19 +1,8 @@
 #include "labelgrv.h"
-#include "brauhelfer.h"
-#include "settings.h"
-
-extern Brauhelfer* bh;
-extern Settings* gSettings;
+#include "units.h"
 
 LabelGrV::LabelGrV(QWidget *parent) :
-  QLabel(parent)
+    QLabel(parent)
 {
-    clear();
-    setText(gSettings->GravityUnitString());
+    setText(Units::text(Units::GravityUnit()));
 }
-
-//void LabelGrV::paintEvent(QPaintEvent *event)
-//{
-//    this->clear();
-//    this->setText(gSettings->GravityUnitString());
-//}

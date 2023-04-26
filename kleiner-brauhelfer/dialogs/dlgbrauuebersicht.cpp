@@ -1,12 +1,14 @@
 #include "dlgbrauuebersicht.h"
 #include "ui_dlgbrauuebersicht.h"
 #include "brauhelfer.h"
+#include "units.h"
 #include "settings.h"
 #include "proxymodelsud.h"
 #include "model/textdelegate.h"
 #include "model/datedelegate.h"
 #include "model/spinboxdelegate.h"
 #include "model/doublespinboxdelegate.h"
+#include "model/stammwuerzedelegate.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -145,16 +147,18 @@ void DlgBrauUebersicht::modulesChanged(Settings::Modules modules)
 
 void DlgBrauUebersicht::build()
 {
+    Units::Unit grvunit = Units::GravityUnit();
+
     mAuswahlListe.clear();
     mAuswahlListe.append({-1, 0, tr("<keine>"), ""});
     mAuswahlListe.append({ModelSud::Colerg_AbgefuellteBiermenge, 1, tr("Abgefüllte Biermenge"), tr("L")});
     mAuswahlListe.append({ModelSud::Colerg_S_Gesamt, 2, tr("Schüttung"), tr("kg")});
-    mAuswahlListe.append({ModelSud::ColSWIst, 1, tr("Stammwürze"), tr("°P")});
+    mAuswahlListe.append({ModelSud::ColSWIst, Units::decimals(grvunit), tr("Stammwürze"), Units::text(grvunit)});
     mAuswahlListe.append({ModelSud::Colerg_Sudhausausbeute, 0, tr("Sudhausausbeute"), tr("%")});
     mAuswahlListe.append({ModelSud::Colerg_EffektiveAusbeute, 0, tr("Effektive Sudhausausbeute"), tr("%")});
     mAuswahlListe.append({ModelSud::ColVerdampfungsrateIst, 1, tr("Verdampfungsrate"), tr("L/h")});
     mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol"), tr("%")});
-    mAuswahlListe.append({ModelSud::ColSREIst, 1, tr("Scheinbarer Restextrakt"), tr("°P")});
+    mAuswahlListe.append({ModelSud::ColSREIst, Units::decimals(grvunit), tr("Scheinbarer Restextrakt"), Units::text(grvunit)});
     mAuswahlListe.append({ModelSud::ColsEVG, 0, tr("Scheinbarer Endvergärungsgrad"), tr("%")});
     mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad"), tr("%")});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
@@ -172,7 +176,10 @@ void DlgBrauUebersicht::build()
     ui->cbAuswahlL3->addItem(mAuswahlListe[0].label);
     for (int i = 1; i < mAuswahlListe.count(); ++i)
     {
-        ui->tableView->appendCol({mAuswahlListe[i].col, true, true, 80, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, ui->tableView)});
+        if (mAuswahlListe[i].col == ModelSud::ColSWIst || mAuswahlListe[i].col == ModelSud::ColSREIst)
+            ui->tableView->appendCol({mAuswahlListe[i].col, true, true, 80, new StammWuerzeDelegate(true, ui->tableView)});
+        else
+            ui->tableView->appendCol({mAuswahlListe[i].col, true, true, 80, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, ui->tableView)});
         ui->cbAuswahlL1->addItem(mAuswahlListe[i].label);
         ui->cbAuswahlL2->addItem(mAuswahlListe[i].label);
         ui->cbAuswahlL3->addItem(mAuswahlListe[i].label);
@@ -195,6 +202,8 @@ void DlgBrauUebersicht::modelDataChanged(const QModelIndex& index)
 
 void DlgBrauUebersicht::updateDiagram()
 {
+    Units::Unit grvunit = Units::GravityUnit();
+
     ui->diagram->clear();
     ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
     if (model->rowCount() > 1)
@@ -211,7 +220,10 @@ void DlgBrauUebersicht::updateDiagram()
             {
                 QDateTime dt = model->index(row, ModelSud::ColBraudatum).data().toDateTime();
                 x[i] = dt.toSecsSinceEpoch();
-                y[i] = model->index(row, auswahl1->col).data().toDouble();
+                if (auswahl1->col == ModelSud::ColSWIst || auswahl1->col == ModelSud::ColSREIst)
+                    y[i] = Units::convert(Units::Plato, grvunit, model->index(row, auswahl1->col).data().toDouble());
+                else
+                    y[i] = model->index(row, auswahl1->col).data().toDouble();
                 i++;
             }
             ui->diagram->setData1(x, y, auswahl1->label, auswahl1->unit, auswahl1->precision);
@@ -230,7 +242,10 @@ void DlgBrauUebersicht::updateDiagram()
                 {
                     QDateTime dt = model->index(row, ModelSud::ColBraudatum).data().toDateTime();
                     x[i] = dt.toSecsSinceEpoch();
-                    y[i] = model->index(row, auswahl2->col).data().toDouble();
+                    if (auswahl2->col == ModelSud::ColSWIst || auswahl2->col == ModelSud::ColSREIst)
+                        y[i] = Units::convert(Units::Plato, grvunit, model->index(row, auswahl2->col).data().toDouble());
+                    else
+                        y[i] = model->index(row, auswahl2->col).data().toDouble();
                     i++;
                 }
                 ui->diagram->setData2(x, y, auswahl2->label, auswahl2->unit, auswahl2->precision);
@@ -250,7 +265,10 @@ void DlgBrauUebersicht::updateDiagram()
                 {
                     QDateTime dt = model->index(row, ModelSud::ColBraudatum).data().toDateTime();
                     x[i] = dt.toSecsSinceEpoch();
-                    y[i] = model->index(row, auswahl3->col).data().toDouble();
+                    if (auswahl3->col == ModelSud::ColSWIst || auswahl3->col == ModelSud::ColSREIst)
+                        y[i] = Units::convert(Units::Plato, grvunit, model->index(row, auswahl3->col).data().toDouble());
+                    else
+                        y[i] = model->index(row, auswahl3->col).data().toDouble();
                     i++;
                 }
                 ui->diagram->setData3(x, y, auswahl3->label, auswahl3->unit, auswahl3->precision);

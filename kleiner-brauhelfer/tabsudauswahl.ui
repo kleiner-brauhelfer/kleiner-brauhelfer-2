@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1155</width>
+    <width>980</width>
     <height>491</height>
    </rect>
   </property>
@@ -565,14 +565,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DateEdit</class>
-   <extends>QDateEdit</extends>
-   <header>widgets/dateedit.h</header>
-  </customwidget>
-  <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
   </customwidget>
   <customwidget>
    <class>WdgWebViewEditable</class>

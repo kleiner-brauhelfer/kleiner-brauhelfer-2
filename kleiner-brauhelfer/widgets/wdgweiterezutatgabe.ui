@@ -133,15 +133,12 @@
       <item>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="1" column="2">
-         <widget class="QLabel" name="lblExtraktEinheit">
+         <widget class="LabelGrV" name="lblExtraktEinheit">
           <property name="minimumSize">
            <size>
             <width>40</width>
             <height>0</height>
            </size>
-          </property>
-          <property name="text">
-           <string>°P</string>
           </property>
          </widget>
         </item>
@@ -187,7 +184,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="DoubleSpinBox" name="tbExtrakt">
+         <widget class="DoubleSpinBoxGrV" name="tbExtrakt">
           <property name="minimumSize">
            <size>
             <width>80</width>
@@ -199,18 +196,6 @@
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
-          </property>
-          <property name="decimals">
-           <number>2</number>
-          </property>
-          <property name="minimum">
-           <double>0.000000000000000</double>
-          </property>
-          <property name="maximum">
-           <double>9999.000000000000000</double>
-          </property>
-          <property name="singleStep">
-           <double>0.100000000000000</double>
           </property>
          </widget>
         </item>
@@ -696,6 +681,16 @@
    <class>PushButton</class>
    <extends>QPushButton</extends>
    <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DoubleSpinBoxGrV</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinboxgrv.h</header>
+  </customwidget>
+  <customwidget>
+   <class>LabelGrV</class>
+   <extends>QLabel</extends>
+   <header>widgets/labelgrv.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1217</width>
-         <height>1152</height>
+         <width>1228</width>
+         <height>949</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -184,12 +184,6 @@
              <property name="alignment">
               <set>Qt::AlignCenter</set>
              </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
             </widget>
            </item>
            <item row="1" column="5" colspan="3">
@@ -284,12 +278,6 @@
                 </property>
                 <property name="buttonSymbols">
                  <enum>QAbstractSpinBox::NoButtons</enum>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="singleStep">
-                 <double>1.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -576,12 +564,6 @@
              </property>
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -1038,12 +1020,6 @@
              <property name="alignment">
               <set>Qt::AlignCenter</set>
              </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
             </widget>
            </item>
            <item row="2" column="1">
@@ -1454,12 +1430,6 @@
              </property>
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="singleStep">
-              <double>1.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -2121,12 +2091,6 @@
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
             </widget>
            </item>
            <item row="8" column="0" colspan="4">
@@ -2425,12 +2389,6 @@
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
              </property>
             </widget>
            </item>

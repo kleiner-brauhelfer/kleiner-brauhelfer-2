@@ -6,6 +6,8 @@
 #include <QStyleFactory>
 #include <QDesktopServices>
 #include "brauhelfer.h"
+#include "settings.h"
+#include "units.h"
 #include "definitionen.h"
 #include "tababstract.h"
 #include "dialogs/dlgabout.h"
@@ -796,12 +798,12 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelSud::ColWoche, Qt::Horizontal, tr("Woche"));
     model->setHeaderData(ModelSud::ColBewertungMittel, Qt::Horizontal, tr("Bewertung"));
     model->setHeaderData(ModelSud::ColMenge, Qt::Horizontal, tr("Menge [L]"));
-    model->setHeaderData(ModelSud::ColSW, Qt::Horizontal, tr("SW [°P]"));
+    model->setHeaderData(ModelSud::ColSW, Qt::Horizontal, tr("SW [%1]").arg(Units::text(Units::GravityUnit())));
     model->setHeaderData(ModelSud::ColIBU, Qt::Horizontal, tr("Bittere [IBU]"));
     model->setHeaderData(ModelSud::Colerg_AbgefuellteBiermenge, Qt::Horizontal, tr("Menge [L]"));
     model->setHeaderData(ModelSud::Colerg_Sudhausausbeute, Qt::Horizontal, tr("SHA [%]"));
-    model->setHeaderData(ModelSud::ColSWIst, Qt::Horizontal, tr("SW [°P]"));
-    model->setHeaderData(ModelSud::ColSREIst, Qt::Horizontal, tr("Restextrakt [°P]"));
+    model->setHeaderData(ModelSud::ColSWIst, Qt::Horizontal, tr("SW [%1]").arg(Units::text(Units::GravityUnit())));
+    model->setHeaderData(ModelSud::ColSREIst, Qt::Horizontal, tr("Restextrakt [%1]").arg(Units::text(Units::GravityUnit())));
     model->setHeaderData(ModelSud::Colerg_S_Gesamt, Qt::Horizontal, tr("Schüttung [kg]"));
     model->setHeaderData(ModelSud::Colerg_Preis, Qt::Horizontal, tr("Kosten [%1/l]").arg(QLocale().currencySymbol()));
     model->setHeaderData(ModelSud::Colerg_Alkohol, Qt::Horizontal, tr("Alk. [%]"));
@@ -878,7 +880,7 @@ void MainWindow::initLabels()
 
     model = bh->modelSchnellgaerverlauf();
     model->setHeaderData(ModelSchnellgaerverlauf::ColZeitstempel, Qt::Horizontal, tr("Datum"));
-    model->setHeaderData(ModelSchnellgaerverlauf::ColRestextrakt, Qt::Horizontal, tr("SRE [°P]"));
+    model->setHeaderData(ModelSchnellgaerverlauf::ColRestextrakt, Qt::Horizontal, tr("SRE [%1]").arg(Units::text(Units::GravityUnit())));
     model->setHeaderData(ModelSchnellgaerverlauf::ColTemp, Qt::Horizontal, tr("Temp. [°C]"));
     model->setHeaderData(ModelSchnellgaerverlauf::ColAlc, Qt::Horizontal, tr("Alk. [%]"));
     model->setHeaderData(ModelSchnellgaerverlauf::ColsEVG, Qt::Horizontal, tr("sEVG [%]"));
@@ -887,7 +889,7 @@ void MainWindow::initLabels()
 
     model = bh->modelHauptgaerverlauf();
     model->setHeaderData(ModelHauptgaerverlauf::ColZeitstempel, Qt::Horizontal, tr("Datum"));
-    model->setHeaderData(ModelHauptgaerverlauf::ColRestextrakt, Qt::Horizontal, tr("SRE [°P]"));
+    model->setHeaderData(ModelHauptgaerverlauf::ColRestextrakt, Qt::Horizontal, tr("SRE [%1]").arg(Units::text(Units::GravityUnit())));
     model->setHeaderData(ModelHauptgaerverlauf::ColTemp, Qt::Horizontal, tr("Temp. [°C]"));
     model->setHeaderData(ModelHauptgaerverlauf::ColAlc, Qt::Horizontal, tr("Alk. [%]"));
     model->setHeaderData(ModelHauptgaerverlauf::ColsEVG, Qt::Horizontal, tr("sEVG [%]"));
@@ -1098,14 +1100,14 @@ void MainWindow::on_actionNiederlaendisch_triggered()
 
 void MainWindow::on_actionGravityUnit_P_triggered()
 {
-  gSettings->setGravityUnit(0);
-  restart(1001);
+    Units::setGravityUnit(Units::Plato);
+    restart(1001);
 }
 
 void MainWindow::on_actionGravityUnit_SG_triggered()
 {
-  gSettings->setGravityUnit(1);
-  restart(1001);
+    Units::setGravityUnit(Units::SG);
+    restart(1001);
 }
 
 void MainWindow::on_actionZahlenformat_triggered(bool checked)

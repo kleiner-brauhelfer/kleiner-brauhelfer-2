@@ -40,7 +40,6 @@ unix: PRE_TARGETDEPS += $$OUT_PWD/../bin/libkleiner-brauhelfer-core.a
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    model/stammwuerzedelegate.cpp \
     settings.cpp \
     tababstract.cpp \
     tababfuellen.cpp \
@@ -53,6 +52,7 @@ SOURCES += \
     tabsudauswahl_sudinfo.cpp \
     tabzusammenfassung.cpp \
     templatetags.cpp \
+    units.cpp \
     charts/chart3.cpp \
     charts/chartabfuelldaten.cpp \
     charts/chartausbeute.cpp \
@@ -105,6 +105,7 @@ SOURCES += \
     model/ratingdelegate.cpp \
     model/restextraktdelegate.cpp \
     model/spinboxdelegate.cpp \
+    model/stammwuerzedelegate.cpp \
     model/textdelegate.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
@@ -138,7 +139,6 @@ SOURCES += \
 HEADERS += \
     definitionen.h \
     mainwindow.h \
-    model/stammwuerzedelegate.h \
     settings.h \
     tababstract.h \
     tababfuellen.h \
@@ -150,6 +150,7 @@ HEADERS += \
     tabsudauswahl.h \
     tabzusammenfassung.h \
     templatetags.h \
+    units.h \
     charts/chart3.h \
     charts/chartabfuelldaten.h \
     charts/chartausbeute.h \
@@ -203,6 +204,7 @@ HEADERS += \
     model/ratingdelegate.h \
     model/restextraktdelegate.h \
     model/spinboxdelegate.h \
+    model/stammwuerzedelegate.h \
     model/textdelegate.h \
     widgets/combobox.h \
     widgets/dateedit.h \

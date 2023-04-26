@@ -54,7 +54,6 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     {
         int SudID = proxyModel->data(index.row(), ModelSud::ColID).toInt();
         ListSudID.append(SudID);
-
     }
 
     QVector<Rohstoff> ListMalz;
@@ -383,5 +382,4 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     }
 
     tags["Zutaten"] = ctxZutaten;
-    tags["SWEinheit"] = gSettings->GravityUnit();
 }

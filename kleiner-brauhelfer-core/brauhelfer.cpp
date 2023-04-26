@@ -514,4 +514,3 @@ bool Brauhelfer::rohstoffAbziehen(RohstoffTyp typ, const QString& name, double m
     }
     return false;
 }
-

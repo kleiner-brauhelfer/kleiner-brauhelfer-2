@@ -36,7 +36,7 @@ TabRezept::TabRezept(QWidget *parent) :
 {
     QPalette pal;
 
-  ui->setupUi(this);
+    ui->setupUi(this);
     ui->tbCO2->setColumn(ModelSud::ColCO2);
     ui->tbSW->setColumn(ModelSud::ColSW);
     ui->tbMenge->setColumn(ModelSud::ColMenge);
@@ -663,17 +663,12 @@ void TabRezept::updateValues()
     ui->tbPhMaischeSoll->setError(enabled && (ui->tbPhMaischeSoll->value() < 5.2 || ui->tbPhMaischeSoll->value() > 5.8));
     diff = ui->tbPhMaischeSoll->value() - ui->tbPhMaische->value();
     ui->tbPhMaische->setError(enabled && qAbs(diff) > 0.005);
-        double minVal;
-    if (gSettings->GravityUnit() == BierCalc::GravityUnit::SG) {
-        minVal = 1.000;
-    } else {
-        minVal = 0.0;
-    }
-    ui->wdgSWMalz->setVisible(ui->tbSWMalz->value() > minVal);
-    ui->wdgSWWZMaischen->setVisible(ui->tbSWWZMaischen->value() > minVal);
-    ui->wdgSWWZKochen->setVisible(ui->tbSWWZKochen->value() > minVal);
-    ui->wdgSWWZGaerung->setVisible(ui->tbSWWZGaerung->value() > minVal);
-    ui->wdgSWAnteilHefestarter->setVisible(ui->tbSWAnteilHefestarter->value() > minVal);
+
+    ui->wdgSWMalz->setVisible(bh->sud()->getSWAnteilMalz() > 0.0);
+    ui->wdgSWWZMaischen->setVisible(bh->sud()->getSWAnteilZusatzMaischen() > 0.0);
+    ui->wdgSWWZKochen->setVisible(bh->sud()->getSWAnteilZusatzKochen() > 0.0);
+    ui->wdgSWWZGaerung->setVisible(bh->sud()->getSWAnteilZusatzGaerung() > 0.0);
+    ui->wdgSWAnteilHefestarter->setVisible(bh->sud()->getSWAnteilHefestarter() > 0.0);
     fVal = bh->sud()->getIBU() / bh->sud()->getSW();
     if (fVal <= 1)
         ui->lblBittere->setText(tr("sehr mild"));

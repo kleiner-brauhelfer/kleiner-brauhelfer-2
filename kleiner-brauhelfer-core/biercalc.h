@@ -42,17 +42,6 @@ public:
     };
     Q_ENUM(FormulaBrixToPlato)
 
-      /**
-       * @brief Einheit des Restextraktres. Wird in convertGravity verwindet.
-       */
-    enum GravityUnit
-      {
-        Plato = 0,
-        SG = 1,
-        Brix = 2
-      };
-    Q_ENUM(GravityUnit)
-
     /**
      * @brief Umrechnungsfaktor von Plato [°P] nach Brix [°brix], da Bierwürze
      * keine reine Saccharoselösung ist
@@ -419,15 +408,6 @@ public:
      * @return Farbwert im RGB Raum
      */
     Q_INVOKABLE static unsigned int ebcToColor(double ebc);
-
-    /**
-     * @brief Convertiert eine Extrakteinheit in eine Andere.
-     * @param srcunit Ursprungseinheit
-     * @param destunit Zieleinheit
-       @param value Extraktwert in Ursprungseinheit
-    */
-    Q_INVOKABLE static double convertGravity(BierCalc::GravityUnit srcunit, BierCalc::GravityUnit destunit, double value);
-
 };
 
 #endif // BIERCALC_H

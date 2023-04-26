@@ -91,11 +91,6 @@ public:
     void enableModule(Module module, bool enabled);
     bool isModuleEnabled(Module module) const;
 
-    void setGravityUnit(int unit);
-    int GravityUnit();
-    QString GravityUnitString();
-    int GravityDecimals();
-
     QString lastProgramVersion();
     bool isNewProgramVersion();
 

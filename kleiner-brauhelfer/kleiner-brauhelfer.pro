@@ -40,7 +40,6 @@ unix: PRE_TARGETDEPS += $$OUT_PWD/../bin/libkleiner-brauhelfer-core.a
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    model/stammwuerzedelegate.cpp \
     settings.cpp \
     tababstract.cpp \
     tababfuellen.cpp \
@@ -140,7 +139,6 @@ SOURCES += \
 HEADERS += \
     definitionen.h \
     mainwindow.h \
-    model/stammwuerzedelegate.h \
     settings.h \
     tababstract.h \
     tababfuellen.h \

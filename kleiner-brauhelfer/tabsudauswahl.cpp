@@ -60,7 +60,6 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     table->appendCol({ModelSud::ColMenge, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
     table->appendCol({ModelSud::ColSW, false, true, 80, new StammWuerzeDelegate(table)});
     table->appendCol({ModelSud::ColIBU, false, true, 80, new SpinBoxDelegate(table)});
-
     table->build();
 
     table->horizontalHeader()->setContextMenuPolicy(Qt::CustomContextMenu);

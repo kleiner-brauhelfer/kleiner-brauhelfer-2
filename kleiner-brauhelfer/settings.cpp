@@ -59,7 +59,6 @@ void Settings::initTheme()
     if (mTheme == Unused)
         mTheme = Bright;
 
-
     // colors
     QColor colorChanged;
     switch (mTheme)
@@ -337,52 +336,6 @@ QString Settings::language()
 void Settings::setLanguage(QString lang)
 {
     setValueInGroup("General", "language", lang);
-}
-
-void Settings::setGravityUnit(int unit) {
-    setValueInGroup("Gravity", "unit", unit);
-};
-
-int Settings::GravityUnit()
-{
-    return valueInGroup("Gravity", "unit", 0 ).toInt();
-}
-
-QString Settings::GravityUnitString()
-{
-  QString unitstr;
-  switch (GravityUnit()) {
-  case 0 :
-    unitstr = "°P";
-    break;
-  case 1:
-    unitstr = "SG";
-    break;
-  case 2:
-    unitstr = "°B";
-    break;
-  default:
-    unitstr = "Unknown";
-  }
-  return unitstr;
-}
-
-int Settings::GravityDecimals() {
-  int deci;
-  switch (GravityUnit()) {
-  case 0:
-    deci = 1;
-    break;
-  case 1:
-    deci = 3;
-    break;
-  case 2:
-    deci = 1;
-    break;
-  default:
-    deci = 1;
-  }
-  return deci;
 }
 
 QString Settings::settingsDir() const

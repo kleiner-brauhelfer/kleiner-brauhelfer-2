@@ -36,9 +36,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>-373</y>
-         <width>1009</width>
-         <height>1134</height>
+         <y>0</y>
+         <width>1020</width>
+         <height>924</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -2003,14 +2003,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>PushButton</class>
-   <extends>QPushButton</extends>
-   <header>widgets/pushbutton.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
   </customwidget>
   <customwidget>
    <class>WdgBemerkung</class>

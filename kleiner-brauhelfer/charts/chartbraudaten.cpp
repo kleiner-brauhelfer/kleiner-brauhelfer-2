@@ -64,7 +64,6 @@ void ChartBraudaten::update()
     double val3 = bh->sud()->getWuerzemengeKochende();
     double val4 = bh->sud()->getWuerzemengeAnstellen();
     barsMengeIst->setData({0.8, 1.8, 2.8, 3.8}, {val1, val2, val3, val4}, true);
-
     double maxVal = qMax(val1, qMax(val2, qMax(val3, val4)));
 
     val1 = bh->sud()->getMengeSollKochbeginn();
@@ -90,7 +89,6 @@ void ChartBraudaten::update()
     graphSwSoll->setData({1, 2, 3, 4}, {val1, val2, val3, val4}, true);
     maxVal = qMax(maxVal, qMax(val1, qMax(val2, qMax(val3, val4))));
     if (grvunit == Units::SG)
-
         yAxis2->setRange(1.000, maxVal+(maxVal/10));
     else
         yAxis2->setRange(0, int(maxVal/10)*10+10);

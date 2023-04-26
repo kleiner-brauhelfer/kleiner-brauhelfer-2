@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>653</width>
-    <height>132</height>
+    <height>122</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -400,14 +400,19 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
    <class>PushButton</class>
    <extends>QPushButton</extends>
    <header>widgets/pushbutton.h</header>
   </customwidget>
   <customwidget>
-   <class>DoubleSpinBox</class>
+   <class>DoubleSpinBoxGrV</class>
    <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
+   <header>widgets/doublespinboxgrv.h</header>
   </customwidget>
   <customwidget>
    <class>LabelGrV</class>

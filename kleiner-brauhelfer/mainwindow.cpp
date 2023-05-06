@@ -666,7 +666,7 @@ void MainWindow::on_actionEingabefelderEntsperren_changed()
     }
 }
 
-void MainWindow::on_actionWiederherstellen_triggered()
+void MainWindow::on_actionAnsichtWiederherstellen_triggered()
 {
     restoreView();
 }

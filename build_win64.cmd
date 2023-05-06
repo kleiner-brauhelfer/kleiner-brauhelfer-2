@@ -17,7 +17,11 @@ if not exist "%QT_DIR%\qmake.exe" (
   exit /b -1
 )
 
-for /f "usebackq delims=#" %%a in (`"%PROGRAMFILES(x86)%\Microsoft Visual Studio\Installer\vswhere" -latest -property installationPath`) do set VSPATH=%%a
+for /f "usebackq delims=#" %%a in (`"%PROGRAMFILES(x86)%\Microsoft Visual Studio\Installer\vswhere" -products * -latest -property installationPath`) do set VSPATH=%%a
+if not defined VSPATH (
+  echo Error: Visual Studio installation not found
+  exit /b -1
+)
 call "%VSPATH%\VC\Auxiliary\Build\vcvars64.bat" > nul 2>&1
 
 mkdir %BUILD_DIR%

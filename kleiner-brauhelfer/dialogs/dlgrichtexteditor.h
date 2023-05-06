@@ -31,7 +31,7 @@ private slots:
     void on_tbRichText_currentCharFormatChanged(const QTextCharFormat &format);
     void on_cbStyle_currentIndexChanged(int index);
     void on_cbFont_currentFontChanged(const QFont &font);
-    void on_cbSize_activated(const QString &size);
+    void on_cbSize_textActivated(const QString &size);
     void on_btnColorText_clicked();
     void on_btnBold_clicked(bool checked);
     void on_btnItalic_clicked(bool checked);

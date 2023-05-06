@@ -202,7 +202,7 @@ void DlgRichTextEditor::on_cbFont_currentFontChanged(const QFont &font)
     ui->tbRichText->setFocus();
 }
 
-void DlgRichTextEditor::on_cbSize_activated(const QString &size)
+void DlgRichTextEditor::on_cbSize_textActivated(const QString &size)
 {
     if (!ui->cbSize->hasFocus())
         return;

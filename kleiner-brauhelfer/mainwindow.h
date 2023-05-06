@@ -63,7 +63,7 @@ private slots:
     void on_actionHefeZugabeZuruecksetzen_triggered();
     void on_actionWeitereZutaten_triggered();
     void on_actionEingabefelderEntsperren_changed();
-    void on_actionWiederherstellen_triggered();
+    void on_actionAnsichtWiederherstellen_triggered();
     void on_actionThemeHell_triggered();
     void on_actionThemeDunkel_triggered();
     void on_actionSchriftart_triggered(bool checked);

@@ -197,7 +197,7 @@
       <string>Stil</string>
      </property>
     </widget>
-    <addaction name="actionWiederherstellen"/>
+    <addaction name="actionAnsichtWiederherstellen"/>
     <addaction name="separator"/>
     <addaction name="menuFarbschema"/>
     <addaction name="menuStil"/>
@@ -314,11 +314,8 @@
    <property name="whatsThis">
     <string notr="true">restore</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+Z</string>
-   </property>
   </action>
-  <action name="actionWiederherstellen">
+  <action name="actionAnsichtWiederherstellen">
    <property name="text">
     <string>Zurücksetzen</string>
    </property>

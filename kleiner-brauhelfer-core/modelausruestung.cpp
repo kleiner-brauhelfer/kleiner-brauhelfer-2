@@ -238,6 +238,8 @@ void ModelAusruestung::defaultValues(QMap<int, QVariant> &values) const
     values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
     if (!values.contains(ColID))
         values[ColID] = getNextId();
+    if (!values.contains(ColTyp))
+        values.insert(ColTyp, int(Brauhelfer::AnlageTyp::Standard));
     if (!values.contains(ColSudhausausbeute))
         values.insert(ColSudhausausbeute, 60.0);
     if (!values.contains(ColVerdampfungsrate))

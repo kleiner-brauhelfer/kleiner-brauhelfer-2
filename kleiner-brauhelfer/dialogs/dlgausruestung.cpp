@@ -58,6 +58,8 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
             }
         }
     }
+    for (const auto& type : qAsConst(Typname))
+        ui->cbTyp->addItem(type.first, type.second);
     ui->lblCurrency->setText(QLocale().currencySymbol());
 
     QPalette palette = ui->tbHelp->palette();
@@ -69,8 +71,7 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     ProxyModel *proxyModel = new ProxyModel(this);
     proxyModel->setSourceModel(bh->modelAusruestung());
     table->setModel(proxyModel);
-    table->appendCol({ModelAusruestung::ColName, true, false, -1, nullptr});
-    table->appendCol({ModelAusruestung::ColTyp, true, true, 100, new ComboBoxDelegate(Typname, table)});
+    table->appendCol({ModelAusruestung::ColName, true, false, -1, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, table)});
     table->appendCol({ModelAusruestung::ColVermoegen, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
     table->appendCol({ModelAusruestung::ColAnzahlSude, true, true, 100, new SpinBoxDelegate(table)});
     table->appendCol({ModelAusruestung::ColAnzahlGebrauteSude, true, true, 100, new SpinBoxDelegate(table)});
@@ -101,7 +102,8 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     table->build();
     table->setDefaultContextMenu();
 
-    ui->splitter->setSizes({200, 200, 50});
+    ui->splitter->setSizes({200, 200});
+    ui->splitterHelp->setSizes({200, 50});
 
     modulesChanged(Settings::ModuleAlle);
     connect(gSettings, &Settings::modulesChanged, this, &DlgAusruestung::modulesChanged);
@@ -126,7 +128,8 @@ void DlgAusruestung::saveSettings()
     gSettings->setValue("tableStateAnlagen", ui->tableViewAnlagen->horizontalHeader()->saveState());
     gSettings->setValue("tableStateGeraete", ui->tableViewGeraete->horizontalHeader()->saveState());
     gSettings->setValue("tableStateSude", ui->tableViewSude->horizontalHeader()->saveState());
-    gSettings->setValue("splitterStateMain", ui->splitter->saveState());
+    gSettings->setValue("splitterState", ui->splitter->saveState());
+    gSettings->setValue("splitterStateHelp", ui->splitterHelp->saveState());
     gSettings->setValue("AnzahlDurchschnitt", ui->sliderAusbeuteSude->value());
     gSettings->endGroup();
 }
@@ -137,7 +140,8 @@ void DlgAusruestung::loadSettings()
     ui->tableViewAnlagen->restoreState(gSettings->value("tableStateAnlagen").toByteArray());
     ui->tableViewGeraete->restoreState(gSettings->value("tableStateGeraete").toByteArray());
     ui->tableViewSude->restoreState(gSettings->value("tableStateSude").toByteArray());
-    ui->splitter->restoreState(gSettings->value("splitterStateMain").toByteArray());
+    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
+    ui->splitterHelp->restoreState(gSettings->value("splitterStateHelp").toByteArray());
     ui->sliderAusbeuteSude->setValue(gSettings->value("AnzahlDurchschnitt").toInt());
     gSettings->endGroup();
 }
@@ -149,7 +153,8 @@ void DlgAusruestung::restoreView()
     gSettings->remove("tableStateAnlagen");
     gSettings->remove("tableStateGeraete");
     gSettings->remove("tableStateSude");
-    gSettings->remove("splitterStateMain");
+    gSettings->remove("splitterState");
+    gSettings->remove("splitterStateHelp");
     gSettings->endGroup();
 }
 
@@ -258,7 +263,8 @@ void DlgAusruestung::on_btnNeueAnlage_clicked()
         const QModelIndex index = model->index(row, ModelAusruestung::ColName);
         ui->tableViewAnlagen->setCurrentIndex(index);
         ui->tableViewAnlagen->scrollTo(ui->tableViewAnlagen->currentIndex());
-        ui->tableViewAnlagen->edit(ui->tableViewAnlagen->currentIndex());
+        ui->tbName->selectAll();
+        ui->tbName->setFocus();
     }
 }
 
@@ -332,7 +338,11 @@ bool DlgAusruestung::setData(int col, const QVariant &value)
 
 void DlgAusruestung::updateValues()
 {
-    ui->lblAnlage->setText(data(ModelAusruestung::ColName).toString());
+    Brauhelfer::AnlageTyp typ = static_cast<Brauhelfer::AnlageTyp>(data(ModelAusruestung::ColTyp).toInt());
+    if (!ui->tbName->hasFocus())
+        ui->tbName->setText(data(ModelAusruestung::ColName).toString());
+    if (!ui->cbTyp->hasFocus())
+        ui->cbTyp->setCurrentIndex(ui->cbTyp->findData(data(ModelAusruestung::ColTyp)));
     if (!ui->tbAusbeute->hasFocus())
         ui->tbAusbeute->setValue(data(ModelAusruestung::ColSudhausausbeute).toDouble());
     if (!ui->tbVerdampfung->hasFocus())
@@ -347,18 +357,24 @@ void DlgAusruestung::updateValues()
         ui->tbKosten->setValue(data(ModelAusruestung::ColKosten).toDouble());
     if (!ui->tbMaischebottichHoehe->hasFocus())
         ui->tbMaischebottichHoehe->setValue(data(ModelAusruestung::ColMaischebottich_Hoehe).toDouble());
+    ui->tbMaischebottichHoehe->setReadOnly(typ != Brauhelfer::AnlageTyp::Standard);
     if (!ui->tbMaischebottichDurchmesser->hasFocus())
         ui->tbMaischebottichDurchmesser->setValue(data(ModelAusruestung::ColMaischebottich_Durchmesser).toDouble());
+    ui->tbMaischebottichDurchmesser->setReadOnly(typ != Brauhelfer::AnlageTyp::Standard);
     ui->tbMaischebottichMaxFuellhoehe->setMaximum(data(ModelAusruestung::ColMaischebottich_Hoehe).toDouble());
     if (!ui->tbMaischebottichMaxFuellhoehe->hasFocus())
         ui->tbMaischebottichMaxFuellhoehe->setValue(data(ModelAusruestung::ColMaischebottich_MaxFuellhoehe).toDouble());
+    ui->tbMaischebottichMaxFuellhoehe->setReadOnly(typ != Brauhelfer::AnlageTyp::Standard);
     if (!ui->tbSudpfanneHoehe->hasFocus())
         ui->tbSudpfanneHoehe->setValue(data(ModelAusruestung::ColSudpfanne_Hoehe).toDouble());
+    ui->tbSudpfanneHoehe->setReadOnly(typ != Brauhelfer::AnlageTyp::Standard);
     if (!ui->tbSudpfanneDurchmesser->hasFocus())
         ui->tbSudpfanneDurchmesser->setValue(data(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble());
+    ui->tbSudpfanneDurchmesser->setReadOnly(typ != Brauhelfer::AnlageTyp::Standard);
     ui->tbSudpfanneMaxFuellhoehe->setMaximum(data(ModelAusruestung::ColSudpfanne_Hoehe).toDouble());
     if (!ui->tbSudpfanneMaxFuellhoehe->hasFocus())
         ui->tbSudpfanneMaxFuellhoehe->setValue(data(ModelAusruestung::ColSudpfanne_MaxFuellhoehe).toDouble());
+    ui->tbSudpfanneMaxFuellhoehe->setReadOnly(typ != Brauhelfer::AnlageTyp::Standard);
     ui->tbMaischenVolumen->setValue(data(ModelAusruestung::ColMaischebottich_Volumen).toDouble());
     ui->tbMaischenMaxNutzvolumen->setValue(data(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());
     ui->tbSudpfanneVolumen->setValue(data(ModelAusruestung::ColSudpfanne_Volumen).toDouble());
@@ -412,6 +428,20 @@ void DlgAusruestung::updateDurchschnitt()
     ui->tbAusbeuteMittel->setValue(ausbeute);
     ui->tbVerdampfungMittel->setValue(verdampfung);
     ui->tbAusbeuteSude->setValue(ui->sliderAusbeuteSude->value());
+}
+
+void DlgAusruestung::on_tbName_editingFinished()
+{
+    QString prevValue = data(ModelAusruestung::ColName).toString();
+    if (prevValue != ui->tbName->text())
+        setData(ModelAusruestung::ColName, ui->tbName->text());
+}
+
+void DlgAusruestung::on_cbTyp_activated(int index)
+{
+    int prevValue = data(ModelAusruestung::ColTyp).toInt();
+    if (prevValue != ui->cbTyp->itemData(index).toInt())
+        setData(ModelAusruestung::ColTyp, ui->cbTyp->itemData(index));
 }
 
 void DlgAusruestung::on_btnVerdampfungsrate_clicked()

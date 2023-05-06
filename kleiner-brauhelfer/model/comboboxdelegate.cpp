@@ -8,7 +8,7 @@ ComboBoxDelegate::ComboBoxDelegate(const QStringList &items, QObject *parent) :
 {
 }
 
-ComboBoxDelegate::ComboBoxDelegate(QList<QPair<QString, int> > &items, QObject *parent) :
+ComboBoxDelegate::ComboBoxDelegate(const QList<QPair<QString, int> > &items, QObject *parent) :
     QStyledItemDelegate(parent),
     mItemsMapped(items)
 {
@@ -20,7 +20,7 @@ ComboBoxDelegate::ComboBoxDelegate(const QStringList &items, const QList<QColor>
     setColors(colors);
 }
 
-ComboBoxDelegate::ComboBoxDelegate(QList<QPair<QString, int> > &items, const QList<QColor> &colors, QObject *parent) :
+ComboBoxDelegate::ComboBoxDelegate(const QList<QPair<QString, int> > &items, const QList<QColor> &colors, QObject *parent) :
     ComboBoxDelegate(items, parent)
 {
     setColors(colors);

@@ -36,6 +36,8 @@ private slots:
     void on_btnGeraetLoeschen_clicked();
     void updateValues();
     void updateDurchschnitt();
+    void on_tbName_editingFinished();
+    void on_cbTyp_activated(int index);
     void on_btnAusbeuteMittel_clicked();
     void on_btnVerdampfungsrate_clicked();
     void on_btnVerdampfungMittel_clicked();

@@ -1886,6 +1886,57 @@ p, li { white-space: pre-wrap; }
          <number>4</number>
         </property>
         <item>
+         <widget class="QWidget" name="wdgWarnungMaischplan" native="true">
+          <layout class="QHBoxLayout" name="horizontalLayout_14">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="lblWarnungMaischplan">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>Die Summe der angegebenen Wassermengen entspricht nicht der Hautpgussmenge.</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="PushButton" name="btnMaischplanAusgleichen">
+             <property name="text">
+              <string>Ausgleichen</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="PushButton" name="btnMaischplanFaktorAnpassen">
+             <property name="text">
+              <string>Hauptguss anpassen</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
          <widget class="QSplitter" name="splitterMaischplan">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -3178,7 +3229,7 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="3" column="0" colspan="2">
+            <item row="2" column="0" colspan="2">
              <widget class="QLabel" name="label_S1_3">
               <property name="text">
                <string>Nachguss</string>
@@ -3227,7 +3278,7 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="3" column="4">
+            <item row="2" column="4">
              <widget class="QLabel" name="label_33">
               <property name="text">
                <string>L</string>
@@ -3239,82 +3290,6 @@ p, li { white-space: pre-wrap; }
               <property name="text">
                <string>Gesamt</string>
               </property>
-             </widget>
-            </item>
-            <item row="2" column="0" colspan="5">
-             <widget class="QWidget" name="wdgHauptgussEmpfohlen" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_14">
-               <property name="spacing">
-                <number>9</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="label_77">
-                 <property name="text">
-                  <string>Empfohlen</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_15">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="DoubleSpinBoxSud" name="tbHauptgussEmpfohlen">
-                 <property name="minimumSize">
-                  <size>
-                   <width>80</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="toolTip">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;empfohlene Menge Hauptguss&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::NoButtons</enum>
-                 </property>
-                 <property name="decimals">
-                  <number>1</number>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_78">
-                 <property name="minimumSize">
-                  <size>
-                   <width>40</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="text">
-                  <string>L</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
              </widget>
             </item>
             <item row="0" column="4">
@@ -3330,7 +3305,7 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="3" column="3">
+            <item row="2" column="3">
              <widget class="DoubleSpinBoxSud" name="tbNachguss">
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity. Ferner kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; im Tab Ausrüstung &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; werden. Dazu sind gemeinhin einige Sude nötig, um eine Festlegung treffen zu können.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wid der Wert des Nachgusses zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -3380,7 +3355,7 @@ p, li { white-space: pre-wrap; }
               </property>
              </widget>
             </item>
-            <item row="4" column="0" colspan="5">
+            <item row="3" column="0" colspan="5">
              <widget class="QWidget" name="wdgWasserHGF" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_18">
                <property name="spacing">
@@ -3952,7 +3927,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>tabMitte</tabstop>
   <tabstop>btnMalzAusgleichen</tabstop>
   <tabstop>scrollAreaMalzGaben</tabstop>
-  <tabstop>diagramMalz</tabstop>
   <tabstop>btnNeueMalzGabe</tabstop>
   <tabstop>btnMalzGabenUebernehmen</tabstop>
   <tabstop>btnNeueZusatzGabeMaischen</tabstop>
@@ -3960,7 +3934,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>cbBerechnungsartHopfen</tabstop>
   <tabstop>btnHopfenAusgleichen</tabstop>
   <tabstop>scrollAreaHopfenGaben</tabstop>
-  <tabstop>diagramHopfen</tabstop>
   <tabstop>btnNeueHopfenGabe</tabstop>
   <tabstop>btnHopfenGabenUebernehmen</tabstop>
   <tabstop>btnNeueZusatzGabeKochen</tabstop>
@@ -3973,7 +3946,8 @@ p, li { white-space: pre-wrap; }
   <tabstop>btnNeueZusatzGabeGaerung</tabstop>
   <tabstop>btnZusazGabenUebernehmenGaerung</tabstop>
   <tabstop>scrollAreaRasten</tabstop>
-  <tabstop>diagramRasten</tabstop>
+  <tabstop>btnMaischplanAusgleichen</tabstop>
+  <tabstop>btnMaischplanFaktorAnpassen</tabstop>
   <tabstop>btnNeueRast</tabstop>
   <tabstop>btnRastenUebernehmen</tabstop>
   <tabstop>cbWasserProfil</tabstop>
@@ -3987,7 +3961,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>scrollAreaWasseraufbereitung</tabstop>
   <tabstop>btnNeueWasseraufbereitung</tabstop>
   <tabstop>btnWasseraufbereitungUebernehmen</tabstop>
-  <tabstop>tbMengeHefestarter</tabstop>
+  <tabstop>splitterHelp</tabstop>
   <tabstop>gvGlas</tabstop>
   <tabstop>tbFarbe</tabstop>
   <tabstop>tbGesamtschuettung</tabstop>
@@ -4001,7 +3975,6 @@ p, li { white-space: pre-wrap; }
   <tabstop>tbKosten</tabstop>
   <tabstop>tbWasserGesamt</tabstop>
   <tabstop>tbHauptguss</tabstop>
-  <tabstop>tbHauptgussEmpfohlen</tabstop>
   <tabstop>tbNachguss</tabstop>
   <tabstop>tbWasserHGF</tabstop>
   <tabstop>tbAnlageKorrekturSollmenge</tabstop>
@@ -4011,10 +3984,10 @@ p, li { white-space: pre-wrap; }
   <tabstop>tbVolumenMaische</tabstop>
   <tabstop>tbAnlageVolumenKochen</tabstop>
   <tabstop>tbVolumenKochen</tabstop>
-  <tabstop>tbSWHefestarter</tabstop>
-  <tabstop>splitterHelp</tabstop>
-  <tabstop>scrollArea_6</tabstop>
   <tabstop>tbHelp</tabstop>
+  <tabstop>scrollArea_6</tabstop>
+  <tabstop>tbSWHefestarter</tabstop>
+  <tabstop>tbMengeHefestarter</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

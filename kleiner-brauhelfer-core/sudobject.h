@@ -134,7 +134,6 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD_READONLY(double, PhMalz, toDouble())
     Q_PROPERTY_SUD_READONLY(double, PhMaische, toDouble())
     Q_PROPERTY_SUD_READONLY(double, PhMaischeSoll, toDouble())
-    Q_PROPERTY_SUD_READONLY(double, WHauptgussEmpfehlung, toDouble())
     Q_PROPERTY_SUD_READONLY(int, BewertungMittel, toInt())
 
     // tables

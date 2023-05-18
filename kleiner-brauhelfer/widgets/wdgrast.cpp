@@ -71,6 +71,25 @@ QString WdgRast::name() const
     return data(ModelRasten::ColName).toString();
 }
 
+double WdgRast::prozentWasser() const
+{
+    switch (static_cast<Brauhelfer::RastTyp>(data(ModelRasten::ColTyp).toInt()))
+    {
+    case Brauhelfer::RastTyp::Einmaischen:
+    case Brauhelfer::RastTyp::Infusion:
+        return data(ModelRasten::ColMengenfaktor).toDouble();
+    default:
+        return 0;
+    }
+}
+
+void WdgRast::setFehlProzentWasser(double value)
+{
+    bool error = value != 0.0;
+    ui->tbVerhaeltnisEinmaischen->setError(error);
+    ui->tbVerhaeltnisInfusion->setError(error);
+}
+
 void WdgRast::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());

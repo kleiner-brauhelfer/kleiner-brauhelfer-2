@@ -2,6 +2,10 @@
 
 ## Version 2.5.1 (in Entwicklung)
 - Neu: Diagramme überarbeitet (neu mit QCustomPlot, Qt Charts nicht mehr benötigt)
+- Neu: Maischplan überarbeitet:
+  - Gesamtwassermenge (Einmaischen+Zubrühen) muss Hauptgussmenge entsprechen
+  - Buttons, um Mengen auszugleichen oder Hauptgussmenge anzupassen
+  - Rasttemperatur bei Zubrühen wird bei Änderungen anderer Parameter nicht geändert
 - Fix: Gaben & Rasten im Rezeptreiter nicht immer aktualisiert 
 
 ## Version 2.5.0 (27.02.2023)

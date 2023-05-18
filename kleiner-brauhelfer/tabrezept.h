@@ -28,9 +28,12 @@ private slots:
     void updateValues();
 
     void rasten_modified();
+    void updateMaischplan();
     void updateRastenDiagram();
     void on_btnNeueRast_clicked();
     void on_btnRastenUebernehmen_clicked();
+    void on_btnMaischplanAusgleichen_clicked();
+    void on_btnMaischplanFaktorAnpassen_clicked();
 
     void updateExtrakt();
 

@@ -480,7 +480,7 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
         int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
 
         // Rasten
-        double V_tot = bh->modelSud()->data(sudRow, ModelSud::ColWHauptgussEmpfehlung).toDouble();
+        double V_tot = bh->modelSud()->data(sudRow, ModelSud::Colerg_WHauptguss).toDouble();
         values.clear();
         values[ModelRasten::ColSudID] = sudId;
         values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Einmaischen);

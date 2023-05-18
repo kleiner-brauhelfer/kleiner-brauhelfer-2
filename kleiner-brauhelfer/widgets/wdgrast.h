@@ -16,6 +16,8 @@ public:
     ~WdgRast();
     bool isEnabled() const;
     QString name() const;
+    double prozentWasser() const;
+    void setFehlProzentWasser(double value);
 
 public slots:
     void updateListe();

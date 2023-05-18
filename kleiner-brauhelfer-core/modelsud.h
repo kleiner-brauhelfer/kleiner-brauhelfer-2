@@ -126,7 +126,6 @@ public:
         ColPhMalz,
         ColPhMaische,
         ColPhMaischeSoll,
-        ColWHauptgussEmpfehlung,
         ColBewertungMittel,
         // number of columns
         NumCols

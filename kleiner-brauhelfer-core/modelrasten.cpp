@@ -23,7 +23,7 @@ QVariant ModelRasten::dataExt(const QModelIndex &idx) const
         {
         case Brauhelfer::RastTyp::Einmaischen:
         case Brauhelfer::RastTyp::Infusion:
-            V = bh->modelSud()->dataSud(sudId, ModelSud::ColWHauptgussEmpfehlung).toDouble();
+            V = bh->modelSud()->dataSud(sudId, ModelSud::Colerg_WHauptguss).toDouble();
             break;
         case Brauhelfer::RastTyp::Temperatur:
         case Brauhelfer::RastTyp::Dekoktion:
@@ -49,7 +49,7 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
         {
         case Brauhelfer::RastTyp::Einmaischen:
         case Brauhelfer::RastTyp::Infusion:
-            V = bh->modelSud()->dataSud(sudId, ModelSud::ColWHauptgussEmpfehlung).toDouble();
+            V = bh->modelSud()->dataSud(sudId, ModelSud::Colerg_WHauptguss).toDouble();
             break;
         case Brauhelfer::RastTyp::Temperatur:
         case Brauhelfer::RastTyp::Dekoktion:
@@ -64,9 +64,6 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
         }
         break;
     case ColMengenfaktor:
-        fVal = value.toDouble();
-        if (fVal < 0)
-            fVal = 0;
         if (QSqlTableModel::setData(idx, value))
         {
             switch (static_cast<Brauhelfer::RastTyp>(data(idx.row(), ColTyp).toInt()))
@@ -85,22 +82,25 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
                     getMaischeValues(sudId, idx.row(), m1, c1);
                     m2 = data(idx.row(), ColMenge).toDouble() * BierCalc::dichteWasser(20);
                     c2 = BierCalc::cWasser;
-                    T2 = data(idx.row(), ColParam1).toDouble();
-                    Tm = BierCalc::mischungstemperaturTm(m1, c1, T1, m2, c2, T2);
-                    QSqlTableModel::setData(index(idx.row(), ColTemp), Tm);
+                    Tm = data(idx.row(), ColTemp).toDouble();
+                    T2 = BierCalc::mischungstemperaturT2(Tm, m1, c1, T1, m2, c2);
+                    QSqlTableModel::setData(index(idx.row(), ColParam1), T2);
                 }
                 break;
             case Brauhelfer::RastTyp::Dekoktion:
                 T1 = getPreviousTemp(sudId, idx.row());
                 if (T1 != std::numeric_limits<double>::infinity())
                 {
+                    fVal = value.toDouble();
+                    if (fVal < 0)
+                        fVal = 0;
                     getMaischeValues(sudId, idx.row(), temp, c1);
                     m2 = fVal * temp;
                     m1 = temp - m2;
                     c2 = c1;
-                    T2 = data(idx.row(), ColParam1).toDouble();
-                    Tm = BierCalc::mischungstemperaturTm(m1, c1, T1, m2, c2, T2);
-                    QSqlTableModel::setData(index(idx.row(), ColTemp), Tm);
+                    Tm = data(idx.row(), ColTemp).toDouble();
+                    T2 = BierCalc::mischungstemperaturT2(Tm, m1, c1, T1, m2, c2);
+                    QSqlTableModel::setData(index(idx.row(), ColParam1), T2);
                 }
                 break;
             default:
@@ -127,16 +127,14 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
                 {
                     getMaischeValues(sudId, idx.row(), m1, c1);
                     c2 = BierCalc::cWasser;
-                    T2 = data(idx.row(), ColParam1).toDouble();
+                    m2 = data(idx.row(), ColMenge).toDouble() * BierCalc::dichteWasser(20);
                     Tm = value.toDouble();
-                    m2 = BierCalc::mischungstemperaturM2(Tm, m1, c1, T1, c2, T2);
-                    if (m2 != 0)
-                    {
-                        V = bh->modelSud()->dataSud(sudId, ModelSud::ColWHauptgussEmpfehlung).toDouble();
-                        temp =  m2 / BierCalc::dichteWasser(20) / V;
-                        if (temp >= 0)
-                            QSqlTableModel::setData(index(idx.row(), ColMengenfaktor), temp);
-                    }
+                    T2 = BierCalc::mischungstemperaturT2(Tm, m1, c1, T1, m2, c2);
+                    QSqlTableModel::setData(index(idx.row(), ColParam1), T2);
+                }
+                else
+                {
+                    QSqlTableModel::setData(index(idx.row(), ColParam1), value.toDouble());
                 }
                 break;
             case Brauhelfer::RastTyp::Dekoktion:
@@ -155,6 +153,10 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
                             QSqlTableModel::setData(index(idx.row(), ColMengenfaktor), temp);
                     }
                 }
+                else
+                {
+                    QSqlTableModel::setData(index(idx.row(), ColParam1), value.toDouble());
+                }
                 break;
             default:
                 break;
@@ -172,16 +174,16 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
                 if (T1 != std::numeric_limits<double>::infinity())
                 {
                     getMaischeValues(sudId, idx.row(), m1, c1);
-                    m2 = data(idx.row(), ColMenge).toDouble() * BierCalc::dichteWasser(20);
                     c2 = BierCalc::cWasser;
                     T2 = value.toDouble();
-                    Tm = BierCalc::mischungstemperaturTm(m1, c1, T1, m2, c2, T2);
+                    Tm = data(idx.row(), ColTemp).toDouble();
+                    m2 = BierCalc::mischungstemperaturM2(Tm, m1, c1, T1, c2, T2);
+                    setData(index(idx.row(), ColMenge), m2);
                 }
                 else
                 {
-                    Tm = value.toDouble();
+                    QSqlTableModel::setData(index(idx.row(), ColTemp), value.toDouble());
                 }
-                QSqlTableModel::setData(index(idx.row(), ColTemp), Tm);
                 break;
             default:
                 break;
@@ -268,7 +270,7 @@ void ModelRasten::update(const QVariant &sudId)
         return;
     mUpdating = true;
     ProxyModel model;
-    model.setSourceModel(const_cast<ModelRasten*>(this));
+    model.setSourceModel(this);
     model.setFilterKeyColumn(ColSudID);
     model.setFilterRegularExpression(QStringLiteral("^%1$").arg(sudId.toInt()));
     mSignalModifiedBlocked = true;
@@ -287,11 +289,6 @@ void ModelRasten::update(const QVariant &sudId)
     }
     mSignalModifiedBlocked = false;
     mUpdating = false;
-}
-
-double ModelRasten::menge(const QVariant &sudId) const
-{
-    return getPreviousMenge(sudId, -1);
 }
 
 void ModelRasten::defaultValues(QMap<int, QVariant> &values) const

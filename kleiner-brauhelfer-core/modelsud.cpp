@@ -57,7 +57,6 @@ ModelSud::ModelSud(Brauhelfer *bh, const QSqlDatabase &db) :
     mVirtualField.append(QStringLiteral("PhMalz"));
     mVirtualField.append(QStringLiteral("PhMaische"));
     mVirtualField.append(QStringLiteral("PhMaischeSoll"));
-    mVirtualField.append(QStringLiteral("WHauptgussEmpfehlung"));
     mVirtualField.append(QStringLiteral("BewertungMittel"));
     connect(this, &SqlTableModel::modelReset, this, &ModelSud::onModelReset);
     connect(this, &SqlTableModel::rowsInserted, this, &ModelSud::onModelReset);
@@ -71,7 +70,6 @@ void ModelSud::createConnections()
     connect(bh->modelHopfengaben(), &SqlTableModel::rowChanged, this, &ModelSud::onOtherModelRowChanged);
     connect(bh->modelHefegaben(), &SqlTableModel::rowChanged, this, &ModelSud::onOtherModelRowChanged);
     connect(bh->modelWeitereZutatenGaben(), &SqlTableModel::rowChanged, this, &ModelSud::onOtherModelRowChanged);
-    connect(bh->modelRasten(), &SqlTableModel::rowChanged, this, &ModelSud::onOtherModelRowChanged);
     connect(bh->modelAusruestung(), &SqlTableModel::rowChanged, this, &ModelSud::onAnlageRowChanged);
 }
 
@@ -499,19 +497,6 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         }
         return 0;
     }
-    case ColWHauptgussEmpfehlung:
-    {
-        Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(dataAnlage(idx.row(), ModelAusruestung::ColTyp).toInt());
-        switch (anlageTyp)
-        {
-        case Brauhelfer::AnlageTyp::GrainfatherG30:
-            return data(idx.row(), Colerg_S_Gesamt).toDouble() * 2.7 + 3.5;
-        case Brauhelfer::AnlageTyp::BrauheldPro30:
-            return data(idx.row(), Colerg_S_Gesamt).toDouble() * 2.7 + 3.2;
-        default:
-            return data(idx.row(), Colerg_S_Gesamt).toDouble() * data(idx.row(), ColFaktorHauptguss).toDouble();
-        }
-    }
     case ColBewertungMittel:
     {
         return bh->modelBewertungen()->mean(data(idx.row(), ColID));
@@ -913,25 +898,22 @@ void ModelSud::updateWasser(int row)
     double schuet = data(row, Colerg_S_Gesamt).toDouble();
     double menge = data(row, ColMengeSollKochbeginn).toDouble();
 
-    hg = bh->modelRasten()->menge(data(row, ColID));
-    if (hg <= 0)
-        hg = data(row, ColWHauptgussEmpfehlung).toDouble();
-    if (hg < 0)
-        hg = 0;
-
     Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(dataAnlage(row, ModelAusruestung::ColTyp).toInt());
     switch (anlageTyp)
     {
     case Brauhelfer::AnlageTyp::GrainfatherG30:
+        hg = schuet * 2.7 + 3.5;
         if (schuet > 4.5)
             ng = menge - hg + schuet * 0.8;
         else
             ng = menge - hg + schuet * 0.8 - 2;
         break;
     case Brauhelfer::AnlageTyp::BrauheldPro30:
+        hg = schuet * 2.7 + 3.2;
         ng = menge - hg + schuet * 0.8;
         break;
     default:
+        hg = schuet * data(row, ColFaktorHauptguss).toDouble();
         ng = menge - hg + schuet * 0.96;
         break;
     }
@@ -1140,6 +1122,8 @@ void ModelSud::defaultValues(QMap<int, QVariant> &values) const
         values.insert(ColMenge, 20);
     if (!values.contains(ColSW))
         values.insert(ColSW, 12);
+    if (!values.contains(ColFaktorHauptguss))
+        values.insert(ColFaktorHauptguss, 3);
     if (!values.contains(ColCO2))
         values.insert(ColCO2, 5);
     if (!values.contains(ColIBU))

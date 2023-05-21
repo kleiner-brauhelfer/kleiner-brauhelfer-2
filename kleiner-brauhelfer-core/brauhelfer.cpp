@@ -69,7 +69,6 @@ bool Brauhelfer::connectDatabase()
             mSud->init();
         }
     }
-    emit databaseVersionChanged(mDb->version());
     emit connectionChanged(isConnectedDatabase());
     return isConnectedDatabase();
 }
@@ -81,7 +80,6 @@ void Brauhelfer::disconnectDatabase()
         qInfo(loggingCategory) << "Brauhelfer::disconnectDatabase()";
         mSud->unload();
         mDb->disconnect();
-        emit databaseVersionChanged(mDb->version());
         emit connectionChanged(isConnectedDatabase());
     }
 }

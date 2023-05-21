@@ -6,14 +6,10 @@ ProxyModelSud::ProxyModelSud(QObject *parent) :
     ProxyModel(parent),
     mFilterMerkliste(false),
     mFilterStatus(Alle),
+    mMinDate(QDateTime()),
+    mMaxDate(QDateTime()),
     mFilterText(QString())
 {
-    resetColumns();
-}
-
-void ProxyModelSud::resetColumns()
-{
-    setFilterDateColumn(ModelSud::ColBraudatum);
 }
 
 bool ProxyModelSud::filterMerkliste() const
@@ -42,6 +38,41 @@ void ProxyModelSud::setFilterStatus(FilterStatus status)
         mFilterStatus = status;
         invalidate();
     }
+}
+
+QDateTime ProxyModelSud::filterMinimumDate() const
+{
+    return mMinDate;
+}
+
+void ProxyModelSud::setFilterMinimumDate(const QDateTime &dt)
+{
+    if (mMinDate != dt)
+    {
+        mMinDate = dt;
+        invalidate();
+    }
+}
+
+QDateTime ProxyModelSud::filterMaximumDate() const
+{
+    return mMaxDate;
+}
+
+void ProxyModelSud::setFilterMaximumDate(const QDateTime &dt)
+{
+    if (mMaxDate != dt)
+    {
+        mMaxDate = dt;
+        invalidate();
+    }
+}
+
+void ProxyModelSud::setFilterDate(const QDateTime &min, const QDateTime &max)
+{
+    mMinDate = min;
+    mMaxDate = max;
+    invalidate();
 }
 
 QString ProxyModelSud::filterText() const
@@ -90,6 +121,12 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
                 break;
             }
         }
+    }
+    if (accept && (mMinDate.isValid() || mMaxDate.isValid()))
+    {
+        idx = sourceModel()->index(source_row, ModelSud::ColBraudatum, source_parent);
+        if (idx.isValid())
+            accept = dateInRange(sourceModel()->data(idx).toDateTime());
     }
     if (accept && !mFilterText.isEmpty())
     {
@@ -190,4 +227,9 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
         }
     }
     return accept;
+}
+
+bool ProxyModelSud::dateInRange(const QDateTime &dt) const
+{
+    return (!mMinDate.isValid() || dt > mMinDate) && (!mMaxDate.isValid() || dt < mMaxDate);
 }

@@ -290,7 +290,7 @@ void Settings::setTheme(Theme theme)
 QString Settings::style()
 {
   #if 0
-    return valueInGroup("Style", "Style", "Fusion").toString();
+    return valueInGroup(QStringLiteral("Style"), QStringLiteral("Style"), QStringLiteral("Fusion")).toString();
   #else
     return QStringLiteral("Fusion");
   #endif

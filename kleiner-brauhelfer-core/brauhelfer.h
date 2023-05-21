@@ -39,7 +39,7 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(bool readonly READ readonly WRITE setReadonly NOTIFY readonlyChanged)
     Q_PROPERTY(bool connected READ isConnectedDatabase NOTIFY connectionChanged)
     Q_PROPERTY(int databaseVersionSupported READ databaseVersionSupported CONSTANT)
-    Q_PROPERTY(int databaseVersion READ databaseVersion NOTIFY databaseVersionChanged)
+    Q_PROPERTY(int databaseVersion READ databaseVersion CONSTANT)
     Q_PROPERTY(bool modified READ isDirty NOTIFY modified)
 
     Q_PROPERTY(SudObject* sud READ sud CONSTANT)
@@ -261,7 +261,6 @@ signals:
     void databasePathChanged(const QString &databasePath);
     void readonlyChanged(bool readonly);
     void connectionChanged(bool connected);
-    void databaseVersionChanged(int version);
     void modified();
     void saved();
     void discarded();

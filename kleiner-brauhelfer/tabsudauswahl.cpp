@@ -86,7 +86,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ui->tbDatumVon->setDate(gSettings->value("ZeitraumVon", QDate::currentDate().addYears(-1)).toDate());
     ui->tbDatumBis->setDate(gSettings->value("ZeitraumBis", QDate::currentDate()).toDate());
     ui->cbDatumAlle->setChecked(gSettings->value("ZeitraumAlle", false).toBool());
-    on_cbDatumAlle_stateChanged(ui->cbDatumAlle->checkState());
+    setFilterDate();
 
     gSettings->endGroup();
 
@@ -266,6 +266,24 @@ void TabSudAuswahl::setFilterStatus()
     selectionChanged();
 }
 
+void TabSudAuswahl::setFilterDate()
+{
+    bool notAll = ui->cbDatumAlle->isChecked();
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
+    if (notAll)
+    {
+        QDateTime min = QDateTime(ui->tbDatumVon->date(), QTime(0,0,0));
+        QDateTime max = QDateTime(ui->tbDatumBis->date(), QTime(23,59,59));
+        model->setFilterDate(min, max);
+    }
+    else
+    {
+        model->setFilterDate();
+    }
+    ui->tbDatumVon->setEnabled(notAll);
+    ui->tbDatumBis->setEnabled(notAll);
+}
+
 void TabSudAuswahl::on_cbAlle_clicked()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
@@ -320,33 +338,20 @@ void TabSudAuswahl::on_tbFilter_textChanged(const QString &pattern)
 
 void TabSudAuswahl::on_tbDatumVon_dateChanged(const QDate &date)
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    model->setFilterMinimumDate(QDateTime(date, QTime(0,0,0)));
-    ui->tbDatumBis->setMinimumDate(date);
+    Q_UNUSED(date);
+    setFilterDate();
 }
 
 void TabSudAuswahl::on_tbDatumBis_dateChanged(const QDate &date)
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    model->setFilterMaximumDate(QDateTime(date, QTime(23,59,59)));
-    ui->tbDatumVon->setMaximumDate(date);
+    Q_UNUSED(date);
+    setFilterDate();
 }
 
 void TabSudAuswahl::on_cbDatumAlle_stateChanged(int state)
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableSudauswahl->model());
-    if (state)
-    {
-        model->setFilterMinimumDate(ui->tbDatumVon->dateTime().addDays(-1));
-        model->setFilterMaximumDate(ui->tbDatumBis->dateTime().addDays(1));
-        model->setFilterDateColumn(ModelSud::ColBraudatum);
-    }
-    else
-    {
-        model->setFilterDateColumn(-1);
-    }
-    ui->tbDatumVon->setEnabled(state);
-    ui->tbDatumBis->setEnabled(state);
+    Q_UNUSED(state);
+    setFilterDate();
 }
 
 void TabSudAuswahl::on_btnMerken_clicked()

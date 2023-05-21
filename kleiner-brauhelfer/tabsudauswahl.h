@@ -69,6 +69,7 @@ private:
     void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
     void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;
     void setFilterStatus();
+    void setFilterDate();
 
 private:
     Ui::TabSudAuswahl *ui;

@@ -84,7 +84,7 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
     connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,this, &DlgBrauUebersicht::table_selectionChanged);
     connect(ui->diagram, &Chart3::selectionChanged, this, &DlgBrauUebersicht::diagram_selectionChanged);
 
-    on_cbDatumAlle_stateChanged(ui->cbDatumAlle->isChecked());
+    setFilterDate();
 }
 
 DlgBrauUebersicht::~DlgBrauUebersicht()
@@ -302,36 +302,33 @@ void DlgBrauUebersicht::on_cbAuswahlL3_currentIndexChanged(int)
     }
 }
 
+void DlgBrauUebersicht::setFilterDate()
+{
+    bool notAll = ui->cbDatumAlle->isChecked();
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
+    if (notAll)
+        model->setFilterDate(ui->tbDatumVon->dateTime().addDays(-1), ui->tbDatumBis->dateTime().addDays(1));
+    else
+        model->setFilterDate();
+    ui->tbDatumVon->setEnabled(notAll);
+    ui->tbDatumBis->setEnabled(notAll);
+    updateDiagram();
+}
+
 void DlgBrauUebersicht::on_tbDatumVon_dateChanged(const QDate &date)
 {
-    ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
-    model->setFilterMinimumDate(QDateTime(date, QTime(0,0,0)));
-    ui->tbDatumBis->setMinimumDate(date);
-    updateDiagram();
+    Q_UNUSED(date)
+    setFilterDate();
 }
 
 void DlgBrauUebersicht::on_tbDatumBis_dateChanged(const QDate &date)
 {
-    ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
-    model->setFilterMaximumDate(QDateTime(date, QTime(23,59,59)));
-    ui->tbDatumVon->setMaximumDate(date);
-    updateDiagram();
+    Q_UNUSED(date)
+    setFilterDate();
 }
 
 void DlgBrauUebersicht::on_cbDatumAlle_stateChanged(int state)
 {
-    ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
-    if (state)
-    {
-        model->setFilterMinimumDate(ui->tbDatumVon->dateTime().addDays(-1));
-        model->setFilterMaximumDate(ui->tbDatumBis->dateTime().addDays(1));
-        model->setFilterDateColumn(ModelSud::ColBraudatum);
-    }
-    else
-    {
-        model->setFilterDateColumn(-1);
-    }
-    ui->tbDatumVon->setEnabled(state);
-    ui->tbDatumBis->setEnabled(state);
-    updateDiagram();
+    Q_UNUSED(state)
+    setFilterDate();
 }

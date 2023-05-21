@@ -3,10 +3,7 @@
 
 ProxyModel::ProxyModel(QObject *parent) :
     QSortFilterProxyModel(parent),
-    mDeletedColumn(-1),
-    mDateColumn(-1),
-    mMinDate(QDateTime()),
-    mMaxDate(QDateTime())
+    mDeletedColumn(-1)
 {
     setDynamicSortFilter(false);
     setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
@@ -206,47 +203,6 @@ void ProxyModel::setFilterKeyColumns(const QList<int> &columns)
     mFilterColumns = columns;
 }
 
-int ProxyModel::filterDateColumn() const
-{
-    return mDateColumn;
-}
-
-void ProxyModel::setFilterDateColumn(int column)
-{
-    if (mDateColumn != column)
-    {
-        mDateColumn = column;
-        invalidate();
-    }
-}
-
-QDateTime ProxyModel::filterMinimumDate() const
-{
-    return mMinDate;
-}
-
-void ProxyModel::setFilterMinimumDate(const QDateTime &dt)
-{
-    if (mMinDate != dt)
-    {
-        mMinDate = dt;
-        invalidate();
-    }
-}
-
-QDateTime ProxyModel::filterMaximumDate() const
-{
-    return mMaxDate;
-}
-
-void ProxyModel::setFilterMaximumDate(const QDateTime &dt)
-{
-    if (mMaxDate != dt)
-    {
-        mMaxDate = dt;
-        invalidate();
-    }
-}
 
 bool ProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
@@ -277,16 +233,5 @@ bool ProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_pare
         if (index.isValid())
             accept = !sourceModel()->data(index).toBool();
     }
-    if (accept && mDateColumn >= 0)
-    {
-        QModelIndex index2 = sourceModel()->index(source_row, mDateColumn, source_parent);
-        if (index2.isValid())
-            accept = dateInRange(sourceModel()->data(index2).toDateTime());
-    }
     return accept;
-}
-
-bool ProxyModel::dateInRange(const QDateTime &dt) const
-{
-    return (!mMinDate.isValid() || dt > mMinDate) && (!mMaxDate.isValid() || dt < mMaxDate);
 }

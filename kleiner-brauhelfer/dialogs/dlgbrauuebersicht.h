@@ -39,6 +39,7 @@ private slots:
 private:
     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     void build();
+    void setFilterDate();
 
 private:
     struct AuswahlType

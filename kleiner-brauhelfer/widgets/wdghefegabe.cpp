@@ -37,7 +37,7 @@ WdgHefeGabe::WdgHefeGabe(int row, QLayout* parentLayout, QWidget *parent) :
     pal.setColor(QPalette::Window, gSettings->colorHefe);
     setPalette(pal);
 
-    ui->tbMenge->setErrorOnLimit(true);
+    ui->tbMenge->setErrorRange(0, ui->tbMenge->maximum());
 
     updateValues();
     connect(bh, &Brauhelfer::modified, this, &WdgHefeGabe::updateValues);

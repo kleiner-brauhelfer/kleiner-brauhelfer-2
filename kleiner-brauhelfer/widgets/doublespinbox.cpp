@@ -7,7 +7,8 @@ DoubleSpinBox::DoubleSpinBox(QWidget *parent) :
     QDoubleSpinBox(parent),
     WidgetDecorator(),
     mError(false),
-    mErrorOnLimit(false)
+    mErrorLimitMin(std::numeric_limits<double>::lowest()),
+    mErrorLimitMax(std::numeric_limits<double>::max())
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
@@ -26,7 +27,9 @@ void DoubleSpinBox::updatePalette()
         setPalette(gSettings->paletteChanged);
     else if (!isEnabled())
         setPalette(gSettings->palette);
-    else if (mError || (mErrorOnLimit && (value() >= maximum() || value() <= minimum())))
+    else if (mError)
+        setPalette(gSettings->paletteError);
+    else if (value() >= mErrorLimitMax || value() <= mErrorLimitMin)
         setPalette(gSettings->paletteError);
     else if (isReadOnly())
         setPalette(gSettings->palette);
@@ -66,11 +69,9 @@ void DoubleSpinBox::setError(bool e)
     }
 }
 
-void DoubleSpinBox::setErrorOnLimit(bool e)
+void DoubleSpinBox::setErrorRange(double min, double max)
 {
-    if (mErrorOnLimit != e)
-    {
-        mErrorOnLimit = e;
-        update();
-    }
+    mErrorLimitMin = min;
+    mErrorLimitMax = max;
+    update();
 }

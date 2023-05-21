@@ -20,7 +20,7 @@ TabZusammenfassung::TabZusammenfassung(QWidget *parent) :
     gSettings->endGroup();
 
     connect(bh, &Brauhelfer::modified, this, &TabZusammenfassung::updateWebView, Qt::QueuedConnection);
-    connect(bh, &Brauhelfer::discarded,this, &TabZusammenfassung::updateWebView, Qt::QueuedConnection);
+    connect(bh, &Brauhelfer::discarded, this, &TabZusammenfassung::updateWebView, Qt::QueuedConnection);
     connect(bh->sud(), &SudObject::loadedChanged, this, &TabZusammenfassung::updateWebView, Qt::QueuedConnection);
 }
 

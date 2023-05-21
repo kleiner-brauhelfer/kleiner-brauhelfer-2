@@ -12,7 +12,7 @@ public:
     SpinBox(QWidget *parent = nullptr);
     void setReadOnly(bool r);
     void setError(bool e);
-    void setErrorOnLimit(bool e);
+    void setErrorRange(int min, int max);
 private:
     void updatePalette();
     void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
@@ -22,7 +22,8 @@ private slots:
     void on_valueChanged();
 private:
     bool mError;
-    bool mErrorOnLimit;
+    int mErrorLimitMin;
+    int mErrorLimitMax;
 };
 
 #endif // SPINBOX_H

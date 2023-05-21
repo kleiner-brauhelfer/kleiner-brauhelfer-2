@@ -39,8 +39,8 @@ WdgWeitereZutatGabe::WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt zeitpunkt, 
         }
     }
 
-    ui->tbMenge->setErrorOnLimit(true);
-    ui->tbMengeTotal->setErrorOnLimit(true);
+    ui->tbMenge->setErrorRange(0, ui->tbMenge->maximum());
+    ui->tbMengeTotal->setErrorRange(0, ui->tbMengeTotal->maximum());
     ui->btnKorrekturExtrakt->setError(true);
 
     updateValues();

@@ -7,7 +7,8 @@ SpinBox::SpinBox(QWidget *parent) :
     QSpinBox(parent),
     WidgetDecorator(),
     mError(false),
-    mErrorOnLimit(false)
+    mErrorLimitMin(std::numeric_limits<int>::lowest()),
+    mErrorLimitMax(std::numeric_limits<int>::max())
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
@@ -26,7 +27,9 @@ void SpinBox::updatePalette()
         setPalette(gSettings->paletteChanged);
     else if (!isEnabled())
         setPalette(gSettings->palette);
-    else if (mError || (mErrorOnLimit && (value() >= maximum() || value() <= minimum())))
+    else if (mError)
+        setPalette(gSettings->paletteError);
+    else if (value() >= mErrorLimitMax || value() <= mErrorLimitMin)
         setPalette(gSettings->paletteError);
     else if (isReadOnly())
         setPalette(gSettings->palette);
@@ -66,11 +69,9 @@ void SpinBox::setError(bool e)
     }
 }
 
-void SpinBox::setErrorOnLimit(bool e)
+void SpinBox::setErrorRange(int min, int max)
 {
-    if (mErrorOnLimit != e)
-    {
-        mErrorOnLimit = e;
-        update();
-    }
+    mErrorLimitMin = min;
+    mErrorLimitMax = max;
+    update();
 }

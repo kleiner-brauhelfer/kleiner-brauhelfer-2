@@ -140,12 +140,14 @@ void WdgMalzGabe::updateValues()
         {
             ui->tbMenge->setReadOnly(true);
             ui->tbMengeProzent->setReadOnly(true);
+            ui->tbExtrakt->setReadOnly(true);
             ui->btnAufbrauchen->setVisible(false);
         }
         else
         {
             ui->tbMenge->setReadOnly(false);
             ui->tbMengeProzent->setReadOnly(false);
+            ui->tbExtrakt->setReadOnly(false);
             if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
                 ui->btnAufbrauchen->setVisible(qAbs(ui->tbVorhanden->value() - ui->tbMenge->value()) > 0.001);
         }

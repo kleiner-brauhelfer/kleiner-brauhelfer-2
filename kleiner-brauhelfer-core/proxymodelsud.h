@@ -12,6 +12,8 @@ class LIB_EXPORT ProxyModelSud : public ProxyModel
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
     Q_PROPERTY(bool filterMerkliste READ filterMerkliste WRITE setFilterMerkliste NOTIFY layoutChanged)
     Q_PROPERTY(FilterStatus filterStatus READ filterStatus WRITE setFilterStatus NOTIFY layoutChanged)
+    Q_PROPERTY(QDateTime minDate READ filterMinimumDate WRITE setFilterMinimumDate NOTIFY layoutChanged)
+    Q_PROPERTY(QDateTime maxDate READ filterMaximumDate WRITE setFilterMaximumDate NOTIFY layoutChanged)
     Q_PROPERTY(QString filterText READ filterText WRITE setFilterText NOTIFY layoutChanged)
   #endif
 
@@ -31,13 +33,19 @@ public:
 public:
     ProxyModelSud(QObject* parent = nullptr);
 
-    Q_INVOKABLE void resetColumns();
-
     bool filterMerkliste() const;
     void setFilterMerkliste(bool value);
 
     FilterStatus filterStatus() const;
     void setFilterStatus(FilterStatus status);
+
+    QDateTime filterMinimumDate() const;
+    void setFilterMinimumDate(const QDateTime &dt = QDateTime());
+
+    QDateTime filterMaximumDate() const;
+    void setFilterMaximumDate(const QDateTime &dt = QDateTime());
+
+    void setFilterDate(const QDateTime &min = QDateTime(), const QDateTime &max = QDateTime());
 
     QString filterText() const;
     void setFilterText(const QString& text);
@@ -46,8 +54,13 @@ protected:
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const Q_DECL_OVERRIDE;
 
 private:
+    bool dateInRange(const QDateTime &dt) const;
+
+private:
     bool mFilterMerkliste;
     FilterStatus mFilterStatus;
+    QDateTime mMinDate;
+    QDateTime mMaxDate;
     QString mFilterText;
 };
 

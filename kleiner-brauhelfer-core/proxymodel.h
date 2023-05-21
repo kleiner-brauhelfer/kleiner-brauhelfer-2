@@ -16,9 +16,6 @@ class LIB_EXPORT ProxyModel : public QSortFilterProxyModel
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
     Q_PROPERTY(int sortColumn READ sortColumn WRITE setSortColumn NOTIFY layoutChanged)
     Q_PROPERTY(Qt::SortOrder sortOrder READ sortOrder WRITE setSortOrder NOTIFY layoutChanged)
-    Q_PROPERTY(int dateColumn READ filterDateColumn WRITE setFilterDateColumn NOTIFY layoutChanged)
-    Q_PROPERTY(QDateTime minDate READ filterMinimumDate WRITE setFilterMinimumDate NOTIFY layoutChanged)
-    Q_PROPERTY(QDateTime maxDate READ filterMaximumDate WRITE setFilterMaximumDate NOTIFY layoutChanged)
   #endif
 
 public:
@@ -58,15 +55,6 @@ public:
 
     void setFilterKeyColumns(const QList<int> &columns);
 
-    int filterDateColumn() const;
-    void setFilterDateColumn(int column);
-
-    QDateTime filterMinimumDate() const;
-    void setFilterMinimumDate(const QDateTime &dt);
-
-    QDateTime filterMaximumDate() const;
-    void setFilterMaximumDate(const QDateTime &dt);
-
   #if (QT_VERSION < QT_VERSION_CHECK(5, 12, 0))
     void setFilterRegularExpression(const QString &pattern)
     {
@@ -88,14 +76,8 @@ protected:
     virtual bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const Q_DECL_OVERRIDE;
 
 private:
-    bool dateInRange(const QDateTime &dt) const;
-
-private:
     int mDeletedColumn;
-    int mDateColumn;
     QList<int> mFilterColumns;
-    QDateTime mMinDate;
-    QDateTime mMaxDate;
 };
 
 #endif // PROXYMODEL_H

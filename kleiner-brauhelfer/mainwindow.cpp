@@ -95,7 +95,7 @@ MainWindow::MainWindow(QWidget *parent) :
         if (key == style)
             action->setEnabled(false);
         else
-            connect(action, SIGNAL(triggered()), this, SLOT(changeStyle()));
+            connect(action, &QAction::triggered, this, &MainWindow::changeStyle);
         ui->menuStil->addAction(action);
     }
   #endif

@@ -133,7 +133,7 @@
     <message>
         <location filename="../charts/charthopfen.cpp" line="14"/>
         <source>Anteil (%)</source>
-        <translation type="unfinished"></translation>
+        <translation>Share (%)</translation>
     </message>
 </context>
 <context>
@@ -141,12 +141,12 @@
     <message>
         <location filename="../charts/chartmaischplan.cpp" line="11"/>
         <source>Zeit (min)</source>
-        <translation type="unfinished"></translation>
+        <translation>Time (min)</translation>
     </message>
     <message>
         <location filename="../charts/chartmaischplan.cpp" line="12"/>
         <source>Temperatur (°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperature [°C]</translation>
     </message>
 </context>
 <context>
@@ -154,7 +154,7 @@
     <message>
         <location filename="../charts/chartmalz.cpp" line="14"/>
         <source>Anteil (%)</source>
-        <translation type="unfinished"></translation>
+        <translation>Share (%)</translation>
     </message>
 </context>
 <context>
@@ -5092,7 +5092,7 @@ Bottling date: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="785"/>
         <source>Rezenz, Frischeeindruck</source>
-        <translation>Recency, fresh impression</translation>
+        <translation>Freshness</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="805"/>
@@ -7311,32 +7311,32 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tabrezept.cpp" line="136"/>
         <source>Bemerkung allgemein</source>
-        <translation type="unfinished"></translation>
+        <translation>General comment</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="137"/>
         <source>Bemerkung Maischen</source>
-        <translation type="unfinished"></translation>
+        <translation>Comment mashing</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="138"/>
         <source>Bemerkung Kochen</source>
-        <translation type="unfinished"></translation>
+        <translation>Comment boil</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="139"/>
         <source>Bemerkung Gärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Comment fermentation</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="140"/>
         <source>Bemerkung Maischplan</source>
-        <translation type="unfinished"></translation>
+        <translation>Comment mash steps</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="141"/>
         <source>Bemerkung Wasseraufbereitung</source>
-        <translation type="unfinished"></translation>
+        <translation>Comment water adjustment</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="433"/>

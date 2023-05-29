@@ -133,7 +133,7 @@
     <message>
         <location filename="../charts/charthopfen.cpp" line="14"/>
         <source>Anteil (%)</source>
-        <translation type="unfinished"></translation>
+        <translation>Andel (%)</translation>
     </message>
 </context>
 <context>
@@ -141,12 +141,12 @@
     <message>
         <location filename="../charts/chartmaischplan.cpp" line="11"/>
         <source>Zeit (min)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tid (min)</translation>
     </message>
     <message>
         <location filename="../charts/chartmaischplan.cpp" line="12"/>
         <source>Temperatur (°C)</source>
-        <translation type="unfinished"></translation>
+        <translation>Temperatur [°C]</translation>
     </message>
 </context>
 <context>
@@ -154,7 +154,7 @@
     <message>
         <location filename="../charts/chartmalz.cpp" line="14"/>
         <source>Anteil (%)</source>
-        <translation type="unfinished"></translation>
+        <translation>Andel (%)</translation>
     </message>
 </context>
 <context>
@@ -5091,7 +5091,7 @@ Tid för flasktappning: %1</translation>
     <message>
         <location filename="../tabbewertung.ui" line="785"/>
         <source>Rezenz, Frischeeindruck</source>
-        <translation type="unfinished"></translation>
+        <translation>Färskhet</translation>
     </message>
     <message>
         <location filename="../tabbewertung.ui" line="805"/>
@@ -7291,7 +7291,7 @@ p, li { white-space: pre-wrap; }
         <location filename="../tabrezept.ui" line="3674"/>
         <location filename="../tabrezept.ui" line="3691"/>
         <source>Benötigtes Volumen ca.</source>
-        <translation type="unfinished">Ungefärlig volym som behövs</translation>
+        <translation>Ungefärlig volym som behövs.</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="3771"/>
@@ -7311,32 +7311,32 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../tabrezept.cpp" line="136"/>
         <source>Bemerkung allgemein</source>
-        <translation type="unfinished"></translation>
+        <translation>Allmän kommentar</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="137"/>
         <source>Bemerkung Maischen</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar mäskning</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="138"/>
         <source>Bemerkung Kochen</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar kokning</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="139"/>
         <source>Bemerkung Gärung</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar jäsning</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="140"/>
         <source>Bemerkung Maischplan</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar mäskschema</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="141"/>
         <source>Bemerkung Wasseraufbereitung</source>
-        <translation type="unfinished"></translation>
+        <translation>Kommentar vattenanpassning</translation>
     </message>
     <message>
         <location filename="../tabrezept.cpp" line="433"/>

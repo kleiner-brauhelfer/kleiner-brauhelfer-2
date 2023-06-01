@@ -870,7 +870,7 @@ p, li { white-space: pre-wrap; }
         <item>
          <widget class="QTabWidget" name="tabWidget_2">
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="tabBemerkung">
            <property name="sizePolicy">
@@ -1100,6 +1100,11 @@ p, li { white-space: pre-wrap; }
             </item>
            </layout>
           </widget>
+          <widget class="QWidget" name="tabBierStil">
+           <attribute name="title">
+            <string>Bierstil</string>
+           </attribute>
+          </widget>
          </widget>
         </item>
        </layout>
@@ -1119,7 +1124,11 @@ p, li { white-space: pre-wrap; }
        </size>
       </property>
       <property name="currentIndex">
+<<<<<<< HEAD
        <number>0</number>
+=======
+       <number>1</number>
+>>>>>>> 677c115 (u:)
       </property>
       <widget class="QWidget" name="tabMalz">
        <attribute name="title">
@@ -2597,9 +2606,15 @@ p, li { white-space: pre-wrap; }
         <property name="geometry">
          <rect>
           <x>0</x>
+<<<<<<< HEAD
           <y>0</y>
           <width>332</width>
           <height>835</height>
+=======
+          <y>-501</y>
+          <width>420</width>
+          <height>999</height>
+>>>>>>> 677c115 (u:)
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">

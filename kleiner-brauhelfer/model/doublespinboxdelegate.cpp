@@ -2,6 +2,8 @@
 #include <QDoubleSpinBox>
 #include <QPainter>
 #include "settings.h"
+#include "brauhelfer.h"
+
 
 extern Settings* gSettings;
 extern Brauhelfer* bh;
@@ -42,11 +44,7 @@ QWidget* DoubleSpinBoxDelegate::createEditor(QWidget *parent, const QStyleOption
 void DoubleSpinBoxDelegate::setEditorData(QWidget *editor, const QModelIndex &index) const
 {
     QDoubleSpinBox *w = static_cast<QDoubleSpinBox*>(editor);
-    if (mConvert) {
-        w->setValue(bh->convertGravity("Plato",gSettings->GravityName(),index.data(Qt::EditRole).toDouble()));
-    } else {
     w->setValue(index.data(Qt::EditRole).toDouble());
-    }
 }
 
 void DoubleSpinBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
@@ -54,7 +52,7 @@ void DoubleSpinBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *mo
     QDoubleSpinBox *w = static_cast<QDoubleSpinBox*>(editor);
     w->interpretText();
     if (mConvert) {
-    model->setData(index, bh->convertGravity(gSettings->GravityName(),"Plato",w->value()), Qt::EditRole);
+    model->setData(index, w->value(), Qt::EditRole);
     } else {
     model->setData(index, w->value(), Qt::EditRole);
     }
@@ -81,9 +79,5 @@ void DoubleSpinBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem 
 
 QString DoubleSpinBoxDelegate::displayText(const QVariant &value, const QLocale &locale) const
 {
-    if (mConvert) {
-        return locale.toString(bh->convertGravity("Plato",gSettings->GravityName(),value.toDouble()), 'f', mDecimals);
-    } else {
     return locale.toString(value.toDouble(), 'f', mDecimals);
-    }
 }

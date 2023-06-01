@@ -39,7 +39,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->setupUi(this);
     ui->tbCO2->setColumn(ModelSud::ColCO2);
     ui->tbSW->setColumn(ModelSud::ColSW);
-    ui->tbMenge->setColumn(ModelSud::ColMenge);
+    ui->tbSW->setColumn(ModelSud::ColMenge);
     ui->tbFaktorHauptguss->setColumn(ModelSud::ColFaktorHauptguss);
     ui->tbGesamtschuettung->setColumn(ModelSud::Colerg_S_Gesamt);
     ui->tbSWMalz->setColumn(ModelSud::ColSWAnteilMalz);
@@ -378,7 +378,7 @@ void TabRezept::checkEnabled()
     bool gebraut = status != Brauhelfer::SudStatus::Rezept && !gSettings->ForceEnabled;
     bool abgefuellt = status > Brauhelfer::SudStatus::Gebraut  && !gSettings->ForceEnabled;
     ui->cbAnlage->setEnabled(!gebraut);
-    ui->tbMenge->setReadOnly(gebraut);
+    ui->tbSW->setReadOnly(gebraut);
     ui->tbSW->setReadOnly(gebraut);
     ui->tbSudhausausbeute->setReadOnly(gebraut);
     ui->tbFaktorHauptguss->setReadOnly(gebraut);

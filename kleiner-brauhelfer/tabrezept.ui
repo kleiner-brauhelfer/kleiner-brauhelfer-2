@@ -1124,11 +1124,7 @@ p, li { white-space: pre-wrap; }
        </size>
       </property>
       <property name="currentIndex">
-<<<<<<< HEAD
-       <number>0</number>
-=======
        <number>1</number>
->>>>>>> 677c115 (u:)
       </property>
       <widget class="QWidget" name="tabMalz">
        <attribute name="title">
@@ -2606,15 +2602,9 @@ p, li { white-space: pre-wrap; }
         <property name="geometry">
          <rect>
           <x>0</x>
-<<<<<<< HEAD
-          <y>0</y>
-          <width>332</width>
-          <height>835</height>
-=======
           <y>-501</y>
           <width>420</width>
           <height>999</height>
->>>>>>> 677c115 (u:)
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">

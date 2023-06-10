@@ -231,5 +231,5 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
 
 bool ProxyModelSud::dateInRange(const QDateTime &dt) const
 {
-    return (!mMinDate.isValid() || dt > mMinDate) && (!mMaxDate.isValid() || dt < mMaxDate);
+    return (!mMinDate.isValid() || dt >= mMinDate) && (!mMaxDate.isValid() || dt <= mMaxDate);
 }

@@ -330,11 +330,12 @@ double BierCalc::schuettung(double sw, double sw_dichte, double V, double sudhau
     return sw * platoToDichte(sw_dichte) * V / sudhausausbeute;
 }
 
-double BierCalc::verschneidung(double swIst, double swSoll, double menge)
+double BierCalc::verschneidung(double swIst, double swSoll, double swWasser, double menge)
 {
-    if (swIst < swSoll || swSoll == 0.0)
+    if (swIst < swSoll || swSoll < swWasser || swSoll == 0.0 || swWasser < 0.0)
         return 0.0;
-    return menge * (swIst / swSoll - 1);
+    //return menge * (swIst / swSoll - 1);
+    return menge * (swIst - swSoll) / (swSoll - swWasser);
 }
 
 double BierCalc::tinseth(double t, double sw)

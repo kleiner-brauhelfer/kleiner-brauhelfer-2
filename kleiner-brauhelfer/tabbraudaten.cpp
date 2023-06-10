@@ -232,11 +232,13 @@ void TabBraudaten::updateValues()
 
     ui->tbHopfenseihenVerlust->setValue(bh->sud()->getWuerzemengeVorHopfenseihen() - bh->sud()->getWuerzemengeKochende());
 
+    if (!ui->tbWasserVerschneidungBrix->hasFocus())
+        ui->tbWasserVerschneidungBrix->setValue(BierCalc::platoToBrix(ui->tbWasserVerschneidungSW->value()));
     value = BierCalc::verschneidung(bh->sud()->getSWAnstellen(),
                                     bh->sud()->getSWSollAnstellen(),
+                                    ui->tbWasserVerschneidungSW->value(),
                                     bh->sud()->getWuerzemengeAnstellenTotal());
     ui->tbWasserVerschneidung->setValue(value);
-    ui->wdgWasserVerschneidung->setVisible(status == Brauhelfer::SudStatus::Rezept && value > 0);
     ui->btnVerduennung->setVisible(status == Brauhelfer::SudStatus::Rezept && value > 0);
 
     // ModuleSpeise
@@ -424,6 +426,21 @@ void TabBraudaten::on_tbSpeiseT_valueChanged(double)
 {
     if (ui->tbSpeiseT->hasFocus())
         updateValues();
+}
+
+void TabBraudaten::on_tbWasserVerschneidungSW_valueChanged(double)
+{
+    if (ui->tbWasserVerschneidungSW->hasFocus())
+        updateValues();
+}
+
+void TabBraudaten::on_tbWasserVerschneidungBrix_valueChanged(double value)
+{
+    if (ui->tbWasserVerschneidungBrix->hasFocus())
+    {
+        ui->tbWasserVerschneidungSW->setValue(BierCalc::brixToPlato(value));
+        updateValues();
+    }
 }
 
 void TabBraudaten::on_btnVerduennung_clicked()

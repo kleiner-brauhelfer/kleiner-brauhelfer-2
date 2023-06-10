@@ -307,9 +307,15 @@ void DlgBrauUebersicht::setFilterDate()
     bool notAll = ui->cbDatumAlle->isChecked();
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
     if (notAll)
-        model->setFilterDate(ui->tbDatumVon->dateTime().addDays(-1), ui->tbDatumBis->dateTime().addDays(1));
+    {
+        QDateTime min = QDateTime(ui->tbDatumVon->date(), QTime(0,0,0));
+        QDateTime max = QDateTime(ui->tbDatumBis->date(), QTime(23,59,59));
+        model->setFilterDate(min, max);
+    }
     else
+    {
         model->setFilterDate();
+    }
     ui->tbDatumVon->setEnabled(notAll);
     ui->tbDatumBis->setEnabled(notAll);
     updateDiagram();

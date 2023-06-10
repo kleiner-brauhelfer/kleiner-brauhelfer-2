@@ -2,6 +2,7 @@
 
 ## Version 2.5.1 (in Entwicklung)
 - Neu: Diagramme überarbeitet (neu mit QCustomPlot, Qt Charts nicht mehr benötigt)
+- Neu: Eingabemöglichkeit einer Stammwürze für das Verschnittwasser
 - Neu: Maischplan überarbeitet:
   - Gesamtwassermenge (Einmaischen+Zubrühen) muss Hauptgussmenge entsprechen
   - Buttons, um Mengen auszugleichen oder Hauptgussmenge anzupassen

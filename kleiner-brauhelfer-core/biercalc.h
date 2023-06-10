@@ -304,13 +304,14 @@ public:
     Q_INVOKABLE static double schuettung(double sw, double sw_dichte, double V, double sudhausausbeute);
 
     /**
-     * @brief Benötigte Wassermenge, um auf die Sollstammwürze zu erreichen
+     * @brief Benötigte Wassermenge, um Sollstammwürze zu erreichen
      * @param swIst Iststammwürze [°P]
      * @param swSoll Sollstammwürze [°P]
+     * @param swWasser Glattwasserstammwürze [°P]
      * @param menge Volumen [L]
      * @return Verschneidung [L]
      */
-    Q_INVOKABLE static double verschneidung(double swIst, double swSoll, double menge);
+    Q_INVOKABLE static double verschneidung(double swIst, double swSoll, double swWasser, double menge);
 
     /**
      * @brief BierCalc::tinseth

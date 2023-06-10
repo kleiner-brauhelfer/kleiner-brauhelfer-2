@@ -1813,12 +1813,6 @@
                 <property name="decimals">
                  <number>1</number>
                 </property>
-                <property name="minimum">
-                 <double>1.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
                 </property>
@@ -2081,7 +2075,7 @@
                 <number>1</number>
                </property>
                <property name="singleStep">
-                <double>1.000000000000000</double>
+                <double>0.100000000000000</double>
                </property>
               </widget>
              </item>
@@ -2316,7 +2310,7 @@
               <item>
                <widget class="QLabel" name="lblWasserVerschneidung">
                 <property name="text">
-                 <string>Wassermenge, um auf Zielstammwürze zu verdünnen</string>
+                 <string>Verschnittwasser, um Zielstammwürze zu erreichen</string>
                 </property>
                </widget>
               </item>
@@ -2332,6 +2326,58 @@
                  </size>
                 </property>
                </spacer>
+              </item>
+              <item>
+               <widget class="DoubleSpinBox" name="tbWasserVerschneidungBrix">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_180">
+                <property name="text">
+                 <string>°Brix</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="DoubleSpinBox" name="tbWasserVerschneidungSW">
+                <property name="minimumSize">
+                 <size>
+                  <width>50</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="decimals">
+                 <number>1</number>
+                </property>
+                <property name="singleStep">
+                 <double>0.100000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_55">
+                <property name="text">
+                 <string>°P</string>
+                </property>
+               </widget>
               </item>
               <item>
                <widget class="DoubleSpinBox" name="tbWasserVerschneidung">
@@ -2383,7 +2429,7 @@
            <item row="3" column="0">
             <widget class="QLabel" name="label_26">
              <property name="text">
-              <string>Wassermenge für Verdünnung</string>
+              <string>Verschnittwasser</string>
              </property>
             </widget>
            </item>
@@ -2549,7 +2595,7 @@
                  <number>1</number>
                 </property>
                 <property name="singleStep">
-                 <double>1.000000000000000</double>
+                 <double>0.100000000000000</double>
                 </property>
                </widget>
               </item>
@@ -2620,17 +2666,8 @@
                 <property name="decimals">
                  <number>1</number>
                 </property>
-                <property name="minimum">
-                 <double>1.000000000000000</double>
-                </property>
-                <property name="maximum">
-                 <double>99.000000000000000</double>
-                </property>
                 <property name="singleStep">
                  <double>0.100000000000000</double>
-                </property>
-                <property name="value">
-                 <double>3.000000000000000</double>
                 </property>
                </widget>
               </item>
@@ -3031,6 +3068,8 @@
   <tabstop>tbHopfenseihenVerlust</tabstop>
   <tabstop>tbVerduennung</tabstop>
   <tabstop>btnVerduennung</tabstop>
+  <tabstop>tbWasserVerschneidungBrix</tabstop>
+  <tabstop>tbWasserVerschneidungSW</tabstop>
   <tabstop>tbWasserVerschneidung</tabstop>
   <tabstop>tbWuerzemengeAnstellenTotal</tabstop>
   <tabstop>btnWuerzemengeAnstellenTotal</tabstop>
@@ -3041,6 +3080,7 @@
   <tabstop>tbSpeisemengeNoetig</tabstop>
   <tabstop>tbWuerzemengeAnstellen</tabstop>
   <tabstop>btnWuerzemengeAnstellen</tabstop>
+  <tabstop>tbSWHefestarterBrix</tabstop>
   <tabstop>tbSWHefestarter</tabstop>
   <tabstop>tbMengeHefestarter</tabstop>
   <tabstop>tbAusbeuteEffektiv</tabstop>
@@ -3050,10 +3090,8 @@
   <tabstop>cbDurchschnittIgnorieren</tabstop>
   <tabstop>wdgBemerkung</tabstop>
   <tabstop>btnSudGebraut</tabstop>
-  <tabstop>chartBraudaten</tabstop>
-  <tabstop>chartAusbeute</tabstop>
-  <tabstop>tbHelp</tabstop>
   <tabstop>splitterCharts</tabstop>
+  <tabstop>tbHelp</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

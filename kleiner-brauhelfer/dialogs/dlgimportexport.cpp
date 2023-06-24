@@ -179,6 +179,16 @@ void DlgImportExport::on_rbFormatBeerxml_clicked()
     }
 }
 
+void DlgImportExport::on_rbFormatBrautomat_clicked()
+{
+    if (!mImport)
+    {
+        QByteArray content = ImportExport::exportBrautomat(bh, mRow, true);
+        ui->textEdit->setPlainText(QString::fromUtf8(content));
+        ui->gpKbhExport->setVisible(false);
+    }
+}
+
 bool DlgImportExport::oeffnen(const QString& filePath_)
 {
     bool ret = false;
@@ -307,14 +317,3 @@ bool DlgImportExport::exportieren()
     gSettings->endGroup();
     return ret;
 }
-
-void DlgImportExport::on_rbFormatBrautomat_clicked()
-{
-    if (!mImport)
-    {
-        QByteArray content = ImportExport::exportBrautomat(bh, mRow);
-        ui->textEdit->setPlainText(QString::fromUtf8(content));
-        ui->gpKbhExport->setVisible(false);
-    }
-}
-

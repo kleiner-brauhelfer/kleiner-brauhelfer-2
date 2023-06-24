@@ -635,7 +635,7 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
     return sudRow;
 }
 
-QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList& exclude)
+QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList& exclude, bool compact)
 {
     QJsonObject root;
     QJsonArray array;
@@ -851,24 +851,31 @@ QByteArray ImportExport::exportKbh(Brauhelfer* bh, int sudRow, const QStringList
         array = QJsonArray::fromVariantList(list);
         if (!array.isEmpty())
             root[model->tableName()] = array;
-        }
+    }
 
     QJsonDocument doc(root);
-    return doc.toJson();
+    return doc.toJson(compact ? QJsonDocument::JsonFormat::Compact : QJsonDocument::JsonFormat::Indented);
 }
 
-QByteArray ImportExport::exportBrautomat(Brauhelfer* bh, int sudRow)
+QByteArray ImportExport::exportBrautomat(Brauhelfer* bh, int sudRow, bool compact)
 {
     QJsonObject root;
     SqlTableModel* model;
     ProxyModel proxy;
     QVariantList list;
+    QJsonArray array;
 
     int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
     QRegularExpression regExpId(QStringLiteral("^%1$").arg(sudId));
 
     model = bh->modelSud();
-    root[model->tableName()] = QJsonObject::fromVariantMap(model->toVariantMap(sudRow, {ModelSud::ColSudname, ModelSud::ColKochdauer, ModelSud::ColNachisomerisierungszeit}));
+    root[model->tableName()] = QJsonObject::fromVariantMap(model->toVariantMap(sudRow,
+                                                                               {ModelSud::ColSudname,
+                                                                                ModelSud::ColKochdauer,
+                                                                                ModelSud::ColNachisomerisierungszeit,
+                                                                                ModelSud::Colerg_S_Gesamt,
+                                                                                ModelSud::Colerg_WHauptguss,
+                                                                                ModelSud::Colerg_WNachguss}));
 
     model = bh->modelRasten();
     proxy.setSourceModel(model);
@@ -889,7 +896,9 @@ QByteArray ImportExport::exportBrautomat(Brauhelfer* bh, int sudRow)
             map.remove(QStringLiteral("Param4"));
         list.append(map);
     }
-    root[model->tableName()] = QJsonArray::fromVariantList(list);
+    array = QJsonArray::fromVariantList(list);
+    if (!array.isEmpty())
+        root[model->tableName()] = array;
 
     model = bh->modelHopfengaben();
     proxy.setSourceModel(model);
@@ -898,14 +907,28 @@ QByteArray ImportExport::exportBrautomat(Brauhelfer* bh, int sudRow)
     list.clear();
     list.reserve(proxy.rowCount());
     for (int row = 0; row < proxy.rowCount(); ++row)
-        list.append(model->toVariantMap(proxy.mapRowToSource(row), {ModelHopfengaben::ColName, ModelHopfengaben::ColZeit, ModelHopfengaben::ColZeitpunkt}));
-    root[model->tableName()] = QJsonArray::fromVariantList(list);
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelHopfengaben::ColID, ModelHopfengaben::ColSudID}));
+    array = QJsonArray::fromVariantList(list);
+    if (!array.isEmpty())
+        root[model->tableName()] = array;
+
+    model = bh->modelWeitereZutatenGaben();
+    proxy.setSourceModel(model);
+    proxy.setFilterKeyColumn(ModelWeitereZutatenGaben::ColSudID);
+    proxy.setFilterRegularExpression(regExpId);
+    list.clear();
+    list.reserve(proxy.rowCount());
+    for (int row = 0; row < proxy.rowCount(); ++row)
+        list.append(model->toVariantMap(proxy.mapRowToSource(row), QList<int>(), {ModelWeitereZutatenGaben::ColID, ModelWeitereZutatenGaben::ColSudID}));
+    array = QJsonArray::fromVariantList(list);
+    if (!array.isEmpty())
+        root[model->tableName()] = array;
 
     QJsonDocument doc(root);
-    return doc.toJson();
+    return doc.toJson(compact ? QJsonDocument::JsonFormat::Compact : QJsonDocument::JsonFormat::Indented);
 }
 
-QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
+QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow, bool compact)
 {
     ProxyModel model;
     int n;
@@ -1153,10 +1176,10 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
     }
 
     QJsonDocument doc(root);
-    return doc.toJson();
+    return doc.toJson(compact ? QJsonDocument::JsonFormat::Compact : QJsonDocument::JsonFormat::Indented);
 }
 
-QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
+QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
 {
     const QString BeerXmlVersion = QStringLiteral("1");
 
@@ -1863,6 +1886,6 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
 
     QString contentString;
     QTextStream stream(&contentString);
-    doc.save(stream, QDomNode::EncodingFromTextStream);
+    doc.save(stream, compact ? 0 : 2, QDomNode::EncodingFromTextStream);
     return contentString.toUtf8();
 }

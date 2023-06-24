@@ -52,7 +52,7 @@ public:
     /**
      * @brief Ein kg Malzschrot verdrängt eingemaischt je nach
      * Feinheitsgrad der Schrotung ein Volumen von 0,65 bis 0,8 l Wasser.
-     * Näherungsweise rechnet man mit 0,7 l Wasserverdrängung pro kg Malzschrot.
+     * Näherungsweise rechnet man mit 0.75 l Wasserverdrängung pro kg Malzschrot.
      */
     static constexpr double MalzVerdraengung = 0.75;
 

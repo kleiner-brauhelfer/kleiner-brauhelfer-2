@@ -173,8 +173,8 @@ public:
     enum class RastTyp
     {
         Einmaischen = 0,
-        Temperatur = 1,
-        Infusion = 2,
+        Aufheizen = 1,
+        Zubruehen = 2,
         Dekoktion = 3
     };
     Q_ENUM(RastTyp)

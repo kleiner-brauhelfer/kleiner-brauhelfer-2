@@ -261,7 +261,7 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
         {
             values.clear();
             values[ModelRasten::ColSudID] = sudId;
-            values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Temperatur);
+            values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
             values[ModelRasten::ColName] = QStringLiteral("%1. Rast").arg(i);
             values[ModelRasten::ColTemp] = toDouble(root[QStringLiteral("Infusion_Rasttemperatur%1").arg(i)]);
             values[ModelRasten::ColDauer] = toDouble(root[QStringLiteral("Infusion_Rastzeit%1").arg(i)]);
@@ -269,7 +269,7 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
         }
         values.clear();
         values[ModelRasten::ColSudID] = sudId;
-        values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Temperatur);
+        values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
         values[ModelRasten::ColName] = "Abmaischen";
         values[ModelRasten::ColTemp] = toDouble(root[QStringLiteral("Abmaischtemperatur")]);
         values[ModelRasten::ColDauer] = 1;
@@ -297,7 +297,7 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
             values[ModelRasten::ColDauer] = toDouble(root[QStringLiteral("Dekoktion_%1_Rastzeit").arg(i)]);
             if (values[ModelRasten::ColName] == "Kochendes Wasser")
             {
-                values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Infusion);
+                values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Zubruehen);
                 values[ModelRasten::ColParam1] = 95;
             }
             else
@@ -315,7 +315,7 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
         }
         values.clear();
         values[ModelRasten::ColSudID] = sudId;
-        values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Temperatur);
+        values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
         values[ModelRasten::ColName] = "Abmaischen";
         values[ModelRasten::ColTemp] = toDouble(root[QStringLiteral("Abmaischtemperatur")]);
         values[ModelRasten::ColDauer] = 10;
@@ -498,11 +498,11 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
             values[ModelRasten::ColDauer] = n.firstChildElement(QStringLiteral("STEP_TIME")).text().toDouble();
             if (typ == QStringLiteral("temperature"))
             {
-                values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Temperatur);
+                values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
             }
             else if (typ == QStringLiteral("infusion"))
             {
-                values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Infusion);
+                values[ModelRasten::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Zubruehen);
                 values[ModelRasten::ColMengenfaktor] = n.firstChildElement(QStringLiteral("INFUSE_AMOUNT")).text().toDouble() / V_tot;
             }
             else if (typ == QStringLiteral("decoction"))
@@ -937,9 +937,9 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
         {
         case Brauhelfer::RastTyp::Einmaischen:
             break;
-        case Brauhelfer::RastTyp::Temperatur:
+        case Brauhelfer::RastTyp::Aufheizen:
             break;
-        case Brauhelfer::RastTyp::Infusion:
+        case Brauhelfer::RastTyp::Zubruehen:
             dekoktion = true;
             break;
         case Brauhelfer::RastTyp::Dekoktion:
@@ -984,7 +984,7 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
                 root[QStringLiteral("Dekoktion_0_Rastzeit")] = QString::number(model.data(row, ModelRasten::ColDauer).toInt());
             }
             break;
-        case Brauhelfer::RastTyp::Temperatur:
+        case Brauhelfer::RastTyp::Aufheizen:
             if (!dekoktion)
             {
                 root[QStringLiteral("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(row, ModelRasten::ColTemp).toInt());
@@ -992,7 +992,7 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow)
                 ++n;
             }
             break;
-        case Brauhelfer::RastTyp::Infusion:
+        case Brauhelfer::RastTyp::Zubruehen:
             if (dekoktion)
             {
                 root[QStringLiteral("Dekoktion_%1_Form").arg(n)] = "Kochendes Wasser";
@@ -1829,10 +1829,10 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
         case Brauhelfer::RastTyp::Einmaischen:
             text = doc.createTextNode(QStringLiteral("Infusion"));
             break;
-        case Brauhelfer::RastTyp::Temperatur:
+        case Brauhelfer::RastTyp::Aufheizen:
             text = doc.createTextNode(QStringLiteral("Temperature"));
             break;
-        case Brauhelfer::RastTyp::Infusion:
+        case Brauhelfer::RastTyp::Zubruehen:
             text = doc.createTextNode(QStringLiteral("Infusion"));
             break;
         case Brauhelfer::RastTyp::Dekoktion:
@@ -1852,7 +1852,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow)
         element.appendChild(text);
         Anteil.appendChild(element);
 
-        if (typ == Brauhelfer::RastTyp::Infusion || typ == Brauhelfer::RastTyp::Einmaischen)
+        if (typ == Brauhelfer::RastTyp::Zubruehen || typ == Brauhelfer::RastTyp::Einmaischen)
         {
             element = doc.createElement(QStringLiteral("INFUSE_AMOUNT"));
             text = doc.createTextNode(QString::number(model.data(row, ModelRasten::ColMenge).toDouble(), 'f', 1));

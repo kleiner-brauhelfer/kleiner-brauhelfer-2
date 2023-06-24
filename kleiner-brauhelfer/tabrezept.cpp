@@ -815,7 +815,7 @@ void TabRezept::on_btnNeueRast_clicked()
     else
     {
         values = {{ModelRasten::ColSudID, bh->sud()->id()},
-                  {ModelRasten::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Temperatur)}};
+                  {ModelRasten::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Aufheizen)}};
     }
     bh->sud()->modelRasten()->append(values);
     ui->scrollAreaRasten->verticalScrollBar()->setValue(ui->scrollAreaRasten->verticalScrollBar()->maximum());
@@ -842,7 +842,7 @@ void TabRezept::on_btnMaischplanAusgleichen_clicked()
         switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
         {
         case Brauhelfer::RastTyp::Einmaischen:
-        case Brauhelfer::RastTyp::Infusion:
+        case Brauhelfer::RastTyp::Zubruehen:
             totalProzent += model->data(i, ModelRasten::ColMengenfaktor).toDouble();
         default:
             break;
@@ -857,7 +857,7 @@ void TabRezept::on_btnMaischplanAusgleichen_clicked()
             switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
             {
             case Brauhelfer::RastTyp::Einmaischen:
-            case Brauhelfer::RastTyp::Infusion:
+            case Brauhelfer::RastTyp::Zubruehen:
                 prozent = model->data(i, ModelRasten::ColMengenfaktor).toDouble();
                 model->setData(i, ModelRasten::ColMengenfaktor, prozent * factor);
             default:
@@ -873,7 +873,7 @@ void TabRezept::on_btnMaischplanAusgleichen_clicked()
             switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
             {
             case Brauhelfer::RastTyp::Einmaischen:
-            case Brauhelfer::RastTyp::Infusion:
+            case Brauhelfer::RastTyp::Zubruehen:
                 model->setData(i, ModelRasten::ColMengenfaktor, prozent);
             default:
                 break;
@@ -891,7 +891,7 @@ void TabRezept::on_btnMaischplanFaktorAnpassen_clicked()
         switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
         {
         case Brauhelfer::RastTyp::Einmaischen:
-        case Brauhelfer::RastTyp::Infusion:
+        case Brauhelfer::RastTyp::Zubruehen:
             totalProzent += model->data(i, ModelRasten::ColMengenfaktor).toDouble();
         default:
             break;
@@ -907,7 +907,7 @@ void TabRezept::on_btnMaischplanFaktorAnpassen_clicked()
             switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
             {
             case Brauhelfer::RastTyp::Einmaischen:
-            case Brauhelfer::RastTyp::Infusion:
+            case Brauhelfer::RastTyp::Zubruehen:
                 prozent = model->data(i, ModelRasten::ColMengenfaktor).toDouble();
                 model->setData(i, ModelRasten::ColMengenfaktor, prozent * factor);
             default:

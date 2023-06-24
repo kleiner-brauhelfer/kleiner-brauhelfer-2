@@ -225,10 +225,10 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                         map[QStringLiteral("Einmaischen")] = true;
                     map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelRasten::ColParam1).toInt());
                         break;
-                    case Brauhelfer::RastTyp::Temperatur:
+                    case Brauhelfer::RastTyp::Aufheizen:
                         map[QStringLiteral("Rast")] = true;
                         break;
-                    case Brauhelfer::RastTyp::Infusion:
+                    case Brauhelfer::RastTyp::Zubruehen:
                         map[QStringLiteral("Infusion")] = true;
                         map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelRasten::ColParam1).toInt());
                         break;

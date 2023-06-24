@@ -76,7 +76,7 @@ double WdgRast::prozentWasser() const
     switch (static_cast<Brauhelfer::RastTyp>(data(ModelRasten::ColTyp).toInt()))
     {
     case Brauhelfer::RastTyp::Einmaischen:
-    case Brauhelfer::RastTyp::Infusion:
+    case Brauhelfer::RastTyp::Zubruehen:
         return data(ModelRasten::ColMengenfaktor).toDouble();
     default:
         return 0;
@@ -108,11 +108,11 @@ void WdgRast::updateListe()
         case Brauhelfer::RastTyp::Einmaischen:
             ui->cbRast->addItem(tr("Einmaischen"));
             break;
-        case Brauhelfer::RastTyp::Temperatur:
+        case Brauhelfer::RastTyp::Aufheizen:
             for (const Rast &rast : rasten)
                 ui->cbRast->addItem(tr(rast.name.toStdString().c_str()));
             break;
-        case Brauhelfer::RastTyp::Infusion:
+        case Brauhelfer::RastTyp::Zubruehen:
             ui->cbRast->addItem(tr("Kochendes Wasser"));
             break;
         case Brauhelfer::RastTyp::Dekoktion:
@@ -144,7 +144,7 @@ void WdgRast::updateValuesFromListe(int index)
         setData(ModelRasten::ColDauer, 5);
         setData(ModelRasten::ColParam3, 18);
         break;
-    case Brauhelfer::RastTyp::Temperatur:
+    case Brauhelfer::RastTyp::Aufheizen:
         setData(ModelRasten::ColMengenfaktor, 1.0);
         if (index >= 0 && index < rasten.count())
         {
@@ -152,7 +152,7 @@ void WdgRast::updateValuesFromListe(int index)
             setData(ModelRasten::ColDauer, rasten[index].dauer);
         }
         break;
-    case Brauhelfer::RastTyp::Infusion:
+    case Brauhelfer::RastTyp::Zubruehen:
         setData(ModelRasten::ColMengenfaktor, 1.0/3);
         setData(ModelRasten::ColParam1, 95);
         setData(ModelRasten::ColDauer, 15);
@@ -215,8 +215,8 @@ void WdgRast::updateValues()
 
     Brauhelfer::RastTyp typ = static_cast<Brauhelfer::RastTyp>(data(ModelRasten::ColTyp).toInt());
     ui->wdgEinmaischen->setVisible(typ == Brauhelfer::RastTyp::Einmaischen);
-    ui->wdgRast->setVisible(typ == Brauhelfer::RastTyp::Temperatur);
-    ui->wdgInfusion->setVisible(typ == Brauhelfer::RastTyp::Infusion);
+    ui->wdgRast->setVisible(typ == Brauhelfer::RastTyp::Aufheizen);
+    ui->wdgInfusion->setVisible(typ == Brauhelfer::RastTyp::Zubruehen);
     ui->wdgDekoktion->setVisible(typ == Brauhelfer::RastTyp::Dekoktion);
     if (!ui->cbRast->hasFocus())
         ui->cbRast->setCurrentText(name());

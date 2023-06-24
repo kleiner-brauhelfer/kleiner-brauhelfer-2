@@ -22,10 +22,10 @@ QVariant ModelRasten::dataExt(const QModelIndex &idx) const
         switch (static_cast<Brauhelfer::RastTyp>(data(idx.row(), ColTyp).toInt()))
         {
         case Brauhelfer::RastTyp::Einmaischen:
-        case Brauhelfer::RastTyp::Infusion:
+        case Brauhelfer::RastTyp::Zubruehen:
             V = bh->modelSud()->dataSud(sudId, ModelSud::Colerg_WHauptguss).toDouble();
             break;
-        case Brauhelfer::RastTyp::Temperatur:
+        case Brauhelfer::RastTyp::Aufheizen:
         case Brauhelfer::RastTyp::Dekoktion:
             V = BierCalc::MalzVerdraengung * bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::Colerg_S_Gesamt).toDouble() + getPreviousMenge(sudId, idx.row());
             break;
@@ -48,10 +48,10 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
         switch (static_cast<Brauhelfer::RastTyp>(data(idx.row(), ColTyp).toInt()))
         {
         case Brauhelfer::RastTyp::Einmaischen:
-        case Brauhelfer::RastTyp::Infusion:
+        case Brauhelfer::RastTyp::Zubruehen:
             V = bh->modelSud()->dataSud(sudId, ModelSud::Colerg_WHauptguss).toDouble();
             break;
-        case Brauhelfer::RastTyp::Temperatur:
+        case Brauhelfer::RastTyp::Aufheizen:
         case Brauhelfer::RastTyp::Dekoktion:
             V = BierCalc::MalzVerdraengung * bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::Colerg_S_Gesamt).toDouble() + getPreviousMenge(sudId, idx.row());
             break;
@@ -75,7 +75,7 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
                                                     data(idx.row(), ColMenge).toDouble());
                 QSqlTableModel::setData(index(idx.row(), ColParam1), Tm);
                 break;
-            case Brauhelfer::RastTyp::Infusion:
+            case Brauhelfer::RastTyp::Zubruehen:
                 T1 = getPreviousTemp(sudId, idx.row());
                 if (T1 != std::numeric_limits<double>::infinity())
                 {
@@ -121,7 +121,7 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
                                                     data(idx.row(), ColMenge).toDouble());
                 QSqlTableModel::setData(index(idx.row(), ColParam1), Tm);
                 break;
-            case Brauhelfer::RastTyp::Infusion:
+            case Brauhelfer::RastTyp::Zubruehen:
                 T1 = getPreviousTemp(sudId, idx.row());
                 if (T1 != std::numeric_limits<double>::infinity())
                 {
@@ -169,7 +169,7 @@ bool ModelRasten::setDataExt(const QModelIndex &idx, const QVariant &value)
         {
             switch (static_cast<Brauhelfer::RastTyp>(data(idx.row(), ColTyp).toInt()))
             {
-            case Brauhelfer::RastTyp::Infusion:
+            case Brauhelfer::RastTyp::Zubruehen:
                 T1 = getPreviousTemp(sudId, idx.row());
                 if (T1 != std::numeric_limits<double>::infinity())
                 {
@@ -254,7 +254,7 @@ double ModelRasten::getPreviousMenge(const QVariant &sudId, int fromRow) const
         switch (static_cast<Brauhelfer::RastTyp>(model.data(r, ColTyp).toInt()))
         {
         case Brauhelfer::RastTyp::Einmaischen:
-        case Brauhelfer::RastTyp::Infusion:
+        case Brauhelfer::RastTyp::Zubruehen:
             menge += model.data(r, ColMenge).toDouble();
             break;
         default:
@@ -279,9 +279,9 @@ void ModelRasten::update(const QVariant &sudId)
         switch (static_cast<Brauhelfer::RastTyp>(model.data(r, ColTyp).toInt()))
         {
         case Brauhelfer::RastTyp::Einmaischen:
-        case Brauhelfer::RastTyp::Temperatur:
+        case Brauhelfer::RastTyp::Aufheizen:
             break;
-        case Brauhelfer::RastTyp::Infusion:
+        case Brauhelfer::RastTyp::Zubruehen:
         case Brauhelfer::RastTyp::Dekoktion:
             model.setData(r, ColTemp, model.data(r, ColTemp));
             break;
@@ -294,7 +294,7 @@ void ModelRasten::update(const QVariant &sudId)
 void ModelRasten::defaultValues(QMap<int, QVariant> &values) const
 {
     if (!values.contains(ColTyp))
-        values.insert(ColTyp, static_cast<int>(Brauhelfer::RastTyp::Temperatur));
+        values.insert(ColTyp, static_cast<int>(Brauhelfer::RastTyp::Aufheizen));
     if (!values.contains(ColMengenfaktor))
         values.insert(ColMengenfaktor, 1);
 }

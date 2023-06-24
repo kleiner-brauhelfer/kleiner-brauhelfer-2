@@ -55,8 +55,8 @@ void ChartMaischplan::update()
     QCPGraph *graphAux;
 
     double tTotal = 0;
-    double TMin = 30;
-    double TMax = 80;
+    double TMin = 55;
+    double TMax = 75;
     double t, T, T2, lastT = 0, temp;
 
     graph->setPen(QPen(QBrush(QColor(32,159,223)), 2, Qt::SolidLine));
@@ -68,7 +68,7 @@ void ChartMaischplan::update()
         t = model->data(row, ModelRasten::ColDauer).toInt();
         switch (static_cast<Brauhelfer::RastTyp>(model->data(row, ModelRasten::ColTyp).toInt()))
         {
-        case Brauhelfer::RastTyp::Infusion:
+        case Brauhelfer::RastTyp::Zubruehen:
             graphAux = new QCPGraph(xAxis, yAxis);
             graphAux->setPen(QPen(QBrush(gSettings->DiagramLinie3), 2, Qt::DashLine));
             T2 = model->data(row, ModelRasten::ColParam1).toInt();
@@ -129,7 +129,7 @@ void ChartMaischplan::update()
     }
 
     xAxis->setRange(0, tTotal);
-    yAxis->setRange(TMin, TMax);
+    yAxis->setRange(qCeil(TMin/5)*5-5, qFloor(TMax/5)*5+5);
 
     replot();
 }

@@ -38,14 +38,18 @@ public:
     ModelRasten(Brauhelfer* bh, const QSqlDatabase &db = QSqlDatabase());
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
-    void update(const QVariant &sudId);
     void defaultValues(QMap<int, QVariant> &values) const Q_DECL_OVERRIDE;
 
 private:
 
+    void update(const QVariant &sudId);
     void getMaischeValues(const QVariant &sudId, int fromRow, double& m, double &c);
     double getPreviousTemp(const QVariant &sudId, int fromRow) const;
     double getPreviousMenge(const QVariant &sudId, int fromRow) const;
+
+private slots:
+
+    void rowsSwapped(int row1, int row2);
 
 private:
 

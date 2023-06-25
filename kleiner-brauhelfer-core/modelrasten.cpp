@@ -9,6 +9,8 @@ ModelRasten::ModelRasten(Brauhelfer* bh, const QSqlDatabase &db) :
     mUpdating(false)
 {
     mVirtualField.append(QStringLiteral("Menge"));
+
+    connect(this, &SqlTableModel::rowsSwapped, this, &ModelRasten::rowsSwapped);
 }
 
 QVariant ModelRasten::dataExt(const QModelIndex &idx) const
@@ -289,6 +291,15 @@ void ModelRasten::update(const QVariant &sudId)
     }
     mSignalModifiedBlocked = false;
     mUpdating = false;
+}
+
+void ModelRasten::rowsSwapped(int row1, int row2)
+{
+    QVariant sudId1 = data(row1, ColSudID);
+    QVariant sudId2 = data(row2, ColSudID);
+    update(sudId1);
+    if (sudId2 != sudId1)
+        update(sudId2);
 }
 
 void ModelRasten::defaultValues(QMap<int, QVariant> &values) const

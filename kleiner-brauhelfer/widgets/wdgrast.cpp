@@ -444,12 +444,10 @@ void WdgRast::on_btnLoeschen_clicked()
 
 void WdgRast::on_btnNachOben_clicked()
 {
-    if (moveUp())
-        bh->modelRasten()->update(bh->sud()->id());
+    moveUp();
 }
 
 void WdgRast::on_btnNachUnten_clicked()
 {
-    if (moveDown())
-        bh->modelRasten()->update(bh->sud()->id());
+    moveDown();
 }

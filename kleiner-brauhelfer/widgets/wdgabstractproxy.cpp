@@ -2,6 +2,7 @@
 #include <QLayout>
 #include <QVariantAnimation>
 #include <QEventLoop>
+#include "mainwindow.h"
 #include "settings.h"
 #include "proxymodel.h"
 
@@ -92,7 +93,10 @@ bool WdgAbstractProxy::moveUp()
         mParentLayout->update();
     }
 
-    return mModel->swap(mRow, mRow - 1);
+    MainWindow::getInstance()->setUpdatesEnabled(false);
+    bool ret = mModel->swap(mRow, mRow - 1);
+    MainWindow::getInstance()->setUpdatesEnabled(true);
+    return ret;
 }
 
 bool WdgAbstractProxy::moveDown()
@@ -128,5 +132,8 @@ bool WdgAbstractProxy::moveDown()
         mParentLayout->update();
     }
 
-    return mModel->swap(mRow, mRow + 1);
+    MainWindow::getInstance()->setUpdatesEnabled(false);
+    bool ret = mModel->swap(mRow, mRow + 1);
+    MainWindow::getInstance()->setUpdatesEnabled(true);
+    return ret;
 }

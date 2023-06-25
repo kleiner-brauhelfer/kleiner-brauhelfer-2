@@ -317,6 +317,7 @@ bool SqlTableModel::swap(int row1, int row2)
             QSqlTableModel::setData(index(row2, it.key()), it.value());
             ++it;
         }
+        emit rowsSwapped(row1, row2);
         emit modified();
         return true;
     }

@@ -178,10 +178,10 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud(), &SudObject::loadedChanged, this, &TabRezept::sudLoaded);
     connect(bh->sud(), &SudObject::dataChanged, this, &TabRezept::sudDataChanged);
 
-    connect(bh->sud()->modelRasten(), &ProxyModel::layoutChanged,this, &TabRezept::rasten_modified);
-    connect(bh->sud()->modelRasten(), &ProxyModel::rowsInserted, this, &TabRezept::rasten_modified);
-    connect(bh->sud()->modelRasten(), &ProxyModel::rowsRemoved, this, &TabRezept::rasten_modified);
-    connect(bh->sud()->modelRasten(), &ProxyModel::dataChanged, this, &TabRezept::updateMaischplan);
+    connect(bh->sud()->modelMaischplan(), &ProxyModel::layoutChanged,this, &TabRezept::rasten_modified);
+    connect(bh->sud()->modelMaischplan(), &ProxyModel::rowsInserted, this, &TabRezept::rasten_modified);
+    connect(bh->sud()->modelMaischplan(), &ProxyModel::rowsRemoved, this, &TabRezept::rasten_modified);
+    connect(bh->sud()->modelMaischplan(), &ProxyModel::dataChanged, this, &TabRezept::updateMaischplan);
 
     connect(bh->sud()->modelMalzschuettung(), &ProxyModel::layoutChanged, this, &TabRezept::malzGaben_modified);
     connect(bh->sud()->modelMalzschuettung(), &ProxyModel::rowsInserted, this, &TabRezept::malzGaben_modified);
@@ -759,7 +759,7 @@ void TabRezept::updateWasserModel()
 
 void TabRezept::rasten_modified()
 {    
-    const int nModel = bh->sud()->modelRasten()->rowCount();
+    const int nModel = bh->sud()->modelMaischplan()->rowCount();
     int nLayout = ui->layoutRasten->count();
     while (nLayout < nModel)
         ui->layoutRasten->addWidget(new WdgRast(nLayout++, ui->layoutRasten, this));
@@ -801,23 +801,23 @@ void TabRezept::updateMaischplan()
 void TabRezept::updateRastenDiagram()
 {
     ui->diagramRasten->update();
-    ui->diagramRasten->setVisible(bh->sud()->modelRasten()->rowCount() > 0);
+    ui->diagramRasten->setVisible(bh->sud()->modelMaischplan()->rowCount() > 0);
 }
 
 void TabRezept::on_btnNeueRast_clicked()
 {
     QMap<int, QVariant> values;
-    if (bh->sud()->modelRasten()->rowCount() == 0)
+    if (bh->sud()->modelMaischplan()->rowCount() == 0)
     {
-        values = {{ModelRasten::ColSudID, bh->sud()->id()},
-                  {ModelRasten::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Einmaischen)}};
+        values = {{ModelMaischplan::ColSudID, bh->sud()->id()},
+                  {ModelMaischplan::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Einmaischen)}};
     }
     else
     {
-        values = {{ModelRasten::ColSudID, bh->sud()->id()},
-                  {ModelRasten::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Aufheizen)}};
+        values = {{ModelMaischplan::ColSudID, bh->sud()->id()},
+                  {ModelMaischplan::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Aufheizen)}};
     }
-    bh->sud()->modelRasten()->append(values);
+    bh->sud()->modelMaischplan()->append(values);
     ui->scrollAreaRasten->verticalScrollBar()->setValue(ui->scrollAreaRasten->verticalScrollBar()->maximum());
 }
 
@@ -826,24 +826,24 @@ void TabRezept::on_btnRastenUebernehmen_clicked()
     DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Maischplan);
     if (dlg.exec() == QDialog::Accepted)
     {
-        bh->sudKopierenModel(bh->modelRasten(),
-                             ModelRasten::ColSudID, dlg.sudId(),
-                             {{ModelRasten::ColSudID, bh->sud()->id()}});
-        bh->sud()->modelRasten()->invalidate();
+        bh->sudKopierenModel(bh->modelMaischplan(),
+                             ModelMaischplan::ColSudID, dlg.sudId(),
+                             {{ModelMaischplan::ColSudID, bh->sud()->id()}});
+        bh->sud()->modelMaischplan()->invalidate();
     }
 }
 
 void TabRezept::on_btnMaischplanAusgleichen_clicked()
 {
-    ProxyModel *model = bh->sud()->modelRasten();
+    ProxyModel *model = bh->sud()->modelMaischplan();
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
     {
-        switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
+        switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelMaischplan::ColTyp).toInt()))
         {
         case Brauhelfer::RastTyp::Einmaischen:
         case Brauhelfer::RastTyp::Zubruehen:
-            totalProzent += model->data(i, ModelRasten::ColMengenfaktor).toDouble();
+            totalProzent += model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
         default:
             break;
         }
@@ -851,15 +851,15 @@ void TabRezept::on_btnMaischplanAusgleichen_clicked()
     if (totalProzent > 0)
     {
         double prozent;
-        double factor = 1 / totalProzent;
+        double factor = 100.0 / totalProzent;
         for (int i = 0; i < model->rowCount(); ++i)
         {
-            switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
+            switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelMaischplan::ColTyp).toInt()))
             {
             case Brauhelfer::RastTyp::Einmaischen:
             case Brauhelfer::RastTyp::Zubruehen:
-                prozent = model->data(i, ModelRasten::ColMengenfaktor).toDouble();
-                model->setData(i, ModelRasten::ColMengenfaktor, prozent * factor);
+                prozent = model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
+                model->setData(i, ModelMaischplan::ColAnteilWasser, prozent * factor);
             default:
                 break;
             }
@@ -867,14 +867,14 @@ void TabRezept::on_btnMaischplanAusgleichen_clicked()
     }
     else
     {
-        double prozent = 1.0 / model->rowCount();
+        double prozent = 100.0 / model->rowCount();
         for (int i = 0; i < model->rowCount(); ++i)
         {
-            switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
+            switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelMaischplan::ColTyp).toInt()))
             {
             case Brauhelfer::RastTyp::Einmaischen:
             case Brauhelfer::RastTyp::Zubruehen:
-                model->setData(i, ModelRasten::ColMengenfaktor, prozent);
+                model->setData(i, ModelMaischplan::ColAnteilWasser, prozent);
             default:
                 break;
             }
@@ -884,32 +884,32 @@ void TabRezept::on_btnMaischplanAusgleichen_clicked()
 
 void TabRezept::on_btnMaischplanFaktorAnpassen_clicked()
 {
-    ProxyModel *model = bh->sud()->modelRasten();
+    ProxyModel *model = bh->sud()->modelMaischplan();
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
     {
-        switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
+        switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelMaischplan::ColTyp).toInt()))
         {
         case Brauhelfer::RastTyp::Einmaischen:
         case Brauhelfer::RastTyp::Zubruehen:
-            totalProzent += model->data(i, ModelRasten::ColMengenfaktor).toDouble();
+            totalProzent += model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
         default:
             break;
         }
     }
     if (totalProzent > 0)
     {
-        bh->sud()->setFaktorHauptguss(totalProzent*bh->sud()->geterg_WHauptguss() / bh->sud()->geterg_S_Gesamt());
+        bh->sud()->setFaktorHauptguss(totalProzent / 100.0 * bh->sud()->geterg_WHauptguss() / bh->sud()->geterg_S_Gesamt());
         double prozent;
-        double factor = 1 / totalProzent;
+        double factor = 100.0 / totalProzent;
         for (int i = 0; i < model->rowCount(); ++i)
         {
-            switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
+            switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelMaischplan::ColTyp).toInt()))
             {
             case Brauhelfer::RastTyp::Einmaischen:
             case Brauhelfer::RastTyp::Zubruehen:
-                prozent = model->data(i, ModelRasten::ColMengenfaktor).toDouble();
-                model->setData(i, ModelRasten::ColMengenfaktor, prozent * factor);
+                prozent = model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
+                model->setData(i, ModelMaischplan::ColAnteilWasser, prozent * factor);
             default:
                 break;
             }

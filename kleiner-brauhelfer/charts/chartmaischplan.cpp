@@ -61,17 +61,17 @@ void ChartMaischplan::update()
 
     graph->setPen(QPen(QBrush(QColor(32,159,223)), 2, Qt::SolidLine));
 
-    ProxyModel* model = bh->sud()->modelRasten();
+    ProxyModel* model = bh->sud()->modelMaischplan();
     for (int row = 0; row < model->rowCount(); ++row)
     {
-        T = model->data(row, ModelRasten::ColTemp).toInt();
-        t = model->data(row, ModelRasten::ColDauer).toInt();
-        switch (static_cast<Brauhelfer::RastTyp>(model->data(row, ModelRasten::ColTyp).toInt()))
+        T = model->data(row, ModelMaischplan::ColTempMaische).toInt();
+        t = model->data(row, ModelMaischplan::ColDauerMaische).toInt();
+        switch (static_cast<Brauhelfer::RastTyp>(model->data(row, ModelMaischplan::ColTyp).toInt()))
         {
         case Brauhelfer::RastTyp::Zubruehen:
             graphAux = new QCPGraph(xAxis, yAxis);
             graphAux->setPen(QPen(QBrush(gSettings->DiagramLinie3), 2, Qt::DashLine));
-            T2 = model->data(row, ModelRasten::ColParam1).toInt();
+            T2 = model->data(row, ModelMaischplan::ColTempWasser).toInt();
             graphAux->setData({tTotal, tTotal}, {T2, T}, true);
             TMax = 100;
             if (T2 < TMin)
@@ -84,10 +84,10 @@ void ChartMaischplan::update()
             graphAux->setPen(QPen(QBrush(gSettings->DiagramLinie2), 2, Qt::DashLine));
             graphAux->setPen(QPen(graph->pen().brush(), 2, Qt::DashLine));
             graphAux->addData(tTotal, lastT);
-            temp = model->data(row, ModelRasten::ColParam4).toInt();
+            temp = model->data(row, ModelMaischplan::ColDauerExtra2).toInt();
             if (temp > 0)
             {
-                int T3 = model->data(row, ModelRasten::ColParam3).toInt();
+                int T3 = model->data(row, ModelMaischplan::ColTempExtra2).toInt();
                 graphAux->addData(tTotal, T3);
                 tTotal += temp;
                 graphAux->addData(tTotal, T3);
@@ -96,10 +96,10 @@ void ChartMaischplan::update()
                 if (T3 > TMax)
                     TMax = T3;
             }
-            temp = model->data(row, ModelRasten::ColParam2).toInt();
+            temp = model->data(row, ModelMaischplan::ColDauerExtra1).toInt();
             if (temp > 0)
             {
-                T2 = model->data(row, ModelRasten::ColParam1).toInt();
+                T2 = model->data(row, ModelMaischplan::ColTempExtra1).toInt();
                 graphAux->addData(tTotal, T2);
                 tTotal += temp;
                 graphAux->addData(tTotal, T2);

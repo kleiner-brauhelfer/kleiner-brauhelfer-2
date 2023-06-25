@@ -19,7 +19,7 @@
 #include "modelhopfengaben.h"
 #include "modelweiterezutatengaben.h"
 #include "modelausruestung.h"
-#include "modelrasten.h"
+#include "modelmaischplan.h"
 #include "modeltags.h"
 #include "modelanhang.h"
 #include "modeletiketten.h"
@@ -56,7 +56,7 @@ private:
 
 private:
     ModelSud* modelSud;
-    ModelRasten* modelRasten;
+    ModelMaischplan* modelMaischplan;
     ModelMalzschuettung* modelMalzschuettung;
     ModelHopfengaben* modelHopfengaben;
     ModelHefegaben* modelHefegaben;

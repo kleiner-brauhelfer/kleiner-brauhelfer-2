@@ -210,40 +210,42 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                 int dauerIsomerisierung = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();
 
                 liste.clear();
-                ProxyModel *model = bh->sud()->modelRasten();
+                ProxyModel *model = bh->sud()->modelMaischplan();
                 for (int row = 0; row < model->rowCount(); ++row)
                 {
                     int temp;
                     QVariantMap map;
-                    map[QStringLiteral("Name")] = model->data(row, ModelRasten::ColName).toString();
-                    map[QStringLiteral("Temp")] = QString::number(model->data(row, ModelRasten::ColTemp).toInt());
-                    map[QStringLiteral("Dauer")] = QString::number(model->data(row, ModelRasten::ColDauer).toInt());
-                    map[QStringLiteral("Menge")] = locale.toString(model->data(row, ModelRasten::ColMenge).toDouble(), 'f', 1);
-                    switch (static_cast<Brauhelfer::RastTyp>(model->data(row, ModelRasten::ColTyp).toInt()))
+                    map[QStringLiteral("Name")] = model->data(row, ModelMaischplan::ColName).toString();
+                    map[QStringLiteral("Temp")] = QString::number(model->data(row, ModelMaischplan::ColTempMaische).toInt());
+                    map[QStringLiteral("Dauer")] = QString::number(model->data(row, ModelMaischplan::ColDauerMaische).toInt());
+                    map[QStringLiteral("MengeWasser")] = locale.toString(model->data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
+                    map[QStringLiteral("MengeMalz")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMalz).toDouble(), 'f', 1);
+                    map[QStringLiteral("MengeMaische")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMaische).toDouble(), 'f', 1);
+                    switch (static_cast<Brauhelfer::RastTyp>(model->data(row, ModelMaischplan::ColTyp).toInt()))
                     {
                     case Brauhelfer::RastTyp::Einmaischen:
                         map[QStringLiteral("Einmaischen")] = true;
-                    map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelRasten::ColParam1).toInt());
+                    map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempWasser).toInt());
                         break;
                     case Brauhelfer::RastTyp::Aufheizen:
                         map[QStringLiteral("Rast")] = true;
                         break;
                     case Brauhelfer::RastTyp::Zubruehen:
                         map[QStringLiteral("Infusion")] = true;
-                        map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelRasten::ColParam1).toInt());
+                        map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempWasser).toInt());
                         break;
                     case Brauhelfer::RastTyp::Dekoktion:
                         map[QStringLiteral("Dekoktion")] = true;
-                        temp = model->data(row, ModelRasten::ColParam2).toInt();
+                        temp = model->data(row, ModelMaischplan::ColDauerExtra1).toInt();
                         if (temp > 0)
                         {
-                            map[QStringLiteral("TeilmaischeRastTemp")] = QString::number(model->data(row, ModelRasten::ColParam1).toInt());
+                            map[QStringLiteral("TeilmaischeRastTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempExtra1).toInt());
                             map[QStringLiteral("TeilmaischeRastDauer")] = QString::number(temp);
                         }
-                        temp = model->data(row, ModelRasten::ColParam4).toInt();
+                        temp = model->data(row, ModelMaischplan::ColDauerExtra2).toInt();
                         if (temp > 0)
                         {
-                            map[QStringLiteral("TeilmaischeZusatzRastTemp")] = QString::number(model->data(row, ModelRasten::ColParam3).toInt());
+                            map[QStringLiteral("TeilmaischeZusatzRastTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempExtra2).toInt());
                             map[QStringLiteral("TeilmaischeZusatzRastDauer")] = QString::number(temp);
                         }
                         break;

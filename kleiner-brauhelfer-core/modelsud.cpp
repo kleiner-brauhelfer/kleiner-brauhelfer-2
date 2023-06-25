@@ -1073,7 +1073,7 @@ bool ModelSud::removeRows(int row, int count, const QModelIndex &parent)
         sudIds.append(data(row + i, ColID).toInt());
     if (SqlTableModel::removeRows(row, count, parent))
     {
-        removeRowsFrom(bh->modelRasten(), ModelRasten::ColSudID, sudIds);
+        removeRowsFrom(bh->modelMaischplan(), ModelMaischplan::ColSudID, sudIds);
         removeRowsFrom(bh->modelMalzschuettung(), ModelMalzschuettung::ColSudID, sudIds);
         removeRowsFrom(bh->modelHopfengaben(), ModelHopfengaben::ColSudID, sudIds);
         removeRowsFrom(bh->modelWeitereZutatenGaben(), ModelWeitereZutatenGaben::ColSudID, sudIds);

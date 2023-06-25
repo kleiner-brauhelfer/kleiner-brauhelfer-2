@@ -20,7 +20,7 @@ const QList<WdgRast::Rast> WdgRast::rasten = {
 };
 
 WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
-    WdgAbstractProxy(bh->sud()->modelRasten(), row, parentLayout, parent),
+    WdgAbstractProxy(bh->sud()->modelMaischplan(), row, parentLayout, parent),
     ui(new Ui::WdgRast),
     mEnabled(true),
     mRastNameManuallyEdited(false)
@@ -68,19 +68,12 @@ bool WdgRast::isEnabled() const
 
 QString WdgRast::name() const
 {
-    return data(ModelRasten::ColName).toString();
+    return data(ModelMaischplan::ColName).toString();
 }
 
 double WdgRast::prozentWasser() const
 {
-    switch (static_cast<Brauhelfer::RastTyp>(data(ModelRasten::ColTyp).toInt()))
-    {
-    case Brauhelfer::RastTyp::Einmaischen:
-    case Brauhelfer::RastTyp::Zubruehen:
-        return data(ModelRasten::ColMengenfaktor).toDouble();
-    default:
-        return 0;
-    }
+    return 100 * data(ModelMaischplan::ColAnteilWasser).toDouble();
 }
 
 void WdgRast::setFehlProzentWasser(double value)
@@ -103,7 +96,7 @@ void WdgRast::updateListe()
     ui->cbRast->clear();
     if (mEnabled)
     {
-        switch (static_cast<Brauhelfer::RastTyp>(data(ModelRasten::ColTyp).toInt()))
+        switch (static_cast<Brauhelfer::RastTyp>(data(ModelMaischplan::ColTyp).toInt()))
         {
         case Brauhelfer::RastTyp::Einmaischen:
             ui->cbRast->addItem(tr("Einmaischen"));
@@ -124,7 +117,7 @@ void WdgRast::updateListe()
         }
         if (name().isEmpty())
         {
-            setData(ModelRasten::ColName, ui->cbRast->itemText(0));
+            setData(ModelMaischplan::ColName, ui->cbRast->itemText(0));
             updateValuesFromListe(0);
         }
     }
@@ -136,46 +129,45 @@ void WdgRast::updateListe()
 
 void WdgRast::updateValuesFromListe(int index)
 {
-    switch (static_cast<Brauhelfer::RastTyp>(data(ModelRasten::ColTyp).toInt()))
+    switch (static_cast<Brauhelfer::RastTyp>(data(ModelMaischplan::ColTyp).toInt()))
     {
     case Brauhelfer::RastTyp::Einmaischen:
-        setData(ModelRasten::ColMengenfaktor, 1.0);
-        setData(ModelRasten::ColTemp, 57);
-        setData(ModelRasten::ColDauer, 5);
-        setData(ModelRasten::ColParam3, 18);
+        setData(ModelMaischplan::ColAnteilMalz, 100);
+        setData(ModelMaischplan::ColTempMaische, 57);
+        setData(ModelMaischplan::ColDauerMaische, 5);
+        setData(ModelMaischplan::ColTempMalz, 18);
         break;
     case Brauhelfer::RastTyp::Aufheizen:
-        setData(ModelRasten::ColMengenfaktor, 1.0);
         if (index >= 0 && index < rasten.count())
         {
-            setData(ModelRasten::ColTemp, rasten[index].temperatur);
-            setData(ModelRasten::ColDauer, rasten[index].dauer);
+            setData(ModelMaischplan::ColTempMaische, rasten[index].temperatur);
+            setData(ModelMaischplan::ColDauerMaische, rasten[index].dauer);
         }
         break;
     case Brauhelfer::RastTyp::Zubruehen:
-        setData(ModelRasten::ColMengenfaktor, 1.0/3);
-        setData(ModelRasten::ColParam1, 95);
-        setData(ModelRasten::ColDauer, 15);
+        setData(ModelMaischplan::ColAnteilWasser, 33.33);
+        setData(ModelMaischplan::ColTempWasser, 95);
+        setData(ModelMaischplan::ColDauerMaische, 15);
         break;
     case Brauhelfer::RastTyp::Dekoktion:
-        setData(ModelRasten::ColDauer, 15);
-        setData(ModelRasten::ColParam1, 95);
-        setData(ModelRasten::ColParam2, 15);
-        setData(ModelRasten::ColParam3, 0);
-        setData(ModelRasten::ColParam4, 0);
+        setData(ModelMaischplan::ColDauerMaische, 15);
+        setData(ModelMaischplan::ColTempExtra1, 95);
+        setData(ModelMaischplan::ColDauerExtra1, 15);
+        setData(ModelMaischplan::ColTempExtra2, 0);
+        setData(ModelMaischplan::ColDauerExtra2, 0);
         switch (index)
         {
         case 0: // 1/2 Dickmaische
-            setData(ModelRasten::ColMengenfaktor, 1.0/2);
+            setData(ModelMaischplan::ColAnteilMaische, 50);
             break;
         case 1: // 1/3 Dickmaische
-            setData(ModelRasten::ColMengenfaktor, 1.0/3);
+            setData(ModelMaischplan::ColAnteilMaische, 33.33);
             break;
         case 2: // 1/3 Dünnmaische
-            setData(ModelRasten::ColMengenfaktor, 1.0/3);
+            setData(ModelMaischplan::ColAnteilMaische, 33.33);
             break;
         case 3: // 1/3 Läutermaische
-            setData(ModelRasten::ColMengenfaktor, 1.0/3);
+            setData(ModelMaischplan::ColAnteilMaische, 33.33);
             break;
         }
         break;
@@ -213,7 +205,7 @@ void WdgRast::updateValues()
     ui->btnNachOben->setVisible(mEnabled);
     ui->btnNachUnten->setVisible(mEnabled);
 
-    Brauhelfer::RastTyp typ = static_cast<Brauhelfer::RastTyp>(data(ModelRasten::ColTyp).toInt());
+    Brauhelfer::RastTyp typ = static_cast<Brauhelfer::RastTyp>(data(ModelMaischplan::ColTyp).toInt());
     ui->wdgEinmaischen->setVisible(typ == Brauhelfer::RastTyp::Einmaischen);
     ui->wdgRast->setVisible(typ == Brauhelfer::RastTyp::Aufheizen);
     ui->wdgInfusion->setVisible(typ == Brauhelfer::RastTyp::Zubruehen);
@@ -221,48 +213,48 @@ void WdgRast::updateValues()
     if (!ui->cbRast->hasFocus())
         ui->cbRast->setCurrentText(name());
     if (!ui->cbTyp->hasFocus())
-        ui->cbTyp->setCurrentIndex(data(ModelRasten::ColTyp).toInt());
+        ui->cbTyp->setCurrentIndex(data(ModelMaischplan::ColTyp).toInt());
     if (!ui->tbMengeEinmaischen->hasFocus())
-        ui->tbMengeEinmaischen->setValue(data(ModelRasten::ColMenge).toDouble());
+        ui->tbMengeEinmaischen->setValue(data(ModelMaischplan::ColMengeWasser).toDouble());
     if (!ui->tbVerhaeltnisEinmaischen->hasFocus())
-        ui->tbVerhaeltnisEinmaischen->setValue(data(ModelRasten::ColMengenfaktor).toDouble()*100);
-    ui->tbWasserTempEinmaischen->setValue(data(ModelRasten::ColParam1).toDouble());
+        ui->tbVerhaeltnisEinmaischen->setValue(data(ModelMaischplan::ColAnteilWasser).toDouble());
+    ui->tbWasserTempEinmaischen->setValue(data(ModelMaischplan::ColTempWasser).toDouble());
     if (!ui->tbMalzTempEinmaischen->hasFocus())
-        ui->tbMalzTempEinmaischen->setValue(data(ModelRasten::ColParam3).toDouble());
+        ui->tbMalzTempEinmaischen->setValue(data(ModelMaischplan::ColTempMalz).toDouble());
     if (!ui->tbTempEinmaischen->hasFocus())
-        ui->tbTempEinmaischen->setValue(data(ModelRasten::ColTemp).toDouble());
+        ui->tbTempEinmaischen->setValue(data(ModelMaischplan::ColTempMaische).toDouble());
     if (!ui->tbDauerEinmaischen->hasFocus())
-        ui->tbDauerEinmaischen->setValue(data(ModelRasten::ColDauer).toInt());
+        ui->tbDauerEinmaischen->setValue(data(ModelMaischplan::ColDauerMaische).toInt());
     if (!ui->tbTempRast->hasFocus())
-        ui->tbTempRast->setValue(data(ModelRasten::ColTemp).toDouble());
+        ui->tbTempRast->setValue(data(ModelMaischplan::ColTempMaische).toDouble());
     if (!ui->tbDauerRast->hasFocus())
-        ui->tbDauerRast->setValue(data(ModelRasten::ColDauer).toInt());
+        ui->tbDauerRast->setValue(data(ModelMaischplan::ColDauerMaische).toInt());
     if (!ui->tbMengeInfusion->hasFocus())
-        ui->tbMengeInfusion->setValue(data(ModelRasten::ColMenge).toDouble());
+        ui->tbMengeInfusion->setValue(data(ModelMaischplan::ColMengeWasser).toDouble());
     if (!ui->tbVerhaeltnisInfusion->hasFocus())
-        ui->tbVerhaeltnisInfusion->setValue(data(ModelRasten::ColMengenfaktor).toDouble()*100);
+        ui->tbVerhaeltnisInfusion->setValue(data(ModelMaischplan::ColAnteilWasser).toDouble());
     if (!ui->tbTempInfusion->hasFocus())
-        ui->tbTempInfusion->setValue(data(ModelRasten::ColTemp).toDouble());
+        ui->tbTempInfusion->setValue(data(ModelMaischplan::ColTempMaische).toDouble());
     if (!ui->tbWassertempInfusion->hasFocus())
-        ui->tbWassertempInfusion->setValue(data(ModelRasten::ColParam1).toDouble());
+        ui->tbWassertempInfusion->setValue(data(ModelMaischplan::ColTempWasser).toDouble());
     if (!ui->tbDauerInfusion->hasFocus())
-        ui->tbDauerInfusion->setValue(data(ModelRasten::ColDauer).toInt());
+        ui->tbDauerInfusion->setValue(data(ModelMaischplan::ColDauerMaische).toInt());
     if (!ui->tbMengeDekoktion->hasFocus())
-        ui->tbMengeDekoktion->setValue(data(ModelRasten::ColMenge).toDouble());
+        ui->tbMengeDekoktion->setValue(data(ModelMaischplan::ColMengeMaische).toDouble());
     if (!ui->tbVerhaeltnisDekoktion->hasFocus())
-        ui->tbVerhaeltnisDekoktion->setValue(data(ModelRasten::ColMengenfaktor).toDouble()*100);
+        ui->tbVerhaeltnisDekoktion->setValue(data(ModelMaischplan::ColAnteilMaische).toDouble());
     if (!ui->tbRasttempDekoktion->hasFocus())
-        ui->tbRasttempDekoktion->setValue(data(ModelRasten::ColParam3).toDouble());
+        ui->tbRasttempDekoktion->setValue(data(ModelMaischplan::ColTempExtra2).toDouble());
     if (!ui->tbRastdauerDekoktion->hasFocus())
-        ui->tbRastdauerDekoktion->setValue(data(ModelRasten::ColParam4).toInt());
+        ui->tbRastdauerDekoktion->setValue(data(ModelMaischplan::ColDauerExtra2).toInt());
     if (!ui->tbKochdauerDekoktion->hasFocus())
-        ui->tbKochdauerDekoktion->setValue(data(ModelRasten::ColParam2).toInt());
+        ui->tbKochdauerDekoktion->setValue(data(ModelMaischplan::ColDauerExtra1).toInt());
     if (!ui->tbTeiltempDekoktion->hasFocus())
-        ui->tbTeiltempDekoktion->setValue(data(ModelRasten::ColParam1).toDouble());
+        ui->tbTeiltempDekoktion->setValue(data(ModelMaischplan::ColTempExtra1).toDouble());
     if (!ui->tbTempDekoktion->hasFocus())
-        ui->tbTempDekoktion->setValue(data(ModelRasten::ColTemp).toDouble());
+        ui->tbTempDekoktion->setValue(data(ModelMaischplan::ColTempMaische).toDouble());
     if (!ui->tbDauerDekoktion->hasFocus())
-        ui->tbDauerDekoktion->setValue(data(ModelRasten::ColDauer).toInt());
+        ui->tbDauerDekoktion->setValue(data(ModelMaischplan::ColDauerMaische).toInt());
     ui->btnNachOben->setEnabled(mRow > 0);
     ui->btnNachUnten->setEnabled(mRow < mModel->rowCount() - 1);
 
@@ -297,7 +289,7 @@ void WdgRast::cbRastTextEdited()
 void WdgRast::on_cbRast_currentTextChanged(const QString &text)
 {
     if (ui->cbRast->hasFocus())
-        setData(ModelRasten::ColName, text);
+        setData(ModelMaischplan::ColName, text);
 }
 
 void WdgRast::on_cbRast_currentIndexChanged(int index)
@@ -310,9 +302,9 @@ void WdgRast::on_cbTyp_currentIndexChanged(int index)
 {
     if (ui->cbTyp->hasFocus())
     {
-        setData(ModelRasten::ColTyp, index);
+        setData(ModelMaischplan::ColTyp, index);
         updateListe();
-        setData(ModelRasten::ColName, ui->cbRast->itemText(0));
+        setData(ModelMaischplan::ColName, ui->cbRast->itemText(0));
         updateValuesFromListe(0);
     }
 }
@@ -320,121 +312,121 @@ void WdgRast::on_cbTyp_currentIndexChanged(int index)
 void WdgRast::on_tbMengeEinmaischen_valueChanged(double value)
 {
     if (ui->tbMengeEinmaischen->hasFocus())
-        setData(ModelRasten::ColMenge, value);
+        setData(ModelMaischplan::ColMengeWasser, value);
 }
 
 void WdgRast::on_tbVerhaeltnisEinmaischen_valueChanged(double value)
 {
     if (ui->tbVerhaeltnisEinmaischen->hasFocus())
-        setData(ModelRasten::ColMengenfaktor, value/100);
+        setData(ModelMaischplan::ColAnteilWasser, value);
 }
 
 void WdgRast::on_tbMalzTempEinmaischen_valueChanged(double value)
 {
     if (ui->tbMalzTempEinmaischen->hasFocus())
-        setData(ModelRasten::ColParam3, value);
+        setData(ModelMaischplan::ColTempMalz, value);
 }
 
 void WdgRast::on_tbTempEinmaischen_valueChanged(double value)
 {
     if (ui->tbTempEinmaischen->hasFocus())
-        setData(ModelRasten::ColTemp, value);
+        setData(ModelMaischplan::ColTempMaische, value);
 }
 
 void WdgRast::on_tbDauerEinmaischen_valueChanged(int value)
 {
     if (ui->tbDauerEinmaischen->hasFocus())
-        setData(ModelRasten::ColDauer, value);
+        setData(ModelMaischplan::ColDauerMaische, value);
 }
 
 void WdgRast::on_tbTempRast_valueChanged(double value)
 {
     if (ui->tbTempRast->hasFocus())
-        setData(ModelRasten::ColTemp, value);
+        setData(ModelMaischplan::ColTempMaische, value);
 }
 
 void WdgRast::on_tbDauerRast_valueChanged(int value)
 {
     if (ui->tbDauerRast->hasFocus())
-        setData(ModelRasten::ColDauer, value);
+        setData(ModelMaischplan::ColDauerMaische, value);
 }
 
 void WdgRast::on_tbMengeInfusion_valueChanged(double value)
 {
     if (ui->tbMengeInfusion->hasFocus())
-        setData(ModelRasten::ColMenge, value);
+        setData(ModelMaischplan::ColMengeWasser, value);
 }
 
 void WdgRast::on_tbVerhaeltnisInfusion_valueChanged(double value)
 {
     if (ui->tbVerhaeltnisInfusion->hasFocus())
-        setData(ModelRasten::ColMengenfaktor, value/100);
+        setData(ModelMaischplan::ColAnteilWasser, value);
 }
 
 void WdgRast::on_tbTempInfusion_valueChanged(double value)
 {
     if (ui->tbTempInfusion->hasFocus())
-        setData(ModelRasten::ColTemp, value);
+        setData(ModelMaischplan::ColTempMaische, value);
 }
 
 void WdgRast::on_tbWassertempInfusion_valueChanged(double value)
 {
     if (ui->tbWassertempInfusion->hasFocus())
-        setData(ModelRasten::ColParam1, value);
+        setData(ModelMaischplan::ColTempWasser, value);
 }
 
 void WdgRast::on_tbDauerInfusion_valueChanged(int value)
 {
     if (ui->tbDauerInfusion->hasFocus())
-        setData(ModelRasten::ColDauer, value);
+        setData(ModelMaischplan::ColDauerMaische, value);
 }
 
 void WdgRast::on_tbMengeDekoktion_valueChanged(double value)
 {
     if (ui->tbMengeDekoktion->hasFocus())
-        setData(ModelRasten::ColMenge, value);
+        setData(ModelMaischplan::ColMengeMaische, value);
 }
 
 void WdgRast::on_tbVerhaeltnisDekoktion_valueChanged(double value)
 {
     if (ui->tbVerhaeltnisDekoktion->hasFocus())
-        setData(ModelRasten::ColMengenfaktor, value/100);
+        setData(ModelMaischplan::ColAnteilMaische, value);
 }
 
 void WdgRast::on_tbRasttempDekoktion_valueChanged(double value)
 {
     if (ui->tbRasttempDekoktion->hasFocus())
-        setData(ModelRasten::ColParam3, value);
+        setData(ModelMaischplan::ColTempExtra2, value);
 }
 
 void WdgRast::on_tbRastdauerDekoktion_valueChanged(int value)
 {
     if (ui->tbRastdauerDekoktion->hasFocus())
-        setData(ModelRasten::ColParam4, value);
+        setData(ModelMaischplan::ColDauerExtra2, value);
 }
 
 void WdgRast::on_tbKochdauerDekoktion_valueChanged(int value)
 {
     if (ui->tbKochdauerDekoktion->hasFocus())
-        setData(ModelRasten::ColParam2, value);
+        setData(ModelMaischplan::ColDauerExtra1, value);
 }
 
 void WdgRast::on_tbTeiltempDekoktion_valueChanged(double value)
 {
     if (ui->tbTeiltempDekoktion->hasFocus())
-        setData(ModelRasten::ColParam1, value);
+        setData(ModelMaischplan::ColTempExtra1, value);
 }
 
 void WdgRast::on_tbTempDekoktion_valueChanged(double value)
 {
     if (ui->tbTempDekoktion->hasFocus())
-        setData(ModelRasten::ColTemp, value);
+        setData(ModelMaischplan::ColTempMaische, value);
 }
 
 void WdgRast::on_tbDauerDekoktion_valueChanged(int value)
 {
     if (ui->tbDauerDekoktion->hasFocus())
-        setData(ModelRasten::ColDauer, value);
+        setData(ModelMaischplan::ColDauerMaische, value);
 }
 
 void WdgRast::on_btnLoeschen_clicked()
@@ -444,12 +436,10 @@ void WdgRast::on_btnLoeschen_clicked()
 
 void WdgRast::on_btnNachOben_clicked()
 {
-    if (moveUp())
-        bh->modelRasten()->update(bh->sud()->id());
+    moveUp();
 }
 
 void WdgRast::on_btnNachUnten_clicked()
 {
-    if (moveDown())
-        bh->modelRasten()->update(bh->sud()->id());
+    moveDown();
 }

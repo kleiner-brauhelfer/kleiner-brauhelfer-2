@@ -139,7 +139,7 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
         mAnlagenIds.insert(bh->modelAusruestung()->data(row, ModelAusruestung::ColID).toInt(), bh->modelAusruestung()->data(row, ModelAusruestung::ColName).toString());
 
     mTestFncs = {
-        [this](){return this->testInvalidId(bh->modelRasten(), {ModelRasten::ColID, ModelRasten::ColSudID, ModelRasten::ColName, ModelRasten::ColTemp, ModelRasten::ColDauer}, 1);},
+        [this](){return this->testInvalidId(bh->modelMaischplan(), {ModelMaischplan::ColID, ModelMaischplan::ColSudID, ModelMaischplan::ColName, ModelMaischplan::ColTempMaische, ModelMaischplan::ColDauerMaische}, 1);},
         [this](){return this->testInvalidId(bh->modelMalzschuettung(), {ModelMalzschuettung::ColID, ModelMalzschuettung::ColSudID, ModelMalzschuettung::ColName, ModelMalzschuettung::ColProzent}, 1);},
         [this](){return this->testInvalidId(bh->modelHopfengaben(), {ModelHopfengaben::ColID, ModelHopfengaben::ColSudID, ModelHopfengaben::ColName, ModelHopfengaben::ColProzent}, 1);},
         [this](){return this->testInvalidId(bh->modelHefegaben(), {ModelHefegaben::ColID, ModelHefegaben::ColSudID, ModelHefegaben::ColName}, 1);},
@@ -162,7 +162,7 @@ DlgDatabaseCleaner::DlgDatabaseCleaner(QWidget *parent) :
         [this](){return this->testNullField(bh->modelAusruestung(), {ModelAusruestung::ColID, ModelAusruestung::ColName}, 0);},
         [this](){return this->testNullField(bh->modelGeraete(), {ModelGeraete::ColAusruestungAnlagenID, ModelGeraete::ColBezeichnung}, 2);},
         [this](){return this->testNullField(bh->modelWasser(), {ModelWasser::ColName}, 0);},
-        [this](){return this->testNullField(bh->modelRasten(), {ModelRasten::ColSudID, ModelRasten::ColName, ModelRasten::ColTemp, ModelRasten::ColDauer}, 1);},
+        [this](){return this->testNullField(bh->modelMaischplan(), {ModelMaischplan::ColSudID, ModelMaischplan::ColName, ModelMaischplan::ColTempMaische, ModelMaischplan::ColDauerMaische}, 1);},
         [this](){return this->testNullField(bh->modelMalzschuettung(), {ModelMalzschuettung::ColSudID, ModelMalzschuettung::ColName}, 1);},
         [this](){return this->testNullField(bh->modelHopfengaben(), {ModelHopfengaben::ColSudID, ModelHopfengaben::ColName}, 1);},
         [this](){return this->testNullField(bh->modelHefegaben(), {ModelHefegaben::ColSudID, ModelHefegaben::ColName}, 1);},

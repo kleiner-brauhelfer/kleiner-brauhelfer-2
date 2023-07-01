@@ -78,9 +78,11 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->btnMalzAusgleichen->setError(true);
     ui->lblWarnungHopfen->setPalette(gSettings->paletteErrorLabel);
     ui->btnHopfenAusgleichen->setError(true);
-    ui->lblWarnungMaischplan->setPalette(gSettings->paletteErrorLabel);
+    ui->lblWarnungMaischplanWasser->setPalette(gSettings->paletteErrorLabel);
+    ui->lblWarnungMaischplanMalz->setPalette(gSettings->paletteErrorLabel);
     ui->btnMaischplanAusgleichen->setError(true);
     ui->btnMaischplanFaktorAnpassen->setError(true);
+    ui->btnMaischplanAusgleichenMalz->setError(true);
     ui->lblWarnungPh->setPalette(gSettings->paletteErrorLabel);
 
     pal = ui->btnNeueMalzGabe->palette();
@@ -775,25 +777,31 @@ void TabRezept::updateMaischplan()
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     if (status == Brauhelfer::SudStatus::Rezept)
     {
-        double p = 1.0;
+        double pWasser = 100.0, pMalz = 100.0;
         int count = ui->layoutRasten->count();
         for (int i = 0; i < count; ++i)
         {
             WdgRast* wdg = static_cast<WdgRast*>(ui->layoutRasten->itemAt(i)->widget());
-            p -= wdg->prozentWasser();
+            pWasser -= wdg->prozentWasser();
+            pMalz -= wdg->prozentMalz();
         }
-        if (std::fabs(p) < 0.01)
-            p = 0.0;
+        if (std::fabs(pWasser) < 0.05)
+            pWasser = 0.0;
+        if (std::fabs(pMalz) < 0.05)
+            pMalz = 0.0;
         for (int i = 0; i < count; ++i)
         {
             WdgRast* wdg = static_cast<WdgRast*>(ui->layoutRasten->itemAt(i)->widget());
-            wdg->setFehlProzentWasser(p);
+            wdg->setFehlProzentWasser(pWasser);
+            wdg->setFehlProzentMalz(pMalz);
         }
-        ui->wdgWarnungMaischplan->setVisible(p != 0.0);
+        ui->wdgWarnungMaischplanWasser->setVisible(pWasser != 0.0 && ui->layoutRasten->count() > 0);
+        ui->wdgWarnungMaischplanMalz->setVisible(pMalz != 0.0 && ui->layoutRasten->count() > 0);
     }
     else
     {
-        ui->wdgWarnungMaischplan->setVisible(false);
+        ui->wdgWarnungMaischplanWasser->setVisible(false);
+        ui->wdgWarnungMaischplanMalz->setVisible(false);
     }
     updateRastenDiagram();
 }
@@ -810,7 +818,9 @@ void TabRezept::on_btnNeueRast_clicked()
     if (bh->sud()->modelMaischplan()->rowCount() == 0)
     {
         values = {{ModelMaischplan::ColSudID, bh->sud()->id()},
-                  {ModelMaischplan::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Einmaischen)}};
+                  {ModelMaischplan::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Einmaischen)},
+                  {ModelMaischplan::ColAnteilMalz, 100},
+                  {ModelMaischplan::ColAnteilWasser, 100}};
     }
     else
     {
@@ -838,47 +848,12 @@ void TabRezept::on_btnMaischplanAusgleichen_clicked()
     ProxyModel *model = bh->sud()->modelMaischplan();
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
-    {
-        switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelMaischplan::ColTyp).toInt()))
-        {
-        case Brauhelfer::RastTyp::Einmaischen:
-        case Brauhelfer::RastTyp::Zubruehen:
-            totalProzent += model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
-        default:
-            break;
-        }
-    }
+        totalProzent += model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
     if (totalProzent > 0)
     {
-        double prozent;
         double factor = 100.0 / totalProzent;
         for (int i = 0; i < model->rowCount(); ++i)
-        {
-            switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelMaischplan::ColTyp).toInt()))
-            {
-            case Brauhelfer::RastTyp::Einmaischen:
-            case Brauhelfer::RastTyp::Zubruehen:
-                prozent = model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
-                model->setData(i, ModelMaischplan::ColAnteilWasser, prozent * factor);
-            default:
-                break;
-            }
-        }
-    }
-    else
-    {
-        double prozent = 100.0 / model->rowCount();
-        for (int i = 0; i < model->rowCount(); ++i)
-        {
-            switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelMaischplan::ColTyp).toInt()))
-            {
-            case Brauhelfer::RastTyp::Einmaischen:
-            case Brauhelfer::RastTyp::Zubruehen:
-                model->setData(i, ModelMaischplan::ColAnteilWasser, prozent);
-            default:
-                break;
-            }
-        }
+            model->setData(i, ModelMaischplan::ColAnteilWasser, model->data(i, ModelMaischplan::ColAnteilWasser).toDouble() * factor);
     }
 }
 
@@ -887,33 +862,27 @@ void TabRezept::on_btnMaischplanFaktorAnpassen_clicked()
     ProxyModel *model = bh->sud()->modelMaischplan();
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
-    {
-        switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelMaischplan::ColTyp).toInt()))
-        {
-        case Brauhelfer::RastTyp::Einmaischen:
-        case Brauhelfer::RastTyp::Zubruehen:
-            totalProzent += model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
-        default:
-            break;
-        }
-    }
+        totalProzent += model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
     if (totalProzent > 0)
     {
         bh->sud()->setFaktorHauptguss(totalProzent / 100.0 * bh->sud()->geterg_WHauptguss() / bh->sud()->geterg_S_Gesamt());
-        double prozent;
         double factor = 100.0 / totalProzent;
         for (int i = 0; i < model->rowCount(); ++i)
-        {
-            switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelMaischplan::ColTyp).toInt()))
-            {
-            case Brauhelfer::RastTyp::Einmaischen:
-            case Brauhelfer::RastTyp::Zubruehen:
-                prozent = model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
-                model->setData(i, ModelMaischplan::ColAnteilWasser, prozent * factor);
-            default:
-                break;
-            }
-        }
+            model->setData(i, ModelMaischplan::ColAnteilWasser, model->data(i, ModelMaischplan::ColAnteilWasser).toDouble() * factor);
+    }
+}
+
+void TabRezept::on_btnMaischplanAusgleichenMalz_clicked()
+{
+    ProxyModel *model = bh->sud()->modelMaischplan();
+    double totalProzent = 0;
+    for (int i = 0; i < model->rowCount(); ++i)
+        totalProzent += model->data(i, ModelMaischplan::ColAnteilMalz).toDouble();
+    if (totalProzent > 0)
+    {
+        double factor = 100.0 / totalProzent;
+        for (int i = 0; i < model->rowCount(); ++i)
+            model->setData(i, ModelMaischplan::ColAnteilMalz, model->data(i, ModelMaischplan::ColAnteilMalz).toDouble() * factor);
     }
 }
 

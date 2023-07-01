@@ -1769,25 +1769,28 @@ bool Database::update()
                                        "TempMalz REAL DEFAULT 0,"
                                        "AnteilMalz REAL DEFAULT 0,"
                                        "TempRast REAL DEFAULT 0,"
-                                       "DauerRast REAL DEFAULT 0,"
+                                       "DauerRast INTEGER DEFAULT 0,"
                                        "AnteilMaische REAL DEFAULT 0,"
                                        "TempExtra1 REAL DEFAULT 0,"
-                                       "DauerExtra1 REAL DEFAULT 0,"
+                                       "DauerExtra1 INTEGER DEFAULT 0,"
                                        "TempExtra2 REAL DEFAULT 0,"
-                                       "DauerExtra2 REAL DEFAULT 0)"));
+                                       "DauerExtra2 INTEGER DEFAULT 0)"));
             sqlExec(db, QStringLiteral("INSERT INTO Maischplan ("
+                                       "ID,"
                                        "SudID,"
                                        "Typ,"
                                        "Name,"
                                        "TempRast,"
                                        "DauerRast"
                                        ") SELECT "
+                                       "ID,"
                                        "SudID,"
                                        "Typ,"
                                        "Name,"
                                        "Temp,"
                                        "Dauer"
                                        " FROM Rasten"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilMalz=100 WHERE Maischplan.Typ=0"));
             sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilWasser=100*Rasten.Mengenfaktor FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=0"));
             sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilWasser=100*Rasten.Mengenfaktor FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=2"));
             sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilMaische=100*Rasten.Mengenfaktor FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=3"));
@@ -1798,6 +1801,7 @@ bool Database::update()
             sqlExec(db, QStringLiteral("UPDATE Maischplan SET TempMalz=Rasten.Param3 FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=0"));
             sqlExec(db, QStringLiteral("UPDATE Maischplan SET TempExtra2=Rasten.Param3 FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=3"));
             sqlExec(db, QStringLiteral("UPDATE Maischplan SET DauerExtra2=Rasten.Param4 FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=3"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET Typ=4 WHERE Typ=3"));
 
             // Rasten löschen
             sqlExec(db, QStringLiteral("DROP TABLE Rasten"));

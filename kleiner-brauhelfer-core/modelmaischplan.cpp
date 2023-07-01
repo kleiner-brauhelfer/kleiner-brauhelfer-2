@@ -14,7 +14,7 @@ ModelMaischplan::ModelMaischplan(Brauhelfer* bh, const QSqlDatabase &db) :
     mVirtualField.append(QStringLiteral("TotalMengeMalz"));
     mVirtualField.append(QStringLiteral("MengeMaische"));
 
-    // connect update sud to swap (move up & down)
+    connect(this, &SqlTableModel::rowsSwapped, this, &ModelMaischplan::onRowsSwapped);
 }
 
 QVariant ModelMaischplan::dataExt(const QModelIndex &idx) const
@@ -27,10 +27,18 @@ QVariant ModelMaischplan::dataExt(const QModelIndex &idx) const
         sudId = data(idx.row(), ColSudID);
         total = bh->modelSud()->dataSud(sudId, ModelSud::Colerg_WHauptguss).toDouble();
         return data(idx.row(), ColAnteilWasser).toDouble() / 100 * total;
+    case ColTotalMengeWasser:
+        sudId = data(idx.row(), ColSudID);
+        total = bh->modelSud()->dataSud(sudId, ModelSud::Colerg_WHauptguss).toDouble();
+        return getTotalAnteil(sudId, idx.row(), ColAnteilWasser) / 100 * total;
     case ColMengeMalz:
         sudId = data(idx.row(), ColSudID);
         total = bh->modelSud()->dataSud(sudId, ModelSud::Colerg_S_Gesamt).toDouble();
         return data(idx.row(), ColAnteilMalz).toDouble() / 100 * total;
+    case ColTotalMengeMalz:
+        sudId = data(idx.row(), ColSudID);
+        total = bh->modelSud()->dataSud(sudId, ModelSud::Colerg_S_Gesamt).toDouble();
+        return getTotalAnteil(sudId, idx.row(), ColAnteilMalz) / 100 * total;;
     case ColMengeMaische:
         sudId = data(idx.row(), ColSudID);
         total = BierCalc::MalzVerdraengung * data(idx.row(), ColTotalMengeMalz).toDouble() + data(idx.row(), ColTotalMengeWasser).toDouble();
@@ -62,7 +70,7 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
         ret = setData(idx.row(), ColAnteilMaische, value.toDouble() / total * 100);
         break;
 
-
+/*
     case ColAnteilWasser:
         if (QSqlTableModel::setData(idx, value))
         {
@@ -231,7 +239,7 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
             ret = true;
         }
         break;
-
+*/
     default:
         break;
     }
@@ -240,8 +248,22 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
     return ret;
 }
 
+double ModelMaischplan::getTotalAnteil(const QVariant &sudId, int rowFrom, int colAnteil) const
+{
+    ProxyModel model;
+    model.setSourceModel(const_cast<ModelMaischplan*>(this));
+    model.setFilterKeyColumn(ColSudID);
+    model.setFilterRegularExpression(QStringLiteral("^%1$").arg(sudId.toInt()));
+    rowFrom = model.mapRowFromSource(rowFrom);
+    double anteil = 0.0;
+    for (int r = 0; r < rowFrom; r++)
+        anteil += model.data(r, colAnteil).toDouble();
+    return anteil;
+}
+
 void ModelMaischplan::updateSud(const QVariant &sudId)
 {
+    /*
     if (mUpdating)
         return;
     mUpdating = true;
@@ -261,6 +283,7 @@ void ModelMaischplan::updateSud(const QVariant &sudId)
     }
     mSignalModifiedBlocked = false;
     mUpdating = false;
+    */
 }
 
 double ModelMaischplan::getPreviousTempMaische(const QVariant &sudId, int fromRow) const
@@ -294,4 +317,19 @@ void ModelMaischplan::getMaischeValues(const QVariant &sudId, int fromRow, doubl
     m = m_malz + m_wasser;
     if (m != 0)
         c = (m_malz * BierCalc::cMalz + m_wasser * BierCalc::cWasser) / m;
+}
+
+void ModelMaischplan::onRowsSwapped(int row1, int row2)
+{
+    QVariant sudId1 = data(row1, ColSudID);
+    QVariant sudId2 = data(row2, ColSudID);
+    updateSud(sudId1);
+    if (sudId2 != sudId1)
+        updateSud(sudId2);
+}
+
+void ModelMaischplan::defaultValues(QMap<int, QVariant> &values) const
+{
+    if (!values.contains(ColTyp))
+        values.insert(ColTyp, static_cast<int>(Brauhelfer::RastTyp::Aufheizen));
 }

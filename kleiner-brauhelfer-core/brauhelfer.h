@@ -175,8 +175,8 @@ public:
         Einmaischen = 0,
         Aufheizen = 1,
         Zubruehen = 2,
-        Dekoktion = 3,
-        Zuschuetten = 4
+        Zuschuetten = 3,
+        Dekoktion = 4
     };
     Q_ENUM(RastTyp)
 

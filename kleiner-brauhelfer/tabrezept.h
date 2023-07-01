@@ -34,6 +34,7 @@ private slots:
     void on_btnRastenUebernehmen_clicked();
     void on_btnMaischplanAusgleichen_clicked();
     void on_btnMaischplanFaktorAnpassen_clicked();
+    void on_btnMaischplanAusgleichenMalz_clicked();
 
     void updateExtrakt();
 

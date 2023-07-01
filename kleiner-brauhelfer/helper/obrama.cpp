@@ -49,6 +49,9 @@ bool OBraMa::getUpdateDates()
     if (jsonError.error != QJsonParseError::ParseError::NoError)
     {
         qWarning() << "oBraMa: Failed to parse JSON:" << jsonError.errorString();
+        qWarning() << data;
+        if (QMessageBox::critical(nullptr, tr("oBraMa Datenbank"), jsonError.errorString(), QMessageBox::Ok | QMessageBox::Help) == QMessageBox::Help)
+            QMessageBox::information(nullptr, tr("oBraMa Datenbank"), data);
         return false;
     }
 

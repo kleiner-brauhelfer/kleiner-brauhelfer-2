@@ -268,6 +268,13 @@ Q_SIGNALS:
      */
     void rowChanged(const QModelIndex &index);
 
+    /**
+     * @brief rowsSwapped
+     * @param row1
+     * @param row2
+     */
+    void rowsSwapped(int row1, int row2);
+
 protected:
 
     /**

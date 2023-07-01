@@ -64,8 +64,8 @@ void ChartMaischplan::update()
     ProxyModel* model = bh->sud()->modelMaischplan();
     for (int row = 0; row < model->rowCount(); ++row)
     {
-        T = model->data(row, ModelMaischplan::ColTempMaische).toInt();
-        t = model->data(row, ModelMaischplan::ColDauerMaische).toInt();
+        T = model->data(row, ModelMaischplan::ColTempRast).toInt();
+        t = model->data(row, ModelMaischplan::ColDauerRast).toInt();
         switch (static_cast<Brauhelfer::RastTyp>(model->data(row, ModelMaischplan::ColTyp).toInt()))
         {
         case Brauhelfer::RastTyp::Zubruehen:

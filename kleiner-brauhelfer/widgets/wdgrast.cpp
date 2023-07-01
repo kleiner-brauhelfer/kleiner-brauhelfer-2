@@ -133,24 +133,24 @@ void WdgRast::updateValuesFromListe(int index)
     {
     case Brauhelfer::RastTyp::Einmaischen:
         setData(ModelMaischplan::ColAnteilMalz, 100);
-        setData(ModelMaischplan::ColTempMaische, 57);
-        setData(ModelMaischplan::ColDauerMaische, 5);
+        setData(ModelMaischplan::ColTempRast, 57);
+        setData(ModelMaischplan::ColDauerRast, 5);
         setData(ModelMaischplan::ColTempMalz, 18);
         break;
     case Brauhelfer::RastTyp::Aufheizen:
         if (index >= 0 && index < rasten.count())
         {
-            setData(ModelMaischplan::ColTempMaische, rasten[index].temperatur);
-            setData(ModelMaischplan::ColDauerMaische, rasten[index].dauer);
+            setData(ModelMaischplan::ColTempRast, rasten[index].temperatur);
+            setData(ModelMaischplan::ColDauerRast, rasten[index].dauer);
         }
         break;
     case Brauhelfer::RastTyp::Zubruehen:
         setData(ModelMaischplan::ColAnteilWasser, 33.33);
         setData(ModelMaischplan::ColTempWasser, 95);
-        setData(ModelMaischplan::ColDauerMaische, 15);
+        setData(ModelMaischplan::ColDauerRast, 15);
         break;
     case Brauhelfer::RastTyp::Dekoktion:
-        setData(ModelMaischplan::ColDauerMaische, 15);
+        setData(ModelMaischplan::ColDauerRast, 15);
         setData(ModelMaischplan::ColTempExtra1, 95);
         setData(ModelMaischplan::ColDauerExtra1, 15);
         setData(ModelMaischplan::ColTempExtra2, 0);
@@ -222,23 +222,23 @@ void WdgRast::updateValues()
     if (!ui->tbMalzTempEinmaischen->hasFocus())
         ui->tbMalzTempEinmaischen->setValue(data(ModelMaischplan::ColTempMalz).toDouble());
     if (!ui->tbTempEinmaischen->hasFocus())
-        ui->tbTempEinmaischen->setValue(data(ModelMaischplan::ColTempMaische).toDouble());
+        ui->tbTempEinmaischen->setValue(data(ModelMaischplan::ColTempRast).toDouble());
     if (!ui->tbDauerEinmaischen->hasFocus())
-        ui->tbDauerEinmaischen->setValue(data(ModelMaischplan::ColDauerMaische).toInt());
+        ui->tbDauerEinmaischen->setValue(data(ModelMaischplan::ColDauerRast).toInt());
     if (!ui->tbTempRast->hasFocus())
-        ui->tbTempRast->setValue(data(ModelMaischplan::ColTempMaische).toDouble());
+        ui->tbTempRast->setValue(data(ModelMaischplan::ColTempRast).toDouble());
     if (!ui->tbDauerRast->hasFocus())
-        ui->tbDauerRast->setValue(data(ModelMaischplan::ColDauerMaische).toInt());
+        ui->tbDauerRast->setValue(data(ModelMaischplan::ColDauerRast).toInt());
     if (!ui->tbMengeInfusion->hasFocus())
         ui->tbMengeInfusion->setValue(data(ModelMaischplan::ColMengeWasser).toDouble());
     if (!ui->tbVerhaeltnisInfusion->hasFocus())
         ui->tbVerhaeltnisInfusion->setValue(data(ModelMaischplan::ColAnteilWasser).toDouble());
     if (!ui->tbTempInfusion->hasFocus())
-        ui->tbTempInfusion->setValue(data(ModelMaischplan::ColTempMaische).toDouble());
+        ui->tbTempInfusion->setValue(data(ModelMaischplan::ColTempRast).toDouble());
     if (!ui->tbWassertempInfusion->hasFocus())
         ui->tbWassertempInfusion->setValue(data(ModelMaischplan::ColTempWasser).toDouble());
     if (!ui->tbDauerInfusion->hasFocus())
-        ui->tbDauerInfusion->setValue(data(ModelMaischplan::ColDauerMaische).toInt());
+        ui->tbDauerInfusion->setValue(data(ModelMaischplan::ColDauerRast).toInt());
     if (!ui->tbMengeDekoktion->hasFocus())
         ui->tbMengeDekoktion->setValue(data(ModelMaischplan::ColMengeMaische).toDouble());
     if (!ui->tbVerhaeltnisDekoktion->hasFocus())
@@ -252,9 +252,9 @@ void WdgRast::updateValues()
     if (!ui->tbTeiltempDekoktion->hasFocus())
         ui->tbTeiltempDekoktion->setValue(data(ModelMaischplan::ColTempExtra1).toDouble());
     if (!ui->tbTempDekoktion->hasFocus())
-        ui->tbTempDekoktion->setValue(data(ModelMaischplan::ColTempMaische).toDouble());
+        ui->tbTempDekoktion->setValue(data(ModelMaischplan::ColTempRast).toDouble());
     if (!ui->tbDauerDekoktion->hasFocus())
-        ui->tbDauerDekoktion->setValue(data(ModelMaischplan::ColDauerMaische).toInt());
+        ui->tbDauerDekoktion->setValue(data(ModelMaischplan::ColDauerRast).toInt());
     ui->btnNachOben->setEnabled(mRow > 0);
     ui->btnNachUnten->setEnabled(mRow < mModel->rowCount() - 1);
 
@@ -330,25 +330,25 @@ void WdgRast::on_tbMalzTempEinmaischen_valueChanged(double value)
 void WdgRast::on_tbTempEinmaischen_valueChanged(double value)
 {
     if (ui->tbTempEinmaischen->hasFocus())
-        setData(ModelMaischplan::ColTempMaische, value);
+        setData(ModelMaischplan::ColTempRast, value);
 }
 
 void WdgRast::on_tbDauerEinmaischen_valueChanged(int value)
 {
     if (ui->tbDauerEinmaischen->hasFocus())
-        setData(ModelMaischplan::ColDauerMaische, value);
+        setData(ModelMaischplan::ColDauerRast, value);
 }
 
 void WdgRast::on_tbTempRast_valueChanged(double value)
 {
     if (ui->tbTempRast->hasFocus())
-        setData(ModelMaischplan::ColTempMaische, value);
+        setData(ModelMaischplan::ColTempRast, value);
 }
 
 void WdgRast::on_tbDauerRast_valueChanged(int value)
 {
     if (ui->tbDauerRast->hasFocus())
-        setData(ModelMaischplan::ColDauerMaische, value);
+        setData(ModelMaischplan::ColDauerRast, value);
 }
 
 void WdgRast::on_tbMengeInfusion_valueChanged(double value)
@@ -366,7 +366,7 @@ void WdgRast::on_tbVerhaeltnisInfusion_valueChanged(double value)
 void WdgRast::on_tbTempInfusion_valueChanged(double value)
 {
     if (ui->tbTempInfusion->hasFocus())
-        setData(ModelMaischplan::ColTempMaische, value);
+        setData(ModelMaischplan::ColTempRast, value);
 }
 
 void WdgRast::on_tbWassertempInfusion_valueChanged(double value)
@@ -378,7 +378,7 @@ void WdgRast::on_tbWassertempInfusion_valueChanged(double value)
 void WdgRast::on_tbDauerInfusion_valueChanged(int value)
 {
     if (ui->tbDauerInfusion->hasFocus())
-        setData(ModelMaischplan::ColDauerMaische, value);
+        setData(ModelMaischplan::ColDauerRast, value);
 }
 
 void WdgRast::on_tbMengeDekoktion_valueChanged(double value)
@@ -420,13 +420,13 @@ void WdgRast::on_tbTeiltempDekoktion_valueChanged(double value)
 void WdgRast::on_tbTempDekoktion_valueChanged(double value)
 {
     if (ui->tbTempDekoktion->hasFocus())
-        setData(ModelMaischplan::ColTempMaische, value);
+        setData(ModelMaischplan::ColTempRast, value);
 }
 
 void WdgRast::on_tbDauerDekoktion_valueChanged(int value)
 {
     if (ui->tbDauerDekoktion->hasFocus())
-        setData(ModelMaischplan::ColDauerMaische, value);
+        setData(ModelMaischplan::ColDauerRast, value);
 }
 
 void WdgRast::on_btnLoeschen_clicked()

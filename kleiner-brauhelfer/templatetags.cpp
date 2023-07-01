@@ -216,8 +216,8 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     int temp;
                     QVariantMap map;
                     map[QStringLiteral("Name")] = model->data(row, ModelMaischplan::ColName).toString();
-                    map[QStringLiteral("Temp")] = QString::number(model->data(row, ModelMaischplan::ColTempMaische).toInt());
-                    map[QStringLiteral("Dauer")] = QString::number(model->data(row, ModelMaischplan::ColDauerMaische).toInt());
+                    map[QStringLiteral("Temp")] = QString::number(model->data(row, ModelMaischplan::ColTempRast).toInt());
+                    map[QStringLiteral("Dauer")] = QString::number(model->data(row, ModelMaischplan::ColDauerRast).toInt());
                     map[QStringLiteral("MengeWasser")] = locale.toString(model->data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
                     map[QStringLiteral("MengeMalz")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMalz).toDouble(), 'f', 1);
                     map[QStringLiteral("MengeMaische")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMaische).toDouble(), 'f', 1);

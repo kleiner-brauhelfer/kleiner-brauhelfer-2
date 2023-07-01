@@ -253,8 +253,8 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
         values[ModelMaischplan::ColSudID] = sudId;
         values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Einmaischen);
         values[ModelMaischplan::ColName] = "Einmaischen";
-        values[ModelMaischplan::ColTempMaische] = toDouble(root[QStringLiteral("Infusion_Einmaischtemperatur")]);
-        values[ModelMaischplan::ColDauerMaische] = 10;
+        values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Infusion_Einmaischtemperatur")]);
+        values[ModelMaischplan::ColDauerRast] = 10;
         bh->modelMaischplan()->appendDirect(values);
         int max_rasten = findMax(root, QStringLiteral("Infusion_Rasttemperatur%%"));
         for (int i = 1; i < max_rasten; ++i)
@@ -263,16 +263,16 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
             values[ModelMaischplan::ColSudID] = sudId;
             values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
             values[ModelMaischplan::ColName] = QStringLiteral("%1. Rast").arg(i);
-            values[ModelMaischplan::ColTempMaische] = toDouble(root[QStringLiteral("Infusion_Rasttemperatur%1").arg(i)]);
-            values[ModelMaischplan::ColDauerMaische] = toDouble(root[QStringLiteral("Infusion_Rastzeit%1").arg(i)]);
+            values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Infusion_Rasttemperatur%1").arg(i)]);
+            values[ModelMaischplan::ColDauerRast] = toDouble(root[QStringLiteral("Infusion_Rastzeit%1").arg(i)]);
             bh->modelMaischplan()->appendDirect(values);
         }
         values.clear();
         values[ModelMaischplan::ColSudID] = sudId;
         values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
         values[ModelMaischplan::ColName] = "Abmaischen";
-        values[ModelMaischplan::ColTempMaische] = toDouble(root[QStringLiteral("Abmaischtemperatur")]);
-        values[ModelMaischplan::ColDauerMaische] = 1;
+        values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Abmaischtemperatur")]);
+        values[ModelMaischplan::ColDauerRast] = 1;
         bh->modelMaischplan()->appendDirect(values);
     }
     else if (root[QStringLiteral("Maischform")].toString() == QStringLiteral("dekoktion"))
@@ -283,8 +283,8 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
         values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Einmaischen);
         values[ModelMaischplan::ColName] = "Einmaischen";
         values[ModelMaischplan::ColAnteilWasser] = 100 * toDouble(root[QStringLiteral("Dekoktion_0_Volumen")]) / V_tot;
-        values[ModelMaischplan::ColTempMaische] = toDouble(root[QStringLiteral("Dekoktion_0_Temperatur_resultierend")]);
-        values[ModelMaischplan::ColDauerMaische] = toDouble(root[QStringLiteral("Dekoktion_0_Rastzeit")]);
+        values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Dekoktion_0_Temperatur_resultierend")]);
+        values[ModelMaischplan::ColDauerRast] = toDouble(root[QStringLiteral("Dekoktion_0_Rastzeit")]);
         bh->modelMaischplan()->appendDirect(values);
         int max_rasten = findMax(root, QStringLiteral("Dekoktion_%%_Volumen"));
         for (int i = 1; i < max_rasten; ++i)
@@ -293,8 +293,8 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
             values[ModelMaischplan::ColSudID] = sudId;
             values[ModelMaischplan::ColName] = root[QStringLiteral("Dekoktion_%1_Form").arg(i)].toString();
             values[ModelMaischplan::ColAnteilWasser] = 100 * toDouble(root[QStringLiteral("Dekoktion_%1_Volumen").arg(i)]) / V_tot;
-            values[ModelMaischplan::ColTempMaische] = toDouble(root[QStringLiteral("Dekoktion_%1_Temperatur_resultierend").arg(i)]);
-            values[ModelMaischplan::ColDauerMaische] = toDouble(root[QStringLiteral("Dekoktion_%1_Rastzeit").arg(i)]);
+            values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Dekoktion_%1_Temperatur_resultierend").arg(i)]);
+            values[ModelMaischplan::ColDauerRast] = toDouble(root[QStringLiteral("Dekoktion_%1_Rastzeit").arg(i)]);
             if (values[ModelMaischplan::ColName] == "Kochendes Wasser")
             {
                 values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Zubruehen);
@@ -317,8 +317,8 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
         values[ModelMaischplan::ColSudID] = sudId;
         values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
         values[ModelMaischplan::ColName] = "Abmaischen";
-        values[ModelMaischplan::ColTempMaische] = toDouble(root[QStringLiteral("Abmaischtemperatur")]);
-        values[ModelMaischplan::ColDauerMaische] = 10;
+        values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Abmaischtemperatur")]);
+        values[ModelMaischplan::ColDauerRast] = 10;
         bh->modelMaischplan()->appendDirect(values);
     }
 
@@ -485,8 +485,8 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
         values[ModelMaischplan::ColSudID] = sudId;
         values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Einmaischen);
         values[ModelMaischplan::ColName] = "Einmaischen";
-        values[ModelMaischplan::ColTempMaische] = nMashSteps.firstChildElement(QStringLiteral("MASH_STEP")).firstChildElement(QStringLiteral("STEP_TEMP")).text().toDouble();
-        values[ModelMaischplan::ColDauerMaische] = 10;
+        values[ModelMaischplan::ColTempRast] = nMashSteps.firstChildElement(QStringLiteral("MASH_STEP")).firstChildElement(QStringLiteral("STEP_TEMP")).text().toDouble();
+        values[ModelMaischplan::ColDauerRast] = 10;
         bh->modelMaischplan()->appendDirect(values);
         for (QDomNode n = nMashSteps.firstChildElement(QStringLiteral("MASH_STEP")); !n.isNull(); n = n.nextSiblingElement(QStringLiteral("MASH_STEP")))
         {
@@ -494,8 +494,8 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
             values.clear();
             values[ModelMaischplan::ColSudID] = sudId;
             values[ModelMaischplan::ColName] = n.firstChildElement(QStringLiteral("NAME")).text();
-            values[ModelMaischplan::ColTempMaische] = n.firstChildElement(QStringLiteral("STEP_TEMP")).text().toDouble();
-            values[ModelMaischplan::ColDauerMaische] = n.firstChildElement(QStringLiteral("STEP_TIME")).text().toDouble();
+            values[ModelMaischplan::ColTempRast] = n.firstChildElement(QStringLiteral("STEP_TEMP")).text().toDouble();
+            values[ModelMaischplan::ColDauerRast] = n.firstChildElement(QStringLiteral("STEP_TIME")).text().toDouble();
             if (typ == QStringLiteral("temperature"))
             {
                 values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
@@ -990,11 +990,11 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow, bo
         case Brauhelfer::RastTyp::Einmaischen:
             if (!dekoktion)
             {
-                root[QStringLiteral("Infusion_Einmaischtemperatur")] = QString::number(model.data(row, ModelMaischplan::ColTempMaische).toInt());
-                int dauer = model.data(row, ModelMaischplan::ColDauerMaische).toInt();
+                root[QStringLiteral("Infusion_Einmaischtemperatur")] = QString::number(model.data(row, ModelMaischplan::ColTempRast).toInt());
+                int dauer = model.data(row, ModelMaischplan::ColDauerRast).toInt();
                 if (dauer > 0)
                 {
-                    root[QStringLiteral("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColTempMaische).toInt());
+                    root[QStringLiteral("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColTempRast).toInt());
                     root[QStringLiteral("Infusion_Rastzeit%1").arg(n)] = QString::number(dauer);
                     ++n;
                 }
@@ -1003,15 +1003,15 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow, bo
             {
                 root[QStringLiteral("Dekoktion_0_Volumen")] = QString::number(model.data(row, ModelMaischplan::ColMengeWasser).toInt());
                 root[QStringLiteral("Dekoktion_0_Temperatur_ist")] = QString::number(model.data(row, ModelMaischplan::ColTempWasser).toInt());
-                root[QStringLiteral("Dekoktion_0_Temperatur_resultierend")] = QString::number(model.data(row, ModelMaischplan::ColTempMaische).toInt());
-                root[QStringLiteral("Dekoktion_0_Rastzeit")] = QString::number(model.data(row, ModelMaischplan::ColDauerMaische).toInt());
+                root[QStringLiteral("Dekoktion_0_Temperatur_resultierend")] = QString::number(model.data(row, ModelMaischplan::ColTempRast).toInt());
+                root[QStringLiteral("Dekoktion_0_Rastzeit")] = QString::number(model.data(row, ModelMaischplan::ColDauerRast).toInt());
             }
             break;
         case Brauhelfer::RastTyp::Aufheizen:
             if (!dekoktion)
             {
-                root[QStringLiteral("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColTempMaische).toInt());
-                root[QStringLiteral("Infusion_Rastzeit%1").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColDauerMaische).toInt());
+                root[QStringLiteral("Infusion_Rasttemperatur%1").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColTempRast).toInt());
+                root[QStringLiteral("Infusion_Rastzeit%1").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColDauerRast).toInt());
                 ++n;
             }
             break;
@@ -1020,8 +1020,8 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow, bo
             {
                 root[QStringLiteral("Dekoktion_%1_Form").arg(n)] = "Kochendes Wasser";
                 root[QStringLiteral("Dekoktion_%1_Volumen").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
-                root[QStringLiteral("Dekoktion_%1_Temperatur_resultierend").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColTempMaische).toInt());
-                root[QStringLiteral("Dekoktion_%1_Rastzeit").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColDauerMaische).toInt());
+                root[QStringLiteral("Dekoktion_%1_Temperatur_resultierend").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColTempRast).toInt());
+                root[QStringLiteral("Dekoktion_%1_Rastzeit").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColDauerRast).toInt());
                 ++n;
             }
             break;
@@ -1030,8 +1030,8 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow, bo
             {
                 root[QStringLiteral("Dekoktion_%1_Form").arg(n)] = "Dünnmaische";
                 root[QStringLiteral("Dekoktion_%1_Volumen").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColMengeMaische).toDouble(), 'f', 1);
-                root[QStringLiteral("Dekoktion_%1_Temperatur_resultierend").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColTempMaische).toInt());
-                root[QStringLiteral("Dekoktion_%1_Rastzeit").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColDauerMaische).toInt());
+                root[QStringLiteral("Dekoktion_%1_Temperatur_resultierend").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColTempRast).toInt());
+                root[QStringLiteral("Dekoktion_%1_Rastzeit").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColDauerRast).toInt());
                 root[QStringLiteral("Dekoktion_%1_Teilmaische_Temperatur").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColTempExtra2).toInt());
                 root[QStringLiteral("Dekoktion_%1_Teilmaische_Kochzeit").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColDauerExtra1).toInt());
                 root[QStringLiteral("Dekoktion_%1_Teilmaische_Rastzeit").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColDauerExtra2).toInt());
@@ -1866,12 +1866,12 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
         Anteil.appendChild(element);
 
         element = doc.createElement(QStringLiteral("STEP_TEMP"));
-        text = doc.createTextNode(QString::number(model.data(row, ModelMaischplan::ColTempMaische).toInt()));
+        text = doc.createTextNode(QString::number(model.data(row, ModelMaischplan::ColTempRast).toInt()));
         element.appendChild(text);
         Anteil.appendChild(element);
 
         element = doc.createElement(QStringLiteral("STEP_TIME"));
-        text = doc.createTextNode(QString::number(model.data(row, ModelMaischplan::ColDauerMaische).toInt()));
+        text = doc.createTextNode(QString::number(model.data(row, ModelMaischplan::ColDauerRast).toInt()));
         element.appendChild(text);
         Anteil.appendChild(element);
 

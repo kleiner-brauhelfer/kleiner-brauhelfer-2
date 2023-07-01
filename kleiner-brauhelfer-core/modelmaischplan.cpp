@@ -9,7 +9,9 @@ ModelMaischplan::ModelMaischplan(Brauhelfer* bh, const QSqlDatabase &db) :
     mUpdating(false)
 {
     mVirtualField.append(QStringLiteral("MengeWasser"));
+    mVirtualField.append(QStringLiteral("TotalMengeWasser"));
     mVirtualField.append(QStringLiteral("MengeMalz"));
+    mVirtualField.append(QStringLiteral("TotalMengeMalz"));
     mVirtualField.append(QStringLiteral("MengeMaische"));
 
     // connect update sud to swap (move up & down)
@@ -67,7 +69,7 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
             switch (rastTyp)
             {
             case Brauhelfer::RastTyp::Einmaischen:
-                Tm = BierCalc::einmaischetemperatur(data(idx.row(), ColTempMaische).toDouble(),
+                Tm = BierCalc::einmaischetemperatur(data(idx.row(), ColTempRast).toDouble(),
                                                     data(idx.row(), ColTotalMengeMalz).toDouble(),
                                                     data(idx.row(), ColTempMalz).toDouble(),
                                                     data(idx.row(), ColTotalMengeWasser).toDouble());
@@ -78,7 +80,7 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
                 getMaischeValues(sudId, idx.row(), m1, c1);
                 m2 = data(idx.row(), ColMengeWasser).toDouble() * BierCalc::dichteWasser(20);
                 c2 = BierCalc::cWasser;
-                Tm = data(idx.row(), ColTempMaische).toDouble();
+                Tm = data(idx.row(), ColTempRast).toDouble();
                 T2 = BierCalc::mischungstemperaturT2(Tm, m1, c1, T1, m2, c2);
                 QSqlTableModel::setData(index(idx.row(), ColTempWasser), T2);
             }
@@ -91,7 +93,7 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
             switch (rastTyp)
             {
             case Brauhelfer::RastTyp::Einmaischen:
-                Tm = BierCalc::einmaischetemperatur(data(idx.row(), ColTempMaische).toDouble(),
+                Tm = BierCalc::einmaischetemperatur(data(idx.row(), ColTempRast).toDouble(),
                                                     data(idx.row(), ColTotalMengeMalz).toDouble(),
                                                     data(idx.row(), ColTempMalz).toDouble(),
                                                     data(idx.row(), ColTotalMengeWasser).toDouble());
@@ -102,7 +104,7 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
                 getMaischeValues(sudId, idx.row(), m1, c1);
                 m2 = data(idx.row(), ColMengeWasser).toDouble() * BierCalc::dichteWasser(20);
                 c2 = BierCalc::cWasser;
-                Tm = data(idx.row(), ColTempMaische).toDouble();
+                Tm = data(idx.row(), ColTempRast).toDouble();
                 T2 = BierCalc::mischungstemperaturT2(Tm, m1, c1, T1, m2, c2);
                 QSqlTableModel::setData(index(idx.row(), ColTempWasser), T2);
                 break;
@@ -124,7 +126,7 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
                 getMaischeValues(sudId, idx.row(), m1, c1);
                 c2 = BierCalc::cWasser;
                 T2 = value.toDouble();
-                Tm = data(idx.row(), ColTempMaische).toDouble();
+                Tm = data(idx.row(), ColTempRast).toDouble();
                 m2 = BierCalc::mischungstemperaturM2(Tm, m1, c1, T1, c2, T2);
                 setData(index(idx.row(), ColMengeMaische), m2);
                 break;
@@ -143,7 +145,7 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
             switch (rastTyp)
             {
             case Brauhelfer::RastTyp::Einmaischen:
-                Tm = BierCalc::einmaischetemperatur(data(idx.row(), ColTempMaische).toDouble(),
+                Tm = BierCalc::einmaischetemperatur(data(idx.row(), ColTempRast).toDouble(),
                                                     data(idx.row(), ColTotalMengeMalz).toDouble(),
                                                     value.toDouble(),
                                                     data(idx.row(), ColTotalMengeWasser).toDouble());
@@ -162,7 +164,7 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
         }
         break;
 
-    case ColTempMaische:
+    case ColTempRast:
         if (QSqlTableModel::setData(idx, value))
         {
             switch (rastTyp)
@@ -219,7 +221,7 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
                 m2 = value.toDouble() * m;
                 m1 = m - m2;
                 c2 = c1;
-                Tm = data(idx.row(), ColTempMaische).toDouble();
+                Tm = data(idx.row(), ColTempRast).toDouble();
                 T2 = BierCalc::mischungstemperaturT2(Tm, m1, c1, T1, m2, c2);
                 QSqlTableModel::setData(index(idx.row(), ColTempExtra2), T2);
                 break;
@@ -269,8 +271,8 @@ double ModelMaischplan::getPreviousTempMaische(const QVariant &sudId, int fromRo
     model.setFilterRegularExpression(QStringLiteral("^%1$").arg(sudId.toInt()));
     fromRow = model.mapRowFromSource(fromRow);
     if (fromRow > 0)
-        return model.data(fromRow - 1, ColTempMaische).toDouble();
-    return model.data(fromRow, ColTempMaische).toDouble();
+        return model.data(fromRow - 1, ColTempRast).toDouble();
+    return model.data(fromRow, ColTempRast).toDouble();
 }
 
 double ModelMaischplan::getPreviousMengeWasser(const QVariant &sudId, int fromRow) const
@@ -293,5 +295,3 @@ void ModelMaischplan::getMaischeValues(const QVariant &sudId, int fromRow, doubl
     if (m != 0)
         c = (m_malz * BierCalc::cMalz + m_wasser * BierCalc::cWasser) / m;
 }
-
-

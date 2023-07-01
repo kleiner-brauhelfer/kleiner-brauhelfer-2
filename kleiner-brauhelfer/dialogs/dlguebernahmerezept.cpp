@@ -104,8 +104,8 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
         model->setSourceModel(bh->modelMaischplan());
         model->setFilterKeyColumn(ModelMaischplan::ColSudID);
         ui->tableViewItem->appendCol({ModelMaischplan::ColName, true, false, -1, nullptr});
-        ui->tableViewItem->appendCol({ModelMaischplan::ColTempMaische, true, false, -1, new DoubleSpinBoxDelegate(1, ui->tableViewItem)});
-        ui->tableViewItem->appendCol({ModelMaischplan::ColDauerMaische, true, false, -1, new SpinBoxDelegate(ui->tableViewItem)});
+        ui->tableViewItem->appendCol({ModelMaischplan::ColTempRast, true, false, -1, new DoubleSpinBoxDelegate(1, ui->tableViewItem)});
+        ui->tableViewItem->appendCol({ModelMaischplan::ColDauerRast, true, false, -1, new SpinBoxDelegate(ui->tableViewItem)});
         break;
     case Wasseraufbereitung:
         model = new ProxyModel(this);

@@ -99,11 +99,11 @@ chmod 644 "${BUNDLE}/Contents/Resources/InfoPlist.strings"
 echo "* Creating self-contained bundle..."
 
 "${QT_DIR}/macdeployqt" ${BUNDLE} \
-    -verbose=1 \
-    -no-strip \
-    -executable="${BUNDLE}/Contents/MacOS/kleiner-brauhelfer-2" \
-    -executable="${BUNDLE}/Contents/Frameworks/QtWebEngineCore.framework/Versions/5/Helpers/QtWebEngineProcess.app/Contents/MacOS/QtWebEngineProcess" \
+    -codesign=-\
  || exit 1
+
+rm -f ${BUNDLE}/Contents/PlugIns/sqldrivers/libqsqlodbc.dylib
+rm -f ${BUNDLE}/Contents/PlugIns/sqldrivers/libqsqlpsql.dylib
 
 ###
 ### Create distribution archive

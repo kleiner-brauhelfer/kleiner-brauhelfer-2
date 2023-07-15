@@ -102,8 +102,8 @@ echo "* Creating self-contained bundle..."
     -codesign=-\
  || exit 1
 
-rm -f ${BUNDLE}/Contents/PlugIns/sqldrivers/libqsqlodbc.dylib
-rm -f ${BUNDLE}/Contents/PlugIns/sqldrivers/libqsqlpsql.dylib
+#rm -f ${BUNDLE}/Contents/PlugIns/sqldrivers/libqsqlodbc.dylib
+#rm -f ${BUNDLE}/Contents/PlugIns/sqldrivers/libqsqlpsql.dylib
 
 ###
 ### Create distribution archive

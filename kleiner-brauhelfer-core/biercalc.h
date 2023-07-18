@@ -366,16 +366,6 @@ public:
     Q_INVOKABLE static double cMaische(double m_malz, double V_wasser);
 
     /**
-     * @brief einmaischetemperatur
-     * @param T_rast
-     * @param m_malz
-     * @param T_malt
-     * @param V_wasser
-     * @return
-     */
-    Q_INVOKABLE static double einmaischetemperatur(double T_rast, double m_malz, double T_malt, double V_wasser);
-
-    /**
      * @brief phMalz
      * @param farbe
      * @return

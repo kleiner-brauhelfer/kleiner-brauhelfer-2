@@ -1,7 +1,6 @@
 #include "wdgrast.h"
 #include "ui_wdgrast.h"
 #include <QLineEdit>
-#include "mainwindow.h"
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -53,6 +52,7 @@ WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
     updateValues();
     updateListe();
     connect(bh, &Brauhelfer::modified, this, &WdgRast::updateValues);
+    connect(bh->modelMaischplan(), &ModelMaischplan::rowsSwapped, this, &WdgRast::updateListe);
 }
 
 WdgRast::~WdgRast()
@@ -131,80 +131,12 @@ void WdgRast::updateListe()
         if (name().isEmpty())
         {
             setData(ModelMaischplan::ColName, ui->cbRast->itemText(0));
-            updateValuesFromListe(0);
         }
     }
     else
     {
         ui->cbRast->addItem(name());
     }
-}
-
-void WdgRast::updateValuesFromListe(int index)
-{
-    MainWindow::getInstance()->setUpdatesEnabled(false);
-    switch (static_cast<Brauhelfer::RastTyp>(data(ModelMaischplan::ColTyp).toInt()))
-    {
-    case Brauhelfer::RastTyp::Einmaischen:
-        setData(ModelMaischplan::ColAnteilWasser, 100);
-        setData(ModelMaischplan::ColAnteilMalz, 100);
-        setData(ModelMaischplan::ColAnteilMaische, 0);
-        setData(ModelMaischplan::ColTempRast, 57);
-        setData(ModelMaischplan::ColDauerRast, 5);
-        setData(ModelMaischplan::ColTempMalz, 18);
-        break;
-    case Brauhelfer::RastTyp::Aufheizen:
-        setData(ModelMaischplan::ColAnteilWasser, 0);
-        setData(ModelMaischplan::ColAnteilMalz, 0);
-        setData(ModelMaischplan::ColAnteilMaische, 0);
-        if (index >= 0 && index < rasten.count())
-        {
-            setData(ModelMaischplan::ColTempRast, rasten[index].temperatur);
-            setData(ModelMaischplan::ColDauerRast, rasten[index].dauer);
-        }
-        break;
-    case Brauhelfer::RastTyp::Zubruehen:
-        setData(ModelMaischplan::ColAnteilWasser, 33.33);
-        setData(ModelMaischplan::ColAnteilMalz, 0);
-        setData(ModelMaischplan::ColAnteilMaische, 0);
-        setData(ModelMaischplan::ColTempWasser, 95);
-        setData(ModelMaischplan::ColDauerRast, 15);
-        break;
-    case Brauhelfer::RastTyp::Zuschuetten:
-        setData(ModelMaischplan::ColAnteilWasser, 20);
-        setData(ModelMaischplan::ColAnteilMalz, 20);
-        setData(ModelMaischplan::ColAnteilMaische, 0);
-        setData(ModelMaischplan::ColTempMalz, 18);
-        setData(ModelMaischplan::ColTempWasser, 95);
-        setData(ModelMaischplan::ColDauerRast, 15);
-        break;
-    case Brauhelfer::RastTyp::Dekoktion:
-        setData(ModelMaischplan::ColAnteilWasser, 0);
-        setData(ModelMaischplan::ColAnteilMalz, 0);
-        setData(ModelMaischplan::ColDauerRast, 15);
-        setData(ModelMaischplan::ColTempExtra1, 95);
-        setData(ModelMaischplan::ColDauerExtra1, 15);
-        setData(ModelMaischplan::ColTempExtra2, 0);
-        setData(ModelMaischplan::ColDauerExtra2, 0);
-        switch (index)
-        {
-        case 0: // 1/2 Dickmaische
-            setData(ModelMaischplan::ColAnteilMaische, 50);
-            break;
-        case 1: // 1/3 Dickmaische
-            setData(ModelMaischplan::ColAnteilMaische, 33.33);
-            break;
-        case 2: // 1/3 Dünnmaische
-            setData(ModelMaischplan::ColAnteilMaische, 33.33);
-            break;
-        case 3: // 1/3 Läutermaische
-            setData(ModelMaischplan::ColAnteilMaische, 33.33);
-            break;
-        }
-        break;
-    }
-    updateValues();
-    MainWindow::getInstance()->setUpdatesEnabled(true);
 }
 
 void WdgRast::updateValues()
@@ -344,7 +276,37 @@ void WdgRast::on_cbRast_currentTextChanged(const QString &text)
 void WdgRast::on_cbRast_currentIndexChanged(int index)
 {
     if (ui->cbRast->hasFocus() && !mRastNameManuallyEdited)
-        updateValuesFromListe(index);
+    {
+        switch (static_cast<Brauhelfer::RastTyp>(data(ModelMaischplan::ColTyp).toInt()))
+        {
+        case Brauhelfer::RastTyp::Aufheizen:
+            if (index >= 0 && index < rasten.count())
+            {
+                setData(ModelMaischplan::ColDauerRast, rasten[index].dauer);
+                setData(ModelMaischplan::ColTempRast, rasten[index].temperatur);
+            }
+            break;
+        case Brauhelfer::RastTyp::Dekoktion:
+            switch (index)
+            {
+            case 0: // 1/2 Dickmaische
+                setData(ModelMaischplan::ColAnteilMaische, 50);
+                break;
+            case 1: // 1/3 Dickmaische
+                setData(ModelMaischplan::ColAnteilMaische, 33.33);
+                break;
+            case 2: // 1/3 Dünnmaische
+                setData(ModelMaischplan::ColAnteilMaische, 33.33);
+                break;
+            case 3: // 1/3 Läutermaische
+                setData(ModelMaischplan::ColAnteilMaische, 33.33);
+                break;
+            }
+            break;
+        default:
+            break;
+        }
+    }
 }
 
 void WdgRast::on_cbTyp_currentIndexChanged(int index)
@@ -354,7 +316,6 @@ void WdgRast::on_cbTyp_currentIndexChanged(int index)
         setData(ModelMaischplan::ColTyp, index);
         updateListe();
         setData(ModelMaischplan::ColName, ui->cbRast->itemText(0));
-        updateValuesFromListe(0);
     }
 }
 

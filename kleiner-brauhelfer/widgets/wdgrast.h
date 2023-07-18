@@ -23,7 +23,6 @@ public:
 
 public slots:
     void updateListe();
-    void updateValuesFromListe(int index);
     void updateValues();
 
 private slots:

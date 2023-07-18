@@ -1790,7 +1790,7 @@ bool Database::update()
                                        "Temp,"
                                        "Dauer"
                                        " FROM Rasten"));
-            sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilMalz=100 WHERE Maischplan.Typ=0"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilMalz=100 WHERE Typ=0"));
             sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilWasser=100*Rasten.Mengenfaktor FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=0"));
             sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilWasser=100*Rasten.Mengenfaktor FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=2"));
             sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilMaische=100*Rasten.Mengenfaktor FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=3"));

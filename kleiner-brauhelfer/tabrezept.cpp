@@ -785,9 +785,9 @@ void TabRezept::updateMaischplan()
             pWasser -= wdg->prozentWasser();
             pMalz -= wdg->prozentMalz();
         }
-        if (std::fabs(pWasser) < 0.05)
+        if (std::fabs(pWasser) < 0.1)
             pWasser = 0.0;
-        if (std::fabs(pMalz) < 0.05)
+        if (std::fabs(pMalz) < 0.1)
             pMalz = 0.0;
         for (int i = 0; i < count; ++i)
         {

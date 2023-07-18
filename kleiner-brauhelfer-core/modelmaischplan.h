@@ -46,18 +46,13 @@ public:
     ModelMaischplan(Brauhelfer* bh, const QSqlDatabase &db = QSqlDatabase());
     QVariant dataExt(const QModelIndex &index) const Q_DECL_OVERRIDE;
     bool setDataExt(const QModelIndex &index, const QVariant &value) Q_DECL_OVERRIDE;
-    void defaultValues(QMap<int, QVariant> &values) const Q_DECL_OVERRIDE;
 
 private:
 
     void updateSud(const QVariant &sudId);
     double getTotalAnteil(const QVariant &sudId, int rowFrom, int colAnteil) const;
-
-
-    double getPreviousTempMaische(const QVariant &sudId, int fromRow) const;
-    double getPreviousMengeWasser(const QVariant &sudId, int fromRow) const;
-
-    void getMaischeValues(const QVariant &sudId, int fromRow, double& m, double &c);
+    double getPreviousValueTemperature(int row) const;
+    void getPreviousMaischeValues(int row, double& m, double &c, double &T) const;
 
 private slots:
 

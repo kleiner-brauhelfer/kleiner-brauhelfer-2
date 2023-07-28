@@ -218,24 +218,33 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     map[QStringLiteral("Name")] = model->data(row, ModelMaischplan::ColName).toString();
                     map[QStringLiteral("Temp")] = QString::number(model->data(row, ModelMaischplan::ColTempRast).toInt());
                     map[QStringLiteral("Dauer")] = QString::number(model->data(row, ModelMaischplan::ColDauerRast).toInt());
-                    map[QStringLiteral("MengeWasser")] = locale.toString(model->data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
-                    map[QStringLiteral("MengeMalz")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMalz).toDouble(), 'f', 1);
-                    map[QStringLiteral("MengeMaische")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMaische).toDouble(), 'f', 1);
                     switch (static_cast<Brauhelfer::RastTyp>(model->data(row, ModelMaischplan::ColTyp).toInt()))
                     {
                     case Brauhelfer::RastTyp::Einmaischen:
                         map[QStringLiteral("Einmaischen")] = true;
-                    map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempWasser).toInt());
+                        map[QStringLiteral("MengeWasser")] = locale.toString(model->data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
+                        map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempWasser).toInt());
+                        map[QStringLiteral("MengeMalz")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMalz).toDouble(), 'f', 2);
+                        map[QStringLiteral("MalzTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempMalz).toInt());
                         break;
                     case Brauhelfer::RastTyp::Aufheizen:
-                        map[QStringLiteral("Rast")] = true;
+                        map[QStringLiteral("Aufheizen")] = true;
                         break;
                     case Brauhelfer::RastTyp::Zubruehen:
-                        map[QStringLiteral("Infusion")] = true;
+                        map[QStringLiteral("Zubruehen")] = true;
+                        map[QStringLiteral("MengeWasser")] = locale.toString(model->data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
                         map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempWasser).toInt());
+                        break;
+                    case Brauhelfer::RastTyp::Zuschuetten:
+                        map[QStringLiteral("Zuschuetten")] = true;
+                        map[QStringLiteral("MengeWasser")] = locale.toString(model->data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
+                        map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempWasser).toInt());
+                        map[QStringLiteral("MengeMalz")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMalz).toDouble(), 'f', 2);
+                        map[QStringLiteral("MalzTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempMalz).toInt());
                         break;
                     case Brauhelfer::RastTyp::Dekoktion:
                         map[QStringLiteral("Dekoktion")] = true;
+                        map[QStringLiteral("MengeMaische")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMaische).toDouble(), 'f', 1);
                         temp = model->data(row, ModelMaischplan::ColDauerExtra1).toInt();
                         if (temp > 0)
                         {
@@ -253,7 +262,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     liste << map;
                 }
                 if (!liste.empty())
-                    ctx[QStringLiteral("Rasten")] = QVariantMap({{"Liste", liste}});
+                    ctx[QStringLiteral("Maischplan")] = QVariantMap({{"Liste", liste}});
 
                 QVariantMap mapWasser;
                 double f1 = 0.0, f2 = 0.0, f3 = 0.0;

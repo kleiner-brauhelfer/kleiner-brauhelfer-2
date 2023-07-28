@@ -109,28 +109,26 @@ void WdgRast::updateListe()
         switch (static_cast<Brauhelfer::RastTyp>(data(ModelMaischplan::ColTyp).toInt()))
         {
         case Brauhelfer::RastTyp::Einmaischen:
-            ui->cbRast->addItem(tr("Einmaischen"));
+            setData(ModelMaischplan::ColName, tr("Einmaischen"));
             break;
         case Brauhelfer::RastTyp::Aufheizen:
             for (const Rast &rast : rasten)
                 ui->cbRast->addItem(tr(rast.name.toStdString().c_str()));
+            setData(ModelMaischplan::ColName, ui->cbRast->itemText(0));
             break;
         case Brauhelfer::RastTyp::Zubruehen:
-            ui->cbRast->addItem(tr("Zubrühen"));
+            setData(ModelMaischplan::ColName, tr("Zubrühen"));
             break;
         case Brauhelfer::RastTyp::Zuschuetten:
-            ui->cbRast->addItem(tr("Teilschüttung"));
+            setData(ModelMaischplan::ColName, tr("Teilschüttung"));
             break;
         case Brauhelfer::RastTyp::Dekoktion:
             ui->cbRast->addItem(tr("1/2 Dickmaische"));
             ui->cbRast->addItem(tr("1/3 Dickmaische"));
             ui->cbRast->addItem(tr("1/3 Dünnmaische"));
             ui->cbRast->addItem(tr("1/3 Läutermaische"));
-            break;
-        }
-        if (name().isEmpty())
-        {
             setData(ModelMaischplan::ColName, ui->cbRast->itemText(0));
+            break;
         }
     }
     else
@@ -315,7 +313,6 @@ void WdgRast::on_cbTyp_currentIndexChanged(int index)
     {
         setData(ModelMaischplan::ColTyp, index);
         updateListe();
-        setData(ModelMaischplan::ColName, ui->cbRast->itemText(0));
     }
 }
 

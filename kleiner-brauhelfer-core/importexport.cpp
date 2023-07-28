@@ -965,6 +965,9 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow, bo
         case Brauhelfer::RastTyp::Zubruehen:
             dekoktion = true;
             break;
+        case Brauhelfer::RastTyp::Zuschuetten:
+            dekoktion = true;
+            break;
         case Brauhelfer::RastTyp::Dekoktion:
             dekoktion = true;
             break;
@@ -1016,6 +1019,16 @@ QByteArray ImportExport::exportMaischeMalzundMehr(Brauhelfer *bh, int sudRow, bo
             }
             break;
         case Brauhelfer::RastTyp::Zubruehen:
+            if (dekoktion)
+            {
+                root[QStringLiteral("Dekoktion_%1_Form").arg(n)] = "Kochendes Wasser";
+                root[QStringLiteral("Dekoktion_%1_Volumen").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
+                root[QStringLiteral("Dekoktion_%1_Temperatur_resultierend").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColTempRast).toInt());
+                root[QStringLiteral("Dekoktion_%1_Rastzeit").arg(n)] = QString::number(model.data(row, ModelMaischplan::ColDauerRast).toInt());
+                ++n;
+            }
+            break;
+        case Brauhelfer::RastTyp::Zuschuetten:
             if (dekoktion)
             {
                 root[QStringLiteral("Dekoktion_%1_Form").arg(n)] = "Kochendes Wasser";
@@ -1858,6 +1871,9 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
         case Brauhelfer::RastTyp::Zubruehen:
             text = doc.createTextNode(QStringLiteral("Infusion"));
             break;
+        case Brauhelfer::RastTyp::Zuschuetten:
+            text = doc.createTextNode(QStringLiteral("Infusion"));
+            break;
         case Brauhelfer::RastTyp::Dekoktion:
             text = doc.createTextNode(QStringLiteral("Decoction"));
             break;
@@ -1875,7 +1891,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
         element.appendChild(text);
         Anteil.appendChild(element);
 
-        if (typ == Brauhelfer::RastTyp::Zubruehen || typ == Brauhelfer::RastTyp::Einmaischen)
+        if (typ == Brauhelfer::RastTyp::Einmaischen || typ == Brauhelfer::RastTyp::Zubruehen || typ == Brauhelfer::RastTyp::Zuschuetten)
         {
             element = doc.createElement(QStringLiteral("INFUSE_AMOUNT"));
             text = doc.createTextNode(QString::number(model.data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1));

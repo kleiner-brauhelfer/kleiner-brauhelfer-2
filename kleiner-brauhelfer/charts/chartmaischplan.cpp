@@ -79,10 +79,20 @@ void ChartMaischplan::update()
             if (T2 > TMax)
                 TMax = T2;
             break;
+        case Brauhelfer::RastTyp::Zuschuetten:
+            graphAux = new QCPGraph(xAxis, yAxis);
+            graphAux->setPen(QPen(QBrush(gSettings->DiagramLinie1), 2, Qt::DashLine));
+            T2 = model->data(row, ModelMaischplan::ColTempWasser).toInt();
+            graphAux->setData({tTotal, tTotal}, {T2, T}, true);
+            TMax = 100;
+            if (T2 < TMin)
+                TMin = T2;
+            if (T2 > TMax)
+                TMax = T2;
+            break;
         case Brauhelfer::RastTyp::Dekoktion:
             graphAux = new QCPGraph(xAxis, yAxis);
             graphAux->setPen(QPen(QBrush(gSettings->DiagramLinie2), 2, Qt::DashLine));
-            graphAux->setPen(QPen(graph->pen().brush(), 2, Qt::DashLine));
             graphAux->addData(tTotal, lastT);
             temp = model->data(row, ModelMaischplan::ColDauerExtra2).toInt();
             if (temp > 0)

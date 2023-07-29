@@ -25,16 +25,16 @@
     </message>
     <message>
         <location filename="../charts/chartabfuelldaten.cpp" line="19"/>
-        <source>Würzemenge (L)</source>
-        <translation>Wortvolume (L)</translation>
+        <source>Würzemenge</source>
+        <translation>Wortvolume</translation>
     </message>
     <message>
-        <location filename="../charts/chartabfuelldaten.cpp" line="55"/>
-        <location filename="../charts/chartabfuelldaten.cpp" line="57"/>
-        <location filename="../charts/chartabfuelldaten.cpp" line="59"/>
-        <location filename="../charts/chartabfuelldaten.cpp" line="61"/>
+        <source>Würzemenge (L)</source>
+        <translation type="vanished">Wortvolume (L)</translation>
+    </message>
+    <message>
         <source> L</source>
-        <translation> L</translation>
+        <translation type="vanished"> L</translation>
     </message>
 </context>
 <context>
@@ -56,15 +56,12 @@
     </message>
     <message>
         <location filename="../charts/chartausbeute.cpp" line="18"/>
-        <source>Ausbeute (%)</source>
-        <translation>Rendement (%)</translation>
+        <source>Ausbeute</source>
+        <translation>Rendement</translation>
     </message>
     <message>
-        <location filename="../charts/chartausbeute.cpp" line="50"/>
-        <location filename="../charts/chartausbeute.cpp" line="52"/>
-        <location filename="../charts/chartausbeute.cpp" line="54"/>
-        <source> %</source>
-        <translation></translation>
+        <source>Ausbeute (%)</source>
+        <translation type="vanished">Rendement (%)</translation>
     </message>
 </context>
 <context>
@@ -91,13 +88,21 @@
     </message>
     <message>
         <location filename="../charts/chartbraudaten.cpp" line="30"/>
-        <source>Würzemenge (L)</source>
-        <translation>Wortvolume (L)</translation>
+        <source>Würzemenge</source>
+        <translation>Wortvolume</translation>
     </message>
     <message>
         <location filename="../charts/chartbraudaten.cpp" line="31"/>
+        <source>Stammwürze</source>
+        <translation>Stamwort</translation>
+    </message>
+    <message>
+        <source>Würzemenge (L)</source>
+        <translation type="vanished">Wortvolume (L)</translation>
+    </message>
+    <message>
         <source>Stammwürze (°P)</source>
-        <translation>Stamwort (°P)</translation>
+        <translation type="vanished">Stamwort (°P)</translation>
     </message>
     <message>
         <location filename="../charts/chartbraudaten.cpp" line="35"/>
@@ -123,33 +128,53 @@
 <context>
     <name>ChartHopfen</name>
     <message>
-        <location filename="../charts/charthopfen.cpp" line="41"/>
         <source>Menge (g)</source>
-        <translation>Hoeveelheid (g)</translation>
+        <translation type="vanished">Hoeveelheid (g)</translation>
+    </message>
+    <message>
+        <source>Anteil (%)</source>
+        <translation type="vanished">Aandeel (%)</translation>
+    </message>
+    <message>
+        <source>Bittere (IBU)</source>
+        <translation type="vanished">Bitterheid (IBU)</translation>
+    </message>
+    <message>
+        <location filename="../charts/charthopfen.cpp" line="41"/>
+        <source>Menge</source>
+        <translation>Hoeveelheid</translation>
     </message>
     <message>
         <location filename="../charts/charthopfen.cpp" line="54"/>
         <location filename="../charts/charthopfen.cpp" line="67"/>
-        <source>Anteil (%)</source>
-        <translation>Aandeel (%)</translation>
+        <source>Anteil</source>
+        <translation>Aandeel</translation>
     </message>
     <message>
         <location filename="../charts/charthopfen.cpp" line="68"/>
-        <source>Bittere (IBU)</source>
-        <translation>Bitterheid (IBU)</translation>
+        <source>Bittere</source>
+        <translation>Bitterheid</translation>
     </message>
 </context>
 <context>
     <name>ChartMaischplan</name>
     <message>
-        <location filename="../charts/chartmaischplan.cpp" line="14"/>
         <source>Zeit (min)</source>
-        <translation>Tijd (min)</translation>
+        <translation type="vanished">Tijd (min)</translation>
+    </message>
+    <message>
+        <source>Temperatur (°C)</source>
+        <translation type="vanished">Temperatuur (°C)</translation>
+    </message>
+    <message>
+        <location filename="../charts/chartmaischplan.cpp" line="14"/>
+        <source>Zeit</source>
+        <translation>Tijd</translation>
     </message>
     <message>
         <location filename="../charts/chartmaischplan.cpp" line="15"/>
-        <source>Temperatur (°C)</source>
-        <translation>Temperatuur (°C)</translation>
+        <source>Temperatur</source>
+        <translation>Temperatuur</translation>
     </message>
     <message>
         <location filename="../charts/chartmaischplan.cpp" line="30"/>
@@ -165,14 +190,22 @@
 <context>
     <name>ChartMalz</name>
     <message>
-        <location filename="../charts/chartmalz.cpp" line="14"/>
         <source>Anteil (%)</source>
-        <translation>Aandeel (%)</translation>
+        <translation type="vanished">Aandeel (%)</translation>
+    </message>
+    <message>
+        <source>Menge (kg)</source>
+        <translation type="vanished">Hoeveelheid (kg)</translation>
+    </message>
+    <message>
+        <location filename="../charts/chartmalz.cpp" line="14"/>
+        <source>Anteil</source>
+        <translation>Aandeel</translation>
     </message>
     <message>
         <location filename="../charts/chartmalz.cpp" line="15"/>
-        <source>Menge (kg)</source>
-        <translation>Hoeveelheid (kg)</translation>
+        <source>Menge</source>
+        <translation>Hoeveelheid</translation>
     </message>
 </context>
 <context>
@@ -199,16 +232,12 @@
     </message>
     <message>
         <location filename="../charts/chartrestextrakt.cpp" line="19"/>
-        <source>Restextrakt (°P)</source>
-        <translation>Restextract (°P)</translation>
+        <source>Restextrakt</source>
+        <translation>Restextract</translation>
     </message>
     <message>
-        <location filename="../charts/chartrestextrakt.cpp" line="57"/>
-        <location filename="../charts/chartrestextrakt.cpp" line="69"/>
-        <location filename="../charts/chartrestextrakt.cpp" line="71"/>
-        <location filename="../charts/chartrestextrakt.cpp" line="73"/>
-        <source> °P</source>
-        <translation></translation>
+        <source>Restextrakt (°P)</source>
+        <translation type="vanished">Restextract (°P)</translation>
     </message>
 </context>
 <context>
@@ -313,12 +342,6 @@
         <translation>Gemiddelde over de laatste</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.ui" line="397"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="410"/>
-        <source>%</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../dialogs/dlgausruestung.ui" line="468"/>
         <source>Verdampfungsrate</source>
         <translation>Verdampingsgraad</translation>
@@ -360,7 +383,7 @@
     <message>
         <location filename="../dialogs/dlgausruestung.ui" line="167"/>
         <source>Anlagetyp</source>
-        <translation type="unfinished"></translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgausruestung.ui" line="187"/>
@@ -371,12 +394,6 @@
         <location filename="../dialogs/dlgausruestung.ui" line="194"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:700;&quot;&gt;Anlagebezeichnung&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgausruestung.ui" line="225"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="270"/>
-        <source>L/h</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgausruestung.ui" line="251"/>
@@ -424,16 +441,6 @@
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Het aantal brouwsels voor de &lt;span style=&quot; font-weight:600;&quot;&gt;Gemiddelde&lt;/span&gt; berekening kan worden ingesteld met de &lt;span style=&quot; font-weight:600;&quot;&gt;Schuifregelaar&lt;/span&gt;&lt;/p&gt;&lt;p&gt; Hoe meer brouwsels in de berekening worden opgenomen, hoe zinvoller de gemiddelde waarde wordt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.ui" line="564"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="657"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="833"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="860"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="1106"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="1144"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../dialogs/dlgausruestung.ui" line="604"/>
         <source>Betriebskosten</source>
         <translation>Bedrijfskosten</translation>
@@ -449,9 +456,8 @@
         <translation>Correctie van de Spoelwatervolume</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.ui" line="640"/>
         <source>EBC</source>
-        <translation>EBC</translation>
+        <translation type="vanished">EBC</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgausruestung.ui" line="650"/>
@@ -478,16 +484,6 @@
         <location filename="../dialogs/dlgausruestung.ui" line="1047"/>
         <source>Durchmesser</source>
         <translation>Diameter</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgausruestung.ui" line="749"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="826"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="853"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="962"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="1001"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="1099"/>
-        <source>cm</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgausruestung.ui" line="762"/>
@@ -712,19 +708,13 @@
         <translation>Afgevulde Bierhoeveelheid</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="150"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../dialogs/dlgbrauuebersicht.cpp" line="151"/>
         <source>Schüttung</source>
         <translation>Moutstort</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="151"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgbrauuebersicht.cpp" line="152"/>
@@ -745,16 +735,6 @@
         <location filename="../dialogs/dlgbrauuebersicht.cpp" line="155"/>
         <source>Verdampfungsrate</source>
         <translation>Verdampingsgraad</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="155"/>
-        <source>L/h</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="161"/>
-        <source>%1/L</source>
-        <translation></translation>
     </message>
     <message>
         <source>l/h</source>
@@ -790,19 +770,12 @@
         <translation type="vanished">l</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="152"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="157"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="153"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="154"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="156"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="158"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="159"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <source>%1/l</source>
@@ -1000,8 +973,12 @@
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="456"/>
+        <source>Bittere (IBU)</source>
+        <translation>Bitterheid (IBU)</translation>
+    </message>
+    <message>
         <source>IBU</source>
-        <translation>IBU</translation>
+        <translation type="vanished">IBU</translation>
     </message>
 </context>
 <context>
@@ -1071,7 +1048,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlghilfe.cpp" line="37"/>
+        <location filename="../dialogs/dlghilfe.cpp" line="38"/>
         <source>Nicht unterstützt.</source>
         <translation>Niet ondersteund.</translation>
     </message>
@@ -1244,9 +1221,8 @@
         <translation>Moutstort</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmaischplanmalz.ui" line="77"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmaischplanmalz.cpp" line="23"/>
@@ -1255,13 +1231,21 @@
     </message>
     <message>
         <location filename="../dialogs/dlgmaischplanmalz.cpp" line="24"/>
-        <source>Gesamtmenge [kg]</source>
-        <translation>Totale hoeveelheid [kg]</translation>
+        <source>Gesamtmenge</source>
+        <translation>Totale hoeveelheid</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmaischplanmalz.cpp" line="25"/>
+        <source>Anteil</source>
+        <translation>Aandeel</translation>
+    </message>
+    <message>
+        <source>Gesamtmenge [kg]</source>
+        <translation type="vanished">Totale hoeveelheid [kg]</translation>
+    </message>
+    <message>
         <source>Anteil [%]</source>
-        <translation>Aandeel [%]</translation>
+        <translation type="vanished">Aandeel [%]</translation>
     </message>
 </context>
 <context>
@@ -1523,12 +1507,8 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="252"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="577"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="721"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="809"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="405"/>
@@ -1556,12 +1536,8 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>&lt;html&gt;&lt;head/&gt; &lt;body&gt; &lt;p&gt; Hier word de gemeten &lt;span style = &quot;font-weight: 600;&quot;&gt; Extractwaarde &lt;/span&gt; in ° Plato ingegeven. 12 ° Plato betekent bijvoorbeeld 120 g extract in 1000 ml Wort. &lt;/p&gt; &lt;p&gt; De &lt;span style = &quot;font-weight: 600;&quot;&gt; Restextract &lt;/span&gt; moet niet worden verward met het &lt;span style = &quot;font-weight: 600;&quot;&gt;Stamwort &lt;/span&gt;. De Restextract waarde is de waarde na vergisting, d.w.z. als de Suiker (deels) zijn omgezet in Alcohol. Stamwort daarentegen beschrijft het ongefermenteerde Suikergehalte van een Brouwsel. &lt;/p&gt; &lt;/body&gt; &lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="217"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="279"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="365"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="536"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="vanished">°C</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="472"/>
@@ -1624,11 +1600,6 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Anders</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="174"/>
-        <source>g/mL</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="272"/>
         <source>Eichtemperatur</source>
         <translation>Kalibratietemperatuur</translation>
@@ -1659,14 +1630,12 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Brix is de gebruikelijke eenheid voor &lt;span style=&quot; font-weight:600;&quot;&gt;analoge Refractometers.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Digitale refractometers of laboratorium meetinstrumenten met oscillerende U-buis technologie maken ook °Plato en andere meeteenheden mogelijk. KBH biedt op dit moment alleen nog °Plato aan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="489"/>
         <source>°Brix</source>
-        <translation>°Brix</translation>
+        <translation type="vanished">°Brix</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="494"/>
         <source>°Plato</source>
-        <translation>°Plato</translation>
+        <translation type="vanished">°Plato</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="502"/>
@@ -1848,19 +1817,16 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>De Ingrediënten moeten eerst in het tabblad &quot;Grondstoffen&quot; worden ingevuld.</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
         <source>g</source>
-        <translation>g</translation>
+        <translation type="vanished">g</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
         <source>mg</source>
-        <translation>mg</translation>
+        <translation type="vanished">mg</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
@@ -1919,14 +1885,12 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Alias</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="132"/>
         <source>Farbe [EBC]</source>
-        <translation>Kleur [EBC]</translation>
+        <translation type="vanished">Kleur [EBC]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="135"/>
         <source>Max. Anteil [%]</source>
-        <translation>Max Aandeel.[%]</translation>
+        <translation type="vanished">Max Aandeel.[%]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="138"/>
@@ -1942,9 +1906,23 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="151"/>
         <source>Alpha [%]</source>
-        <translation>Alpha [%]</translation>
+        <translation type="vanished">Alpha [%]</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="132"/>
+        <source>Farbe</source>
+        <translation>Kleur</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="135"/>
+        <source>Max. Anteil</source>
+        <translation>Max Aandeel</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="151"/>
+        <source>Alpha</source>
+        <translation>Alpha</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="158"/>
@@ -2120,7 +2098,7 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
     <name>DlgRohstoffeAbziehen</name>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="20"/>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="39"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="43"/>
         <source>Zutaten vom Lager abziehen</source>
         <translation>Ingrediënten uit voorraad nemen</translation>
     </message>
@@ -2161,74 +2139,74 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="93"/>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="40"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="44"/>
         <source>Zutaten abziehen</source>
         <translation>Ingrediënten afboeken</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="39"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="43"/>
         <source>Zutaten ins Lager zurückgeben</source>
         <translation>Ingrediënten terugzetten naar de voorraad</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="40"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="44"/>
         <source>Zutaten zurückgeben</source>
         <translation>Ingrediënten terugzetten</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="57"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="61"/>
         <source>Die Zutaten wurden noch nicht abgezogen. Trotzdem schließen?</source>
         <translation>De Ingrediënten zijn nog niet in mindering gebracht. Toch sluiten?</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="96"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="100"/>
         <source>Malz</source>
         <translation>Mout</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="97"/>
         <source>Menge [kg]</source>
-        <translation>Hoeveelheid [kg]</translation>
+        <translation type="vanished">Hoeveelheid [kg]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="98"/>
         <source>Vorhanden [kg]</source>
-        <translation>In voorraad [kg]</translation>
+        <translation type="vanished">In voorraad [kg]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="152"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="156"/>
         <source>Hopfen</source>
         <translation>Hoppen</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="153"/>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="248"/>
         <source>Menge [g]</source>
-        <translation>Hoeveelheid [g]</translation>
+        <translation type="vanished">Hoeveelheid [g]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="154"/>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="249"/>
         <source>Vorhanden [g]</source>
-        <translation>In voorraad [g]</translation>
+        <translation type="vanished">In voorraad [g]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="197"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="201"/>
         <source>Hefe</source>
         <translation>Gist</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="198"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="101"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="157"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="202"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="252"/>
         <source>Menge</source>
         <translation>Hoeveelheid</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="199"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="102"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="158"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="203"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="253"/>
         <source>Vorhanden</source>
         <translation>In voorraad</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="247"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="251"/>
         <source>Zusatz</source>
         <translation>Ingrediënt</translation>
     </message>
@@ -2256,12 +2234,6 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In dit veld wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;eerste Deelhoeveelheid&lt;/span&gt; van het gesplitste Brouwsel&lt;span style=&quot; font-weight:600;&quot;&gt; procentueel&lt;/span&gt; bepaald. De tweede Deelhoeveelheid wordt automatisch bepaald.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt; Brouwsels splitsen&lt;/span&gt; is een goede methode om variaties op een tijd- en kostenefficiënte manier te implementeren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgsudteilen.ui" line="68"/>
-        <location filename="../dialogs/dlgsudteilen.ui" line="94"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Liter</source>
         <translation type="vanished">Liter</translation>
     </message>
@@ -2286,10 +2258,8 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgsudteilen.ui" line="142"/>
-        <location filename="../dialogs/dlgsudteilen.ui" line="155"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
 </context>
 <context>
@@ -2348,31 +2318,16 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="100"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="116"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="124"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="132"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="140"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="100"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="116"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="124"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="132"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="140"/>
         <source>g</source>
-        <translation>g</translation>
+        <translation type="vanished">g</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="100"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="116"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="124"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="132"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="140"/>
         <source>mg</source>
-        <translation>mg</translation>
+        <translation type="vanished">mg</translation>
     </message>
     <message>
         <location filename="../dialogs/dlguebernahmerezept.cpp" line="100"/>
@@ -2382,16 +2337,6 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <location filename="../dialogs/dlguebernahmerezept.cpp" line="140"/>
         <source>Stk.</source>
         <translation>Stk.</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="116"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="116"/>
-        <source>mL</source>
-        <translation></translation>
     </message>
     <message>
         <source>l</source>
@@ -2462,12 +2407,6 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgverdampfung.ui" line="152"/>
-        <location filename="../dialogs/dlgverdampfung.ui" line="168"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="181"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Von der &lt;span style=&quot; font-weight:700;&quot;&gt;Oberkante des Kessels&lt;/span&gt; bis zur &lt;span style=&quot; font-weight:700;&quot;&gt;Oberkante des Sudes&lt;/span&gt; am &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; messen. Der Kessel muss eben stehen, damit gültige Werte berechnet werden können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
@@ -2483,9 +2422,8 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgverdampfung.ui" line="316"/>
         <source>min</source>
-        <translation>min</translation>
+        <translation type="vanished">min</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="330"/>
@@ -2511,11 +2449,6 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <location filename="../dialogs/dlgverdampfung.ui" line="405"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate in l/h&lt;/span&gt; ausgegeben. Die vormalige prozentuale Berechnung wurde zugunsten der genaueren Berechnung l/h ersetzt. Diese ist nicht von der relativen Sudmenge, sondern von der &lt;span style=&quot; font-weight:600;&quot;&gt;Leistungsaufnahme absolut &lt;/span&gt;abhängig, somit immer annähernd gleich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgverdampfung.ui" line="427"/>
-        <source>L/h</source>
-        <translation></translation>
     </message>
     <message>
         <source>l/h</source>
@@ -2549,10 +2482,8 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Temperatuur van het Wort</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgvolumen.ui" line="60"/>
-        <location filename="../dialogs/dlgvolumen.ui" line="147"/>
         <source>cm</source>
-        <translation>cm</translation>
+        <translation type="vanished">cm</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="67"/>
@@ -2580,15 +2511,8 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>&lt;html&gt;&lt;head/&gt; &lt;body&gt; &lt;p&gt; Indien bekend, kan hier de &lt;span style = &quot;font-weight: 600;&quot;&gt; Wortvolume&lt;/span&gt; bij &lt;span style = &quot;font-weight: 600;&quot; &gt; de huidige Temperatuur &lt;/span&gt; worden ingevoerd. &lt;/p&gt; &lt;p&gt; &lt;span style = &quot;font-weight: 600;&quot;&gt; Werking: &lt;/span&gt; Het enige wat u hoeft te doen is de Temperatuur in het bovenstaande Veld invoeren. De Velden voor de Vulhoogte kunnen in dit geval worden genegeerd. &lt;/p&gt; &lt;/body&gt; &lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgvolumen.ui" line="46"/>
-        <location filename="../dialogs/dlgvolumen.ui" line="161"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgvolumen.ui" line="105"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="vanished">°C</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="112"/>
@@ -2614,9 +2538,8 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Waterbehandeling</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.ui" line="66"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="28"/>
@@ -2634,34 +2557,25 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.ui" line="77"/>
-        <source>Kg</source>
-        <translation>kg</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.ui" line="82"/>
-        <source>g</source>
-        <translation>g</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.ui" line="87"/>
-        <source>mg</source>
-        <translation>mg</translation>
-    </message>
-    <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="92"/>
+        <source>Stk.</source>
+        <translation>Stk.</translation>
+    </message>
+    <message>
+        <source>Kg</source>
+        <translation type="vanished">kg</translation>
+    </message>
+    <message>
+        <source>g</source>
+        <translation type="vanished">g</translation>
+    </message>
+    <message>
+        <source>mg</source>
+        <translation type="vanished">mg</translation>
+    </message>
+    <message>
         <source>Stk</source>
-        <translation>Stk</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.ui" line="97"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.ui" line="102"/>
-        <source>mL</source>
-        <translation></translation>
+        <translation type="vanished">Stk</translation>
     </message>
     <message>
         <source>l</source>
@@ -2747,15 +2661,12 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>&lt;handmatig&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="75"/>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="88"/>
         <source> (%1%)</source>
-        <translation> (%1%)</translation>
+        <translation type="vanished"> (%1%)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="95"/>
         <source>/l</source>
-        <translation>/l</translation>
+        <translation type="vanished">/l</translation>
     </message>
 </context>
 <context>
@@ -2786,13 +2697,8 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit verwijdert een &lt;span style=&quot; font-weight:600;&quot;&gt;Waterprofiel&lt;/span&gt; dat niet langer nodig is.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="162"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="328"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="487"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="527"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="541"/>
         <source>°dH</source>
-        <translation>°dH</translation>
+        <translation type="vanished">°dH</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasserprofile.ui" line="169"/>
@@ -2811,26 +2717,6 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
     <message>
         <source>mmol/l</source>
         <translation type="vanished">mmol/l</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="210"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="443"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="480"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="494"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="501"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="587"/>
-        <source>mg/L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="217"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="367"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="436"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="548"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="580"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="693"/>
-        <source>mmol/L</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasserprofile.ui" line="224"/>
@@ -3375,19 +3261,16 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Klaringsmiddel</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="785"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="785"/>
         <source>g</source>
-        <translation>g</translation>
+        <translation type="vanished">g</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="785"/>
         <source>mg</source>
-        <translation>mg</translation>
+        <translation type="vanished">mg</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="785"/>
@@ -3470,16 +3353,6 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Database (*.sqlite);;Alle Bestanden (*.*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="785"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="785"/>
-        <source>mL</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="788"/>
         <source>Sud ID</source>
         <translation>Brouwsel ID</translation>
@@ -3529,72 +3402,52 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation type="vanished">Hoeveelheid [l]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="798"/>
-        <location filename="../mainwindow.cpp" line="801"/>
         <source>Menge [L]</source>
-        <translation>Hoeveelheid [L]</translation>
+        <translation type="vanished">Hoeveelheid [L]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="799"/>
-        <location filename="../mainwindow.cpp" line="803"/>
         <source>SW [°P]</source>
-        <translation>SG [°P]</translation>
+        <translation type="vanished">SG [°P]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="800"/>
         <source>Bittere [IBU]</source>
-        <translation>Bitterheid [IBU]</translation>
+        <translation type="vanished">Bitterheid [IBU]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="802"/>
         <source>SHA [%]</source>
-        <translation>Efficiëntie [%]</translation>
+        <translation type="vanished">Efficiëntie [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="804"/>
         <source>Restextrakt [°P]</source>
-        <translation>Restextract [°P]</translation>
+        <translation type="vanished">Restextract [°P]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="805"/>
         <source>Schüttung [kg]</source>
-        <translation>Moutstort [kg]</translation>
+        <translation type="vanished">Moutstort [kg]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="806"/>
         <source>Kosten [%1/l]</source>
-        <translation>Kosten [%1/l]</translation>
+        <translation type="vanished">Kosten [%1/l]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="807"/>
-        <location filename="../mainwindow.cpp" line="883"/>
-        <location filename="../mainwindow.cpp" line="892"/>
         <source>Alk. [%]</source>
-        <translation>Alc. [%]</translation>
+        <translation type="vanished">Alc. [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="808"/>
-        <location filename="../mainwindow.cpp" line="884"/>
-        <location filename="../mainwindow.cpp" line="893"/>
         <source>sEVG [%]</source>
-        <translation>sEVG. [%]</translation>
+        <translation type="vanished">sEVG. [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="809"/>
-        <location filename="../mainwindow.cpp" line="885"/>
-        <location filename="../mainwindow.cpp" line="894"/>
         <source>tEVG [%]</source>
-        <translation>wEVG [%]</translation>
+        <translation type="vanished">wEVG [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="810"/>
         <source>Eff. SHA [%]</source>
-        <translation>Efficiency (eff.) [%]</translation>
+        <translation type="vanished">Efficiency (eff.) [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="811"/>
         <source>Verdampfungsrate [l/h]</source>
-        <translation>Verdampingsgraad [l/h]</translation>
+        <translation type="vanished">Verdampingsgraad [l/h]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="812"/>
@@ -3610,15 +3463,12 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Naam</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="816"/>
         <source>Menge [kg]</source>
-        <translation>Hoeveelheid [kg]</translation>
+        <translation type="vanished">Hoeveelheid [kg]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="817"/>
-        <location filename="../mainwindow.cpp" line="866"/>
         <source>Farbe [EBC]</source>
-        <translation>Kleur [EBC]</translation>
+        <translation type="vanished">Kleur [EBC]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="818"/>
@@ -3626,9 +3476,8 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>pH</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="819"/>
         <source>Max. Anteil [%]</source>
-        <translation>Max Aandeel.[%]</translation>
+        <translation type="vanished">Max Aandeel.[%]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="820"/>
@@ -3658,10 +3507,8 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Alternatieven</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="823"/>
-        <location filename="../mainwindow.cpp" line="837"/>
         <source>Preis [%1/kg]</source>
-        <translation>Prijs [%1/kg]</translation>
+        <translation type="vanished">Prijs [%1/kg]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="824"/>
@@ -3688,14 +3535,12 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Link</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="830"/>
         <source>Menge [g]</source>
-        <translation>Hoeveelheid [g]</translation>
+        <translation type="vanished">Hoeveelheid [g]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="831"/>
         <source>Alpha [%]</source>
-        <translation>Alpha [%]</translation>
+        <translation type="vanished">Alpha [%]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="832"/>
@@ -3710,10 +3555,93 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Type</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="798"/>
+        <location filename="../mainwindow.cpp" line="801"/>
+        <location filename="../mainwindow.cpp" line="816"/>
+        <location filename="../mainwindow.cpp" line="830"/>
         <location filename="../mainwindow.cpp" line="844"/>
         <location filename="../mainwindow.cpp" line="861"/>
         <source>Menge</source>
         <translation>Hoeveelheid</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="799"/>
+        <location filename="../mainwindow.cpp" line="803"/>
+        <source>SW</source>
+        <translation>Stamwort</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="800"/>
+        <source>Bittere</source>
+        <translation>Bitterheid</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="802"/>
+        <source>SHA</source>
+        <translation>Maisch efficiëntie</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="804"/>
+        <source>Restextrakt</source>
+        <translation>Restextract</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="805"/>
+        <source>Schüttung</source>
+        <translation>Moutstort</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="806"/>
+        <source>Kosten</source>
+        <translation>Kosten</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="808"/>
+        <location filename="../mainwindow.cpp" line="884"/>
+        <location filename="../mainwindow.cpp" line="893"/>
+        <source>sEVG</source>
+        <translation>sEVG</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="809"/>
+        <location filename="../mainwindow.cpp" line="885"/>
+        <location filename="../mainwindow.cpp" line="894"/>
+        <source>tEVG</source>
+        <translation>wEVG</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="810"/>
+        <source>Eff. SHA</source>
+        <translation>Efficiëntie brouwerij</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="811"/>
+        <source>Verdampfungsrate</source>
+        <translation>Verdampingsgraad</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="817"/>
+        <location filename="../mainwindow.cpp" line="866"/>
+        <source>Farbe</source>
+        <translation>Kleur</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="819"/>
+        <source>Max. Anteil</source>
+        <translation>Max Aandeel</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="823"/>
+        <location filename="../mainwindow.cpp" line="837"/>
+        <location filename="../mainwindow.cpp" line="854"/>
+        <location filename="../mainwindow.cpp" line="870"/>
+        <source>Preis</source>
+        <translation>Prijs</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="831"/>
+        <source>Alpha</source>
+        <translation>Alpha</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="847"/>
@@ -3726,24 +3654,16 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Droog/Vloeibaar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="849"/>
         <source>Würzemenge [L]</source>
-        <translation>Wortvolume [L]</translation>
+        <translation type="vanished">Wortvolume [L]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="870"/>
         <source>Preis [%1/[kg/L/Stk]]</source>
-        <translation>Prijs [%1/[kg/L/Stk.]</translation>
+        <translation type="vanished">Prijs [%1/[kg/L/Stk.]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="901"/>
-        <source>CO2 [g/L]</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="907"/>
         <source>Vermögen [L]</source>
-        <translation>Capaciteit [L]</translation>
+        <translation type="vanished">Capaciteit [L]</translation>
     </message>
     <message>
         <source>Würzemenge [l]</source>
@@ -3761,13 +3681,15 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="852"/>
+        <location filename="../mainwindow.cpp" line="882"/>
+        <location filename="../mainwindow.cpp" line="891"/>
+        <location filename="../mainwindow.cpp" line="900"/>
         <source>Temperatur</source>
         <translation>Temperatuur</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="854"/>
         <source>Preis [%1]</source>
-        <translation>Prijs [%1]</translation>
+        <translation type="vanished">Prijs [%1]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="862"/>
@@ -3775,9 +3697,8 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Eenheid</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="864"/>
         <source>Ausbeute [%]</source>
-        <translation>Rendement [%]</translation>
+        <translation type="vanished">Rendement [%]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="865"/>
@@ -3794,9 +3715,8 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Waterprofiel</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="877"/>
         <source>Restalkalität [°dH]</source>
-        <translation>Restalkaliteit [°dH]</translation>
+        <translation type="vanished">Restalkaliteit [°dH]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="880"/>
@@ -3806,22 +3726,16 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
         <translation>Datum</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="881"/>
-        <location filename="../mainwindow.cpp" line="890"/>
         <source>SRE [°P]</source>
-        <translation>SRE [°P]</translation>
+        <translation type="vanished">SRE [°P]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="882"/>
-        <location filename="../mainwindow.cpp" line="891"/>
-        <location filename="../mainwindow.cpp" line="900"/>
         <source>Temp. [°C]</source>
-        <translation>Temp. [°C]</translation>
+        <translation type="vanished">Temp. [°C]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="899"/>
         <source>Druck [bar]</source>
-        <translation>Druk [bar]</translation>
+        <translation type="vanished">Druk [bar]</translation>
     </message>
     <message>
         <source>CO2 [g/l]</source>
@@ -3835,6 +3749,56 @@ Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante 
     <message>
         <source>Vermögen [l]</source>
         <translation type="vanished">Capaciteit [l]</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="849"/>
+        <source>Würzemenge</source>
+        <translation>Wortvolume</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="864"/>
+        <source>Ausbeute</source>
+        <translation>Rendement</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="877"/>
+        <source>Restalkalität</source>
+        <translation>Restalkaliteit</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="881"/>
+        <location filename="../mainwindow.cpp" line="890"/>
+        <source>SRE</source>
+        <translation>SRE</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="807"/>
+        <location filename="../mainwindow.cpp" line="883"/>
+        <location filename="../mainwindow.cpp" line="892"/>
+        <source>Alkohol</source>
+        <translation>Alcohol</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="870"/>
+        <source>
+(%1/[kg/L/Stk.])</source>
+        <translation>
+(%1/[kg/L/Stk.])</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="899"/>
+        <source>Druck</source>
+        <translation>Druk</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="901"/>
+        <source>CO2</source>
+        <translation>CO2</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="907"/>
+        <source>Vermögen</source>
+        <translation>Capaciteit</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="908"/>
@@ -4238,19 +4202,12 @@ Versie geïnstalleerd: %2</translation>
         <translation>Restextract Jongbier</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="463"/>
-        <location filename="../tababfuellen.ui" line="490"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="361"/>
-        <location filename="../tababfuellen.ui" line="483"/>
-        <location filename="../tababfuellen.ui" line="559"/>
-        <location filename="../tababfuellen.ui" line="610"/>
-        <location filename="../tababfuellen.ui" line="624"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="695"/>
@@ -4270,11 +4227,8 @@ Versie geïnstalleerd: %2</translation>
         <translation>Restextrakt Snelle Vergistingsmonster</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="315"/>
-        <location filename="../tababfuellen.ui" line="354"/>
-        <location filename="../tababfuellen.ui" line="1506"/>
         <source>%vol</source>
-        <translation>%vol</translation>
+        <translation type="vanished">%vol</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="322"/>
@@ -4298,15 +4252,12 @@ Versie geïnstalleerd: %2</translation>
         <translation>Vulstopdruk</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="846"/>
         <source>bar</source>
-        <translation>bar</translation>
+        <translation type="vanished">bar</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="900"/>
-        <location filename="../tababfuellen.ui" line="1340"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="vanished">°C</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="907"/>
@@ -4380,10 +4331,8 @@ Versie geïnstalleerd: %2</translation>
         <translation>Carbonisatie</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1172"/>
-        <location filename="../tababfuellen.ui" line="1291"/>
         <source>g</source>
-        <translation>g</translation>
+        <translation type="vanished">g</translation>
     </message>
     <message>
         <source>ml</source>
@@ -4479,36 +4428,14 @@ Versie geïnstalleerd: %2</translation>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Als links de Temperatuur van het jongbier is ingevoerd, wordt hier de vereiste &lt;span style=&quot; font-weight:600;&quot;&gt;Vulstopdruk&lt;/span&gt; voor het Vat of ander soortgelijke Container voor rijping onder Druk opgegeven.&lt;/p&gt;&lt;p&gt;Met Vulstukdruk wordt de druk bedoeld waarmee &lt;span style=&quot; font-weight:600;&quot;&gt;Jongbier&lt;/span&gt; in een Vat zoals een Fust of Keg moet worden Gecarboniseerd. De Druk kan hier, anders dan bij een Fles, worden geregeld door een Reduceerventiel, zodat te veel Onvergist Wort of Suiker Geen ongeluk veroorzaakt, zoals dat bij Flesbommen wel het geval is. De Druk is afhankelijk van de Temperatuur. Hoe lager deze waarde is, hoe meer CO₂ kooldioxide in het Jongbier kan oplossen. Door de druk van de Gisting wordt de recens van een Bier aangepast.&lt;/p&gt;&lt;p&gt;In tegenstelling tot een natuurlijke gisting met Onvergist Wort, Restgist of Suiker, bestaat de mogelijkheid van &lt;span style=&quot; font-weight:600;&quot;&gt;Geforceerde Carbonatie&lt;/span&gt; in Vaten en soortgelijke Recipiënten. In dit geval wordt CO₂ toegevoegd door middel van een gasfles.&lt;/p&gt;&lt;p&gt;Met een &lt;a href=&quot;http://www.braulotse.de/fileadmin/user_upload/Schanktechnik/Drucktabelle.htm&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Tabel voor de Verzadigingsdruk van Kooldioxide &lt;/span&gt;&lt;/a&gt; is het eenvoudig om de juiste Druk voor Bier te bepalen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="981"/>
-        <location filename="../tababfuellen.ui" line="1018"/>
-        <location filename="../tababfuellen.ui" line="1454"/>
-        <location filename="../tababfuellen.ui" line="1461"/>
-        <location filename="../tababfuellen.ui" line="1666"/>
-        <location filename="../tababfuellen.ui" line="1693"/>
-        <location filename="../tababfuellen.cpp" line="38"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../tababfuellen.ui" line="1088"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Bierverlust&lt;/span&gt; aufgrund von Ab- oder Umfüllen auf das Reife- oder Gärgefäß oder die Flasche.&lt;/p&gt;&lt;p&gt;Der Wert ist durch Hefe oder Hopfen oder Zusätze in der Nachgärung beeinflusst sowie durch Zutaten, die Flüssigkeit binden, aber auch durch die entnommene Speisemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berekent de Kleiner Brauhelfer het &lt;span style=&quot; font-weight:600;&quot;&gt;Bierverlies&lt;/span&gt; als gevolg van het Overhevelen naar een Rijpings- of Gistingsvat of de Fles.&lt;/p&gt;&lt;p&gt;De waarde wordt beïnvloed door Gist of Hop of Toevoegingen in de Tweede Gisting, evenals door ingrediënten die Vloeistof binden, maar ook door de hoeveelheid verwijderde Onvergist Wort.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1252"/>
-        <source>g/L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../tababfuellen.ui" line="1298"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die&lt;span style=&quot; font-weight:600;&quot;&gt; Konzentation&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Zuckerlösung&lt;/span&gt;. Diese berechnete Angabe hat allein informativen Wert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt de&lt;span style=&quot; font-weight:600;&quot;&gt; Concentratie&lt;/span&gt; van de &lt;span style=&quot; font-weight:600;&quot;&gt;Suikeroplossing ingegeven&lt;/span&gt;. Deze berekende specificatie heeft alleen informatieve waarde.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="1441"/>
-        <location filename="../tababfuellen.ui" line="1474"/>
-        <source>mL</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1602"/>
@@ -5319,12 +5246,8 @@ Afvuldatum: %1</translation>
         <translation>Kookbegin</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="422"/>
-        <location filename="../tabbraudaten.ui" line="845"/>
-        <location filename="../tabbraudaten.ui" line="1354"/>
-        <location filename="../tabbraudaten.ui" line="1580"/>
         <source>cm</source>
-        <translation>cm</translation>
+        <translation type="vanished">cm</translation>
     </message>
     <message>
         <source>l</source>
@@ -5377,25 +5300,12 @@ Afvuldatum: %1</translation>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit veld wordt gebruikt voor de &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatuurgecorrigeerde&lt;/span&gt; berekening van de &lt;span style=&quot; font-weight:600;&quot;&gt;Gewenste hoeveelheid Wort&lt;/span&gt;&lt;/p&gt;&lt;p&gt;De basis hiervoor is de hoeveelheid Wort in het Recept, die wordt berekend bij 20°C. &lt;/p&gt;&lt;p&gt;Het grootste volume wordt bereikt bij 100°C. Het is raadzaam om enige marge te houden tot aan de bovenrand van de ketel, want hopschuim kan tot aan eind sterk doorkoken, het brouwsel kan daarmee overkoken.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="541"/>
-        <location filename="../tabbraudaten.ui" line="1150"/>
-        <location filename="../tabbraudaten.ui" line="1865"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="vanished">°C</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="305"/>
-        <location filename="../tabbraudaten.ui" line="451"/>
-        <location filename="../tabbraudaten.ui" line="464"/>
-        <location filename="../tabbraudaten.ui" line="1179"/>
-        <location filename="../tabbraudaten.ui" line="1395"/>
-        <location filename="../tabbraudaten.ui" line="1648"/>
-        <location filename="../tabbraudaten.ui" line="1858"/>
-        <location filename="../tabbraudaten.ui" line="2378"/>
-        <location filename="../tabbraudaten.ui" line="2485"/>
-        <location filename="../tabbraudaten.ui" line="2645"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="785"/>
@@ -5410,14 +5320,8 @@ Afvuldatum: %1</translation>
         <translation>&quot;Koken&quot; met meer ingrediënten</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="264"/>
-        <location filename="../tabbraudaten.ui" line="761"/>
-        <location filename="../tabbraudaten.ui" line="1249"/>
-        <location filename="../tabbraudaten.ui" line="2085"/>
-        <location filename="../tabbraudaten.ui" line="2352"/>
-        <location filename="../tabbraudaten.ui" line="2605"/>
         <source>°Brix</source>
-        <translation>°Brix</translation>
+        <translation type="vanished">°Brix</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="362"/>
@@ -5525,11 +5429,8 @@ Afvuldatum: %1</translation>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit veld toont de beoogde hoeveelheid wort bij 100°C. Dit is gebaseerd op de grondstoffen en de processtappen in het recept. Het volume is hoger dan in gekoelde toestand. Via het aangrenzende invoerveld kan het verschillende volume bij elke temperatuur worden weergegeven. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="944"/>
-        <location filename="../tabbraudaten.ui" line="1926"/>
-        <location filename="../tabbraudaten.ui" line="1984"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1087"/>
@@ -5701,32 +5602,6 @@ Afvuldatum: %1</translation>
         <location filename="../tabbraudaten.ui" line="2237"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwürzemenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Der Wert kann sich je nach &lt;span style=&quot; font-weight:600;&quot;&gt;Brauverfahren&lt;/span&gt; von der Würzemenge nach dem Hopfenseihen unterscheiden, etwa wenn ein Hefestarter oder Zusätze wie Honig, Zucker oder Sirup zur Gärung hinzugegeben werden. In allen Fällen ist die Gesamtwürzemenge die maximale Menge des Brautages mitsamt etwaiger Speisemenge. Diese wird im nächsten Schritt, so benötigt, abgezogen. Ein Klick auf das Widget rechts öffnet ein schwebendes Fenster und hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Die Gesamtwürzemenge unterscheidet sich bei Entnahme von &lt;span style=&quot; font-weight:600;&quot;&gt;Speise&lt;/span&gt; für die spätere Karbonisierung signifikant von der Anstellmenge. Wird keine Speise entnommen, sind Würzemenge und Anstellmenge identisch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;Totale hoeveelheid Wort&lt;/span&gt; ingevoerd.&lt;/p&gt;&lt;p&gt;De waarde kan verschillen van de hoeveelheid Wort na het zeven/uitlekken van de hop, afhankelijk van de &lt;span style=&quot; font-weight:600;&quot;&gt;Brouwmethode&lt;/span&gt;, bijvoorbeeld als een Giststarter of Toevoegingen zoals Honing, Suiker of Siroop aan de fermentatie zijn toegevoegd. In alle gevallen is de totale hoeveelheid wort de maximale hoeveelheid van de brouwdag, inclusief de hoeveelheid Onvergist Wort. Dit wordt afgetrokken in de volgende stap, indien nodig. Als u op de widget rechts klikt, wordt een zwevend venster geopend en wordt u geholpen bij de berekening.&lt;/p&gt;&lt;p&gt;De totale hoeveelheid Wort verschilt aanzienlijk van de ingestelde hoeveelheid als &lt;span style=&quot; font-weight:600;&quot;&gt;Onvergist Wort&lt;/span&gt; wordt afgetapt voor de daaropvolgende Carbonisatie. Als er geen Onvergist Wort wordt afgetapt, zijn de hoeveelheid Wort en de instelhoeveelheid identiek.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="315"/>
-        <location filename="../tabbraudaten.ui" line="632"/>
-        <location filename="../tabbraudaten.ui" line="675"/>
-        <location filename="../tabbraudaten.ui" line="1080"/>
-        <location filename="../tabbraudaten.ui" line="1265"/>
-        <location filename="../tabbraudaten.ui" line="1402"/>
-        <location filename="../tabbraudaten.ui" line="1609"/>
-        <location filename="../tabbraudaten.ui" line="1655"/>
-        <location filename="../tabbraudaten.ui" line="1878"/>
-        <location filename="../tabbraudaten.ui" line="2018"/>
-        <location filename="../tabbraudaten.ui" line="2180"/>
-        <location filename="../tabbraudaten.ui" line="2187"/>
-        <location filename="../tabbraudaten.ui" line="2201"/>
-        <location filename="../tabbraudaten.ui" line="2422"/>
-        <location filename="../tabbraudaten.ui" line="2638"/>
-        <location filename="../tabbraudaten.cpp" line="46"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1159"/>
-        <location filename="../tabbraudaten.ui" line="1491"/>
-        <source>L/h</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1674"/>
@@ -5921,12 +5796,8 @@ Brouwdatum: %1</translation>
         <translation>Labelformaat</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="367"/>
-        <location filename="../tabetikette.ui" line="437"/>
-        <location filename="../tabetikette.ui" line="558"/>
-        <location filename="../tabetikette.ui" line="591"/>
         <source>mm</source>
-        <translation>mm</translation>
+        <translation type="vanished">mm</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="30"/>
@@ -6144,7 +6015,7 @@ Brouwdatum: %1</translation>
     <name>TabGaerverlauf</name>
     <message>
         <location filename="../tabgaerverlauf.ui" line="38"/>
-        <location filename="../tabgaerverlauf.cpp" line="157"/>
+        <location filename="../tabgaerverlauf.cpp" line="156"/>
         <source>Schnellgärprobe</source>
         <translation>Snelle vergistingsmonster</translation>
     </message>
@@ -6248,31 +6119,24 @@ Brouwdatum: %1</translation>
         <translation type="vanished">Restextract [°P]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="346"/>
-        <location filename="../tabgaerverlauf.cpp" line="368"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
         <source>Alkohol [%]</source>
         <translation type="vanished">Alcohol [%]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="347"/>
-        <location filename="../tabgaerverlauf.cpp" line="369"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <source>Temperatur [°C]</source>
         <translation type="vanished">Temperatuur [°C]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="348"/>
-        <location filename="../tabgaerverlauf.cpp" line="370"/>
-        <location filename="../tabgaerverlauf.cpp" line="395"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="vanished">°C</translation>
     </message>
     <message>
         <source>Temperatur °C</source>
@@ -6291,68 +6155,62 @@ Brouwdatum: %1</translation>
         <translation type="vanished">Druk [bar]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="346"/>
-        <location filename="../tabgaerverlauf.cpp" line="368"/>
+        <location filename="../tabgaerverlauf.cpp" line="345"/>
+        <location filename="../tabgaerverlauf.cpp" line="367"/>
         <source>Restextrakt</source>
         <translation>Restextract</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="347"/>
-        <location filename="../tabgaerverlauf.cpp" line="369"/>
+        <location filename="../tabgaerverlauf.cpp" line="346"/>
+        <location filename="../tabgaerverlauf.cpp" line="368"/>
         <source>Alkohol</source>
         <translation>Alcohol</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="348"/>
-        <location filename="../tabgaerverlauf.cpp" line="370"/>
-        <location filename="../tabgaerverlauf.cpp" line="395"/>
+        <location filename="../tabgaerverlauf.cpp" line="347"/>
+        <location filename="../tabgaerverlauf.cpp" line="369"/>
+        <location filename="../tabgaerverlauf.cpp" line="394"/>
         <source>Temperatur</source>
         <translation>Temperatuur</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="393"/>
+        <location filename="../tabgaerverlauf.cpp" line="392"/>
         <source>CO₂</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="393"/>
-        <source>g/L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../tabgaerverlauf.cpp" line="394"/>
         <source>bar</source>
-        <translation>bar</translation>
+        <translation type="vanished">bar</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="394"/>
+        <location filename="../tabgaerverlauf.cpp" line="393"/>
         <source>Druck</source>
         <translation>Druk</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="465"/>
-        <location filename="../tabgaerverlauf.cpp" line="596"/>
-        <location filename="../tabgaerverlauf.cpp" line="631"/>
+        <location filename="../tabgaerverlauf.cpp" line="464"/>
+        <location filename="../tabgaerverlauf.cpp" line="595"/>
+        <location filename="../tabgaerverlauf.cpp" line="630"/>
         <source>CSV Datei auswählen</source>
         <translation>CVS Bestand selecteren</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="467"/>
-        <location filename="../tabgaerverlauf.cpp" line="598"/>
-        <location filename="../tabgaerverlauf.cpp" line="633"/>
+        <location filename="../tabgaerverlauf.cpp" line="466"/>
+        <location filename="../tabgaerverlauf.cpp" line="597"/>
+        <location filename="../tabgaerverlauf.cpp" line="632"/>
         <source>CSV Datei (*.csv);;Alle Dateien (*.*)</source>
         <translation>CSV Bestanden (*.csv);;Alle Bestanden (*.*)</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="761"/>
-        <location filename="../tabgaerverlauf.cpp" line="836"/>
-        <location filename="../tabgaerverlauf.cpp" line="910"/>
+        <location filename="../tabgaerverlauf.cpp" line="760"/>
+        <location filename="../tabgaerverlauf.cpp" line="835"/>
+        <location filename="../tabgaerverlauf.cpp" line="909"/>
         <source>Gärverlauf</source>
         <translation>Gistingsproces</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="762"/>
-        <location filename="../tabgaerverlauf.cpp" line="837"/>
+        <location filename="../tabgaerverlauf.cpp" line="761"/>
+        <location filename="../tabgaerverlauf.cpp" line="836"/>
         <source>Nicht alle Einträge konnten importiert werden.
 Unterstütztes Format:
 Datum1;Restextrakt1;Temperatur1[;Bemerkung1]
@@ -6363,7 +6221,7 @@ Datum1;Extract1;Temperatuur1[;Comment1]
 Datum2;Extract2;Temperatuur2[;Comment2]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="911"/>
+        <location filename="../tabgaerverlauf.cpp" line="910"/>
         <source>Nicht alle Einträge konnten importiert werden.
 Unterstütztes Format:
 Datum1;Druck1;Temperatur1[;Bemerkung1]
@@ -6398,10 +6256,8 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
         <translation>Stamwort</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="133"/>
-        <location filename="../tabrezept.ui" line="161"/>
         <source>min</source>
-        <translation>min</translation>
+        <translation type="vanished">min</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="140"/>
@@ -6430,12 +6286,8 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
         <translation type="vanished">CO2 gehalte</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="201"/>
-        <location filename="../tabrezept.ui" line="489"/>
-        <location filename="../tabrezept.ui" line="516"/>
-        <location filename="../tabrezept.ui" line="3577"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="208"/>
@@ -6469,9 +6321,8 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
         <translation>High-Gravity Factor</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="366"/>
         <source>IBU</source>
-        <translation>IBU</translation>
+        <translation type="vanished">IBU</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="373"/>
@@ -6519,16 +6370,8 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
         <translation>Hoeveelheid</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="660"/>
-        <location filename="../tabrezept.ui" line="1586"/>
-        <location filename="../tabrezept.ui" line="2835"/>
-        <location filename="../tabrezept.ui" line="2954"/>
-        <location filename="../tabrezept.ui" line="2971"/>
-        <location filename="../tabrezept.ui" line="3069"/>
-        <location filename="../tabrezept.ui" line="3145"/>
-        <location filename="../tabrezept.ui" line="3228"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="667"/>
@@ -6712,11 +6555,8 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
         <translation>Maisch aangepast</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2119"/>
-        <location filename="../tabrezept.ui" line="2151"/>
-        <location filename="../tabrezept.ui" line="2203"/>
         <source>°dH</source>
-        <translation>°dH</translation>
+        <translation type="vanished">°dH</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1457"/>
@@ -6834,36 +6674,9 @@ Datum2;Druk2;Temperatuur2[;Comment2]</translation>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Als u op deze knop klikt, wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;gemiddelde Brouwzaalrendement&lt;/span&gt; van de&lt;span style=&quot; font-weight:600;&quot;&gt; Installatie&lt;/span&gt; overgenomen.&lt;/p&gt;&lt;p&gt;De Installatiewaarde voor de Brouwzaalrendement wordt ingesteld in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Installaties&lt;/span&gt;. Standaard worden de waarden van alle Brouwsels meegenomen in een &lt;span style=&quot; font-weight:600;&quot;&gt;Gemiddelde&lt;/span&gt; waarde. Indien dit niet gewenst is, kan het aantal Brouwsels waarmee rekening wordt gehouden worden beperkt in het Tabblad Installatie of kan de waarde hier Handmatig worden ingevoerd en deze knop worden genegeerd.&lt;/p&gt;&lt;p&gt;Het aanpassen van de Gemiddelde Waarde heeft vooral zin als het Brouwproces is geoptimaliseerd of gewijzigd, waardoor de waarde van de Installatie op de lange termijn verschilt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="453"/>
-        <location filename="../tabrezept.ui" line="3522"/>
-        <source>L/h</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../tabrezept.ui" line="466"/>
-        <location filename="../tabrezept.ui" line="1641"/>
-        <location filename="../tabrezept.ui" line="3321"/>
-        <location filename="../tabrezept.ui" line="3328"/>
-        <location filename="../tabrezept.ui" line="3348"/>
-        <location filename="../tabrezept.ui" line="3477"/>
-        <location filename="../tabrezept.ui" line="3613"/>
-        <location filename="../tabrezept.ui" line="3703"/>
-        <location filename="../tabrezept.ui" line="3733"/>
-        <location filename="../tabrezept.ui" line="3740"/>
-        <location filename="../tabrezept.ui" line="3844"/>
-        <location filename="../tabrezept.cpp" line="129"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../tabrezept.ui" line="473"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Ausbeute erwartet, z.B. durch spezielle Malzgaben, kann der Wert hier verändert werden.&lt;/p&gt;&lt;p&gt;Die Sudhausausbeute beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. 60% gelten als Durchschnitt. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Die Sudhausausbeute der Anlage wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;eingestellt. Der Wert ist eine Kenngröße für korrekte Berechnungen im Kleinen Brauhelfer. Ist die Sudhausausbeute unbekannt, empfiehlt es sich, den voreingestellte Wert des Kleinen Brauhelfers beizubehalten. Bei einer zu positiven Annahme besteht die Gefahr eines zu dünnen Bieres: Die Wassermenge wird nicht korrekt berechnet, die angestrebte Stammwürze  nicht erreicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Het &lt;span style=&quot; font-weight:600;&quot;&gt;Brouwzaalrendement&lt;/span&gt; voor het Brouwsel kan hier worden ingevoerd. Normaal gesproken moet de Installatiewaarde worden aangenomen. Als een ander Rendement wordt verwacht, bijvoorbeeld door Speciale Mouttoevoegingen, kan de waarde hier worden gewijzigd.&lt;/p&gt;&lt;p&gt;Het brouwzaalrendement beschrijft de Efficiëntie van het Brouwsysteem. In de hobbysector is 70% de doelstelling, maar in werkelijkheid ligt de waarde meestal lager. 60% wordt als Gemiddeld beschouwd. In de professionele sector wordt gestreefd naar 80%.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Let op: &lt;/span&gt;De opbrengst van de brouwinstallatie wordt ingesteld in de &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Installatie &lt;/span&gt;. De waarde is een parameter voor correcte berekeningen in de Kleiner Brauhelfer. Als de opbrengst van de Brouwinstallatie onbekend is, wordt aanbevolen de vooraf ingestelde waarde van de Kleiner Brauhelfer aan te houden. Als de aanname te Positief is, bestaat het risico dat het Bier te dun is: de Watervolume wordt niet juist berekend en het beoogde Stamwort wordt niet bereikt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../tabrezept.ui" line="496"/>
-        <source>g/L</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="503"/>
@@ -7264,9 +7077,8 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier toont de Kleiner Brauhelfer de geschatte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierkleur&lt;/span&gt; aan in EBC. &lt;span style=&quot; font-weight:600;&quot;&gt;EBC&lt;/span&gt; is de gestandaardiseerde Kleursterkte van de European Brewers Convention. &lt;/p&gt;&lt;p&gt;In de Amerikaanse regio is de voorkeur voor de beschrijving van Bierkleur SRM.&lt;/p&gt;&lt;p&gt;Voor de juiste weergave van Bierkleur wordt een Monitor aanbevolen die gekalibreerd is voor Daglicht. De berekening van de Bierkleur is gebaseerd op de Kleurwaarden in de rubrieken Mout en toevoegingen van het Tabblad Grondstoffen en de Correctiefactor voor de Bierkleur in het Tabblad Installatie.&lt;/p&gt;&lt;p&gt;De Installatiespecifieke Afwijking van de Kleurwaarde kan in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Installatie&lt;/span&gt; programmabreed worden ingesteld.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2677"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2684"/>
@@ -7274,14 +7086,12 @@ p, li { white-space: pre-wrap; }
         <translation>Restextract</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2697"/>
         <source>EBC</source>
-        <translation>EBC</translation>
+        <translation type="vanished">EBC</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2759"/>
         <source>%vol</source>
-        <translation>%vol</translation>
+        <translation type="vanished">%vol</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2845"/>
@@ -7677,14 +7487,12 @@ p, li { white-space: pre-wrap; }
         <translation>Moet brouwsel &quot;%1&quot; verwijderd worden?</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl_sudinfo.cpp" line="197"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl_sudinfo.cpp" line="233"/>
         <source>g</source>
-        <translation>g</translation>
+        <translation type="vanished">g</translation>
     </message>
 </context>
 <context>
@@ -7913,10 +7721,8 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>WdgHopfenGabe</name>
     <message>
-        <location filename="../widgets/wdghopfengabe.ui" line="150"/>
-        <location filename="../widgets/wdghopfengabe.ui" line="398"/>
         <source>g</source>
-        <translation>g</translation>
+        <translation type="vanished">g</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="163"/>
@@ -7929,12 +7735,8 @@ p, li { white-space: pre-wrap; }
         <translation>In voorraad</translation>
     </message>
     <message>
-        <location filename="../widgets/wdghopfengabe.ui" line="201"/>
-        <location filename="../widgets/wdghopfengabe.ui" line="323"/>
-        <location filename="../widgets/wdghopfengabe.ui" line="350"/>
-        <location filename="../widgets/wdghopfengabe.ui" line="622"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="215"/>
@@ -7942,14 +7744,12 @@ p, li { white-space: pre-wrap; }
         <translation>Hoeveelheid</translation>
     </message>
     <message>
-        <location filename="../widgets/wdghopfengabe.ui" line="228"/>
         <source>IBU</source>
-        <translation>IBU</translation>
+        <translation type="vanished">IBU</translation>
     </message>
     <message>
-        <location filename="../widgets/wdghopfengabe.ui" line="303"/>
         <source>min</source>
-        <translation>min</translation>
+        <translation type="vanished">min</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="310"/>
@@ -8014,11 +7814,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../widgets/wdghopfengabe.ui" line="330"/>
         <source>Bittere</source>
         <translation>Bitterheid</translation>
-    </message>
-    <message>
-        <location filename="../widgets/wdghopfengabe.ui" line="363"/>
-        <source>g/L</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="376"/>
@@ -8115,9 +7910,8 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In dit veld wordt het &lt;span style=&quot; font-weight:600;&quot;&gt;Extractgehalte&lt;/span&gt;  van het &lt;span style=&quot; font-weight:600;&quot;&gt;Mout&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato&lt;/span&gt; weergegeven, op basis van de vermelding in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Grondstoffen&lt;/span&gt;.De Kleiner Brauhelfer gaat met mout.altijd uit van 100% rendement &lt;/p&gt;&lt;p&gt;De waarde in °Plato kan dan worden aangepast, zodat een verdeling van de mouten over het Stamwort de voorkeur krijgt.&lt;/p&gt;&lt;p&gt;Daarnaast zijn het onderwerp extract in de mout en de enzymatische eigenschappen ervan veeleisend voor verschillende mout- en eestprocessen. Als u hierover vragen hebt, zijn de gespecialiseerde forums en de Sites van Mouterijen aan te bevelen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgmalzgabe.ui" line="372"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="392"/>
@@ -8125,10 +7919,8 @@ p, li { white-space: pre-wrap; }
         <translation>Extract</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgmalzgabe.ui" line="244"/>
-        <location filename="../widgets/wdgmalzgabe.ui" line="257"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="86"/>
@@ -8156,10 +7948,8 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt de &lt;span style=&quot; font-weight:600;&quot;&gt;Aandeel Mout&lt;/span&gt; in de Moutstort gedefinieerd aan de hand van &lt;span style=&quot; font-weight:600;&quot;&gt;Gewicht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;De berekening houdt rechtstreeks verband met de procentuele verdeling in het rechter veld.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgmalzgabe.ui" line="169"/>
-        <location filename="../widgets/wdgmalzgabe.ui" line="385"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="218"/>
@@ -8206,13 +7996,8 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Aandeel</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="269"/>
-        <location filename="../widgets/wdgrast.ui" line="497"/>
-        <location filename="../widgets/wdgrast.ui" line="530"/>
-        <location filename="../widgets/wdgrast.ui" line="594"/>
-        <location filename="../widgets/wdgrast.ui" line="654"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="vanished">°C</translation>
     </message>
     <message>
         <source>Wassermenge</source>
@@ -8260,11 +8045,8 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Inmaischtijd</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="186"/>
-        <location filename="../widgets/wdgrast.ui" line="199"/>
-        <location filename="../widgets/wdgrast.ui" line="407"/>
         <source>min</source>
-        <translation>min</translation>
+        <translation type="vanished">min</translation>
     </message>
     <message>
         <source>l</source>
@@ -8314,12 +8096,6 @@ p, li { white-space: pre-wrap; }
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird, abhängig vom Maischverfahren, der prozentuale &lt;span style=&quot; font-weight:600;&quot;&gt;Anteil&lt;/span&gt; am &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; festgelegt. Automatisch trägt der Kleine Brauhelfer hier zunächst 100% ein.&lt;/p&gt;&lt;p&gt;Die verschiedenen Maischverfahren gehen hierbei unterschiedlich vor:&lt;/p&gt;&lt;p&gt;1.) Beim Aufheizverfahren (Kesselmaische) legt der Kleine Brauhelfer automatisch 100% fest. Wir zugebrüht oder eine Dekoktion gefahren, wird hier der Anteil am Hauptguss manuell gestgelegt.&lt;/p&gt;&lt;p&gt;Üblicherweise gibt man beim &lt;span style=&quot; font-weight:600; color:#0000ff;&quot;&gt;Aufheizen&lt;/span&gt; 100% vom Hauptguss hinzu. Ausnahmen bestehen, wenn schlecht gelöste Rohfrucht separat gekocht werden muss. Bei Mais und Verwandten sind in Spezialfragen die Fachforen erste Adresse, weniger die Fachbücher.&lt;/p&gt;&lt;p&gt;Beim Zubrühen (Infusion, Bottichmaische) den Verfahren &lt;span style=&quot; font-weight:600;&quot;&gt;aufsteigende Infusion &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;Dekoktion&lt;/span&gt; wird mit &lt;span style=&quot; font-weight:600;&quot;&gt;Teilmaischen&lt;/span&gt; gearbeitet.&lt;/p&gt;&lt;p&gt;2.) Das &lt;span style=&quot; font-weight:600; color:#0000ff;&quot;&gt;Zubrühen&lt;/span&gt; hat gegenüber Dekoktion den Vorteil, dass weniger Lufteintrag erfolgt. Das Bier wird heller. Üblicherweise wird hier schon bei 50°C zur Eiweißrast für 30 min eingemaischt, dann die &lt;span style=&quot; font-weight:600;&quot;&gt;β-Amylase&lt;/span&gt; während der &lt;span style=&quot; font-weight:600;&quot;&gt;Maltoserast&lt;/span&gt; für 60 min gefahren und für weitere 60 min die &lt;span style=&quot; font-weight:600;&quot;&gt;ɑ-Amylase&lt;/span&gt; als &lt;span style=&quot; font-weight:600;&quot;&gt;Verzuckerungsrast&lt;/span&gt; bei 70–72 °C gefahren. Maischen im Zubrühverfahren ist zeitaufwendig. Unter 2 Stunden bezeichnet man es daher als &lt;span style=&quot; font-weight:600;&quot;&gt;Kurzmaischverfahren&lt;/span&gt;. Hier wird überlicherweise ab 60–62°C eingemaischt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt;3.) Bei der &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-weight:600; color:#0000ff;&quot;&gt;Dekoktion&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; wird in mehreren Schritten ein Teil der Maische in der kleineren Maischpfanne aufgekocht und danach wieder der Hauptmaische im größeren Maischebottich zugeführt. Die Temperatur der ganzen Maische steigt somit schrittweise an. Dieser Vorgang wird mehrmals wiederholt, bis die Abmaischtemperatur erreicht ist.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt;Das Kochen der &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-weight:600;&quot;&gt;Teilmaische&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; verändert die Extraktstoffe, führt zu anderen Aromen, mehr Farbe und allenfalls einer angenehmen Restsüße. Unterschieden wird das &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-style:italic;&quot;&gt;Einmaischverfahren&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; (für Biere aller Art), das &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-style:italic;&quot;&gt;Zweimaischverfahren&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; (für helle Biere) und das &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-style:italic;&quot;&gt;Dreimaischverfahren&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; (für dunkle Biere). Für Ungedulige gibt es da Hoch-Kurz-Verfahren.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt;Für Näheres hierzu ziehe man die Fachliteratur oder ein Fachforum heran.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="vanished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt, afhankelijk van de Maischmethode, het percentuele &lt;span style=&quot; font-weight:600;&quot;&gt;Aandeel&lt;/span&gt; van het &lt;span style=&quot; font-weight:600;&quot;&gt;Maischwater&lt;/span&gt; bepaald. De Kleiner Brauhelfer komt hier automatisch als eerste 100% binnen.&lt;/p&gt;&lt;p&gt;De verschillende manieren van maischen gaan hier verschillend te werk:&lt;/p&gt;&lt;p&gt;1.) Tijdens het opwarmingsproces (Infusie) stelt de Kleiner Brauhelfer automatisch 100% in. Bij Water Toevoegen of Decoctie wordt het aandeel van het Maischwater handmatig ingesteld.&lt;/p&gt;&lt;p&gt;Gewoonlijk wordt bij het opwarmen 100% van het maischwater toegevoegd. Uitzonderingen bestaan als slecht opgeloste ongemoute granen apart moeten worden gekookt. Voor maïs en zijn verwanten is de beste plek voor speciale vragen, de gespecialiseerde forums.&lt;/p&gt;&lt;p&gt;Bij het Water Toevoegen (Infusie) het &lt;span style=&quot; font-weight:600;&quot;&gt;Stijgende Infusie &lt;/span&gt;en&lt;span style=&quot; font-weight:600;&quot;&gt; Decoctie &lt;/span&gt;wordt met &lt;span style=&quot; font-weight:600;&quot;&gt;Deelbeslag &lt;/span&gt;gewerkt.&lt;/p&gt;&lt;p&gt;2.) Het &lt;span style=&quot; font-weight:600; color:#0000ff;&quot;&gt;Water Toevoegen &lt;/span&gt;heeft tenopzichte van Decoctie het voordeel dat er minder lucht binnenkomt. Het bier wordt lichter. Normaal gesproken wordt gedurende 30 minuten bij 50°C ingemaisched, Eiwitrust, waarna de &lt;span style=&quot; font-weight:600;&quot;&gt;β-Amylase&lt;/span&gt; tijdens de &lt;span style=&quot; font-weight:600;&quot;&gt;Maltoserust&lt;/span&gt; gedurende 60 minuten en nog eens 60 minuten de &lt;span style=&quot; font-weight:600;&quot;&gt;ɑ-amylase&lt;/span&gt; als &lt;span style=&quot; font-weight:600;&quot;&gt;Versuikeringsrust&lt;/span&gt; bij 70–72 °C uitgevoerd. Maischen in het brouwproces is tijdrovend. Onder de 2 uur heet het dus&lt;span style=&quot; font-weight:600;&quot;&gt;Korte maischprocedure&lt;/span&gt;. Hier begint het maischen meestal bij 60-62°C.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt;3.) Bij de &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-weight:600; color:#0000ff;&quot;&gt;Decoctie&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; wordt in meerdere stappen een Deel van de Maisch opgekookt in de kleinere Maischkuip en vervolgens weer toegevoegd aan de hoofdmaisch in de grotere Maischketel. De temperatuur van het hele beslag neemt dus stap voor stap toe. Dit proces wordt verschillende keren herhaald totdat de maisch temperatuur is bereikt.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt;Het koken van de &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-weight:600;&quot;&gt;Deelmaisch&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; verandert de extractstoffen, leidt tot andere Aroma&apos;s, meer Kleur en in het beste geval een Aangename Restzoetheid. Er wordt een onderscheid gemaakt tussen het &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-style:italic;&quot;&gt;Inmaischproces&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; (voor alle soorten Bier), de &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-style:italic;&quot;&gt;Dubbele Maischproces&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; (voor lichte Bieren) en de &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-style:italic;&quot;&gt;Trippel Maischproces&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; (voor donkere Bieren). Voor de ongeduldigen zijn er hoogkorte procedures.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt;Voor meer details hierover raadpleegt u de vakliteratuur of een gespecialiseerd forum.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <location filename="../widgets/wdgrast.ui" line="282"/>
-        <location filename="../widgets/wdgrast.ui" line="543"/>
-        <source>L</source>
-        <translation></translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Einmaischtemperatur&lt;/span&gt; für &lt;span style=&quot; font-weight:600;&quot;&gt;alle Maischverfahren&lt;/span&gt; angegeben. Die Schüttungstemperatur liegt&lt;/p&gt;&lt;p&gt;Hintergrund: Durch die niedrigere Schüttungstemperatur reduziert sich die reale Einmaischtemperatur, sobald Malz in Wasser gegeben wird. Dies muss durch eine höhere Wassertemperatur beim Einmaischen kompensiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -8377,9 +8153,8 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt het aandeel voor een &lt;span style=&quot; font-weight:600;&quot;&gt;Deelmaisch &lt;/span&gt;in de Decoctie &lt;span style=&quot; font-weight:600;&quot;&gt; handmatig&lt;/span&gt; aangepast. Met de keuze voor een Deelmaisch draagt de Kleiner Brauhelfer hier de &lt;span style=&quot; font-weight:600;&quot;&gt;Deelfactor&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt; automatisch&lt;/span&gt; in.In de regel hoeft deze waarde dus niet te worden aangepast. &lt;/p&gt;&lt;p&gt;Voor Decocotie zijn deelbrouwsels van 33% of 60% gebruikelijk. Dit veld is bedoeld voor afwijkingen hiervan.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="206"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="219"/>
@@ -8392,11 +8167,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="295"/>
-        <location filename="../widgets/wdgrast.ui" line="452"/>
-        <location filename="../widgets/wdgrast.ui" line="510"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="327"/>
@@ -8673,9 +8445,8 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wordt een brouwzout of een brouwzuur geselecteerd. &lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;De Kleiner Brauhelfer  biedt voorgeconfigureerde toevoegingen op maat. Het is echter ook mogelijk een onbekende toevoeging te definiëren.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Let op: &lt;/span&gt;Alle additieven kunnen worden aangepast. Zonder de juiste expertise kan dit alleen maar worden ontmoedigd. In het beste geval hoef je het bier alleen maar weg te gieten, in het slechtste geval dreigt er een &lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;schade aan de gezondheid&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.ui" line="234"/>
         <source>°dH</source>
-        <translation>°dH</translation>
+        <translation type="vanished">°dH</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="311"/>
@@ -8698,9 +8469,8 @@ p, li { white-space: pre-wrap; }
         <translation>Maischwater</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.cpp" line="90"/>
         <source>/l</source>
-        <translation>/l</translation>
+        <translation type="vanished">/l</translation>
     </message>
 </context>
 <context>
@@ -8784,12 +8554,6 @@ p, li { white-space: pre-wrap; }
         <translation>Hoeveelheid</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="233"/>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="246"/>
-        <source>g</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>g/l</source>
         <translation type="vanished">g/l</translation>
     </message>
@@ -8819,9 +8583,8 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Het tijdstip van toevoeging van verdere ingrediënten vanaf de brouwdatum wordt hier aangegeven. De brouwdatum is meestal gelijk aan de datum van het toevoegen van de gist, maar kan ook vóór de toevoeging van de gist liggen, bijvoorbeeld wanneer &apos;s nachts wordt gebrouwen. &lt;/p&gt;&lt;p&gt;De &lt;span style=&quot; font-weight:600;&quot;&gt;Toevoegingstijdstip&lt;/span&gt; kan doorslaggevend zijn voor het Gistingsproces en de Smaak.&lt;/p&gt;&lt;p&gt;Gewoonlijk worden pas na de hoofdgisting andere ingrediënten toegevoegd. Voedingsstoffen uit gist, bijvoorbeeld, worden vaak tijdens het koken toegevoegd. Het tijdstip van toevoeging is een stelschroef in de ontwikkeling van het smaakidee. Raadpleeg bij twijfel vooraf de relevante literatuur of de bekende gespecialiseerde forums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="464"/>
         <source>min</source>
-        <translation>min</translation>
+        <translation type="vanished">min</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="86"/>
@@ -8844,11 +8607,6 @@ p, li { white-space: pre-wrap; }
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dit verwijdert een &lt;span style=&quot; font-weight:600;&quot;&gt;Toevoeging&lt;/span&gt; uit het Recept &lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="144"/>
-        <source>°P</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="157"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld zeigt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; für der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe &lt;/span&gt;an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In dit veld toont de Kleiner Brauhelfer het &lt;span style=&quot; font-weight:600;&quot;&gt;Totaal&lt;/span&gt; voor de &lt;span style=&quot; font-weight:600;&quot;&gt;Toevoeging&lt;/span&gt; in het &lt;span style=&quot; font-weight:600;&quot;&gt;Tabblad Grondstoffen.&lt;/span&gt;an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -8867,13 +8625,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="357"/>
         <source>Extrakt</source>
         <translation>Extract</translation>
-    </message>
-    <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="185"/>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="148"/>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="155"/>
-        <source>g/L</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="198"/>
@@ -8906,9 +8657,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="398"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="405"/>
@@ -8980,20 +8730,9 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">ml/l</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="162"/>
-        <source>mg/L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="169"/>
         <source>Stk./L</source>
         <translation>Stk./L</translation>
-    </message>
-    <message>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="176"/>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="183"/>
-        <source>mL/L</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="240"/>

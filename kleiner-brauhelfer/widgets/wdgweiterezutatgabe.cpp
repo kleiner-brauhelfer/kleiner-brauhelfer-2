@@ -145,21 +145,21 @@ void WdgWeitereZutatGabe::updateValues()
         switch (einheit)
         {
         case Brauhelfer::Einheit::Kg:
-            ui->lblEinheitProLiter->setText(tr("g/L"));
+            ui->lblEinheitProLiter->setText("g/L");
             ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);
             ui->tbMengeTotal->setValue(data(colMengeTotal).toDouble() / 1000);
             break;
         case Brauhelfer::Einheit::g:
-            ui->lblEinheitProLiter->setText(tr("g/L"));
+            ui->lblEinheitProLiter->setText("g/L");
             ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);
             ui->tbMengeTotal->setValue(data(colMengeTotal).toDouble());
             break;
         case Brauhelfer::Einheit::mg:
-            ui->lblEinheitProLiter->setText(tr("mg/L"));
+            ui->lblEinheitProLiter->setText("mg/L");
             ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);
@@ -173,14 +173,14 @@ void WdgWeitereZutatGabe::updateValues()
             ui->tbMengeTotal->setValue(data(colMengeTotal).toDouble());
             break;
         case Brauhelfer::Einheit::l:
-            ui->lblEinheitProLiter->setText(tr("mL/L"));
+            ui->lblEinheitProLiter->setText("mL/L");
             ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);
             ui->tbMengeTotal->setValue(data(colMengeTotal).toDouble() / 1000);
             break;
         case Brauhelfer::Einheit::ml:
-            ui->lblEinheitProLiter->setText(tr("mL/L"));
+            ui->lblEinheitProLiter->setText("mL/L");
             ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);

@@ -126,7 +126,7 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->btnNeuerAnhang->setPalette(pal);
 
     mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Settings::Theme::Dark ? QStringLiteral(":/images/dark/bier.svg") : QStringLiteral(":/images/light/bier.svg"));
-    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("L"));
+    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
 
     ProxyModel* proxy = new ProxyModel(this);
     proxy->setSourceModel(bh->modelKategorien());

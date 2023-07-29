@@ -364,7 +364,7 @@
              </size>
             </property>
             <property name="text">
-             <string>mm</string>
+             <string notr="true">mm</string>
             </property>
            </widget>
           </item>
@@ -434,7 +434,7 @@
              </size>
             </property>
             <property name="text">
-             <string>mm</string>
+             <string notr="true">mm</string>
             </property>
            </widget>
           </item>
@@ -555,7 +555,7 @@
              </size>
             </property>
             <property name="text">
-             <string>mm</string>
+             <string notr="true">mm</string>
             </property>
            </widget>
           </item>
@@ -588,7 +588,7 @@
              </size>
             </property>
             <property name="text">
-             <string>mm</string>
+             <string notr="true">mm</string>
             </property>
            </widget>
           </item>

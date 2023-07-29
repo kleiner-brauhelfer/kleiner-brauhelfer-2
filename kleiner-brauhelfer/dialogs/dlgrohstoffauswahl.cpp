@@ -116,7 +116,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->appendCol({ModelWeitereZutaten::ColName, true, false, 200, nullptr});
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             table->appendCol({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, ui->tableView)});
-        table->appendCol({ModelWeitereZutaten::ColEinheit, true, true, 100, new ComboBoxDelegate({tr("kg"), tr("g"), tr("mg"), tr("Stk.")}, ui->tableView)});
+        table->appendCol({ModelWeitereZutaten::ColEinheit, true, true, 100, new ComboBoxDelegate({"kg", "g", "mg", tr("Stk.")}, ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::ZusatzTypname, gSettings->WZTypBackgrounds, ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(ui->tableView)});

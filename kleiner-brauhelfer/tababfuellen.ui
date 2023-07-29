@@ -312,7 +312,7 @@
            <item row="7" column="7">
             <widget class="QLabel" name="label_ealc_2">
              <property name="text">
-              <string>%vol</string>
+              <string notr="true">%vol</string>
              </property>
             </widget>
            </item>
@@ -351,14 +351,14 @@
            <item row="6" column="7">
             <widget class="QLabel" name="label_ealc">
              <property name="text">
-              <string>%vol</string>
+              <string notr="true">%vol</string>
              </property>
             </widget>
            </item>
            <item row="2" column="2">
             <widget class="QLabel" name="lblSWSchnellgaerprobeEinheit">
              <property name="text">
-              <string>°P</string>
+              <string notr="true">°P</string>
              </property>
             </widget>
            </item>
@@ -460,7 +460,7 @@
            <item row="4" column="7">
             <widget class="QLabel" name="label_esevg">
              <property name="text">
-              <string>%</string>
+              <string notr="true">%</string>
              </property>
             </widget>
            </item>
@@ -480,14 +480,14 @@
            <item row="1" column="7">
             <widget class="QLabel" name="label_12">
              <property name="text">
-              <string>°P</string>
+              <string notr="true">°P</string>
              </property>
             </widget>
            </item>
            <item row="5" column="7">
             <widget class="QLabel" name="label_esevg_2">
              <property name="text">
-              <string>%</string>
+              <string notr="true">%</string>
              </property>
             </widget>
            </item>
@@ -556,7 +556,7 @@
               </size>
              </property>
              <property name="text">
-              <string>°P</string>
+              <string notr="true">°P</string>
              </property>
             </widget>
            </item>
@@ -607,7 +607,7 @@
               </size>
              </property>
              <property name="text">
-              <string>°P</string>
+              <string notr="true">°P</string>
              </property>
             </widget>
            </item>
@@ -621,7 +621,7 @@
            <item row="2" column="7">
             <widget class="QLabel" name="lblGruenschlauchzeitpunktEinheit">
              <property name="text">
-              <string>°P</string>
+              <string notr="true">°P</string>
              </property>
             </widget>
            </item>
@@ -843,7 +843,7 @@
               </size>
              </property>
              <property name="text">
-              <string>bar</string>
+              <string notr="true">bar</string>
              </property>
             </widget>
            </item>
@@ -897,7 +897,7 @@
               </size>
              </property>
              <property name="text">
-              <string>°C</string>
+              <string notr="true">°C</string>
              </property>
             </widget>
            </item>
@@ -978,7 +978,7 @@
               </size>
              </property>
              <property name="text">
-              <string>L</string>
+              <string notr="true">L</string>
              </property>
             </widget>
            </item>
@@ -1015,7 +1015,7 @@
               </size>
              </property>
              <property name="text">
-              <string>L</string>
+              <string notr="true">L</string>
              </property>
             </widget>
            </item>
@@ -1169,7 +1169,7 @@
            <item row="4" column="7">
             <widget class="QLabel" name="lblZuckerFlascheEinheit">
              <property name="text">
-              <string>g</string>
+              <string notr="true">g</string>
              </property>
             </widget>
            </item>
@@ -1249,7 +1249,7 @@
            <item row="5" column="7">
             <widget class="QLabel" name="tbKonzentrationZuckerloesungEinheit">
              <property name="text">
-              <string>g/L</string>
+              <string notr="true">g/L</string>
              </property>
             </widget>
            </item>
@@ -1288,7 +1288,7 @@
            <item row="3" column="7">
             <widget class="QLabel" name="lblZuckerGesamtEinheit">
              <property name="text">
-              <string>g</string>
+              <string notr="true">g</string>
              </property>
             </widget>
            </item>
@@ -1337,7 +1337,7 @@
               </size>
              </property>
              <property name="text">
-              <string>°C</string>
+              <string notr="true">°C</string>
              </property>
             </widget>
            </item>
@@ -1438,7 +1438,7 @@
            <item row="2" column="7">
             <widget class="QLabel" name="lblSpeisemengeFlascheEinheit">
              <property name="text">
-              <string>mL</string>
+              <string notr="true">mL</string>
              </property>
             </widget>
            </item>
@@ -1451,14 +1451,14 @@
               </size>
              </property>
              <property name="text">
-              <string>L</string>
+              <string notr="true">L</string>
              </property>
             </widget>
            </item>
            <item row="5" column="2">
             <widget class="QLabel" name="tbWassserZuckerloesungEinheit">
              <property name="text">
-              <string>L</string>
+              <string notr="true">L</string>
              </property>
             </widget>
            </item>
@@ -1471,7 +1471,7 @@
               </size>
              </property>
              <property name="text">
-              <string>mL</string>
+              <string notr="true">mL</string>
              </property>
             </widget>
            </item>
@@ -1503,7 +1503,7 @@
            <item row="7" column="7">
             <widget class="QLabel" name="label_ealc_3">
              <property name="text">
-              <string>%vol</string>
+              <string notr="true">%vol</string>
              </property>
             </widget>
            </item>
@@ -1663,7 +1663,7 @@
            <item row="1" column="2">
             <widget class="QLabel" name="lblFlascheEinheit">
              <property name="text">
-              <string>L</string>
+              <string notr="true">L</string>
              </property>
             </widget>
            </item>
@@ -1690,7 +1690,7 @@
               </size>
              </property>
              <property name="text">
-              <string>L</string>
+              <string notr="true">L</string>
              </property>
             </widget>
            </item>

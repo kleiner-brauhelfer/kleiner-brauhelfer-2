@@ -27,8 +27,8 @@ ChartBraudaten::ChartBraudaten(QWidget *parent) :
     xAxis->setTicker(textTicker);
     xAxis->setRange(0, 5);
     xAxis->setTickPen(Qt::NoPen);
-    yAxis->setLabel(tr("Würzemenge (L)"));
-    yAxis2->setLabel(tr("Stammwürze (°P)"));
+    yAxis->setLabel(tr("Würzemenge") + " (L)");
+    yAxis2->setLabel(tr("Stammwürze") + " (°P)");
     yAxis2->setVisible(true);
 
     barsMengeIst = new QCPBars(xAxis, yAxis);

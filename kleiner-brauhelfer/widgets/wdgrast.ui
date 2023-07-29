@@ -183,7 +183,7 @@
             </size>
            </property>
            <property name="text">
-            <string>min</string>
+            <string notr="true">min</string>
            </property>
           </widget>
          </item>
@@ -196,14 +196,14 @@
             </size>
            </property>
            <property name="text">
-            <string>min</string>
+            <string notr="true">min</string>
            </property>
           </widget>
          </item>
          <item row="1" column="2">
           <widget class="QLabel" name="lblMengeMalzEinheit">
            <property name="text">
-            <string>kg</string>
+            <string notr="true">kg</string>
            </property>
           </widget>
          </item>
@@ -266,7 +266,7 @@
             </size>
            </property>
            <property name="text">
-            <string>°C</string>
+            <string notr="true">°C</string>
            </property>
           </widget>
          </item>
@@ -279,7 +279,7 @@
             </size>
            </property>
            <property name="text">
-            <string>L</string>
+            <string notr="true">L</string>
            </property>
           </widget>
          </item>
@@ -292,7 +292,7 @@
             </size>
            </property>
            <property name="text">
-            <string>%</string>
+            <string notr="true">%</string>
            </property>
           </widget>
          </item>
@@ -404,7 +404,7 @@
          <item row="4" column="2">
           <widget class="QLabel" name="lblDauerExtra1Einheit">
            <property name="text">
-            <string>min</string>
+            <string notr="true">min</string>
            </property>
           </widget>
          </item>
@@ -449,7 +449,7 @@
             </size>
            </property>
            <property name="text">
-            <string>%</string>
+            <string notr="true">%</string>
            </property>
           </widget>
          </item>
@@ -494,7 +494,7 @@
          <item row="4" column="7">
           <widget class="QLabel" name="lblTempExtra1Einheit">
            <property name="text">
-            <string>°C</string>
+            <string notr="true">°C</string>
            </property>
           </widget>
          </item>
@@ -507,7 +507,7 @@
             </size>
            </property>
            <property name="text">
-            <string>%</string>
+            <string notr="true">%</string>
            </property>
           </widget>
          </item>
@@ -527,7 +527,7 @@
             </size>
            </property>
            <property name="text">
-            <string>°C</string>
+            <string notr="true">°C</string>
            </property>
           </widget>
          </item>
@@ -540,7 +540,7 @@
             </size>
            </property>
            <property name="text">
-            <string>L</string>
+            <string notr="true">L</string>
            </property>
           </widget>
          </item>
@@ -591,7 +591,7 @@
             </size>
            </property>
            <property name="text">
-            <string>°C</string>
+            <string notr="true">°C</string>
            </property>
           </widget>
          </item>
@@ -651,7 +651,7 @@
             </size>
            </property>
            <property name="text">
-            <string>°C</string>
+            <string notr="true">°C</string>
            </property>
           </widget>
          </item>

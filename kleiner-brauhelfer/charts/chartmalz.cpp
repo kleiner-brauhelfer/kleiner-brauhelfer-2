@@ -11,8 +11,8 @@ ChartMalz::ChartMalz(QWidget *parent) :
     QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
     xAxis->setTicker(textTicker);
     xAxis->setTickPen(Qt::NoPen);
-    yAxis->setLabel(tr("Anteil (%)"));
-    yAxis2->setLabel(tr("Menge (kg)"));
+    yAxis->setLabel(tr("Anteil") + " (%)");
+    yAxis2->setLabel(tr("Menge") + " (kg)");
     yAxis2->setVisible(true);
 }
 

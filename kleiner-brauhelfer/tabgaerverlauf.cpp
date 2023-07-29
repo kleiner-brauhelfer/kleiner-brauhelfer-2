@@ -13,7 +13,6 @@
 #include "model/restextraktdelegate.h"
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
-#include "widgets/wdgweiterezutatgabe.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
@@ -343,9 +342,9 @@ void TabGaerverlauf::updateDiagramm()
     }
     diag = ui->widget_DiaSchnellgaerverlauf;
     diag->clear();
-    diag->setData1(x, y1, tr("Restextrakt"), tr("°P"), 1);
-    diag->setData2(x, y2, tr("Alkohol"), tr("%"), 1);
-    diag->setData3(x, y3, tr("Temperatur"), tr("°C"), 1);
+    diag->setData1(x, y1, tr("Restextrakt"), "°P", 1);
+    diag->setData2(x, y2, tr("Alkohol"), "%", 1);
+    diag->setData3(x, y3, tr("Temperatur"), "°C", 1);
     diag->setData1Limit(bh->sud()->getSREErwartet());
     diag->rescale();
     diag->replot();
@@ -365,9 +364,9 @@ void TabGaerverlauf::updateDiagramm()
     }
     diag = ui->widget_DiaHauptgaerverlauf;
     diag->clear();
-    diag->setData1(x, y1, tr("Restextrakt"), tr("°P"), 1);
-    diag->setData2(x, y2, tr("Alkohol"), tr("%"), 1);
-    diag->setData3(x, y3, tr("Temperatur"), tr("°C"), 1);
+    diag->setData1(x, y1, tr("Restextrakt"), "°P", 1);
+    diag->setData2(x, y2, tr("Alkohol"), "%", 1);
+    diag->setData3(x, y3, tr("Temperatur"), "°C", 1);
     if (bh->sud()->getSchnellgaerprobeAktiv())
         diag->setData1Limit(bh->sud()->getGruenschlauchzeitpunkt());
     else
@@ -390,9 +389,9 @@ void TabGaerverlauf::updateDiagramm()
     }
     diag = ui->widget_DiaNachgaerverlauf;
     diag->clear();
-    diag->setData1(x, y1, tr("CO₂"), tr("g/L"), 1);
-    diag->setData2(x, y2, tr("Druck"), tr("bar"), 2);
-    diag->setData3(x, y3, tr("Temperatur"), tr("°C"), 1);
+    diag->setData1(x, y1, tr("CO₂"), "g/L", 1);
+    diag->setData2(x, y2, tr("Druck"), "bar", 2);
+    diag->setData3(x, y3, tr("Temperatur"), "°C", 1);
     diag->setData1Limit(bh->sud()->getCO2());
     diag->rescale();
     diag->replot();

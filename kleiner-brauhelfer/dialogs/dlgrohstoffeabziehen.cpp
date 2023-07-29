@@ -6,8 +6,10 @@
 #include "model/textdelegate.h"
 #include "model/spinboxdelegate.h"
 #include "brauhelfer.h"
+#include "settings.h"
 
 extern Brauhelfer* bh;
+extern Settings* gSettings;
 
 class RohstoffeAbziehenModel : public QStandardItemModel
 {
@@ -18,8 +20,10 @@ public:
     }
     void appendRow(const QString& name, double menge, double vorhanden)
     {
+        QStandardItem* itemMenge = new QStandardItem(QString::number(menge));
+        itemMenge->setBackground(gSettings->paletteChanged.base());
         QStandardItemModel::appendRow({new QStandardItem(name),
-                   new QStandardItem(QString::number(menge)),
+                   itemMenge,
                    new QStandardItem(QString::number(vorhanden))});
     }
 };
@@ -94,8 +98,8 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
         it++;
     }
     modelMalz->setHeaderData(0, Qt::Horizontal, tr("Malz"));
-    modelMalz->setHeaderData(1, Qt::Horizontal, tr("Menge [kg]"));
-    modelMalz->setHeaderData(2, Qt::Horizontal, tr("Vorhanden [kg]"));
+    modelMalz->setHeaderData(1, Qt::Horizontal, tr("Menge") + "\n(kg)");
+    modelMalz->setHeaderData(2, Qt::Horizontal, tr("Vorhanden") + "\n(kg)");
     ui->tableViewMalz->setModel(modelMalz);
     ui->tableViewMalz->setItemDelegateForColumn(0, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, this));
     ui->tableViewMalz->setItemDelegateForColumn(1, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, this));
@@ -150,8 +154,8 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
         it++;
     }
     modelHopfen->setHeaderData(0, Qt::Horizontal, tr("Hopfen"));
-    modelHopfen->setHeaderData(1, Qt::Horizontal, tr("Menge [g]"));
-    modelHopfen->setHeaderData(2, Qt::Horizontal, tr("Vorhanden [g]"));
+    modelHopfen->setHeaderData(1, Qt::Horizontal, tr("Menge") + "\n(g)");
+    modelHopfen->setHeaderData(2, Qt::Horizontal, tr("Vorhanden") + "\n(g)");
     ui->tableViewHopfen->setModel(modelHopfen);
     ui->tableViewHopfen->setItemDelegateForColumn(0, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, this));
     ui->tableViewHopfen->setItemDelegateForColumn(1, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, this));
@@ -245,8 +249,8 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
         it++;
     }
     modelWz->setHeaderData(0, Qt::Horizontal, tr("Zusatz"));
-    modelWz->setHeaderData(1, Qt::Horizontal, tr("Menge [g]"));
-    modelWz->setHeaderData(2, Qt::Horizontal, tr("Vorhanden [g]"));
+    modelWz->setHeaderData(1, Qt::Horizontal, tr("Menge") + "\n(g)");
+    modelWz->setHeaderData(2, Qt::Horizontal, tr("Vorhanden") + "\n(g)");
     ui->tableViewWZ->setModel(modelWz);
     ui->tableViewWZ->setItemDelegateForColumn(0, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, this));
     ui->tableViewWZ->setItemDelegateForColumn(1, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, this));

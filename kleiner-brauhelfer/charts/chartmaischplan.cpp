@@ -11,8 +11,8 @@ ChartMaischplan::ChartMaischplan(QWidget *parent) :
     QColor colRect = gSettings->colorRast;
     colRect.setAlpha(80);
 
-    xAxis->setLabel(tr("Zeit (min)"));
-    yAxis->setLabel(tr("Temperatur (°C)"));
+    xAxis->setLabel(tr("Zeit") + " (min)");
+    yAxis->setLabel(tr("Temperatur") + " (°C)");
 
     QCPItemRect* rect = new QCPItemRect(this);
     rect->bottomRight->setAxes(xAxis2, yAxis);

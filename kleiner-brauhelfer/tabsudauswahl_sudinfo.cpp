@@ -194,7 +194,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             QVariantMap map;
             map.insert(QStringLiteral("Name"), eintrag.Name);
             map.insert(QStringLiteral("Menge"), locale.toString(eintrag.Menge, 'f', 2));
-            map.insert(QStringLiteral("Einheit"), tr("kg"));
+            map.insert(QStringLiteral("Einheit"), "kg");
             if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
                 double ist = 0;
@@ -230,7 +230,7 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             QVariantMap map;
             map.insert(QStringLiteral("Name"), eintrag.Name);
             map.insert(QStringLiteral("Menge"), locale.toString(eintrag.Menge, 'f', 1));
-            map.insert(QStringLiteral("Einheit"), tr("g"));
+            map.insert(QStringLiteral("Einheit"), "g");
             if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
                 double ist = 0;

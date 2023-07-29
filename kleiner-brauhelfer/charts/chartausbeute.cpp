@@ -15,7 +15,7 @@ ChartAusbeute::ChartAusbeute(QWidget *parent) :
     xAxis->setTicker(textTicker);
     xAxis->setRange(0, 4);
     xAxis->setTickPen(Qt::NoPen);
-    yAxis->setLabel(tr("Ausbeute (%)"));
+    yAxis->setLabel(tr("Ausbeute") + " (%)");
     yAxis->setRange(0, 100);
 
     bars = new QCPBars(xAxis, yAxis);
@@ -47,11 +47,11 @@ void ChartAusbeute::update()
     bars->setData({1, 2, 3}, {val1, val2, val3}, true);
 
     textLabel1->position->setCoords(1, val1/2);
-    textLabel1->setText(locale.toString(val1, 'f', 1) + tr(" %"));
+    textLabel1->setText(locale.toString(val1, 'f', 1) + " %");
     textLabel2->position->setCoords(2, val2/2);
-    textLabel2->setText(locale.toString(val2, 'f', 1) + tr(" %"));
+    textLabel2->setText(locale.toString(val2, 'f', 1) + " %");
     textLabel3->position->setCoords(3, val3/2);
-    textLabel3->setText(locale.toString(val3, 'f', 1) + tr(" %"));
+    textLabel3->setText(locale.toString(val3, 'f', 1) + " %");
 
     replot();
 }

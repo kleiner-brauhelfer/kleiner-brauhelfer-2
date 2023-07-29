@@ -130,7 +130,7 @@
            <item row="13" column="3">
             <widget class="QLabel" name="label_38">
              <property name="text">
-              <string>min</string>
+              <string notr="true">min</string>
              </property>
             </widget>
            </item>
@@ -158,7 +158,7 @@
            <item row="11" column="3">
             <widget class="QLabel" name="label_36">
              <property name="text">
-              <string>min</string>
+              <string notr="true">min</string>
              </property>
             </widget>
            </item>
@@ -198,7 +198,7 @@
            <item row="8" column="3">
             <widget class="QLabel" name="label_26">
              <property name="text">
-              <string>%</string>
+              <string notr="true">%</string>
              </property>
             </widget>
            </item>
@@ -363,7 +363,7 @@
            <item row="10" column="3">
             <widget class="QLabel" name="label_22">
              <property name="text">
-              <string>IBU</string>
+              <string notr="true">IBU</string>
              </property>
             </widget>
            </item>
@@ -450,7 +450,7 @@
            <item row="12" column="3">
             <widget class="QLabel" name="label_52">
              <property name="text">
-              <string>L/h</string>
+              <string notr="true">L/h</string>
              </property>
             </widget>
            </item>
@@ -463,7 +463,7 @@
               </size>
              </property>
              <property name="text">
-              <string>L</string>
+              <string notr="true">L</string>
              </property>
             </widget>
            </item>
@@ -486,14 +486,14 @@
            <item row="15" column="3">
             <widget class="QLabel" name="label_54">
              <property name="text">
-              <string>%</string>
+              <string notr="true">%</string>
              </property>
             </widget>
            </item>
            <item row="16" column="3">
             <widget class="QLabel" name="label_21">
              <property name="text">
-              <string>g/L</string>
+              <string notr="true">g/L</string>
              </property>
             </widget>
            </item>
@@ -513,7 +513,7 @@
            <item row="6" column="3">
             <widget class="QLabel" name="label_49">
              <property name="text">
-              <string>%</string>
+              <string notr="true">%</string>
              </property>
             </widget>
            </item>
@@ -657,7 +657,7 @@ p, li { white-space: pre-wrap; }
            <item row="5" column="3">
             <widget class="QLabel" name="label_20">
              <property name="text">
-              <string>°P</string>
+              <string notr="true">°P</string>
              </property>
             </widget>
            </item>
@@ -1064,7 +1064,7 @@ p, li { white-space: pre-wrap; }
               <x>0</x>
               <y>0</y>
               <width>341</width>
-              <height>379</height>
+              <height>541</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1349,7 +1349,7 @@ p, li { white-space: pre-wrap; }
               <x>0</x>
               <y>0</y>
               <width>341</width>
-              <height>357</height>
+              <height>519</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1583,7 +1583,7 @@ p, li { white-space: pre-wrap; }
           <item row="2" column="3">
            <widget class="QLabel" name="label_46">
             <property name="text">
-             <string>°P</string>
+             <string notr="true">°P</string>
             </property>
            </widget>
           </item>
@@ -1638,7 +1638,7 @@ p, li { white-space: pre-wrap; }
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Statt der zuvor im Rezept festgelegten Werte, kann hier die &lt;span style=&quot; font-weight:700;&quot;&gt;tatsächlich benötigte Menge&lt;/span&gt; der Zutat anhand der Daten im &lt;span style=&quot; font-weight:700;&quot;&gt;Reiter Braudaten &lt;/span&gt;herangezogen werden&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Eine geänderte Gabe ist nur nach dem Anstellen möglich. Dazu muss der Sud im Reiter Braudaten als gebraut markiert sein.&lt;/p&gt;&lt;p&gt;Rezept und Braudaten unterscheiden sich in vielen Fällen, etwa wegen einer unpassend geschätzten Sudhausausbeute, einer anderen Verdampfungsrate, wie es oft nach einer Konfigurationsänderung der Braugerätschaften der Fall ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
-             <string>L</string>
+             <string notr="true">L</string>
             </property>
            </widget>
           </item>
@@ -2004,7 +2004,7 @@ p, li { white-space: pre-wrap; }
               <x>0</x>
               <y>0</y>
               <width>341</width>
-              <height>407</height>
+              <height>501</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -2116,7 +2116,7 @@ p, li { white-space: pre-wrap; }
           <item row="3" column="3">
            <widget class="QLabel" name="label_72">
             <property name="text">
-             <string>°dH</string>
+             <string notr="true">°dH</string>
             </property>
            </widget>
           </item>
@@ -2148,7 +2148,7 @@ p, li { white-space: pre-wrap; }
           <item row="5" column="3">
            <widget class="QLabel" name="label_74">
             <property name="text">
-             <string>°dH</string>
+             <string notr="true">°dH</string>
             </property>
            </widget>
           </item>
@@ -2200,7 +2200,7 @@ p, li { white-space: pre-wrap; }
              </size>
             </property>
             <property name="text">
-             <string>°dH</string>
+             <string notr="true">°dH</string>
             </property>
            </widget>
           </item>
@@ -2571,7 +2571,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>332</width>
-          <height>835</height>
+          <height>810</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -2674,7 +2674,7 @@ p, li { white-space: pre-wrap; }
             <item row="2" column="3">
              <widget class="QLabel" name="label_23">
               <property name="text">
-               <string>kg</string>
+               <string notr="true">kg</string>
               </property>
              </widget>
             </item>
@@ -2694,7 +2694,7 @@ p, li { white-space: pre-wrap; }
                </size>
               </property>
               <property name="text">
-               <string>EBC</string>
+               <string notr="true">EBC</string>
               </property>
              </widget>
             </item>
@@ -2756,7 +2756,7 @@ p, li { white-space: pre-wrap; }
             <item row="15" column="3">
              <widget class="QLabel" name="label_65">
               <property name="text">
-               <string>%vol</string>
+               <string notr="true">%vol</string>
               </property>
              </widget>
             </item>
@@ -2832,7 +2832,7 @@ p, li { white-space: pre-wrap; }
                   </size>
                  </property>
                  <property name="text">
-                  <string>°P</string>
+                  <string notr="true">°P</string>
                  </property>
                 </widget>
                </item>
@@ -2951,7 +2951,7 @@ p, li { white-space: pre-wrap; }
                   </size>
                  </property>
                  <property name="text">
-                  <string>°P</string>
+                  <string notr="true">°P</string>
                  </property>
                 </widget>
                </item>
@@ -2968,7 +2968,7 @@ p, li { white-space: pre-wrap; }
             <item row="14" column="3">
              <widget class="QLabel" name="label_64">
               <property name="text">
-               <string>°P</string>
+               <string notr="true">°P</string>
               </property>
              </widget>
             </item>
@@ -3066,7 +3066,7 @@ p, li { white-space: pre-wrap; }
                   </size>
                  </property>
                  <property name="text">
-                  <string>°P</string>
+                  <string notr="true">°P</string>
                  </property>
                 </widget>
                </item>
@@ -3142,7 +3142,7 @@ p, li { white-space: pre-wrap; }
                   </size>
                  </property>
                  <property name="text">
-                  <string>°P</string>
+                  <string notr="true">°P</string>
                  </property>
                 </widget>
                </item>
@@ -3225,7 +3225,7 @@ p, li { white-space: pre-wrap; }
                   </size>
                  </property>
                  <property name="text">
-                  <string>°P</string>
+                  <string notr="true">°P</string>
                  </property>
                 </widget>
                </item>
@@ -3318,14 +3318,14 @@ p, li { white-space: pre-wrap; }
             <item row="1" column="4">
              <widget class="QLabel" name="label_32">
               <property name="text">
-               <string>L</string>
+               <string notr="true">L</string>
               </property>
              </widget>
             </item>
             <item row="2" column="4">
              <widget class="QLabel" name="label_33">
               <property name="text">
-               <string>L</string>
+               <string notr="true">L</string>
               </property>
              </widget>
             </item>
@@ -3345,7 +3345,7 @@ p, li { white-space: pre-wrap; }
                </size>
               </property>
               <property name="text">
-               <string>L</string>
+               <string notr="true">L</string>
               </property>
              </widget>
             </item>
@@ -3474,7 +3474,7 @@ p, li { white-space: pre-wrap; }
                   </size>
                  </property>
                  <property name="text">
-                  <string>L</string>
+                  <string notr="true">L</string>
                  </property>
                 </widget>
                </item>
@@ -3519,7 +3519,7 @@ p, li { white-space: pre-wrap; }
             <item row="4" column="4">
              <widget class="QLabel" name="label_35">
               <property name="text">
-               <string>L/h</string>
+               <string notr="true">L/h</string>
               </property>
              </widget>
             </item>
@@ -3574,7 +3574,7 @@ p, li { white-space: pre-wrap; }
                </size>
               </property>
               <property name="text">
-               <string>%</string>
+               <string notr="true">%</string>
               </property>
              </widget>
             </item>
@@ -3610,7 +3610,7 @@ p, li { white-space: pre-wrap; }
             <item row="9" column="4">
              <widget class="QLabel" name="label_31">
               <property name="text">
-               <string>L</string>
+               <string notr="true">L</string>
               </property>
              </widget>
             </item>
@@ -3700,7 +3700,7 @@ p, li { white-space: pre-wrap; }
             <item row="6" column="4">
              <widget class="QLabel" name="label_44">
               <property name="text">
-               <string>L</string>
+               <string notr="true">L</string>
               </property>
              </widget>
             </item>
@@ -3730,14 +3730,14 @@ p, li { white-space: pre-wrap; }
             <item row="7" column="4">
              <widget class="QLabel" name="label_30">
               <property name="text">
-               <string>L</string>
+               <string notr="true">L</string>
               </property>
              </widget>
             </item>
             <item row="8" column="4">
              <widget class="QLabel" name="label_45">
               <property name="text">
-               <string>L</string>
+               <string notr="true">L</string>
               </property>
              </widget>
             </item>
@@ -3841,7 +3841,7 @@ p, li { white-space: pre-wrap; }
                   </size>
                  </property>
                  <property name="text">
-                  <string>L</string>
+                  <string notr="true">L</string>
                  </property>
                 </widget>
                </item>

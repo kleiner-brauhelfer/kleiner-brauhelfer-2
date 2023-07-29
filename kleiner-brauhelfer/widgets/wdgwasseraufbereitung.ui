@@ -231,7 +231,7 @@
            </size>
           </property>
           <property name="text">
-           <string>°dH</string>
+           <string notr="true">°dH</string>
           </property>
          </widget>
         </item>

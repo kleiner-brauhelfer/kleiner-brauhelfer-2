@@ -25,16 +25,16 @@
     </message>
     <message>
         <location filename="../charts/chartabfuelldaten.cpp" line="19"/>
-        <source>Würzemenge (L)</source>
-        <translation>Vörtmängd (L)</translation>
+        <source>Würzemenge</source>
+        <translation>Vörtmängd</translation>
     </message>
     <message>
-        <location filename="../charts/chartabfuelldaten.cpp" line="55"/>
-        <location filename="../charts/chartabfuelldaten.cpp" line="57"/>
-        <location filename="../charts/chartabfuelldaten.cpp" line="59"/>
-        <location filename="../charts/chartabfuelldaten.cpp" line="61"/>
+        <source>Würzemenge (L)</source>
+        <translation type="vanished">Vörtmängd (L)</translation>
+    </message>
+    <message>
         <source> L</source>
-        <translation> L</translation>
+        <translation type="vanished"> L</translation>
     </message>
 </context>
 <context>
@@ -56,15 +56,12 @@
     </message>
     <message>
         <location filename="../charts/chartausbeute.cpp" line="18"/>
-        <source>Ausbeute (%)</source>
-        <translation>Utbye (%)</translation>
+        <source>Ausbeute</source>
+        <translation>Utbye</translation>
     </message>
     <message>
-        <location filename="../charts/chartausbeute.cpp" line="50"/>
-        <location filename="../charts/chartausbeute.cpp" line="52"/>
-        <location filename="../charts/chartausbeute.cpp" line="54"/>
-        <source> %</source>
-        <translation></translation>
+        <source>Ausbeute (%)</source>
+        <translation type="vanished">Utbye (%)</translation>
     </message>
 </context>
 <context>
@@ -91,13 +88,21 @@
     </message>
     <message>
         <location filename="../charts/chartbraudaten.cpp" line="30"/>
-        <source>Würzemenge (L)</source>
-        <translation>Vörtmängd (L)</translation>
+        <source>Würzemenge</source>
+        <translation>Vörtmängd</translation>
     </message>
     <message>
         <location filename="../charts/chartbraudaten.cpp" line="31"/>
+        <source>Stammwürze</source>
+        <translation>Stamvört</translation>
+    </message>
+    <message>
+        <source>Würzemenge (L)</source>
+        <translation type="vanished">Vörtmängd (L)</translation>
+    </message>
+    <message>
         <source>Stammwürze (°P)</source>
-        <translation>Stamvört (°P)</translation>
+        <translation type="vanished">Stamvört (°P)</translation>
     </message>
     <message>
         <location filename="../charts/chartbraudaten.cpp" line="35"/>
@@ -123,33 +128,53 @@
 <context>
     <name>ChartHopfen</name>
     <message>
-        <location filename="../charts/charthopfen.cpp" line="41"/>
         <source>Menge (g)</source>
-        <translation>Mängd (g)</translation>
+        <translation type="vanished">Mängd (g)</translation>
+    </message>
+    <message>
+        <source>Anteil (%)</source>
+        <translation type="vanished">Andel (%)</translation>
+    </message>
+    <message>
+        <source>Bittere (IBU)</source>
+        <translation type="vanished">Beska (IBU)</translation>
+    </message>
+    <message>
+        <location filename="../charts/charthopfen.cpp" line="41"/>
+        <source>Menge</source>
+        <translation>Mängd</translation>
     </message>
     <message>
         <location filename="../charts/charthopfen.cpp" line="54"/>
         <location filename="../charts/charthopfen.cpp" line="67"/>
-        <source>Anteil (%)</source>
-        <translation>Andel (%)</translation>
+        <source>Anteil</source>
+        <translation>Andel</translation>
     </message>
     <message>
         <location filename="../charts/charthopfen.cpp" line="68"/>
-        <source>Bittere (IBU)</source>
-        <translation>Beska (IBU)</translation>
+        <source>Bittere</source>
+        <translation>Beska</translation>
     </message>
 </context>
 <context>
     <name>ChartMaischplan</name>
     <message>
-        <location filename="../charts/chartmaischplan.cpp" line="14"/>
         <source>Zeit (min)</source>
-        <translation>Tid (min)</translation>
+        <translation type="vanished">Tid (min)</translation>
+    </message>
+    <message>
+        <source>Temperatur (°C)</source>
+        <translation type="vanished">Temperatur [°C]</translation>
+    </message>
+    <message>
+        <location filename="../charts/chartmaischplan.cpp" line="14"/>
+        <source>Zeit</source>
+        <translation>Tid</translation>
     </message>
     <message>
         <location filename="../charts/chartmaischplan.cpp" line="15"/>
-        <source>Temperatur (°C)</source>
-        <translation>Temperatur [°C]</translation>
+        <source>Temperatur</source>
+        <translation>Temperatur</translation>
     </message>
     <message>
         <location filename="../charts/chartmaischplan.cpp" line="30"/>
@@ -165,14 +190,22 @@
 <context>
     <name>ChartMalz</name>
     <message>
-        <location filename="../charts/chartmalz.cpp" line="14"/>
         <source>Anteil (%)</source>
-        <translation>Andel (%)</translation>
+        <translation type="vanished">Andel (%)</translation>
+    </message>
+    <message>
+        <source>Menge (kg)</source>
+        <translation type="vanished">Mängd (kg)</translation>
+    </message>
+    <message>
+        <location filename="../charts/chartmalz.cpp" line="14"/>
+        <source>Anteil</source>
+        <translation>Andel</translation>
     </message>
     <message>
         <location filename="../charts/chartmalz.cpp" line="15"/>
-        <source>Menge (kg)</source>
-        <translation>Mängd (kg)</translation>
+        <source>Menge</source>
+        <translation>Mängd</translation>
     </message>
 </context>
 <context>
@@ -199,16 +232,12 @@
     </message>
     <message>
         <location filename="../charts/chartrestextrakt.cpp" line="19"/>
-        <source>Restextrakt (°P)</source>
-        <translation>Restsötma (°P)</translation>
+        <source>Restextrakt</source>
+        <translation>Restsötma</translation>
     </message>
     <message>
-        <location filename="../charts/chartrestextrakt.cpp" line="57"/>
-        <location filename="../charts/chartrestextrakt.cpp" line="69"/>
-        <location filename="../charts/chartrestextrakt.cpp" line="71"/>
-        <location filename="../charts/chartrestextrakt.cpp" line="73"/>
-        <source> °P</source>
-        <translation></translation>
+        <source>Restextrakt (°P)</source>
+        <translation type="vanished">Restsötma (°P)</translation>
     </message>
 </context>
 <context>
@@ -313,12 +342,6 @@
         <translation>Genomsnitt av senaste</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.ui" line="397"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="410"/>
-        <source>%</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../dialogs/dlgausruestung.ui" line="468"/>
         <source>Verdampfungsrate</source>
         <translation>Förångningshastighet</translation>
@@ -365,7 +388,7 @@
     <message>
         <location filename="../dialogs/dlgausruestung.ui" line="167"/>
         <source>Anlagetyp</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgausruestung.ui" line="187"/>
@@ -376,12 +399,6 @@
         <location filename="../dialogs/dlgausruestung.ui" line="194"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:700;&quot;&gt;Anlagebezeichnung&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgausruestung.ui" line="225"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="270"/>
-        <source>L/h</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgausruestung.ui" line="251"/>
@@ -429,16 +446,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.ui" line="564"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="657"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="833"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="860"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="1106"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="1144"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../dialogs/dlgausruestung.ui" line="604"/>
         <source>Betriebskosten</source>
         <translation>Kostnader</translation>
@@ -454,9 +461,8 @@
         <translation>Korrektion av mängden lakvatten</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgausruestung.ui" line="640"/>
         <source>EBC</source>
-        <translation>EBC</translation>
+        <translation type="vanished">EBC</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgausruestung.ui" line="650"/>
@@ -483,16 +489,6 @@
         <location filename="../dialogs/dlgausruestung.ui" line="1047"/>
         <source>Durchmesser</source>
         <translation>Diameter</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgausruestung.ui" line="749"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="826"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="853"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="962"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="1001"/>
-        <location filename="../dialogs/dlgausruestung.ui" line="1099"/>
-        <source>cm</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgausruestung.ui" line="762"/>
@@ -712,19 +708,13 @@
         <translation>Mängden flask-/fattappad</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="150"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../dialogs/dlgbrauuebersicht.cpp" line="151"/>
         <source>Schüttung</source>
         <translation>Malt o dyl</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="151"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgbrauuebersicht.cpp" line="152"/>
@@ -745,16 +735,6 @@
         <location filename="../dialogs/dlgbrauuebersicht.cpp" line="155"/>
         <source>Verdampfungsrate</source>
         <translation>Förångningshastighet</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="155"/>
-        <source>L/h</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="161"/>
-        <source>%1/L</source>
-        <translation></translation>
     </message>
     <message>
         <source>l/h</source>
@@ -790,19 +770,12 @@
         <translation type="vanished">l</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="152"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="157"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="153"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="154"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="156"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="158"/>
-        <location filename="../dialogs/dlgbrauuebersicht.cpp" line="159"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <source>%1/l</source>
@@ -1000,8 +973,12 @@
     </message>
     <message>
         <location filename="../dialogs/dlgdatabasecleaner.cpp" line="456"/>
+        <source>Bittere (IBU)</source>
+        <translation>Beska (IBU)</translation>
+    </message>
+    <message>
         <source>IBU</source>
-        <translation>IBU</translation>
+        <translation type="vanished">IBU</translation>
     </message>
 </context>
 <context>
@@ -1071,7 +1048,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlghilfe.cpp" line="37"/>
+        <location filename="../dialogs/dlghilfe.cpp" line="38"/>
         <source>Nicht unterstützt.</source>
         <translation>Inte stöds.</translation>
     </message>
@@ -1243,9 +1220,8 @@
         <translation>Malt o dyl</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmaischplanmalz.ui" line="77"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmaischplanmalz.cpp" line="23"/>
@@ -1254,13 +1230,21 @@
     </message>
     <message>
         <location filename="../dialogs/dlgmaischplanmalz.cpp" line="24"/>
-        <source>Gesamtmenge [kg]</source>
-        <translation>Totala mängd [kg]</translation>
+        <source>Gesamtmenge</source>
+        <translation>Totala mängd</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgmaischplanmalz.cpp" line="25"/>
+        <source>Anteil</source>
+        <translation>Andel</translation>
+    </message>
+    <message>
+        <source>Gesamtmenge [kg]</source>
+        <translation type="vanished">Totala mängd [kg]</translation>
+    </message>
+    <message>
         <source>Anteil [%]</source>
-        <translation>Andel [%]</translation>
+        <translation type="vanished">Andel [%]</translation>
     </message>
 </context>
 <context>
@@ -1519,12 +1503,8 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="252"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="577"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="721"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="809"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="405"/>
@@ -1552,12 +1532,8 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="217"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="279"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="365"/>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="536"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="vanished">°C</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="472"/>
@@ -1620,11 +1596,6 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Annat</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="174"/>
-        <source>g/mL</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="272"/>
         <source>Eichtemperatur</source>
         <translation>Kalibreringstemperatur</translation>
@@ -1655,14 +1626,12 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="489"/>
         <source>°Brix</source>
-        <translation>°Brix</translation>
+        <translation type="vanished">°Brix</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrestextrakt.ui" line="494"/>
         <source>°Plato</source>
-        <translation>°Plato</translation>
+        <translation type="vanished">°Plato</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="502"/>
@@ -1844,19 +1813,16 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Ingredienserna måste först läggas till i fliken &quot;Ingredienser&quot;.</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
         <source>g</source>
-        <translation>g</translation>
+        <translation type="vanished">g</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
         <source>mg</source>
-        <translation>mg</translation>
+        <translation type="vanished">mg</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
@@ -1915,14 +1881,12 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Alias</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="132"/>
         <source>Farbe [EBC]</source>
-        <translation>Färg [EBC]</translation>
+        <translation type="vanished">Färg [EBC]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="135"/>
         <source>Max. Anteil [%]</source>
-        <translation>Max. andel [%]</translation>
+        <translation type="vanished">Max. andel [%]</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="138"/>
@@ -1938,9 +1902,23 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="151"/>
         <source>Alpha [%]</source>
-        <translation>Alpha [%]</translation>
+        <translation type="vanished">Alpha [%]</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="132"/>
+        <source>Farbe</source>
+        <translation>Färg</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="135"/>
+        <source>Max. Anteil</source>
+        <translation>Max. andel</translation>
+    </message>
+    <message>
+        <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="151"/>
+        <source>Alpha</source>
+        <translation>Alpha</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffvorlage.cpp" line="158"/>
@@ -2116,7 +2094,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <name>DlgRohstoffeAbziehen</name>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="20"/>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="39"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="43"/>
         <source>Zutaten vom Lager abziehen</source>
         <translation>Subtrahera ingredienserna från lagret</translation>
     </message>
@@ -2157,74 +2135,74 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     </message>
     <message>
         <location filename="../dialogs/dlgrohstoffeabziehen.ui" line="93"/>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="40"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="44"/>
         <source>Zutaten abziehen</source>
         <translation>Subtrahera ingredienserna</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="39"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="43"/>
         <source>Zutaten ins Lager zurückgeben</source>
         <translation>Lägg tillbaka ingredienserna i lagret</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="40"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="44"/>
         <source>Zutaten zurückgeben</source>
         <translation>Lägg tillbaka ingredienserna</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="57"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="61"/>
         <source>Die Zutaten wurden noch nicht abgezogen. Trotzdem schließen?</source>
         <translation>Ingredienserna har inte subtraherats än; stäng andå?</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="96"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="100"/>
         <source>Malz</source>
         <translation>Malt</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="97"/>
         <source>Menge [kg]</source>
-        <translation>Mängd [kg]</translation>
+        <translation type="vanished">Mängd [kg]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="98"/>
         <source>Vorhanden [kg]</source>
-        <translation>befintlig [kg]</translation>
+        <translation type="vanished">befintlig [kg]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="152"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="156"/>
         <source>Hopfen</source>
         <translation>Humle</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="153"/>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="248"/>
         <source>Menge [g]</source>
-        <translation>Mängd [g]</translation>
+        <translation type="vanished">Mängd [g]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="154"/>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="249"/>
         <source>Vorhanden [g]</source>
-        <translation>befintlig [g]</translation>
+        <translation type="vanished">befintlig [g]</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="197"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="201"/>
         <source>Hefe</source>
         <translation>Jäst</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="198"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="101"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="157"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="202"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="252"/>
         <source>Menge</source>
         <translation>Mängd</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="199"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="102"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="158"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="203"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="253"/>
         <source>Vorhanden</source>
         <translation>I lagret</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="247"/>
+        <location filename="../dialogs/dlgrohstoffeabziehen.cpp" line="251"/>
         <source>Zusatz</source>
         <translation>Tillsats</translation>
     </message>
@@ -2252,12 +2230,6 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgsudteilen.ui" line="68"/>
-        <location filename="../dialogs/dlgsudteilen.ui" line="94"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Liter</source>
         <translation type="vanished">Liter</translation>
     </message>
@@ -2282,10 +2254,8 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgsudteilen.ui" line="142"/>
-        <location filename="../dialogs/dlgsudteilen.ui" line="155"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
 </context>
 <context>
@@ -2344,31 +2314,16 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="100"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="116"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="124"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="132"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="140"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="100"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="116"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="124"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="132"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="140"/>
         <source>g</source>
-        <translation>g</translation>
+        <translation type="vanished">g</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="100"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="116"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="124"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="132"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="140"/>
         <source>mg</source>
-        <translation>mg</translation>
+        <translation type="vanished">mg</translation>
     </message>
     <message>
         <location filename="../dialogs/dlguebernahmerezept.cpp" line="100"/>
@@ -2378,16 +2333,6 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <location filename="../dialogs/dlguebernahmerezept.cpp" line="140"/>
         <source>Stk.</source>
         <translation>st.</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="116"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="116"/>
-        <source>mL</source>
-        <translation></translation>
     </message>
     <message>
         <source>l</source>
@@ -2458,12 +2403,6 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgverdampfung.ui" line="152"/>
-        <location filename="../dialogs/dlgverdampfung.ui" line="168"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="181"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Von der &lt;span style=&quot; font-weight:700;&quot;&gt;Oberkante des Kessels&lt;/span&gt; bis zur &lt;span style=&quot; font-weight:700;&quot;&gt;Oberkante des Sudes&lt;/span&gt; am &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; messen. Der Kessel muss eben stehen, damit gültige Werte berechnet werden können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
@@ -2479,9 +2418,8 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgverdampfung.ui" line="316"/>
         <source>min</source>
-        <translation>min</translation>
+        <translation type="vanished">min</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgverdampfung.ui" line="330"/>
@@ -2507,11 +2445,6 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <location filename="../dialogs/dlgverdampfung.ui" line="405"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate in l/h&lt;/span&gt; ausgegeben. Die vormalige prozentuale Berechnung wurde zugunsten der genaueren Berechnung l/h ersetzt. Diese ist nicht von der relativen Sudmenge, sondern von der &lt;span style=&quot; font-weight:600;&quot;&gt;Leistungsaufnahme absolut &lt;/span&gt;abhängig, somit immer annähernd gleich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgverdampfung.ui" line="427"/>
-        <source>L/h</source>
-        <translation></translation>
     </message>
     <message>
         <source>l/h</source>
@@ -2545,10 +2478,8 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Vörttemperatur</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgvolumen.ui" line="60"/>
-        <location filename="../dialogs/dlgvolumen.ui" line="147"/>
         <source>cm</source>
-        <translation>cm</translation>
+        <translation type="vanished">cm</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="67"/>
@@ -2576,15 +2507,8 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgvolumen.ui" line="46"/>
-        <location filename="../dialogs/dlgvolumen.ui" line="161"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgvolumen.ui" line="105"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="vanished">°C</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgvolumen.ui" line="112"/>
@@ -2610,9 +2534,8 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Vattenanpassning</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.ui" line="66"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="28"/>
@@ -2630,34 +2553,25 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.ui" line="77"/>
-        <source>Kg</source>
-        <translation>kg</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.ui" line="82"/>
-        <source>g</source>
-        <translation>g</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.ui" line="87"/>
-        <source>mg</source>
-        <translation>mg</translation>
-    </message>
-    <message>
         <location filename="../dialogs/dlgwasseraufbereitung.ui" line="92"/>
+        <source>Stk.</source>
+        <translation>st.</translation>
+    </message>
+    <message>
+        <source>Kg</source>
+        <translation type="vanished">kg</translation>
+    </message>
+    <message>
+        <source>g</source>
+        <translation type="vanished">g</translation>
+    </message>
+    <message>
+        <source>mg</source>
+        <translation type="vanished">mg</translation>
+    </message>
+    <message>
         <source>Stk</source>
-        <translation>st</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.ui" line="97"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.ui" line="102"/>
-        <source>mL</source>
-        <translation></translation>
+        <translation type="vanished">st</translation>
     </message>
     <message>
         <source>l</source>
@@ -2743,15 +2657,12 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>&lt;manuell&gt;</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="75"/>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="88"/>
         <source> (%1%)</source>
-        <translation> (%1%)</translation>
+        <translation type="vanished"> (%1%)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="95"/>
         <source>/l</source>
-        <translation>/l</translation>
+        <translation type="vanished">/l</translation>
     </message>
 </context>
 <context>
@@ -2782,13 +2693,8 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="162"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="328"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="487"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="527"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="541"/>
         <source>°dH</source>
-        <translation>°dH</translation>
+        <translation type="vanished">°dH</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasserprofile.ui" line="169"/>
@@ -2807,26 +2713,6 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <source>mmol/l</source>
         <translation type="vanished">mmol/l</translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="210"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="443"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="480"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="494"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="501"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="587"/>
-        <source>mg/L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="217"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="367"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="436"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="548"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="580"/>
-        <location filename="../dialogs/dlgwasserprofile.ui" line="693"/>
-        <source>mmol/L</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../dialogs/dlgwasserprofile.ui" line="224"/>
@@ -3369,19 +3255,16 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Klarningsmedel</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="785"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="785"/>
         <source>g</source>
-        <translation>g</translation>
+        <translation type="vanished">g</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="785"/>
         <source>mg</source>
-        <translation>mg</translation>
+        <translation type="vanished">mg</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="785"/>
@@ -3464,16 +3347,6 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Databas (*.sqlite);;Alla filer (*.*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="785"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="785"/>
-        <source>mL</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="788"/>
         <source>Sud ID</source>
         <translation>Sats-ID</translation>
@@ -3523,72 +3396,52 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Storlek [l]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="798"/>
-        <location filename="../mainwindow.cpp" line="801"/>
         <source>Menge [L]</source>
-        <translation>Storlek [L]</translation>
+        <translation type="vanished">Storlek [L]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="799"/>
-        <location filename="../mainwindow.cpp" line="803"/>
         <source>SW [°P]</source>
-        <translation>OG [°P]</translation>
+        <translation type="vanished">OG [°P]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="800"/>
         <source>Bittere [IBU]</source>
-        <translation>Beska [IBU]</translation>
+        <translation type="vanished">Beska [IBU]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="802"/>
         <source>SHA [%]</source>
-        <translation>Utbyte [%]</translation>
+        <translation type="vanished">Utbyte [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="804"/>
         <source>Restextrakt [°P]</source>
-        <translation>Resterande extrakthalt [°P]</translation>
+        <translation type="vanished">Resterande extrakthalt [°P]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="805"/>
         <source>Schüttung [kg]</source>
-        <translation>Malt o dyl [kg]</translation>
+        <translation type="vanished">Malt o dyl [kg]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="806"/>
         <source>Kosten [%1/l]</source>
-        <translation>Kostnader [%1/l]</translation>
+        <translation type="vanished">Kostnader [%1/l]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="807"/>
-        <location filename="../mainwindow.cpp" line="883"/>
-        <location filename="../mainwindow.cpp" line="892"/>
         <source>Alk. [%]</source>
-        <translation>Alk. [%]</translation>
+        <translation type="vanished">Alk. [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="808"/>
-        <location filename="../mainwindow.cpp" line="884"/>
-        <location filename="../mainwindow.cpp" line="893"/>
         <source>sEVG [%]</source>
-        <translation>Förjäsn. [%]</translation>
+        <translation type="vanished">Förjäsn. [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="809"/>
-        <location filename="../mainwindow.cpp" line="885"/>
-        <location filename="../mainwindow.cpp" line="894"/>
         <source>tEVG [%]</source>
-        <translation>Förjäsn. (verkl.) [%]</translation>
+        <translation type="vanished">Förjäsn. (verkl.) [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="810"/>
         <source>Eff. SHA [%]</source>
-        <translation>Utbyte (eff.) [%]</translation>
+        <translation type="vanished">Utbyte (eff.) [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="811"/>
         <source>Verdampfungsrate [l/h]</source>
-        <translation>Förångningshastighet [l/h]</translation>
+        <translation type="vanished">Förångningshastighet [l/h]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="812"/>
@@ -3604,15 +3457,12 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Namn</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="816"/>
         <source>Menge [kg]</source>
-        <translation>Mängd [kg]</translation>
+        <translation type="vanished">Mängd [kg]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="817"/>
-        <location filename="../mainwindow.cpp" line="866"/>
         <source>Farbe [EBC]</source>
-        <translation>Färg [EBC]</translation>
+        <translation type="vanished">Färg [EBC]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="818"/>
@@ -3620,9 +3470,8 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>pH</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="819"/>
         <source>Max. Anteil [%]</source>
-        <translation>Max. andel [%]</translation>
+        <translation type="vanished">Max. andel [%]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="820"/>
@@ -3652,10 +3501,8 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Alternativ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="823"/>
-        <location filename="../mainwindow.cpp" line="837"/>
         <source>Preis [%1/kg]</source>
-        <translation>Kostnader [%1/l]</translation>
+        <translation type="vanished">Kostnader [%1/l]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="824"/>
@@ -3682,14 +3529,12 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Länk</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="830"/>
         <source>Menge [g]</source>
-        <translation>Mängd [g]</translation>
+        <translation type="vanished">Mängd [g]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="831"/>
         <source>Alpha [%]</source>
-        <translation>Alpha [%]</translation>
+        <translation type="vanished">Alpha [%]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="832"/>
@@ -3704,10 +3549,93 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Typ</translation>
     </message>
     <message>
+        <location filename="../mainwindow.cpp" line="798"/>
+        <location filename="../mainwindow.cpp" line="801"/>
+        <location filename="../mainwindow.cpp" line="816"/>
+        <location filename="../mainwindow.cpp" line="830"/>
         <location filename="../mainwindow.cpp" line="844"/>
         <location filename="../mainwindow.cpp" line="861"/>
         <source>Menge</source>
         <translation>Mängd</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="799"/>
+        <location filename="../mainwindow.cpp" line="803"/>
+        <source>SW</source>
+        <translation>Stamvört</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="800"/>
+        <source>Bittere</source>
+        <translation>Beska</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="802"/>
+        <source>SHA</source>
+        <translation>Utbyte</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="804"/>
+        <source>Restextrakt</source>
+        <translation>Restsötma (FG)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="805"/>
+        <source>Schüttung</source>
+        <translation>Malt o dyl</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="806"/>
+        <source>Kosten</source>
+        <translation>Kostnader</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="808"/>
+        <location filename="../mainwindow.cpp" line="884"/>
+        <location filename="../mainwindow.cpp" line="893"/>
+        <source>sEVG</source>
+        <translation>Förjäsn</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="809"/>
+        <location filename="../mainwindow.cpp" line="885"/>
+        <location filename="../mainwindow.cpp" line="894"/>
+        <source>tEVG</source>
+        <translation>Förjäsn. (verkl.)</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="810"/>
+        <source>Eff. SHA</source>
+        <translation>Effektivt utbyte</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="811"/>
+        <source>Verdampfungsrate</source>
+        <translation>Förångningshastighet</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="817"/>
+        <location filename="../mainwindow.cpp" line="866"/>
+        <source>Farbe</source>
+        <translation>Färg</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="819"/>
+        <source>Max. Anteil</source>
+        <translation>Max. andel</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="823"/>
+        <location filename="../mainwindow.cpp" line="837"/>
+        <location filename="../mainwindow.cpp" line="854"/>
+        <location filename="../mainwindow.cpp" line="870"/>
+        <source>Preis</source>
+        <translation>Pris</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="831"/>
+        <source>Alpha</source>
+        <translation>Alpha</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="847"/>
@@ -3720,24 +3648,16 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Torr/Flytande</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="849"/>
         <source>Würzemenge [L]</source>
-        <translation>Vörtmängd [L]</translation>
+        <translation type="vanished">Vörtmängd [L]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="870"/>
         <source>Preis [%1/[kg/L/Stk]]</source>
-        <translation>Pris [%1/[kg/L/st.]</translation>
+        <translation type="vanished">Pris [%1/[kg/L/st.]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="901"/>
-        <source>CO2 [g/L]</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../mainwindow.cpp" line="907"/>
         <source>Vermögen [L]</source>
-        <translation>Förmåga [L]</translation>
+        <translation type="vanished">Förmåga [L]</translation>
     </message>
     <message>
         <source>Würzemenge [l]</source>
@@ -3755,13 +3675,15 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="852"/>
+        <location filename="../mainwindow.cpp" line="882"/>
+        <location filename="../mainwindow.cpp" line="891"/>
+        <location filename="../mainwindow.cpp" line="900"/>
         <source>Temperatur</source>
         <translation>Temperatur</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="854"/>
         <source>Preis [%1]</source>
-        <translation>Pris [%1/l]</translation>
+        <translation type="vanished">Pris [%1/l]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="862"/>
@@ -3769,9 +3691,8 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Enhet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="864"/>
         <source>Ausbeute [%]</source>
-        <translation>Utbye [%]</translation>
+        <translation type="vanished">Utbye [%]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="865"/>
@@ -3788,9 +3709,8 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Vattenprofil</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="877"/>
         <source>Restalkalität [°dH]</source>
-        <translation>Restalkalinitet [°dH]</translation>
+        <translation type="vanished">Restalkalinitet [°dH]</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="880"/>
@@ -3800,22 +3720,16 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Datum</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="881"/>
-        <location filename="../mainwindow.cpp" line="890"/>
         <source>SRE [°P]</source>
-        <translation>FG [°P]</translation>
+        <translation type="vanished">FG [°P]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="882"/>
-        <location filename="../mainwindow.cpp" line="891"/>
-        <location filename="../mainwindow.cpp" line="900"/>
         <source>Temp. [°C]</source>
-        <translation>Temp. [°C]</translation>
+        <translation type="vanished">Temp. [°C]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="899"/>
         <source>Druck [bar]</source>
-        <translation>Tryck [bar]</translation>
+        <translation type="vanished">Tryck [bar]</translation>
     </message>
     <message>
         <source>CO2 [g/l]</source>
@@ -3829,6 +3743,56 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     <message>
         <source>Vermögen [l]</source>
         <translation type="vanished">Förmåga [l]</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="849"/>
+        <source>Würzemenge</source>
+        <translation>Vörtmängd</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="864"/>
+        <source>Ausbeute</source>
+        <translation>Utbye</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="877"/>
+        <source>Restalkalität</source>
+        <translation>Restalkalinitet</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="881"/>
+        <location filename="../mainwindow.cpp" line="890"/>
+        <source>SRE</source>
+        <translation>FG</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="807"/>
+        <location filename="../mainwindow.cpp" line="883"/>
+        <location filename="../mainwindow.cpp" line="892"/>
+        <source>Alkohol</source>
+        <translation>Alkohol</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="870"/>
+        <source>
+(%1/[kg/L/Stk.])</source>
+        <translation>
+(%1/[kg/L/st.])</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="899"/>
+        <source>Druck</source>
+        <translation>Tryck</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="901"/>
+        <source>CO2</source>
+        <translation>CO2</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="907"/>
+        <source>Vermögen</source>
+        <translation>Förmåga</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="908"/>
@@ -4232,19 +4196,12 @@ Installerad version: %2</translation>
         <translation>Extrakthalten i unga ölet</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="463"/>
-        <location filename="../tababfuellen.ui" line="490"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="361"/>
-        <location filename="../tababfuellen.ui" line="483"/>
-        <location filename="../tababfuellen.ui" line="559"/>
-        <location filename="../tababfuellen.ui" line="610"/>
-        <location filename="../tababfuellen.ui" line="624"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="695"/>
@@ -4263,11 +4220,8 @@ Installerad version: %2</translation>
         <translation>Extrakthalten i snabbjäsningsprovet</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="315"/>
-        <location filename="../tababfuellen.ui" line="354"/>
-        <location filename="../tababfuellen.ui" line="1506"/>
         <source>%vol</source>
-        <translation>%vol</translation>
+        <translation type="vanished">%vol</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="322"/>
@@ -4378,15 +4332,12 @@ Installerad version: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="846"/>
         <source>bar</source>
-        <translation>bar</translation>
+        <translation type="vanished">bar</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="900"/>
-        <location filename="../tababfuellen.ui" line="1340"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="vanished">°C</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="907"/>
@@ -4480,10 +4431,8 @@ Installerad version: %2</translation>
         <translation>Kolsyresättning</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="1172"/>
-        <location filename="../tababfuellen.ui" line="1291"/>
         <source>g</source>
-        <translation>g</translation>
+        <translation type="vanished">g</translation>
     </message>
     <message>
         <source>ml</source>
@@ -4614,25 +4563,9 @@ Installerad version: %2</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tababfuellen.ui" line="981"/>
-        <location filename="../tababfuellen.ui" line="1018"/>
-        <location filename="../tababfuellen.ui" line="1454"/>
-        <location filename="../tababfuellen.ui" line="1461"/>
-        <location filename="../tababfuellen.ui" line="1666"/>
-        <location filename="../tababfuellen.ui" line="1693"/>
-        <location filename="../tababfuellen.cpp" line="38"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../tababfuellen.ui" line="1238"/>
         <source>Temperatur für Karbonisierung</source>
         <translation>Temperatur för kolsyrejäsning</translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="1252"/>
-        <source>g/L</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1397"/>
@@ -4643,12 +4576,6 @@ Installerad version: %2</translation>
         <location filename="../tababfuellen.ui" line="1422"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Speisegabe&lt;/span&gt; unter Berücksichtigung der &lt;span style=&quot; font-weight:600;&quot;&gt;verfügbaren Speisemenge&lt;/span&gt; (links) angegeben.&lt;/p&gt;&lt;p&gt;Die Menge an Speise berechnet sich aufgrund des bereits vorhandenen CO₂ und der höchsten Gärtemperatur, bzw. Temperatur zu 2/3 der Hauptgärung wie sie im Feld Temperatur eingetragen wird. Der Eintrag wiederum resultiert aus den Werten der Hauptgärung im Tab Gärdaten.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ist zuwenig Speise vorhanden, muss &lt;span style=&quot; font-weight:600;&quot;&gt;zusätzlich Zucker&lt;/span&gt; berücksichtigt werden.&lt;/p&gt;&lt;p&gt;Die Speisegabe berechnet sich aus der Stammwürze vor dem Anstellen, dem Restextrakt, dem gewünschten Karbonisierungsgrad und der Jungbiermenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tababfuellen.ui" line="1441"/>
-        <location filename="../tababfuellen.ui" line="1474"/>
-        <source>mL</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1795"/>
@@ -5306,12 +5233,8 @@ Tid för flasktappning: %1</translation>
         <translation>Kokstart</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="422"/>
-        <location filename="../tabbraudaten.ui" line="845"/>
-        <location filename="../tabbraudaten.ui" line="1354"/>
-        <location filename="../tabbraudaten.ui" line="1580"/>
         <source>cm</source>
-        <translation>cm</translation>
+        <translation type="vanished">cm</translation>
     </message>
     <message>
         <source>l</source>
@@ -5364,25 +5287,12 @@ Tid för flasktappning: %1</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="541"/>
-        <location filename="../tabbraudaten.ui" line="1150"/>
-        <location filename="../tabbraudaten.ui" line="1865"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="vanished">°C</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="305"/>
-        <location filename="../tabbraudaten.ui" line="451"/>
-        <location filename="../tabbraudaten.ui" line="464"/>
-        <location filename="../tabbraudaten.ui" line="1179"/>
-        <location filename="../tabbraudaten.ui" line="1395"/>
-        <location filename="../tabbraudaten.ui" line="1648"/>
-        <location filename="../tabbraudaten.ui" line="1858"/>
-        <location filename="../tabbraudaten.ui" line="2378"/>
-        <location filename="../tabbraudaten.ui" line="2485"/>
-        <location filename="../tabbraudaten.ui" line="2645"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="785"/>
@@ -5396,14 +5306,8 @@ Tid för flasktappning: %1</translation>
         <translation>inklusive ingredienserna för koket</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="264"/>
-        <location filename="../tabbraudaten.ui" line="761"/>
-        <location filename="../tabbraudaten.ui" line="1249"/>
-        <location filename="../tabbraudaten.ui" line="2085"/>
-        <location filename="../tabbraudaten.ui" line="2352"/>
-        <location filename="../tabbraudaten.ui" line="2605"/>
         <source>°Brix</source>
-        <translation>°Brix</translation>
+        <translation type="vanished">°Brix</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="362"/>
@@ -5506,11 +5410,8 @@ Tid för flasktappning: %1</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="944"/>
-        <location filename="../tabbraudaten.ui" line="1926"/>
-        <location filename="../tabbraudaten.ui" line="1984"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1087"/>
@@ -5634,26 +5535,6 @@ Tid för flasktappning: %1</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.ui" line="315"/>
-        <location filename="../tabbraudaten.ui" line="632"/>
-        <location filename="../tabbraudaten.ui" line="675"/>
-        <location filename="../tabbraudaten.ui" line="1080"/>
-        <location filename="../tabbraudaten.ui" line="1265"/>
-        <location filename="../tabbraudaten.ui" line="1402"/>
-        <location filename="../tabbraudaten.ui" line="1609"/>
-        <location filename="../tabbraudaten.ui" line="1655"/>
-        <location filename="../tabbraudaten.ui" line="1878"/>
-        <location filename="../tabbraudaten.ui" line="2018"/>
-        <location filename="../tabbraudaten.ui" line="2180"/>
-        <location filename="../tabbraudaten.ui" line="2187"/>
-        <location filename="../tabbraudaten.ui" line="2201"/>
-        <location filename="../tabbraudaten.ui" line="2422"/>
-        <location filename="../tabbraudaten.ui" line="2638"/>
-        <location filename="../tabbraudaten.cpp" line="46"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../tabbraudaten.ui" line="915"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute(SHA) &lt;/span&gt;wird aus der gemessenen Stammwürze und Würzemenge bei &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; berechnet. &lt;/p&gt;&lt;p&gt;Der SHA-Faktor beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Effizienz&lt;/span&gt; einer Brauanlage ab dem Einmaischen bis zu Anstellen des Sudes mit Hefe. Die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute &lt;/span&gt;der verwendeten Rohstoffe ist ein wesentlicher Bestandteil der SHA.&lt;/p&gt;&lt;p&gt;Im Hobbymaßstab wird ein Faktor von 70% angestrebt, tatsächlich liegt er aber oft darunter. Ein Wert von 60% gilt als gut und ist daher im Kleinen Brauhelfer im Tab Rezept voreingestellt. Im Profibereich sind 80% Zielgröße.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
@@ -5662,12 +5543,6 @@ Tid för flasktappning: %1</translation>
         <location filename="../tabbraudaten.ui" line="1061"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge vor dem Hopfenseihen &lt;/span&gt;gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden.  Ein Klick auf das Widget rechts hilft bei der Berechnung und öffnet hierfür ein schwebendes Fenster.&lt;/p&gt;&lt;p&gt;Dieser Wert wird für die Berechnung der Verdampfungsrate und der Sudhausausbeute benötigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabbraudaten.ui" line="1159"/>
-        <location filename="../tabbraudaten.ui" line="1491"/>
-        <source>L/h</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../tabbraudaten.ui" line="1549"/>
@@ -5902,12 +5777,8 @@ Bryggdatum: %1</translation>
         <translation>Etikettstorlek</translation>
     </message>
     <message>
-        <location filename="../tabetikette.ui" line="367"/>
-        <location filename="../tabetikette.ui" line="437"/>
-        <location filename="../tabetikette.ui" line="558"/>
-        <location filename="../tabetikette.ui" line="591"/>
         <source>mm</source>
-        <translation>mm</translation>
+        <translation type="vanished">mm</translation>
     </message>
     <message>
         <location filename="../tabetikette.ui" line="30"/>
@@ -6125,7 +5996,7 @@ Bryggdatum: %1</translation>
     <name>TabGaerverlauf</name>
     <message>
         <location filename="../tabgaerverlauf.ui" line="38"/>
-        <location filename="../tabgaerverlauf.cpp" line="157"/>
+        <location filename="../tabgaerverlauf.cpp" line="156"/>
         <source>Schnellgärprobe</source>
         <translation>Snabbjäsningsprov</translation>
     </message>
@@ -6229,31 +6100,24 @@ Bryggdatum: %1</translation>
         <translation type="vanished">Resterande extrakthalt [°P]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="346"/>
-        <location filename="../tabgaerverlauf.cpp" line="368"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
         <source>Alkohol [%]</source>
         <translation type="vanished">Alkohol [%]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="347"/>
-        <location filename="../tabgaerverlauf.cpp" line="369"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <source>Temperatur [°C]</source>
         <translation type="vanished">Temperatur [°C]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="348"/>
-        <location filename="../tabgaerverlauf.cpp" line="370"/>
-        <location filename="../tabgaerverlauf.cpp" line="395"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="vanished">°C</translation>
     </message>
     <message>
         <source>Temperatur °C</source>
@@ -6272,68 +6136,62 @@ Bryggdatum: %1</translation>
         <translation type="vanished">Tryck [bar]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="346"/>
-        <location filename="../tabgaerverlauf.cpp" line="368"/>
+        <location filename="../tabgaerverlauf.cpp" line="345"/>
+        <location filename="../tabgaerverlauf.cpp" line="367"/>
         <source>Restextrakt</source>
         <translation>Restsötma (FG)</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="347"/>
-        <location filename="../tabgaerverlauf.cpp" line="369"/>
+        <location filename="../tabgaerverlauf.cpp" line="346"/>
+        <location filename="../tabgaerverlauf.cpp" line="368"/>
         <source>Alkohol</source>
         <translation>Alkohol</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="348"/>
-        <location filename="../tabgaerverlauf.cpp" line="370"/>
-        <location filename="../tabgaerverlauf.cpp" line="395"/>
+        <location filename="../tabgaerverlauf.cpp" line="347"/>
+        <location filename="../tabgaerverlauf.cpp" line="369"/>
+        <location filename="../tabgaerverlauf.cpp" line="394"/>
         <source>Temperatur</source>
         <translation>Temperatur</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="393"/>
+        <location filename="../tabgaerverlauf.cpp" line="392"/>
         <source>CO₂</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="393"/>
-        <source>g/L</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../tabgaerverlauf.cpp" line="394"/>
         <source>bar</source>
-        <translation>bar</translation>
+        <translation type="vanished">bar</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="394"/>
+        <location filename="../tabgaerverlauf.cpp" line="393"/>
         <source>Druck</source>
         <translation>Tryck</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="465"/>
-        <location filename="../tabgaerverlauf.cpp" line="596"/>
-        <location filename="../tabgaerverlauf.cpp" line="631"/>
+        <location filename="../tabgaerverlauf.cpp" line="464"/>
+        <location filename="../tabgaerverlauf.cpp" line="595"/>
+        <location filename="../tabgaerverlauf.cpp" line="630"/>
         <source>CSV Datei auswählen</source>
         <translation>Välj CSV-fil</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="467"/>
-        <location filename="../tabgaerverlauf.cpp" line="598"/>
-        <location filename="../tabgaerverlauf.cpp" line="633"/>
+        <location filename="../tabgaerverlauf.cpp" line="466"/>
+        <location filename="../tabgaerverlauf.cpp" line="597"/>
+        <location filename="../tabgaerverlauf.cpp" line="632"/>
         <source>CSV Datei (*.csv);;Alle Dateien (*.*)</source>
         <translation>CSV-fil (*.csv);;Alla filer (*.*)</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="761"/>
-        <location filename="../tabgaerverlauf.cpp" line="836"/>
-        <location filename="../tabgaerverlauf.cpp" line="910"/>
+        <location filename="../tabgaerverlauf.cpp" line="760"/>
+        <location filename="../tabgaerverlauf.cpp" line="835"/>
+        <location filename="../tabgaerverlauf.cpp" line="909"/>
         <source>Gärverlauf</source>
         <translation>Jäsning</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="762"/>
-        <location filename="../tabgaerverlauf.cpp" line="837"/>
+        <location filename="../tabgaerverlauf.cpp" line="761"/>
+        <location filename="../tabgaerverlauf.cpp" line="836"/>
         <source>Nicht alle Einträge konnten importiert werden.
 Unterstütztes Format:
 Datum1;Restextrakt1;Temperatur1[;Bemerkung1]
@@ -6344,7 +6202,7 @@ Datum1;Restextrakt1;Temperatur1[;Kommentar1]
 Datum2;Restextrakt2;Temperatur2[;Kommentar2]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="911"/>
+        <location filename="../tabgaerverlauf.cpp" line="910"/>
         <source>Nicht alle Einträge konnten importiert werden.
 Unterstütztes Format:
 Datum1;Druck1;Temperatur1[;Bemerkung1]
@@ -6379,10 +6237,8 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation>Stamvört (OG)</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="133"/>
-        <location filename="../tabrezept.ui" line="161"/>
         <source>min</source>
-        <translation>min</translation>
+        <translation type="vanished">min</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="140"/>
@@ -6411,12 +6267,8 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation type="vanished">CO2-halt</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="201"/>
-        <location filename="../tabrezept.ui" line="489"/>
-        <location filename="../tabrezept.ui" line="516"/>
-        <location filename="../tabrezept.ui" line="3577"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="208"/>
@@ -6450,9 +6302,8 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation>High gravity faktor</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="366"/>
         <source>IBU</source>
-        <translation>IBU</translation>
+        <translation type="vanished">IBU</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="373"/>
@@ -6500,16 +6351,8 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation>Mängd</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="660"/>
-        <location filename="../tabrezept.ui" line="1586"/>
-        <location filename="../tabrezept.ui" line="2835"/>
-        <location filename="../tabrezept.ui" line="2954"/>
-        <location filename="../tabrezept.ui" line="2971"/>
-        <location filename="../tabrezept.ui" line="3069"/>
-        <location filename="../tabrezept.ui" line="3145"/>
-        <location filename="../tabrezept.ui" line="3228"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="667"/>
@@ -6693,11 +6536,8 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation>Mäsk anpassad</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2119"/>
-        <location filename="../tabrezept.ui" line="2151"/>
-        <location filename="../tabrezept.ui" line="2203"/>
         <source>°dH</source>
-        <translation>°dH</translation>
+        <translation type="vanished">°dH</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="1457"/>
@@ -6815,36 +6655,9 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="453"/>
-        <location filename="../tabrezept.ui" line="3522"/>
-        <source>L/h</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../tabrezept.ui" line="466"/>
-        <location filename="../tabrezept.ui" line="1641"/>
-        <location filename="../tabrezept.ui" line="3321"/>
-        <location filename="../tabrezept.ui" line="3328"/>
-        <location filename="../tabrezept.ui" line="3348"/>
-        <location filename="../tabrezept.ui" line="3477"/>
-        <location filename="../tabrezept.ui" line="3613"/>
-        <location filename="../tabrezept.ui" line="3703"/>
-        <location filename="../tabrezept.ui" line="3733"/>
-        <location filename="../tabrezept.ui" line="3740"/>
-        <location filename="../tabrezept.ui" line="3844"/>
-        <location filename="../tabrezept.cpp" line="129"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../tabrezept.ui" line="473"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Ausbeute erwartet, z.B. durch spezielle Malzgaben, kann der Wert hier verändert werden.&lt;/p&gt;&lt;p&gt;Die Sudhausausbeute beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. 60% gelten als Durchschnitt. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Die Sudhausausbeute der Anlage wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;eingestellt. Der Wert ist eine Kenngröße für korrekte Berechnungen im Kleinen Brauhelfer. Ist die Sudhausausbeute unbekannt, empfiehlt es sich, den voreingestellte Wert des Kleinen Brauhelfers beizubehalten. Bei einer zu positiven Annahme besteht die Gefahr eines zu dünnen Bieres: Die Wassermenge wird nicht korrekt berechnet, die angestrebte Stammwürze  nicht erreicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../tabrezept.ui" line="496"/>
-        <source>g/L</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="503"/>
@@ -7206,9 +7019,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2677"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2684"/>
@@ -7216,14 +7028,12 @@ p, li { white-space: pre-wrap; }
         <translation>Restsötma (FG)</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2697"/>
         <source>EBC</source>
-        <translation>EBC</translation>
+        <translation type="vanished">EBC</translation>
     </message>
     <message>
-        <location filename="../tabrezept.ui" line="2759"/>
         <source>%vol</source>
-        <translation>%vol</translation>
+        <translation type="vanished">%vol</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2845"/>
@@ -7618,14 +7428,12 @@ p, li { white-space: pre-wrap; }
         <translation>Ta bort satsen &quot;%1&quot;?</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl_sudinfo.cpp" line="197"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl_sudinfo.cpp" line="233"/>
         <source>g</source>
-        <translation>g</translation>
+        <translation type="vanished">g</translation>
     </message>
 </context>
 <context>
@@ -7854,10 +7662,8 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>WdgHopfenGabe</name>
     <message>
-        <location filename="../widgets/wdghopfengabe.ui" line="150"/>
-        <location filename="../widgets/wdghopfengabe.ui" line="398"/>
         <source>g</source>
-        <translation>g</translation>
+        <translation type="vanished">g</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="163"/>
@@ -7870,12 +7676,8 @@ p, li { white-space: pre-wrap; }
         <translation>befintlig</translation>
     </message>
     <message>
-        <location filename="../widgets/wdghopfengabe.ui" line="201"/>
-        <location filename="../widgets/wdghopfengabe.ui" line="323"/>
-        <location filename="../widgets/wdghopfengabe.ui" line="350"/>
-        <location filename="../widgets/wdghopfengabe.ui" line="622"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="215"/>
@@ -7883,14 +7685,12 @@ p, li { white-space: pre-wrap; }
         <translation>Mängd</translation>
     </message>
     <message>
-        <location filename="../widgets/wdghopfengabe.ui" line="228"/>
         <source>IBU</source>
-        <translation>IBU</translation>
+        <translation type="vanished">IBU</translation>
     </message>
     <message>
-        <location filename="../widgets/wdghopfengabe.ui" line="303"/>
         <source>min</source>
-        <translation>min</translation>
+        <translation type="vanished">min</translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="310"/>
@@ -7955,11 +7755,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../widgets/wdghopfengabe.ui" line="330"/>
         <source>Bittere</source>
         <translation>Beska</translation>
-    </message>
-    <message>
-        <location filename="../widgets/wdghopfengabe.ui" line="363"/>
-        <source>g/L</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdghopfengabe.ui" line="376"/>
@@ -8055,9 +7850,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgmalzgabe.ui" line="372"/>
         <source>°P</source>
-        <translation>°P</translation>
+        <translation type="vanished">°P</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="392"/>
@@ -8065,10 +7859,8 @@ p, li { white-space: pre-wrap; }
         <translation>Extrakt</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgmalzgabe.ui" line="244"/>
-        <location filename="../widgets/wdgmalzgabe.ui" line="257"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="86"/>
@@ -8096,10 +7888,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgmalzgabe.ui" line="169"/>
-        <location filename="../widgets/wdgmalzgabe.ui" line="385"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../widgets/wdgmalzgabe.ui" line="218"/>
@@ -8146,13 +7936,8 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Andel</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="269"/>
-        <location filename="../widgets/wdgrast.ui" line="497"/>
-        <location filename="../widgets/wdgrast.ui" line="530"/>
-        <location filename="../widgets/wdgrast.ui" line="594"/>
-        <location filename="../widgets/wdgrast.ui" line="654"/>
         <source>°C</source>
-        <translation>°C</translation>
+        <translation type="vanished">°C</translation>
     </message>
     <message>
         <source>Wassermenge</source>
@@ -8191,11 +7976,8 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Tid</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="186"/>
-        <location filename="../widgets/wdgrast.ui" line="199"/>
-        <location filename="../widgets/wdgrast.ui" line="407"/>
         <source>min</source>
-        <translation>min</translation>
+        <translation type="vanished">min</translation>
     </message>
     <message>
         <source>l</source>
@@ -8243,12 +8025,6 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="282"/>
-        <location filename="../widgets/wdgrast.ui" line="543"/>
-        <source>L</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Zusätzliche Rast</source>
         <translation type="vanished">Extra rast</translation>
     </message>
@@ -8267,9 +8043,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="206"/>
         <source>kg</source>
-        <translation>kg</translation>
+        <translation type="vanished">kg</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="219"/>
@@ -8282,11 +8057,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="295"/>
-        <location filename="../widgets/wdgrast.ui" line="452"/>
-        <location filename="../widgets/wdgrast.ui" line="510"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="327"/>
@@ -8510,9 +8282,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.ui" line="234"/>
         <source>°dH</source>
-        <translation>°dH</translation>
+        <translation type="vanished">°dH</translation>
     </message>
     <message>
         <location filename="../widgets/wdgwasseraufbereitung.ui" line="311"/>
@@ -8580,9 +8351,8 @@ p, li { white-space: pre-wrap; }
         <translation>Mäskvatten</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwasseraufbereitung.cpp" line="90"/>
         <source>/l</source>
-        <translation>/l</translation>
+        <translation type="vanished">/l</translation>
     </message>
 </context>
 <context>
@@ -8666,12 +8436,6 @@ p, li { white-space: pre-wrap; }
         <translation>Mängd</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="233"/>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="246"/>
-        <source>g</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>g/l</source>
         <translation type="vanished">g/l</translation>
     </message>
@@ -8701,9 +8465,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="464"/>
         <source>min</source>
-        <translation>min</translation>
+        <translation type="vanished">min</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="86"/>
@@ -8726,11 +8489,6 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="144"/>
-        <source>°P</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="157"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld zeigt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; für der &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe &lt;/span&gt;an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
@@ -8749,13 +8507,6 @@ p, li { white-space: pre-wrap; }
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="357"/>
         <source>Extrakt</source>
         <translation>Extrakt</translation>
-    </message>
-    <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="185"/>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="148"/>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="155"/>
-        <source>g/L</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="198"/>
@@ -8788,9 +8539,8 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.ui" line="398"/>
         <source>%</source>
-        <translation>%</translation>
+        <translation type="vanished">%</translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.ui" line="405"/>
@@ -8861,20 +8611,9 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">ml/l</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="162"/>
-        <source>mg/L</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="169"/>
         <source>Stk./L</source>
         <translation>st./L</translation>
-    </message>
-    <message>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="176"/>
-        <location filename="../widgets/wdgweiterezutatgabe.cpp" line="183"/>
-        <source>mL/L</source>
-        <translation></translation>
     </message>
     <message>
         <location filename="../widgets/wdgweiterezutatgabe.cpp" line="240"/>

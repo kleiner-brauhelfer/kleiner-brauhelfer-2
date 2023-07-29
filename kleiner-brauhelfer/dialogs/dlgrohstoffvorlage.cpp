@@ -129,10 +129,10 @@ void DlgRohstoffVorlage::setModel()
                 filterColumns.append(col);
                 col = model->fieldIndex(QStringLiteral("color"));
                 table->appendCol({col, true, false, 0, nullptr});
-                model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Farbe [EBC]"));
+                model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Farbe") + "\n(EBC)");
                 col = model->fieldIndex(QStringLiteral("max_in_batch"));
                 table->appendCol({col, true, false, 0, nullptr});
-                model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Max. Anteil [%]"));
+                model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Max. Anteil") + "\n(%)");
                 col = model->fieldIndex(QStringLiteral("notes"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));
@@ -148,7 +148,7 @@ void DlgRohstoffVorlage::setModel()
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Typ"));
                 col = model->fieldIndex(QStringLiteral("alpha"));
                 table->appendCol({col, true, false, 0, nullptr});
-                model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alpha [%]"));
+                model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Alpha") + "\n(%)");
                 col = model->fieldIndex(QStringLiteral("aroma"));
                 table->appendCol({col, true, false, 0, nullptr});
                 model->setHeaderData(col, Qt::Orientation::Horizontal, tr("Eigenschaften"));

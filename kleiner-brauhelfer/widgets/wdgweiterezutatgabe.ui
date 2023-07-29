@@ -141,7 +141,7 @@
            </size>
           </property>
           <property name="text">
-           <string>°P</string>
+           <string notr="true">°P</string>
           </property>
          </widget>
         </item>
@@ -182,7 +182,7 @@
            </size>
           </property>
           <property name="text">
-           <string>g/L</string>
+           <string notr="true">g/L</string>
           </property>
          </widget>
         </item>
@@ -230,7 +230,7 @@
            </size>
           </property>
           <property name="text">
-           <string>g</string>
+           <string notr="true">g</string>
           </property>
          </widget>
         </item>
@@ -243,7 +243,7 @@
            </size>
           </property>
           <property name="text">
-           <string>g</string>
+           <string notr="true">g</string>
           </property>
          </widget>
         </item>
@@ -395,7 +395,7 @@
            </size>
           </property>
           <property name="text">
-           <string>%</string>
+           <string notr="true">%</string>
           </property>
          </widget>
         </item>
@@ -461,7 +461,7 @@
             </size>
            </property>
            <property name="text">
-            <string>min</string>
+            <string notr="true">min</string>
            </property>
           </widget>
          </item>

@@ -35,7 +35,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->tbWassserZuckerloesung->setColumn(ModelSud::ColVerschneidungAbfuellen);
     ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
     ui->lblNebenkostenEinheit->setText(QLocale().currencySymbol());
-    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/" + tr("L"));
+    ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
 
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));

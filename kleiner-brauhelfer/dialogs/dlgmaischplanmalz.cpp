@@ -21,8 +21,8 @@ DlgMaischplanMalz::DlgMaischplanMalz(double value, QWidget *parent) :
 
     QStandardItemModel* model = new QStandardItemModel(bh->sud()->modelMalzschuettung()->rowCount(), 3, this);
     model->setHeaderData(0, Qt::Orientation::Horizontal, tr("Malz"));
-    model->setHeaderData(1, Qt::Orientation::Horizontal, tr("Gesamtmenge [kg]"));
-    model->setHeaderData(2, Qt::Orientation::Horizontal, tr("Anteil [%]"));
+    model->setHeaderData(1, Qt::Orientation::Horizontal, tr("Gesamtmenge") + "\n(kg)");
+    model->setHeaderData(2, Qt::Orientation::Horizontal, tr("Anteil") + "\n(%)");
     for (int row = 0; row < bh->sud()->modelMalzschuettung()->rowCount(); row++)
     {
         model->setData(model->index(row, 0), bh->sud()->modelMalzschuettung()->data(row, ModelMalzschuettung::ColName));

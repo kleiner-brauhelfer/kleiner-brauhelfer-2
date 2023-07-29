@@ -38,7 +38,7 @@ void ChartHopfen::update()
             bars->addData(row+1, yVal);
             yMax = qMax(yMax, yVal);
         }
-        yAxis->setLabel(tr("Menge (g)"));
+        yAxis->setLabel(tr("Menge") + " (g)");
         yAxis->setRange(0, yMax);
         yAxis2->setVisible(false);
         break;
@@ -51,7 +51,7 @@ void ChartHopfen::update()
             bars->addData(row+1, yVal);
             yMax = qMax(yMax, yVal);
         }
-        yAxis->setLabel(tr("Anteil (%)"));
+        yAxis->setLabel(tr("Anteil") + " (%)");
         yAxis->setRange(0, int(yMax)+1);
         yAxis2->setVisible(false);
         break;
@@ -64,8 +64,8 @@ void ChartHopfen::update()
             bars->addData(row+1, yVal);
             yMax = qMax(yMax, yVal);
         }
-        yAxis->setLabel(tr("Anteil (%)"));
-        yAxis2->setLabel(tr("Bittere (IBU)"));
+        yAxis->setLabel(tr("Anteil") + " (%)");
+        yAxis2->setLabel(tr("Bittere") + " (IBU)");
         yAxis->setRange(0, int(yMax)+1);
         yAxis2->setRange(0, (int(yMax)+1)*bh->sud()->getIBU()/100);
         yAxis2->setVisible(true);

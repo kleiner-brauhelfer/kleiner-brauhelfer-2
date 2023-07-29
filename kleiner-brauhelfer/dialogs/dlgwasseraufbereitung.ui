@@ -63,7 +63,7 @@
         </size>
        </property>
        <property name="text">
-        <string>%</string>
+        <string notr="true">%</string>
        </property>
       </widget>
      </item>
@@ -74,32 +74,32 @@
        </property>
        <item>
         <property name="text">
-         <string>Kg</string>
+         <string notr="true">Kg</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>g</string>
+         <string notr="true">g</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>mg</string>
+         <string notr="true">mg</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Stk</string>
+         <string>Stk.</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>L</string>
+         <string notr="true">L</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>mL</string>
+         <string notr="true">mL</string>
         </property>
        </item>
       </widget>

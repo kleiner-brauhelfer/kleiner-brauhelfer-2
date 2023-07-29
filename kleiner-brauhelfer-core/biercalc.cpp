@@ -371,11 +371,6 @@ double BierCalc::cMaische(double m_malz, double V_wasser)
     return (m_malz * cMalz + m_wasser * cWasser) / (m_malz + m_wasser);
 }
 
-double BierCalc::einmaischetemperatur(double T_rast, double m_malz, double T_malt, double V_wasser)
-{
-    return BierCalc::mischungstemperaturT2(T_rast, m_malz, cMalz, T_malt, V_wasser * dichteWasser(20), cWasser);
-}
-
 double BierCalc::phMalz(double farbe)
 {
     return -0.255 * std::log(farbe) + 6.156;

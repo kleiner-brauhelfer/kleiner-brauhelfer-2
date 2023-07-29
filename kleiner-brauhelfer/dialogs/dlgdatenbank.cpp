@@ -33,7 +33,7 @@ DlgDatenbank::DlgDatenbank(QWidget *parent) :
     ui->comboBox->addItem(bh->modelMalz()->tableName());
     ui->comboBox->addItem(bh->modelMalzschuettung()->tableName());
     ui->comboBox->addItem(bh->modelNachgaerverlauf()->tableName());
-    ui->comboBox->addItem(bh->modelRasten()->tableName());
+    ui->comboBox->addItem(bh->modelMaischplan()->tableName());
     ui->comboBox->addItem(bh->modelSchnellgaerverlauf()->tableName());
     ui->comboBox->addItem(bh->modelSud()->tableName());
     ui->comboBox->addItem(bh->modelWasser()->tableName());
@@ -52,7 +52,7 @@ DlgDatenbank::DlgDatenbank(QWidget *parent) :
     ui->comboBoxSud->addItem(bh->modelHopfengaben()->tableName());
     ui->comboBoxSud->addItem(bh->modelMalzschuettung()->tableName());
     ui->comboBoxSud->addItem(bh->modelNachgaerverlauf()->tableName());
-    ui->comboBoxSud->addItem(bh->modelRasten()->tableName());
+    ui->comboBoxSud->addItem(bh->modelMaischplan()->tableName());
     ui->comboBoxSud->addItem(bh->modelSchnellgaerverlauf()->tableName());
     ui->comboBoxSud->addItem(bh->modelWasseraufbereitung()->tableName());
     ui->comboBoxSud->addItem(bh->modelWeitereZutatenGaben()->tableName());
@@ -134,8 +134,8 @@ void DlgDatenbank::on_comboBox_currentTextChanged(const QString &table)
         model = bh->modelMalzschuettung();
     else if (table == bh->modelNachgaerverlauf()->tableName())
         model = bh->modelNachgaerverlauf();
-    else if (table == bh->modelRasten()->tableName())
-        model = bh->modelRasten();
+    else if (table == bh->modelMaischplan()->tableName())
+        model = bh->modelMaischplan();
     else if (table == bh->modelSchnellgaerverlauf()->tableName())
         model = bh->modelSchnellgaerverlauf();
     else if (table == bh->modelSud()->tableName())
@@ -180,8 +180,8 @@ void DlgDatenbank::on_comboBoxSud_currentTextChanged(const QString &table)
         model = bh->sud()->modelMalzschuettung();
     else if (table == bh->modelNachgaerverlauf()->tableName())
         model = bh->sud()->modelNachgaerverlauf();
-    else if (table == bh->modelRasten()->tableName())
-        model = bh->sud()->modelRasten();
+    else if (table == bh->modelMaischplan()->tableName())
+        model = bh->sud()->modelMaischplan();
     else if (table == bh->modelSchnellgaerverlauf()->tableName())
         model = bh->sud()->modelSchnellgaerverlauf();
     else if (table == bh->modelWasseraufbereitung()->tableName())

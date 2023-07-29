@@ -362,7 +362,7 @@
         </td>
       </tr>
       {{/Rezept}}
-      {{#Rasten}}
+      {{#Maischplan}}
       <tr>
         <td class="underline" valign="top"><strong>M&auml;skschema</strong></td>
         <td class="underline">
@@ -373,14 +373,26 @@
             <tr>
               <td valign="top">{{Name}}</td>
               {{#Einmaischen}}
-              <td>V&auml;rm <span class="value">{{Menge}}</span> liter vatten till <span class="value">{{WasserTemp}}</span>&deg;C (blir <span class="value">{{Temp}}</span>&deg;C efter inm&auml;skning). <span class="value">{{Dauer}}</span> min m&auml;ska in.</td>
+              <td>
+                <span class="value">{{MengeWasser}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen und <span class="value">{{MengeMalz}}</span> kg Malz (<span class="value">{{MalzTemp}}</span>&deg;C) zusch&uuml;tten.</br>
+                Temperatur von <span class="value">{{Temp}}</span>&deg;C <span class="value">{{Dauer}}</span> min halten.
+              </td>
               {{/Einmaischen}}
-              {{#Rast}}
+              {{#Aufheizen}}
               <td>V&auml;rm m&auml;sken till <span class="value">{{Temp}}</span>&deg;C och rasta <span class="value">{{Dauer}}</span> min.</td>
-              {{/Rast}}
-              {{#Infusion}}
-              <td>V&auml;rm <span class="value">{{Menge}}</span> liter vatten till <span class="value">{{WasserTemp}}</span>&deg;C. H&auml;ll i (blir <span class="value">{{Temp}}</span>&deg;C) och rasta <span class="value">{{Dauer}}</span> min.</td>
-              {{/Infusion}}
+              {{/Aufheizen}}
+              {{#Zubruehen}}
+              <td>
+                <span class="value">{{MengeWasser}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen und zubr&uuml;hen.</br>
+                Temperatur von <span class="value">{{Temp}}</span>&deg;C <span class="value">{{Dauer}}</span> min halten.
+              </td>
+              {{/Zubruehen}}
+              {{#Zuschuetten}}
+              <td>
+                <span class="value">{{MengeWasser}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen und mit <span class="value">{{MengeMalz}}</span> kg Malz (<span class="value">{{MalzTemp}}</span>&deg;C) zusch&uuml;tten.</br>
+                Temperatur von <span class="value">{{Temp}}</span>&deg;C <span class="value">{{Dauer}}</span> min halten.
+              </td>
+              {{/Zuschuetten}}
               {{#Dekoktion}}
               <td>
                 Ta ur <span class="value">{{Menge}}</span> liter fr&aring;n m&auml;sken.</br>
@@ -394,7 +406,7 @@
           </table>
         </td>
       </tr>
-      {{/Rasten}}
+      {{/Maischplan}}
       {{#Rezept.BemerkungMaischplan}}
       <tr>
         <td class="underline" valign="top"><strong>Bemerkung Maischplan</strong></td>

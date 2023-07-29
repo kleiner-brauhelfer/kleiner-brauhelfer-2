@@ -289,6 +289,7 @@
     {{/Zutaten.Zusatz}}
   </div>
 
+  {{#Maischplan}}
   <div class="rm bg_rasten" align="center">
     <h2>M&auml;skschema</h2>
     <table>
@@ -299,16 +300,34 @@
         <th></th>
         <th>Temperatur [&deg;C]</th>
         <th>Tid [min]</th>
+        <th></th>
       </tr>
-      {{#Rasten.Liste}}
+      {{#Liste}}
       <tr>
         <td>{{Name}}</td>
         <td class="value" align="center">{{Temp}}</td>
         <td class="value" align="center">{{Dauer}}</td>
+        {{#Einmaischen}}
+        <td><span class="value">{{MengeWasser}}</span> Liter Wasser <span class="value">{{WasserTemp}}</span>&deg;C, <span class="value">{{MengeMalz}}</span> kg Malz <span class="value">{{MalzTemp}}</span>&deg;C</td>
+        {{/Einmaischen}}
+        {{#Zubruehen}}
+        <td><span class="value">{{MengeWasser}}</span> Liter Wasser <span class="value">{{WasserTemp}}</span>&deg;C</td>
+        {{/Zubruehen}}
+        {{#Zuschuetten}}
+        <td><span class="value">{{MengeWasser}}</span> Liter Wasser <span class="value">{{WasserTemp}}</span>&deg;C, <span class="value">{{MengeMalz}}</span> kg Malz <span class="value">{{MalzTemp}}</span>&deg;C</td>
+        {{/Zuschuetten}}
+        {{#Dekoktion}}
+        <td>
+          <span class="value">{{MengeMaische}}</span> Liter Maische 
+          {{#TeilmaischeZusatzRastDauer}}, <span class="value">{{TeilmaischeZusatzRastDauer}}</span> min <span class="value">{{TeilmaischeZusatzRastTemp}}</span>&deg;C{{/TeilmaischeZusatzRastDauer}}
+          {{#TeilmaischeRastDauer}}, <span class="value">{{TeilmaischeRastDauer}}</span> min <span class="value">{{TeilmaischeRastTemp}}</span>&deg;C{{/TeilmaischeRastDauer}}
+        </td>
+        {{/Dekoktion}}
       </tr>
-      {{/Rasten.Liste}}
+      {{/Liste}}
     </table>
   </div>
+  {{/Maischplan}}
 
   {{#Anhang}}
   <div class="rm bg_anhaenge" align="center">

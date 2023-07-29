@@ -137,7 +137,7 @@ class LIB_EXPORT SudObject : public QObject
     Q_PROPERTY_SUD_READONLY(int, BewertungMittel, toInt())
 
     // tables
-    Q_PROPERTY(ProxyModel* modelRasten READ modelRasten CONSTANT)
+    Q_PROPERTY(ProxyModel* modelMaischplan READ modelMaischplan CONSTANT)
     Q_PROPERTY(ProxyModel* modelMalzschuettung READ modelMalzschuettung CONSTANT)
     Q_PROPERTY(ProxyModel* modelHopfengaben READ modelHopfengaben CONSTANT)
     Q_PROPERTY(ProxyModel* modelHefegaben READ modelHefegaben CONSTANT)
@@ -238,7 +238,7 @@ public:
      * @brief Gets the different tables
      * @return Table model
      */
-    ProxyModel* modelRasten() const;
+    ProxyModel* modelMaischplan() const;
     ProxyModel* modelMalzschuettung() const;
     ProxyModel* modelHopfengaben() const;
     ProxyModel* modelHefegaben() const;
@@ -285,7 +285,7 @@ private:
     Brauhelfer *bh;
     int mId;
     int mRowSud;
-    ProxyModel* proxyModelRasten;
+    ProxyModel* proxyModelMaischplan;
     ProxyModel* proxyModelMalzschuettung;
     ProxyModel* proxyModelHopfengaben;
     ProxyModel* proxyModelHefegaben;

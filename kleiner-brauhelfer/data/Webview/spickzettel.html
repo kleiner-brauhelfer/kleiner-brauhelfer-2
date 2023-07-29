@@ -362,7 +362,7 @@
         </td>
       </tr>
       {{/Rezept}}
-      {{#Rasten}}
+      {{#Maischplan}}
       <tr>
         <td class="underline" valign="top"><strong>Maischplan</strong></td>
         <td class="underline">
@@ -373,20 +373,32 @@
             <tr>
               <td valign="top">{{Name}}</td>
               {{#Einmaischen}}
-              <td><span class="value">{{Menge}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen (ergibt <span class="value">{{Temp}}</span>&deg;C nach Einmaischen). <span class="value">{{Dauer}}</span> min einmaischen.</td>
+              <td>
+                <span class="value">{{MengeWasser}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen und <span class="value">{{MengeMalz}}</span> kg Malz (<span class="value">{{MalzTemp}}</span>&deg;C) zusch&uuml;tten.</br>
+                Temperatur von <span class="value">{{Temp}}</span>&deg;C <span class="value">{{Dauer}}</span> min halten.
+              </td>
               {{/Einmaischen}}
-              {{#Rast}}
-              <td>Maische auf <span class="value">{{Temp}}</span>&deg;C erhitzen und <span class="value">{{Dauer}}</span> min rasten.</td>
-              {{/Rast}}
-              {{#Infusion}}
-              <td><span class="value">{{Menge}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen. Zugeben (ergibt <span class="value">{{Temp}}</span>&deg;C) und <span class="value">{{Dauer}}</span> min rasten.</td>
-              {{/Infusion}}
+              {{#Aufheizen}}
+              <td>Maische auf <span class="value">{{Temp}}</span>&deg;C erhitzen und <span class="value">{{Dauer}}</span> min halten.</td>
+              {{/Aufheizen}}
+              {{#Zubruehen}}
+              <td>
+                <span class="value">{{MengeWasser}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen und zubr&uuml;hen.</br>
+                Temperatur von <span class="value">{{Temp}}</span>&deg;C <span class="value">{{Dauer}}</span> min halten.
+              </td>
+              {{/Zubruehen}}
+              {{#Zuschuetten}}
+              <td>
+                <span class="value">{{MengeWasser}}</span> Liter Wasser auf <span class="value">{{WasserTemp}}</span>&deg;C erhitzen und mit <span class="value">{{MengeMalz}}</span> kg Malz (<span class="value">{{MalzTemp}}</span>&deg;C) zusch&uuml;tten.</br>
+                Temperatur von <span class="value">{{Temp}}</span>&deg;C <span class="value">{{Dauer}}</span> min halten.
+              </td>
+              {{/Zuschuetten}}
               {{#Dekoktion}}
               <td>
-                <span class="value">{{Menge}}</span> Liter Maische abziehen.</br>
-                {{#TeilmaischeZusatzRastDauer}}Teilmaische auf <span class="value">{{TeilmaischeZusatzRastTemp}}</span>&deg;C erhitzen und <span class="value">{{TeilmaischeZusatzRastDauer}}</span> min rasten.</br>{{/TeilmaischeZusatzRastDauer}}
-                {{#TeilmaischeRastDauer}}Teilmaische auf <span class="value">{{TeilmaischeRastTemp}}</span>&deg;C erhitzen und <span class="value">{{TeilmaischeRastDauer}}</span> min rasten.</br>{{/TeilmaischeRastDauer}}
-                Teilmaische zugeben (ergibt <span class="value">{{Temp}}</span>&deg;C) und <span class="value">{{Dauer}}</span> min rasten.
+                <span class="value">{{MengeMaische}}</span> Liter Maische abziehen.</br>
+                {{#TeilmaischeZusatzRastDauer}}Teilmaische auf <span class="value">{{TeilmaischeZusatzRastTemp}}</span>&deg;C erhitzen und <span class="value">{{TeilmaischeZusatzRastDauer}}</span> min halten.</br>{{/TeilmaischeZusatzRastDauer}}
+                {{#TeilmaischeRastDauer}}Teilmaische auf <span class="value">{{TeilmaischeRastTemp}}</span>&deg;C erhitzen und <span class="value">{{TeilmaischeRastDauer}}</span> min halten.</br>{{/TeilmaischeRastDauer}}
+                Teilmaische wieder zur&uuml;ckgeben und Temperatur von <span class="value">{{Temp}}</span>&deg;C <span class="value">{{Dauer}}</span> min halten.
               </td>
               {{/Dekoktion}}
             </tr>
@@ -394,7 +406,7 @@
           </table>
         </td>
       </tr>
-      {{/Rasten}}
+      {{/Maischplan}}
       {{#Rezept.BemerkungMaischplan}}
       <tr>
         <td class="underline" valign="top"><strong>Bemerkung Maischplan</strong></td>

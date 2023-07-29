@@ -17,7 +17,7 @@ void Database::createTables(Brauhelfer* bh)
     if (!db.isValid())
         qCritical(Brauhelfer::loggingCategory) << "Database connection is invalid.";
     modelSud = new ModelSud(bh, db);
-    modelRasten = new ModelRasten(bh, db);
+    modelMaischplan = new ModelMaischplan(bh, db);
     modelMalzschuettung = new ModelMalzschuettung(bh, db);
     modelHopfengaben = new ModelHopfengaben(bh, db);
     modelHefegaben = new ModelHefegaben(bh, db);
@@ -45,7 +45,7 @@ void Database::setTables()
 {
     modelSud->setTable(QStringLiteral("Sud"));
     modelSud->setSort(ModelSud::ColBraudatum, Qt::DescendingOrder);
-    modelRasten->setTable(QStringLiteral("Rasten"));
+    modelMaischplan->setTable(QStringLiteral("Maischplan"));
     modelMalzschuettung->setTable(QStringLiteral("Malzschuettung"));
     modelHopfengaben->setTable(QStringLiteral("Hopfengaben"));
     modelHefegaben->setTable(QStringLiteral("Hefegaben"));
@@ -73,7 +73,7 @@ void Database::setTables()
 
     // sanity check
     Q_ASSERT(modelSud->columnCount() == ModelSud::NumCols);
-    Q_ASSERT(modelRasten->columnCount() == ModelRasten::NumCols);
+    Q_ASSERT(modelMaischplan->columnCount() == ModelMaischplan::NumCols);
     Q_ASSERT(modelMalzschuettung->columnCount() == ModelMalzschuettung::NumCols);
     Q_ASSERT(modelHopfengaben->columnCount() == ModelHopfengaben::NumCols);
     Q_ASSERT(modelHefegaben->columnCount() == ModelHefegaben::NumCols);
@@ -100,7 +100,7 @@ Database::~Database()
 {
     disconnect();
     delete modelSud;
-    delete modelRasten;
+    delete modelMaischplan;
     delete modelMalzschuettung;
     delete modelHopfengaben;
     delete modelHefegaben;
@@ -180,7 +180,7 @@ void Database::disconnect()
     if (isConnected())
     {
         modelSud->clear();
-        modelRasten->clear();
+        modelMaischplan->clear();
         modelMalzschuettung->clear();
         modelHopfengaben->clear();
         modelHefegaben->clear();
@@ -213,7 +213,7 @@ bool Database::isConnected() const
 bool Database::isDirty() const
 {
     return modelSud->isDirty() ||
-           modelRasten->isDirty() ||
+           modelMaischplan->isDirty() ||
            modelMalzschuettung->isDirty() ||
            modelHopfengaben->isDirty() ||
            modelHefegaben->isDirty() ||
@@ -245,7 +245,7 @@ void Database::select()
     modelWasser->select();
     modelGeraete->select();
     modelAusruestung->select();
-    modelRasten->select();
+    modelMaischplan->select();
     modelMalzschuettung->select();
     modelHopfengaben->select();
     modelHefegaben->select();
@@ -305,9 +305,9 @@ bool Database::save()
         mLastError = modelAusruestung->lastError();
         ret = false;
     }
-    if (!modelRasten->submitAll())
+    if (!modelMaischplan->submitAll())
     {
-        mLastError = modelRasten->lastError();
+        mLastError = modelMaischplan->lastError();
         ret = false;
     }
     if (!modelMalzschuettung->submitAll())
@@ -392,7 +392,7 @@ void Database::discard()
     modelWasser->revertAll();
     modelAusruestung->revertAll();
     modelGeraete->revertAll();
-    modelRasten->revertAll();
+    modelMaischplan->revertAll();
     modelMalzschuettung->revertAll();
     modelHopfengaben->revertAll();
     modelHefegaben->revertAll();

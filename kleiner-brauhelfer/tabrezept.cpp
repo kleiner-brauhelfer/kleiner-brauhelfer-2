@@ -78,9 +78,11 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->btnMalzAusgleichen->setError(true);
     ui->lblWarnungHopfen->setPalette(gSettings->paletteErrorLabel);
     ui->btnHopfenAusgleichen->setError(true);
-    ui->lblWarnungMaischplan->setPalette(gSettings->paletteErrorLabel);
+    ui->lblWarnungMaischplanWasser->setPalette(gSettings->paletteErrorLabel);
+    ui->lblWarnungMaischplanMalz->setPalette(gSettings->paletteErrorLabel);
     ui->btnMaischplanAusgleichen->setError(true);
     ui->btnMaischplanFaktorAnpassen->setError(true);
+    ui->btnMaischplanAusgleichenMalz->setError(true);
     ui->lblWarnungPh->setPalette(gSettings->paletteErrorLabel);
 
     pal = ui->btnNeueMalzGabe->palette();
@@ -178,10 +180,10 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud(), &SudObject::loadedChanged, this, &TabRezept::sudLoaded);
     connect(bh->sud(), &SudObject::dataChanged, this, &TabRezept::sudDataChanged);
 
-    connect(bh->sud()->modelRasten(), &ProxyModel::layoutChanged,this, &TabRezept::rasten_modified);
-    connect(bh->sud()->modelRasten(), &ProxyModel::rowsInserted, this, &TabRezept::rasten_modified);
-    connect(bh->sud()->modelRasten(), &ProxyModel::rowsRemoved, this, &TabRezept::rasten_modified);
-    connect(bh->sud()->modelRasten(), &ProxyModel::dataChanged, this, &TabRezept::updateMaischplan);
+    connect(bh->sud()->modelMaischplan(), &ProxyModel::layoutChanged,this, &TabRezept::rasten_modified);
+    connect(bh->sud()->modelMaischplan(), &ProxyModel::rowsInserted, this, &TabRezept::rasten_modified);
+    connect(bh->sud()->modelMaischplan(), &ProxyModel::rowsRemoved, this, &TabRezept::rasten_modified);
+    connect(bh->sud()->modelMaischplan(), &ProxyModel::dataChanged, this, &TabRezept::updateMaischplan);
 
     connect(bh->sud()->modelMalzschuettung(), &ProxyModel::layoutChanged, this, &TabRezept::malzGaben_modified);
     connect(bh->sud()->modelMalzschuettung(), &ProxyModel::rowsInserted, this, &TabRezept::malzGaben_modified);
@@ -759,7 +761,7 @@ void TabRezept::updateWasserModel()
 
 void TabRezept::rasten_modified()
 {    
-    const int nModel = bh->sud()->modelRasten()->rowCount();
+    const int nModel = bh->sud()->modelMaischplan()->rowCount();
     int nLayout = ui->layoutRasten->count();
     while (nLayout < nModel)
         ui->layoutRasten->addWidget(new WdgRast(nLayout++, ui->layoutRasten, this));
@@ -775,25 +777,31 @@ void TabRezept::updateMaischplan()
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     if (status == Brauhelfer::SudStatus::Rezept)
     {
-        double p = 1.0;
+        double pWasser = 100.0, pMalz = 100.0;
         int count = ui->layoutRasten->count();
         for (int i = 0; i < count; ++i)
         {
             WdgRast* wdg = static_cast<WdgRast*>(ui->layoutRasten->itemAt(i)->widget());
-            p -= wdg->prozentWasser();
+            pWasser -= wdg->prozentWasser();
+            pMalz -= wdg->prozentMalz();
         }
-        if (std::fabs(p) < 0.01)
-            p = 0.0;
+        if (std::fabs(pWasser) < 0.1)
+            pWasser = 0.0;
+        if (std::fabs(pMalz) < 0.1)
+            pMalz = 0.0;
         for (int i = 0; i < count; ++i)
         {
             WdgRast* wdg = static_cast<WdgRast*>(ui->layoutRasten->itemAt(i)->widget());
-            wdg->setFehlProzentWasser(p);
+            wdg->setFehlProzentWasser(pWasser);
+            wdg->setFehlProzentMalz(pMalz);
         }
-        ui->wdgWarnungMaischplan->setVisible(p != 0.0);
+        ui->wdgWarnungMaischplanWasser->setVisible(pWasser != 0.0 && ui->layoutRasten->count() > 0);
+        ui->wdgWarnungMaischplanMalz->setVisible(pMalz != 0.0 && ui->layoutRasten->count() > 0);
     }
     else
     {
-        ui->wdgWarnungMaischplan->setVisible(false);
+        ui->wdgWarnungMaischplanWasser->setVisible(false);
+        ui->wdgWarnungMaischplanMalz->setVisible(false);
     }
     updateRastenDiagram();
 }
@@ -801,23 +809,25 @@ void TabRezept::updateMaischplan()
 void TabRezept::updateRastenDiagram()
 {
     ui->diagramRasten->update();
-    ui->diagramRasten->setVisible(bh->sud()->modelRasten()->rowCount() > 0);
+    ui->diagramRasten->setVisible(bh->sud()->modelMaischplan()->rowCount() > 0);
 }
 
 void TabRezept::on_btnNeueRast_clicked()
 {
     QMap<int, QVariant> values;
-    if (bh->sud()->modelRasten()->rowCount() == 0)
+    if (bh->sud()->modelMaischplan()->rowCount() == 0)
     {
-        values = {{ModelRasten::ColSudID, bh->sud()->id()},
-                  {ModelRasten::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Einmaischen)}};
+        values = {{ModelMaischplan::ColSudID, bh->sud()->id()},
+                  {ModelMaischplan::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Einmaischen)},
+                  {ModelMaischplan::ColAnteilMalz, 100},
+                  {ModelMaischplan::ColAnteilWasser, 100}};
     }
     else
     {
-        values = {{ModelRasten::ColSudID, bh->sud()->id()},
-                  {ModelRasten::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Aufheizen)}};
+        values = {{ModelMaischplan::ColSudID, bh->sud()->id()},
+                  {ModelMaischplan::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Aufheizen)}};
     }
-    bh->sud()->modelRasten()->append(values);
+    bh->sud()->modelMaischplan()->append(values);
     ui->scrollAreaRasten->verticalScrollBar()->setValue(ui->scrollAreaRasten->verticalScrollBar()->maximum());
 }
 
@@ -826,94 +836,53 @@ void TabRezept::on_btnRastenUebernehmen_clicked()
     DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Maischplan);
     if (dlg.exec() == QDialog::Accepted)
     {
-        bh->sudKopierenModel(bh->modelRasten(),
-                             ModelRasten::ColSudID, dlg.sudId(),
-                             {{ModelRasten::ColSudID, bh->sud()->id()}});
-        bh->sud()->modelRasten()->invalidate();
+        bh->sudKopierenModel(bh->modelMaischplan(),
+                             ModelMaischplan::ColSudID, dlg.sudId(),
+                             {{ModelMaischplan::ColSudID, bh->sud()->id()}});
+        bh->sud()->modelMaischplan()->invalidate();
     }
 }
 
 void TabRezept::on_btnMaischplanAusgleichen_clicked()
 {
-    ProxyModel *model = bh->sud()->modelRasten();
+    ProxyModel *model = bh->sud()->modelMaischplan();
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
-    {
-        switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
-        {
-        case Brauhelfer::RastTyp::Einmaischen:
-        case Brauhelfer::RastTyp::Zubruehen:
-            totalProzent += model->data(i, ModelRasten::ColMengenfaktor).toDouble();
-        default:
-            break;
-        }
-    }
+        totalProzent += model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
     if (totalProzent > 0)
     {
-        double prozent;
-        double factor = 1 / totalProzent;
+        double factor = 100.0 / totalProzent;
         for (int i = 0; i < model->rowCount(); ++i)
-        {
-            switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
-            {
-            case Brauhelfer::RastTyp::Einmaischen:
-            case Brauhelfer::RastTyp::Zubruehen:
-                prozent = model->data(i, ModelRasten::ColMengenfaktor).toDouble();
-                model->setData(i, ModelRasten::ColMengenfaktor, prozent * factor);
-            default:
-                break;
-            }
-        }
-    }
-    else
-    {
-        double prozent = 1.0 / model->rowCount();
-        for (int i = 0; i < model->rowCount(); ++i)
-        {
-            switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
-            {
-            case Brauhelfer::RastTyp::Einmaischen:
-            case Brauhelfer::RastTyp::Zubruehen:
-                model->setData(i, ModelRasten::ColMengenfaktor, prozent);
-            default:
-                break;
-            }
-        }
+            model->setData(i, ModelMaischplan::ColAnteilWasser, model->data(i, ModelMaischplan::ColAnteilWasser).toDouble() * factor);
     }
 }
 
 void TabRezept::on_btnMaischplanFaktorAnpassen_clicked()
 {
-    ProxyModel *model = bh->sud()->modelRasten();
+    ProxyModel *model = bh->sud()->modelMaischplan();
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
-    {
-        switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
-        {
-        case Brauhelfer::RastTyp::Einmaischen:
-        case Brauhelfer::RastTyp::Zubruehen:
-            totalProzent += model->data(i, ModelRasten::ColMengenfaktor).toDouble();
-        default:
-            break;
-        }
-    }
+        totalProzent += model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
     if (totalProzent > 0)
     {
-        bh->sud()->setFaktorHauptguss(totalProzent*bh->sud()->geterg_WHauptguss() / bh->sud()->geterg_S_Gesamt());
-        double prozent;
-        double factor = 1 / totalProzent;
+        bh->sud()->setFaktorHauptguss(totalProzent / 100.0 * bh->sud()->geterg_WHauptguss() / bh->sud()->geterg_S_Gesamt());
+        double factor = 100.0 / totalProzent;
         for (int i = 0; i < model->rowCount(); ++i)
-        {
-            switch (static_cast<Brauhelfer::RastTyp>(model->data(i, ModelRasten::ColTyp).toInt()))
-            {
-            case Brauhelfer::RastTyp::Einmaischen:
-            case Brauhelfer::RastTyp::Zubruehen:
-                prozent = model->data(i, ModelRasten::ColMengenfaktor).toDouble();
-                model->setData(i, ModelRasten::ColMengenfaktor, prozent * factor);
-            default:
-                break;
-            }
-        }
+            model->setData(i, ModelMaischplan::ColAnteilWasser, model->data(i, ModelMaischplan::ColAnteilWasser).toDouble() * factor);
+    }
+}
+
+void TabRezept::on_btnMaischplanAusgleichenMalz_clicked()
+{
+    ProxyModel *model = bh->sud()->modelMaischplan();
+    double totalProzent = 0;
+    for (int i = 0; i < model->rowCount(); ++i)
+        totalProzent += model->data(i, ModelMaischplan::ColAnteilMalz).toDouble();
+    if (totalProzent > 0)
+    {
+        double factor = 100.0 / totalProzent;
+        for (int i = 0; i < model->rowCount(); ++i)
+            model->setData(i, ModelMaischplan::ColAnteilMalz, model->data(i, ModelMaischplan::ColAnteilMalz).toDouble() * factor);
     }
 }
 

@@ -1752,6 +1752,64 @@ bool Database::update()
             db.commit();
         }
 
+        if (version == 2008)
+        {
+            ++version;
+            qInfo(Brauhelfer::loggingCategory) << "Updating to version:" << version;
+            db.transaction();
+
+            // Neue Tabelle Maischplan
+            sqlExec(db, QStringLiteral("CREATE TABLE Maischplan ("
+                                       "ID INTEGER PRIMARY KEY,"
+                                       "SudID INTEGER NOT NULL,"
+                                       "Typ INTEGER DEFAULT 0,"
+                                       "Name TEXT NOT NULL,"
+                                       "TempWasser REAL DEFAULT 0,"
+                                       "AnteilWasser REAL DEFAULT 0,"
+                                       "TempMalz REAL DEFAULT 0,"
+                                       "AnteilMalz REAL DEFAULT 0,"
+                                       "TempRast REAL DEFAULT 0,"
+                                       "DauerRast INTEGER DEFAULT 0,"
+                                       "AnteilMaische REAL DEFAULT 0,"
+                                       "TempExtra1 REAL DEFAULT 0,"
+                                       "DauerExtra1 INTEGER DEFAULT 0,"
+                                       "TempExtra2 REAL DEFAULT 0,"
+                                       "DauerExtra2 INTEGER DEFAULT 0)"));
+            sqlExec(db, QStringLiteral("INSERT INTO Maischplan ("
+                                       "ID,"
+                                       "SudID,"
+                                       "Typ,"
+                                       "Name,"
+                                       "TempRast,"
+                                       "DauerRast"
+                                       ") SELECT "
+                                       "ID,"
+                                       "SudID,"
+                                       "Typ,"
+                                       "Name,"
+                                       "Temp,"
+                                       "Dauer"
+                                       " FROM Rasten"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilMalz=100 WHERE Typ=0"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilWasser=100*Rasten.Mengenfaktor FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=0"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilWasser=100*Rasten.Mengenfaktor FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=2"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET AnteilMaische=100*Rasten.Mengenfaktor FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=3"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET TempWasser=Rasten.Param1 FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=0"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET TempWasser=Rasten.Param1 FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=2"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET TempExtra1=Rasten.Param1 FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=3"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET DauerExtra1=Rasten.Param2 FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=3"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET TempMalz=Rasten.Param3 FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=0"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET TempExtra2=Rasten.Param3 FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=3"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET DauerExtra2=Rasten.Param4 FROM Rasten WHERE Maischplan.ID=Rasten.ID AND Maischplan.Typ=3"));
+            sqlExec(db, QStringLiteral("UPDATE Maischplan SET Typ=4 WHERE Typ=3"));
+
+            // Rasten löschen
+            sqlExec(db, QStringLiteral("DROP TABLE Rasten"));
+
+            sqlExec(db, QStringLiteral("UPDATE Global SET db_Version=%1").arg(version));
+            db.commit();
+        }
+
         return true;
     }
     catch (const std::exception& ex)

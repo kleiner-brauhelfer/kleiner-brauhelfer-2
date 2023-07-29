@@ -7,9 +7,9 @@ TARGET = kleiner-brauhelfer-core
 # Hauptversionsnummer
 VER_MAJ = 2
 # Datenbankversion
-VER_MIN = 8
+VER_MIN = 9
 # Patchversion
-VER_PAT = 1
+VER_PAT = 0
 
 VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
@@ -51,10 +51,10 @@ SOURCES += \
     modelhopfen.cpp \
     modelhopfengaben.cpp \
     modelkategorien.cpp \
+    modelmaischplan.cpp \
     modelmalz.cpp \
     modelmalzschuettung.cpp \
     modelnachgaerverlauf.cpp \
-    modelrasten.cpp \
     modelschnellgaerverlauf.cpp \
     modelsud.cpp \
     modeltags.cpp \
@@ -86,10 +86,10 @@ HEADERS += \
     modelhopfen.h \
     modelhopfengaben.h \
     modelkategorien.h \
+    modelmaischplan.h \
     modelmalz.h \
     modelmalzschuettung.h \
     modelnachgaerverlauf.h \
-    modelrasten.h \
     modelschnellgaerverlauf.h \
     modelsud.h \
     modeltags.h \

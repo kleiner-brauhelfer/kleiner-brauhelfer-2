@@ -27,7 +27,7 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
     connect(mDb->modelAusruestung, &SqlTableModel::modified, this, &Brauhelfer::modified);
     connect(mDb->modelGeraete, &SqlTableModel::modified, this, &Brauhelfer::modified);
     connect(mDb->modelWasser, &SqlTableModel::modified, this, &Brauhelfer::modified);
-    connect(mDb->modelRasten, &SqlTableModel::modified, this, &Brauhelfer::modified);
+    connect(mDb->modelMaischplan, &SqlTableModel::modified, this, &Brauhelfer::modified);
     connect(mDb->modelMalzschuettung, &SqlTableModel::modified, this, &Brauhelfer::modified);
     connect(mDb->modelHopfengaben, &SqlTableModel::modified, this, &Brauhelfer::modified);
     connect(mDb->modelHefegaben, &SqlTableModel::modified, this, &Brauhelfer::modified);
@@ -221,9 +221,9 @@ ModelWasser *Brauhelfer::modelWasser() const
     return mDb->modelWasser;
 }
 
-ModelRasten* Brauhelfer::modelRasten() const
+ModelMaischplan* Brauhelfer::modelMaischplan() const
 {
-    return mDb->modelRasten;
+    return mDb->modelMaischplan;
 }
 
 ModelMalzschuettung *Brauhelfer::modelMalzschuettung() const
@@ -310,7 +310,7 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
     row = modelSud()->appendDirect(values);
 
     QVariant neueSudId = values.value(ModelSud::ColID);
-    sudKopierenModel(modelRasten(), ModelRasten::ColSudID, sudId, {{ModelRasten::ColSudID, neueSudId}});
+    sudKopierenModel(modelMaischplan(), ModelMaischplan::ColSudID, sudId, {{ModelMaischplan::ColSudID, neueSudId}});
     sudKopierenModel(modelHopfengaben(), ModelHopfengaben::ColSudID, sudId, {{ModelHopfengaben::ColSudID, neueSudId}});
     if (teilen)
         sudKopierenModel(modelHefegaben(), ModelHefegaben::ColSudID, sudId, {{ModelHefegaben::ColSudID, neueSudId}});

@@ -597,7 +597,7 @@
            <set>Qt::AlignCenter</set>
           </property>
           <property name="decimals">
-           <number>2</number>
+           <number>1</number>
           </property>
           <property name="minimum">
            <double>0.000000000000000</double>

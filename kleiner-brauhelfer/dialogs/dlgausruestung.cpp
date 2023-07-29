@@ -2,6 +2,7 @@
 #include "ui_dlgausruestung.h"
 #include <QKeyEvent>
 #include <QMessageBox>
+#include <QScrollBar>
 #include "brauhelfer.h"
 #include "biercalc.h"
 #include "settings.h"
@@ -265,6 +266,7 @@ void DlgAusruestung::on_btnNeueAnlage_clicked()
         ui->tableViewAnlagen->scrollTo(ui->tableViewAnlagen->currentIndex());
         ui->tbName->selectAll();
         ui->tbName->setFocus();
+        ui->scrollArea->verticalScrollBar()->setValue(0);
     }
 }
 

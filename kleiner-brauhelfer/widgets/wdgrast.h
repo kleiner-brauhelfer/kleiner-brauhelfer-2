@@ -36,6 +36,7 @@ private slots:
     void on_tbTempWasser_valueChanged(double value);
     void on_tbMengeMalz_valueChanged(double value);
     void on_tbAnteilMalz_valueChanged(double value);
+    void on_btnAnteilMalz_clicked();
     void on_tbTempMalz_valueChanged(double value);
     void on_tbMengeMaische_valueChanged(double value);
     void on_tbAnteilMaische_valueChanged(double value);

@@ -72,6 +72,7 @@ SOURCES += \
     dialogs/dlgdatenbank.cpp \
     dialogs/dlghilfe.cpp \
     dialogs/dlgimportexport.cpp \
+    dialogs/dlgmaischplanmalz.cpp \
     dialogs/dlgmodule.cpp \
     dialogs/dlgphmalz.cpp \
     dialogs/dlgrestextrakt.cpp \
@@ -167,6 +168,7 @@ HEADERS += \
     dialogs/dlgdatenbank.h \
     dialogs/dlghilfe.h \
     dialogs/dlgimportexport.h \
+    dialogs/dlgmaischplanmalz.h \
     dialogs/dlgmodule.h \
     dialogs/dlgphmalz.h \
     dialogs/dlgrestextrakt.h \
@@ -246,6 +248,7 @@ FORMS += \
     dialogs/dlgdatenbank.ui \
     dialogs/dlghilfe.ui \
     dialogs/dlgimportexport.ui \
+    dialogs/dlgmaischplanmalz.ui \
     dialogs/dlgmodule.ui \
     dialogs/dlgphmalz.ui \
     dialogs/dlgrestextrakt.ui \

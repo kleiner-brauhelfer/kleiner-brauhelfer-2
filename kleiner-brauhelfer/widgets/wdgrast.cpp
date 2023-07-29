@@ -3,6 +3,7 @@
 #include <QLineEdit>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "dialogs/dlgmaischplanmalz.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -234,6 +235,7 @@ void WdgRast::updateValues()
     ui->lblMengeMalzEinheit->setVisible(malz);
     ui->tbAnteilMalz->setVisible(malz);
     ui->lblAnteilMalzEinheit->setVisible(malz);
+    ui->btnAnteilMalz->setVisible(mEnabled && malz);
     ui->tbTempMalz->setVisible(malz);
     ui->lblTempMalzEinheit->setVisible(malz);
     ui->lblMengeMaische->setVisible(dekoktion);
@@ -344,6 +346,13 @@ void WdgRast::on_tbAnteilMalz_valueChanged(double value)
 {
     if (ui->tbAnteilMalz->hasFocus())
         setData(ModelMaischplan::ColAnteilMalz, value);
+}
+
+void WdgRast::on_btnAnteilMalz_clicked()
+{
+    DlgMaischplanMalz dlg(data(ModelMaischplan::ColMengeMalz).toDouble());
+    if (dlg.exec() == QDialog::Accepted)
+        setData(ModelMaischplan::ColMengeMalz, dlg.value());
 }
 
 void WdgRast::on_tbTempMalz_valueChanged(double value)

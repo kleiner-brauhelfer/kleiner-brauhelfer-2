@@ -1,12 +1,16 @@
 # Changelog
 
-## Version 2.5.1 (in Entwicklung)
-- Neu: Diagramme überarbeitet (neu mit QCustomPlot, Qt Charts nicht mehr benötigt)
+## Version 2.6.0 (in Entwicklung)
+- Neu: Umstellung auf **Qt v6.5**
+- Neu: Datenbankversion **2009**
+- Neu: Diagramme überarbeitet (neu mit QCustomPlot statt Qt Charts)
 - Neu: Eingabemöglichkeit einer Stammwürze für das Verschnittwasser
 - Neu: Maischplan überarbeitet:
+  - Zuschütten ermöglicht Schüttungsgabe zu einem späteren Zeitpunkt
   - Gesamtwassermenge (Einmaischen+Zubrühen) muss Hauptgussmenge entsprechen
-  - Buttons, um Mengen auszugleichen oder Hauptgussmenge anzupassen
-  - Rasttemperatur bei Zubrühen wird bei Änderungen anderer Parameter nicht geändert
+  - Möglichkeit Wassermengen auszugleichen oder Hauptgussmenge anzupassen
+  - Möglichkeit Schüttungsmengen auszugleichen
+- Neu: Hefestarter lässt sich im Reiter Braudaten verändern.
 - Fix: Gaben & Rasten im Rezeptreiter nicht immer aktualisiert 
 - Fix: Anzeige der Hopfengaben mit Kochdauer von 0 Minuten im Spickzettel
 

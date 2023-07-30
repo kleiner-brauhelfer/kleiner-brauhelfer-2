@@ -148,6 +148,7 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
             }
             break;
         }
+        [[fallthrough]];
     case ColAnteilWasser:
     case ColAnteilMalz:
         if (QSqlTableModel::setData(idx, value))
@@ -225,7 +226,6 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
             ret = true;
         }
         break;
-
     case ColAnteilMaische:
         if (QSqlTableModel::setData(idx, value))
         {
@@ -238,7 +238,6 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
             ret = true;
         }
         break;
-
     case ColTempExtra1:
         if (QSqlTableModel::setData(idx, value))
         {

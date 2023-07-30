@@ -1,8 +1,6 @@
 #include "sudobject.h"
 #include "brauhelfer.h"
 #include "modelsud.h"
-#include <QDateTime>
-#include <QtMath>
 
 SudObject::SudObject(Brauhelfer *bh) :
     QObject(bh),

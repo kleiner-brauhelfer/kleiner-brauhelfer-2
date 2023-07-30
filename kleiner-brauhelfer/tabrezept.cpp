@@ -138,7 +138,7 @@ TabRezept::TabRezept(QWidget *parent) :
     pal.setBrush(QPalette::Text, pal.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(pal);
 
-    ui->wdgBemerkung->setPlaceholderText(tr("Bemerkung allgemein"));
+    ui->wdgBemerkung->setPlaceholderText(tr("Bemerkung Rezept"));
     ui->wdgBemerkungMaischen->setPlaceholderText(tr("Bemerkung Maischen"));
     ui->wdgBemerkungKochen->setPlaceholderText(tr("Bemerkung Kochen"));
     ui->wdgBemerkungGaerung->setPlaceholderText(tr("Bemerkung Gärung"));
@@ -288,13 +288,19 @@ void TabRezept::modulesChanged(Settings::Modules modules)
     }
     if (modules.testFlag(Settings::ModuleLagerverwaltung))
     {
-        malzGaben_modified();
-        hopfenGaben_modified();
-        hefeGaben_modified();
-        weitereZutatenGaben_modified();
+        if (bh->sud()->isLoaded())
+        {
+            malzGaben_modified();
+            hopfenGaben_modified();
+            hefeGaben_modified();
+            weitereZutatenGaben_modified();
+        }
     }
-    checkEnabled();
-    updateValues();
+    if (bh->sud()->isLoaded())
+    {
+        checkEnabled();
+        updateValues();
+    }
 }
 
 void TabRezept::focusChanged(QWidget *old, QWidget *now)
@@ -819,13 +825,13 @@ void TabRezept::on_btnNeueRast_clicked()
     {
         values = {{ModelMaischplan::ColSudID, bh->sud()->id()},
                   {ModelMaischplan::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Einmaischen)},
-                  {ModelMaischplan::ColAnteilMalz, 100},
-                  {ModelMaischplan::ColAnteilWasser, 100}};
+                  {ModelMaischplan::ColName, tr("Einmaischen")}};
     }
     else
     {
         values = {{ModelMaischplan::ColSudID, bh->sud()->id()},
-                  {ModelMaischplan::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Aufheizen)}};
+                  {ModelMaischplan::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Aufheizen)},
+                  {ModelMaischplan::ColName, tr("Aufheizen")}};
     }
     bh->sud()->modelMaischplan()->append(values);
     ui->scrollAreaRasten->verticalScrollBar()->setValue(ui->scrollAreaRasten->verticalScrollBar()->maximum());

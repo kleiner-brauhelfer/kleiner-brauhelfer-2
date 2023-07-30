@@ -1,9 +1,10 @@
 #include "widgetdecorator.h"
 #include <QApplication>
 
-bool WidgetDecorator::mGlobalSuspendValueChanged = false;
-QWidget* WidgetDecorator::mGlobalWidget = nullptr;
-QElapsedTimer WidgetDecorator::mGlobalTimer;
+bool WidgetDecorator::gSuspendValueChanged = false;
+bool WidgetDecorator::gSuspendClear = false;
+QWidget* WidgetDecorator::gActiveWidget = nullptr;
+QElapsedTimer WidgetDecorator::gClearTimer;
 
 WidgetDecorator::WidgetDecorator() :
     mValueChanged(false)
@@ -12,27 +13,34 @@ WidgetDecorator::WidgetDecorator() :
 
 bool WidgetDecorator::suspendValueChanged(bool value)
 {
-    bool prevValue = mGlobalSuspendValueChanged;
-    mGlobalSuspendValueChanged = value;
+    bool prevValue = gSuspendValueChanged;
+    gSuspendValueChanged = value;
+    return prevValue;
+}
+
+bool WidgetDecorator::suspendClear(bool value)
+{
+    bool prevValue = gSuspendClear;
+    gSuspendClear = value;
     return prevValue;
 }
 
 void WidgetDecorator::waValueChanged(QWidget *wdg, bool hasFocus)
 {
-    if (mGlobalSuspendValueChanged)
+    if (gSuspendValueChanged)
         return;
     if (hasFocus)
     {
-        if (wdg != mGlobalWidget)
+        if (wdg != gActiveWidget)
         {
             for (auto &it : qApp->topLevelWidgets())
                 repaintIfChanged(it);
-            mGlobalWidget = wdg;
-            mGlobalTimer.start();
+            gActiveWidget = wdg;
+            gClearTimer.start();
         }
         mValueChanged = true;
     }
-    else if (mGlobalWidget)
+    else if (gActiveWidget)
     {
         mValueChanged = true;
     }
@@ -61,14 +69,16 @@ void WidgetDecorator::repaintIfChanged(QWidget *wdg)
 
 void WidgetDecorator::waFocusOutEvent()
 {
-    if (mGlobalSuspendValueChanged)
+    if (gSuspendClear)
         return;
-    if (mGlobalTimer.elapsed() < 100)
+    if (gSuspendValueChanged)
         return;
-    if (mGlobalWidget)
+    if (gClearTimer.elapsed() < 100)
+        return;
+    if (gActiveWidget)
     {
         mValueChanged = false;
-        mGlobalWidget = nullptr;
+        gActiveWidget = nullptr;
         for (auto &it : qApp->topLevelWidgets())
             repaintIfChanged(it);
     }

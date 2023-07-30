@@ -21,9 +21,7 @@ TabBewertung::TabBewertung(QWidget *parent) :
     connect(bh->sud()->modelBewertungen(), &ProxyModel::rowsInserted, this, &TabBewertung::modelModified);
     connect(bh->sud()->modelBewertungen(), &ProxyModel::rowsRemoved, this, &TabBewertung::modelModified);
     connect(bh->sud()->modelBewertungen(), &ProxyModel::modified, this, &TabBewertung::updateValues);
-    updateValues();
     connect(ui->wdgRating, &WdgRating::clicked, this, &TabBewertung::sterneChanged);
-
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setData(ModelBewertungen::ColBemerkung, html);});
 }
 

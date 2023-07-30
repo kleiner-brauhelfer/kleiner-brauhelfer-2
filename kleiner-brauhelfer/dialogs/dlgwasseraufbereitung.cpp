@@ -72,7 +72,7 @@ void DlgWasseraufbereitung::on_cbAuswahl_currentIndexChanged(int index)
         }
         else
         {
-            ui->tbName->setText(mList[index].name + QString(" (%1%)").arg(ui->tbKonzentration->value()));
+            ui->tbName->setText(mList[index].name + QStringLiteral(" (%1%)").arg(ui->tbKonzentration->value()));
             ui->tbKonzentration->setReadOnly(false);
             ui->tbFaktor->setReadOnly(true);
             ui->cbEinheit->setEnabled(false);
@@ -85,7 +85,7 @@ void DlgWasseraufbereitung::on_tbKonzentration_valueChanged(int value)
 {
     if (ui->tbKonzentration->hasFocus())
     {
-        ui->tbName->setText(mList[ui->cbAuswahl->currentIndex()].name + QString(" (%1%)").arg(value));
+        ui->tbName->setText(mList[ui->cbAuswahl->currentIndex()].name + QStringLiteral(" (%1%)").arg(value));
         ui->tbFaktor->setValue(mList[ui->cbAuswahl->currentIndex()].faktor / value * 100);
     }
 }

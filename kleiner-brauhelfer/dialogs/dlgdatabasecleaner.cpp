@@ -453,7 +453,7 @@ bool DlgDatabaseCleaner::testRange6()
         ui->tableView->setColumnHidden(ModelSud::ColID, false);
         ui->tableView->setColumnHidden(ModelSud::ColSudname, false);
         ui->tableView->setColumnHidden(col, false);
-        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("Keine"), tr("Gewicht"), tr("Bittere (IBU)")}, ui->tableView));
+        ui->tableView->setItemDelegateForColumn(col, new ComboBoxDelegate({tr("Keine"), tr("Gewicht"), tr("Bittere")}, ui->tableView));
         connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged, this, &DlgDatabaseCleaner::selectionChanged);
         ui->tableView->setFocus();
         setTableIds(0);

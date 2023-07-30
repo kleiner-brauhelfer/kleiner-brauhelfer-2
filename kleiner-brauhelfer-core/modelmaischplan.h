@@ -56,6 +56,7 @@ private:
 
 private slots:
 
+    void onSudDataChanged(const QModelIndex &index);
     void onRowsSwapped(int row1, int row2);
 
 private:

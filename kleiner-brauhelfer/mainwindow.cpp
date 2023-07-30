@@ -375,7 +375,6 @@ void MainWindow::databaseModified()
 void MainWindow::updateValues()
 {
     bool loaded = bh->sud()->isLoaded();
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
     databaseModified();
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabRezept), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
@@ -385,11 +384,15 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
     ui->menuSud->setEnabled(loaded);
-    ui->actionSudGebraut->setEnabled(status >= Brauhelfer::SudStatus::Gebraut);
-    ui->actionSudAbgefuellt->setEnabled(status >= Brauhelfer::SudStatus::Abgefuellt);
-    ui->actionSudVerbraucht->setEnabled(status >= Brauhelfer::SudStatus::Verbraucht);
-    ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
-    ui->actionWeitereZutaten->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
+    if (loaded)
+    {
+        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+        ui->actionSudGebraut->setEnabled(status >= Brauhelfer::SudStatus::Gebraut);
+        ui->actionSudAbgefuellt->setEnabled(status >= Brauhelfer::SudStatus::Abgefuellt);
+        ui->actionSudVerbraucht->setEnabled(status >= Brauhelfer::SudStatus::Verbraucht);
+        ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
+        ui->actionWeitereZutaten->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
+    }
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
     ui->actionEingabefelderEntsperren->setChecked(false);
@@ -803,7 +806,7 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelSud::ColSWIst, Qt::Horizontal, tr("SW") + "\n(°P)");
     model->setHeaderData(ModelSud::ColSREIst, Qt::Horizontal, tr("Restextrakt") + "\n(°P)");
     model->setHeaderData(ModelSud::Colerg_S_Gesamt, Qt::Horizontal, tr("Schüttung") + "\n(kg)");
-    model->setHeaderData(ModelSud::Colerg_Preis, Qt::Horizontal, tr("Kosten") + QString("\n(%1/l)").arg(QLocale().currencySymbol()));
+    model->setHeaderData(ModelSud::Colerg_Preis, Qt::Horizontal, tr("Kosten") + QStringLiteral("\n(%1/l)").arg(QLocale().currencySymbol()));
     model->setHeaderData(ModelSud::Colerg_Alkohol, Qt::Horizontal, tr("Alkohol") + "\n(%)");
     model->setHeaderData(ModelSud::ColsEVG, Qt::Horizontal, tr("sEVG") + "\n(%)");
     model->setHeaderData(ModelSud::ColtEVG, Qt::Horizontal, tr("tEVG") + "\n(%)");
@@ -820,7 +823,7 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelMalz::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
     model->setHeaderData(ModelMalz::ColEigenschaften, Qt::Horizontal, tr("Eigenschaften"));
     model->setHeaderData(ModelMalz::ColAlternativen, Qt::Horizontal, tr("Alternativen"));
-    model->setHeaderData(ModelMalz::ColPreis, Qt::Horizontal, tr("Preis") + QString("\n(%1/kg)").arg(QLocale().currencySymbol()));
+    model->setHeaderData(ModelMalz::ColPreis, Qt::Horizontal, tr("Preis") + QStringLiteral("\n(%1/kg)").arg(QLocale().currencySymbol()));
     model->setHeaderData(ModelMalz::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
     model->setHeaderData(ModelMalz::ColMindesthaltbar, Qt::Horizontal, tr("Haltbarkeit"));
     model->setHeaderData(ModelMalz::ColLink, Qt::Horizontal, tr("Link"));
@@ -834,7 +837,7 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelHopfen::ColEigenschaften, Qt::Horizontal, tr("Eigenschaften"));
     model->setHeaderData(ModelHopfen::ColTyp, Qt::Horizontal, tr("Typ"));
     model->setHeaderData(ModelHopfen::ColAlternativen, Qt::Horizontal, tr("Alternativen"));
-    model->setHeaderData(ModelHopfen::ColPreis, Qt::Horizontal, tr("Preis") + QString("\n(%1/kg)").arg(QLocale().currencySymbol()));
+    model->setHeaderData(ModelHopfen::ColPreis, Qt::Horizontal, tr("Preis") + QStringLiteral("\n(%1/kg)").arg(QLocale().currencySymbol()));
     model->setHeaderData(ModelHopfen::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
     model->setHeaderData(ModelHopfen::ColMindesthaltbar, Qt::Horizontal, tr("Haltbarkeit"));
     model->setHeaderData(ModelHopfen::ColLink, Qt::Horizontal, tr("Link"));
@@ -851,7 +854,7 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelHefe::ColEVG, Qt::Horizontal, tr("Vergärungsgrad"));
     model->setHeaderData(ModelHefe::ColTemperatur, Qt::Horizontal, tr("Temperatur"));
     model->setHeaderData(ModelHefe::ColAlternativen, Qt::Horizontal, tr("Alternativen"));
-    model->setHeaderData(ModelHefe::ColPreis, Qt::Horizontal, tr("Preis") + QString("\n(%1)").arg(QLocale().currencySymbol()));
+    model->setHeaderData(ModelHefe::ColPreis, Qt::Horizontal, tr("Preis") + QStringLiteral("\n(%1)").arg(QLocale().currencySymbol()));
     model->setHeaderData(ModelHefe::ColEingelagert, Qt::Horizontal, tr("Einlagerung"));
     model->setHeaderData(ModelHefe::ColMindesthaltbar, Qt::Horizontal, tr("Haltbarkeit"));
     model->setHeaderData(ModelHefe::ColLink, Qt::Horizontal, tr("Link"));

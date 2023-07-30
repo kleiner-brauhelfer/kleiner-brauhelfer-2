@@ -298,13 +298,12 @@ static void checkWebView()
 static void checkSSL()
 {
   #if QT_NETWORK_LIB
+    QString buildVersion = QSslSocket::sslLibraryBuildVersionString();
+    QString rutimeVersion = QSslSocket::sslLibraryVersionString();
+    qInfo() << "SSL:" << "needed:" << buildVersion << "installed:" << rutimeVersion;
     if (!QSslSocket::supportsSsl())
     {
-        QString buildVersion = QSslSocket::sslLibraryBuildVersionString();
-        QString rutimeVersion = QSslSocket::sslLibraryVersionString();
         qWarning() << "SSL not supported";
-        qWarning() << "Version needed:" << buildVersion;
-        qWarning() << "Version installed:" << rutimeVersion;
         if (gSettings->isNewProgramVersion())
         {
             QMessageBox::warning(nullptr, QApplication::applicationName(),

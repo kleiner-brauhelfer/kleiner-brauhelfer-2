@@ -15,59 +15,63 @@ ChartHopfen::ChartHopfen(QWidget *parent) :
 
 void ChartHopfen::update()
 {
-    double yMax, yVal;
+    Brauhelfer::BerechnungsartHopfen art = (Brauhelfer::BerechnungsartHopfen)bh->sud()->getberechnungsArtHopfen();
+    double yMax = (art == Brauhelfer::BerechnungsartHopfen::Keine) ? 0 : 100;
+    double sum = 0;
 
     clearPlottables();
     clearItems();
 
-    QCPBars *bars = new QCPBars(xAxis, yAxis);
-    bars->setPen(Qt::NoPen);
-    bars->setBrush(gSettings->colorHopfen);
-
     QSharedPointer<QCPAxisTickerText> textTicker = qSharedPointerDynamicCast<QCPAxisTickerText>(xAxis->ticker());
     textTicker->clear();
     ProxyModel* model = bh->sud()->modelHopfengaben();
-    switch ((Brauhelfer::BerechnungsartHopfen)bh->sud()->getberechnungsArtHopfen())
+    for (int row = 0; row < model->rowCount(); ++row)
+    {
+        QString name = model->data(row, ModelHopfengaben::ColName).toString();
+        double val;
+        switch (art)
+        {
+        case Brauhelfer::BerechnungsartHopfen::Keine:
+            val = model->data(row, ModelHopfengaben::Colerg_Menge).toDouble();
+            break;
+        case Brauhelfer::BerechnungsartHopfen::Gewicht:
+            val = model->data(row, ModelHopfengaben::ColProzent).toDouble();
+            sum += model->data(row, ModelHopfengaben::Colerg_Menge).toDouble();
+            break;
+        case Brauhelfer::BerechnungsartHopfen::IBU:
+            val = model->data(row, ModelHopfengaben::ColProzent).toDouble();
+            break;
+        }
+        int typ = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, name, ModelHopfen::ColTyp).toInt();
+        QCPBars *bars = new QCPBars(xAxis, yAxis);
+        bars->setPen(Qt::NoPen);
+        if (typ >= 0 && typ < gSettings->HopfenTypBackgrounds.count())
+            bars->setBrush(gSettings->HopfenTypBackgrounds[typ]);
+        else
+            bars->setBrush(gSettings->colorHopfen);
+        bars->addData(row+1, val);
+        textTicker->addTick(row+1, name);
+        yMax = qMax(yMax, val);
+    }
+    switch (art)
     {
     case Brauhelfer::BerechnungsartHopfen::Keine:
-        yMax = 0;
-        for (int row = 0; row < model->rowCount(); ++row)
-        {
-            yVal = model->data(row, ModelHopfengaben::Colerg_Menge).toDouble();
-            textTicker->addTick(row+1, model->data(row, ModelHopfengaben::ColName).toString());
-            bars->addData(row+1, yVal);
-            yMax = qMax(yMax, yVal);
-        }
         yAxis->setLabel(tr("Menge") + " (g)");
-        yAxis->setRange(0, yMax);
+        yAxis->setRange(0, std::ceil(yMax));
         yAxis2->setVisible(false);
         break;
     case Brauhelfer::BerechnungsartHopfen::Gewicht:
-        yMax = 100;
-        for (int row = 0; row < model->rowCount(); ++row)
-        {
-            yVal = model->data(row, ModelHopfengaben::ColProzent).toDouble();
-            textTicker->addTick(row+1, model->data(row, ModelHopfengaben::ColName).toString());
-            bars->addData(row+1, yVal);
-            yMax = qMax(yMax, yVal);
-        }
         yAxis->setLabel(tr("Anteil") + " (%)");
-        yAxis->setRange(0, int(yMax)+1);
-        yAxis2->setVisible(false);
+        yAxis->setRange(0, std::ceil(yMax));
+        yAxis2->setLabel(tr("Menge") + " (g)");
+        yAxis2->setRange(0, yAxis->range().upper * sum/100);
+        yAxis2->setVisible(true);
         break;
     case Brauhelfer::BerechnungsartHopfen::IBU:
-        yMax = 100;
-        for (int row = 0; row < model->rowCount(); ++row)
-        {
-            yVal = model->data(row, ModelHopfengaben::ColProzent).toDouble();
-            textTicker->addTick(row+1, model->data(row, ModelHopfengaben::ColName).toString());
-            bars->addData(row+1, yVal);
-            yMax = qMax(yMax, yVal);
-        }
         yAxis->setLabel(tr("Anteil") + " (%)");
+        yAxis->setRange(0, std::ceil(yMax));
         yAxis2->setLabel(tr("Bittere") + " (IBU)");
-        yAxis->setRange(0, int(yMax)+1);
-        yAxis2->setRange(0, (int(yMax)+1)*bh->sud()->getIBU()/100);
+        yAxis2->setRange(0, yAxis->range().upper * bh->sud()->getIBU()/100);
         yAxis2->setVisible(true);
         break;
     }

@@ -109,26 +109,17 @@ void WdgRast::updateListe()
     {
         switch (static_cast<Brauhelfer::RastTyp>(data(ModelMaischplan::ColTyp).toInt()))
         {
-        case Brauhelfer::RastTyp::Einmaischen:
-            setData(ModelMaischplan::ColName, tr("Einmaischen"));
-            break;
         case Brauhelfer::RastTyp::Aufheizen:
             for (const Rast &rast : rasten)
                 ui->cbRast->addItem(tr(rast.name.toStdString().c_str()));
-            setData(ModelMaischplan::ColName, ui->cbRast->itemText(0));
-            break;
-        case Brauhelfer::RastTyp::Zubruehen:
-            setData(ModelMaischplan::ColName, tr("Zubrühen"));
-            break;
-        case Brauhelfer::RastTyp::Zuschuetten:
-            setData(ModelMaischplan::ColName, tr("Teilschüttung"));
             break;
         case Brauhelfer::RastTyp::Dekoktion:
             ui->cbRast->addItem(tr("1/2 Dickmaische"));
             ui->cbRast->addItem(tr("1/3 Dickmaische"));
             ui->cbRast->addItem(tr("1/3 Dünnmaische"));
             ui->cbRast->addItem(tr("1/3 Läutermaische"));
-            setData(ModelMaischplan::ColName, ui->cbRast->itemText(0));
+            break;
+        default:
             break;
         }
     }
@@ -315,6 +306,24 @@ void WdgRast::on_cbTyp_currentIndexChanged(int index)
     {
         setData(ModelMaischplan::ColTyp, index);
         updateListe();
+        switch (static_cast<Brauhelfer::RastTyp>(data(ModelMaischplan::ColTyp).toInt()))
+        {
+        case Brauhelfer::RastTyp::Einmaischen:
+            setData(ModelMaischplan::ColName, tr("Einmaischen"));
+            break;
+        case Brauhelfer::RastTyp::Aufheizen:
+            setData(ModelMaischplan::ColName, ui->cbRast->itemText(0));
+            break;
+        case Brauhelfer::RastTyp::Zubruehen:
+            setData(ModelMaischplan::ColName, tr("Zubrühen"));
+                break;
+        case Brauhelfer::RastTyp::Zuschuetten:
+            setData(ModelMaischplan::ColName, tr("Teilschüttung"));
+                break;
+        case Brauhelfer::RastTyp::Dekoktion:
+            setData(ModelMaischplan::ColName, ui->cbRast->itemText(0));
+            break;
+        }
     }
 }
 

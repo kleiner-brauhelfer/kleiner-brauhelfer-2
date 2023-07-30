@@ -2,6 +2,7 @@
 #define DLGRESTEXTRAKT_H
 
 #include "dlgabstract.h"
+#include <QDateTime>
 
 namespace Ui {
 class DlgRestextrakt;
@@ -12,7 +13,7 @@ class DlgRestextrakt : public DlgAbstract
     Q_OBJECT
 
 public:
-    explicit DlgRestextrakt(double value, double sw, double temp, const QDateTime& dt, QWidget *parent = nullptr);
+    explicit DlgRestextrakt(double value, double sw = 0.0, double temp = -1, const QDateTime& dt = QDateTime(), QWidget *parent = nullptr);
     ~DlgRestextrakt();
     double value() const;
     void setValue(double value);

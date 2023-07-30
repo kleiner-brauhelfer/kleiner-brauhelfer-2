@@ -124,8 +124,11 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
         setVisibleModule(Settings::ModuleSchnellgaerprobe,
                          {ui->cbSchnellgaerprobeAktiv});
     }
-    checkEnabled();
-    updateValues();
+    if (bh->sud()->isLoaded())
+    {
+        checkEnabled();
+        updateValues();
+    }
 }
 
 void TabAbfuellen::focusChanged(QWidget *old, QWidget *now)

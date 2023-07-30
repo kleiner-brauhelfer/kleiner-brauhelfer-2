@@ -14,6 +14,7 @@ DlgHilfe::DlgHilfe(QWidget *parent) :
 
 DlgHilfe::~DlgHilfe()
 {
+    ui->webview->setUrl(QUrl(QStringLiteral("")));
     delete ui;
 }
 

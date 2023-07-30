@@ -13,7 +13,7 @@ ModelMaischplan::ModelMaischplan(Brauhelfer* bh, const QSqlDatabase &db) :
     mVirtualField.append(QStringLiteral("MengeMalz"));
     mVirtualField.append(QStringLiteral("TotalMengeMalz"));
     mVirtualField.append(QStringLiteral("MengeMaische"));
-
+    connect(bh->modelSud(), &SqlTableModel::dataChanged, this, &ModelMaischplan::onSudDataChanged);
     connect(this, &SqlTableModel::rowsSwapped, this, &ModelMaischplan::onRowsSwapped);
 }
 
@@ -323,6 +323,17 @@ void ModelMaischplan::updateSud(const QVariant &sudId)
         model.setData(r, ColTempRast, model.data(r, ColTempRast));
     mSignalModifiedBlocked = false;
     mUpdating = false;
+}
+
+void ModelMaischplan::onSudDataChanged(const QModelIndex &idx)
+{
+    switch (idx.column())
+    {
+    case ModelSud::Colerg_S_Gesamt:
+    case ModelSud::Colerg_WHauptguss:
+        updateSud(bh->modelSud()->data(idx.row(), ModelSud::ColID));
+        break;
+    }
 }
 
 void ModelMaischplan::onRowsSwapped(int row1, int row2)

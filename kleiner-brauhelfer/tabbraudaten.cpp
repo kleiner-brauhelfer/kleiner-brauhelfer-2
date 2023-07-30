@@ -51,6 +51,8 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
 
+    ui->wdgBemerkung->setPlaceholderText(tr("Bemerkung Braudaten"));
+
     gSettings->beginGroup("TabBraudaten");
 
     ui->splitter->setSizes({100, 400});
@@ -133,8 +135,11 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
                           ui->lineKosten,
                           ui->lineKosten2});
     }
-    checkEnabled();
-    updateValues();
+    if (bh->sud()->isLoaded())
+    {
+        checkEnabled();
+        updateValues();
+    }
 }
 
 void TabBraudaten::focusChanged(QWidget *old, QWidget *now)
@@ -232,6 +237,8 @@ void TabBraudaten::updateValues()
 
     ui->tbHopfenseihenVerlust->setValue(bh->sud()->getWuerzemengeVorHopfenseihen() - bh->sud()->getWuerzemengeKochende());
 
+    if (!ui->tbSWHefestarterBrix->hasFocus())
+        ui->tbSWHefestarterBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWHefestarter()));
     if (!ui->tbWasserVerschneidungBrix->hasFocus())
         ui->tbWasserVerschneidungBrix->setValue(BierCalc::platoToBrix(ui->tbWasserVerschneidungSW->value()));
     value = BierCalc::verschneidung(bh->sud()->getSWAnstellen(),
@@ -283,9 +290,6 @@ void TabBraudaten::updateValues()
     ui->tbSWSollKochendeBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochende()));
     ui->tbSWAnstellenSollBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollAnstellen()));
 
-    ui->tbSWHefestarterBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWHefestarter()));
-    ui->wdgHefestarter->setVisible(bh->sud()->getMengeHefestarter() > 0.0);
-
     ui->chartBraudaten->update();
     ui->chartAusbeute->update();
 }
@@ -310,7 +314,7 @@ void TabBraudaten::on_btnBraudatumHeute_clicked()
 void TabBraudaten::on_btnSWKochbeginn_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
-    DlgRestextrakt dlg(bh->sud()->getSWKochbeginn(), 0.0, -1.0, QDateTime(), this);
+    DlgRestextrakt dlg(bh->sud()->getSWKochbeginn());
     int dlgRet = dlg.exec();
     WidgetDecorator::suspendValueChanged(false);
     if (dlgRet == QDialog::Accepted)
@@ -377,7 +381,7 @@ void TabBraudaten::on_tbTempKochende_valueChanged(double)
 void TabBraudaten::on_btnSWKochende_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
-    DlgRestextrakt dlg(bh->sud()->getSWKochende(), 0.0, -1.0, QDateTime(),this);
+    DlgRestextrakt dlg(bh->sud()->getSWKochende());
     int dlgRet = dlg.exec();
     WidgetDecorator::suspendValueChanged(false);
     if (dlgRet == QDialog::Accepted)
@@ -387,7 +391,7 @@ void TabBraudaten::on_btnSWKochende_clicked()
 void TabBraudaten::on_btnSWAnstellen_clicked()
 {
     WidgetDecorator::suspendValueChanged(true);
-    DlgRestextrakt dlg(bh->sud()->getSWAnstellen(), 0.0, -1.0, QDateTime(),this);
+    DlgRestextrakt dlg(bh->sud()->getSWAnstellen());
     int dlgRet = dlg.exec();
     WidgetDecorator::suspendValueChanged(false);
     if (dlgRet == QDialog::Accepted)
@@ -434,6 +438,12 @@ void TabBraudaten::on_tbWasserVerschneidungSW_valueChanged(double)
         updateValues();
 }
 
+void TabBraudaten::on_tbSWHefestarterBrix_valueChanged(double value)
+{
+    if (ui->tbSWHefestarterBrix->hasFocus())
+        bh->sud()->setSWHefestarter(BierCalc::brixToPlato(value));
+}
+
 void TabBraudaten::on_tbWasserVerschneidungBrix_valueChanged(double value)
 {
     if (ui->tbWasserVerschneidungBrix->hasFocus())
@@ -445,8 +455,10 @@ void TabBraudaten::on_tbWasserVerschneidungBrix_valueChanged(double value)
 
 void TabBraudaten::on_btnVerduennung_clicked()
 {
+    bool prevValue = WidgetDecorator::suspendClear(true);
     bh->sud()->setVerduennungAnstellen(ui->tbWasserVerschneidung->value());
     bh->sud()->setSWAnstellen(ui->tbSWAnstellenSoll->value());
+    WidgetDecorator::suspendClear(prevValue);
 }
 
 void TabBraudaten::on_btnSpeisemengeNoetig_clicked()

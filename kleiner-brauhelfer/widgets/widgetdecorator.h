@@ -9,6 +9,7 @@ class WidgetDecorator
 public:
     WidgetDecorator();
     static bool suspendValueChanged(bool value);
+    static bool suspendClear(bool value);
 
 protected:
     void waFocusOutEvent();
@@ -17,9 +18,10 @@ protected:
 
 private:
     static void repaintIfChanged(QWidget *wdg);
-    static bool mGlobalSuspendValueChanged;
-    static QWidget* mGlobalWidget;
-    static QElapsedTimer mGlobalTimer;
+    static bool gSuspendValueChanged;
+    static bool gSuspendClear;
+    static QWidget* gActiveWidget;
+    static QElapsedTimer gClearTimer;
 };
 
 #endif // WIDGETDECORATOR_H

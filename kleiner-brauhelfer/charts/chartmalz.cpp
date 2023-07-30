@@ -1,4 +1,5 @@
 #include "chartmalz.h"
+#include "biercalc.h"
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -23,22 +24,23 @@ void ChartMalz::update()
     clearPlottables();
     clearItems();
 
-    QCPBars *bars = new QCPBars(xAxis, yAxis);
-    bars->setPen(Qt::NoPen);
-    bars->setBrush(gSettings->colorMalz);
-
     QSharedPointer<QCPAxisTickerText> textTicker = qSharedPointerDynamicCast<QCPAxisTickerText>(xAxis->ticker());
     textTicker->clear();
     ProxyModel* model = bh->sud()->modelMalzschuettung();
     for (int row = 0; row < model->rowCount(); ++row)
     {
+        QString name = model->data(row, ModelMalzschuettung::ColName).toString();
         double val = model->data(row, ModelMalzschuettung::ColProzent).toDouble();
-        textTicker->addTick(row+1, model->data(row, ModelMalzschuettung::ColName).toString());
+        double ebc = model->data(row, ModelMalzschuettung::ColFarbe).toDouble();
+        QCPBars *bars = new QCPBars(xAxis, yAxis);
+        bars->setPen(Qt::NoPen);
+        bars->setBrush(QBrush(BierCalc::ebcToColor(ebc)));
         bars->addData(row+1, val);
+        textTicker->addTick(row+1, name);
         yMax = qMax(yMax, val);
     }
-    yAxis->setRange(0, int(yMax)+1);
-    yAxis2->setRange(0, (int(yMax)+1)*bh->sud()->geterg_S_Gesamt()/100);
+    yAxis->setRange(0, std::ceil(yMax));
+    yAxis2->setRange(0, yAxis->range().upper * bh->sud()->geterg_S_Gesamt()/100);
     xAxis->setRange(0, model->rowCount()+1);
     replot();
 }

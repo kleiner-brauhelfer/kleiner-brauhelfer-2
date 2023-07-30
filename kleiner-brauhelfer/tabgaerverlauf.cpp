@@ -107,10 +107,6 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::rowsInserted, this, &TabGaerverlauf::updateWeitereZutaten);
     connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf::updateWeitereZutaten);
     connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::dataChanged, this, &TabGaerverlauf::updateWeitereZutaten);
-
-    updateDiagramm();
-    updateValues();
-    updateWeitereZutaten();
 }
 
 TabGaerverlauf::~TabGaerverlauf()
@@ -166,7 +162,10 @@ void TabGaerverlauf::modulesChanged(Settings::Modules modules)
             }
         }
     }
-    updateValues();
+    if (bh->sud()->isLoaded())
+    {
+        updateValues();
+    }
 }
 
 void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
@@ -342,9 +341,9 @@ void TabGaerverlauf::updateDiagramm()
     }
     diag = ui->widget_DiaSchnellgaerverlauf;
     diag->clear();
-    diag->setData1(x, y1, tr("Restextrakt"), "°P", 1);
-    diag->setData2(x, y2, tr("Alkohol"), "%", 1);
-    diag->setData3(x, y3, tr("Temperatur"), "°C", 1);
+    diag->setData1(x, y1, tr("Restextrakt"), QStringLiteral("°P"), 1);
+    diag->setData2(x, y2, tr("Alkohol"), QStringLiteral("%"), 1);
+    diag->setData3(x, y3, tr("Temperatur"), QStringLiteral("°C"), 1);
     diag->setData1Limit(bh->sud()->getSREErwartet());
     diag->rescale();
     diag->replot();
@@ -364,9 +363,9 @@ void TabGaerverlauf::updateDiagramm()
     }
     diag = ui->widget_DiaHauptgaerverlauf;
     diag->clear();
-    diag->setData1(x, y1, tr("Restextrakt"), "°P", 1);
-    diag->setData2(x, y2, tr("Alkohol"), "%", 1);
-    diag->setData3(x, y3, tr("Temperatur"), "°C", 1);
+    diag->setData1(x, y1, tr("Restextrakt"), QStringLiteral("°P"), 1);
+    diag->setData2(x, y2, tr("Alkohol"), QStringLiteral("%"), 1);
+    diag->setData3(x, y3, tr("Temperatur"), QStringLiteral("°C"), 1);
     if (bh->sud()->getSchnellgaerprobeAktiv())
         diag->setData1Limit(bh->sud()->getGruenschlauchzeitpunkt());
     else
@@ -389,9 +388,9 @@ void TabGaerverlauf::updateDiagramm()
     }
     diag = ui->widget_DiaNachgaerverlauf;
     diag->clear();
-    diag->setData1(x, y1, tr("CO₂"), "g/L", 1);
-    diag->setData2(x, y2, tr("Druck"), "bar", 2);
-    diag->setData3(x, y3, tr("Temperatur"), "°C", 1);
+    diag->setData1(x, y1, tr("CO₂"), QStringLiteral("g/L"), 1);
+    diag->setData2(x, y2, tr("Druck"), QStringLiteral("bar"), 2);
+    diag->setData3(x, y3, tr("Temperatur"), QStringLiteral("°C"), 1);
     diag->setData1Limit(bh->sud()->getCO2());
     diag->rescale();
     diag->replot();

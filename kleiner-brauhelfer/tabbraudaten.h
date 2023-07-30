@@ -42,6 +42,7 @@ private slots:
     void on_tbSpeiseSRE_valueChanged(double);
     void on_tbSpeiseT_valueChanged(double);
     void on_tbWasserVerschneidungSW_valueChanged(double);
+    void on_tbSWHefestarterBrix_valueChanged(double);
     void on_tbWasserVerschneidungBrix_valueChanged(double);
     void on_btnVerduennung_clicked();
     void on_btnSpeisemengeNoetig_clicked();

@@ -5,7 +5,7 @@ Set BIN_DIR=%BIN_DIR:"=%
 set QT_DIR=%2
 Set QT_DIR=%QT_DIR:"=%
 
-del "%BIN_DIR%\kleiner-brauhelfer-core.lib"
+if exist "%BIN_DIR%\kleiner-brauhelfer-core.lib" del "%BIN_DIR%\kleiner-brauhelfer-core.lib"
 
 xcopy "%~dp0libcrypto-3-x64.dll" "%BIN_DIR%" /Y
 xcopy "%~dp0libssl-3-x64.dll" "%BIN_DIR%" /Y

@@ -29,3 +29,5 @@ cd %BUILD_DIR%
 "%QT_DIR%\qmake.exe" "%PRO%" -config release
 nmake
 cd %~dp0
+
+call "%~dp0deployment\win\64bit\deploy.cmd" "%BUILD_DIR%\bin" "%QT_DIR%"

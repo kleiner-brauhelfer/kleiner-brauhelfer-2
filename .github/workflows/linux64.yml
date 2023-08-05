@@ -33,12 +33,15 @@ jobs:
         run: |
           chmod +x ./build_linux64.sh
           chmod +x ./deployment/linux/64bit/deploy.sh
-          chmod +x ./deployment/linux/64bit/AppImage/linuxdeployqt-6-x86_64.AppImage
+          chmod +x ./deployment/linux/64bit/AppImage/linuxdeploy-x86_64.AppImage
+          chmod +x ./deployment/linux/64bit/AppImage/linuxdeploy-plugin-qt-x86_64.AppImage
+          chmod +x ./deployment/linux/64bit/AppImage/linuxdeploy-plugin-appimage-x86_64.AppImage
           chmod +x ./deployment/linux/64bit/AppImage/AppRun
-          ./build_linux64.sh "${Qt6_DIR}/bin/" 1
+          ./build_linux64.sh "${Qt6_DIR}/bin/"
           mkdir -p deploy
-          cp ./kbh2_*.deb deploy/
-          # cp ./kleiner-brauhelfer-2-x86_64.AppImage deploy/
+          cp ./build-linux64/bin/kleiner-brauhelfer-2 deploy
+          cp ./build-linux64/bin/kbh2_v2.x.x_linux_x64.deb deploy
+          cp ./build-linux64/bin/kleiner-brauhelfer-2-x86_64.AppImage deploy
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3

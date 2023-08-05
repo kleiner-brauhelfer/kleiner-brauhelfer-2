@@ -1037,6 +1037,16 @@ p, li { white-space: pre-wrap; }
              </property>
             </widget>
            </item>
+           <item>
+            <widget class="PushButton" name="btnShaAnpassen">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die &lt;span style=&quot; font-weight:700;&quot;&gt;Sudhausausbeute&lt;/span&gt; anhand der angegebenen Malzmengen &lt;span style=&quot; font-weight:600;&quot;&gt;angepasst&lt;/span&gt;. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>SHA anpassen</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
@@ -3976,6 +3986,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>btnNeuerAnhang</tabstop>
   <tabstop>tabMitte</tabstop>
   <tabstop>btnMalzAusgleichen</tabstop>
+  <tabstop>btnShaAnpassen</tabstop>
   <tabstop>scrollAreaMalzGaben</tabstop>
   <tabstop>btnNeueMalzGabe</tabstop>
   <tabstop>btnMalzGabenUebernehmen</tabstop>

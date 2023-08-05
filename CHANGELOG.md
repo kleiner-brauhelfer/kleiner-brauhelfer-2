@@ -3,6 +3,7 @@
 ## Version 2.6.0 (in Entwicklung)
 - Neu: Umstellung auf **Qt v6.5**
 - Neu: Datenbankversion **2009**
+- Neu: Knopf, um Sudhausausbeute anhand der Malzgaben anzupassen
 - Neu: Diagramme überarbeitet (neu mit QCustomPlot statt Qt Charts)
 - Neu: Eingabemöglichkeit einer Stammwürze für das Verschnittwasser
 - Neu: Maischplan überarbeitet:

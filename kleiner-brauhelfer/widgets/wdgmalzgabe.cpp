@@ -101,7 +101,7 @@ void WdgMalzGabe::updateValues()
         ui->tbExtrakt->setValue(data(ModelMalzschuettung::ColExtrakt).toDouble());
     if (!ui->tbExtraktProzent->hasFocus())
         ui->tbExtraktProzent->setValue(data(ModelMalzschuettung::ColExtraktProzent).toDouble());
-    bool visible = bh->sud()->getSW() != bh->sud()->getSWAnteilMalz();
+    bool visible = bh->sud()->getSWAnteilZutaten() != bh->sud()->getSWAnteilMalz();
     ui->tbExtraktProzent->setVisible(visible);
     ui->lblExtraktProzent->setVisible(visible);
 

@@ -76,6 +76,7 @@ TabRezept::TabRezept(QWidget *parent) :
 
     ui->lblWarnungMalz->setPalette(gSettings->paletteErrorLabel);
     ui->btnMalzAusgleichen->setError(true);
+    ui->btnShaAnpassen->setError(true);
     ui->lblWarnungHopfen->setPalette(gSettings->paletteErrorLabel);
     ui->btnHopfenAusgleichen->setError(true);
     ui->lblWarnungMaischplanWasser->setPalette(gSettings->paletteErrorLabel);
@@ -857,9 +858,11 @@ void TabRezept::on_btnMaischplanAusgleichen_clicked()
         totalProzent += model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
     if (totalProzent > 0)
     {
+        bool prevValue = WidgetDecorator::suspendClear(true);
         double factor = 100.0 / totalProzent;
         for (int i = 0; i < model->rowCount(); ++i)
             model->setData(i, ModelMaischplan::ColAnteilWasser, model->data(i, ModelMaischplan::ColAnteilWasser).toDouble() * factor);
+        WidgetDecorator::suspendClear(prevValue);
     }
 }
 
@@ -871,10 +874,12 @@ void TabRezept::on_btnMaischplanFaktorAnpassen_clicked()
         totalProzent += model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
     if (totalProzent > 0)
     {
+        bool prevValue = WidgetDecorator::suspendClear(true);
         bh->sud()->setFaktorHauptguss(totalProzent / 100.0 * bh->sud()->geterg_WHauptguss() / bh->sud()->geterg_S_Gesamt());
         double factor = 100.0 / totalProzent;
         for (int i = 0; i < model->rowCount(); ++i)
             model->setData(i, ModelMaischplan::ColAnteilWasser, model->data(i, ModelMaischplan::ColAnteilWasser).toDouble() * factor);
+        WidgetDecorator::suspendClear(prevValue);
     }
 }
 
@@ -886,9 +891,11 @@ void TabRezept::on_btnMaischplanAusgleichenMalz_clicked()
         totalProzent += model->data(i, ModelMaischplan::ColAnteilMalz).toDouble();
     if (totalProzent > 0)
     {
+        bool prevValue = WidgetDecorator::suspendClear(true);
         double factor = 100.0 / totalProzent;
         for (int i = 0; i < model->rowCount(); ++i)
             model->setData(i, ModelMaischplan::ColAnteilMalz, model->data(i, ModelMaischplan::ColAnteilMalz).toDouble() * factor);
+        WidgetDecorator::suspendClear(prevValue);
     }
 }
 
@@ -1068,6 +1075,7 @@ void TabRezept::on_btnMalzAusgleichen_clicked()
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
         totalProzent += model->data(i, ModelMalzschuettung::ColProzent).toDouble();
+    bool prevValue = WidgetDecorator::suspendClear(true);
     if (totalProzent > 0)
     {
         double factor = 100 / totalProzent;
@@ -1082,6 +1090,29 @@ void TabRezept::on_btnMalzAusgleichen_clicked()
         double prozent = 100.0 / model->rowCount();
         for (int i = 0; i < model->rowCount(); ++i)
             model->setData(i, ModelMalzschuettung::ColProzent, prozent);
+    }
+    WidgetDecorator::suspendClear(prevValue);
+}
+
+void TabRezept::on_btnShaAnpassen_clicked()
+{
+    ProxyModel *model = bh->sud()->modelMalzschuettung();
+    double schuettung = 0;
+    for (int i = 0; i < model->rowCount(); ++i)
+        schuettung += model->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
+    if (schuettung > 0)
+    {
+        bool prevValue = WidgetDecorator::suspendClear(true);
+        for (int i = 0; i < model->rowCount(); ++i)
+        {
+            double menge = model->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
+            model->setData(i, ModelMalzschuettung::ColProzent, menge / schuettung * 100);
+        }
+        double sw = bh->sud()->getSWAnteilMalz();
+        double sw_dichte = sw + bh->sud()->getSWAnteilZusatzMaischen() + bh->sud()->getSWAnteilZusatzKochen();
+        double menge = bh->sud()->getMengeSollAnstellen();
+        bh->sud()->setSudhausausbeute(BierCalc::sudhausausbeute(sw, sw_dichte, menge, schuettung));
+        WidgetDecorator::suspendClear(prevValue);
     }
 }
 
@@ -1223,6 +1254,7 @@ void TabRezept::on_btnHopfenAusgleichen_clicked()
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
         totalProzent += model->data(i, ModelHopfengaben::ColProzent).toDouble();
+    bool prevValue = WidgetDecorator::suspendClear(true);
     if (totalProzent > 0)
     {
         double factor = 100.0 / totalProzent;
@@ -1238,6 +1270,7 @@ void TabRezept::on_btnHopfenAusgleichen_clicked()
         for (int i = 0; i < model->rowCount(); ++i)
             model->setData(i, ModelHopfengaben::ColProzent, prozent);
     }
+    WidgetDecorator::suspendClear(prevValue);
 }
 
 void TabRezept::hefeGaben_modified()

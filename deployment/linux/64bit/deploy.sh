@@ -19,7 +19,7 @@ mkdir -p "${DEB_DIR}/DEBIAN"
 cp "${SCRIPT_DIR}/deb/control" "${DEB_DIR}/DEBIAN/"
 chmod 0755 "${DEB_DIR}/DEBIAN"
 dpkg-deb --build "${DEB_DIR}"
-mv "${DEB_DIR}/../deb.deb" "./kbh2_v2.x.x_linux_x64.deb"
+mv "${BUILD_DIR}/deb.deb" "${BUILD_DIR}/kbh2_v2.x.x_linux_x64.deb"
 
 # create portable AppImage
 mkdir -p "${BUILD_DIR}/AppImage/usr/bin"

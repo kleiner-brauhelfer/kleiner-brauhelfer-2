@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install build-essential mesa-common-dev libgl1-mesa-dev libxkbcommon-x11-dev libfontconfig1 fuse -y
+          sudo apt-get install build-essential mesa-common-dev libgl1-mesa-dev libxkbcommon-x11-dev libfontconfig1 fuse libxcb-cursor-dev -y
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v3

@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 2.6.0 (in Entwicklung)
+## Version 2.6.0 (05.08.2023)
 - Neu: Umstellung auf **Qt v6.5**
 - Neu: Datenbankversion **2009**
 - Neu: Knopf, um Sudhausausbeute anhand der Malzgaben anzupassen

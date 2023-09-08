@@ -164,7 +164,7 @@ void Chart3::rescale()
 void Chart3::select(int index)
 {
     QLocale locale = QLocale();
-    bool visible = index >= 0;
+    bool visible = index >= 0 && index < graph1->data()->size();
     if (visible)
     {
         double x = graph1->data()->at(index)->key;

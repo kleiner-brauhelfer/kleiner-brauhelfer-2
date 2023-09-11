@@ -1,16 +1,16 @@
 #include "timeedit.h"
+#include "widgetdecorator.h"
 #include "settings.h"
 
 extern Settings *gSettings;
 
 TimeEdit::TimeEdit(QWidget *parent) :
     QTimeEdit(parent),
-    WidgetDecorator(),
     mError(false)
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
-    connect(this, &QDateTimeEdit::timeChanged, this, &TimeEdit::on_valueChanged);
+    connect(this, &QDateTimeEdit::timeChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
 void TimeEdit::wheelEvent(QWheelEvent *event)
@@ -19,9 +19,9 @@ void TimeEdit::wheelEvent(QWheelEvent *event)
         QDateTimeEdit::wheelEvent(event);
 }
 
-void TimeEdit::updatePalette()
+void TimeEdit::paintEvent(QPaintEvent *event)
 {
-    if (mValueChanged)
+    if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
     else if (!isEnabled())
         setPalette(gSettings->palette);
@@ -31,23 +31,7 @@ void TimeEdit::updatePalette()
         setPalette(gSettings->palette);
     else
         setPalette(gSettings->paletteInput);
-}
-
-void TimeEdit::paintEvent(QPaintEvent *event)
-{
-    updatePalette();
     QDateTimeEdit::paintEvent(event);
-}
-
-void TimeEdit::on_valueChanged()
-{
-    waValueChanged(this, hasFocus());
-}
-
-void TimeEdit::focusOutEvent(QFocusEvent *event)
-{
-    waFocusOutEvent();
-    QTimeEdit::focusOutEvent(event);
 }
 
 void TimeEdit::setReadOnly(bool r)

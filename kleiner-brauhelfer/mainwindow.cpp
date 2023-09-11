@@ -23,6 +23,7 @@
 #include "dialogs/dlgrohstoffeabziehen.h"
 #include "dialogs/dlghilfe.h"
 #include "widgets/iconthemed.h"
+#include "widgets/widgetdecorator.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -117,6 +118,14 @@ MainWindow::MainWindow(QWidget *parent) :
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
     ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
+
+    connect(qApp, &QApplication::focusChanged, this, [](QWidget *old, QWidget *now){
+        if (!old || !now)
+            return;
+        if (strcmp(old->metaObject()->className(),"QtPrivate::QCalendarView") == 0)
+            return;
+        WidgetDecorator::clearValueChanged();
+    });
 
     connect(gSettings, &Settings::modulesChanged, this, &MainWindow::modulesChanged);
 

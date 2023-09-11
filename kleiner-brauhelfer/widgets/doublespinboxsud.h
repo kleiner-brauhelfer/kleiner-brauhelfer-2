@@ -13,7 +13,7 @@ public:
     int column() const;
     void updateValue();
 private slots:
-    void on_valueChanged(double value);
+    void on_valueChanged(double val);
 private:
     int mCol;
 };

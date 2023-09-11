@@ -1,12 +1,16 @@
 #include "dlgvolumen.h"
 #include "ui_dlgvolumen.h"
 #include <qmath.h>
+#include "widgets/widgetdecorator.h"
 #include "biercalc.h"
 
 DlgVolumen::DlgVolumen(double durchmesser, double hoehe, QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgVolumen)
 {
+    WidgetDecorator::suspendValueChanged = true;
+    connect(this, &QDialog::finished, [](){WidgetDecorator::suspendValueChanged = false;});
+
     ui->setupUi(this);
     Durchmesser = durchmesser;
     Hoehe = hoehe;
@@ -95,7 +99,7 @@ void DlgVolumen::BerLiter20Grad()
     ui->spinBox_Liter20Grad->setValue(V20);
 }
 
-void DlgVolumen::setLiter(double Liter)
+void DlgVolumen::setValue(double Liter)
 {
     ui->spinBox_Liter20Grad->setValue(Liter);
     double VT2 = BierCalc::volumenWasser(20, ui->spinBox_Temperatur->value(), Liter);
@@ -105,7 +109,7 @@ void DlgVolumen::setLiter(double Liter)
     ui->spinBox_VonOben->setValue(Hoehe - ui->spinBox_VonUnten->value());
 }
 
-double DlgVolumen::getLiter() const
+double DlgVolumen::value() const
 {
     return ui->spinBox_Liter20Grad->value();
 }

@@ -2,9 +2,8 @@
 #define TIMEEDIT_H
 
 #include <QTimeEdit>
-#include "widgetdecorator.h"
 
-class TimeEdit : public QTimeEdit, public WidgetDecorator
+class TimeEdit : public QTimeEdit
 {
     Q_OBJECT
 
@@ -13,12 +12,8 @@ public:
     void setReadOnly(bool r);
     void setError(bool e);
 private:
-    void updatePalette();
     void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
-    void focusOutEvent(QFocusEvent *event) Q_DECL_OVERRIDE;
-private slots:
-    void on_valueChanged();
 private:
     bool mError;
 };

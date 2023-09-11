@@ -1,18 +1,18 @@
 #include "spinbox.h"
+#include "widgetdecorator.h"
 #include "settings.h"
 
 extern Settings *gSettings;
 
 SpinBox::SpinBox(QWidget *parent) :
     QSpinBox(parent),
-    WidgetDecorator(),
     mError(false),
     mErrorLimitMin(std::numeric_limits<int>::lowest()),
     mErrorLimitMax(std::numeric_limits<int>::max())
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
-    connect(this, &QSpinBox::valueChanged, this, &SpinBox::on_valueChanged);
+    connect(this, &QSpinBox::valueChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
 void SpinBox::wheelEvent(QWheelEvent *event)
@@ -21,9 +21,9 @@ void SpinBox::wheelEvent(QWheelEvent *event)
         QSpinBox::wheelEvent(event);
 }
 
-void SpinBox::updatePalette()
+void SpinBox::paintEvent(QPaintEvent *event)
 {
-    if (mValueChanged)
+    if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
     else if (!isEnabled())
         setPalette(gSettings->palette);
@@ -35,23 +35,13 @@ void SpinBox::updatePalette()
         setPalette(gSettings->palette);
     else
         setPalette(gSettings->paletteInput);
-}
-
-void SpinBox::paintEvent(QPaintEvent *event)
-{
-    updatePalette();
     QSpinBox::paintEvent(event);
 }
 
-void SpinBox::on_valueChanged()
+void SpinBox::setValue(int val)
 {
-    waValueChanged(this, hasFocus());
-}
-
-void SpinBox::focusOutEvent(QFocusEvent *event)
-{
-    waFocusOutEvent();
-    QSpinBox::focusOutEvent(event);
+    if (value() != val)
+        QSpinBox::setValue(val);
 }
 
 void SpinBox::setReadOnly(bool r)

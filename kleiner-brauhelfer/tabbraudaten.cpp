@@ -8,6 +8,7 @@
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgvolumen.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
+#include "widgets/widgetdecorator.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -313,17 +314,13 @@ void TabBraudaten::on_btnBraudatumHeute_clicked()
 
 void TabBraudaten::on_btnSWKochbeginn_clicked()
 {
-    WidgetDecorator::suspendValueChanged(true);
     DlgRestextrakt dlg(bh->sud()->getSWKochbeginn());
-    int dlgRet = dlg.exec();
-    WidgetDecorator::suspendValueChanged(false);
-    if (dlgRet == QDialog::Accepted)
+    if (dlg.exec() == QDialog::Accepted)
         bh->sud()->setSWKochbeginn(dlg.value());
 }
 
 void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
 {
-    WidgetDecorator::suspendValueChanged(true);
     double d = 0, h = 0;
     if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
@@ -331,11 +328,9 @@ void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
         h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
     }
     DlgVolumen dlg(d, h, this);
-    dlg.setLiter(ui->tbWuerzemengeKochbeginn->value());
-    int dlgRet = dlg.exec();
-    WidgetDecorator::suspendValueChanged(false);
-    if (dlgRet == QDialog::Accepted)
-        bh->sud()->setWuerzemengeKochbeginn(dlg.getLiter());
+    dlg.setValue(ui->tbWuerzemengeKochbeginn->value());
+    if (dlg.exec() == QDialog::Accepted)
+        bh->sud()->setWuerzemengeKochbeginn(dlg.value());
 }
 
 void TabBraudaten::on_tbTempKochbeginn_valueChanged(double)
@@ -346,7 +341,6 @@ void TabBraudaten::on_tbTempKochbeginn_valueChanged(double)
 
 void TabBraudaten::on_btnWuerzemengeVorHopfenseihen_clicked()
 {
-    WidgetDecorator::suspendValueChanged(true);
     double d = 0, h = 0;
     if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
@@ -354,22 +348,17 @@ void TabBraudaten::on_btnWuerzemengeVorHopfenseihen_clicked()
         h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
     }
     DlgVolumen dlg(d, h, this);
-    dlg.setLiter(ui->tbWuerzemengeVorHopfenseihen->value());
-    int dlgRet = dlg.exec();
-    WidgetDecorator::suspendValueChanged(false);
-    if (dlgRet == QDialog::Accepted)
-        bh->sud()->setWuerzemengeVorHopfenseihen(dlg.getLiter());
+    dlg.setValue(ui->tbWuerzemengeVorHopfenseihen->value());
+    if (dlg.exec() == QDialog::Accepted)
+        bh->sud()->setWuerzemengeVorHopfenseihen(dlg.value());
 }
 
 void TabBraudaten::on_btnWuerzemengeKochende_clicked()
 {
-    WidgetDecorator::suspendValueChanged(true);
     DlgVolumen dlg(this);
-    dlg.setLiter(ui->tbWuerzemengeKochende->value());
-    int dlgRet = dlg.exec();
-    WidgetDecorator::suspendValueChanged(false);
-    if (dlgRet == QDialog::Accepted)
-        bh->sud()->setWuerzemengeKochende(dlg.getLiter());
+    dlg.setValue(ui->tbWuerzemengeKochende->value());
+    if (dlg.exec() == QDialog::Accepted)
+        bh->sud()->setWuerzemengeKochende(dlg.value());
 }
 
 void TabBraudaten::on_tbTempKochende_valueChanged(double)
@@ -380,44 +369,32 @@ void TabBraudaten::on_tbTempKochende_valueChanged(double)
 
 void TabBraudaten::on_btnSWKochende_clicked()
 {
-    WidgetDecorator::suspendValueChanged(true);
     DlgRestextrakt dlg(bh->sud()->getSWKochende());
-    int dlgRet = dlg.exec();
-    WidgetDecorator::suspendValueChanged(false);
-    if (dlgRet == QDialog::Accepted)
+    if (dlg.exec() == QDialog::Accepted)
         bh->sud()->setSWKochende(dlg.value());
 }
 
 void TabBraudaten::on_btnSWAnstellen_clicked()
 {
-    WidgetDecorator::suspendValueChanged(true);
     DlgRestextrakt dlg(bh->sud()->getSWAnstellen());
-    int dlgRet = dlg.exec();
-    WidgetDecorator::suspendValueChanged(false);
-    if (dlgRet == QDialog::Accepted)
+    if (dlg.exec() == QDialog::Accepted)
         bh->sud()->setSWAnstellen(dlg.value());
 }
 
 void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
 {
-    WidgetDecorator::suspendValueChanged(true);
     DlgVolumen dlg(this);
-    dlg.setLiter(bh->sud()->getWuerzemengeAnstellenTotal());
-    int dlgRet = dlg.exec();
-    WidgetDecorator::suspendValueChanged(false);
-    if (dlgRet == QDialog::Accepted)
-        bh->sud()->setWuerzemengeAnstellenTotal(dlg.getLiter());
+    dlg.setValue(bh->sud()->getWuerzemengeAnstellenTotal());
+    if (dlg.exec() == QDialog::Accepted)
+        bh->sud()->setWuerzemengeAnstellenTotal(dlg.value());
 }
 
 void TabBraudaten::on_btnWuerzemengeAnstellen_clicked()
 {
-    WidgetDecorator::suspendValueChanged(true);
     DlgVolumen dlg(this);
-    dlg.setLiter(bh->sud()->getWuerzemengeAnstellen());
-    int dlgRet = dlg.exec();
-    WidgetDecorator::suspendValueChanged(false);
-    if (dlgRet == QDialog::Accepted)
-        bh->sud()->setWuerzemengeAnstellen(dlg.getLiter());
+    dlg.setValue(bh->sud()->getWuerzemengeAnstellen());
+    if (dlg.exec() == QDialog::Accepted)
+        bh->sud()->setWuerzemengeAnstellen(dlg.value());
 }
 
 void TabBraudaten::on_tbSpeiseSRE_valueChanged(double)
@@ -455,15 +432,17 @@ void TabBraudaten::on_tbWasserVerschneidungBrix_valueChanged(double value)
 
 void TabBraudaten::on_btnVerduennung_clicked()
 {
-    bool prevValue = WidgetDecorator::suspendClear(true);
+    WidgetDecorator::suspendValueChangedClear = true;
     bh->sud()->setVerduennungAnstellen(ui->tbWasserVerschneidung->value());
     bh->sud()->setSWAnstellen(ui->tbSWAnstellenSoll->value());
-    WidgetDecorator::suspendClear(prevValue);
+    WidgetDecorator::suspendValueChangedClear = false;
 }
 
 void TabBraudaten::on_btnSpeisemengeNoetig_clicked()
 {
+    WidgetDecorator::suspendValueChangedClear = true;
     bh->sud()->setSpeisemenge(ui->tbSpeisemengeNoetig->value());
+    WidgetDecorator::suspendValueChangedClear = false;
 }
 
 void TabBraudaten::on_cbDurchschnittIgnorieren_clicked(bool checked)

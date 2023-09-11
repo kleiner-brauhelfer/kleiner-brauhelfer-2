@@ -2,9 +2,8 @@
 #define DATEEDIT_H
 
 #include <QDateEdit>
-#include "widgetdecorator.h"
 
-class DateEdit : public QDateEdit, public WidgetDecorator
+class DateEdit : public QDateEdit
 {
     Q_OBJECT
 
@@ -14,12 +13,8 @@ public:
     bool hasFocus() const;
     void setError(bool e);
 private:
-    void updatePalette();
     void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
-    void focusOutEvent(QFocusEvent *event) Q_DECL_OVERRIDE;
-private slots:
-    void on_valueChanged();
 private:
     bool mError;
 };

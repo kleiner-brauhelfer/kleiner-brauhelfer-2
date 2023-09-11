@@ -1,11 +1,15 @@
 #include "dlgsudteilen.h"
 #include "ui_dlgsudteilen.h"
+#include "widgets/widgetdecorator.h"
 
 DlgSudTeilen::DlgSudTeilen(const QString &name, double amount, QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgSudTeilen),
     mTotalAmount(amount)
 {
+    WidgetDecorator::suspendValueChanged = true;
+    connect(this, &QDialog::finished, [](){WidgetDecorator::suspendValueChanged = false;});
+
     ui->setupUi(this);
     ui->lineEdit_Name1->setText(name + " I");
     ui->lineEdit_Name2->setText(name + " II");

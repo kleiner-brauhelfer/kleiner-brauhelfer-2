@@ -7,13 +7,12 @@ DoubleSpinBoxSud::DoubleSpinBoxSud(QWidget *parent) :
     DoubleSpinBox(parent),
     mCol(-1)
 {
+    connect(this, &DoubleSpinBox::valueChanged, this, &DoubleSpinBoxSud::on_valueChanged);
 }
 
 void DoubleSpinBoxSud::setColumn(int col)
 {
     mCol = col;
-    if (mCol != -1)
-        connect(this, &DoubleSpinBox::valueChanged, this, &DoubleSpinBoxSud::on_valueChanged);
 }
 
 int DoubleSpinBoxSud::column() const
@@ -23,16 +22,11 @@ int DoubleSpinBoxSud::column() const
 
 void DoubleSpinBoxSud::updateValue()
 {
-    if (mCol == -1)
-        return;
-    if (!hasFocus() || isReadOnly())
-        setValue(bh->sud()->getValue(mCol).toDouble());
+    setValue(bh->sud()->getValue(mCol).toDouble());
 }
 
-void DoubleSpinBoxSud::on_valueChanged(double value)
+void DoubleSpinBoxSud::on_valueChanged(double val)
 {
-    if (mCol == -1)
-        return;
-    if (hasFocus() && !isReadOnly())
-        bh->sud()->setValue(mCol, value);
+    if (hasFocus())
+        bh->sud()->setValue(mCol, val);
 }

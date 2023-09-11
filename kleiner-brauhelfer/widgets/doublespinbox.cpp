@@ -1,18 +1,18 @@
 #include "doublespinbox.h"
+#include "widgetdecorator.h"
 #include "settings.h"
 
 extern Settings *gSettings;
 
 DoubleSpinBox::DoubleSpinBox(QWidget *parent) :
     QDoubleSpinBox(parent),
-    WidgetDecorator(),
     mError(false),
     mErrorLimitMin(std::numeric_limits<double>::lowest()),
     mErrorLimitMax(std::numeric_limits<double>::max())
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
-    connect(this, &QDoubleSpinBox::valueChanged, this, &DoubleSpinBox::on_valueChanged);
+    connect(this, &QDoubleSpinBox::valueChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
 void DoubleSpinBox::wheelEvent(QWheelEvent *event)
@@ -21,9 +21,9 @@ void DoubleSpinBox::wheelEvent(QWheelEvent *event)
         QDoubleSpinBox::wheelEvent(event);
 }
 
-void DoubleSpinBox::updatePalette()
+void DoubleSpinBox::paintEvent(QPaintEvent *event)
 {
-    if (mValueChanged)
+    if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
     else if (!isEnabled())
         setPalette(gSettings->palette);
@@ -35,23 +35,13 @@ void DoubleSpinBox::updatePalette()
         setPalette(gSettings->palette);
     else
         setPalette(gSettings->paletteInput);
-}
-
-void DoubleSpinBox::paintEvent(QPaintEvent *event)
-{
-    updatePalette();
     QDoubleSpinBox::paintEvent(event);
 }
 
-void DoubleSpinBox::on_valueChanged()
+void DoubleSpinBox::setValue(double val)
 {
-    waValueChanged(this, hasFocus());
-}
-
-void DoubleSpinBox::focusOutEvent(QFocusEvent *event)
-{
-    waFocusOutEvent();
-    QDoubleSpinBox::focusOutEvent(event);
+    if (std::fabs(value()-val) >= std::pow(10,-decimals())/2)
+        QDoubleSpinBox::setValue(val);
 }
 
 void DoubleSpinBox::setReadOnly(bool r)

@@ -231,7 +231,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="DoubleSpinBoxSud" name="tbSWSollKochbeginnMitWzBrix">
+               <widget class="DoubleSpinBox" name="tbSWSollKochbeginnMitWzBrix">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -728,7 +728,7 @@
               </spacer>
              </item>
              <item>
-              <widget class="DoubleSpinBoxSud" name="tbSWSollKochbeginnBrix">
+              <widget class="DoubleSpinBox" name="tbSWSollKochbeginnBrix">
                <property name="minimumSize">
                 <size>
                  <width>50</width>
@@ -1216,7 +1216,7 @@
               </spacer>
              </item>
              <item>
-              <widget class="DoubleSpinBoxSud" name="tbSWSollKochendeBrix">
+              <widget class="DoubleSpinBox" name="tbSWSollKochendeBrix">
                <property name="minimumSize">
                 <size>
                  <width>50</width>
@@ -2519,7 +2519,7 @@
               </spacer>
              </item>
              <item>
-              <widget class="DoubleSpinBoxSud" name="tbSWAnstellenSollBrix">
+              <widget class="DoubleSpinBox" name="tbSWAnstellenSollBrix">
                <property name="minimumSize">
                 <size>
                  <width>50</width>
@@ -2632,7 +2632,7 @@
                </spacer>
               </item>
               <item>
-               <widget class="DoubleSpinBoxSud" name="tbSWHefestarterBrix">
+               <widget class="DoubleSpinBox" name="tbSWHefestarterBrix">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>

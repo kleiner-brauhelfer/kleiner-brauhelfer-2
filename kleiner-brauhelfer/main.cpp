@@ -27,8 +27,6 @@
 #endif
 
 // global variables
-extern Brauhelfer* bh;
-extern Settings* gSettings;
 Brauhelfer* bh = nullptr;
 Settings* gSettings = nullptr;
 

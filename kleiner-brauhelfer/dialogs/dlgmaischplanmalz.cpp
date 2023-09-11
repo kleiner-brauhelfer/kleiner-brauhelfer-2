@@ -4,6 +4,7 @@
 #include "model/textdelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/spinboxdelegate.h"
+#include "widgets/widgetdecorator.h"
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -14,6 +15,9 @@ DlgMaischplanMalz::DlgMaischplanMalz(double value, QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgMaischplanMalz)
 {
+    WidgetDecorator::suspendValueChanged = true;
+    connect(this, &QDialog::finished, [](){WidgetDecorator::suspendValueChanged = false;});
+
     ui->setupUi(this);
     adjustSize();
     ui->tbMenge->setMaximum(bh->sud()->geterg_S_Gesamt());

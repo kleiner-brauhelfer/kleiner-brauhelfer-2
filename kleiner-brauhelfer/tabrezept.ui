@@ -275,7 +275,7 @@
                </widget>
               </item>
               <item>
-               <widget class="DoubleSpinBoxSud" name="tbFaktorHauptgussEmpfehlung">
+               <widget class="DoubleSpinBox" name="tbFaktorHauptgussEmpfehlung">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>

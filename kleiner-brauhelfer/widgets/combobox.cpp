@@ -1,17 +1,17 @@
 #include "combobox.h"
 #include <QAbstractItemView>
+#include "widgetdecorator.h"
 #include "settings.h"
 
 extern Settings *gSettings;
 
 ComboBox::ComboBox(QWidget *parent) :
     QComboBox(parent),
-    WidgetDecorator(),
     mError(false)
 {
     setFocusPolicy(Qt::StrongFocus);
-    connect(this, &QComboBox::currentIndexChanged, this, &ComboBox::on_valueChanged);
-    connect(this, &QComboBox::currentTextChanged, this, &ComboBox::on_valueChanged);
+    connect(this, &QComboBox::currentIndexChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
+    connect(this, &QComboBox::currentTextChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
 void ComboBox::wheelEvent(QWheelEvent *event)
@@ -20,9 +20,9 @@ void ComboBox::wheelEvent(QWheelEvent *event)
         QComboBox::wheelEvent(event);
 }
 
-void ComboBox::updatePalette()
+void ComboBox::paintEvent(QPaintEvent *event)
 {
-    if (mValueChanged)
+    if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
     else if (!isEnabled())
         setPalette(gSettings->palette);
@@ -30,23 +30,7 @@ void ComboBox::updatePalette()
         setPalette(gSettings->paletteErrorButton);
     else
         setPalette(gSettings->paletteInput);
-}
-
-void ComboBox::paintEvent(QPaintEvent *event)
-{
-    updatePalette();
     QComboBox::paintEvent(event);
-}
-
-void ComboBox::on_valueChanged()
-{
-    waValueChanged(this, hasFocus());
-}
-
-void ComboBox::focusOutEvent(QFocusEvent *event)
-{
-    waFocusOutEvent();
-    QComboBox::focusOutEvent(event);
 }
 
 void ComboBox::setError(bool e)

@@ -436,19 +436,26 @@ void DlgAusruestung::on_tbName_editingFinished()
 {
     QString prevValue = data(ModelAusruestung::ColName).toString();
     if (prevValue != ui->tbName->text())
+    {
+        qApp->setOverrideCursor(Qt::WaitCursor);
         setData(ModelAusruestung::ColName, ui->tbName->text());
+        qApp->restoreOverrideCursor();
+    }
 }
 
 void DlgAusruestung::on_cbTyp_activated(int index)
 {
     int prevValue = data(ModelAusruestung::ColTyp).toInt();
     if (prevValue != ui->cbTyp->itemData(index).toInt())
+    {
+        qApp->setOverrideCursor(Qt::WaitCursor);
         setData(ModelAusruestung::ColTyp, ui->cbTyp->itemData(index));
+        qApp->restoreOverrideCursor();
+    }
 }
 
 void DlgAusruestung::on_btnVerdampfungsrate_clicked()
 {
-    WidgetDecorator::suspendValueChanged(true);
     DlgVerdampfung dlg;
     dlg.setDurchmesser(data(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble());
     dlg.setHoehe(data(ModelAusruestung::ColSudpfanne_Hoehe).toDouble());
@@ -464,9 +471,7 @@ void DlgAusruestung::on_btnVerdampfungsrate_clicked()
         dlg.setMenge1(20);
         dlg.setMenge2(18);
     }
-    int dlgRet = dlg.exec();
-    WidgetDecorator::suspendValueChanged(false);
-    if (dlgRet == QDialog::Accepted)
+    if (dlg.exec() == QDialog::Accepted)
     {
         setData(ModelAusruestung::ColVerdampfungsrate, dlg.getVerdampfungsrate());
     }
@@ -509,28 +514,44 @@ void DlgAusruestung::on_tbKorrekturNachguss_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColKorrekturWasser).toDouble();
     if (prevValue != ui->tbKorrekturNachguss->value())
+    {
+        qApp->setOverrideCursor(Qt::WaitCursor);
         setData(ModelAusruestung::ColKorrekturWasser, ui->tbKorrekturNachguss->value());
+        qApp->restoreOverrideCursor();
+    }
 }
 
 void DlgAusruestung::on_tbKorrekturFarbe_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColKorrekturFarbe).toDouble();
     if (prevValue != ui->tbKorrekturFarbe->value())
+    {
+        qApp->setOverrideCursor(Qt::WaitCursor);
         setData(ModelAusruestung::ColKorrekturFarbe, ui->tbKorrekturFarbe->value());
+        qApp->restoreOverrideCursor();
+    }
 }
 
 void DlgAusruestung::on_tbKorrekturSollmenge_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColKorrekturMenge).toDouble();
     if (prevValue != ui->tbKorrekturSollmenge->value())
+    {
+        qApp->setOverrideCursor(Qt::WaitCursor);
         setData(ModelAusruestung::ColKorrekturMenge, ui->tbKorrekturSollmenge->value());
+        qApp->restoreOverrideCursor();
+    }
 }
 
 void DlgAusruestung::on_tbKosten_editingFinished()
 {
     double prevValue = data(ModelAusruestung::ColKosten).toDouble();
     if (prevValue != ui->tbKosten->value())
+    {
+        qApp->setOverrideCursor(Qt::WaitCursor);
         setData(ModelAusruestung::ColKosten, ui->tbKosten->value());
+        qApp->restoreOverrideCursor();
+    }
 }
 
 void DlgAusruestung::on_tbMaischebottichHoehe_editingFinished()

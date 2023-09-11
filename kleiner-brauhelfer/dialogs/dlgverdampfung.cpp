@@ -2,12 +2,16 @@
 #include "ui_dlgverdampfung.h"
 #include <qmath.h>
 #include "biercalc.h"
+#include "widgets/widgetdecorator.h"
 
 DlgVerdampfung::DlgVerdampfung(QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgVerdampfung),
     mFlaeche(0)
 {
+    WidgetDecorator::suspendValueChanged = true;
+    connect(this, &QDialog::finished, [](){WidgetDecorator::suspendValueChanged = false;});
+
 	ui->setupUi(this);
     adjustSize();
 }

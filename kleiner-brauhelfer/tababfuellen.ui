@@ -398,7 +398,7 @@
             </widget>
            </item>
            <item row="6" column="6">
-            <widget class="DoubleSpinBoxSud" name="tbAlkoholGaerung">
+            <widget class="DoubleSpinBox" name="tbAlkoholGaerung">
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der tatsächliche &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholgehalt&lt;/span&gt; des Jungbieres in Volumenprozent ausgegeben.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;tatsächliche Alkoholgehalt&lt;/span&gt; ergibt sich aus der beim Anstellen gemessenen Stammwürze und den im Gärverlauf gemessenen Endvergärungsgrad. Der tatsächliche Alkoholgehalt muss nicht identisch mit dem erwarteten Alkoholgehalt sein, da sich der Vergärungsgrad einer Hefe bei bestimmten Parametern wie Temperatur, Dauer, Enzymtätigkeit, pH-Wert oder Stammwürze oder der Maische von den Durschschnittswerten unterscheiden kann. Dies gilt besonders bei sogenannten Super- oder Übervergärern.&lt;/p&gt;&lt;p&gt;Im Hintergrund berücksichtigt der Kleine Brauhelfer die geringere Dichte von Alkohol im Jungbier und berechnet mit den Angaben der Braudaten sowie des Gärverlaufs mit Hilfe der sogenannten Balling-Formel den Alkoholgehalt des Bieres. Diese Formel ist auch beim Zoll als einzig mathematisches Konstrukt zur Bestimmung des Alkoholgehaltes anerkannt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>

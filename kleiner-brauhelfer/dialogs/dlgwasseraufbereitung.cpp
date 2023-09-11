@@ -1,6 +1,7 @@
 #include "dlgwasseraufbereitung.h"
 #include "ui_dlgwasseraufbereitung.h"
 #include "brauhelfer.h"
+#include "widgets/widgetdecorator.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
@@ -10,6 +11,9 @@ DlgWasseraufbereitung::DlgWasseraufbereitung(QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgWasseraufbereitung)
 {
+    WidgetDecorator::suspendValueChanged = true;
+    connect(this, &QDialog::finished, [](){WidgetDecorator::suspendValueChanged = false;});
+
     ui->setupUi(this);
     mList.append({tr("Milchsäure"), static_cast<int>(Brauhelfer::Einheit::ml), -0.0266, 80});
     mList.append({tr("Phosphorsäure"), static_cast<int>(Brauhelfer::Einheit::ml), -0.0332, 10});

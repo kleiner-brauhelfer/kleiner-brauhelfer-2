@@ -6,6 +6,7 @@
 #include "settings.h"
 #include "model/doublespinboxdelegate.h"
 #include "dialogs/dlgrohstoffvorlage.h"
+#include "widgets/widgetdecorator.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
@@ -19,6 +20,9 @@ DlgWasserprofile::DlgWasserprofile(QWidget *parent) :
     ui(new Ui::DlgWasserprofile),
     mRow(0)
 {
+    WidgetDecorator::suspendValueChanged = true;
+    connect(this, &QDialog::finished, [](){WidgetDecorator::suspendValueChanged = false;});
+
     ui->setupUi(this);
     if (gSettings->theme() == Settings::Theme::Dark)
     {

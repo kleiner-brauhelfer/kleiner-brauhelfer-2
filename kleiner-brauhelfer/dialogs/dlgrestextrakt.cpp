@@ -1,5 +1,6 @@
 #include "dlgrestextrakt.h"
 #include "ui_dlgrestextrakt.h"
+#include "widgets/widgetdecorator.h"
 #include "brauhelfer.h"
 #include "biercalc.h"
 #include "settings.h"
@@ -11,6 +12,9 @@ DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, const QDate
     DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgRestextrakt)
 {
+    WidgetDecorator::suspendValueChanged = true;
+    connect(this, &QDialog::finished, [](){WidgetDecorator::suspendValueChanged = false;});
+
     ui->setupUi(this);
 
     gSettings->beginGroup("General");

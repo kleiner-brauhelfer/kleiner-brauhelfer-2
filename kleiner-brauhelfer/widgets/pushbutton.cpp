@@ -1,43 +1,25 @@
 #include "pushbutton.h"
+#include "widgetdecorator.h"
 #include "settings.h"
 
 extern Settings *gSettings;
 
 PushButton::PushButton(QWidget *parent) :
     QPushButton(parent),
-    WidgetDecorator(),
     mError(false)
 {
-    connect(this, &QAbstractButton::clicked, this, &PushButton::on_valueChanged);
+    connect(this, &QAbstractButton::clicked, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
-void PushButton::updatePalette()
+void PushButton::paintEvent(QPaintEvent *event)
 {
-    if (mValueChanged)
+    if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
     else if (mError)
         setPalette(gSettings->paletteErrorButton);
     else
         setPalette(gSettings->palette);
-}
-
-void PushButton::paintEvent(QPaintEvent *event)
-{
-    updatePalette();
     QPushButton::paintEvent(event);
-}
-
-void PushButton::on_valueChanged()
-{
-    waValueChanged(this, hasFocus());
-    if (mValueChanged)
-        update();
-}
-
-void PushButton::focusOutEvent(QFocusEvent *event)
-{
-    waFocusOutEvent();
-    QPushButton::focusOutEvent(event);
 }
 
 void PushButton::setError(bool e)

@@ -2,9 +2,8 @@
 #define DOUBLESPINBOX_H
 
 #include <QDoubleSpinBox>
-#include "widgetdecorator.h"
 
-class DoubleSpinBox : public QDoubleSpinBox, public WidgetDecorator
+class DoubleSpinBox : public QDoubleSpinBox
 {
     Q_OBJECT
 
@@ -14,12 +13,10 @@ public:
     void setError(bool e);
     void setErrorRange(double min, double max);
 private:
-    void updatePalette();
     void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
     void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
-    void focusOutEvent(QFocusEvent *event) Q_DECL_OVERRIDE;
-private slots:
-    void on_valueChanged();
+public slots:
+    void setValue(double val);
 private:
     bool mError;
     double mErrorLimitMin;

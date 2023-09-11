@@ -1,5 +1,6 @@
 #include "dlgphmalz.h"
 #include "ui_dlgphmalz.h"
+#include "widgets/widgetdecorator.h"
 #include "biercalc.h"
 
 DlgPhMalz::DlgPhMalz(double farbe, QWidget *parent) :
@@ -7,6 +8,9 @@ DlgPhMalz::DlgPhMalz(double farbe, QWidget *parent) :
     ui(new Ui::DlgPhMalz),
     mFarbe(farbe)
 {
+    WidgetDecorator::suspendValueChanged = true;
+    connect(this, &QDialog::finished, [](){WidgetDecorator::suspendValueChanged = false;});
+
     ui->setupUi(this);
     adjustSize();
 }

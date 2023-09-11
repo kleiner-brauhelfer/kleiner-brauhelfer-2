@@ -15,8 +15,8 @@ public:
     DlgVolumen(double durchmesser, double hoehe, QWidget * parent = nullptr);
     DlgVolumen(QWidget * parent = nullptr);
     ~DlgVolumen();
-	void setLiter(double Liter);
-    double getLiter() const;
+    void setValue(double Liter);
+    double value() const;
     
 private slots:
 	void on_spinBox_VonOben_valueChanged(double );

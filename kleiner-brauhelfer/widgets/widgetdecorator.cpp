@@ -1,85 +1,41 @@
 #include "widgetdecorator.h"
-#include <QApplication>
+#include <QPointer>
 
-bool WidgetDecorator::gSuspendValueChanged = false;
-bool WidgetDecorator::gSuspendClear = false;
-QWidget* WidgetDecorator::gActiveWidget = nullptr;
-QElapsedTimer WidgetDecorator::gClearTimer;
+bool WidgetDecorator::suspendValueChanged = false;
+bool WidgetDecorator::suspendValueChangedClear = false;
+QList<QPointer<QWidget>> WidgetDecorator::valueChangedWidgets = QList<QPointer<QWidget>>();
 
-WidgetDecorator::WidgetDecorator() :
-    mValueChanged(false)
+void WidgetDecorator::valueChanged(QWidget *wdg, bool hasFocus)
 {
-}
-
-bool WidgetDecorator::suspendValueChanged(bool value)
-{
-    bool prevValue = gSuspendValueChanged;
-    gSuspendValueChanged = value;
-    return prevValue;
-}
-
-bool WidgetDecorator::suspendClear(bool value)
-{
-    bool prevValue = gSuspendClear;
-    gSuspendClear = value;
-    return prevValue;
-}
-
-void WidgetDecorator::waValueChanged(QWidget *wdg, bool hasFocus)
-{
-    if (gSuspendValueChanged)
+    if (suspendValueChanged)
         return;
-    if (hasFocus)
+    if (hasFocus || valueChangedWidgets.size() > 0)
     {
-        if (wdg != gActiveWidget)
+        if (!contains(wdg))
         {
-            for (auto &it : qApp->topLevelWidgets())
-                repaintIfChanged(it);
-            gActiveWidget = wdg;
-            gClearTimer.start();
+            wdg->setProperty("valueChangedRepaint", true);
+            wdg->update();
+            valueChangedWidgets.append(QPointer<QWidget>(wdg));
         }
-        mValueChanged = true;
-    }
-    else if (gActiveWidget)
-    {
-        mValueChanged = true;
     }
 }
 
-void WidgetDecorator::repaintIfChanged(QWidget *wdg)
+bool WidgetDecorator::contains(const QWidget *wdg)
 {
-    if (!wdg)
+    return wdg->property("valueChangedRepaint").toBool();
+}
+
+void WidgetDecorator::clearValueChanged()
+{
+    if (suspendValueChanged || suspendValueChangedClear)
         return;
-    WidgetDecorator* wa = dynamic_cast<WidgetDecorator*>(wdg);
-    if (wa)
+    for (auto&& wdg : valueChangedWidgets)
     {
-        if (wa->mValueChanged)
+        if (!wdg.isNull())
         {
-            wa->mValueChanged = false;
+            wdg->setProperty("valueChangedRepaint", false);
             wdg->update();
         }
     }
-    for (int i = 0; i < wdg->children().size(); ++i)
-    {
-        QWidget* w = qobject_cast<QWidget *>(wdg->children().at(i));
-        if (w)
-            repaintIfChanged(w);
-    }
-}
-
-void WidgetDecorator::waFocusOutEvent()
-{
-    if (gSuspendClear)
-        return;
-    if (gSuspendValueChanged)
-        return;
-    if (gClearTimer.elapsed() < 100)
-        return;
-    if (gActiveWidget)
-    {
-        mValueChanged = false;
-        gActiveWidget = nullptr;
-        for (auto &it : qApp->topLevelWidgets())
-            repaintIfChanged(it);
-    }
+    valueChangedWidgets.clear();
 }

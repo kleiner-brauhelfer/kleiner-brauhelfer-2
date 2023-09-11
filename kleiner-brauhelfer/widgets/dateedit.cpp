@@ -1,18 +1,18 @@
 #include "dateedit.h"
 #include <QCalendarWidget>
+#include "widgetdecorator.h"
 #include "settings.h"
 
 extern Settings *gSettings;
 
 DateEdit::DateEdit(QWidget *parent) :
     QDateEdit(parent),
-    WidgetDecorator(),
     mError(false)
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
     setCalendarPopup(true);
-    connect(this, &QDateTimeEdit::dateChanged, this, &DateEdit::on_valueChanged);
+    connect(this, &QDateTimeEdit::dateChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
 void DateEdit::wheelEvent(QWheelEvent *event)
@@ -21,9 +21,9 @@ void DateEdit::wheelEvent(QWheelEvent *event)
         QDateEdit::wheelEvent(event);
 }
 
-void DateEdit::updatePalette()
+void DateEdit::paintEvent(QPaintEvent *event)
 {
-    if (mValueChanged)
+    if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
     else if (!isEnabled())
         setPalette(gSettings->palette);
@@ -33,23 +33,7 @@ void DateEdit::updatePalette()
         setPalette(gSettings->palette);
     else
         setPalette(gSettings->paletteInput);
-}
-
-void DateEdit::paintEvent(QPaintEvent *event)
-{
-    updatePalette();
     QDateEdit::paintEvent(event);
-}
-
-void DateEdit::on_valueChanged()
-{
-    waValueChanged(this, hasFocus());
-}
-
-void DateEdit::focusOutEvent(QFocusEvent *event)
-{
-    waFocusOutEvent();
-    QDateEdit::focusOutEvent(event);
 }
 
 void DateEdit::setReadOnly(bool r)

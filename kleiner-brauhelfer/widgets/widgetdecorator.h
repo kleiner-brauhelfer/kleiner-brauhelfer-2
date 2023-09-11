@@ -2,26 +2,17 @@
 #define WIDGETDECORATOR_H
 
 #include <QWidget>
-#include <QElapsedTimer>
 
 class WidgetDecorator
 {
 public:
-    WidgetDecorator();
-    static bool suspendValueChanged(bool value);
-    static bool suspendClear(bool value);
+    static void valueChanged(QWidget *wdg, bool hasFocus);
+    static void clearValueChanged();
+    static bool contains(const QWidget *wdg);
 
-protected:
-    void waFocusOutEvent();
-    void waValueChanged(QWidget *wdg, bool hasFocus);
-    bool mValueChanged;
-
-private:
-    static void repaintIfChanged(QWidget *wdg);
-    static bool gSuspendValueChanged;
-    static bool gSuspendClear;
-    static QWidget* gActiveWidget;
-    static QElapsedTimer gClearTimer;
+    static bool suspendValueChanged;
+    static bool suspendValueChangedClear;
+    static QList<QPointer<QWidget>> valueChangedWidgets;
 };
 
 #endif // WIDGETDECORATOR_H

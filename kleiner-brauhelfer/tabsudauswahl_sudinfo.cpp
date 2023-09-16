@@ -9,7 +9,6 @@
 #include "proxymodel.h"
 #include "templatetags.h"
 #include "mainwindow.h"
-#include "widgets/wdganhang.h"
 
 extern Brauhelfer *bh;
 extern Settings* gSettings;

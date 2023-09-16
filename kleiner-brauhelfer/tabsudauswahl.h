@@ -22,7 +22,6 @@ public:
     bool isPrintable() const Q_DECL_OVERRIDE;
     void printPreview() Q_DECL_OVERRIDE;
     void toPdf() Q_DECL_OVERRIDE;
-    QAbstractItemModel* model() const;
     void sudAnlegen();
     void sudKopieren(bool loadedSud = false);
     void sudTeilen(bool loadedSud = false);

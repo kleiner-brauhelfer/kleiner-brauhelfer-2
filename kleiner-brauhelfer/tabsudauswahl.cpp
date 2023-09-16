@@ -7,14 +7,10 @@
 #include <QMimeData>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "importexport.h"
 #include "model/proxymodelsudcolored.h"
 #include "model/textdelegate.h"
-#include "model/checkboxdelegate.h"
-#include "model/comboboxdelegate.h"
 #include "model/datedelegate.h"
 #include "model/doublespinboxdelegate.h"
-#include "model/linklabeldelegate.h"
 #include "model/ratingdelegate.h"
 #include "model/spinboxdelegate.h"
 #include "dialogs/dlgsudteilen.h"
@@ -132,11 +128,6 @@ void TabSudAuswahl::modulesChanged(Settings::Modules modules)
         ui->tableSudauswahl->setCol(8, on, on);
     }
     updateWebView();
-}
-
-QAbstractItemModel* TabSudAuswahl::model() const
-{
-    return ui->tableSudauswahl->model();
 }
 
 void TabSudAuswahl::onTabActivated()

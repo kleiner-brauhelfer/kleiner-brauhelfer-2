@@ -62,6 +62,8 @@ SOURCES += \
     charts/chartmalz.cpp \
     charts/chartrestextrakt.cpp \
     charts/qcustomplot.cpp \
+    commands/setmodeldatacommand.cpp \
+    commands/undostack.cpp \
     dialogs/dlgabout.cpp \
     dialogs/dlgabstract.cpp \
     dialogs/dlgausruestung.cpp \
@@ -157,6 +159,8 @@ HEADERS += \
     charts/chartmalz.h \
     charts/chartrestextrakt.h \
     charts/qcustomplot.h \
+    commands/setmodeldatacommand.h \
+    commands/undostack.h \
     dialogs/dlgabout.h \
     dialogs/dlgabstract.h \
     dialogs/dlgabstract-inl.h \

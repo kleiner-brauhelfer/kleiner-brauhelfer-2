@@ -24,6 +24,8 @@
 #include "dialogs/dlgwasseraufbereitung.h"
 #include "dialogs/dlgwasserprofile.h"
 #include "widgets/widgetdecorator.h"
+#include "commands/undostack.h"
+#include "commands/setmodeldatacommand.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
@@ -214,12 +216,12 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(bh->sud()->modelAnhang(), &ProxyModel::rowsInserted, this, &TabRezept::anhaenge_modified);
     connect(bh->sud()->modelAnhang(), &ProxyModel::rowsRemoved, this, &TabRezept::anhaenge_modified);
 
-    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setKommentar(html);});
-    connect(ui->wdgBemerkungMaischen, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungZutatenMaischen(html);});
-    connect(ui->wdgBemerkungKochen, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungZutatenKochen(html);});
-    connect(ui->wdgBemerkungGaerung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungZutatenGaerung(html);});
-    connect(ui->wdgBemerkungMaischplan, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungMaischplan(html);});
-    connect(ui->wdgBemerkungWasseraufbereitung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungWasseraufbereitung(html);});
+    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColKommentar, html));});
+    connect(ui->wdgBemerkungMaischen, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungZutatenMaischen, html));});
+    connect(ui->wdgBemerkungKochen, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungZutatenKochen, html));});
+    connect(ui->wdgBemerkungGaerung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungZutatenGaerung, html));});
+    connect(ui->wdgBemerkungMaischplan, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungMaischplan, html));});
+    connect(ui->wdgBemerkungWasseraufbereitung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungWasseraufbereitung, html));});
 
     connect(ui->btnAnlage, &QAbstractButton::clicked, MainWindow::getInstance(), &MainWindow::showDialogAusruestung);
 
@@ -1320,7 +1322,7 @@ void TabRezept::vergaerungsgradUebernehmen(const QString& hefe)
         if (QMessageBox::question(this, tr("Vergärungsgrad übernehmen?"),
                                   tr("Soll der Vergärungsgrad der Hefe (%1%) übernommen werden?").arg(evg),
                                   QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
-            bh->sud()->setVergaerungsgrad(evg);
+            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColVergaerungsgrad, evg));
     }
 }
 
@@ -1542,13 +1544,13 @@ void TabRezept::on_btnNeuerAnhang_clicked()
 void TabRezept::on_tbSudname_textChanged(const QString &value)
 {
     if (ui->tbSudname->hasFocus())
-        bh->sud()->setSudname(value);
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSudname, value));
 }
 
 void TabRezept::on_cbKategorie_currentTextChanged(const QString &value)
 {
     if (ui->cbKategorie->hasFocus())
-        bh->sud()->setKategorie(value);
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColKategorie, value));
 }
 
 void TabRezept::on_btnKategorienVerwalten_clicked()
@@ -1563,27 +1565,29 @@ void TabRezept::on_btnKategorienVerwalten_clicked()
 void TabRezept::on_cbAnlage_currentTextChanged(const QString &value)
 {
     if (ui->cbAnlage->hasFocus())
-        bh->sud()->setAnlage(value);
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAnlage, value));
 }
 
 void TabRezept::on_btnSudhausausbeute_clicked()
 {
     WidgetDecorator::suspendValueChangedClear = true;
-    bh->sud()->setSudhausausbeute(bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
+    QVariant value = bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute);
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSudhausausbeute, value));
     WidgetDecorator::suspendValueChangedClear = false;
 }
 
 void TabRezept::on_btnVerdampfungsrate_clicked()
 {
     WidgetDecorator::suspendValueChangedClear = true;
-    bh->sud()->setVerdampfungsrate(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble());
+    QVariant value = bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate);
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColVerdampfungsrate, value));
     WidgetDecorator::suspendValueChangedClear = false;
 }
 
 void TabRezept::on_cbWasserProfil_currentTextChanged(const QString &value)
 {
     if (ui->cbWasserProfil->hasFocus())
-        bh->sud()->setWasserprofil(value);
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColWasserprofil, value));
 }
 
 void TabRezept::on_btnWasserProfil_clicked()

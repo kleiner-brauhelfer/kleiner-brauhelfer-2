@@ -90,6 +90,7 @@ private:
     bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
     void restart(int retCode = 1000);
     void saveDatabase();
+    void discardDatabase();
     void saveSettings();
     void restoreView();
     void closeDialogs();

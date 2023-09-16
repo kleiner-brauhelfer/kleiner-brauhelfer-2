@@ -3,13 +3,14 @@
 
 bool WidgetDecorator::suspendValueChanged = false;
 bool WidgetDecorator::suspendValueChangedClear = false;
+bool WidgetDecorator::focusRequired = true;
 QList<QPointer<QWidget>> WidgetDecorator::valueChangedWidgets = QList<QPointer<QWidget>>();
 
 void WidgetDecorator::valueChanged(QWidget *wdg, bool hasFocus)
 {
     if (suspendValueChanged)
         return;
-    if (hasFocus || valueChangedWidgets.size() > 0)
+    if (hasFocus || valueChangedWidgets.size() > 0 || !focusRequired)
     {
         if (!contains(wdg))
         {

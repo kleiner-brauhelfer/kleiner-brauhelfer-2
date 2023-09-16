@@ -12,6 +12,7 @@ public:
 
     static bool suspendValueChanged;
     static bool suspendValueChangedClear;
+    static bool focusRequired;
     static QList<QPointer<QWidget>> valueChangedWidgets;
 };
 

@@ -6,6 +6,7 @@
 #include <QStyleFactory>
 #include <QDesktopServices>
 #include "brauhelfer.h"
+#include "commands/undostack.h"
 #include "biercalc.h"
 #include "definitionen.h"
 #include "tababstract.h"
@@ -27,6 +28,8 @@
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
+
+UndoStack* gUndoStack = nullptr;
 
 QStringList MainWindow::HopfenTypname;
 QStringList MainWindow::HefeTypname;
@@ -87,6 +90,10 @@ MainWindow::MainWindow(QWidget *parent) :
             }
         }
     }
+
+    gUndoStack = new UndoStack(this);
+    ui->menuBearbeiten->addAction(gUndoStack->createUndoAction(this, tr("Rückgängig")));
+    ui->menuBearbeiten->addAction(gUndoStack->createRedoAction(this, tr("Wiederherstellen")));
 
   #if 0
     QString style = gSettings->style();
@@ -222,7 +229,11 @@ void MainWindow::saveDatabase()
     setFocus();
     try
     {
-        if (!bh->save())
+        if (bh->save())
+        {
+            gUndoStack->clear();
+        }
+        else
         {
             QGuiApplication::restoreOverrideCursor();
             QMessageBox::critical(this, tr("Fehler beim Speichern"), bh->lastError());
@@ -238,6 +249,28 @@ void MainWindow::saveDatabase()
     {
         QGuiApplication::restoreOverrideCursor();
         QMessageBox::critical(this, tr("Fehler beim Speichern"), tr("Unbekannter Fehler."));
+    }
+}
+
+void MainWindow::discardDatabase()
+{
+    QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+    setFocus();
+    try
+    {
+        bh->discard();
+        gUndoStack->clear();
+        QGuiApplication::restoreOverrideCursor();
+    }
+    catch (const std::exception& ex)
+    {
+        QGuiApplication::restoreOverrideCursor();
+        QMessageBox::critical(this, tr("Fehler beim Verwerfen"), ex.what());
+    }
+    catch (...)
+    {
+        QGuiApplication::restoreOverrideCursor();
+        QMessageBox::critical(this, tr("Fehler beim Verwerfen"), tr("Unbekannter Fehler."));
     }
 }
 
@@ -535,23 +568,7 @@ void MainWindow::on_actionSpeichern_triggered()
 
 void MainWindow::on_actionVerwerfen_triggered()
 {
-    QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
-    setFocus();
-    try
-    {
-        bh->discard();
-        QGuiApplication::restoreOverrideCursor();
-    }
-    catch (const std::exception& ex)
-    {
-        QGuiApplication::restoreOverrideCursor();
-        QMessageBox::critical(this, tr("Fehler beim Verwerfen"), ex.what());
-    }
-    catch (...)
-    {
-        QGuiApplication::restoreOverrideCursor();
-        QMessageBox::critical(this, tr("Fehler beim Verwerfen"), tr("Unbekannter Fehler."));
-    }
+    discardDatabase();
 }
 
 void MainWindow::on_actionDruckvorschau_triggered()

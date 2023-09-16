@@ -9,6 +9,8 @@
 #include "dialogs/dlgvolumen.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 #include "widgets/widgetdecorator.h"
+#include "commands/undostack.h"
+#include "commands/setmodeldatacommand.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -72,7 +74,7 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     connect(bh->sud(), &SudObject::loadedChanged, this, &TabBraudaten::sudLoaded);
     connect(bh->sud(), &SudObject::dataChanged, this, &TabBraudaten::sudDataChanged);
 
-    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungBrauen(html);});
+    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungBrauen, html));});
 }
 
 TabBraudaten::~TabBraudaten()
@@ -298,25 +300,25 @@ void TabBraudaten::updateValues()
 void TabBraudaten::on_tbBraudatum_dateChanged(const QDate &date)
 {
     if (ui->tbBraudatum->hasFocus())
-        bh->sud()->setBraudatum(QDateTime(date, ui->tbBraudatumZeit->time()));
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, QDateTime(date, ui->tbBraudatumZeit->time())));
 }
 
 void TabBraudaten::on_tbBraudatumZeit_timeChanged(const QTime &time)
 {
     if (ui->tbBraudatumZeit->hasFocus())
-        bh->sud()->setBraudatum(QDateTime(ui->tbBraudatum->date(), time));
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, QDateTime(ui->tbBraudatum->date(), time)));
 }
 
 void TabBraudaten::on_btnBraudatumHeute_clicked()
 {
-    bh->sud()->setBraudatum(QDateTime());
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, QDateTime()));
 }
 
 void TabBraudaten::on_btnSWKochbeginn_clicked()
 {
     DlgRestextrakt dlg(bh->sud()->getSWKochbeginn());
     if (dlg.exec() == QDialog::Accepted)
-        bh->sud()->setSWKochbeginn(dlg.value());
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWKochbeginn, dlg.value()));
 }
 
 void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
@@ -330,7 +332,7 @@ void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
     DlgVolumen dlg(d, h, this);
     dlg.setValue(ui->tbWuerzemengeKochbeginn->value());
     if (dlg.exec() == QDialog::Accepted)
-        bh->sud()->setWuerzemengeKochbeginn(dlg.value());
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColWuerzemengeKochbeginn, dlg.value()));
 }
 
 void TabBraudaten::on_tbTempKochbeginn_valueChanged(double)
@@ -350,7 +352,7 @@ void TabBraudaten::on_btnWuerzemengeVorHopfenseihen_clicked()
     DlgVolumen dlg(d, h, this);
     dlg.setValue(ui->tbWuerzemengeVorHopfenseihen->value());
     if (dlg.exec() == QDialog::Accepted)
-        bh->sud()->setWuerzemengeVorHopfenseihen(dlg.value());
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColWuerzemengeVorHopfenseihen, dlg.value()));
 }
 
 void TabBraudaten::on_btnWuerzemengeKochende_clicked()
@@ -358,7 +360,7 @@ void TabBraudaten::on_btnWuerzemengeKochende_clicked()
     DlgVolumen dlg(this);
     dlg.setValue(ui->tbWuerzemengeKochende->value());
     if (dlg.exec() == QDialog::Accepted)
-        bh->sud()->setWuerzemengeKochende(dlg.value());
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColWuerzemengeKochende, dlg.value()));
 }
 
 void TabBraudaten::on_tbTempKochende_valueChanged(double)
@@ -371,14 +373,14 @@ void TabBraudaten::on_btnSWKochende_clicked()
 {
     DlgRestextrakt dlg(bh->sud()->getSWKochende());
     if (dlg.exec() == QDialog::Accepted)
-        bh->sud()->setSWKochende(dlg.value());
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWKochende, dlg.value()));
 }
 
 void TabBraudaten::on_btnSWAnstellen_clicked()
 {
     DlgRestextrakt dlg(bh->sud()->getSWAnstellen());
     if (dlg.exec() == QDialog::Accepted)
-        bh->sud()->setSWAnstellen(dlg.value());
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWAnstellen, dlg.value()));
 }
 
 void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
@@ -386,7 +388,7 @@ void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
     DlgVolumen dlg(this);
     dlg.setValue(bh->sud()->getWuerzemengeAnstellenTotal());
     if (dlg.exec() == QDialog::Accepted)
-        bh->sud()->setWuerzemengeAnstellenTotal(dlg.value());
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColWuerzemengeAnstellenTotal, dlg.value()));
 }
 
 void TabBraudaten::on_btnWuerzemengeAnstellen_clicked()
@@ -394,7 +396,7 @@ void TabBraudaten::on_btnWuerzemengeAnstellen_clicked()
     DlgVolumen dlg(this);
     dlg.setValue(bh->sud()->getWuerzemengeAnstellen());
     if (dlg.exec() == QDialog::Accepted)
-        bh->sud()->setWuerzemengeAnstellen(dlg.value());
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColWuerzemengeAnstellen, dlg.value()));
 }
 
 void TabBraudaten::on_tbSpeiseSRE_valueChanged(double)
@@ -418,7 +420,7 @@ void TabBraudaten::on_tbWasserVerschneidungSW_valueChanged(double)
 void TabBraudaten::on_tbSWHefestarterBrix_valueChanged(double value)
 {
     if (ui->tbSWHefestarterBrix->hasFocus())
-        bh->sud()->setSWHefestarter(BierCalc::brixToPlato(value));
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWHefestarter, BierCalc::brixToPlato(value)));
 }
 
 void TabBraudaten::on_tbWasserVerschneidungBrix_valueChanged(double value)
@@ -433,21 +435,23 @@ void TabBraudaten::on_tbWasserVerschneidungBrix_valueChanged(double value)
 void TabBraudaten::on_btnVerduennung_clicked()
 {
     WidgetDecorator::suspendValueChangedClear = true;
-    bh->sud()->setVerduennungAnstellen(ui->tbWasserVerschneidung->value());
-    bh->sud()->setSWAnstellen(ui->tbSWAnstellenSoll->value());
+    gUndoStack->beginMacro(QStringLiteral("macro"));
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColVerduennungAnstellen, ui->tbWasserVerschneidung->value()));
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWAnstellen, ui->tbSWAnstellenSoll->value()));
+    gUndoStack->endMacro();
     WidgetDecorator::suspendValueChangedClear = false;
 }
 
 void TabBraudaten::on_btnSpeisemengeNoetig_clicked()
 {
     WidgetDecorator::suspendValueChangedClear = true;
-    bh->sud()->setSpeisemenge(ui->tbSpeisemengeNoetig->value());
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSpeisemenge, ui->tbSpeisemengeNoetig->value()));
     WidgetDecorator::suspendValueChangedClear = false;
 }
 
 void TabBraudaten::on_cbDurchschnittIgnorieren_clicked(bool checked)
 {
-    bh->sud()->setAusbeuteIgnorieren(checked);
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAusbeuteIgnorieren, checked));
 }
 
 void TabBraudaten::on_btnSudGebraut_clicked()
@@ -459,8 +463,10 @@ void TabBraudaten::on_btnSudGebraut_clicked()
                                     QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
         return;
 
-    bh->sud()->setBraudatum(dt);
-    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
+    gUndoStack->beginMacro(QStringLiteral("macro"));
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, dt));
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Gebraut)));
+    gUndoStack->endMacro();
 
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
     {

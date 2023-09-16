@@ -258,7 +258,13 @@
     <addaction name="separator"/>
     <addaction name="actionModule"/>
    </widget>
+   <widget class="QMenu" name="menuBearbeiten">
+    <property name="title">
+     <string>Bearbeiten</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuBearbeiten"/>
    <addaction name="menuSud"/>
    <addaction name="menuAnsicht"/>
    <addaction name="menuEinstellungen"/>

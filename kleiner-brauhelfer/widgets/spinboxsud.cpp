@@ -1,5 +1,7 @@
 #include "spinboxsud.h"
 #include "brauhelfer.h"
+#include "commands/undostack.h"
+#include "commands/setmodeldatacommand.h"
 
 extern Brauhelfer* bh;
 
@@ -28,5 +30,5 @@ void SpinBoxSud::updateValue()
 void SpinBoxSud::on_valueChanged(int val)
 {
     if (hasFocus())
-        bh->sud()->setValue(mCol, val);
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), mCol, val));
 }

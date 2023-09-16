@@ -6,6 +6,8 @@
 #include "biercalc.h"
 #include "settings.h"
 #include "dialogs/dlgrestextrakt.h"
+#include "commands/undostack.h"
+#include "commands/setmodeldatacommand.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -66,8 +68,8 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     connect(bh->sud(), &SudObject::loadedChanged, this, &TabAbfuellen::sudLoaded);
     connect(bh->sud(), &SudObject::dataChanged, this, &TabAbfuellen::sudDataChanged);
 
-    connect(ui->wdgBemerkungAbfuellen, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungAbfuellen(html);});
-    connect(ui->wdgBemerkungGaerung, &WdgBemerkung::changed, this, [](const QString& html){bh->sud()->setBemerkungGaerung(html);});
+    connect(ui->wdgBemerkungAbfuellen, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungAbfuellen, html));});
+    connect(ui->wdgBemerkungGaerung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungGaerung, html));});
 }
 
 TabAbfuellen::~TabAbfuellen()
@@ -273,34 +275,34 @@ void TabAbfuellen::updateValues()
 void TabAbfuellen::on_tbAbfuelldatum_dateChanged(const QDate &date)
 {
     if (ui->tbAbfuelldatum->hasFocus())
-        bh->sud()->setAbfuelldatum(QDateTime(date, ui->tbAbfuelldatumZeit->time()));
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAbfuelldatum, QDateTime(date, ui->tbAbfuelldatumZeit->time())));
 }
 
 void TabAbfuellen::on_tbAbfuelldatumZeit_timeChanged(const QTime &time)
 {
     if (ui->tbAbfuelldatumZeit->hasFocus())
-        bh->sud()->setAbfuelldatum(QDateTime(ui->tbAbfuelldatum->date(), time));
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAbfuelldatum, QDateTime(ui->tbAbfuelldatum->date(), time)));
 }
 
 void TabAbfuellen::on_btnAbfuelldatumHeute_clicked()
 {
-    bh->sud()->setAbfuelldatum(QDateTime());
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAbfuelldatum, QDateTime()));
 }
 
 void TabAbfuellen::on_tbReifung_dateChanged(const QDate &date)
 {
     if (ui->tbReifung->hasFocus())
-        bh->sud()->setReifungStart(QDateTime(date, QTime()));
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColReifungStart, QDateTime(date, QTime())));
 }
 
 void TabAbfuellen::on_btnReifungHeute_clicked()
 {
-    bh->sud()->setReifungStart(QDateTime());
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColReifungStart, QDateTime()));
 }
 
 void TabAbfuellen::on_cbSchnellgaerprobeAktiv_clicked(bool checked)
 {
-    bh->sud()->setSchnellgaerprobeAktiv(checked);
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSchnellgaerprobeAktiv, checked));
 }
 
 void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
@@ -312,8 +314,10 @@ void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
                        this);
     if (dlg.exec() == QDialog::Accepted)
     {
-        bh->sud()->setTemperaturJungbier(dlg.temperatur());
-        bh->sud()->setSWSchnellgaerprobe(dlg.value());
+        gUndoStack->beginMacro(QStringLiteral("macro"));
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColTemperaturJungbier, dlg.temperatur()));
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWSchnellgaerprobe, dlg.value()));
+        gUndoStack->endMacro();
     }
 }
 
@@ -326,14 +330,16 @@ void TabAbfuellen::on_btnSWJungbier_clicked()
                        this);
     if (dlg.exec() == QDialog::Accepted)
     {
-        bh->sud()->setTemperaturJungbier(dlg.temperatur());
-        bh->sud()->setSWJungbier(dlg.value());
+        gUndoStack->beginMacro(QStringLiteral("macro"));
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColTemperaturJungbier, dlg.temperatur()));
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWJungbier, dlg.value()));
+        gUndoStack->endMacro();
     }
 }
 
 void TabAbfuellen::on_cbSpunden_clicked(bool checked)
 {
-    bh->sud()->setSpunden(checked);
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSpunden, checked));
 }
 
 void TabAbfuellen::on_tbZuckerFaktor_valueChanged(double)
@@ -386,9 +392,11 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
                                     QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
         return;
 
-    bh->sud()->setAbfuelldatum(dt);
-    bh->sud()->setReifungStart(ui->tbReifung->dateTime());
-    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
+    gUndoStack->beginMacro(QStringLiteral("macro"));
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAbfuelldatum, dt));
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColReifungStart, ui->tbReifung->dateTime()));
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Abgefuellt)));
+    gUndoStack->endMacro();
 
     QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
                                 {ModelNachgaerverlauf::ColZeitstempel, bh->sud()->getAbfuelldatum()},
@@ -404,5 +412,5 @@ void TabAbfuellen::on_btnSudVerbraucht_clicked()
                                     tr("Soll der Sud als verbraucht markiert werden?"),
                                     QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
         return;
-    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Verbraucht));
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Verbraucht)));
 }

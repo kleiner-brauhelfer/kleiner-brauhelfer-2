@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version 2.6.1 (in Entwicklung)
+- Neu: Einzelne Änderungen lassen sich rückgängig machen (noch nicht durchgängig)
 - Fix: Absturz bei leeren Diagrammen (Gärverlauf)
 - Fix: Verdünnungswerte beim Sud kopieren zurücksetzen
 

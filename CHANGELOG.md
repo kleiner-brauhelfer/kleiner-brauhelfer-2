@@ -2,6 +2,7 @@
 
 ## Version 2.6.1 (in Entwicklung)
 - Fix: Absturz bei leeren Diagrammen (Gärverlauf)
+- Fix: Verdünnungswerte beim Sud kopieren zurücksetzen
 
 ## Version 2.6.0 (05.08.2023)
 - Neu: Umstellung auf **Qt v6.5**

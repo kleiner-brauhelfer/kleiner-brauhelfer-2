@@ -306,6 +306,8 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
         values.insert(ModelSud::ColErstellt, QDateTime::currentDateTime().toString(Qt::ISODate));
         values.remove(ModelSud::ColBraudatum);
         values.remove(ModelSud::ColAbfuelldatum);
+        values.insert(ModelSud::ColVerduennungAnstellen, 0);
+        values.insert(ModelSud::ColVerschneidungAbfuellen, 0);
     }
     row = modelSud()->appendDirect(values);
 
@@ -366,12 +368,13 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
 
     BerechnungsartHopfen berechnungsArtHopfen = static_cast<BerechnungsartHopfen>(modelSud()->data(row1, ModelSud::ColberechnungsArtHopfen).toInt());
 
-    std::vector<int> listIndexes = {
+    const std::vector<int> listIndexes = {
         ModelSud::ColMenge,
         ModelSud::ColWuerzemengeKochbeginn,
         ModelSud::ColWuerzemengeVorHopfenseihen,
         ModelSud::ColWuerzemengeKochende,
         ModelSud::ColSpeisemenge,
+        ModelSud::ColVerduennungAnstellen,
         ModelSud::ColVerschneidungAbfuellen,
         ModelSud::ColWuerzemengeAnstellen,
         ModelSud::ColJungbiermengeAbfuellen,
@@ -379,7 +382,7 @@ int Brauhelfer::sudTeilen(int sudId, const QString& name1, const QString &name2,
         ModelSud::Colerg_S_Gesamt,
         ModelSud::Colerg_WHauptguss,
         ModelSud::Colerg_WNachguss,
-        ModelSud::Colerg_W_Gesamt,
+        ModelSud::Colerg_W_Gesamt
     };
     std::vector<double> listValues(listIndexes.size());
     for (size_t i = 0; i < listIndexes.size(); i++)

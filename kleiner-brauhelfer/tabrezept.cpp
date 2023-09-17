@@ -25,7 +25,6 @@
 #include "dialogs/dlgwasserprofile.h"
 #include "widgets/widgetdecorator.h"
 #include "commands/undostack.h"
-#include "commands/setmodeldatacommand.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
@@ -227,8 +226,8 @@ TabRezept::TabRezept(QWidget *parent) :
 
     TableView *table = ui->tableTags;
     table->setModel(bh->sud()->modelTags());
-    table->appendCol({ModelTags::ColKey, true, false, 0, nullptr});
-    table->appendCol({ModelTags::ColValue, true, false, -1, nullptr});
+    table->appendCol({ModelTags::ColKey, true, false, 0, new TextDelegate(table)});
+    table->appendCol({ModelTags::ColValue, true, false, -1, new TextDelegate(table)});
     table->appendCol({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
     table->build();
 }

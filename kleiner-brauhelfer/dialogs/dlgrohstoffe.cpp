@@ -202,9 +202,9 @@ void DlgRohstoffe::build()
     if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
         table->appendCol({ModelMalz::ColpH, true, true, 100, new PhMalzDelegate(table)});
     table->appendCol({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
-    table->appendCol({ModelMalz::ColBemerkung, true, true, 200, nullptr});
-    table->appendCol({ModelMalz::ColEigenschaften, true, true, 200, nullptr});
-    table->appendCol({ModelMalz::ColAlternativen, true, true, 200, nullptr});
+    table->appendCol({ModelMalz::ColBemerkung, true, true, 200, new TextDelegate(table)});
+    table->appendCol({ModelMalz::ColEigenschaften, true, true, 200, new TextDelegate(table)});
+    table->appendCol({ModelMalz::ColAlternativen, true, true, 200, new TextDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
         table->appendCol({ModelMalz::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
@@ -224,9 +224,9 @@ void DlgRohstoffe::build()
     table->appendCol({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, true, table)});
     table->appendCol({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
     table->appendCol({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::HopfenTypname, gSettings->HopfenTypBackgrounds, table)});
-    table->appendCol({ModelHopfen::ColBemerkung, true, true, 200, nullptr});
-    table->appendCol({ModelHopfen::ColEigenschaften, true, true, 200, nullptr});
-    table->appendCol({ModelHopfen::ColAlternativen, true, true, 200, nullptr});
+    table->appendCol({ModelHopfen::ColBemerkung, true, true, 200, new TextDelegate(table)});
+    table->appendCol({ModelHopfen::ColEigenschaften, true, true, 200, new TextDelegate(table)});
+    table->appendCol({ModelHopfen::ColAlternativen, true, true, 200, new TextDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
         table->appendCol({ModelHopfen::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
@@ -249,9 +249,9 @@ void DlgRohstoffe::build()
     table->appendCol({ModelHefe::ColSedimentation, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
     table->appendCol({ModelHefe::ColEVG, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
     table->appendCol({ModelHefe::ColTemperatur, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
-    table->appendCol({ModelHefe::ColBemerkung, true, true, 200, nullptr});
-    table->appendCol({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
-    table->appendCol({ModelHefe::ColAlternativen, true, true, 200, nullptr});
+    table->appendCol({ModelHefe::ColBemerkung, true, true, 200, new TextDelegate(table)});
+    table->appendCol({ModelHefe::ColEigenschaften, true, true, 200, new TextDelegate(table)});
+    table->appendCol({ModelHefe::ColAlternativen, true, true, 200, new TextDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
         table->appendCol({ModelHefe::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
@@ -273,9 +273,9 @@ void DlgRohstoffe::build()
     table->appendCol({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
     table->appendCol({ModelWeitereZutaten::ColUnvergaerbar, true, true, 100, new CheckBoxDelegate(table)});
     table->appendCol({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(table)});
-    table->appendCol({ModelWeitereZutaten::ColBemerkung, true, true, 200, nullptr});
-    table->appendCol({ModelWeitereZutaten::ColEigenschaften, true, true, 200, nullptr});
-    table->appendCol({ModelWeitereZutaten::ColAlternativen, true, true, 200, nullptr});
+    table->appendCol({ModelWeitereZutaten::ColBemerkung, true, true, 200, new TextDelegate(table)});
+    table->appendCol({ModelWeitereZutaten::ColEigenschaften, true, true, 200, new TextDelegate(table)});
+    table->appendCol({ModelWeitereZutaten::ColAlternativen, true, true, 200, new TextDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
         table->appendCol({ModelWeitereZutaten::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))

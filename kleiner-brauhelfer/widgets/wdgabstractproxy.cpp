@@ -5,6 +5,7 @@
 #include "mainwindow.h"
 #include "settings.h"
 #include "proxymodel.h"
+#include "commands/undostack.h"
 
 extern Settings* gSettings;
 
@@ -33,7 +34,8 @@ QVariant WdgAbstractProxy::data(int col) const
 
 bool WdgAbstractProxy::setData(int col, const QVariant& value)
 {
-    return mModel->setData(mRow, col, value);
+    gUndoStack->push(new SetModelDataCommand(mModel, mRow, col, value));
+    return true;
 }
 
 bool WdgAbstractProxy::remove()

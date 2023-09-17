@@ -84,7 +84,7 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     proxyModel->setSourceModel(bh->modelGeraete());
     proxyModel->setFilterKeyColumn(ModelGeraete::ColAusruestungAnlagenID);
     table->setModel(proxyModel);
-    table->appendCol({ModelGeraete::ColBezeichnung, true, false, -1, nullptr});
+    table->appendCol({ModelGeraete::ColBezeichnung, true, false, -1, new TextDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
 

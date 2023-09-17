@@ -1,11 +1,20 @@
 #include "ingredientnamedelegate.h"
+#include <QMetaProperty>
 #include "sqltablemodel.h"
 #include "proxymodel.h"
+#include "commands/undostack.h"
 
 IngredientNameDelegate::IngredientNameDelegate(QObject *parent) :
     QStyledItemDelegate(parent),
     mColInUsed(-1)
 {
+}
+
+void IngredientNameDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
+{
+    QByteArray n = editor->metaObject()->userProperty().name();
+    if (!n.isEmpty())
+        gUndoStack->push(new SetModelDataCommand(model, index.row(), index.column(), editor->property(n)));
 }
 
 void IngredientNameDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const

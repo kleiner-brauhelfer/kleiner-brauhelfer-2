@@ -2,6 +2,7 @@
 #include <QDateEdit>
 #include <QPainter>
 #include "settings.h"
+#include "commands/undostack.h"
 
 extern Settings* gSettings;
 
@@ -34,7 +35,7 @@ void DateDelegate::setEditorData(QWidget *editor, const QModelIndex &index) cons
 void DateDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const
 {
     QDateEdit *w = static_cast<QDateEdit*>(editor);
-    model->setData(index, w->dateTime(), Qt::EditRole);
+    gUndoStack->push(new SetModelDataCommand(model, index.row(), index.column(), w->dateTime()));
 }
 
 void DateDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const

@@ -5,7 +5,8 @@
 #include "../widgets/widgetdecorator.h"
 
 UndoStack::UndoStack(QObject *parent) :
-    QUndoStack(parent)
+    QUndoStack(parent),
+    mEnabled(true)
 {
 }
 
@@ -49,4 +50,22 @@ void UndoStack::redo()
     WidgetDecorator::focusRequired = false;
     QUndoStack::redo();
     WidgetDecorator::focusRequired = true;
+}
+
+void UndoStack::push(QUndoCommand *cmd)
+{
+    if (mEnabled)
+        QUndoStack::push(cmd);
+    else
+        cmd->redo();
+}
+
+void UndoStack::setEnabled(bool enabled)
+{
+    mEnabled = enabled;
+}
+
+bool UndoStack::isEnabled() const
+{
+    return mEnabled;
 }

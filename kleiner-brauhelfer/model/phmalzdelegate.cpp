@@ -1,6 +1,7 @@
 #include "phmalzdelegate.h"
 #include "dialogs/dlgphmalz.h"
 #include "modelmalz.h"
+#include "commands/undostack.h"
 
 PhMalzDelegate::PhMalzDelegate(QObject *parent) :
     DoubleSpinBoxDelegate(2, 0, 14, 0.1, false, parent)
@@ -28,7 +29,7 @@ void PhMalzDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, co
 {
     DlgPhMalz *w = static_cast<DlgPhMalz*>(editor);
     if (w->result() == QDialog::Accepted)
-        model->setData(index, w->pH(), Qt::EditRole);
+        gUndoStack->push(new SetModelDataCommand(model, index.row(), index.column(), w->pH()));
 }
 
 void PhMalzDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const

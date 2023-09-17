@@ -11,6 +11,7 @@
 #include "model/datetimedelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/restextraktdelegate.h"
+#include "model/textdelegate.h"
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
@@ -37,7 +38,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->appendCol({ModelSchnellgaerverlauf::ColAlc, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
     table->appendCol({ModelSchnellgaerverlauf::ColsEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
     table->appendCol({ModelSchnellgaerverlauf::ColtEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->appendCol({ModelSchnellgaerverlauf::ColBemerkung, true, true, -1, nullptr});
+    table->appendCol({ModelSchnellgaerverlauf::ColBemerkung, true, true, -1, new TextDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateSchnellgaerung").toByteArray());
@@ -52,7 +53,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->appendCol({ModelHauptgaerverlauf::ColAlc, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
     table->appendCol({ModelHauptgaerverlauf::ColsEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
     table->appendCol({ModelHauptgaerverlauf::ColtEVG, true, true, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->appendCol({ModelHauptgaerverlauf::ColBemerkung, true, true, -1, nullptr});
+    table->appendCol({ModelHauptgaerverlauf::ColBemerkung, true, true, -1, new TextDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateHauptgaerung").toByteArray());
@@ -65,7 +66,7 @@ TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
     table->appendCol({ModelNachgaerverlauf::ColDruck, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, 10.0, 0.1, false, table)});
     table->appendCol({ModelNachgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, -20.0, 100.0, 0.1, false, table)});
     table->appendCol({ModelNachgaerverlauf::ColCO2, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->appendCol({ModelNachgaerverlauf::ColBemerkung, true, true, -1, nullptr});
+    table->appendCol({ModelNachgaerverlauf::ColBemerkung, true, true, -1, new TextDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateNachgaerung").toByteArray());

@@ -12,11 +12,13 @@ SetModelDataCommand::SetModelDataCommand(QAbstractItemModel *model, int row, int
 
 void SetModelDataCommand::undo()
 {
+    // TODO: model may be deleted
     model->setData(model->index(row,col), prevValue);
 }
 
 void SetModelDataCommand::redo()
 {
+    // TODO: model may be deleted
     model->setData(model->index(row,col), newValue);
 }
 

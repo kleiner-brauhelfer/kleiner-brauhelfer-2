@@ -258,7 +258,9 @@ void MainWindow::discardDatabase()
     setFocus();
     try
     {
+        WidgetDecorator::focusRequired = false;
         bh->discard();
+        WidgetDecorator::focusRequired = true;
         gUndoStack->clear();
         QGuiApplication::restoreOverrideCursor();
     }

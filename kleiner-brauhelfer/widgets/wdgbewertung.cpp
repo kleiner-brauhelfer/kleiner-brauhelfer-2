@@ -2,6 +2,7 @@
 #include "ui_wdgbewertung.h"
 #include <QMouseEvent>
 #include "brauhelfer.h"
+#include "commands/undostack.h"
 
 extern Brauhelfer* bh;
 
@@ -55,7 +56,8 @@ QVariant WdgBewertung::data(int col) const
 
 bool WdgBewertung::setData(int col, const QVariant &value)
 {
-    return bh->sud()->modelBewertungen()->setData(mIndex, col, value);
+    gUndoStack->push(new SetModelDataCommand(bh->sud()->modelBewertungen(), mIndex, col, value));
+    return true;
 }
 
 void WdgBewertung::mousePressEvent(QMouseEvent *e)

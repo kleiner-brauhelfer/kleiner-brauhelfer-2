@@ -4,6 +4,7 @@
 #include <QDesktopServices>
 #include "brauhelfer.h"
 #include "settings.h"
+#include "commands/undostack.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -44,7 +45,8 @@ QVariant WdgAnhang::data(int col) const
 
 bool WdgAnhang::setData(int col, const QVariant &value)
 {
-    return bh->sud()->modelAnhang()->setData(mIndex, col, value);
+    gUndoStack->push(new SetModelDataCommand(bh->sud()->modelAnhang(), mIndex, col, value));
+    return true;
 }
 
 void WdgAnhang::updateValues()

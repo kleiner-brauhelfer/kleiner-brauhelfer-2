@@ -1,7 +1,6 @@
 #include "spinboxsud.h"
 #include "brauhelfer.h"
 #include "commands/undostack.h"
-#include "commands/setmodeldatacommand.h"
 
 extern Brauhelfer* bh;
 

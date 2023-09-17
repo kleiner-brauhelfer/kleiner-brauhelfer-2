@@ -7,7 +7,6 @@
 #include "settings.h"
 #include "dialogs/dlgrestextrakt.h"
 #include "commands/undostack.h"
-#include "commands/setmodeldatacommand.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;

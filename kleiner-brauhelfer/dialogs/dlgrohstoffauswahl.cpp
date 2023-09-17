@@ -6,6 +6,7 @@
 #include "model/doublespinboxdelegate.h"
 #include "model/ebcdelegate.h"
 #include "model/spinboxdelegate.h"
+#include "model/textdelegate.h"
 #include "brauhelfer.h"
 #include "settings.h"
 #include "mainwindow.h"
@@ -46,14 +47,14 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         proxy->setSourceModel(bh->modelMalz());
         table->setModel(proxy);
         mNameCol = ModelMalz::ColName;
-        table->appendCol({ModelMalz::ColName, true, false, 100, nullptr});
+        table->appendCol({ModelMalz::ColName, true, false, 100, new TextDelegate(ui->tableView)});
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             table->appendCol({ModelMalz::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, ui->tableView)});
         table->appendCol({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(ui->tableView)});
         table->appendCol({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(ui->tableView)});
-        table->appendCol({ModelMalz::ColBemerkung, true, true, 200, nullptr});
-        table->appendCol({ModelMalz::ColEigenschaften, true, true, 200, nullptr});
-        table->appendCol({ModelMalz::ColAlternativen, true, true, 200, nullptr});
+        table->appendCol({ModelMalz::ColBemerkung, true, true, 200, new TextDelegate(ui->tableView)});
+        table->appendCol({ModelMalz::ColEigenschaften, true, true, 200, new TextDelegate(ui->tableView)});
+        table->appendCol({ModelMalz::ColAlternativen, true, true, 200, new TextDelegate(ui->tableView)});
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
             table->appendCol({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
@@ -67,15 +68,15 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         proxy->setSourceModel(bh->modelHopfen());
         table->setModel(proxy);
         mNameCol = ModelHopfen::ColName;
-        table->appendCol({ModelHopfen::ColName, true, false, 200, nullptr});
+        table->appendCol({ModelHopfen::ColName, true, false, 200, new TextDelegate(ui->tableView)});
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             table->appendCol({ModelHopfen::ColMenge, true, false, 100, new SpinBoxDelegate(ui->tableView)});
         table->appendCol({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, ui->tableView)});
         table->appendCol({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
         table->appendCol({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::HopfenTypname, gSettings->HopfenTypBackgrounds, ui->tableView)});
-        table->appendCol({ModelHopfen::ColBemerkung, true, true, 200, nullptr});
-        table->appendCol({ModelHopfen::ColEigenschaften, true, true, 200, nullptr});
-        table->appendCol({ModelHopfen::ColAlternativen, true, true, 200, nullptr});
+        table->appendCol({ModelHopfen::ColBemerkung, true, true, 200, new TextDelegate(ui->tableView)});
+        table->appendCol({ModelHopfen::ColEigenschaften, true, true, 200, new TextDelegate(ui->tableView)});
+        table->appendCol({ModelHopfen::ColAlternativen, true, true, 200, new TextDelegate(ui->tableView)});
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
             table->appendCol({ModelHopfen::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
@@ -89,17 +90,17 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         proxy->setSourceModel(bh->modelHefe());
         table->setModel(proxy);
         mNameCol = ModelHefe::ColName;
-        table->appendCol({ModelHefe::ColName, true, false, 200, nullptr});
+        table->appendCol({ModelHefe::ColName, true, false, 200, new TextDelegate(ui->tableView)});
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             table->appendCol({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(ui->tableView)});
         table->appendCol({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(MainWindow::HefeTypname, gSettings->HefeTypOgUgBackgrounds, ui->tableView)});
         table->appendCol({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(MainWindow::HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, ui->tableView)});
-        table->appendCol({ModelHefe::ColSedimentation, true, true, 100, nullptr});
-        table->appendCol({ModelHefe::ColEVG, true, true, 100, nullptr});
-        table->appendCol({ModelHefe::ColTemperatur, true, true, 100, nullptr});
-        table->appendCol({ModelHefe::ColBemerkung, true, true, 200, nullptr});
-        table->appendCol({ModelHefe::ColEigenschaften, true, true, 200, nullptr});
-        table->appendCol({ModelHefe::ColAlternativen, true, true, 200, nullptr});
+        table->appendCol({ModelHefe::ColSedimentation, true, true, 100, new TextDelegate(ui->tableView)});
+        table->appendCol({ModelHefe::ColEVG, true, true, 100, new TextDelegate(ui->tableView)});
+        table->appendCol({ModelHefe::ColTemperatur, true, true, 100, new TextDelegate(ui->tableView)});
+        table->appendCol({ModelHefe::ColBemerkung, true, true, 200, new TextDelegate(ui->tableView)});
+        table->appendCol({ModelHefe::ColEigenschaften, true, true, 200, new TextDelegate(ui->tableView)});
+        table->appendCol({ModelHefe::ColAlternativen, true, true, 200, new TextDelegate(ui->tableView)});
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
             table->appendCol({ModelHefe::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});
@@ -113,16 +114,16 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         proxy->setSourceModel(bh->modelWeitereZutaten());
         table->setModel(proxy);
         mNameCol = ModelWeitereZutaten::ColName;
-        table->appendCol({ModelWeitereZutaten::ColName, true, false, 200, nullptr});
+        table->appendCol({ModelWeitereZutaten::ColName, true, false, 200, new TextDelegate(ui->tableView)});
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             table->appendCol({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColEinheit, true, true, 100, new ComboBoxDelegate({"kg", "g", "mg", tr("Stk.")}, ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::ZusatzTypname, gSettings->WZTypBackgrounds, ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(ui->tableView)});
-        table->appendCol({ModelWeitereZutaten::ColBemerkung, true, true, 200, nullptr});
-        table->appendCol({ModelWeitereZutaten::ColEigenschaften, true, true, 200, nullptr});
-        table->appendCol({ModelWeitereZutaten::ColAlternativen, true, true, 200, nullptr});
+        table->appendCol({ModelWeitereZutaten::ColBemerkung, true, true, 200, new TextDelegate(ui->tableView)});
+        table->appendCol({ModelWeitereZutaten::ColEigenschaften, true, true, 200, new TextDelegate(ui->tableView)});
+        table->appendCol({ModelWeitereZutaten::ColAlternativen, true, true, 200, new TextDelegate(ui->tableView)});
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
             table->appendCol({ModelWeitereZutaten::ColEingelagert, true, true, 100, new DateDelegate(false, false, ui->tableView)});

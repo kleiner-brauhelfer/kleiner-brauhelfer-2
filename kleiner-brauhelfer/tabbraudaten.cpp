@@ -10,7 +10,6 @@
 #include "dialogs/dlgrohstoffeabziehen.h"
 #include "widgets/widgetdecorator.h"
 #include "commands/undostack.h"
-#include "commands/setmodeldatacommand.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;

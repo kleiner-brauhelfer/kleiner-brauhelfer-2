@@ -5,6 +5,7 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "model/doublespinboxdelegate.h"
+#include "model/textdelegate.h"
 #include "dialogs/dlgrohstoffvorlage.h"
 #include "widgets/widgetdecorator.h"
 
@@ -48,7 +49,7 @@ DlgWasserprofile::DlgWasserprofile(QWidget *parent) :
     TableView *table = ui->tableWasser;
     proxyModelWasser->setSourceModel(bh->modelWasser());
     table->setModel(proxyModelWasser);
-    table->appendCol({ModelWasser::ColName, true, false, -1, nullptr});
+    table->appendCol({ModelWasser::ColName, true, false, -1, new TextDelegate(table)});
     table->appendCol({ModelWasser::ColRestalkalitaet, true, false, 120, new DoubleSpinBoxDelegate(2, table)});
     table->build();
 

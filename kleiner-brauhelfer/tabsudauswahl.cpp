@@ -43,14 +43,14 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ProxyModelSudColored *proxyModel = new ProxyModelSudColored(this);
     proxyModel->setSourceModel(bh->modelSud());
     table->setModel(proxyModel);
-    table->appendCol({ModelSud::ColSudname, true, false, -1, nullptr});
+    table->appendCol({ModelSud::ColSudname, true, false, -1, new TextDelegate(table)});
     table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
     table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
     table->appendCol({ModelSud::ColBraudatum, true, true, 100, new DateDelegate(false, true, table)});
     table->appendCol({ModelSud::ColAbfuelldatum, false, true, 100, new DateDelegate(false, true, table)});
     table->appendCol({ModelSud::ColErstellt, true, true, 100, new DateDelegate(false, true, table)});
     table->appendCol({ModelSud::ColGespeichert, true, true, 100, new DateDelegate(false, true, table)});
-    table->appendCol({ModelSud::ColWoche, true, true, 80, nullptr});
+    table->appendCol({ModelSud::ColWoche, true, true, 80, new TextDelegate(table)});
     table->appendCol({ModelSud::ColBewertungMittel, true, true, 80, new RatingDelegate(table)});
     table->appendCol({ModelSud::ColMenge, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
     table->appendCol({ModelSud::ColSW, false, true, 80, new DoubleSpinBoxDelegate(1, table)});

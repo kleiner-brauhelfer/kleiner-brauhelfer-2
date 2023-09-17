@@ -9,10 +9,8 @@
 #include <QJsonDocument>
 #include <QFileDialog>
 #include <QDesktopServices>
-#include "brauhelfer.h"
 #include "settings.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 double WdgWebViewEditable::gZoomFactor = 1.0;

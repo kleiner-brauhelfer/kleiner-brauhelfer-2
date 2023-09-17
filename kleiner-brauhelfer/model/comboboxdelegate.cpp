@@ -1,6 +1,7 @@
 #include "comboboxdelegate.h"
 #include <QComboBox>
 #include <QPainter>
+#include "commands/undostack.h"
 
 ComboBoxDelegate::ComboBoxDelegate(const QStringList &items, QObject *parent) :
     QStyledItemDelegate(parent),
@@ -58,9 +59,9 @@ void ComboBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, 
     {
         QVariant data = w->currentData();
         if (data.isNull())
-            model->setData(index, idx, Qt::EditRole);
+            gUndoStack->push(new SetModelDataCommand(model, index.row(), index.column(), idx));
         else
-            model->setData(index, data, Qt::EditRole);
+            gUndoStack->push(new SetModelDataCommand(model, index.row(), index.column(), data));
     }
 }
 

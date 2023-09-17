@@ -2,6 +2,7 @@
 #include <QDoubleSpinBox>
 #include <QPainter>
 #include "settings.h"
+#include "commands/undostack.h"
 
 extern Settings* gSettings;
 
@@ -47,7 +48,7 @@ void DoubleSpinBoxDelegate::setModelData(QWidget *editor, QAbstractItemModel *mo
 {
     QDoubleSpinBox *w = static_cast<QDoubleSpinBox*>(editor);
     w->interpretText();
-    model->setData(index, w->value(), Qt::EditRole);
+    gUndoStack->push(new SetModelDataCommand(model, index.row(), index.column(), w->value()));
 }
 
 void DoubleSpinBoxDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionViewItem &option, const QModelIndex &index) const

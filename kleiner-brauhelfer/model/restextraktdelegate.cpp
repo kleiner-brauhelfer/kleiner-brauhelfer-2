@@ -3,6 +3,7 @@
 #include "modelschnellgaerverlauf.h"
 #include "modelhauptgaerverlauf.h"
 #include "brauhelfer.h"
+#include "commands/undostack.h"
 
 extern Brauhelfer* bh;
 
@@ -56,17 +57,19 @@ void RestextraktDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
     DlgRestextrakt *w = static_cast<DlgRestextrakt*>(editor);
     if (w->result() == QDialog::Accepted)
     {
-        model->setData(index, w->value(), Qt::EditRole);
+        gUndoStack->beginMacro(QStringLiteral("macro"));
+        gUndoStack->push(new SetModelDataCommand(model, index.row(), index.column(), w->value()));
         if (mHauptgaerung)
         {
-            model->setData(index.sibling(index.row(), ModelHauptgaerverlauf::ColTemp), w->temperatur(), Qt::EditRole);
-            model->setData(index.sibling(index.row(), ModelHauptgaerverlauf::ColZeitstempel), w->datum(), Qt::EditRole);
+            gUndoStack->push(new SetModelDataCommand(model, index.row(), ModelHauptgaerverlauf::ColTemp, w->temperatur()));
+            gUndoStack->push(new SetModelDataCommand(model, index.row(), ModelHauptgaerverlauf::ColZeitstempel, w->datum()));
         }
         else
         {
-            model->setData(index.sibling(index.row(), ModelSchnellgaerverlauf::ColTemp), w->temperatur(), Qt::EditRole);
-            model->setData(index.sibling(index.row(), ModelSchnellgaerverlauf::ColZeitstempel), w->datum(), Qt::EditRole);
+            gUndoStack->push(new SetModelDataCommand(model, index.row(), ModelSchnellgaerverlauf::ColTemp, w->temperatur()));
+            gUndoStack->push(new SetModelDataCommand(model, index.row(), ModelSchnellgaerverlauf::ColZeitstempel, w->datum()));
         }
+        gUndoStack->endMacro();
     }
 }
 

@@ -9,6 +9,7 @@ class IngredientNameDelegate : public QStyledItemDelegate
 
 public:
     explicit IngredientNameDelegate(QObject *parent = nullptr);
+    void setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const Q_DECL_OVERRIDE;
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
 private:
     bool isUsed(const QModelIndex &index) const;

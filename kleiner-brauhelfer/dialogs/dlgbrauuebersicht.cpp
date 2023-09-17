@@ -161,7 +161,7 @@ void DlgBrauUebersicht::build()
         mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten"), QString("%1/L").arg(QLocale().currencySymbol())});
 
     ui->tableView->clearCols();
-    ui->tableView->appendCol({ModelSud::ColSudname, true, false, 200, nullptr});
+    ui->tableView->appendCol({ModelSud::ColSudname, true, false, 200, new TextDelegate(ui->tableView)});
     ui->tableView->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(ui->tableView)});
     ui->tableView->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, ui->tableView)});
     ui->tableView->appendCol({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, false, ui->tableView)});

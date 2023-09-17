@@ -58,7 +58,6 @@ void RestextraktDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
     if (w->result() == QDialog::Accepted)
     {
         gUndoStack->beginMacro(QStringLiteral("macro"));
-        gUndoStack->push(new SetModelDataCommand(model, index.row(), index.column(), w->value()));
         if (mHauptgaerung)
         {
             gUndoStack->push(new SetModelDataCommand(model, index.row(), ModelHauptgaerverlauf::ColTemp, w->temperatur()));
@@ -69,6 +68,7 @@ void RestextraktDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
             gUndoStack->push(new SetModelDataCommand(model, index.row(), ModelSchnellgaerverlauf::ColTemp, w->temperatur()));
             gUndoStack->push(new SetModelDataCommand(model, index.row(), ModelSchnellgaerverlauf::ColZeitstempel, w->datum()));
         }
+        gUndoStack->push(new SetModelDataCommand(model, index.row(), index.column(), w->value()));
         gUndoStack->endMacro();
     }
 }

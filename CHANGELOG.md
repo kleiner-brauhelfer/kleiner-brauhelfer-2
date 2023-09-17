@@ -4,6 +4,7 @@
 - Neu: Einzelne Änderungen lassen sich rückgängig machen (noch nicht durchgängig)
 - Fix: Absturz bei leeren Diagrammen (Gärverlauf)
 - Fix: Verdünnungswerte beim Sud kopieren zurücksetzen
+- Fix: Dekoktion überarbeitet
 
 ## Version 2.6.0 (05.08.2023)
 - Neu: Umstellung auf **Qt v6.5**

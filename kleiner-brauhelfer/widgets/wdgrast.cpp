@@ -278,6 +278,10 @@ void WdgRast::on_cbRast_currentIndexChanged(int index)
             }
             break;
         case Brauhelfer::RastTyp::Dekoktion:
+            setData(ModelMaischplan::ColTempExtra1, 95);
+            setData(ModelMaischplan::ColDauerExtra1, 15);
+            setData(ModelMaischplan::ColTempExtra2, 0);
+            setData(ModelMaischplan::ColDauerExtra2, 0);
             switch (index)
             {
             case 0: // 1/2 Dickmaische

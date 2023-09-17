@@ -120,14 +120,13 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
             case Brauhelfer::RastTyp::Dekoktion:
                 QSqlTableModel::setData(index(idx.row(), ColAnteilWasser), 0);
                 QSqlTableModel::setData(index(idx.row(), ColAnteilMalz), 0);
-                QSqlTableModel::setData(index(idx.row(), ColAnteilMaische), 50);
-                QSqlTableModel::setData(index(idx.row(), ColTempRast), getPreviousValueTemperature(idx.row()));
                 QSqlTableModel::setData(index(idx.row(), ColDauerRast), 15);
                 QSqlTableModel::setData(index(idx.row(), ColTempMalz), 0);
                 QSqlTableModel::setData(index(idx.row(), ColTempExtra1), 95);
                 QSqlTableModel::setData(index(idx.row(), ColDauerExtra1), 15);
                 QSqlTableModel::setData(index(idx.row(), ColTempExtra2), 0);
                 QSqlTableModel::setData(index(idx.row(), ColDauerExtra2), 0);
+                setData(index(idx.row(), ColAnteilMaische), 50);
                 break;
             }
             ret = true;
@@ -140,10 +139,16 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
             {
                 double m_maische0 = 0, c_maische0 = 0, T_maische0 = 0;
                 getPreviousMaischeValues(idx.row(), m_maische0, c_maische0, T_maische0);
-                double m_maische = data(idx.row(), ColAnteilMaische).toDouble() / 100 * m_maische0;
                 double T_rast = data(idx.row(), ColTempRast).toDouble();
+              #if 0 // -> ColTempExtra1
+                double m_maische = data(idx.row(), ColAnteilMaische).toDouble() / 100 * m_maische0;
                 double T_maische = BierCalc::mischungstemperaturT2(T_rast, m_maische0 - m_maische, c_maische0, T_maische0, m_maische, c_maische0);
                 QSqlTableModel::setData(index(idx.row(), ColTempExtra1), T_maische);
+              #else // -> ColAnteilMaische
+                double T_maische = data(idx.row(), ColTempExtra1).toDouble();
+                double anteil = (T_rast - T_maische0) / (T_maische - T_maische0);
+                QSqlTableModel::setData(index(idx.row(), ColAnteilMaische), anteil * 100);
+              #endif
                 ret = true;
             }
             break;
@@ -232,9 +237,15 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
             double m_maische0 = 0, c_maische0 = 0, T_maische0 = 0;
             getPreviousMaischeValues(idx.row(), m_maische0, c_maische0, T_maische0);
             double m_maische = data(idx.row(), ColAnteilMaische).toDouble() / 100 * m_maische0;
+          #if 0 // -> ColTempExtra1
             double T_rast = data(idx.row(), ColTempRast).toDouble();
             double T_maische = BierCalc::mischungstemperaturT2(T_rast, m_maische0 - m_maische, c_maische0, T_maische0, m_maische, c_maische0);
             QSqlTableModel::setData(index(idx.row(), ColTempExtra1), T_maische);
+          #else // -> ColTempRast
+            double T_maische = data(idx.row(), ColTempExtra1).toDouble();
+            double T_rast = BierCalc::mischungstemperaturTm(m_maische0 - m_maische, c_maische0, T_maische0, m_maische, c_maische0, T_maische);
+            QSqlTableModel::setData(index(idx.row(), ColTempRast), T_rast);
+          #endif
             ret = true;
         }
         break;
@@ -243,10 +254,16 @@ bool ModelMaischplan::setDataExt(const QModelIndex &idx, const QVariant &value)
         {
             double m_maische0 = 0, c_maische0 = 0, T_maische0 = 0;
             getPreviousMaischeValues(idx.row(), m_maische0, c_maische0, T_maische0);
-            double m_maische = data(idx.row(), ColAnteilMaische).toDouble() / 100 * m_maische0;
             double T_maische = data(idx.row(), ColTempExtra1).toDouble();
+          #if 0 // -> ColTempRast
+            double m_maische = data(idx.row(), ColAnteilMaische).toDouble() / 100 * m_maische0;
             double T_rast = BierCalc::mischungstemperaturTm(m_maische0 - m_maische, c_maische0, T_maische0, m_maische, c_maische0, T_maische);
             QSqlTableModel::setData(index(idx.row(), ColTempRast), T_rast);
+          #else // -> ColAnteilMaische
+            double T_rast = data(idx.row(), ColTempRast).toDouble();
+            double anteil = (T_rast - T_maische0) / (T_maische - T_maische0);
+            QSqlTableModel::setData(index(idx.row(), ColAnteilMaische), anteil * 100);
+          #endif
             ret = true;
         }
         break;

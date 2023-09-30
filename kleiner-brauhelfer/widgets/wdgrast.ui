@@ -219,6 +219,9 @@
            <property name="maximum">
             <double>999.000000000000000</double>
            </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
           </widget>
          </item>
          <item row="0" column="3">
@@ -242,7 +245,7 @@
             <double>999.000000000000000</double>
            </property>
            <property name="singleStep">
-            <double>1.000000000000000</double>
+            <double>0.100000000000000</double>
            </property>
           </widget>
          </item>
@@ -321,6 +324,9 @@
            <property name="maximum">
             <double>999.000000000000000</double>
            </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
           </widget>
          </item>
          <item row="3" column="6">
@@ -385,6 +391,9 @@
            <property name="maximum">
             <double>999.000000000000000</double>
            </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
           </widget>
          </item>
          <item row="1" column="0">
@@ -427,6 +436,9 @@
            <property name="maximum">
             <double>999.000000000000000</double>
            </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
           </widget>
          </item>
          <item row="2" column="3">
@@ -450,7 +462,7 @@
             <double>999.000000000000000</double>
            </property>
            <property name="singleStep">
-            <double>1.000000000000000</double>
+            <double>0.100000000000000</double>
            </property>
           </widget>
          </item>
@@ -562,6 +574,9 @@
            </property>
            <property name="maximum">
             <double>999.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
            </property>
           </widget>
          </item>
@@ -735,7 +750,7 @@
             <double>999.000000000000000</double>
            </property>
            <property name="singleStep">
-            <double>1.000000000000000</double>
+            <double>0.100000000000000</double>
            </property>
           </widget>
          </item>

@@ -1229,17 +1229,17 @@
         <translation type="vanished">kg</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmaischplanmalz.cpp" line="23"/>
+        <location filename="../dialogs/dlgmaischplanmalz.cpp" line="27"/>
         <source>Malz</source>
         <translation>Malt</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmaischplanmalz.cpp" line="24"/>
+        <location filename="../dialogs/dlgmaischplanmalz.cpp" line="28"/>
         <source>Gesamtmenge</source>
         <translation>Totala mängd</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgmaischplanmalz.cpp" line="25"/>
+        <location filename="../dialogs/dlgmaischplanmalz.cpp" line="29"/>
         <source>Anteil</source>
         <translation>Andel</translation>
     </message>
@@ -1645,13 +1645,13 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="661"/>
-        <location filename="../dialogs/dlgrestextrakt.cpp" line="26"/>
+        <location filename="../dialogs/dlgrestextrakt.cpp" line="30"/>
         <source>Stammwürze</source>
         <translation>Stamvört (OG)</translation>
     </message>
     <message>
         <location filename="../dialogs/dlgrestextrakt.ui" line="749"/>
-        <location filename="../dialogs/dlgrestextrakt.cpp" line="35"/>
+        <location filename="../dialogs/dlgrestextrakt.cpp" line="39"/>
         <source>Restextrakt</source>
         <translation>Restsötma (FG)</translation>
     </message>
@@ -1830,7 +1830,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">mg</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="119"/>
+        <location filename="../dialogs/dlgrohstoffauswahl.cpp" line="120"/>
         <source>Stk.</source>
         <translation>st.</translation>
     </message>
@@ -2331,11 +2331,11 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">mg</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="100"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="116"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="124"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="132"/>
-        <location filename="../dialogs/dlguebernahmerezept.cpp" line="140"/>
+        <location filename="../dialogs/dlguebernahmerezept.cpp" line="101"/>
+        <location filename="../dialogs/dlguebernahmerezept.cpp" line="117"/>
+        <location filename="../dialogs/dlguebernahmerezept.cpp" line="125"/>
+        <location filename="../dialogs/dlguebernahmerezept.cpp" line="133"/>
+        <location filename="../dialogs/dlguebernahmerezept.cpp" line="141"/>
         <source>Stk.</source>
         <translation>st.</translation>
     </message>
@@ -2602,62 +2602,62 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="14"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="18"/>
         <source>Milchsäure</source>
         <translation>Mjölksyra</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="15"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="19"/>
         <source>Phosphorsäure</source>
         <translation>Fosforsyra</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="16"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="20"/>
         <source>Salzsäure</source>
         <translation>Saltsyra</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="17"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="21"/>
         <source>Schwefelsäure</source>
         <translation>Svavelsyra</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="18"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="22"/>
         <source>Sauermalz</source>
         <translation>Syramalt</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="19"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="23"/>
         <source>Natriumhydrogenkarbonat (NaHCO3)</source>
         <translation>Natriumvätekarbonat (NaHCO3)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="20"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="24"/>
         <source>Natriumchlorid (NaCl)</source>
         <translation>Koksalt (NaCl)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="21"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="25"/>
         <source>Calciumsulfat-Dihydrat (CaSO4)</source>
         <translation>Calciumsulfat dihydrat (CaSO4)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="22"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="26"/>
         <source>Calciumchlorid-Dihydrat (CaCl2)</source>
         <translation>Calciumchlorid dihydrat (CaCl2)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="23"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="27"/>
         <source>Magnesiumchlorid-Hexahydrat (MgCl2)</source>
         <translation>Magnesiumchlorid hexahydrat (MgCl2)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="24"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="28"/>
         <source>Magnesiumsulfat-Heptahydrat (MgSO4)</source>
         <translation>Magnesiumsulfat heptahydrat (MgSO4)</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="25"/>
+        <location filename="../dialogs/dlgwasseraufbereitung.cpp" line="29"/>
         <source>&lt;manuell&gt;</source>
         <translation>&lt;manuell&gt;</translation>
     </message>
@@ -2841,17 +2841,17 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasserprofile.cpp" line="126"/>
+        <location filename="../dialogs/dlgwasserprofile.cpp" line="131"/>
         <source>Neues Profil</source>
         <translation>Nytt profil</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasserprofile.cpp" line="163"/>
+        <location filename="../dialogs/dlgwasserprofile.cpp" line="168"/>
         <source>Wasserprofil löschen?</source>
         <translation>Ta bort vattenprofil?</translation>
     </message>
     <message>
-        <location filename="../dialogs/dlgwasserprofile.cpp" line="164"/>
+        <location filename="../dialogs/dlgwasserprofile.cpp" line="169"/>
         <source>Soll das Wasserprofil &quot;%1&quot; gelöscht werden?</source>
         <translation>Ta bort vattenprofilen &quot;%1&quot;?</translation>
     </message>
@@ -2880,40 +2880,40 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     </message>
     <message>
         <location filename="../mainwindow.ui" line="112"/>
-        <location filename="../mainwindow.cpp" line="309"/>
+        <location filename="../mainwindow.cpp" line="353"/>
         <source>Gärverlauf</source>
         <translation>Jäsning</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="132"/>
-        <location filename="../mainwindow.cpp" line="335"/>
+        <location filename="../mainwindow.cpp" line="379"/>
         <source>Etikett</source>
         <translation>Etiketter</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="142"/>
-        <location filename="../mainwindow.cpp" line="348"/>
-        <location filename="../mainwindow.cpp" line="800"/>
+        <location filename="../mainwindow.cpp" line="392"/>
+        <location filename="../mainwindow.cpp" line="828"/>
         <source>Bewertung</source>
         <translation>Betyg</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="675"/>
+        <location filename="../mainwindow.ui" line="681"/>
         <source>Brauübersicht</source>
         <translation>Satsöversikt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="697"/>
+        <location filename="../mainwindow.ui" line="703"/>
         <source>Ausrüstung</source>
         <translation>Utrustning</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="654"/>
+        <location filename="../mainwindow.ui" line="660"/>
         <source>Rohstoffe</source>
         <translation>Ingredienser</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="718"/>
+        <location filename="../mainwindow.ui" line="724"/>
         <source>Datenbank</source>
         <translation>Databas</translation>
     </message>
@@ -2924,7 +2924,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     </message>
     <message>
         <location filename="../mainwindow.ui" line="122"/>
-        <location filename="../mainwindow.cpp" line="322"/>
+        <location filename="../mainwindow.cpp" line="366"/>
         <source>Ausdruck</source>
         <translation>Utskrift</translation>
     </message>
@@ -2945,7 +2945,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
     </message>
     <message>
         <location filename="../mainwindow.ui" line="215"/>
-        <location filename="../mainwindow.ui" line="635"/>
+        <location filename="../mainwindow.ui" line="641"/>
         <source>Hilfe</source>
         <translation>Hjälp</translation>
     </message>
@@ -2965,17 +2965,17 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation>Språk</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="296"/>
+        <location filename="../mainwindow.ui" line="302"/>
         <source>Speichern</source>
         <translation>Spara</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="302"/>
+        <location filename="../mainwindow.ui" line="308"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="312"/>
+        <location filename="../mainwindow.ui" line="318"/>
         <source>Änderungen verwerfen</source>
         <translation>Ångra ändringarna</translation>
     </message>
@@ -2984,278 +2984,283 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Ctrl+Z</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="320"/>
+        <location filename="../mainwindow.ui" line="326"/>
         <source>Zurücksetzen</source>
         <translation>Återställ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="325"/>
+        <location filename="../mainwindow.ui" line="331"/>
         <source>Über</source>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="333"/>
+        <location filename="../mainwindow.ui" line="339"/>
         <source>&quot;Sud gebraut&quot; zurücksetzen</source>
         <translation>Återställ &quot;sats bryggd&quot;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="338"/>
+        <location filename="../mainwindow.ui" line="344"/>
         <source>&quot;Sud abgefüllt&quot; zurücksetzen</source>
         <translation>Återställ &quot;sats flask-/fattappad&quot;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="343"/>
+        <location filename="../mainwindow.ui" line="349"/>
         <source>&quot;Sud verbraucht&quot; zurücksetzen</source>
         <translation>Återställ &quot;sats förbrukad&quot;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="348"/>
+        <location filename="../mainwindow.ui" line="354"/>
         <source>&quot;Zusätze Zugabe&quot; zurücksetzen</source>
         <translation>Nollställ &quot;Ytterligare ingredienser&quot;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="530"/>
+        <location filename="../mainwindow.ui" line="536"/>
         <source>Drucken</source>
         <translation>Skriv ut</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="546"/>
+        <location filename="../mainwindow.ui" line="552"/>
         <source>PDF</source>
         <translation>PDF</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="607"/>
+        <location filename="../mainwindow.ui" line="613"/>
         <source>Log</source>
         <translation>Log</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="612"/>
+        <location filename="../mainwindow.ui" line="618"/>
         <source>Formelsammlung</source>
         <translation>Formelsamling</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="617"/>
+        <location filename="../mainwindow.ui" line="623"/>
         <source>Module</source>
         <translation>Moduler</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="625"/>
+        <location filename="../mainwindow.ui" line="631"/>
         <source>Zahlen- &amp;&amp; Datumsformat aus Spracheinstellung</source>
         <translation>Visa tal och datum enligt språkinställning</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="630"/>
+        <location filename="../mainwindow.ui" line="636"/>
         <source>Android App</source>
         <translation>Android-app</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="353"/>
+        <location filename="../mainwindow.ui" line="359"/>
         <source>Beenden</source>
         <translation>Stäng av</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="356"/>
+        <location filename="../mainwindow.ui" line="263"/>
+        <source>Bearbeiten</source>
+        <translation>Redigera</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.ui" line="362"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="364"/>
-        <location filename="../mainwindow.cpp" line="725"/>
+        <location filename="../mainwindow.ui" line="370"/>
+        <location filename="../mainwindow.cpp" line="753"/>
         <source>Datenbank auswählen</source>
         <translation>Välj databas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="367"/>
+        <location filename="../mainwindow.ui" line="373"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="375"/>
+        <location filename="../mainwindow.ui" line="381"/>
         <source>Hell</source>
         <translation>Ljus</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="380"/>
+        <location filename="../mainwindow.ui" line="386"/>
         <source>Dunkel</source>
         <translation>Mörk</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="391"/>
+        <location filename="../mainwindow.ui" line="397"/>
         <source>Bestätigung beim Beenden</source>
         <translation>Bekräfta avstängning</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="399"/>
+        <location filename="../mainwindow.ui" line="405"/>
         <source>Systemschriftart</source>
         <translation>Systemtypsnitt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="410"/>
+        <location filename="../mainwindow.ui" line="416"/>
         <source>Auf Updates prüfen</source>
         <translation>Sök uppdateringar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="415"/>
+        <location filename="../mainwindow.ui" line="421"/>
         <source>&quot;Hefe Zugabe&quot; zurücksetzen</source>
         <translation>Återställ &quot;jäst tillagd&quot;</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="420"/>
+        <location filename="../mainwindow.ui" line="426"/>
         <source>Bereinigen</source>
         <translation>Rensa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="428"/>
+        <location filename="../mainwindow.ui" line="434"/>
         <source>Eingabefelder entsperren</source>
         <translation>Lås upp inmatningsfält</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="439"/>
+        <location filename="../mainwindow.ui" line="445"/>
         <source>Tooltips</source>
         <translation>Tooltips</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="449"/>
+        <location filename="../mainwindow.ui" line="455"/>
         <source>Neuen Sud anlegen</source>
         <translation>Skapa ny sats</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="455"/>
+        <location filename="../mainwindow.ui" line="461"/>
         <source>Ctrl+N</source>
         <translation>Ctrl+N</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="465"/>
+        <location filename="../mainwindow.ui" line="471"/>
         <source>Rezept importieren</source>
         <translation>Importera recept</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="478"/>
+        <location filename="../mainwindow.ui" line="484"/>
         <source>Rezept exportieren</source>
         <translation>Exportera recept</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="491"/>
+        <location filename="../mainwindow.ui" line="497"/>
         <source>Sud kopieren</source>
         <translation>Kopiera sats</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="504"/>
+        <location filename="../mainwindow.ui" line="510"/>
         <source>Sud löschen</source>
         <translation>Ta bort sats</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="517"/>
+        <location filename="../mainwindow.ui" line="523"/>
         <source>Sud teilen</source>
         <translation>Dela sats</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="536"/>
+        <location filename="../mainwindow.ui" line="542"/>
         <source>Ctrl+Shift+P</source>
         <translation>Ctrl+Shift+P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="552"/>
+        <location filename="../mainwindow.ui" line="558"/>
         <source>Ctrl+P</source>
         <translation>Ctrl+P</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="563"/>
+        <location filename="../mainwindow.ui" line="569"/>
         <source>Animationen</source>
         <translation>Animeringar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="572"/>
+        <location filename="../mainwindow.ui" line="578"/>
         <source>Deutsch</source>
         <translation>Tyska</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="581"/>
+        <location filename="../mainwindow.ui" line="587"/>
         <source>Englisch</source>
         <translation>Engelska</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="590"/>
+        <location filename="../mainwindow.ui" line="596"/>
         <source>Schwedisch</source>
         <translation>Svenska</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="599"/>
+        <location filename="../mainwindow.ui" line="605"/>
         <source>Niederländisch</source>
         <translation>Nederländska</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="784"/>
+        <location filename="../mainwindow.cpp" line="812"/>
         <source>aroma</source>
         <translation>aroma</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="784"/>
+        <location filename="../mainwindow.cpp" line="812"/>
         <source>bitter</source>
         <translation>beskning</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="784"/>
+        <location filename="../mainwindow.cpp" line="812"/>
         <source>universal</source>
         <translation>universal</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="785"/>
+        <location filename="../mainwindow.cpp" line="813"/>
         <source>obergärig</source>
         <translation>överjäst</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="785"/>
+        <location filename="../mainwindow.cpp" line="813"/>
         <source>untergärig</source>
         <translation>underjäst</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="786"/>
+        <location filename="../mainwindow.cpp" line="814"/>
         <source>trocken</source>
         <translation>torr</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="786"/>
+        <location filename="../mainwindow.cpp" line="814"/>
         <source>flüssig</source>
         <translation>flytande</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="787"/>
+        <location filename="../mainwindow.cpp" line="815"/>
         <source>Honig</source>
         <translation>Honung</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="787"/>
+        <location filename="../mainwindow.cpp" line="815"/>
         <source>Zucker</source>
         <translation>Socker</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="787"/>
+        <location filename="../mainwindow.cpp" line="815"/>
         <source>Gewürz</source>
         <translation>Krydda</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="787"/>
+        <location filename="../mainwindow.cpp" line="815"/>
         <source>Frucht</source>
         <translation>Frukt</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="787"/>
+        <location filename="../mainwindow.cpp" line="815"/>
         <source>Sonstiges</source>
         <translation>Annat</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="787"/>
+        <location filename="../mainwindow.cpp" line="815"/>
         <source>Kraut</source>
         <translation>Örter</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="787"/>
+        <location filename="../mainwindow.cpp" line="815"/>
         <source>Wasseraufbereitung</source>
         <translation>Vattenanpassning</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="787"/>
+        <location filename="../mainwindow.cpp" line="815"/>
         <source>Klärmittel</source>
         <translation>Klarningsmedel</translation>
     </message>
@@ -3272,7 +3277,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">mg</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="788"/>
+        <location filename="../mainwindow.cpp" line="816"/>
         <source>Stk.</source>
         <translation>st.</translation>
     </message>
@@ -3285,114 +3290,114 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">ml</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="156"/>
-        <location filename="../mainwindow.cpp" line="175"/>
+        <location filename="../mainwindow.cpp" line="172"/>
+        <location filename="../mainwindow.cpp" line="191"/>
         <source>Anwendung schließen?</source>
         <translation>Stäng av programmet?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="157"/>
+        <location filename="../mainwindow.cpp" line="173"/>
         <source>Sollen die Änderungen vor dem Schließen gespeichert werden?</source>
         <translation>Spara ändringarna innan avstängning?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="176"/>
+        <location filename="../mainwindow.cpp" line="192"/>
         <source>Soll die Anwendung geschlossen werden?</source>
         <translation>Stäng av programmet?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="198"/>
+        <location filename="../mainwindow.cpp" line="214"/>
         <source>Änderungen speichern?</source>
         <translation>Spara ändringarna?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="199"/>
+        <location filename="../mainwindow.cpp" line="215"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
         <translation>Spara ändringarna?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="219"/>
-        <location filename="../mainwindow.cpp" line="226"/>
-        <location filename="../mainwindow.cpp" line="231"/>
+        <location filename="../mainwindow.cpp" line="239"/>
+        <location filename="../mainwindow.cpp" line="246"/>
+        <location filename="../mainwindow.cpp" line="251"/>
         <source>Fehler beim Speichern</source>
         <translation>Fel under sparandet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="231"/>
-        <location filename="../mainwindow.cpp" line="436"/>
-        <location filename="../mainwindow.cpp" line="544"/>
+        <location filename="../mainwindow.cpp" line="251"/>
+        <location filename="../mainwindow.cpp" line="275"/>
+        <location filename="../mainwindow.cpp" line="480"/>
         <source>Unbekannter Fehler.</source>
         <translation>Okänt fel.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="432"/>
-        <location filename="../mainwindow.cpp" line="436"/>
+        <location filename="../mainwindow.cpp" line="476"/>
+        <location filename="../mainwindow.cpp" line="480"/>
         <source>Fehler beim Laden</source>
         <translation>Fel under öppnandet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="539"/>
-        <location filename="../mainwindow.cpp" line="544"/>
+        <location filename="../mainwindow.cpp" line="270"/>
+        <location filename="../mainwindow.cpp" line="275"/>
         <source>Fehler beim Verwerfen</source>
         <translation>Fel under återställandet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="645"/>
+        <location filename="../mainwindow.cpp" line="673"/>
         <source>Eingabefelder entsperren?</source>
         <translation>Lås upp inmatningsfält?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="646"/>
+        <location filename="../mainwindow.cpp" line="674"/>
         <source>Vorsicht! Eingabefelder entsperren kann zu inkonsistenten Daten führen und sollte mit Bedacht eingesetzt werden.</source>
         <translation>Obs! Att låsa upp fälten för inmatning kan leda till inkonsistent data och bör göras varsamt.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="727"/>
+        <location filename="../mainwindow.cpp" line="755"/>
         <source>Datenbank (*.sqlite);;Alle Dateien (*.*)</source>
         <translation>Databas (*.sqlite);;Alla filer (*.*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="791"/>
+        <location filename="../mainwindow.cpp" line="819"/>
         <source>Sud ID</source>
         <translation>Sats-ID</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="792"/>
+        <location filename="../mainwindow.cpp" line="820"/>
         <source>Sudname</source>
         <translation>Satsnamn</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="793"/>
+        <location filename="../mainwindow.cpp" line="821"/>
         <source>Sudnummer</source>
         <translation>Satsnummer</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="794"/>
+        <location filename="../mainwindow.cpp" line="822"/>
         <source>Kategorie</source>
         <translation>Kategori</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="795"/>
+        <location filename="../mainwindow.cpp" line="823"/>
         <source>Braudatum</source>
         <translation>Bryggdatum</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="796"/>
+        <location filename="../mainwindow.cpp" line="824"/>
         <source>Abfülldatum</source>
         <translation>Datum för flasktappning</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="797"/>
+        <location filename="../mainwindow.cpp" line="825"/>
         <source>Erstellt</source>
         <translation>Skapad</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="798"/>
+        <location filename="../mainwindow.cpp" line="826"/>
         <source>Gespeichert</source>
         <translation>Sparad</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="799"/>
+        <location filename="../mainwindow.cpp" line="827"/>
         <source>Woche</source>
         <translation>Vecka</translation>
     </message>
@@ -3449,15 +3454,15 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Förångningshastighet [l/h]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="815"/>
+        <location filename="../mainwindow.cpp" line="843"/>
         <source>Für Durchschnitt Ignorieren</source>
         <translation>Ignorera för medelvärdet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="818"/>
-        <location filename="../mainwindow.cpp" line="832"/>
         <location filename="../mainwindow.cpp" line="846"/>
-        <location filename="../mainwindow.cpp" line="863"/>
+        <location filename="../mainwindow.cpp" line="860"/>
+        <location filename="../mainwindow.cpp" line="874"/>
+        <location filename="../mainwindow.cpp" line="891"/>
         <source>Name</source>
         <translation>Namn</translation>
     </message>
@@ -3470,7 +3475,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Färg [EBC]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="821"/>
+        <location filename="../mainwindow.cpp" line="849"/>
         <source>pH</source>
         <translation>pH</translation>
     </message>
@@ -3479,29 +3484,29 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Max. andel [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="823"/>
-        <location filename="../mainwindow.cpp" line="836"/>
-        <location filename="../mainwindow.cpp" line="848"/>
-        <location filename="../mainwindow.cpp" line="870"/>
-        <location filename="../mainwindow.cpp" line="889"/>
+        <location filename="../mainwindow.cpp" line="851"/>
+        <location filename="../mainwindow.cpp" line="864"/>
+        <location filename="../mainwindow.cpp" line="876"/>
         <location filename="../mainwindow.cpp" line="898"/>
-        <location filename="../mainwindow.cpp" line="905"/>
+        <location filename="../mainwindow.cpp" line="917"/>
+        <location filename="../mainwindow.cpp" line="926"/>
+        <location filename="../mainwindow.cpp" line="933"/>
         <source>Bemerkung</source>
         <translation>Anmärkningar</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="824"/>
-        <location filename="../mainwindow.cpp" line="837"/>
-        <location filename="../mainwindow.cpp" line="849"/>
-        <location filename="../mainwindow.cpp" line="871"/>
+        <location filename="../mainwindow.cpp" line="852"/>
+        <location filename="../mainwindow.cpp" line="865"/>
+        <location filename="../mainwindow.cpp" line="877"/>
+        <location filename="../mainwindow.cpp" line="899"/>
         <source>Eigenschaften</source>
         <translation>Egenskaper</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="825"/>
-        <location filename="../mainwindow.cpp" line="839"/>
-        <location filename="../mainwindow.cpp" line="856"/>
-        <location filename="../mainwindow.cpp" line="872"/>
+        <location filename="../mainwindow.cpp" line="853"/>
+        <location filename="../mainwindow.cpp" line="867"/>
+        <location filename="../mainwindow.cpp" line="884"/>
+        <location filename="../mainwindow.cpp" line="900"/>
         <source>Alternativen</source>
         <translation>Alternativ</translation>
     </message>
@@ -3510,26 +3515,26 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Kostnader [%1/l]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="827"/>
-        <location filename="../mainwindow.cpp" line="841"/>
-        <location filename="../mainwindow.cpp" line="858"/>
-        <location filename="../mainwindow.cpp" line="874"/>
+        <location filename="../mainwindow.cpp" line="855"/>
+        <location filename="../mainwindow.cpp" line="869"/>
+        <location filename="../mainwindow.cpp" line="886"/>
+        <location filename="../mainwindow.cpp" line="902"/>
         <source>Einlagerung</source>
         <translation>Kom in i lagret</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="828"/>
-        <location filename="../mainwindow.cpp" line="842"/>
-        <location filename="../mainwindow.cpp" line="859"/>
-        <location filename="../mainwindow.cpp" line="875"/>
+        <location filename="../mainwindow.cpp" line="856"/>
+        <location filename="../mainwindow.cpp" line="870"/>
+        <location filename="../mainwindow.cpp" line="887"/>
+        <location filename="../mainwindow.cpp" line="903"/>
         <source>Haltbarkeit</source>
         <translation>Bäst före</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="829"/>
-        <location filename="../mainwindow.cpp" line="843"/>
-        <location filename="../mainwindow.cpp" line="860"/>
-        <location filename="../mainwindow.cpp" line="876"/>
+        <location filename="../mainwindow.cpp" line="857"/>
+        <location filename="../mainwindow.cpp" line="871"/>
+        <location filename="../mainwindow.cpp" line="888"/>
+        <location filename="../mainwindow.cpp" line="904"/>
         <source>Link</source>
         <translation>Länk</translation>
     </message>
@@ -3542,113 +3547,113 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Alpha [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="835"/>
+        <location filename="../mainwindow.cpp" line="863"/>
         <source>Pellets</source>
         <translation>Pellets</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="838"/>
         <location filename="../mainwindow.cpp" line="866"/>
-        <location filename="../mainwindow.cpp" line="909"/>
+        <location filename="../mainwindow.cpp" line="894"/>
+        <location filename="../mainwindow.cpp" line="937"/>
         <source>Typ</source>
         <translation>Typ</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="801"/>
-        <location filename="../mainwindow.cpp" line="804"/>
-        <location filename="../mainwindow.cpp" line="819"/>
-        <location filename="../mainwindow.cpp" line="833"/>
+        <location filename="../mainwindow.cpp" line="829"/>
+        <location filename="../mainwindow.cpp" line="832"/>
         <location filename="../mainwindow.cpp" line="847"/>
-        <location filename="../mainwindow.cpp" line="864"/>
+        <location filename="../mainwindow.cpp" line="861"/>
+        <location filename="../mainwindow.cpp" line="875"/>
+        <location filename="../mainwindow.cpp" line="892"/>
         <source>Menge</source>
         <translation>Mängd</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="802"/>
-        <location filename="../mainwindow.cpp" line="806"/>
+        <location filename="../mainwindow.cpp" line="830"/>
+        <location filename="../mainwindow.cpp" line="834"/>
         <source>SW</source>
         <translation>Stamvört</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="803"/>
+        <location filename="../mainwindow.cpp" line="831"/>
         <source>Bittere</source>
         <translation>Beska</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="805"/>
+        <location filename="../mainwindow.cpp" line="833"/>
         <source>SHA</source>
         <translation>Utbyte</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="807"/>
+        <location filename="../mainwindow.cpp" line="835"/>
         <source>Restextrakt</source>
         <translation>Restsötma (FG)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="808"/>
+        <location filename="../mainwindow.cpp" line="836"/>
         <source>Schüttung</source>
         <translation>Malt o dyl</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="809"/>
+        <location filename="../mainwindow.cpp" line="837"/>
         <source>Kosten</source>
         <translation>Kostnader</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="811"/>
-        <location filename="../mainwindow.cpp" line="887"/>
-        <location filename="../mainwindow.cpp" line="896"/>
+        <location filename="../mainwindow.cpp" line="839"/>
+        <location filename="../mainwindow.cpp" line="915"/>
+        <location filename="../mainwindow.cpp" line="924"/>
         <source>sEVG</source>
         <translation>Förjäsn</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="812"/>
-        <location filename="../mainwindow.cpp" line="888"/>
-        <location filename="../mainwindow.cpp" line="897"/>
+        <location filename="../mainwindow.cpp" line="840"/>
+        <location filename="../mainwindow.cpp" line="916"/>
+        <location filename="../mainwindow.cpp" line="925"/>
         <source>tEVG</source>
         <translation>Förjäsn. (verkl.)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="813"/>
+        <location filename="../mainwindow.cpp" line="841"/>
         <source>Eff. SHA</source>
         <translation>Effektivt utbyte</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="814"/>
+        <location filename="../mainwindow.cpp" line="842"/>
         <source>Verdampfungsrate</source>
         <translation>Förångningshastighet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="820"/>
-        <location filename="../mainwindow.cpp" line="869"/>
+        <location filename="../mainwindow.cpp" line="848"/>
+        <location filename="../mainwindow.cpp" line="897"/>
         <source>Farbe</source>
         <translation>Färg</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="822"/>
+        <location filename="../mainwindow.cpp" line="850"/>
         <source>Max. Anteil</source>
         <translation>Max. andel</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="826"/>
-        <location filename="../mainwindow.cpp" line="840"/>
-        <location filename="../mainwindow.cpp" line="857"/>
-        <location filename="../mainwindow.cpp" line="873"/>
+        <location filename="../mainwindow.cpp" line="854"/>
+        <location filename="../mainwindow.cpp" line="868"/>
+        <location filename="../mainwindow.cpp" line="885"/>
+        <location filename="../mainwindow.cpp" line="901"/>
         <source>Preis</source>
         <translation>Pris</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="834"/>
+        <location filename="../mainwindow.cpp" line="862"/>
         <source>Alpha</source>
         <translation>Alpha</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="850"/>
+        <location filename="../mainwindow.cpp" line="878"/>
         <source>OG/UG</source>
         <translation>Över/underjäst</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="851"/>
+        <location filename="../mainwindow.cpp" line="879"/>
         <source>Trocken/Flüssig</source>
         <translation>Torr/Flytande</translation>
     </message>
@@ -3669,20 +3674,20 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Vörtmängd [l]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="853"/>
+        <location filename="../mainwindow.cpp" line="881"/>
         <source>Sedimentation</source>
         <translation>Sedimentering</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="854"/>
+        <location filename="../mainwindow.cpp" line="882"/>
         <source>Vergärungsgrad</source>
         <translation>Förjäsningsgrad</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="855"/>
-        <location filename="../mainwindow.cpp" line="885"/>
-        <location filename="../mainwindow.cpp" line="894"/>
-        <location filename="../mainwindow.cpp" line="903"/>
+        <location filename="../mainwindow.cpp" line="883"/>
+        <location filename="../mainwindow.cpp" line="913"/>
+        <location filename="../mainwindow.cpp" line="922"/>
+        <location filename="../mainwindow.cpp" line="931"/>
         <source>Temperatur</source>
         <translation>Temperatur</translation>
     </message>
@@ -3691,7 +3696,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Pris [%1/l]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="865"/>
+        <location filename="../mainwindow.cpp" line="893"/>
         <source>Einheit</source>
         <translation>Enhet</translation>
     </message>
@@ -3700,7 +3705,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Utbye [%]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="868"/>
+        <location filename="../mainwindow.cpp" line="896"/>
         <source>Unvergärbar</source>
         <translation>Ojäsbar</translation>
     </message>
@@ -3709,7 +3714,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Pris [%1/[kg/l/st.]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="879"/>
+        <location filename="../mainwindow.cpp" line="907"/>
         <source>Wasserprofil</source>
         <translation>Vattenprofil</translation>
     </message>
@@ -3718,9 +3723,9 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Restalkalinitet [°dH]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="883"/>
-        <location filename="../mainwindow.cpp" line="892"/>
-        <location filename="../mainwindow.cpp" line="901"/>
+        <location filename="../mainwindow.cpp" line="911"/>
+        <location filename="../mainwindow.cpp" line="920"/>
+        <location filename="../mainwindow.cpp" line="929"/>
         <source>Datum</source>
         <translation>Datum</translation>
     </message>
@@ -3741,7 +3746,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">CO2 [g/l]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="908"/>
+        <location filename="../mainwindow.cpp" line="936"/>
         <source>Anlage</source>
         <translation>Brygganläggning</translation>
     </message>
@@ -3750,198 +3755,208 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Förmåga [l]</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="852"/>
+        <location filename="../mainwindow.cpp" line="880"/>
         <source>Würzemenge</source>
         <translation>Vörtmängd</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="867"/>
+        <location filename="../mainwindow.cpp" line="895"/>
         <source>Ausbeute</source>
         <translation>Utbye</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="880"/>
+        <location filename="../mainwindow.cpp" line="908"/>
         <source>Restalkalität</source>
         <translation>Restalkalinitet</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="884"/>
-        <location filename="../mainwindow.cpp" line="893"/>
+        <location filename="../mainwindow.cpp" line="912"/>
+        <location filename="../mainwindow.cpp" line="921"/>
         <source>SRE</source>
         <translation>FG</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="810"/>
-        <location filename="../mainwindow.cpp" line="886"/>
-        <location filename="../mainwindow.cpp" line="895"/>
+        <location filename="../mainwindow.cpp" line="838"/>
+        <location filename="../mainwindow.cpp" line="914"/>
+        <location filename="../mainwindow.cpp" line="923"/>
         <source>Alkohol</source>
         <translation>Alkohol</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="873"/>
+        <location filename="../mainwindow.cpp" line="95"/>
+        <source>Rückgängig</source>
+        <translation>Ångra</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="96"/>
+        <source>Wiederherstellen</source>
+        <translation>Återställ</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="901"/>
         <source>
 (%1/[kg/L/Stk.])</source>
         <translation>
 (%1/[kg/L/st.])</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="902"/>
+        <location filename="../mainwindow.cpp" line="930"/>
         <source>Druck</source>
         <translation>Tryck</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="904"/>
+        <location filename="../mainwindow.cpp" line="932"/>
         <source>CO2</source>
         <translation>CO2</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="910"/>
+        <location filename="../mainwindow.cpp" line="938"/>
         <source>Vermögen</source>
         <translation>Förmåga</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="911"/>
+        <location filename="../mainwindow.cpp" line="939"/>
         <source>Anzahl Sude</source>
         <translation>Antal satser</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="912"/>
+        <location filename="../mainwindow.cpp" line="940"/>
         <source>Anzahl gebraute Sude</source>
         <translation>Antal bryggda satser</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="915"/>
+        <location filename="../mainwindow.cpp" line="943"/>
         <source>Bezeichnung</source>
         <translation>Beteckning</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="918"/>
+        <location filename="../mainwindow.cpp" line="946"/>
         <source>Tag</source>
         <translation>Nyckelord</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="919"/>
+        <location filename="../mainwindow.cpp" line="947"/>
         <source>Wert</source>
         <translation>Värde</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="920"/>
+        <location filename="../mainwindow.cpp" line="948"/>
         <source>Global</source>
         <translation>Global</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="934"/>
+        <location filename="../mainwindow.cpp" line="962"/>
         <source>Speisemenge zurücksetzen?</source>
         <translation>Återställa ojäst vört?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="935"/>
-        <location filename="../mainwindow.cpp" line="945"/>
+        <location filename="../mainwindow.cpp" line="963"/>
+        <location filename="../mainwindow.cpp" line="973"/>
         <source>Das Modul &quot;Speiseberechnung&quot; ist deaktiviert, aber es wurde für diesen Sud eine Speisemenge angegeben.</source>
         <translation>Modulen &quot;Kolsyresättning med vört&quot; är inaktiverad, men en fodermängd har angetts för denna bryggning.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="936"/>
+        <location filename="../mainwindow.cpp" line="964"/>
         <source>Soll diese zurückgesetzt werden (empfohlen)?</source>
         <translation>Bör detta återställas (rekommenderas)?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="944"/>
+        <location filename="../mainwindow.cpp" line="972"/>
         <source>Speisemenge</source>
         <translation>Mängd ojäst vört</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="946"/>
-        <location filename="../mainwindow.cpp" line="968"/>
-        <location filename="../mainwindow.cpp" line="990"/>
-        <location filename="../mainwindow.cpp" line="1009"/>
-        <location filename="../mainwindow.cpp" line="1028"/>
+        <location filename="../mainwindow.cpp" line="974"/>
+        <location filename="../mainwindow.cpp" line="996"/>
+        <location filename="../mainwindow.cpp" line="1018"/>
+        <location filename="../mainwindow.cpp" line="1037"/>
+        <location filename="../mainwindow.cpp" line="1056"/>
         <source>Der Sud wird nicht korrekt dargestellt.</source>
         <translation>Partiet visas inte på rätt sätt.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="956"/>
+        <location filename="../mainwindow.cpp" line="984"/>
         <source>Schnellgärprobe deaktivieren?</source>
         <translation>Deaktivera snabbjäsningsprov?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="957"/>
-        <location filename="../mainwindow.cpp" line="967"/>
+        <location filename="../mainwindow.cpp" line="985"/>
+        <location filename="../mainwindow.cpp" line="995"/>
         <source>Das Modul &quot;Schnellgärprobe&quot; ist deaktiviert, aber es wurde für diesen Sud die Schnellgärprobe aktiviert.</source>
         <translation>Modulen &quot;Snabbjäsningsprov&quot; är inaktiverad, men &quot;Snelle vergistingsmonster&quot; har aktiverats för den här bryggningen.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="958"/>
+        <location filename="../mainwindow.cpp" line="986"/>
         <source>Soll diese deaktiviert werden (empfohlen)?</source>
         <translation>Bör detta avaktiveras (rekommenderas)?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="966"/>
+        <location filename="../mainwindow.cpp" line="994"/>
         <source>Schnellgärprobe</source>
         <translation>Snabbjäsningsprov</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="978"/>
-        <location filename="../mainwindow.cpp" line="997"/>
-        <location filename="../mainwindow.cpp" line="1016"/>
+        <location filename="../mainwindow.cpp" line="1006"/>
+        <location filename="../mainwindow.cpp" line="1025"/>
+        <location filename="../mainwindow.cpp" line="1044"/>
         <source>Korrekturwert zurücksetzen?</source>
         <translation>Återställa korrigeringsvärdet?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="979"/>
-        <location filename="../mainwindow.cpp" line="989"/>
+        <location filename="../mainwindow.cpp" line="1007"/>
+        <location filename="../mainwindow.cpp" line="1017"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Nachgussmenge) angegeben.</source>
         <translation>Modulen &quot;Utrustning&quot; är inaktiverad, men ett korrigeringsvärde (kvantitet efter gjutning) har angetts för denna utrustning.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="980"/>
-        <location filename="../mainwindow.cpp" line="999"/>
-        <location filename="../mainwindow.cpp" line="1018"/>
+        <location filename="../mainwindow.cpp" line="1008"/>
+        <location filename="../mainwindow.cpp" line="1027"/>
+        <location filename="../mainwindow.cpp" line="1046"/>
         <source>Soll dieser zurückgesetzt werden?</source>
         <translation>Bör detta återställas?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="988"/>
-        <location filename="../mainwindow.cpp" line="1007"/>
-        <location filename="../mainwindow.cpp" line="1026"/>
+        <location filename="../mainwindow.cpp" line="1016"/>
+        <location filename="../mainwindow.cpp" line="1035"/>
+        <location filename="../mainwindow.cpp" line="1054"/>
         <source>Korrekturwert</source>
         <translation>Korrigeringsfaktor</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="998"/>
-        <location filename="../mainwindow.cpp" line="1008"/>
+        <location filename="../mainwindow.cpp" line="1026"/>
+        <location filename="../mainwindow.cpp" line="1036"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Farbwert) angegeben.</source>
         <translation>Modulen &quot;Utrustning&quot; är inaktiverad, men ett korrigeringsvärde (färgvärde) har angetts för denna utrustning.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1017"/>
-        <location filename="../mainwindow.cpp" line="1027"/>
+        <location filename="../mainwindow.cpp" line="1045"/>
+        <location filename="../mainwindow.cpp" line="1055"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Sollmenge) angegeben.</source>
         <translation>Modulen &quot;Utrustning&quot; är inaktiverad, men ett korrigeringsvärde (målkvantitet) har angetts för denna anläggning.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1037"/>
+        <location filename="../mainwindow.cpp" line="1065"/>
         <source>Betriebskosten zurücksetzen?</source>
         <translation>Återställning av kostnader?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1038"/>
-        <location filename="../mainwindow.cpp" line="1048"/>
+        <location filename="../mainwindow.cpp" line="1066"/>
+        <location filename="../mainwindow.cpp" line="1076"/>
         <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage Betriebskosten angegeben.</source>
         <translation>Modulen &quot;Utrustning&quot; är inaktiverad, men driftskostnader har angetts för denna anläggning.</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1039"/>
+        <location filename="../mainwindow.cpp" line="1067"/>
         <source>Soll diese zurückgesetzt werden?</source>
         <translation>Bör detta återställas?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1047"/>
+        <location filename="../mainwindow.cpp" line="1075"/>
         <source>Betriebskosten</source>
         <translation>Kostnader</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="1049"/>
+        <location filename="../mainwindow.cpp" line="1077"/>
         <source>Der Preis wird nicht korrekt berechnet.</source>
         <translation>Priset har inte beräknats korrekt.</translation>
     </message>
@@ -3983,12 +3998,12 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../main.cpp" line="44"/>
+        <location filename="../main.cpp" line="42"/>
         <source>Es wurde noch keine Datenbank ausgewählt. Soll eine neue angelegt werden oder soll eine bereits vorhandene geöffnet werden?</source>
         <translation>Ingen databas har valts. Vill du skapa en ny databas eller öppna en befintlig?</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="49"/>
+        <location filename="../main.cpp" line="47"/>
         <source>Soll eine neue Datenbank angelegt werden oder soll eine bereits vorhandene geöffnet werden?</source>
         <translation>Vill du skapa en ny databas eller öppna en befintlig?</translation>
     </message>
@@ -4005,18 +4020,18 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Avbryt</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="56"/>
+        <location filename="../main.cpp" line="54"/>
         <source>Datenbank auswählen</source>
         <translation>Välj databas</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="58"/>
-        <location filename="../main.cpp" line="69"/>
+        <location filename="../main.cpp" line="56"/>
+        <location filename="../main.cpp" line="67"/>
         <source>Datenbank (*.sqlite);;Alle Dateien (*.*)</source>
         <translation>Databas (*.sqlite);;Alla filer (*.*)</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="67"/>
+        <location filename="../main.cpp" line="65"/>
         <source>Datenbank anlegen</source>
         <translation>Skapa databas</translation>
     </message>
@@ -4025,42 +4040,42 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
         <translation type="vanished">Databas</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="100"/>
+        <location filename="../main.cpp" line="98"/>
         <source>Die Datenbank ist ungultig.</source>
         <translation>Ogiltig databas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="105"/>
+        <location filename="../main.cpp" line="103"/>
         <source>Die Datenbankversion (%1) ist zu neu für das Programm. Das Programm muss aktualisiert werden.</source>
         <translation>Databasens version (%1) är för ny för programmet. Det behöver uppdateras.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="110"/>
+        <location filename="../main.cpp" line="108"/>
         <source>Die Datenbankversion (%1) ist zu alt für das Programm. Die Datenbank muss zuerst mit dem kleinen-brauhelfer v1.4.4.6 aktualisiert werden.</source>
         <translation>Databasens version (%1) är för gammal för programmet. Den behöver uppdateras först med kleiner-brauhelfer v1.4.4.6.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="115"/>
+        <location filename="../main.cpp" line="113"/>
         <source>Die Datenbank muss aktualisiert werden (Version %1 -&gt; %2).</source>
         <translation>Databasen behöver uppdateras (version %1 -&gt; %2).</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="116"/>
+        <location filename="../main.cpp" line="114"/>
         <source>Soll die Datenbank jetzt aktualisiert werden?</source>
         <translation>Ska databasen uppdateras nu?</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="117"/>
+        <location filename="../main.cpp" line="115"/>
         <source>ACHTUNG, die Änderungen können nicht rückgängig gemacht werden!</source>
         <translation>OBS, dessa ändringar kan inte ångras senare!</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="152"/>
+        <location filename="../main.cpp" line="150"/>
         <source>Datenbank konnte nicht wiederhergestellt werden.</source>
         <translation>Databasen kunde inte återställas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="159"/>
+        <location filename="../main.cpp" line="157"/>
         <source>Aktualisierung fehlgeschlagen.
 
 </source>
@@ -4069,28 +4084,28 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
 </translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="164"/>
+        <location filename="../main.cpp" line="162"/>
         <source>Sicherheitskopie konnte nicht erstellt werden.</source>
         <translation>Säkerhetskopian kunde inte skapas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="176"/>
+        <location filename="../main.cpp" line="174"/>
         <source>Die Datenbank &quot;%1&quot; konnte nicht geöffnet werden.</source>
         <translation>Databasen &quot;%1&quot; kunde inte öppnas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="230"/>
+        <location filename="../main.cpp" line="228"/>
         <source>Der Ordner &quot;%1&quot; konnte nicht erstellt werden.</source>
         <translation>Mappen &quot;%1&quot; kunde inte skapas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="258"/>
-        <location filename="../main.cpp" line="280"/>
+        <location filename="../main.cpp" line="256"/>
+        <location filename="../main.cpp" line="278"/>
         <source>Der Datei &quot;%1&quot; konnte nicht erstellt werden.</source>
         <translation>Filen &quot;%1&quot; kunde inte skapas.</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="269"/>
+        <location filename="../main.cpp" line="267"/>
         <source>Die Ressourcendatei &quot;%1&quot; ist verschieden von der lokalen Datei.
 Die Datei wurde entweder manuell editiert oder durch ein Update verändert.
 
@@ -4111,7 +4126,7 @@ Ska lokala filen ersättas?</translation>
         <translation type="vanished">Ska satsinformation och lathund/sammanfattnign deaktiveras?</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="310"/>
+        <location filename="../main.cpp" line="308"/>
         <source>SSL wird nicht unterstüzt.
 Version benötigt: %1
 Version installiert: %2</source>
@@ -4120,16 +4135,16 @@ Version som behövs: %1
 Installerad version: %2</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="440"/>
-        <location filename="../main.cpp" line="446"/>
-        <location filename="../main.cpp" line="468"/>
-        <location filename="../main.cpp" line="474"/>
+        <location filename="../main.cpp" line="438"/>
+        <location filename="../main.cpp" line="444"/>
+        <location filename="../main.cpp" line="466"/>
+        <location filename="../main.cpp" line="472"/>
         <source>Programmfehler</source>
         <translation>Programfel</translation>
     </message>
     <message>
-        <location filename="../main.cpp" line="446"/>
-        <location filename="../main.cpp" line="474"/>
+        <location filename="../main.cpp" line="444"/>
+        <location filename="../main.cpp" line="472"/>
         <source>Unbekannter Fehler.</source>
         <translation>Okänt fel.</translation>
     </message>
@@ -4604,13 +4619,13 @@ Installerad version: %2</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1906"/>
-        <location filename="../tababfuellen.cpp" line="46"/>
+        <location filename="../tababfuellen.cpp" line="47"/>
         <source>Bemerkung Gärung &amp; Reifung</source>
         <translation>Anteckningar om jäsning &amp; mognadstidens</translation>
     </message>
     <message>
         <location filename="../tababfuellen.ui" line="1923"/>
-        <location filename="../tababfuellen.cpp" line="45"/>
+        <location filename="../tababfuellen.cpp" line="46"/>
         <source>Bemerkung Abfüllen</source>
         <translation>Anteckningar om flasktappning</translation>
     </message>
@@ -4635,49 +4650,49 @@ Installerad version: %2</translation>
         <translation>Satsen förbrukad</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="361"/>
+        <location filename="../tababfuellen.cpp" line="360"/>
         <source>Zutaten Gärung</source>
         <translation>Ingredienser under jäsning</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="362"/>
+        <location filename="../tababfuellen.cpp" line="361"/>
         <source>Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.</source>
         <translation>Inte alla ingredienser för jäsningen har tillagts eller tagits ur ännu.</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="363"/>
-        <location filename="../tababfuellen.cpp" line="374"/>
-        <location filename="../tababfuellen.cpp" line="382"/>
+        <location filename="../tababfuellen.cpp" line="362"/>
+        <location filename="../tababfuellen.cpp" line="373"/>
+        <location filename="../tababfuellen.cpp" line="381"/>
         <source>Soll der Sud trotzdem als abgefüllt markiert werden?</source>
         <translation>Markera satsen som flaska?</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="372"/>
+        <location filename="../tababfuellen.cpp" line="371"/>
         <source>Grünschlauchzeitpunkt nicht erreicht</source>
         <translation>Tidpunkten för &quot;grön&quot; tappning har inte kommit ännu</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="373"/>
+        <location filename="../tababfuellen.cpp" line="372"/>
         <source>Der Grünschlauchzeitpunkt wurde noch nicht erreicht.</source>
         <translation>Tidpunkten för &quot;grön&quot; tappning har inte kommit ännu.</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="380"/>
+        <location filename="../tababfuellen.cpp" line="379"/>
         <source>Schnellgärprobe</source>
         <translation>Snabbjäsningsprovet</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="381"/>
+        <location filename="../tababfuellen.cpp" line="380"/>
         <source>Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe.</source>
         <translation>Extrakthalten i ölet är lägre än i snabbjäsningsprovet.</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="390"/>
+        <location filename="../tababfuellen.cpp" line="389"/>
         <source>Sud als abgefüllt markieren?</source>
         <translation>Markera satsen som flaska?</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="391"/>
+        <location filename="../tababfuellen.cpp" line="390"/>
         <source>Soll der Sud als abgefüllt markiert werden?
 
 Abfülldatum: %1</source>
@@ -4686,12 +4701,12 @@ Abfülldatum: %1</source>
 Tid för flasktappning: %1</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="409"/>
+        <location filename="../tababfuellen.cpp" line="410"/>
         <source>Sud als verbraucht markieren?</source>
         <translation>Markera satsen förbrukad?</translation>
     </message>
     <message>
-        <location filename="../tababfuellen.cpp" line="410"/>
+        <location filename="../tababfuellen.cpp" line="411"/>
         <source>Soll der Sud als verbraucht markiert werden?</source>
         <translation>Markera satsen förbrukad?</translation>
     </message>
@@ -5734,17 +5749,17 @@ Tid för flasktappning: %1</translation>
         <translation>Satsen bryggd</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.cpp" line="54"/>
+        <location filename="../tabbraudaten.cpp" line="56"/>
         <source>Bemerkung Braudaten</source>
         <translation>Kommentar bryggning</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.cpp" line="478"/>
+        <location filename="../tabbraudaten.cpp" line="460"/>
         <source>Sud als gebraut markieren?</source>
         <translation>Markera sats som bryggt?</translation>
     </message>
     <message>
-        <location filename="../tabbraudaten.cpp" line="479"/>
+        <location filename="../tabbraudaten.cpp" line="461"/>
         <source>Soll der Sud als gebraut markiert werden?
 
 Braudatum: %1</source>
@@ -5966,53 +5981,53 @@ Bryggdatum: %1</translation>
         <translation>Alternativ SVG visare</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="226"/>
+        <location filename="../tabetikette.cpp" line="227"/>
         <source>Änderungen speichern?</source>
         <translation>Spara ändringarna?</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="227"/>
+        <location filename="../tabetikette.cpp" line="228"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
         <translation>Spara ändringarna?</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="298"/>
+        <location filename="../tabetikette.cpp" line="299"/>
         <source>SVG auswählen</source>
         <translation>Välj SVG</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="298"/>
+        <location filename="../tabetikette.cpp" line="299"/>
         <source>SVG (*.svg)</source>
         <translation>SVG (*.svg)</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="378"/>
+        <location filename="../tabetikette.cpp" line="379"/>
         <source>SVG exportieren</source>
         <translation>Exportera SVG</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="398"/>
+        <location filename="../tabetikette.cpp" line="399"/>
         <source>SVG Export</source>
         <translation>SVG-export</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="398"/>
+        <location filename="../tabetikette.cpp" line="399"/>
         <source>Die Datei konnte nicht geschrieben werden.</source>
         <translation>Filen kunde inte skrivas.</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="583"/>
+        <location filename="../tabetikette.cpp" line="584"/>
         <source>PDF speichern unter</source>
         <translation>Spara PDF som</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="379"/>
-        <location filename="../tabetikette.cpp" line="584"/>
+        <location filename="../tabetikette.cpp" line="380"/>
+        <location filename="../tabetikette.cpp" line="585"/>
         <source>Etikett</source>
         <translation>Etiketter</translation>
     </message>
     <message>
-        <location filename="../tabetikette.cpp" line="706"/>
+        <location filename="../tabetikette.cpp" line="707"/>
         <source>Neuer Tag</source>
         <translation>Nytt nyckelord</translation>
     </message>
@@ -6021,7 +6036,7 @@ Bryggdatum: %1</translation>
     <name>TabGaerverlauf</name>
     <message>
         <location filename="../tabgaerverlauf.ui" line="38"/>
-        <location filename="../tabgaerverlauf.cpp" line="152"/>
+        <location filename="../tabgaerverlauf.cpp" line="153"/>
         <source>Schnellgärprobe</source>
         <translation>Snabbjäsningsprov</translation>
     </message>
@@ -6161,26 +6176,26 @@ Bryggdatum: %1</translation>
         <translation type="vanished">Tryck [bar]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="344"/>
-        <location filename="../tabgaerverlauf.cpp" line="366"/>
+        <location filename="../tabgaerverlauf.cpp" line="345"/>
+        <location filename="../tabgaerverlauf.cpp" line="367"/>
         <source>Restextrakt</source>
         <translation>Restsötma (FG)</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="345"/>
-        <location filename="../tabgaerverlauf.cpp" line="367"/>
+        <location filename="../tabgaerverlauf.cpp" line="346"/>
+        <location filename="../tabgaerverlauf.cpp" line="368"/>
         <source>Alkohol</source>
         <translation>Alkohol</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="346"/>
-        <location filename="../tabgaerverlauf.cpp" line="368"/>
-        <location filename="../tabgaerverlauf.cpp" line="393"/>
+        <location filename="../tabgaerverlauf.cpp" line="347"/>
+        <location filename="../tabgaerverlauf.cpp" line="369"/>
+        <location filename="../tabgaerverlauf.cpp" line="394"/>
         <source>Temperatur</source>
         <translation>Temperatur</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="391"/>
+        <location filename="../tabgaerverlauf.cpp" line="392"/>
         <source>CO₂</source>
         <translation></translation>
     </message>
@@ -6189,34 +6204,34 @@ Bryggdatum: %1</translation>
         <translation type="vanished">bar</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="392"/>
+        <location filename="../tabgaerverlauf.cpp" line="393"/>
         <source>Druck</source>
         <translation>Tryck</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="463"/>
-        <location filename="../tabgaerverlauf.cpp" line="594"/>
-        <location filename="../tabgaerverlauf.cpp" line="629"/>
+        <location filename="../tabgaerverlauf.cpp" line="464"/>
+        <location filename="../tabgaerverlauf.cpp" line="595"/>
+        <location filename="../tabgaerverlauf.cpp" line="630"/>
         <source>CSV Datei auswählen</source>
         <translation>Välj CSV-fil</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="465"/>
-        <location filename="../tabgaerverlauf.cpp" line="596"/>
-        <location filename="../tabgaerverlauf.cpp" line="631"/>
+        <location filename="../tabgaerverlauf.cpp" line="466"/>
+        <location filename="../tabgaerverlauf.cpp" line="597"/>
+        <location filename="../tabgaerverlauf.cpp" line="632"/>
         <source>CSV Datei (*.csv);;Alle Dateien (*.*)</source>
         <translation>CSV-fil (*.csv);;Alla filer (*.*)</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="759"/>
-        <location filename="../tabgaerverlauf.cpp" line="834"/>
-        <location filename="../tabgaerverlauf.cpp" line="908"/>
+        <location filename="../tabgaerverlauf.cpp" line="760"/>
+        <location filename="../tabgaerverlauf.cpp" line="835"/>
+        <location filename="../tabgaerverlauf.cpp" line="909"/>
         <source>Gärverlauf</source>
         <translation>Jäsning</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="760"/>
-        <location filename="../tabgaerverlauf.cpp" line="835"/>
+        <location filename="../tabgaerverlauf.cpp" line="761"/>
+        <location filename="../tabgaerverlauf.cpp" line="836"/>
         <source>Nicht alle Einträge konnten importiert werden.
 Unterstütztes Format:
 Datum1;Restextrakt1;Temperatur1[;Bemerkung1]
@@ -6227,7 +6242,7 @@ Datum1;Restextrakt1;Temperatur1[;Kommentar1]
 Datum2;Restextrakt2;Temperatur2[;Kommentar2]</translation>
     </message>
     <message>
-        <location filename="../tabgaerverlauf.cpp" line="909"/>
+        <location filename="../tabgaerverlauf.cpp" line="910"/>
         <source>Nicht alle Einträge konnten importiert werden.
 Unterstütztes Format:
 Datum1;Druck1;Temperatur1[;Bemerkung1]
@@ -6382,7 +6397,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="667"/>
-        <location filename="../tabrezept.cpp" line="1557"/>
+        <location filename="../tabrezept.cpp" line="1559"/>
         <source>Kategorie</source>
         <translation>Kategori</translation>
     </message>
@@ -6529,7 +6544,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
         <translation>Andelen avser</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="702"/>
+        <location filename="../tabrezept.cpp" line="704"/>
         <source>Die Berechnung der Hopfengaben ist deaktiviert.</source>
         <translation>Humleberäkningen är avaktiverat.</translation>
     </message>
@@ -6546,7 +6561,7 @@ Datum2;Tryck2;Temperatur2[;Kommentar2]</translation>
     </message>
     <message>
         <location filename="../tabrezept.ui" line="2118"/>
-        <location filename="../tabrezept.cpp" line="278"/>
+        <location filename="../tabrezept.cpp" line="280"/>
         <source>Wasseraufbereitung</source>
         <translation>Vattenanpassning</translation>
     </message>
@@ -7137,12 +7152,12 @@ p, li { white-space: pre-wrap; }
         <translation>Korrektion av målängden</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="449"/>
+        <location filename="../tabrezept.cpp" line="451"/>
         <source>Rohstoff importieren?</source>
         <translation>Importera ingrediens?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="437"/>
+        <location filename="../tabrezept.cpp" line="439"/>
         <source>Das Malz &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
         <translation>Malt &quot;%1&quot; finns inte i lagret. Ska det läggas till?</translation>
     </message>
@@ -7151,112 +7166,112 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Allmän kommentar</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="142"/>
+        <location filename="../tabrezept.cpp" line="144"/>
         <source>Bemerkung Rezept</source>
         <translation>Kommentar recept</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="143"/>
+        <location filename="../tabrezept.cpp" line="145"/>
         <source>Bemerkung Maischen</source>
         <translation>Kommentar mäskning</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="144"/>
+        <location filename="../tabrezept.cpp" line="146"/>
         <source>Bemerkung Kochen</source>
         <translation>Kommentar kokning</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="145"/>
+        <location filename="../tabrezept.cpp" line="147"/>
         <source>Bemerkung Gärung</source>
         <translation>Kommentar jäsning</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="146"/>
+        <location filename="../tabrezept.cpp" line="148"/>
         <source>Bemerkung Maischplan</source>
         <translation>Kommentar mäskschema</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="147"/>
+        <location filename="../tabrezept.cpp" line="149"/>
         <source>Bemerkung Wasseraufbereitung</source>
         <translation>Kommentar vattenanpassning</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="440"/>
+        <location filename="../tabrezept.cpp" line="442"/>
         <source>Der Hopfen &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
         <translation>Humlen &quot;%1&quot; finns inte i lagret. Ska den läggas till?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="443"/>
+        <location filename="../tabrezept.cpp" line="445"/>
         <source>Die Hefe &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
         <translation>Jäst &quot;%1&quot; finns inte i lagret. Ska den läggas till?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="446"/>
+        <location filename="../tabrezept.cpp" line="448"/>
         <source>Die Zutat &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?</source>
         <translation>Ingrediensen &quot;%1&quot; finns inte i lagret. Ska den läggas till?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="680"/>
+        <location filename="../tabrezept.cpp" line="682"/>
         <source>sehr mild</source>
         <translation>mycket mild</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="682"/>
+        <location filename="../tabrezept.cpp" line="684"/>
         <source>mild</source>
         <translation>mild</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="684"/>
+        <location filename="../tabrezept.cpp" line="686"/>
         <source>ausgewogen</source>
         <translation>balanserad</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="686"/>
+        <location filename="../tabrezept.cpp" line="688"/>
         <source>moderat herb</source>
         <translation>något besk</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="688"/>
+        <location filename="../tabrezept.cpp" line="690"/>
         <source>sehr herb</source>
         <translation>mycket besk</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="706"/>
+        <location filename="../tabrezept.cpp" line="708"/>
         <source>Die Summe der angegebenen Hopfenmengen entspricht nicht der Gesamtmenge.</source>
         <translation>Summan av angiva maltmängder motsvarar inte totalmängden.</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="710"/>
+        <location filename="../tabrezept.cpp" line="712"/>
         <source>Die Summe der angegebenen Anteile an Bittere entspricht nicht der Gesamtbittere.</source>
         <translation>Summan av beska-värdena matchar inte totala beskan.</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="829"/>
+        <location filename="../tabrezept.cpp" line="831"/>
         <source>Einmaischen</source>
         <translation>Mäska in</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="835"/>
+        <location filename="../tabrezept.cpp" line="837"/>
         <source>Aufheizen</source>
         <translation>Uppvärmning</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1319"/>
+        <location filename="../tabrezept.cpp" line="1321"/>
         <source>Vergärungsgrad übernehmen?</source>
         <translation>Ta över förjäsningsgrad?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1320"/>
+        <location filename="../tabrezept.cpp" line="1322"/>
         <source>Soll der Vergärungsgrad der Hefe (%1%) übernommen werden?</source>
         <translation>Ska jästens förjäsningsgrad (%1%) tas över?</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1558"/>
+        <location filename="../tabrezept.cpp" line="1560"/>
         <source>Sudkategorien verwalten</source>
         <translation>Förvalta satskategorierna</translation>
     </message>
     <message>
-        <location filename="../tabrezept.cpp" line="1594"/>
+        <location filename="../tabrezept.cpp" line="1602"/>
         <source>Neuer Tag</source>
         <translation>Nytt nyckelord</translation>
     </message>
@@ -7454,35 +7469,35 @@ p, li { white-space: pre-wrap; }
         <translation>Läs en</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="225"/>
+        <location filename="../tabsudauswahl.cpp" line="216"/>
         <source>Sud merken</source>
         <translation>Märk satsen</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="234"/>
+        <location filename="../tabsudauswahl.cpp" line="225"/>
         <source>Sud verbraucht</source>
         <translation>Satsen förbrukad</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="406"/>
+        <location filename="../tabsudauswahl.cpp" line="397"/>
         <source>Neuer Sud</source>
         <translation>Ny sats</translation>
     </message>
     <message>
+        <location filename="../tabsudauswahl.cpp" line="431"/>
         <location filename="../tabsudauswahl.cpp" line="440"/>
-        <location filename="../tabsudauswahl.cpp" line="449"/>
         <source>Kopie</source>
         <translation>Kopia</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="504"/>
-        <location filename="../tabsudauswahl.cpp" line="524"/>
+        <location filename="../tabsudauswahl.cpp" line="495"/>
+        <location filename="../tabsudauswahl.cpp" line="515"/>
         <source>Sud löschen?</source>
         <translation>Ta bort satsen?</translation>
     </message>
     <message>
-        <location filename="../tabsudauswahl.cpp" line="505"/>
-        <location filename="../tabsudauswahl.cpp" line="525"/>
+        <location filename="../tabsudauswahl.cpp" line="496"/>
+        <location filename="../tabsudauswahl.cpp" line="516"/>
         <source>Soll der Sud &quot;%1&quot; gelöscht werden?</source>
         <translation>Ta bort satsen &quot;%1&quot;?</translation>
     </message>
@@ -7584,7 +7599,7 @@ p, li { white-space: pre-wrap; }
         <translation>Öppna</translation>
     </message>
     <message>
-        <location filename="../widgets/wdganhang.cpp" line="96"/>
+        <location filename="../widgets/wdganhang.cpp" line="98"/>
         <source>Anhang auswählen</source>
         <translation>Välj bilaga</translation>
     </message>
@@ -7620,7 +7635,7 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgbewertung.cpp" line="69"/>
+        <location filename="../widgets/wdgbewertung.cpp" line="71"/>
         <source>Woche</source>
         <translation>Vecka</translation>
     </message>
@@ -7981,7 +7996,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../widgets/wdgrast.ui" line="59"/>
         <location filename="../widgets/wdgrast.cpp" line="196"/>
-        <location filename="../widgets/wdgrast.cpp" line="312"/>
+        <location filename="../widgets/wdgrast.cpp" line="316"/>
         <source>Einmaischen</source>
         <translation>Mäska in</translation>
     </message>
@@ -8017,7 +8032,7 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../widgets/wdgrast.ui" line="69"/>
-        <location filename="../widgets/wdgrast.cpp" line="318"/>
+        <location filename="../widgets/wdgrast.cpp" line="322"/>
         <source>Zubrühen</source>
         <translation>Ge vatten</translation>
     </message>
@@ -8092,12 +8107,12 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Koktid</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="478"/>
+        <location filename="../widgets/wdgrast.ui" line="313"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine zusätzliche Rast für eine &lt;span style=&quot; font-weight:600;&quot;&gt;Teilmaische &lt;/span&gt;bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Dekoktion&lt;/span&gt; eingegeben.&lt;/p&gt;&lt;p&gt;Diese Wassermenge ist &lt;span style=&quot; font-weight:600;&quot;&gt;nicht identisch &lt;/span&gt;mit der gewünschten &lt;span style=&quot; font-weight:600;&quot;&gt;Biermenge&lt;/span&gt;. Die tatsächliche Menge ergibt sich mit der Gesamtmaische.&lt;/p&gt;&lt;p&gt;Es gibt verschiedene Möglichkeiten der Dekoktion. Allen gemein ist, dass Dekoktion zeitaufwendig ist. Das Hoch-Kurz-Verfahren ist das schnellste. Gängige Verfahren sind die Einfach-, Zweifach- und Dreifachmaische.&lt;/p&gt;&lt;p&gt;Bei Fragen zu Vor- und Nachteilen der einzelnen Verfahrensmöglichkeiten hilft ein Blick ins Fachbuch oder die Beratung in einem Fachforum.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="352"/>
+        <location filename="../widgets/wdgrast.ui" line="453"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil für eine &lt;span style=&quot; font-weight:600;&quot;&gt;Teilmaische &lt;/span&gt;in der Dekoktion&lt;span style=&quot; font-weight:600;&quot;&gt; manuell&lt;/span&gt; angepasst. Mit der Wahl einer Teilmaische trägt der Kleine Brauhelfer hier den &lt;span style=&quot; font-weight:600;&quot;&gt;Teilfaktor&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;automatisch&lt;/span&gt; ein. Somit muss dieser Wert in der Regel nicht angepasst werden. &lt;/p&gt;&lt;p&gt;Bei der Dektokotion sind Teilsude von 33% oder 60% üblich. Für Abweichungen davon ist dieses Feld gedacht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8106,12 +8121,12 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">kg</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="219"/>
+        <location filename="../widgets/wdgrast.ui" line="564"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Einmaischtemperatur&lt;/span&gt; beziehungsweise &lt;span style=&quot; font-weight:600;&quot;&gt;Rasttemperatur&lt;/span&gt; der gewählten Raststufe oder &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptmaische &lt;/span&gt;in der &lt;span style=&quot; font-weight:600;&quot;&gt;Dekoktion &lt;/span&gt;angegeben.&lt;/p&gt;&lt;p&gt;Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes herausarbeitet. Beispielsweise ist das bei der Kombirast (Diastaserast) Trockenheit oder Malzigkeit. Während bei einer Kombirast eine Rast &lt;span style=&quot; font-weight:600;&quot;&gt;einstufig &lt;/span&gt;gefahren und dann kurz zum Abmaischen hochgeheizt wird, kann das Aufheizverfahren auch &lt;span style=&quot; font-weight:600;&quot;&gt;mehrstufig&lt;/span&gt; gefahren werden.&lt;/p&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Rasttemperatur&lt;/span&gt; der gewählten Raststufe beim &lt;span style=&quot; font-weight:600;&quot;&gt;Zubrühen&lt;/span&gt; (Infusion, Bottichmaische) angegeben. Jede Raststufe bewegt sich in einem eigenen Temperaturbereich, der verschiedene Eigenarten des Rohstoffes unterschiedlich betont und herausarbeitet.&lt;/p&gt;&lt;p&gt;Beliebt sind beim Zubrühen folgende Rasten, um bestimmte Geschmacksnoten zu betonen oder eben nicht:&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Raststufen &lt;/span&gt;sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Vorlösen&lt;/span&gt; 18 – 30 °C – zur Vorbereitung des Malzes, heute nicht mehr nötig&lt;/p&gt;&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Gummirast&lt;/span&gt; 35 – 40°C – baut Glukane bei Roggen ab, bei Roggenbieren&lt;/p&gt;&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Weizenrasten&lt;/span&gt; 45°C und 48 °C – bei Weizen für Nelkengeschmack&lt;/p&gt;&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Eiweißrast&lt;/span&gt; 50 – 58°C – Schaumbildung, bei Weizen für ungelöste Eiweiße&lt;/p&gt;&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Maltoserast&lt;/span&gt; 60 – 65°C – β-Amylasen spalten Stärke in vergärbaren Zucker &lt;/p&gt;&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Kombirast&lt;/span&gt; 66 –69°C – Kombination für β- und ɑ-Amylasen&lt;/p&gt;&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;Verzuckerung&lt;/span&gt; 68 – 76°C – ɑ-Amylasen sorgen für Vollmundigkeit und Geschmack&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/td&gt;&lt;td/&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Die Raststufen sind mithin eines der komplexesten Kapitel beim Brauen. Ihre Kenntnis gibt dem Brauer eine Geschmacksidee bei der Rezeptentwikcklung an die Hand. Für tiefere Kenntnisse sind bei diesem Thema Fachbücher unumgänglich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="244"/>
+        <location filename="../widgets/wdgrast.ui" line="644"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die zugeschüttete &lt;span style=&quot; font-weight:700;&quot;&gt;Malzmenge&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8120,42 +8135,42 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">%</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="327"/>
+        <location filename="../widgets/wdgrast.ui" line="236"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der zugegebene prozentuale &lt;span style=&quot; font-weight:600;&quot;&gt;Anteil&lt;/span&gt; am &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; festgelegt. Die Summe aller Anteile muss 100% entsprechen.&lt;/p&gt;&lt;p&gt;Die verschiedenen Maischverfahren gehen hierbei unterschiedlich vor:&lt;/p&gt;&lt;p&gt;1.) Beim Aufheizverfahren (Kesselmaische) legt der Kleine Brauhelfer automatisch 100% fest. Wir zugebrüht, zugeschüttet oder eine Dekoktion gefahren, wird hier der Anteil am Hauptguss manuell gestgelegt.&lt;/p&gt;&lt;p&gt;Üblicherweise gibt man beim &lt;span style=&quot; font-weight:600; color:#0000ff;&quot;&gt;Aufheizen&lt;/span&gt; 100% vom Hauptguss hinzu. Ausnahmen bestehen, wenn schlecht gelöste Rohfrucht separat gekocht werden muss. Bei Mais und Verwandten sind in Spezialfragen die Fachforen erste Adresse, weniger die Fachbücher.&lt;/p&gt;&lt;p&gt;Beim Zubrühen (Infusion, Bottichmaische) den Verfahren &lt;span style=&quot; font-weight:600;&quot;&gt;aufsteigende Infusion &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;Dekoktion&lt;/span&gt; wird mit &lt;span style=&quot; font-weight:600;&quot;&gt;Teilmaischen&lt;/span&gt; gearbeitet.&lt;/p&gt;&lt;p&gt;2.) Das &lt;span style=&quot; font-weight:600; color:#0000ff;&quot;&gt;Zubrühen&lt;/span&gt; hat gegenüber Dekoktion den Vorteil, dass weniger Lufteintrag erfolgt. Das Bier wird heller. Üblicherweise wird hier schon bei 50°C zur Eiweißrast für 30 min eingemaischt, dann die &lt;span style=&quot; font-weight:600;&quot;&gt;β-Amylase&lt;/span&gt; während der &lt;span style=&quot; font-weight:600;&quot;&gt;Maltoserast&lt;/span&gt; für 60 min gefahren und für weitere 60 min die &lt;span style=&quot; font-weight:600;&quot;&gt;ɑ-Amylase&lt;/span&gt; als &lt;span style=&quot; font-weight:600;&quot;&gt;Verzuckerungsrast&lt;/span&gt; bei 70–72 °C gefahren. Maischen im Zubrühverfahren ist zeitaufwendig. Unter 2 Stunden bezeichnet man es daher als &lt;span style=&quot; font-weight:600;&quot;&gt;Kurzmaischverfahren&lt;/span&gt;. Hier wird überlicherweise ab 60–62°C eingemaischt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt;3.) Bei der &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-weight:600; color:#0000ff;&quot;&gt;Dekoktion&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; wird in mehreren Schritten ein Teil der Maische in der kleineren Maischpfanne aufgekocht und danach wieder der Hauptmaische im größeren Maischebottich zugeführt. Die Temperatur der ganzen Maische steigt somit schrittweise an. Dieser Vorgang wird mehrmals wiederholt, bis die Abmaischtemperatur erreicht ist.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt;Das Kochen der &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-weight:600;&quot;&gt;Teilmaische&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; verändert die Extraktstoffe, führt zu anderen Aromen, mehr Farbe und allenfalls einer angenehmen Restsüße. Unterschieden wird das &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-style:italic;&quot;&gt;Einmaischverfahren&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; (für Biere aller Art), das &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-style:italic;&quot;&gt;Zweimaischverfahren&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; (für helle Biere) und das &lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;; font-style:italic;&quot;&gt;Dreimaischverfahren&lt;/span&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt; (für dunkle Biere). Für Ungedulige gibt es da Hoch-Kurz-Verfahren.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:&apos;Helvetica Neue&apos;;&quot;&gt;Für Näheres hierzu ziehe man die Fachliteratur oder ein Fachforum heran.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="371"/>
+        <location filename="../widgets/wdgrast.ui" line="508"/>
         <source>Teilmaische</source>
         <translation>Delmäskens storlek</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="414"/>
+        <location filename="../widgets/wdgrast.ui" line="715"/>
         <source>Hauptguss</source>
         <translation>Mäskvatten</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="427"/>
+        <location filename="../widgets/wdgrast.ui" line="676"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Wassermenge&lt;/span&gt; für eine &lt;span style=&quot; font-weight:600;&quot;&gt;Teilmaische &lt;/span&gt;bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Dekoktion&lt;/span&gt; eingegeben.&lt;/p&gt;&lt;p&gt;Diese Wassermenge ist &lt;span style=&quot; font-weight:600;&quot;&gt;nicht identisch &lt;/span&gt;mit der gewünschten &lt;span style=&quot; font-weight:600;&quot;&gt;Biermenge&lt;/span&gt;. Die tatsächliche Menge ergibt sich mit der Gesamtmaische.&lt;/p&gt;&lt;p&gt;Es gibt verschiedene Möglichkeiten der Dekoktion. Allen gemein ist, dass Dekoktion zeitaufwendig ist. Das Hoch-Kurz-Verfahren ist das schnellste. Gängige Verfahren sind die Einfach-, Zweifach- und Dreifachmaische.&lt;/p&gt;&lt;p&gt;Bei Fragen zu Vor- und Nachteilen der einzelnen Verfahrensmöglichkeiten hilft ein Blick ins Fachbuch oder die Beratung in einem Fachforum.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="465"/>
+        <location filename="../widgets/wdgrast.ui" line="287"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Einmaischdauer&lt;/span&gt; beziehungsweise &lt;span style=&quot; font-weight:600;&quot;&gt;Rastdauer&lt;/span&gt; oder &lt;span style=&quot; font-weight:600;&quot;&gt;Absetzdauer&lt;/span&gt; der Schüttung (Dekoktion) eingestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="517"/>
+        <location filename="../widgets/wdgrast.ui" line="663"/>
         <source>Kochen</source>
         <translation>Kokning</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="556"/>
+        <location filename="../widgets/wdgrast.ui" line="741"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der zugegebene prozentuale &lt;span style=&quot; font-weight:600;&quot;&gt;Anteil&lt;/span&gt; der &lt;span style=&quot; font-weight:700;&quot;&gt;Malzschüttung&lt;/span&gt; festgelegt. Die Summe aller Anteile muss 100% entsprechen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="581"/>
+        <location filename="../widgets/wdgrast.ui" line="534"/>
         <location filename="../widgets/wdgrast.cpp" line="201"/>
         <location filename="../widgets/wdgrast.cpp" line="204"/>
         <location filename="../widgets/wdgrast.cpp" line="208"/>
@@ -8163,27 +8178,27 @@ p, li { white-space: pre-wrap; }
         <translation>Rast</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="607"/>
+        <location filename="../widgets/wdgrast.ui" line="208"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Wassertemperatur &lt;/span&gt;eingegeben.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer rechnet die Wassertemperatur beim &lt;span style=&quot; font-weight:700;&quot;&gt;Einmaischen&lt;/span&gt; aus der Differenz von gewählter Einmaischtemperatur und Schüttungstemperatur hoch.&lt;/p&gt;&lt;p&gt;Mit Ausnahme von Verfahren, bei denen bei Zimmertemperatur eingemaischt wird, liegt die Wassertemperatur meist mit &lt;span style=&quot; font-weight:600;&quot;&gt;3-4°C höher als &lt;/span&gt;die &lt;span style=&quot; font-weight:600;&quot;&gt;Einmaischtemperatur&lt;/span&gt; und damit der ersten Raststufe. Der Kleine Brauhelfer verechnet die Temperaturdifferenzen von Schüttung und Wasser automatisch und gibt dafür den Wert Wassertemperatur aus.&lt;/p&gt;&lt;p&gt;Die Wassertemperatur beim Einmaischen ist abhängig vom unten eingegebenen Wert. Üblicherweise ist dieser Wert identisch mit der ersten Raststufe. Es gibt indes auch Rezepte, bei denen die Einmaischtemperatur bewusst niedriger als die der ersten Raststufe angesetzt ist. &lt;/p&gt;&lt;p&gt;Bei Fragen hierzu sind die Fachforen erstse Adresse.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="661"/>
+        <location filename="../widgets/wdgrast.ui" line="409"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berechnet der kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochdauer&lt;/span&gt; einer &lt;span style=&quot; font-weight:600;&quot;&gt;Kochmaische&lt;/span&gt; in der Dekoktion.&lt;/p&gt;&lt;p&gt;Eine Kochmaische kann dabei eine &lt;span style=&quot; font-weight:600;&quot;&gt;Dickmaische&lt;/span&gt; als auch eine &lt;span style=&quot; font-weight:600;&quot;&gt;Dünnmaische&lt;/span&gt; sein, die sich aus der gewählten Rast ergibt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="674"/>
+        <location filename="../widgets/wdgrast.ui" line="402"/>
         <source>Schüttung</source>
         <translation>Malt o dyl</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="687"/>
+        <location filename="../widgets/wdgrast.ui" line="380"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Malztemperatur&lt;/span&gt; eingetragen. Der Kleine Brauhelfer geht zunächst automatisch von einer niedrigen Zimmertemperatur bei &lt;span style=&quot; font-weight:600;&quot;&gt;18 °C&lt;/span&gt; aus.&lt;/p&gt;&lt;p&gt;Andere Temperatureinträge sind hier jedoch nötig, wenn das Malz etwa in einem kalten Schuppen im Winter gelagert wird. Durch die schiere Masse der Schüttung kann sich die Einmaischtemperatur stark verändern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="748"/>
+        <location filename="../widgets/wdgrast.ui" line="176"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die zugegebene &lt;span style=&quot; font-weight:600;&quot;&gt;Wassermenge&lt;/span&gt; angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8196,7 +8211,7 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">Tid för att sjunka ner</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="394"/>
+        <location filename="../widgets/wdgrast.ui" line="488"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier berechnet der kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Rastdauer&lt;/span&gt; vor einer &lt;span style=&quot; font-weight:600;&quot;&gt;Kochmaische&lt;/span&gt; in der Dekoktion.&lt;/p&gt;&lt;p&gt;Eine Rast ist in der Dekoktion einer Kochmaische vorgeschaltet. Die Rastzeiten ergeben sich aus dem Absetzen, der eigentlichen Rast und dem Kochen.&lt;/p&gt;&lt;p&gt;Eine Kochmaische kann dabei eine &lt;span style=&quot; font-weight:600;&quot;&gt;Dickmaische&lt;/span&gt; als auch eine &lt;span style=&quot; font-weight:600;&quot;&gt;Dünnmaische&lt;/span&gt; sein, die sich aus der gewählten Rast ergibt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8205,7 +8220,7 @@ p, li { white-space: pre-wrap; }
         <translation type="vanished">% av hela mäsken</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="626"/>
+        <location filename="../widgets/wdgrast.ui" line="422"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; für eine &lt;span style=&quot; font-weight:600;&quot;&gt;Teilmaische &lt;/span&gt;in der &lt;span style=&quot; font-weight:600;&quot;&gt;Dekoktion &lt;/span&gt;gewählt.&lt;/p&gt;&lt;p&gt;Die verschiedenen Maischen in der Dekoktion einzustellen, ist ein komplexter Prozess. &lt;/p&gt;&lt;p&gt;Beispiel anhand eines 20l-Sudes:&lt;/p&gt;&lt;p&gt;• Eine Dickmaische 8l setzt sich als Teilmaische 10 Minuten ab, rastet dann10 min bei 70 °C, kocht dann 10 min.&lt;/p&gt;&lt;p&gt;• Parallel dazu rastet die Hauptmaische bei 52 °C. Mit der zugefügten Dickmaische erreicht man 64 °C.&lt;/p&gt;&lt;p&gt;• Die zweite Kochmaische 8l lässt man ebenfalls bei 70 °C rasten und kocht dann 10 min. &lt;/p&gt;&lt;p&gt;• Hinzugefügt zur Hauptmaische ergibt das 73 °C. Diese lässt man dann 45 min rasten.&lt;/p&gt;&lt;p&gt;Bei Fragen hilft vor allem Brauiteratur für ältere Brauverfahren sowie gute Fachforen, wie das &lt;a href=&quot;https://hobbybrauer.de/forum/viewforum.php?f=17&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Forum Rezepte&lt;/span&gt;&lt;/a&gt; auf Hobbybrauer.de&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation type="unfinished"></translation>
     </message>
@@ -8239,7 +8254,7 @@ p, li { white-space: pre-wrap; }
         <translation>Maltosrast</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.cpp" line="321"/>
+        <location filename="../widgets/wdgrast.cpp" line="325"/>
         <source>Teilschüttung</source>
         <translation>Delmäskens storlek</translation>
     </message>
@@ -8249,7 +8264,7 @@ p, li { white-space: pre-wrap; }
         <translation>Sjunker ner</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgrast.ui" line="722"/>
+        <location filename="../widgets/wdgrast.ui" line="708"/>
         <location filename="../widgets/wdgrast.cpp" line="17"/>
         <source>Zwischenrast</source>
         <translation>Mellanrast</translation>
@@ -8462,27 +8477,27 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="155"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="153"/>
         <source>PDF speichern unter</source>
         <translation>Spara PDF som</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="193"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="191"/>
         <source>Änderungen speichern?</source>
         <translation>Spara ändringarna?</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="194"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="192"/>
         <source>Sollen die Änderungen gespeichert werden?</source>
         <translation>Spara ändringarna?</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="238"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="236"/>
         <source>Template wiederherstellen?</source>
         <translation>Återställ mallen?</translation>
     </message>
     <message>
-        <location filename="../widgets/wdgwebvieweditable.cpp" line="239"/>
+        <location filename="../widgets/wdgwebvieweditable.cpp" line="237"/>
         <source>Soll das Standardtemplate wiederhergestellt werden?</source>
         <translation>Äterställ standardmallen?</translation>
     </message>

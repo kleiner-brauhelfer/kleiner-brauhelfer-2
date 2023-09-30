@@ -10,7 +10,7 @@ TARGET = kleiner-brauhelfer-2
 
 VER_MAJ = 2
 VER_MIN = 6
-VER_PAT = 0
+VER_PAT = 1
 VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
 

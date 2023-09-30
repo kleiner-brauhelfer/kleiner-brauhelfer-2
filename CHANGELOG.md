@@ -1,7 +1,7 @@
 # Changelog
 
-## Version 2.6.1 (in Entwicklung)
-- Neu: Einzelne Änderungen lassen sich rückgängig machen (noch nicht durchgängig)
+## Version 2.6.1 (30.09.2023)
+- Neu: Änderungen in Eingabefelder lassen sich rückgängig machen (nicht durchgängig implementiert)
 - Fix: Absturz bei leeren Diagrammen (Gärverlauf)
 - Fix: Verdünnungswerte beim Sud kopieren zurücksetzen
 - Fix: Dekoktion überarbeitet

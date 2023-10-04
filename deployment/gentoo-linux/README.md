@@ -2,17 +2,24 @@
 1. Configure a local overlay
 Run:
 
-    eselect repository create local
+````
+eselect repository create local
+````
 
 2. Copy ebuild to local overlay
 
-    mkdir -p /var/db/repos/local/sci-chemistry/kleiner-brauhelfer/
-    cp deployment/gentoo-linux/*.ebuild /var/db/repos/local/sci-chemistry/kleiner-brauhelfer/
+````
+mkdir -p /var/db/repos/local/sci-chemistry/kleiner-brauhelfer/
+cp deployment/gentoo-linux/*.ebuild /var/db/repos/local/sci-chemistry/kleiner-brauhelfer/
+````
 
 3. Create manifests
 
-    ebuild /var/db/repos/local/sci-chemistry/kleiner-brauhelfer/*.ebuild digest
-
+````
+ ebuild /var/db/repos/local/sci-chemistry/kleiner-brauhelfer/*.ebuild digest
+````
 3. Install
-
-    emerge -av sci-chemistry/kleiner-brauhelfer
+ 
+````
+emerge -av sci-chemistry/kleiner-brauhelfer
+````

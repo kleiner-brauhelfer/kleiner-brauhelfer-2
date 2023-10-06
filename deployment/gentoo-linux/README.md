@@ -1,6 +1,5 @@
 # Deployment of kleiner-brauhelfer-2 on Gentoo Linux
 1. Configure a local overlay
-Run:
 
 ````
 eselect repository create local

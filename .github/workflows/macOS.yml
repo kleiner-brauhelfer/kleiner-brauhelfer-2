@@ -22,7 +22,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           setup-python: 'false'
-          version: 6.5.0
+          version: 6.5.*
           modules: qtwebengine qtwebchannel qtpositioning
 
       - name: Build kleiner-brauhelfer-2

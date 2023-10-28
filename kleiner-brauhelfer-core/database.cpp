@@ -411,14 +411,13 @@ void Database::discard()
 
 QSqlQuery Database::sqlExec(const QSqlDatabase &db, const QString &query)
 {
-    QSqlQuery sqlQuery = db.exec(query);
-    QSqlError error = db.lastError();
-    if (error.isValid())
+    QSqlQuery sqlQuery(db);
+    if (!sqlQuery.exec(query))
     {
-        mLastError = error;
+        mLastError = db.lastError();
         qCritical(Brauhelfer::loggingCategory) << query;
-        qCritical(Brauhelfer::loggingCategory) << error;
-        throw std::runtime_error(error.text().toStdString());
+        qCritical(Brauhelfer::loggingCategory) << mLastError;
+        throw std::runtime_error(mLastError.text().toStdString());
     }
     return sqlQuery;
 }

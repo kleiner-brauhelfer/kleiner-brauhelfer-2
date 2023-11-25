@@ -92,8 +92,16 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     gUndoStack = new UndoStack(this);
-    ui->menuBearbeiten->addAction(gUndoStack->createUndoAction(this, tr("Rückgängig")));
-    ui->menuBearbeiten->addAction(gUndoStack->createRedoAction(this, tr("Wiederherstellen")));
+    gUndoStack->setEnabled(gSettings->valueInGroup(QStringLiteral("General"), QStringLiteral("UndoEnabled"), true).toBool());
+    if (gUndoStack->isEnabled())
+    {
+        ui->menuBearbeiten->addAction(gUndoStack->createUndoAction(this, tr("Rückgängig")));
+        ui->menuBearbeiten->addAction(gUndoStack->createRedoAction(this, tr("Wiederherstellen")));
+    }
+    else
+    {
+        ui->menuBearbeiten->setEnabled(false);
+    }
 
   #if 0
     QString style = gSettings->style();

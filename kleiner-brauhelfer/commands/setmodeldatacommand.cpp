@@ -8,7 +8,12 @@ SetModelDataCommand::SetModelDataCommand(QAbstractItemModel *model, int row, int
     newValue(value)
 {
     prevValue = model->index(row,col).data();
-    QObject::connect(model, &QObject::destroyed, [this](){setObsolete(true);});
+    modelConnection = QObject::connect(model, &QObject::destroyed, [this](){setObsolete(true);});
+}
+
+SetModelDataCommand::~SetModelDataCommand()
+{
+    QObject::disconnect(modelConnection);
 }
 
 void SetModelDataCommand::undo()

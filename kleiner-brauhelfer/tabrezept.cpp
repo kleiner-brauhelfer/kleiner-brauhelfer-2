@@ -409,6 +409,8 @@ void TabRezept::checkEnabled()
     ui->wdgAddMaischen->setVisible(!gebraut);
     ui->wdgAddKochen->setVisible(!gebraut);
     ui->cbBerechnungsartHopfen->setEnabled(!gebraut);
+    ui->tbMengeHefestarter->setReadOnly(gebraut);
+    ui->tbSWHefestarter->setReadOnly(gebraut);
     ui->wdgAddGaerung->setVisible(!abgefuellt);
     ui->btnNeueWasseraufbereitung->setVisible(!gebraut);
     ui->lineNeueWasseraufbereitung->setVisible(!gebraut);

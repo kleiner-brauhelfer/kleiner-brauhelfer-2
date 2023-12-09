@@ -200,6 +200,7 @@ void TabBraudaten::checkEnabled()
     ui->btnSWKochende->setVisible(!gebraut);
     ui->tbSWAnstellen->setReadOnly(gebraut);
     ui->btnSWAnstellen->setVisible(!gebraut);
+    ui->btnWuerzemengeAnstellen->setVisible(!gebraut);
     ui->btnWuerzemengeAnstellenTotal->setVisible(!gebraut && gSettings->isModuleEnabled(Settings::ModuleSpeise));
     ui->tbWuerzemengeAnstellenTotal->setReadOnly(gebraut);
     ui->btnSpeisemengeNoetig->setVisible(!gebraut && gSettings->isModuleEnabled(Settings::ModuleSpeise));
@@ -219,6 +220,11 @@ void TabBraudaten::checkEnabled()
     ui->tbTempKochende->setReadOnly(gebraut);
     ui->tbSpeiseSRE->setReadOnly(gebraut);
     ui->tbSpeiseT->setReadOnly(gebraut);
+    ui->tbMengeHefestarter->setReadOnly(gebraut);
+    ui->tbSWHefestarter->setReadOnly(gebraut);
+    ui->tbSWHefestarterBrix->setReadOnly(gebraut);
+    ui->tbWasserVerschneidung->setReadOnly(gebraut);
+    ui->tbWasserVerschneidungBrix->setReadOnly(gebraut);
 }
 
 void TabBraudaten::updateValues()

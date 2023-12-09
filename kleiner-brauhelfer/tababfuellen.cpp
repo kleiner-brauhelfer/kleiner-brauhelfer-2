@@ -191,6 +191,7 @@ void TabAbfuellen::checkEnabled()
     ui->tbJungbiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbBiermengeAbfuellen->setReadOnly(abgefuellt);
     ui->tbSpeisemengeAbgefuellt->setReadOnly(abgefuellt);
+    ui->tbZuckerFaktor->setReadOnly(abgefuellt);
     ui->tbWassserZuckerloesung->setReadOnly(abgefuellt);
     ui->tbTemperaturKarbonisierung->setReadOnly(abgefuellt);
     ui->tbFlaschengroesse->setReadOnly(abgefuellt);

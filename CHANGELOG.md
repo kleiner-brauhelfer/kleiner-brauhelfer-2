@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 2.6.2 (in Entwicklung)
+- Neu: Undofunktion über INI Datei ausschaltbar ([General] UndoEnabled=false).
+- Fix: Absturz "neuer Rohstoff nach Speichern wieder löschen".
+
 ## Version 2.6.1 (30.09.2023)
 - Neu: Änderungen in Eingabefelder lassen sich rückgängig machen (nicht durchgängig implementiert)
 - Fix: Absturz bei leeren Diagrammen (Gärverlauf)

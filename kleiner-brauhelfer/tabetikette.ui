@@ -32,7 +32,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="btnOeffnen">
+        <widget class="PushButton" name="btnOeffnen">
          <property name="minimumSize">
           <size>
            <width>50</width>
@@ -107,7 +107,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="cbEditMode">
+             <widget class="PushButton" name="cbEditMode">
               <property name="minimumSize">
                <size>
                 <width>40</width>
@@ -131,7 +131,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btnAktualisieren">
+             <widget class="PushButton" name="btnAktualisieren">
               <property name="minimumSize">
                <size>
                 <width>40</width>
@@ -152,7 +152,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btnSaveTemplate">
+             <widget class="PushButton" name="btnSaveTemplate">
               <property name="minimumSize">
                <size>
                 <width>40</width>
@@ -180,7 +180,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btnExport">
+             <widget class="PushButton" name="btnExport">
               <property name="minimumSize">
                <size>
                 <width>40</width>
@@ -459,7 +459,7 @@
            </widget>
           </item>
           <item row="3" column="0" colspan="3">
-           <widget class="QPushButton" name="btnGroesseAusSvg">
+           <widget class="PushButton" name="btnGroesseAusSvg">
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Button wird das in der &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlage&lt;/span&gt; definierte &lt;span style=&quot; font-weight:600;&quot;&gt;Seitenverhältnis&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;aus&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;SVG-Datei&lt;/span&gt; der aktuell gewählten Etikettenvorlage übernommen. Eine manuelle Anpassung entfällt damit. Die Werte erscheinen in den Millimeterfeldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -485,7 +485,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QPushButton" name="btnBackgroundColor">
+           <widget class="PushButton" name="btnBackgroundColor">
             <property name="minimumSize">
              <size>
               <width>40</width>
@@ -668,7 +668,7 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
-             <widget class="QPushButton" name="btnTagNeu">
+             <widget class="PushButton" name="btnTagNeu">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -689,7 +689,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btnTagLoeschen">
+             <widget class="PushButton" name="btnTagLoeschen">
               <property name="minimumSize">
                <size>
                 <width>50</width>
@@ -770,7 +770,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="btnToPdf">
+        <widget class="PushButton" name="btnToPdf">
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick wird hiermit die Banderole oder das Etikett als &lt;span style=&quot; font-weight:600;&quot;&gt;druckbares PDF &lt;/span&gt;gespeichert.&lt;/p&gt;&lt;p&gt;Direktes Drucken ist im Kleinen Brauhelfer über die Druckvorschau möglich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
@@ -797,9 +797,9 @@
    <header>widgets/doublespinbox.h</header>
   </customwidget>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
   </customwidget>
   <customwidget>
    <class>TableView</class>
@@ -810,6 +810,11 @@
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
    <class>SvgView</class>

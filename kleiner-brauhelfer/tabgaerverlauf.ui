@@ -88,7 +88,7 @@
                <number>0</number>
               </property>
               <item>
-               <widget class="QPushButton" name="btnAddSchnellgaerMessung">
+               <widget class="PushButton" name="btnAddSchnellgaerMessung">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -109,7 +109,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btnDelSchnellgaerMessung">
+               <widget class="PushButton" name="btnDelSchnellgaerMessung">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -130,7 +130,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btnImportSchnellgaerMessung">
+               <widget class="PushButton" name="btnImportSchnellgaerMessung">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -241,7 +241,7 @@
                <number>0</number>
               </property>
               <item>
-               <widget class="QPushButton" name="btnAddHauptgaerMessung">
+               <widget class="PushButton" name="btnAddHauptgaerMessung">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -262,7 +262,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btnDelHauptgaerMessung">
+               <widget class="PushButton" name="btnDelHauptgaerMessung">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -283,7 +283,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btnImportHauptgaerMessung">
+               <widget class="PushButton" name="btnImportHauptgaerMessung">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -353,7 +353,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="btnGaerungEwzZugeben">
+                  <widget class="PushButton" name="btnGaerungEwzZugeben">
                    <property name="toolTip">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;ausgewählter Zusatz &lt;/span&gt;zugegeben. &lt;/p&gt;&lt;p&gt;Im Reiter Rezept kann man die &lt;span style=&quot; font-weight:600;&quot;&gt;Zutat &lt;/span&gt;ebenfalls zugeben (und entnehmen).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde. Ein Zusatz kann auch über den Unterreiter Gärung im Reiter Rezept zugegeben werden. Dort ist zusätzlich das korrekte Datum und seine entnahme angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
@@ -402,7 +402,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="btnGaerungEwzEntnehmen">
+                  <widget class="PushButton" name="btnGaerungEwzEntnehmen">
                    <property name="toolTip">
                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein ausgewählter&lt;span style=&quot; font-weight:600;&quot;&gt; Zusatz &lt;/span&gt;entnommen. &lt;/p&gt;&lt;p&gt;Im Tab Rezept kann man den &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;ebenfalls entnehmen (und zugeben).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; nur als abgefüllt markeirt werden, wenn ein zu entnehmender Zusatz vorher als entnommen markiert wurde. Ein Zusatz kann auch über den Unterreiter Gärung im Reiter Rezept zugegeben werden. Dort ist zusätzlich das korrekte Datum und seine entnahme angegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
@@ -489,7 +489,7 @@
                <number>0</number>
               </property>
               <item>
-               <widget class="QPushButton" name="btnAddNachgaerMessung">
+               <widget class="PushButton" name="btnAddNachgaerMessung">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -510,7 +510,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btnDelNachgaerMessung">
+               <widget class="PushButton" name="btnDelNachgaerMessung">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -531,7 +531,7 @@
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btnImportNachgaerMessung">
+               <widget class="PushButton" name="btnImportNachgaerMessung">
                 <property name="minimumSize">
                  <size>
                   <width>50</width>
@@ -579,14 +579,19 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
   </customwidget>
   <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
    <class>Chart3</class>

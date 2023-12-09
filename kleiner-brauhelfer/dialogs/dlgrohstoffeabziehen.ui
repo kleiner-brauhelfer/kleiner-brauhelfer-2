@@ -85,7 +85,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="btnAbziehen">
+      <widget class="PushButton" name="btnAbziehen">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button &lt;span style=&quot; font-weight:600;&quot;&gt;Zutaten abziehen&lt;/span&gt; wird die im Rezept verwendete Rohstoffmenge aus der Rohstoffdatenbank abgezogen und der Sud endgültig als gebraut markiert. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt; Entscheidet man sich keine Zutaten abzuziehen, wird der Sud trotzdem als gebraut markiert.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Wird der Sud als nicht gebraut zurückgesetzt, erscheint das Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Zutaten zurückgeben&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;Dies verhindert irrtümliche Mengenangaben in der Rohstoffliste, die zu viel abgezogen wurden. Trotzdem ist bei Funktionen, die den Modus eines Sudes &amp;quot;zurücksetzen&amp;quot;, Vorsicht angebracht.&lt;/p&gt;&lt;p&gt;Sollen keine Rohstoffe abgezogen werden, ignoriert man diesen Button und schließt das Pop-Up-Fenster. Daraufhin benötigt der Kleine Brauhelfer eine erneute Bestätigung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -112,6 +112,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
   <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>

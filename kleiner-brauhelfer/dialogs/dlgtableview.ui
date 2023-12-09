@@ -70,7 +70,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QPushButton" name="btnAdd">
+         <widget class="PushButton" name="btnAdd">
           <property name="minimumSize">
            <size>
             <width>50</width>
@@ -97,7 +97,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnDelete">
+         <widget class="PushButton" name="btnDelete">
           <property name="minimumSize">
            <size>
             <width>50</width>
@@ -124,7 +124,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnMoveUp">
+         <widget class="PushButton" name="btnMoveUp">
           <property name="minimumSize">
            <size>
             <width>50</width>
@@ -151,7 +151,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="moveDown">
+         <widget class="PushButton" name="moveDown">
           <property name="minimumSize">
            <size>
             <width>50</width>
@@ -192,6 +192,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
   <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>

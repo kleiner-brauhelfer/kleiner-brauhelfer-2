@@ -58,7 +58,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="btnEdit">
+      <widget class="PushButton" name="btnEdit">
        <property name="minimumSize">
         <size>
          <width>40</width>
@@ -83,6 +83,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
   <customwidget>
    <class>BemerkungTextBrowser</class>
    <extends>QTextBrowser</extends>

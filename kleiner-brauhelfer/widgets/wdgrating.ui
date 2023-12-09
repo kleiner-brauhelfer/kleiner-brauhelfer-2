@@ -43,7 +43,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="QPushButton" name="btnStar1">
+    <widget class="PushButton" name="btnStar1">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
        <horstretch>0</horstretch>
@@ -65,7 +65,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="btnStar2">
+    <widget class="PushButton" name="btnStar2">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
        <horstretch>0</horstretch>
@@ -87,7 +87,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="btnStar3">
+    <widget class="PushButton" name="btnStar3">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
        <horstretch>0</horstretch>
@@ -109,7 +109,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="btnStar4">
+    <widget class="PushButton" name="btnStar4">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
        <horstretch>0</horstretch>
@@ -131,7 +131,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="btnStar5">
+    <widget class="PushButton" name="btnStar5">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
        <horstretch>0</horstretch>
@@ -167,6 +167,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

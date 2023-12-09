@@ -71,7 +71,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="btnNeu">
+          <widget class="PushButton" name="btnNeu">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -92,7 +92,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnImport">
+          <widget class="PushButton" name="btnImport">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -112,7 +112,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnLoeschen">
+          <widget class="PushButton" name="btnLoeschen">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -745,6 +745,11 @@
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
   </customwidget>
   <customwidget>
    <class>TableView</class>

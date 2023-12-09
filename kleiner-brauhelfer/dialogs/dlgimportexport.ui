@@ -85,7 +85,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="QPushButton" name="btnDownload">
+         <widget class="PushButton" name="btnDownload">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der Datensatz direkt ins Fenster geladen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -102,7 +102,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="QPushButton" name="btnOeffnen">
+         <widget class="PushButton" name="btnOeffnen">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der Dateipfad geöffnet oder es wird der Dateipfad zur Quelle ausgewählt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -301,6 +301,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>rbFormatKbh</tabstop>
   <tabstop>rbFormatMmum</tabstop>

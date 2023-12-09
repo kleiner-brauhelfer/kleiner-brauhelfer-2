@@ -141,7 +141,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnSaveTemplate">
+          <widget class="PushButton" name="btnSaveTemplate">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -162,7 +162,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnRestoreTemplate">
+          <widget class="PushButton" name="btnRestoreTemplate">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -183,7 +183,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnPrint">
+          <widget class="PushButton" name="btnPrint">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -204,7 +204,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="btnPdf">
+          <widget class="PushButton" name="btnPdf">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -225,7 +225,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="cbEditMode">
+          <widget class="PushButton" name="cbEditMode">
            <property name="minimumSize">
             <size>
              <width>40</width>
@@ -309,6 +309,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
   <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>

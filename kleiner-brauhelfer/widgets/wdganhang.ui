@@ -64,7 +64,7 @@
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QPushButton" name="btnLoeschen">
+       <widget class="PushButton" name="btnLoeschen">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein Anhang&lt;span style=&quot; font-weight:600;&quot;&gt; gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
@@ -75,7 +75,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QPushButton" name="pushButton_Browse">
+       <widget class="PushButton" name="pushButton_Browse">
         <property name="minimumSize">
          <size>
           <width>50</width>
@@ -116,7 +116,7 @@
        </widget>
       </item>
       <item row="1" column="3">
-       <widget class="QPushButton" name="btnOpen">
+       <widget class="PushButton" name="btnOpen">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Fenster für einen &lt;span style=&quot; font-weight:600;&quot;&gt;Pfad&lt;/span&gt; zu einem Anhang geöffnet.&lt;/p&gt;&lt;p&gt;Der Pfad zum Anhang &lt;span style=&quot; font-weight:600;&quot;&gt;muss gültig sein&lt;/span&gt;. Der Kleine Brauhelfer bettet Dateianhänge nicht ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
@@ -137,6 +137,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>btnLoeschen</tabstop>
   <tabstop>lineEdit_Pfad</tabstop>

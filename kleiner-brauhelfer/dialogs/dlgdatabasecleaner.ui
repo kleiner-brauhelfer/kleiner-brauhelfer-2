@@ -115,7 +115,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="btnDelete">
+      <widget class="PushButton" name="btnDelete">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dem Button &lt;span style=&quot; font-weight:600;&quot;&gt;Eintrag löschen&lt;/span&gt; werden die markierten Einträge aus der Datenbank gelöscht.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Änderungen an der Datenbank sollten nur von erfahrenen Anwendern vorgenommen werden. Die Änderungen werden erst mit dem Speichern der Datenbank übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -125,7 +125,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnWeiter">
+      <widget class="PushButton" name="btnWeiter">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit dem Button &lt;span style=&quot; font-weight:600;&quot;&gt;Weiter &lt;/span&gt;springt die Datenbankbereinigung zur nächsten Überprüfungsroutine.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -139,6 +139,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
   <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>

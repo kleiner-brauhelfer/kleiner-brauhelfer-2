@@ -70,7 +70,7 @@
            </spacer>
           </item>
           <item>
-           <widget class="QPushButton" name="btnNeueAnlage">
+           <widget class="PushButton" name="btnNeueAnlage">
             <property name="minimumSize">
              <size>
               <width>40</width>
@@ -91,7 +91,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnAnlageLoeschen">
+           <widget class="PushButton" name="btnAnlageLoeschen">
             <property name="minimumSize">
              <size>
               <width>40</width>
@@ -1264,7 +1264,7 @@
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="btnNeuesGeraet">
+              <widget class="PushButton" name="btnNeuesGeraet">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -1285,7 +1285,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="btnGeraetLoeschen">
+              <widget class="PushButton" name="btnGeraetLoeschen">
                <property name="minimumSize">
                 <size>
                  <width>40</width>
@@ -1420,11 +1420,13 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>tableViewAnlagen</tabstop>
   <tabstop>btnNeueAnlage</tabstop>
   <tabstop>btnAnlageLoeschen</tabstop>
-  <tabstop>tableViewAnlagen</tabstop>
-  <tabstop>btnNeuesGeraet</tabstop>
-  <tabstop>btnGeraetLoeschen</tabstop>
+  <tabstop>tbHelp</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>tbName</tabstop>
+  <tabstop>cbTyp</tabstop>
   <tabstop>tbAusbeute</tabstop>
   <tabstop>btnAusbeuteMittel</tabstop>
   <tabstop>tbAusbeuteMittel</tabstop>
@@ -1448,9 +1450,10 @@
   <tabstop>tbSudpfanneVolumen</tabstop>
   <tabstop>tbSudpfanneMaxFuellhoehe</tabstop>
   <tabstop>tbSudpfanneMaxNutzvolumen</tabstop>
-  <tabstop>wdgBemerkung</tabstop>
-  <tabstop>scrollArea</tabstop>
-  <tabstop>tbHelp</tabstop>
+  <tabstop>tableViewGeraete</tabstop>
+  <tabstop>btnNeuesGeraet</tabstop>
+  <tabstop>btnGeraetLoeschen</tabstop>
+  <tabstop>tableViewSude</tabstop>
  </tabstops>
  <resources>
   <include location="../images.qrc"/>

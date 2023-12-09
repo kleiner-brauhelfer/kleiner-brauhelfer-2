@@ -66,7 +66,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnColorText">
+      <widget class="PushButton" name="btnColorText">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:700;&quot;&gt;Standardschriftfarbe &lt;/span&gt;gewählt. Die Einstellung gilt für &lt;span style=&quot; font-weight:700;&quot;&gt;alle Freitextfelder &lt;/span&gt;bis zur nächsten Änderung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -83,7 +83,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnBold">
+      <widget class="PushButton" name="btnBold">
        <property name="maximumSize">
         <size>
          <width>40</width>
@@ -104,7 +104,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnItalic">
+      <widget class="PushButton" name="btnItalic">
        <property name="maximumSize">
         <size>
          <width>40</width>
@@ -125,7 +125,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnUnderline">
+      <widget class="PushButton" name="btnUnderline">
        <property name="maximumSize">
         <size>
          <width>40</width>
@@ -163,7 +163,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QPushButton" name="btnLeft">
+      <widget class="PushButton" name="btnLeft">
        <property name="maximumSize">
         <size>
          <width>40</width>
@@ -179,7 +179,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnCenter">
+      <widget class="PushButton" name="btnCenter">
        <property name="maximumSize">
         <size>
          <width>40</width>
@@ -195,7 +195,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnRight">
+      <widget class="PushButton" name="btnRight">
        <property name="maximumSize">
         <size>
          <width>40</width>
@@ -218,7 +218,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnLink">
+      <widget class="PushButton" name="btnLink">
        <property name="maximumSize">
         <size>
          <width>40</width>
@@ -241,7 +241,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnListBullet">
+      <widget class="PushButton" name="btnListBullet">
        <property name="maximumSize">
         <size>
          <width>40</width>
@@ -257,7 +257,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnListOrdered">
+      <widget class="PushButton" name="btnListOrdered">
        <property name="maximumSize">
         <size>
          <width>40</width>
@@ -273,7 +273,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnIdentInc">
+      <widget class="PushButton" name="btnIdentInc">
        <property name="maximumSize">
         <size>
          <width>40</width>
@@ -286,7 +286,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnIndDecr">
+      <widget class="PushButton" name="btnIndDecr">
        <property name="maximumSize">
         <size>
          <width>40</width>
@@ -306,7 +306,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btnImg">
+      <widget class="PushButton" name="btnImg">
        <property name="maximumSize">
         <size>
          <width>40</width>
@@ -368,6 +368,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

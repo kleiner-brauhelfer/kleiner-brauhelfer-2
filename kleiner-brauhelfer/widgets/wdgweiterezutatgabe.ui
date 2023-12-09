@@ -88,7 +88,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnNachOben">
+         <widget class="PushButton" name="btnNachOben">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;in der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;nach oben &lt;/span&gt;verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -103,7 +103,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnNachUnten">
+         <widget class="PushButton" name="btnNachUnten">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz &lt;/span&gt;in der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;nach unten &lt;/span&gt;verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -118,7 +118,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnLoeschen">
+         <widget class="PushButton" name="btnLoeschen">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; aus dem Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -290,7 +290,7 @@
          </widget>
         </item>
         <item row="0" column="9">
-         <widget class="QPushButton" name="btnAufbrauchen">
+         <widget class="PushButton" name="btnAufbrauchen">
           <property name="minimumSize">
            <size>
             <width>40</width>

@@ -20,7 +20,7 @@ static int findMax(const QJsonObject& jsn, const QString& str, int MAX = 20)
     return i;
 }
 
-static double toDouble(QJsonValueRef value)
+static double toDouble(QJsonValueRef value, double notFoundValue = 0.0)
 {
     QString s;
     switch (value.type())
@@ -35,8 +35,20 @@ static double toDouble(QJsonValueRef value)
             s.chop(1);
         return s.toDouble();
     default:
-        return 0.0;
+        return notFoundValue;
     }
+}
+
+static QString removeHtmlEntities(QString str)
+{
+    str.replace(QStringLiteral("&auml;"), QStringLiteral("ä"));
+    str.replace(QStringLiteral("&ouml;"), QStringLiteral("ö"));
+    str.replace(QStringLiteral("&uuml;"), QStringLiteral("ü"));
+    str.replace(QStringLiteral("&lt;"), QStringLiteral("<"));
+    str.replace(QStringLiteral("&gt;"), QStringLiteral(">"));
+    str.replace(QStringLiteral("&amp;"), QStringLiteral("&"));
+    str.replace(QStringLiteral("&quot;"), QStringLiteral("\""));
+    return str;
 }
 
 int ImportExport::importKbh(Brauhelfer* bh, const QByteArray &content)
@@ -204,167 +216,339 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
     }
 
     QJsonObject root = doc.object();
+    QJsonObject obj;
+    QJsonArray array;
+    QMap<int, QVariant> values;
 
-    double menge = toDouble(root[QStringLiteral("Ausschlagswuerze")]);
-    int max_schuettung = findMax(root, QStringLiteral("Malz%%"));
-    double gesamt_schuettung = 0.0;
-    for (int i = 1; i < max_schuettung; ++i)
+    int version = int(toDouble(root[QStringLiteral("ExportVersion")], 1.0));
+    if (version >= 3.0)
     {
-        double kg = 0.0;
-        if (root[QStringLiteral("Malz%1_Einheit").arg(i)].toString() == QStringLiteral("g"))
-            kg = toDouble(root[QStringLiteral("Malz%1_Menge").arg(i)]) / 1000.0;
-        else
-            kg = toDouble(root[QStringLiteral("Malz%1_Menge").arg(i)]);
-        gesamt_schuettung += kg;
+        qWarning(Brauhelfer::loggingCategory) << "Version not supported:" << version;
+        return -1;
     }
 
-    QMap<int, QVariant> values;
-    values[ModelSud::ColSudname] = root[QStringLiteral("Name")].toString();
+    double menge = 0.0;
+    int max_schuettung = 0;
+    double gesamt_schuettung = 0.0;
+    if (version == 1)
+    {
+        menge = toDouble(root[QStringLiteral("Ausschlagswuerze")]);
+        max_schuettung = findMax(root, QStringLiteral("Malz%%"));
+        for (int i = 1; i < max_schuettung; ++i)
+        {
+            double kg = 0.0;
+            if (root[QStringLiteral("Malz%1_Einheit").arg(i)].toString() == QStringLiteral("g"))
+                kg = toDouble(root[QStringLiteral("Malz%1_Menge").arg(i)]) / 1000.0;
+            else
+                kg = toDouble(root[QStringLiteral("Malz%1_Menge").arg(i)]);
+            gesamt_schuettung += kg;
+        }
+    }
+    else if (version == 2)
+    {
+        menge = toDouble(root[QStringLiteral("Ausschlagwuerze")]);
+        max_schuettung = array.count();
+        array = root[QStringLiteral("Malze")].toArray();
+        for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+        {
+            obj = it->toObject();
+            double kg = 0.0;
+            if (obj[QStringLiteral("Einheit")].toString() == QStringLiteral("g"))
+                kg = toDouble(obj[QStringLiteral("Menge")]) / 1000.0;
+            else
+                kg = toDouble(obj[QStringLiteral("Menge")]);
+            gesamt_schuettung += kg;
+        }
+    }
+
+    // Sud
+    values.clear();
+    values[ModelSud::ColSudname] = removeHtmlEntities(root[QStringLiteral("Name")].toString());
     values[ModelSud::ColMenge] = menge;
     values[ModelSud::ColSW] = toDouble(root[QStringLiteral("Stammwuerze")]);
-    values[ModelSud::ColSudhausausbeute] = toDouble(root[QStringLiteral("Sudhausausbeute")]);
-    if (root[QStringLiteral("Maischform")].toString() == QStringLiteral("infusion"))
-        values[ModelSud::ColFaktorHauptguss] = toDouble(root[QStringLiteral("Infusion_Hauptguss")]) / gesamt_schuettung;
-    else if (root[QStringLiteral("Maischform")].toString() == QStringLiteral("dekoktion"))
-        values[ModelSud::ColFaktorHauptguss] = toDouble(root[QStringLiteral("Dekoktion_Einmaisch_Zubruehwasser_gesamt")]) / gesamt_schuettung;
+    values[ModelSud::ColSudhausausbeute] = toDouble(root[QStringLiteral("Sudhausausbeute")], 60.0);
+    QString maischform = root[QStringLiteral("Maischform")].toString();
+    if (maischform == QStringLiteral("infusion"))
+        values[ModelSud::ColFaktorHauptguss] = toDouble(root[version == 1 ? QStringLiteral("Infusion_Hauptguss") : QStringLiteral("Hauptguss")]) / gesamt_schuettung;
+    else if (maischform == QStringLiteral("dekoktion"))
+        values[ModelSud::ColFaktorHauptguss] = toDouble(root[version == 1 ? QStringLiteral("Dekoktion_Einmaisch_Zubruehwasser_gesamt") : QStringLiteral("Einmaisch_Zubruehwasser_gesamt")]) / gesamt_schuettung;
     values[ModelSud::ColCO2] = toDouble(root[QStringLiteral("Karbonisierung")]);
     values[ModelSud::ColIBU] = toDouble(root[QStringLiteral("Bittere")]);
     values[ModelSud::ColberechnungsArtHopfen] = static_cast<int>(Brauhelfer::BerechnungsartHopfen::Keine);
     values[ModelSud::ColKochdauer] = toDouble(root[QStringLiteral("Kochzeit_Wuerze")]);
     values[ModelSud::ColVergaerungsgrad] = toDouble(root[QStringLiteral("Endvergaerungsgrad")]);
-    values[ModelSud::ColKommentar] = QString("Rezept aus MaischeMalzundMehr\n"
-                                             "<b>Autor: </b> %1\n"
-                                             "<b>Datum: </b> %2\n"
-                                             "<b>Sorte: </b> %3\n\n"
-                                             "%4\n\n%5")
-                                         .arg(root[QStringLiteral("Autor")].toString(),
-                                              root[QStringLiteral("Datum")].toString(),
-                                              root[QStringLiteral("Sorte")].toString(),
-                                              root[QStringLiteral("Kurzbeschreibung")].toString(),
-                                              root[QStringLiteral("Anmerkung_Autor")].toString());
+    values[ModelSud::ColKommentar] = QString("Rezept aus %1\n"
+                                             "Autor: %2\n"
+                                             "Datum: %3\n"
+                                             "Sorte: %4\n\n"
+                                             "%5\n\n%6")
+                                         .arg(removeHtmlEntities(root[QStringLiteral("Rezeptquelle")].toString()),
+                                              removeHtmlEntities(root[QStringLiteral("Autor")].toString()),
+                                              removeHtmlEntities(root[QStringLiteral("Datum")].toString()),
+                                              removeHtmlEntities(root[QStringLiteral("Sorte")].toString()),
+                                              removeHtmlEntities(root[QStringLiteral("Kurzbeschreibung")].toString()),
+                                              removeHtmlEntities(root[QStringLiteral("Anmerkung_Autor")].toString()));
+    values[ModelSud::ColBemerkungGaerung] = QString(QStringLiteral("Gärtemperatur: %1 °C")).arg(removeHtmlEntities(root[QStringLiteral("Gaertemperatur")].toString()));
     int sudRow = bh->modelSud()->append(values);
     bh->modelSud()->update(sudRow);
     int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
 
     // Rasten
-    if (root[QStringLiteral("Maischform")].toString() == QStringLiteral("infusion"))
+    if (maischform == QStringLiteral("infusion"))
     {
+        double last_temp = 0.0;
         values.clear();
         values[ModelMaischplan::ColSudID] = sudId;
         values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Einmaischen);
         values[ModelMaischplan::ColName] = "Einmaischen";
-        values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Infusion_Einmaischtemperatur")]);
+        values[ModelMaischplan::ColAnteilWasser] = 100;
+        values[ModelMaischplan::ColAnteilMalz] = 100;
+        values[ModelMaischplan::ColTempMalz] = 21;
+        values[ModelMaischplan::ColTempWasser] = toDouble(root[version == 1 ? QStringLiteral("Infusion_Einmaischtemperatur") : QStringLiteral("Einmaischtemperatur")]);
         values[ModelMaischplan::ColDauerRast] = 10;
-        bh->modelMaischplan()->appendDirect(values);
-        int max_rasten = findMax(root, QStringLiteral("Infusion_Rasttemperatur%%"));
-        for (int i = 1; i < max_rasten; ++i)
+        bh->modelMaischplan()->append(values);
+        if (version == 1)
+        {
+            for (int i = 1; i < findMax(root, QStringLiteral("Infusion_Rasttemperatur%%")); ++i)
+            {
+                values.clear();
+                values[ModelMaischplan::ColSudID] = sudId;
+                values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
+                values[ModelMaischplan::ColName] = QStringLiteral("%1. Rast").arg(i);
+                last_temp = toDouble(root[QStringLiteral("Infusion_Rasttemperatur%1").arg(i)]);
+                values[ModelMaischplan::ColTempRast] = last_temp;
+                values[ModelMaischplan::ColDauerRast] = toDouble(root[QStringLiteral("Infusion_Rastzeit%1").arg(i)]);
+                bh->modelMaischplan()->appendDirect(values);
+            }
+        }
+        else if (version == 2)
+        {
+            array = root[QStringLiteral("Rasten")].toArray();
+            int i = 1;
+            for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+            {
+                obj = it->toObject();
+                values.clear();
+                values[ModelMaischplan::ColSudID] = sudId;
+                values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
+                values[ModelMaischplan::ColName] = QStringLiteral("%1. Rast").arg(i);
+                last_temp = toDouble(obj[QStringLiteral("Temperatur")]);
+                values[ModelMaischplan::ColTempRast] = last_temp;
+                values[ModelMaischplan::ColDauerRast] = toDouble(obj[QStringLiteral("Zeit")]);
+                bh->modelMaischplan()->appendDirect(values);
+                i++;
+            }
+        }
+        double temp = toDouble(root[QStringLiteral("Abmaischtemperatur")]);
+        if (temp > last_temp)
         {
             values.clear();
             values[ModelMaischplan::ColSudID] = sudId;
             values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
-            values[ModelMaischplan::ColName] = QStringLiteral("%1. Rast").arg(i);
-            values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Infusion_Rasttemperatur%1").arg(i)]);
-            values[ModelMaischplan::ColDauerRast] = toDouble(root[QStringLiteral("Infusion_Rastzeit%1").arg(i)]);
+            values[ModelMaischplan::ColName] = "Abmaischen";
+            values[ModelMaischplan::ColTempRast] = temp;
+            values[ModelMaischplan::ColDauerRast] = 1;
             bh->modelMaischplan()->appendDirect(values);
         }
-        values.clear();
-        values[ModelMaischplan::ColSudID] = sudId;
-        values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
-        values[ModelMaischplan::ColName] = "Abmaischen";
-        values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Abmaischtemperatur")]);
-        values[ModelMaischplan::ColDauerRast] = 1;
-        bh->modelMaischplan()->appendDirect(values);
     }
-    else if (root[QStringLiteral("Maischform")].toString() == QStringLiteral("dekoktion"))
+    else if (maischform == QStringLiteral("dekoktion"))
     {
-        double V_tot = toDouble(root[QStringLiteral("Dekoktion_Einmaisch_Zubruehwasser_gesamt")]);
-        values.clear();
-        values[ModelMaischplan::ColSudID] = sudId;
-        values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Einmaischen);
-        values[ModelMaischplan::ColName] = "Einmaischen";
-        values[ModelMaischplan::ColAnteilWasser] = 100 * toDouble(root[QStringLiteral("Dekoktion_0_Volumen")]) / V_tot;
-        values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Dekoktion_0_Temperatur_resultierend")]);
-        values[ModelMaischplan::ColDauerRast] = toDouble(root[QStringLiteral("Dekoktion_0_Rastzeit")]);
-        bh->modelMaischplan()->appendDirect(values);
-        int max_rasten = findMax(root, QStringLiteral("Dekoktion_%%_Volumen"));
-        for (int i = 1; i < max_rasten; ++i)
+        if (version == 1)
         {
+            double V_tot = toDouble(root[QStringLiteral("Dekoktion_Einmaisch_Zubruehwasser_gesamt")]);
             values.clear();
             values[ModelMaischplan::ColSudID] = sudId;
-            values[ModelMaischplan::ColName] = root[QStringLiteral("Dekoktion_%1_Form").arg(i)].toString();
-            values[ModelMaischplan::ColAnteilWasser] = 100 * toDouble(root[QStringLiteral("Dekoktion_%1_Volumen").arg(i)]) / V_tot;
-            values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Dekoktion_%1_Temperatur_resultierend").arg(i)]);
-            values[ModelMaischplan::ColDauerRast] = toDouble(root[QStringLiteral("Dekoktion_%1_Rastzeit").arg(i)]);
-            if (values[ModelMaischplan::ColName] == "Kochendes Wasser")
+            values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Einmaischen);
+            values[ModelMaischplan::ColName] = "Einmaischen";
+            values[ModelMaischplan::ColAnteilWasser] = 100 * toDouble(root[QStringLiteral("Dekoktion_0_Volumen")]) / V_tot;
+            values[ModelMaischplan::ColAnteilMalz] = 100;
+            values[ModelMaischplan::ColTempWasser] = toDouble(root[QStringLiteral("Temperatur_ist")]);
+            values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Dekoktion_0_Temperatur_resultierend")]);
+            values[ModelMaischplan::ColDauerRast] = toDouble(root[QStringLiteral("Dekoktion_0_Rastzeit")]);
+            bh->modelMaischplan()->append(values);
+            for (int i = 1; i < findMax(root, QStringLiteral("Dekoktion_%%_Volumen")); ++i)
             {
-                values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Zubruehen);
-                values[ModelMaischplan::ColTempWasser] = 95;
-            }
-            else
-            {
-                values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Dekoktion);
-                values[ModelMaischplan::ColTempExtra1] = 95;
-                if (root.contains(QStringLiteral("Dekoktion_%1_Teilmaische_Kochzeit").arg(i)))
-                    values[ModelMaischplan::ColDauerExtra1] = toDouble(root[QStringLiteral("Dekoktion_%1_Teilmaische_Kochzeit").arg(i)]);
+                values.clear();
+                values[ModelMaischplan::ColSudID] = sudId;
+                values[ModelMaischplan::ColName] = removeHtmlEntities(root[QStringLiteral("Dekoktion_%1_Form").arg(i)].toString());
+                values[ModelMaischplan::ColAnteilMaische] = 100 * toDouble(root[QStringLiteral("Dekoktion_%1_Volumen").arg(i)]) / V_tot;
+                values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Dekoktion_%1_Temperatur_resultierend").arg(i)]);
+                values[ModelMaischplan::ColDauerRast] = toDouble(root[QStringLiteral("Dekoktion_%1_Rastzeit").arg(i)]);
+                if (values[ModelMaischplan::ColName] == "Kochendes Wasser")
+                {
+                    values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Zubruehen);
+                    values[ModelMaischplan::ColTempWasser] = 95;
+                }
                 else
-                    values[ModelMaischplan::ColDauerExtra1] = 15;
-                values[ModelMaischplan::ColTempExtra2] = toDouble(root[QStringLiteral("Dekoktion_%1_Teilmaische_Temperatur").arg(i)]);
-                values[ModelMaischplan::ColDauerExtra2] = toDouble(root[QStringLiteral("Dekoktion_%1_Teilmaische_Rastzeit").arg(i)]);
+                {
+                    values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Dekoktion);
+                    values[ModelMaischplan::ColTempExtra1] = 95;
+                    if (root.contains(QStringLiteral("Dekoktion_%1_Teilmaische_Kochzeit").arg(i)))
+                        values[ModelMaischplan::ColDauerExtra1] = toDouble(root[QStringLiteral("Dekoktion_%1_Teilmaische_Kochzeit").arg(i)]);
+                    else
+                        values[ModelMaischplan::ColDauerExtra1] = 15;
+                    values[ModelMaischplan::ColTempExtra2] = toDouble(root[QStringLiteral("Dekoktion_%1_Teilmaische_Temperatur").arg(i)]);
+                    values[ModelMaischplan::ColDauerExtra2] = toDouble(root[QStringLiteral("Dekoktion_%1_Teilmaische_Rastzeit").arg(i)]);
+                }
+                bh->modelMaischplan()->appendDirect(values);
             }
+            values.clear();
+            values[ModelMaischplan::ColSudID] = sudId;
+            values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
+            values[ModelMaischplan::ColName] = "Abmaischen";
+            values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Abmaischtemperatur")]);
+            values[ModelMaischplan::ColDauerRast] = 10;
             bh->modelMaischplan()->appendDirect(values);
         }
-        values.clear();
-        values[ModelMaischplan::ColSudID] = sudId;
-        values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
-        values[ModelMaischplan::ColName] = "Abmaischen";
-        values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Abmaischtemperatur")]);
-        values[ModelMaischplan::ColDauerRast] = 10;
-        bh->modelMaischplan()->appendDirect(values);
+        else if (version == 2)
+        {
+            double V_tot = toDouble(root[QStringLiteral("Einmaisch_Zubruehwasser_gesamt")]);
+            array = root[QStringLiteral("Dekoktionen")].toArray();
+            qDebug() << array;
+            if (array.count() > 0)
+            {
+                obj = array[0].toObject();
+                values.clear();
+                values[ModelMaischplan::ColSudID] = sudId;
+                values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Einmaischen);
+                values[ModelMaischplan::ColName] = "Einmaischen";
+                values[ModelMaischplan::ColAnteilWasser] = 100 * toDouble(obj[QStringLiteral("Volumen")]) / V_tot;
+                values[ModelMaischplan::ColAnteilMalz] = 100;
+                values[ModelMaischplan::ColTempWasser] = toDouble(obj[QStringLiteral("Temperatur_ist")]);
+                values[ModelMaischplan::ColTempRast] = toDouble(obj[QStringLiteral("Temperatur_resultierend")]);
+                values[ModelMaischplan::ColDauerRast] = toDouble(obj[QStringLiteral("Rastzeit")]);
+                bh->modelMaischplan()->append(values);
+
+            }
+            for (QJsonArray::const_iterator it = array.constBegin()+1; it != array.constEnd(); ++it)
+            {
+                obj = it->toObject();
+                values.clear();
+                values[ModelMaischplan::ColSudID] = sudId;
+                values[ModelMaischplan::ColName] = removeHtmlEntities(obj[QStringLiteral("Form")].toString());
+                values[ModelMaischplan::ColAnteilMaische] = 100 * toDouble(obj[QStringLiteral("Volumen")]) / V_tot;
+                values[ModelMaischplan::ColTempRast] = toDouble(obj[QStringLiteral("Temperatur_resultierend")]);
+                values[ModelMaischplan::ColDauerRast] = toDouble(obj[QStringLiteral("Rastzeit")]);
+                if (values[ModelMaischplan::ColName] == "Kochendes Wasser")
+                {
+                    values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Zubruehen);
+                    values[ModelMaischplan::ColTempWasser] = 95;
+                }
+                else
+                {
+                    values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Dekoktion);
+                    values[ModelMaischplan::ColTempExtra1] = 95;
+                    if (obj.contains(QStringLiteral("Teilmaische_Kochzeit")))
+                        values[ModelMaischplan::ColDauerExtra1] = toDouble(obj[QStringLiteral("Teilmaische_Kochzeit")]);
+                    else
+                        values[ModelMaischplan::ColDauerExtra1] = 15;
+                    values[ModelMaischplan::ColTempExtra2] = toDouble(obj[QStringLiteral("Teilmaische_Temperatur")]);
+                    values[ModelMaischplan::ColDauerExtra2] = toDouble(obj[QStringLiteral("Teilmaische_Rastzeit")]);
+                }
+                bh->modelMaischplan()->appendDirect(values);
+            }
+            values.clear();
+            values[ModelMaischplan::ColSudID] = sudId;
+            values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Aufheizen);
+            values[ModelMaischplan::ColName] = "Abmaischen";
+            values[ModelMaischplan::ColTempRast] = toDouble(root[QStringLiteral("Abmaischtemperatur")]);
+            values[ModelMaischplan::ColDauerRast] = 10;
+            bh->modelMaischplan()->appendDirect(values);
+        }
     }
 
     // Malzschuettung
-    for (int i = 1; i < max_schuettung; ++i)
+    if (version == 1)
     {
-        double kg = 0.0;
-        if (root[QStringLiteral("Malz%1_Einheit").arg(i)].toString() == QStringLiteral("g"))
-            kg = toDouble(root[QStringLiteral("Malz%1_Menge").arg(i)]) / 1000.0;
-        else
-            kg = toDouble(root[QStringLiteral("Malz%1_Menge").arg(i)]);
-        values.clear();
-        values[ModelMalzschuettung::ColSudID] = sudId;
-        values[ModelMalzschuettung::ColName] = root[QStringLiteral("Malz%1").arg(i)].toString();
-        values[ModelMalzschuettung::ColProzent] = kg / gesamt_schuettung * 100.0;
-        values[ModelMalzschuettung::ColFarbe] = 1;
-        bh->modelMalzschuettung()->append(values);
+        for (int i = 1; i < max_schuettung; ++i)
+        {
+            double kg = 0.0;
+            if (root[QStringLiteral("Malz%1_Einheit").arg(i)].toString() == QStringLiteral("g"))
+                kg = toDouble(root[QStringLiteral("Malz%1_Menge").arg(i)]) / 1000.0;
+            else
+                kg = toDouble(root[QStringLiteral("Malz%1_Menge").arg(i)]);
+            values.clear();
+            values[ModelMalzschuettung::ColSudID] = sudId;
+            values[ModelMalzschuettung::ColName] = removeHtmlEntities(root[QStringLiteral("Malz%1").arg(i)].toString());
+            values[ModelMalzschuettung::ColProzent] = kg / gesamt_schuettung * 100.0;
+            values[ModelMalzschuettung::ColFarbe] = 1;
+            bh->modelMalzschuettung()->append(values);
+        }
+    }
+    else if (version == 2)
+    {
+        array = root[QStringLiteral("Malze")].toArray();
+        for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+        {
+            obj = it->toObject();
+            double kg = 0.0;
+            if (obj[QStringLiteral("Einheit")].toString() == QStringLiteral("g"))
+                kg = toDouble(obj[QStringLiteral("Menge")]) / 1000.0;
+            else
+                kg = toDouble(obj[QStringLiteral("Menge")]);
+            values.clear();
+            values[ModelMalzschuettung::ColSudID] = sudId;
+            values[ModelMalzschuettung::ColName] = removeHtmlEntities(obj[QStringLiteral("Name")].toString());
+            values[ModelMalzschuettung::ColProzent] = kg / gesamt_schuettung * 100.0;
+            values[ModelMalzschuettung::ColFarbe] = 1;
+            bh->modelMalzschuettung()->append(values);
+        }
     }
 
     // Hopfen
-    for (int i = 1; i < findMax(root, QStringLiteral("Hopfen_VWH_%%_Sorte")); ++i)
+    if (version == 1)
     {
-        values.clear();
-        values[ModelHopfengaben::ColSudID] = sudId;
-        values[ModelHopfengaben::ColName] = root[QStringLiteral("Hopfen_VWH_%1_Sorte").arg(i)].toString();
-        values[ModelHopfengaben::Colerg_Menge] = toDouble(root[QStringLiteral("Hopfen_VWH_%1_Menge").arg(i)]);
-        values[ModelHopfengaben::ColZeit] = toDouble(root[QStringLiteral("Kochzeit_Wuerze")]);
-        values[ModelHopfengaben::ColAlpha] = toDouble(root[QStringLiteral("Hopfen_VWH_%1_alpha").arg(i)]);
-        values[ModelHopfengaben::ColPellets] = 1;
-        values[ModelHopfengaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::HopfenZeitpunkt::Vorderwuerze);
-        bh->modelHopfengaben()->append(values);
+        for (int i = 1; i < findMax(root, QStringLiteral("Hopfen_VWH_%%_Sorte")); ++i)
+        {
+            values.clear();
+            values[ModelHopfengaben::ColSudID] = sudId;
+            values[ModelHopfengaben::ColName] = removeHtmlEntities(root[QStringLiteral("Hopfen_VWH_%1_Sorte").arg(i)].toString());
+            values[ModelHopfengaben::Colerg_Menge] = toDouble(root[QStringLiteral("Hopfen_VWH_%1_Menge").arg(i)]);
+            values[ModelHopfengaben::ColZeit] = toDouble(root[QStringLiteral("Kochzeit_Wuerze")]);
+            values[ModelHopfengaben::ColAlpha] = toDouble(root[QStringLiteral("Hopfen_VWH_%1_alpha").arg(i)]);
+            values[ModelHopfengaben::ColPellets] = 1;
+            values[ModelHopfengaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::HopfenZeitpunkt::Vorderwuerze);
+            bh->modelHopfengaben()->append(values);
+        }
+        for (int i = 1; i < findMax(root, QStringLiteral("Hopfen_%%_Sorte")); ++i)
+        {
+            values.clear();
+            values[ModelHopfengaben::ColSudID] = sudId;
+            values[ModelHopfengaben::ColName] = removeHtmlEntities(root[QStringLiteral("Hopfen_%1_Sorte").arg(i)].toString());
+            values[ModelHopfengaben::Colerg_Menge] = toDouble(root[QStringLiteral("Hopfen_%1_Menge").arg(i)]);
+            values[ModelHopfengaben::ColZeit] = toDouble(root[QStringLiteral("Hopfen_%1_Kochzeit").arg(i)]);
+            values[ModelHopfengaben::ColAlpha] = toDouble(root[QStringLiteral("Hopfen_%1_alpha").arg(i)]);
+            values[ModelHopfengaben::ColPellets] = 1;
+            values[ModelHopfengaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::HopfenZeitpunkt::Kochen);
+            bh->modelHopfengaben()->append(values);
+        }
     }
-    for (int i = 1; i < findMax(root, QStringLiteral("Hopfen_%%_Sorte")); ++i)
+    else if (version == 2)
     {
-        values.clear();
-        values[ModelHopfengaben::ColSudID] = sudId;
-        values[ModelHopfengaben::ColName] = root[QStringLiteral("Hopfen_%1_Sorte").arg(i)].toString();
-        values[ModelHopfengaben::Colerg_Menge] = toDouble(root[QStringLiteral("Hopfen_%1_Menge").arg(i)]);
-        values[ModelHopfengaben::ColZeit] = toDouble(root[QStringLiteral("Hopfen_%1_Kochzeit").arg(i)]);
-        values[ModelHopfengaben::ColAlpha] = toDouble(root[QStringLiteral("Hopfen_%1_alpha").arg(i)]);
-        values[ModelHopfengaben::ColPellets] = 1;
-        bh->modelHopfengaben()->append(values);
+        array = root[QStringLiteral("Hopfenkochen")].toArray();
+        for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+        {
+            obj = it->toObject();
+            values.clear();
+            values[ModelHopfengaben::ColSudID] = sudId;
+            values[ModelHopfengaben::ColName] = removeHtmlEntities(obj[QStringLiteral("Sorte")].toString());
+            values[ModelHopfengaben::Colerg_Menge] = toDouble(obj[QStringLiteral("Menge")]);
+            values[ModelHopfengaben::ColZeit] = toDouble(obj[QStringLiteral("Zeit")]);
+            values[ModelHopfengaben::ColAlpha] = toDouble(obj[QStringLiteral("Alpha")]);
+            values[ModelHopfengaben::ColPellets] = 1;
+            QString typ = obj[QStringLiteral("Typ")].toString();
+            if (typ == QStringLiteral("Vorderwuerze"))
+                values[ModelHopfengaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::HopfenZeitpunkt::Vorderwuerze);
+            else if (typ == QStringLiteral("Whirlpool"))
+                values[ModelHopfengaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::HopfenZeitpunkt::Ausschlagen);
+            else
+                values[ModelHopfengaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::HopfenZeitpunkt::Kochen);
+            bh->modelHopfengaben()->append(values);
+        }
     }
 
     // Hefe
-    const QStringList hefen = root[QStringLiteral("Hefe")].toString().split(QStringLiteral(", "));
+    const QStringList hefen = removeHtmlEntities(root[QStringLiteral("Hefe")].toString()).split(QStringLiteral(", "));
     for (const QString& hefe : hefen)
     {
         values.clear();
@@ -375,54 +559,104 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
     }
 
     // Weitere Zutaten
-    int max_wz_wuerze = findMax(root, QStringLiteral("WeitereZutat_Wuerze_%%_Name"));
-    for (int i = 1; i < max_wz_wuerze; ++i)
+    if (version == 1)
     {
-        values.clear();
-        values[ModelWeitereZutatenGaben::ColSudID] = sudId;
-        values[ModelWeitereZutatenGaben::ColName] = root[QStringLiteral("WeitereZutat_Wuerze_%1_Name").arg(i)].toString();
-        values[ModelWeitereZutatenGaben::ColMenge] = toDouble(root[QStringLiteral("WeitereZutat_Wuerze_%1_Menge").arg(i)]) / menge;
-        if (root[QStringLiteral("WeitereZutat_Wuerze_%1_Einheit").arg(i)].toString() == QStringLiteral("g"))
+        for (int i = 1; i < findMax(root, QStringLiteral("WeitereZutat_Wuerze_%%_Name")); ++i)
+        {
+            values.clear();
+            values[ModelWeitereZutatenGaben::ColSudID] = sudId;
+            values[ModelWeitereZutatenGaben::ColName] = removeHtmlEntities(root[QStringLiteral("WeitereZutat_Wuerze_%1_Name").arg(i)].toString());
+            values[ModelWeitereZutatenGaben::ColMenge] = toDouble(root[QStringLiteral("WeitereZutat_Wuerze_%1_Menge").arg(i)]) / menge;
+            if (root[QStringLiteral("WeitereZutat_Wuerze_%1_Einheit").arg(i)].toString() == QStringLiteral("g"))
+                values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::g);
+            else
+                values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::Kg);
+            values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Kochen);
+            values[ModelWeitereZutatenGaben::ColZugabedauer] = toDouble(root[QStringLiteral("WeitereZutat_Wuerze_%1_Kochzeit").arg(i)]);
+            values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
+            bh->modelWeitereZutatenGaben()->append(values);
+        }
+        for (int i = 1; i < findMax(root, QStringLiteral("WeitereZutat_Gaerung_%%_Name")); ++i)
+        {
+            values.clear();
+            values[ModelWeitereZutatenGaben::ColSudID] = sudId;
+            values[ModelWeitereZutatenGaben::ColName] = removeHtmlEntities(root[QStringLiteral("WeitereZutat_Gaerung_%1_Name").arg(i)].toString());
+            values[ModelWeitereZutatenGaben::ColMenge] = toDouble(root[QStringLiteral("WeitereZutat_Gaerung_%1_Menge").arg(i)]) / menge;
+            if (root[QStringLiteral("WeitereZutat_Gaerung_%1_Einheit").arg(i)].toString() == QStringLiteral("g"))
+                values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::g);
+            else
+                values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::Kg);
+            values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
+            values[ModelWeitereZutatenGaben::ColZugabedauer] = 0;
+            values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
+            bh->modelWeitereZutatenGaben()->append(values);
+        }
+        for (int i = 1; i < findMax(root, QStringLiteral("Stopfhopfen_%%_Sorte")); ++i)
+        {
+            values.clear();
+            values[ModelWeitereZutatenGaben::ColSudID] = sudId;
+            values[ModelWeitereZutatenGaben::ColName] = removeHtmlEntities(root[QStringLiteral("Stopfhopfen_%1_Sorte").arg(i)].toString());
+            values[ModelWeitereZutatenGaben::ColMenge] = toDouble(root[QStringLiteral("Stopfhopfen_%1_Menge").arg(i)]) / menge;
             values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::g);
-        else
-            values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::Kg);
-        values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Kochen);
-        values[ModelWeitereZutatenGaben::ColZugabedauer] = toDouble(root[QStringLiteral("WeitereZutat_Wuerze_%1_Kochzeit").arg(i)]);
-        values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
-        bh->modelWeitereZutatenGaben()->append(values);
+            values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen);
+            values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
+            values[ModelWeitereZutatenGaben::ColZugabedauer] = 7200;
+            values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
+            bh->modelWeitereZutatenGaben()->append(values);
+        }
     }
-    int max_wz_gaerung = findMax(root, QStringLiteral("WeitereZutat_Gaerung_%%_Name"));
-    for (int i = 1; i < max_wz_gaerung; ++i)
+    else if (version == 2)
     {
-        values.clear();
-        values[ModelWeitereZutatenGaben::ColSudID] = sudId;
-        values[ModelWeitereZutatenGaben::ColName] = root[QStringLiteral("WeitereZutat_Gaerung_%1_Name").arg(i)].toString();
-        values[ModelWeitereZutatenGaben::ColMenge] = toDouble(root[QStringLiteral("WeitereZutat_Gaerung_%1_Menge").arg(i)]) / menge;
-        if (root[QStringLiteral("WeitereZutat_Gaerung_%1_Einheit").arg(i)].toString() == QStringLiteral("g"))
+        array = root[QStringLiteral("Gewuerze_etc")].toArray();
+        for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+        {
+            obj = it->toObject();
+            values.clear();
+            values[ModelWeitereZutatenGaben::ColSudID] = sudId;
+            values[ModelWeitereZutatenGaben::ColName] = removeHtmlEntities(obj[QStringLiteral("Name")].toString());
+            values[ModelWeitereZutatenGaben::ColMenge] = toDouble(obj[QStringLiteral("Menge")]) / menge;
+            if (obj[QStringLiteral("Einheit")].toString() == QStringLiteral("g"))
+                values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::g);
+            else
+                values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::Kg);
+            values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Kochen);
+            values[ModelWeitereZutatenGaben::ColZugabedauer] = toDouble(obj[QStringLiteral("Kochzeit")]);
+            values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
+            bh->modelWeitereZutatenGaben()->append(values);
+        }
+
+        array = root[QStringLiteral("WeitereZutatGaerung")].toArray();
+        for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+        {
+            obj = it->toObject();
+            values[ModelWeitereZutatenGaben::ColSudID] = sudId;
+            values[ModelWeitereZutatenGaben::ColName] = removeHtmlEntities(obj[QStringLiteral("Name")].toString());
+            values[ModelWeitereZutatenGaben::ColMenge] = toDouble(obj[QStringLiteral("Menge")]) / menge;
+            if (obj[QStringLiteral("Einheit")].toString() == QStringLiteral("g"))
+                values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::g);
+            else
+                values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::Kg);
+            values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
+            values[ModelWeitereZutatenGaben::ColZugabedauer] = 0;
+            values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
+            bh->modelWeitereZutatenGaben()->append(values);
+        }
+
+        array = root[QStringLiteral("Stopfhopfen")].toArray();
+        for (QJsonArray::const_iterator it = array.constBegin(); it != array.constEnd(); ++it)
+        {
+            obj = it->toObject();
+            values.clear();
+            values[ModelWeitereZutatenGaben::ColSudID] = sudId;
+            values[ModelWeitereZutatenGaben::ColName] = removeHtmlEntities(obj[QStringLiteral("Sorte")].toString());
+            values[ModelWeitereZutatenGaben::ColMenge] = toDouble(obj[QStringLiteral("Menge")]) / menge;
             values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::g);
-        else
-            values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::Kg);
-        values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
-        values[ModelWeitereZutatenGaben::ColZugabedauer] = 0;
-        values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::OhneEntnahme);
-        bh->modelWeitereZutatenGaben()->append(values);
-    }
-    int max_hopfen_stopf = findMax(root, QStringLiteral("Stopfhopfen_%%_Sorte"));
-    for (int i = 1; i < max_hopfen_stopf; ++i)
-    {
-        values.clear();
-        values[ModelWeitereZutatenGaben::ColSudID] = sudId;
-        values[ModelWeitereZutatenGaben::ColName] = root[QStringLiteral("Stopfhopfen_%1_Sorte").arg(i)].toString();
-        values[ModelWeitereZutatenGaben::ColMenge] = toDouble(root[QStringLiteral("Stopfhopfen_%1_Menge").arg(i)]) / menge;
-        if (root[QStringLiteral("Stopfhopfen_%1_Einheit").arg(i)].toString() == QStringLiteral("g"))
-            values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::g);
-        else
-            values[ModelWeitereZutatenGaben::ColEinheit] = static_cast<int>(Brauhelfer::Einheit::Kg);
-        values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen);
-        values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
-        values[ModelWeitereZutatenGaben::ColZugabedauer] = 7200;
-        values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
-        bh->modelWeitereZutatenGaben()->append(values);
+            values[ModelWeitereZutatenGaben::ColTyp] = static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen);
+            values[ModelWeitereZutatenGaben::ColZeitpunkt] = static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung);
+            values[ModelWeitereZutatenGaben::ColZugabedauer] = 7200;
+            values[ModelWeitereZutatenGaben::ColEntnahmeindex] = static_cast<int>(Brauhelfer::ZusatzEntnahmeindex::MitEntnahme);
+            bh->modelWeitereZutatenGaben()->append(values);
+        }
     }
 
     bh->modelSud()->update(sudRow);
@@ -485,6 +719,8 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
         values[ModelMaischplan::ColSudID] = sudId;
         values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Einmaischen);
         values[ModelMaischplan::ColName] = "Einmaischen";
+        values[ModelMaischplan::ColAnteilWasser] = 100;
+        values[ModelMaischplan::ColAnteilMalz] = 100;
         values[ModelMaischplan::ColTempRast] = nMashSteps.firstChildElement(QStringLiteral("MASH_STEP")).firstChildElement(QStringLiteral("STEP_TEMP")).text().toDouble();
         values[ModelMaischplan::ColDauerRast] = 10;
         bh->modelMaischplan()->appendDirect(values);

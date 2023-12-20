@@ -1,10 +1,8 @@
 #include "chartmalz.h"
 #include "biercalc.h"
 #include "brauhelfer.h"
-#include "settings.h"
 
 extern Brauhelfer* bh;
-extern Settings* gSettings;
 
 ChartMalz::ChartMalz(QWidget *parent) :
     ChartBase(parent)

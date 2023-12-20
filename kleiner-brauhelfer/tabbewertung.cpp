@@ -2,11 +2,9 @@
 #include "ui_tabbewertung.h"
 #include <QScrollBar>
 #include "brauhelfer.h"
-#include "settings.h"
 #include "widgets/wdgbewertung.h"
 
 extern Brauhelfer* bh;
-extern Settings* gSettings;
 
 TabBewertung::TabBewertung(QWidget *parent) :
     TabAbstract(parent),

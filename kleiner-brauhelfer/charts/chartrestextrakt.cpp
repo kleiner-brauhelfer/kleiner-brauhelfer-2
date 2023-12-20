@@ -1,9 +1,7 @@
 #include "chartrestextrakt.h"
 #include "brauhelfer.h"
-#include "settings.h"
 
 extern Brauhelfer* bh;
-extern Settings* gSettings;
 
 ChartRestextrakt::ChartRestextrakt(QWidget *parent) :
     ChartBase(parent)

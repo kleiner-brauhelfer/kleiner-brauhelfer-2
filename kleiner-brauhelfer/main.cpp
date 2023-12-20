@@ -212,7 +212,7 @@ static void saveResourcesHash()
 
 static QByteArray getPreviousHash(const QString &fileName)
 {
-    return gSettings->valueInGroup(QStringLiteral("ResourcesHashes"), fileName).toByteArray();
+    return gSettings->valueInGroup("ResourcesHashes", fileName).toByteArray();
 }
 
 static void copyResources()
@@ -290,7 +290,7 @@ static void copyResources()
 
 static void checkWebView()
 {
-    WebView::setSupported(gSettings->valueInGroup(QStringLiteral("General"), QStringLiteral("WebViewEnabled"), true).toBool());
+    WebView::setSupported(gSettings->valueInGroup("General", "WebViewEnabled", true).toBool());
 }
 
 static void checkSSL()
@@ -405,7 +405,7 @@ int main(int argc, char *argv[])
     installTranslator(a, translatorKbh, QStringLiteral("kbh"));
 
     // locale
-    bool useLanguageLocale = gSettings->valueInGroup(QStringLiteral("General"), QStringLiteral("UseLanguageLocale"), false).toBool();
+    bool useLanguageLocale = gSettings->valueInGroup("General", "UseLanguageLocale", false).toBool();
     if (useLanguageLocale)
         QLocale::setDefault(QLocale(gSettings->language()));
 
@@ -448,7 +448,7 @@ int main(int argc, char *argv[])
                 {
                     installTranslator(a, translatorQt, QStringLiteral("qtbase"));
                     installTranslator(a, translatorKbh, QStringLiteral("kbh"));
-                    bool useLanguageLocale = gSettings->valueInGroup(QStringLiteral("General"), QStringLiteral("UseLanguageLocale"), false).toBool();
+                    bool useLanguageLocale = gSettings->valueInGroup("General", "UseLanguageLocale", false).toBool();
                     QLocale::setDefault(useLanguageLocale ? QLocale(gSettings->language()) : QLocale::system());
                     ret = 1000;
                 }

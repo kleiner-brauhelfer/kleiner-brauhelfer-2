@@ -1,9 +1,7 @@
 #include "chartbraudaten.h"
 #include "brauhelfer.h"
-#include "settings.h"
 
 extern Brauhelfer* bh;
-extern Settings* gSettings;
 
 ChartBraudaten::ChartBraudaten(QWidget *parent) :
     ChartBase(parent)

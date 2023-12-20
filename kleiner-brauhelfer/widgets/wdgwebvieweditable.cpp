@@ -45,13 +45,13 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     updateEditMode();
     ui->splitterEditmode->setHandleWidth(0);
     ui->splitterEditmode->setSizes({1, 0});
-    gZoomFactor = gSettings->valueInGroup(QStringLiteral("General"), QStringLiteral("WebViewZoomFactor"), 1.0).toDouble();
+    gZoomFactor = gSettings->valueInGroup("General", "WebViewZoomFactor", 1.0).toDouble();
 }
 
 WdgWebViewEditable::~WdgWebViewEditable()
 {
     delete ui;
-    gSettings->setValueInGroup(QStringLiteral("General"), QStringLiteral("WebViewZoomFactor"), gZoomFactor);
+    gSettings->setValueInGroup("General", "WebViewZoomFactor", gZoomFactor);
 }
 
 void WdgWebViewEditable::clear()

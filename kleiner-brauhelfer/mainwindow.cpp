@@ -92,7 +92,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     gUndoStack = new UndoStack(this);
-    gUndoStack->setEnabled(gSettings->valueInGroup(QStringLiteral("General"), QStringLiteral("UndoEnabled"), true).toBool());
+    gUndoStack->setEnabled(gSettings->valueInGroup("General", "UndoEnabled", true).toBool());
     if (gUndoStack->isEnabled())
     {
         ui->menuBearbeiten->addAction(gUndoStack->createUndoAction(this, tr("Rückgängig")));
@@ -770,7 +770,7 @@ void MainWindow::on_actionOeffnen_triggered()
 
 void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)
 {
-    gSettings->setValueInGroup(QStringLiteral("General"), QStringLiteral("BeendenAbfrage"), checked);
+    gSettings->setValueInGroup("General", "BeendenAbfrage", checked);
 }
 
 void MainWindow::checkForUpdate(bool force)
@@ -1092,7 +1092,7 @@ void MainWindow::checkLoadedSud()
 void MainWindow::on_actionCheckUpdate_triggered(bool checked)
 {
   #if QT_NETWORK_LIB
-    gSettings->setValueInGroup(QStringLiteral("General"), QStringLiteral("CheckUpdate"), checked);
+    gSettings->setValueInGroup("General", "CheckUpdate", checked);
     if (checked)
         checkForUpdate(true);
   #else
@@ -1102,7 +1102,7 @@ void MainWindow::on_actionCheckUpdate_triggered(bool checked)
 
 void MainWindow::on_actionTooltips_triggered(bool checked)
 {
-    gSettings->setValueInGroup(QStringLiteral("General"), QStringLiteral("TooltipsEnabled"), checked);
+    gSettings->setValueInGroup("General", "TooltipsEnabled", checked);
 }
 
 void MainWindow::on_actionAnimationen_triggered(bool checked)
@@ -1136,7 +1136,7 @@ void MainWindow::on_actionNiederlaendisch_triggered()
 
 void MainWindow::on_actionZahlenformat_triggered(bool checked)
 {
-    gSettings->setValueInGroup(QStringLiteral("General"), QStringLiteral("UseLanguageLocale"), checked);
+    gSettings->setValueInGroup("General", "UseLanguageLocale", checked);
     restart(1001);
 }
 

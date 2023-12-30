@@ -46,11 +46,11 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 Einstellungen, welche sich nur über die INI Datei einstellen lassen.
 
 ### [General]
-**WebViewEnabled** (true oder false, default: true): aktiviert/deaktiviert die Webansichten
-**UndoEnabled** (true oder false, default: true): aktiviert/deaktiviert die Undo-Funktionalität 
+- **WebViewEnabled** (true oder false, default: true): aktiviert/deaktiviert die Webansichten
+- **UndoEnabled** (true oder false, default: true): aktiviert/deaktiviert die Undo-Funktionalität 
 
 ### [Style]
-**Style** (fusion, windows, windowsvista, macos, default: fusion): GUI look and feel
+- **Style** (fusion, windows, windowsvista, macos, default: fusion): GUI look and feel
 
 
 ## Hinweise

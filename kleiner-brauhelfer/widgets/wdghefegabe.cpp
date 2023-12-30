@@ -100,7 +100,7 @@ void WdgHefeGabe::updateValues()
     int rowRohstoff = bh->modelHefe()->getRowWithValue(ModelHefe::ColName, hefename);
     mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(hefename);
-    ui->btnZutat->setPalette(mValid ? palette() : gSettings->paletteErrorButton);
+    ui->btnZutat->setError(!mValid);
     if (!ui->tbMenge->hasFocus())
         ui->tbMenge->setValue(menge());
     if (!ui->tbTage->hasFocus())

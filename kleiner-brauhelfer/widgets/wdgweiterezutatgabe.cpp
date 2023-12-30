@@ -298,7 +298,7 @@ void WdgWeitereZutatGabe::updateValues()
                 ui->tbVorhanden->setError(false);
             }
         }
-        ui->btnEntnehmen->setPalette(gSettings->palette);
+        ui->btnEntnehmen->setError(false);
         switch (zugabestatus)
         {
         case Brauhelfer::ZusatzStatus::NichtZugegeben:

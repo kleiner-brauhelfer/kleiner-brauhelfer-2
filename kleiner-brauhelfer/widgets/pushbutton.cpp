@@ -6,10 +6,17 @@ extern Settings *gSettings;
 
 PushButton::PushButton(QWidget *parent) :
     QPushButton(parent),
+    mDefaultPalette(gSettings->palette),
     mError(false)
 {
     setAutoDefault(false);
     connect(this, &QAbstractButton::clicked, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
+}
+
+void PushButton::setDefaultPalette(const QPalette &p)
+{
+    mDefaultPalette = p;
+    update();
 }
 
 void PushButton::paintEvent(QPaintEvent *event)
@@ -19,7 +26,7 @@ void PushButton::paintEvent(QPaintEvent *event)
     else if (mError)
         setPalette(gSettings->paletteErrorButton);
     else
-        setPalette(gSettings->palette);
+        setPalette(mDefaultPalette);
     QPushButton::paintEvent(event);
 }
 

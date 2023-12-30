@@ -39,7 +39,7 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     ui->tbTags->setTabStopDistance(2 * QFontMetrics(ui->tbTags->font()).width(' '));
    #endif
   #endif
-    ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
+    ui->btnSaveTemplate->setError(true);
     mTimerWebViewUpdate.setSingleShot(true);
     connect(&mTimerWebViewUpdate, &QTimer::timeout, this, &WdgWebViewEditable::updateWebView, Qt::QueuedConnection);
     updateEditMode();

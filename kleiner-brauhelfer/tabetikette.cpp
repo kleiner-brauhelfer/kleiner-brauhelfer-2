@@ -42,7 +42,7 @@ TabEtikette::TabEtikette(QWidget *parent) :
     ui->tbTemplate->setTabStopDistance(2 * QFontMetrics(ui->tbTemplate->font()).width(' '));
    #endif
   #endif
-    ui->btnSaveTemplate->setPalette(gSettings->paletteErrorButton);
+    ui->btnSaveTemplate->setError(true);
     ui->tbTags->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
    #if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))

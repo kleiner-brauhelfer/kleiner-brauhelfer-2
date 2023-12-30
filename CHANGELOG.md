@@ -1,7 +1,8 @@
 # Changelog
 
-## Version 2.6.2 (in Entwicklung)
+## Version 2.6.2 (30.12.2023)
 - Neu: Undofunktion über INI Datei ausschaltbar ([General] UndoEnabled=false).
+- Neu: Unterstützt [MMuM](https://www.maischemalzundmehr.de) Rezepte Version 2.
 - Fix: Absturz "neuer Rohstoff nach Speichern wieder löschen".
 
 ## Version 2.6.1 (30.09.2023)

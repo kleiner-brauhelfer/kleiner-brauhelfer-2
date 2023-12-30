@@ -41,6 +41,18 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 ### Mac OS
 - **kbh2_v2.x.x_macos.zip**: Installationsdatei für Mac OS
 
+
+## Konfigurationsdatei kleiner-brauhelfer-2.ini
+Einstellungen, welche sich nur über die INI Datei einstellen lassen.
+
+### [General]
+**WebViewEnabled** (true oder false, default: true): aktiviert/deaktiviert die Webansichten
+**UndoEnabled** (true oder false, default: true): aktiviert/deaktiviert die Undo-Funktionalität 
+
+### [Style]
+**Style** (fusion, windows, windowsvista, macos, default: fusion): GUI look and feel
+
+
 ## Hinweise
 
 ### Qt Installation unter Linux

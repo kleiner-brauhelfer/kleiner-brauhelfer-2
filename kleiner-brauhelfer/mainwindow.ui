@@ -215,9 +215,6 @@
      <string>Hilfe</string>
     </property>
     <addaction name="actionHilfe"/>
-    <addaction name="actionFormelsammlung"/>
-    <addaction name="actionAndroidApp"/>
-    <addaction name="separator"/>
     <addaction name="actionUeber"/>
    </widget>
    <widget class="QMenu" name="menuSud">
@@ -613,11 +610,6 @@
     <string>Log</string>
    </property>
   </action>
-  <action name="actionFormelsammlung">
-   <property name="text">
-    <string>Formelsammlung</string>
-   </property>
-  </action>
   <action name="actionModule">
    <property name="text">
     <string>Module</string>
@@ -629,11 +621,6 @@
    </property>
    <property name="text">
     <string>Zahlen- &amp;&amp; Datumsformat aus Spracheinstellung</string>
-   </property>
-  </action>
-  <action name="actionAndroidApp">
-   <property name="text">
-    <string>Android App</string>
    </property>
   </action>
   <action name="actionHilfe">

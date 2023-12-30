@@ -25,7 +25,8 @@ void ChartMalz::update()
     QSharedPointer<QCPAxisTickerText> textTicker = qSharedPointerDynamicCast<QCPAxisTickerText>(xAxis->ticker());
     textTicker->clear();
     ProxyModel* model = bh->sud()->modelMalzschuettung();
-    for (int row = 0; row < model->rowCount(); ++row)
+    int nRows = model->rowCount();
+    for (int row = 0; row < nRows; ++row)
     {
         QString name = model->data(row, ModelMalzschuettung::ColName).toString();
         double val = model->data(row, ModelMalzschuettung::ColProzent).toDouble();
@@ -34,7 +35,10 @@ void ChartMalz::update()
         bars->setPen(Qt::NoPen);
         bars->setBrush(QBrush(BierCalc::ebcToColor(ebc)));
         bars->addData(row+1, val);
-        textTicker->addTick(row+1, name);
+        if (nRows <= 3 || row % 2 == 0)
+            textTicker->addTick(row+1, name);
+        else
+            textTicker->addTick(row+1, "\n" + name);
         yMax = qMax(yMax, val);
     }
     yAxis->setRange(0, std::ceil(yMax));

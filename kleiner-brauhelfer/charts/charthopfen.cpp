@@ -25,7 +25,8 @@ void ChartHopfen::update()
     QSharedPointer<QCPAxisTickerText> textTicker = qSharedPointerDynamicCast<QCPAxisTickerText>(xAxis->ticker());
     textTicker->clear();
     ProxyModel* model = bh->sud()->modelHopfengaben();
-    for (int row = 0; row < model->rowCount(); ++row)
+    int nRows = model->rowCount();
+    for (int row = 0; row < nRows; ++row)
     {
         QString name = model->data(row, ModelHopfengaben::ColName).toString();
         double val;
@@ -50,7 +51,10 @@ void ChartHopfen::update()
         else
             bars->setBrush(gSettings->colorHopfen);
         bars->addData(row+1, val);
-        textTicker->addTick(row+1, name);
+        if (nRows <= 3 || row % 2 == 0)
+            textTicker->addTick(row+1, name);
+        else
+            textTicker->addTick(row+1, "\n" + name);
         yMax = qMax(yMax, val);
     }
     switch (art)

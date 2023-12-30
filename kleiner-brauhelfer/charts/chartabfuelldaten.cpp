@@ -8,9 +8,9 @@ ChartAbfuelldaten::ChartAbfuelldaten(QWidget *parent) :
 {
     QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
     textTicker->addTick(1, tr("Anstellen"));
-    textTicker->addTick(2, tr("Jungbier"));
+    textTicker->addTick(2, "\n" + tr("Jungbier"));
     textTicker->addTick(3, tr("Abgefüllt"));
-    textTicker->addTick(4, tr("Rezept"));
+    textTicker->addTick(4, "\n" + tr("Rezept"));
     xAxis->setTicker(textTicker);
     xAxis->setRange(0, 5);
     xAxis->setTickPen(Qt::NoPen);

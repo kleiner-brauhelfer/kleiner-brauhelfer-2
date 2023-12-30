@@ -80,8 +80,6 @@ private slots:
     void on_actionZahlenformat_triggered(bool checked);
     void on_actionModule_triggered();
     void on_actionHilfe_triggered();
-    void on_actionFormelsammlung_triggered();
-    void on_actionAndroidApp_triggered();
     void on_actionUeber_triggered();
     void on_actionDatenbank_triggered();
     

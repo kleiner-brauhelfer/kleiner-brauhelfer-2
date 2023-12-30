@@ -1151,16 +1151,6 @@ void MainWindow::on_actionHilfe_triggered()
     dlg->setHomeUrl(QStringLiteral(URL_HILFE));
 }
 
-void MainWindow::on_actionFormelsammlung_triggered()
-{
-    QDesktopServices::openUrl(QUrl(QStringLiteral(URL_FORMELSAMMLUNG)));
-}
-
-void MainWindow::on_actionAndroidApp_triggered()
-{
-    QDesktopServices::openUrl(QUrl(QStringLiteral(URL_APP)));
-}
-
 void MainWindow::on_actionUeber_triggered()
 {
     DlgAbout dlg(this);

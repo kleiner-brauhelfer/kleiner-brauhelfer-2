@@ -19,9 +19,9 @@ ChartBraudaten::ChartBraudaten(QWidget *parent) :
 
     QSharedPointer<QCPAxisTickerText> textTicker(new QCPAxisTickerText);
     textTicker->addTick(1, tr("Kochbeginn"));
-    textTicker->addTick(2, tr("Kochende"));
+    textTicker->addTick(2, "\n" + tr("Kochende"));
     textTicker->addTick(3, tr("Nach Hopfenseihen"));
-    textTicker->addTick(4, tr("Anstellen"));
+    textTicker->addTick(4, "\n" + tr("Anstellen"));
     xAxis->setTicker(textTicker);
     xAxis->setRange(0, 5);
     xAxis->setTickPen(Qt::NoPen);

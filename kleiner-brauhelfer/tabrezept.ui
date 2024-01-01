@@ -1028,6 +1028,9 @@ p, li { white-space: pre-wrap; }
              <property name="wordWrap">
               <bool>true</bool>
              </property>
+             <property name="ErrorState" stdset="0">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item>
@@ -1038,6 +1041,9 @@ p, li { white-space: pre-wrap; }
              <property name="text">
               <string>Ausgleichen</string>
              </property>
+             <property name="ErrorState" stdset="0">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item>
@@ -1047,6 +1053,9 @@ p, li { white-space: pre-wrap; }
              </property>
              <property name="text">
               <string>SHA anpassen</string>
+             </property>
+             <property name="ErrorState" stdset="0">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -1335,6 +1344,9 @@ p, li { white-space: pre-wrap; }
              <property name="wordWrap">
               <bool>true</bool>
              </property>
+             <property name="ErrorState" stdset="0">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item>
@@ -1344,6 +1356,9 @@ p, li { white-space: pre-wrap; }
              </property>
              <property name="text">
               <string>Ausgleichen</string>
+             </property>
+             <property name="ErrorState" stdset="0">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -1978,6 +1993,9 @@ p, li { white-space: pre-wrap; }
              <property name="wordWrap">
               <bool>true</bool>
              </property>
+             <property name="ErrorState" stdset="0">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item>
@@ -1985,12 +2003,18 @@ p, li { white-space: pre-wrap; }
              <property name="text">
               <string>Ausgleichen</string>
              </property>
+             <property name="ErrorState" stdset="0">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="PushButton" name="btnMaischplanFaktorAnpassen">
              <property name="text">
               <string>Hauptgussfaktor anpassen</string>
+             </property>
+             <property name="ErrorState" stdset="0">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -2029,12 +2053,18 @@ p, li { white-space: pre-wrap; }
              <property name="wordWrap">
               <bool>true</bool>
              </property>
+             <property name="ErrorState" stdset="0">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="PushButton" name="btnMaischplanAusgleichenMalz">
              <property name="text">
               <string>Ausgleichen</string>
+             </property>
+             <property name="ErrorState" stdset="0">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
@@ -2460,6 +2490,9 @@ p, li { white-space: pre-wrap; }
             </property>
             <property name="indent">
              <number>9</number>
+            </property>
+            <property name="ErrorState" stdset="0">
+             <bool>true</bool>
             </property>
            </widget>
           </item>

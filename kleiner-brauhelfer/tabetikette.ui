@@ -170,6 +170,9 @@
                 <normaloff>:/images/light/save.svg</normaloff>
                 <disabledoff>:/images/disabled/save.svg</disabledoff>:/images/light/save.svg</iconset>
               </property>
+              <property name="ErrorState" stdset="0">
+               <bool>true</bool>
+              </property>
              </widget>
             </item>
             <item>

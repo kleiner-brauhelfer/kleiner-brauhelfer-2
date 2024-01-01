@@ -13,9 +13,6 @@ public:
     void setToolTip(const QString &str);
 private:
     void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
-    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
-private:
-    bool mError;
 };
 
 #endif // COMBOBOX_H

@@ -2895,6 +2895,9 @@
              <property name="indent">
               <number>9</number>
              </property>
+             <property name="ErrorState" stdset="0">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item row="1" column="0" colspan="8">

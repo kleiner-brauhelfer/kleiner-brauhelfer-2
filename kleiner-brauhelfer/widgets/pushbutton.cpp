@@ -1,24 +1,15 @@
 #include "pushbutton.h"
 #include "widgetdecorator.h"
-#include "settings.h"
-
-extern Settings *gSettings;
+#include <QStyle>
 
 PushButton::PushButton(QWidget *parent) :
-    QPushButton(parent),
-    mDefaultPalette(gSettings->palette),
-    mError(false)
+    QPushButton(parent)
 {
     setAutoDefault(false);
     connect(this, &QAbstractButton::clicked, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
-void PushButton::setDefaultPalette(const QPalette &p)
-{
-    mDefaultPalette = p;
-    update();
-}
-
+/*
 void PushButton::paintEvent(QPaintEvent *event)
 {
     if (WidgetDecorator::contains(this))
@@ -29,12 +20,14 @@ void PushButton::paintEvent(QPaintEvent *event)
         setPalette(mDefaultPalette);
     QPushButton::paintEvent(event);
 }
+*/
 
 void PushButton::setError(bool e)
 {
-    if (mError != e)
+    if (property("ErrorState").toBool() != e)
     {
-        mError = e;
-        update();
+        setProperty("ErrorState", e);
+        style()->unpolish(this);
+        style()->polish(this);
     }
 }

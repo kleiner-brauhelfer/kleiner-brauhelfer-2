@@ -76,18 +76,6 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->tbMengeHefestarter->setColumn(ModelSud::ColMengeHefestarter);
     ui->tbSWHefestarter->setColumn(ModelSud::ColSWHefestarter);
 
-    ui->lblWarnungMalz->setPalette(gSettings->paletteErrorLabel);
-    ui->btnMalzAusgleichen->setError(true);
-    ui->btnShaAnpassen->setError(true);
-    ui->lblWarnungHopfen->setPalette(gSettings->paletteErrorLabel);
-    ui->btnHopfenAusgleichen->setError(true);
-    ui->lblWarnungMaischplanWasser->setPalette(gSettings->paletteErrorLabel);
-    ui->lblWarnungMaischplanMalz->setPalette(gSettings->paletteErrorLabel);
-    ui->btnMaischplanAusgleichen->setError(true);
-    ui->btnMaischplanFaktorAnpassen->setError(true);
-    ui->btnMaischplanAusgleichenMalz->setError(true);
-    ui->lblWarnungPh->setPalette(gSettings->paletteErrorLabel);
-
     mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Settings::Theme::Dark ? QStringLiteral(":/images/dark/bier.svg") : QStringLiteral(":/images/light/bier.svg"));
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
 

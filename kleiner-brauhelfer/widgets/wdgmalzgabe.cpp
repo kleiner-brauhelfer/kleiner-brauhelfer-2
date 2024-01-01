@@ -32,9 +32,8 @@ WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
         }
     }
 
-    ui->btnKorrektur->setError(true);
-    ui->btnKorrekturExtrakt->setError(true);
-    ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
+    ui->tbMenge->setErrorRange(0, ui->tbMenge->maximum());
+    ui->tbExtrakt->setErrorRange(0, ui->tbExtrakt->maximum());
 
     updateValues();
     connect(bh, &Brauhelfer::modified, this, &WdgMalzGabe::updateValues);

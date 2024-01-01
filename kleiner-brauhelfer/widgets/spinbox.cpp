@@ -1,8 +1,6 @@
 #include "spinbox.h"
 #include "widgetdecorator.h"
-#include "settings.h"
-
-extern Settings *gSettings;
+#include <QStyle>
 
 SpinBox::SpinBox(QWidget *parent) :
     QSpinBox(parent),
@@ -12,6 +10,7 @@ SpinBox::SpinBox(QWidget *parent) :
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
+    connect(this, &QSpinBox::valueChanged, this, &SpinBox::onValueChanged);
     connect(this, &QSpinBox::valueChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
@@ -21,6 +20,7 @@ void SpinBox::wheelEvent(QWheelEvent *event)
         QSpinBox::wheelEvent(event);
 }
 
+/*
 void SpinBox::paintEvent(QPaintEvent *event)
 {
     if (WidgetDecorator::contains(this))
@@ -37,6 +37,18 @@ void SpinBox::paintEvent(QPaintEvent *event)
         setPalette(gSettings->paletteInput);
     QSpinBox::paintEvent(event);
 }
+*/
+
+void SpinBox::onValueChanged(int val)
+{
+    bool e = mError || val >= mErrorLimitMax || val <= mErrorLimitMin;
+    if (property("ErrorState").toBool() != e)
+    {
+        setProperty("ErrorState", e);
+        style()->unpolish(this);
+        style()->polish(this);
+    }
+}
 
 void SpinBox::setValue(int val)
 {
@@ -52,10 +64,13 @@ void SpinBox::setReadOnly(bool r)
 
 void SpinBox::setError(bool e)
 {
-    if (mError != e)
+    mError = e;
+    e = mError || value() >= mErrorLimitMax || value() <= mErrorLimitMin;
+    if (property("ErrorState").toBool() != e)
     {
-        mError = e;
-        update();
+        setProperty("ErrorState", e);
+        style()->unpolish(this);
+        style()->polish(this);
     }
 }
 
@@ -63,5 +78,4 @@ void SpinBox::setErrorRange(int min, int max)
 {
     mErrorLimitMin = min;
     mErrorLimitMax = max;
-    update();
 }

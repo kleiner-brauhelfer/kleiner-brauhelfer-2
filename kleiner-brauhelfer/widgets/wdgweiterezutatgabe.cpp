@@ -41,7 +41,6 @@ WdgWeitereZutatGabe::WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt zeitpunkt, 
 
     ui->tbMenge->setErrorRange(0, ui->tbMenge->maximum());
     ui->tbMengeTotal->setErrorRange(0, ui->tbMengeTotal->maximum());
-    ui->btnKorrekturExtrakt->setError(true);
 
     updateValues();
     connect(bh, &Brauhelfer::modified, this, &WdgWeitereZutatGabe::updateValues);
@@ -186,11 +185,14 @@ void WdgWeitereZutatGabe::updateValues()
             break;
         }
     }
-    if (!ui->tbKochdauer->hasFocus())
+    if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Kochen)
     {
-        ui->tbKochdauer->setMinimum(-bh->sud()->getNachisomerisierungszeit());
-        ui->tbKochdauer->setMaximum(bh->sud()->getKochdauer());
-        ui->tbKochdauer->setValue(dauer);
+        if (!ui->tbKochdauer->hasFocus())
+        {
+            ui->tbKochdauer->setMinimum(-bh->sud()->getNachisomerisierungszeit());
+            ui->tbKochdauer->setMaximum(bh->sud()->getKochdauer());
+            ui->tbKochdauer->setValue(dauer);
+        }
     }
 
     if (!ui->tbExtrakt->hasFocus())

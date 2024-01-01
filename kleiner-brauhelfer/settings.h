@@ -109,10 +109,6 @@ public:
     QFont font;
 
     QPalette palette;
-    QPalette paletteInput;
-    QPalette paletteError;
-    QPalette paletteErrorButton;
-    QPalette paletteErrorLabel;
     QPalette paletteChanged;
 
     QColor ErrorBase;

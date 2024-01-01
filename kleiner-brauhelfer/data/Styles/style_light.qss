@@ -30,8 +30,12 @@ QPushButton[Category="Kommentar"], .QFrame[Category="Kommentar"], QTableView[Cat
   background-color: rgb(249,249,249);
 }
 	
-*[ErrorState="true"] {
+QPushButton[ErrorState="true"], QAbstractSpinBox[ErrorState="true"], QComboBox[ErrorState="true"] {
   background-color: rgb(252,171,171);
+}
+
+QLabel[ErrorState="true"] {
+  color: rgb(180,10,10);
 }
 
 *[ChangedState="true"] {

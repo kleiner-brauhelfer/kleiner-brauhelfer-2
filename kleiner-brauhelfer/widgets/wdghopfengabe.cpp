@@ -31,9 +31,6 @@ WdgHopfenGabe::WdgHopfenGabe(int row, QLayout* parentLayout, QWidget *parent) :
         }
     }
 
-    ui->btnMengeKorrektur->setError(true);
-    ui->btnAnteilKorrektur->setError(true);
-
     ui->tbMenge->setErrorRange(0, ui->tbMenge->maximum());
     ui->tbMengeProLiter->setErrorRange(0, ui->tbMengeProLiter->maximum());
 

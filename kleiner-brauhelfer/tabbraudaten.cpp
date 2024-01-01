@@ -46,7 +46,6 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
     ui->lblNebenkostenEinheit->setText(QLocale().currencySymbol());
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
-    ui->lblDurchschnittWarnung->setPalette(gSettings->paletteErrorLabel);
 
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));

@@ -13,9 +13,6 @@ public:
     void setError(bool e);
 private:
     void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
-    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
-private:
-    bool mError;
 };
 
 #endif // DATETIMEEDIT_H

@@ -1,12 +1,9 @@
 #include "timeedit.h"
 #include "widgetdecorator.h"
-#include "settings.h"
-
-extern Settings *gSettings;
+#include <QStyle>
 
 TimeEdit::TimeEdit(QWidget *parent) :
-    QTimeEdit(parent),
-    mError(false)
+    QTimeEdit(parent)
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
@@ -18,7 +15,7 @@ void TimeEdit::wheelEvent(QWheelEvent *event)
     if (hasFocus())
         QDateTimeEdit::wheelEvent(event);
 }
-
+/*
 void TimeEdit::paintEvent(QPaintEvent *event)
 {
     if (WidgetDecorator::contains(this))
@@ -33,7 +30,7 @@ void TimeEdit::paintEvent(QPaintEvent *event)
         setPalette(gSettings->paletteInput);
     QDateTimeEdit::paintEvent(event);
 }
-
+*/
 void TimeEdit::setReadOnly(bool r)
 {
     QDateTimeEdit::setReadOnly(r);
@@ -42,9 +39,10 @@ void TimeEdit::setReadOnly(bool r)
 
 void TimeEdit::setError(bool e)
 {
-    if (mError != e)
+    if (property("ErrorState").toBool() != e)
     {
-        mError = e;
-        update();
+        setProperty("ErrorState", e);
+        style()->unpolish(this);
+        style()->polish(this);
     }
 }

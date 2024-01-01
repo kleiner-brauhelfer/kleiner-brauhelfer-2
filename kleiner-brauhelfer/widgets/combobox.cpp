@@ -1,13 +1,10 @@
 #include "combobox.h"
 #include <QAbstractItemView>
 #include "widgetdecorator.h"
-#include "settings.h"
-
-extern Settings *gSettings;
+#include <QStyle>
 
 ComboBox::ComboBox(QWidget *parent) :
-    QComboBox(parent),
-    mError(false)
+    QComboBox(parent)
 {
     setFocusPolicy(Qt::StrongFocus);
     connect(this, &QComboBox::currentIndexChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
@@ -19,7 +16,7 @@ void ComboBox::wheelEvent(QWheelEvent *event)
     if (hasFocus())
         QComboBox::wheelEvent(event);
 }
-
+/*
 void ComboBox::paintEvent(QPaintEvent *event)
 {
     if (WidgetDecorator::contains(this))
@@ -32,13 +29,14 @@ void ComboBox::paintEvent(QPaintEvent *event)
         setPalette(gSettings->paletteInput);
     QComboBox::paintEvent(event);
 }
-
+*/
 void ComboBox::setError(bool e)
 {
-    if (mError != e)
+    if (property("ErrorState").toBool() != e)
     {
-        mError = e;
-        update();
+        setProperty("ErrorState", e);
+        style()->unpolish(this);
+        style()->polish(this);
     }
 }
 

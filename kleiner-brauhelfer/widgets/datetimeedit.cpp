@@ -1,13 +1,10 @@
 #include "datetimeedit.h"
 #include <QCalendarWidget>
 #include "widgetdecorator.h"
-#include "settings.h"
-
-extern Settings *gSettings;
+#include <QStyle>
 
 DateTimeEdit::DateTimeEdit(QWidget *parent) :
-    QDateTimeEdit(parent),
-    mError(false)
+    QDateTimeEdit(parent)
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
@@ -20,7 +17,7 @@ void DateTimeEdit::wheelEvent(QWheelEvent *event)
     if (hasFocus())
         QDateTimeEdit::wheelEvent(event);
 }
-
+/*
 void DateTimeEdit::paintEvent(QPaintEvent *event)
 {
     if (WidgetDecorator::contains(this))
@@ -35,7 +32,7 @@ void DateTimeEdit::paintEvent(QPaintEvent *event)
         setPalette(gSettings->paletteInput);
     QDateTimeEdit::paintEvent(event);
 }
-
+*/
 void DateTimeEdit::setReadOnly(bool r)
 {
     QDateTimeEdit::setReadOnly(r);
@@ -50,9 +47,10 @@ bool DateTimeEdit::hasFocus() const
 
 void DateTimeEdit::setError(bool e)
 {
-    if (mError != e)
+    if (property("ErrorState").toBool() != e)
     {
-        mError = e;
-        update();
+        setProperty("ErrorState", e);
+        style()->unpolish(this);
+        style()->polish(this);
     }
 }

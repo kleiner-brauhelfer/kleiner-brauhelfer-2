@@ -14,9 +14,10 @@ public:
     void setErrorRange(int min, int max);
 private:
     void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
-    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
 public slots:
     void setValue(int val);
+private slots:
+    void onValueChanged(int val);
 private:
     bool mError;
     int mErrorLimitMin;

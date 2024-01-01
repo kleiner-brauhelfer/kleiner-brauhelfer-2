@@ -1,8 +1,6 @@
 #include "doublespinbox.h"
 #include "widgetdecorator.h"
-#include "settings.h"
-
-extern Settings *gSettings;
+#include <QStyle>
 
 DoubleSpinBox::DoubleSpinBox(QWidget *parent) :
     QDoubleSpinBox(parent),
@@ -12,6 +10,7 @@ DoubleSpinBox::DoubleSpinBox(QWidget *parent) :
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
+    connect(this, &QDoubleSpinBox::valueChanged, this, &DoubleSpinBox::onValueChanged);
     connect(this, &QDoubleSpinBox::valueChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
@@ -21,6 +20,7 @@ void DoubleSpinBox::wheelEvent(QWheelEvent *event)
         QDoubleSpinBox::wheelEvent(event);
 }
 
+/*
 void DoubleSpinBox::paintEvent(QPaintEvent *event)
 {
     if (WidgetDecorator::contains(this))
@@ -37,6 +37,18 @@ void DoubleSpinBox::paintEvent(QPaintEvent *event)
         setPalette(gSettings->paletteInput);
     QDoubleSpinBox::paintEvent(event);
 }
+*/
+
+void DoubleSpinBox::onValueChanged(double val)
+{
+    bool e = mError || val >= mErrorLimitMax || val <= mErrorLimitMin;
+    if (property("ErrorState").toBool() != e)
+    {
+        setProperty("ErrorState", e);
+        style()->unpolish(this);
+        style()->polish(this);
+    }
+}
 
 void DoubleSpinBox::setValue(double val)
 {
@@ -52,10 +64,13 @@ void DoubleSpinBox::setReadOnly(bool r)
 
 void DoubleSpinBox::setError(bool e)
 {
-    if (mError != e)
+    mError = e;
+    e = mError || value() >= mErrorLimitMax || value() <= mErrorLimitMin;
+    if (property("ErrorState").toBool() != e)
     {
-        mError = e;
-        update();
+        setProperty("ErrorState", e);
+        style()->unpolish(this);
+        style()->polish(this);
     }
 }
 
@@ -63,5 +78,4 @@ void DoubleSpinBox::setErrorRange(double min, double max)
 {
     mErrorLimitMin = min;
     mErrorLimitMax = max;
-    update();
 }

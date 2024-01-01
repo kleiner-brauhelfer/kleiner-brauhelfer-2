@@ -206,16 +206,9 @@ void Settings::initTheme()
         break;
     }
 
-    paletteInput = palette;
     paletteChanged = palette;
     paletteChanged.setColor(QPalette::Base, colorChanged);
     paletteChanged.setColor(QPalette::Button, colorChanged);
-    paletteError = palette;
-    paletteError.setColor(QPalette::Base, ErrorBase);
-    paletteErrorButton = palette;
-    paletteErrorButton.setColor(QPalette::Button, ErrorBase);
-    paletteErrorLabel = palette;
-    paletteErrorLabel.setColor(QPalette::WindowText, ErrorText);
 
     endGroup();
 }

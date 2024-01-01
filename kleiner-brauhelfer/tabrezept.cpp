@@ -88,46 +88,6 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->btnMaischplanAusgleichenMalz->setError(true);
     ui->lblWarnungPh->setPalette(gSettings->paletteErrorLabel);
 
-    pal = ui->btnNeueMalzGabe->palette();
-    pal.setColor(QPalette::Button, gSettings->colorMalz);
-    ui->btnNeueMalzGabe->setDefaultPalette(pal);
-    ui->btnMalzGabenUebernehmen->setDefaultPalette(pal);
-
-    pal = ui->btnNeueHopfenGabe->palette();
-    pal.setColor(QPalette::Button, gSettings->colorHopfen);
-    ui->btnNeueHopfenGabe->setDefaultPalette(pal);
-    ui->btnHopfenGabenUebernehmen->setDefaultPalette(pal);
-    ui->btnNeueHopfenGabeGaerung->setDefaultPalette(pal);
-    ui->btnHopfenGabenUebernehmenGaerung->setDefaultPalette(pal);
-
-    pal = ui->btnNeueHefeGabe->palette();
-    pal.setColor(QPalette::Button, gSettings->colorHefe);
-    ui->btnNeueHefeGabe->setDefaultPalette(pal);
-    ui->btnHefeGabenUebernehmen->setDefaultPalette(pal);
-
-    pal = ui->btnNeueZusatzGabeKochen->palette();
-    pal.setColor(QPalette::Button, gSettings->colorZusatz);
-    ui->btnNeueZusatzGabeMaischen->setDefaultPalette(pal);
-    ui->btnZusazGabenUebernehmenMaischen->setDefaultPalette(pal);
-    ui->btnNeueZusatzGabeKochen->setDefaultPalette(pal);
-    ui->btnZusazGabenUebernehmenKochen->setDefaultPalette(pal);
-    ui->btnNeueZusatzGabeGaerung->setDefaultPalette(pal);
-    ui->btnZusazGabenUebernehmenGaerung->setDefaultPalette(pal);
-
-    pal = ui->btnNeueRast->palette();
-    pal.setColor(QPalette::Button, gSettings->colorRast);
-    ui->btnNeueRast->setDefaultPalette(pal);
-    ui->btnRastenUebernehmen->setDefaultPalette(pal);
-
-    pal = ui->btnNeueWasseraufbereitung->palette();
-    pal.setColor(QPalette::Button, gSettings->colorWasser);
-    ui->btnNeueWasseraufbereitung->setDefaultPalette(pal);
-    ui->btnWasseraufbereitungUebernehmen->setDefaultPalette(pal);
-
-    pal = ui->btnNeuerAnhang->palette();
-    pal.setColor(QPalette::Button, gSettings->colorAnhang);
-    ui->btnNeuerAnhang->setDefaultPalette(pal);
-
     mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Settings::Theme::Dark ? QStringLiteral(":/images/dark/bier.svg") : QStringLiteral(":/images/light/bier.svg"));
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
 

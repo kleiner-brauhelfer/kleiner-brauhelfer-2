@@ -184,6 +184,9 @@
          <property name="sortingEnabled">
           <bool>true</bool>
          </property>
+         <property name="Category" stdset="0">
+          <string notr="true">Malz</string>
+         </property>
          <attribute name="verticalHeaderVisible">
           <bool>false</bool>
          </attribute>
@@ -235,6 +238,9 @@
          </property>
          <property name="sortingEnabled">
           <bool>true</bool>
+         </property>
+         <property name="Category" stdset="0">
+          <string notr="true">Hopfen</string>
          </property>
          <attribute name="verticalHeaderVisible">
           <bool>false</bool>
@@ -288,6 +294,9 @@
          <property name="sortingEnabled">
           <bool>true</bool>
          </property>
+         <property name="Category" stdset="0">
+          <string notr="true">Hefe</string>
+         </property>
          <attribute name="verticalHeaderVisible">
           <bool>false</bool>
          </attribute>
@@ -339,6 +348,9 @@
          </property>
          <property name="sortingEnabled">
           <bool>true</bool>
+         </property>
+         <property name="Category" stdset="0">
+          <string notr="true">Zusatz</string>
          </property>
          <attribute name="verticalHeaderVisible">
           <bool>false</bool>

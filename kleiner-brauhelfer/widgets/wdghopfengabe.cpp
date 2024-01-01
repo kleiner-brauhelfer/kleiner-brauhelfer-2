@@ -31,10 +31,6 @@ WdgHopfenGabe::WdgHopfenGabe(int row, QLayout* parentLayout, QWidget *parent) :
         }
     }
 
-    QPalette pal = palette();
-    pal.setColor(QPalette::Window, gSettings->colorHopfen);
-    setPalette(pal);
-
     ui->btnMengeKorrektur->setError(true);
     ui->btnAnteilKorrektur->setError(true);
 

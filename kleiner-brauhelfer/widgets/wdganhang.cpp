@@ -25,9 +25,6 @@ WdgAnhang::WdgAnhang(int index, QWidget *parent) :
 {
     mBasis = QDir(gSettings->databaseDir());
     ui->setupUi(this);
-    QPalette pal = palette();
-    pal.setColor(QPalette::Window, gSettings->colorAnhang);
-    setPalette(pal);
     updateValues();
     connect(bh, &Brauhelfer::discarded, this, &WdgAnhang::updateValues);
     connect(bh->sud()->modelAnhang(), &ProxyModel::modified, this, &WdgAnhang::updateValues);

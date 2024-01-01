@@ -1,0 +1,39 @@
+QPushButton[Category="Malz"], .QFrame[Category="Malz"], QTableView[Category="Malz"] QHeaderView::section {
+  background-color: rgb(252,247,224);
+}
+
+QPushButton[Category="Hopfen"], .QFrame[Category="Hopfen"], QTableView[Category="Hopfen"] QHeaderView::section {
+  background-color: rgb(222,253,224);
+}
+
+QPushButton[Category="Hefe"], .QFrame[Category="Hefe"], QTableView[Category="Hefe"] QHeaderView::section {
+  background-color: rgb(253,237,222);
+}
+
+QPushButton[Category="Zusatz"], .QFrame[Category="Zusatz"], QTableView[Category="Zusatz"] QHeaderView::section {
+  background-color: rgb(247,240,253);
+}
+
+QPushButton[Category="Wasseraufbereitung"], .QFrame[Category="Wasseraufbereitung"], QTableView[Category="Wasseraufbereitung"] QHeaderView::section {
+  background-color: rgb(232,247,253);
+}
+
+QPushButton[Category="Maischplan"], .QFrame[Category="Maischplan"], QTableView[Category="Maischplan"] QHeaderView::section {
+  background-color: rgb(253,232,232);
+}
+
+QPushButton[Category="Anhang"], .QFrame[Category="Anhang"], QTableView[Category="Anhang"] QHeaderView::section {
+  background-color: rgb(235,253,245);
+}
+
+QPushButton[Category="Kommentar"], .QFrame[Category="Kommentar"], QTableView[Category="Kommentar"] QHeaderView::section {
+  background-color: rgb(249,249,249);
+}
+	
+*[ErrorState="true"] {
+  background-color: rgb(252,171,171);
+}
+
+*[ChangedState="true"] {
+  background-color: rgb(255,240,175);
+}

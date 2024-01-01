@@ -118,15 +118,6 @@ public:
     QColor ErrorBase;
     QColor ErrorText;
 
-    QColor colorMalz;
-    QColor colorHopfen;
-    QColor colorHefe;
-    QColor colorZusatz;
-    QColor colorWasser;
-    QColor colorRast;
-    QColor colorAnhang;
-    QColor colorKommentar;
-
     QColor NichtGebrautBackground;
     QColor GebrautBackground;
     QColor AbgefuelltBackground;

@@ -28,10 +28,6 @@ WdgWasseraufbereitung::WdgWasseraufbereitung(int row, QLayout *parentLayout, QWi
         }
     }
 
-    QPalette pal = palette();
-    pal.setColor(QPalette::Window, gSettings->colorWasser);
-    setPalette(pal);
-
     updateValues();
     connect(bh, &Brauhelfer::modified, this, &WdgWasseraufbereitung::updateValues);
 }

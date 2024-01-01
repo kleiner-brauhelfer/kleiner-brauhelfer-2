@@ -26,5 +26,7 @@
         <file>data/Webview/zusammenfassung_en.html</file>
         <file>data/Webview/zusammenfassung_nl.html</file>
         <file>data/Webview/zusammenfassung_sv.html</file>
+        <file>data/Styles/style_dark.qss</file>
+        <file>data/Styles/style_light.qss</file>
     </qresource>
 </RCC>

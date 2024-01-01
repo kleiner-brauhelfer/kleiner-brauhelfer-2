@@ -69,15 +69,6 @@ void Settings::initTheme()
         ErrorText = QColor(180,10,10);
         colorChanged = QColor(255,240,175);
 
-        colorMalz = QColor(252,247,224);
-        colorHopfen = QColor(222,253,224);
-        colorHefe = QColor(253,237,222);
-        colorZusatz = QColor(247,240,253);
-        colorWasser = QColor(232,247,253);
-        colorRast = QColor(253,232,232);
-        colorAnhang = QColor(235,253,245);
-        colorKommentar = QColor(249,249,249);
-
         NichtGebrautBackground = QColor(242,242,242);
         GebrautBackground = QColor(242,231,201);
         AbgefuelltBackground = QColor(196,229,165);
@@ -108,15 +99,6 @@ void Settings::initTheme()
         ErrorBase = QColor(165,84,84);
         ErrorText = QColor(237,118,118);
         colorChanged = QColor(106,73,52);
-
-        colorMalz = QColor(89,86,79);
-        colorHopfen = QColor(77,89,65);
-        colorHefe = QColor(89,82,75);
-        colorZusatz = QColor(83,76,86);
-        colorWasser = QColor(78,85,89);
-        colorRast = QColor(89,79,74);
-        colorAnhang = QColor(89,89,89);
-        colorKommentar = QColor(76,76,76);
 
         NichtGebrautBackground = QColor(50, 50, 50);
         GebrautBackground = QColor(96, 50, 49);

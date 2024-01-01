@@ -33,10 +33,6 @@ WdgHefeGabe::WdgHefeGabe(int row, QLayout* parentLayout, QWidget *parent) :
         }
     }
 
-    QPalette pal = palette();
-    pal.setColor(QPalette::Window, gSettings->colorHefe);
-    setPalette(pal);
-
     ui->tbMenge->setErrorRange(0, ui->tbMenge->maximum());
 
     updateValues();

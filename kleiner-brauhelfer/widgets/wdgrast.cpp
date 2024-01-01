@@ -42,10 +42,6 @@ WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
         }
     }
 
-    QPalette pal = palette();
-    pal.setColor(QPalette::Window, gSettings->colorRast);
-    setPalette(pal);
-
     ui->cbRast->setCompleter(nullptr);
     connect(qApp, &QApplication::focusChanged, this, &WdgRast::focusChanged);
     connect(ui->cbRast->lineEdit(), &QLineEdit::textEdited, this, &WdgRast::cbRastTextEdited);

@@ -32,10 +32,6 @@ WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
         }
     }
 
-    QPalette pal = palette();
-    pal.setColor(QPalette::Window, gSettings->colorMalz);
-    setPalette(pal);
-
     ui->btnKorrektur->setError(true);
     ui->btnKorrekturExtrakt->setError(true);
     ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);

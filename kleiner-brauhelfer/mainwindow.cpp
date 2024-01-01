@@ -54,6 +54,9 @@ MainWindow::MainWindow(QWidget *parent) :
     qApp->installEventFilter(this);
 
     Settings::Theme theme = gSettings->theme();
+    QFile file(theme == Settings::Theme::Bright ? ":/data/Styles/style_light.qss" : ":/data/Styles/style_dark.qss");
+    file.open(QFile::ReadOnly);
+    setStyleSheet(file.readAll());
     ui->actionThemeHell->setEnabled(theme != Settings::Theme::Bright);
     ui->actionThemeDunkel->setEnabled(theme != Settings::Theme::Dark);
     if (theme == Settings::Theme::Dark)

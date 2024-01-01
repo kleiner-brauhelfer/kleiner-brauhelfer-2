@@ -35,8 +35,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
     ui(new Ui::DlgRohstoffe)
 {
-    QPalette pal;
-
     ui->setupUi(this);
     if (gSettings->theme() == Settings::Theme::Dark)
     {
@@ -65,22 +63,6 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     connect(ui->actionNeuVorlage, &QAction::triggered, this, &DlgRohstoffe::buttonNeuVorlage_clicked);
     connect(ui->actionNeuObrama, &QAction::triggered, this, &DlgRohstoffe::buttonNeuVorlageObrama_clicked);
     connect(ui->actionNeuKopie, &QAction::triggered, this, &DlgRohstoffe::buttonCopy_clicked);
-
-    pal = ui->tableMalz->palette();
-    pal.setColor(QPalette::Button, gSettings->colorMalz);
-    ui->tableMalz->setPalette(pal);
-
-    pal = ui->tableHopfen->palette();
-    pal.setColor(QPalette::Button, gSettings->colorHopfen);
-    ui->tableHopfen->setPalette(pal);
-
-    pal = ui->tableHefe->palette();
-    pal.setColor(QPalette::Button, gSettings->colorHefe);
-    ui->tableHefe->setPalette(pal);
-
-    pal = ui->tableWeitereZutaten->palette();
-    pal.setColor(QPalette::Button, gSettings->colorZusatz);
-    ui->tableWeitereZutaten->setPalette(pal);
 
     ProxyModelRohstoff *proxyModel;
     TableView *table;

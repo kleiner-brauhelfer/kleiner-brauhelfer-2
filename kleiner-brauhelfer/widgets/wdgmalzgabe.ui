@@ -40,6 +40,9 @@
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
+     <property name="Category" stdset="0">
+      <string notr="true">Malz</string>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
        <number>4</number>

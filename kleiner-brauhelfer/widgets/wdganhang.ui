@@ -37,6 +37,9 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
+     <property name="Category" stdset="0">
+      <string notr="true">Anhang</string>
+     </property>
      <layout class="QGridLayout" name="gridLayout">
       <property name="horizontalSpacing">
        <number>9</number>

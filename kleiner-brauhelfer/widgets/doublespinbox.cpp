@@ -20,25 +20,6 @@ void DoubleSpinBox::wheelEvent(QWheelEvent *event)
         QDoubleSpinBox::wheelEvent(event);
 }
 
-/*
-void DoubleSpinBox::paintEvent(QPaintEvent *event)
-{
-    if (WidgetDecorator::contains(this))
-        setPalette(gSettings->paletteChanged);
-    else if (!isEnabled())
-        setPalette(gSettings->palette);
-    else if (mError)
-        setPalette(gSettings->paletteError);
-    else if (value() >= mErrorLimitMax || value() <= mErrorLimitMin)
-        setPalette(gSettings->paletteError);
-    else if (isReadOnly())
-        setPalette(gSettings->palette);
-    else
-        setPalette(gSettings->paletteInput);
-    QDoubleSpinBox::paintEvent(event);
-}
-*/
-
 void DoubleSpinBox::onValueChanged(double val)
 {
     bool e = mError || val >= mErrorLimitMax || val <= mErrorLimitMin;

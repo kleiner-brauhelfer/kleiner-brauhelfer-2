@@ -1,5 +1,6 @@
 #include "widgetdecorator.h"
 #include <QPointer>
+#include <QStyle>
 
 bool WidgetDecorator::suspendValueChanged = false;
 bool WidgetDecorator::suspendValueChangedClear = false;
@@ -14,8 +15,9 @@ void WidgetDecorator::valueChanged(QWidget *wdg, bool hasFocus)
     {
         if (!contains(wdg))
         {
-            wdg->setProperty("valueChangedRepaint", true);
-            wdg->update();
+            wdg->setProperty("ChangedState", true);
+            wdg->style()->unpolish(wdg);
+            wdg->style()->polish(wdg);
             valueChangedWidgets.append(QPointer<QWidget>(wdg));
         }
     }
@@ -23,7 +25,7 @@ void WidgetDecorator::valueChanged(QWidget *wdg, bool hasFocus)
 
 bool WidgetDecorator::contains(const QWidget *wdg)
 {
-    return wdg->property("valueChangedRepaint").toBool();
+    return wdg->property("ChangedState").toBool();
 }
 
 void WidgetDecorator::clearValueChanged()
@@ -34,8 +36,9 @@ void WidgetDecorator::clearValueChanged()
     {
         if (!wdg.isNull())
         {
-            wdg->setProperty("valueChangedRepaint", false);
-            wdg->update();
+            wdg->setProperty("ChangedState", false);
+            wdg->style()->unpolish(wdg);
+            wdg->style()->polish(wdg);
         }
     }
     valueChangedWidgets.clear();

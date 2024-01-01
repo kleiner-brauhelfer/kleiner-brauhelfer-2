@@ -17,22 +17,7 @@ void DateTimeEdit::wheelEvent(QWheelEvent *event)
     if (hasFocus())
         QDateTimeEdit::wheelEvent(event);
 }
-/*
-void DateTimeEdit::paintEvent(QPaintEvent *event)
-{
-    if (WidgetDecorator::contains(this))
-        setPalette(gSettings->paletteChanged);
-    else if (!isEnabled())
-        setPalette(gSettings->palette);
-    else if (mError)
-        setPalette(gSettings->paletteError);
-    else if (isReadOnly())
-        setPalette(gSettings->palette);
-    else
-        setPalette(gSettings->paletteInput);
-    QDateTimeEdit::paintEvent(event);
-}
-*/
+
 void DateTimeEdit::setReadOnly(bool r)
 {
     QDateTimeEdit::setReadOnly(r);

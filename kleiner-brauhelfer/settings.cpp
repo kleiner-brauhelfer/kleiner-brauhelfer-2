@@ -60,14 +60,12 @@ void Settings::initTheme()
         mTheme = Bright;
 
     // colors
-    QColor colorChanged;
     switch (mTheme)
     {
     default:
     case Bright:
         ErrorBase = QColor(252,171,171);
         ErrorText = QColor(180,10,10);
-        colorChanged = QColor(255,240,175);
 
         NichtGebrautBackground = QColor(242,242,242);
         GebrautBackground = QColor(242,231,201);
@@ -98,7 +96,6 @@ void Settings::initTheme()
     case Dark:
         ErrorBase = QColor(165,84,84);
         ErrorText = QColor(237,118,118);
-        colorChanged = QColor(106,73,52);
 
         NichtGebrautBackground = QColor(50, 50, 50);
         GebrautBackground = QColor(96, 50, 49);
@@ -205,10 +202,6 @@ void Settings::initTheme()
         palette.setColor(QPalette::LinkVisited, QColor(42,130,218));
         break;
     }
-
-    paletteChanged = palette;
-    paletteChanged.setColor(QPalette::Base, colorChanged);
-    paletteChanged.setColor(QPalette::Button, colorChanged);
 
     endGroup();
 }

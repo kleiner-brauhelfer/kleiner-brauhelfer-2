@@ -32,7 +32,6 @@ DlgMaischplanMalz::DlgMaischplanMalz(double value, QWidget *parent) :
         model->setData(model->index(row, 0), bh->sud()->modelMalzschuettung()->data(row, ModelMalzschuettung::ColName));
         model->setData(model->index(row, 1), bh->sud()->modelMalzschuettung()->data(row, ModelMalzschuettung::Colerg_Menge));
         model->setData(model->index(row, 2), 0);
-        model->setData(model->index(row, 2), gSettings->paletteChanged.base(), Qt::BackgroundRole);
     }
 
     TableView *table = ui->tableView;

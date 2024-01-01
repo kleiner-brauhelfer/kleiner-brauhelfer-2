@@ -16,20 +16,7 @@ void ComboBox::wheelEvent(QWheelEvent *event)
     if (hasFocus())
         QComboBox::wheelEvent(event);
 }
-/*
-void ComboBox::paintEvent(QPaintEvent *event)
-{
-    if (WidgetDecorator::contains(this))
-        setPalette(gSettings->paletteChanged);
-    else if (!isEnabled())
-        setPalette(gSettings->palette);
-    else if (mError)
-        setPalette(gSettings->paletteErrorButton);
-    else
-        setPalette(gSettings->paletteInput);
-    QComboBox::paintEvent(event);
-}
-*/
+
 void ComboBox::setError(bool e)
 {
     if (property("ErrorState").toBool() != e)

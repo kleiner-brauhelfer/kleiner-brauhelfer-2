@@ -109,7 +109,7 @@ public:
     QFont font;
 
     QPalette palette;
-    QPalette paletteChanged;
+    //QPalette paletteChanged;
 
     QColor ErrorBase;
     QColor ErrorText;

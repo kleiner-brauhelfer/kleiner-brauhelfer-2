@@ -20,25 +20,6 @@ void SpinBox::wheelEvent(QWheelEvent *event)
         QSpinBox::wheelEvent(event);
 }
 
-/*
-void SpinBox::paintEvent(QPaintEvent *event)
-{
-    if (WidgetDecorator::contains(this))
-        setPalette(gSettings->paletteChanged);
-    else if (!isEnabled())
-        setPalette(gSettings->palette);
-    else if (mError)
-        setPalette(gSettings->paletteError);
-    else if (value() >= mErrorLimitMax || value() <= mErrorLimitMin)
-        setPalette(gSettings->paletteError);
-    else if (isReadOnly())
-        setPalette(gSettings->palette);
-    else
-        setPalette(gSettings->paletteInput);
-    QSpinBox::paintEvent(event);
-}
-*/
-
 void SpinBox::onValueChanged(int val)
 {
     bool e = mError || val >= mErrorLimitMax || val <= mErrorLimitMin;

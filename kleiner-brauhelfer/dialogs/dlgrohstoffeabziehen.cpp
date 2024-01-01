@@ -20,10 +20,8 @@ public:
     }
     void appendRow(const QString& name, double menge, double vorhanden)
     {
-        QStandardItem* itemMenge = new QStandardItem(QString::number(menge));
-        itemMenge->setBackground(gSettings->paletteChanged.base());
         QStandardItemModel::appendRow({new QStandardItem(name),
-                   itemMenge,
+                   new QStandardItem(QString::number(menge)),
                    new QStandardItem(QString::number(vorhanden))});
     }
 };

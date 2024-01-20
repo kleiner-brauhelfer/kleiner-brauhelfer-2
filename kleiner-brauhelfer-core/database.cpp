@@ -414,9 +414,9 @@ QSqlQuery Database::sqlExec(const QSqlDatabase &db, const QString &query)
     QSqlQuery sqlQuery(db);
     if (!sqlQuery.exec(query))
     {
-        mLastError = db.lastError();
+        mLastError = sqlQuery.lastError();
         qCritical(Brauhelfer::loggingCategory) << query;
-        qCritical(Brauhelfer::loggingCategory) << mLastError;
+        qCritical(Brauhelfer::loggingCategory) << mLastError.text();
         throw std::runtime_error(mLastError.text().toStdString());
     }
     return sqlQuery;

@@ -117,8 +117,27 @@ static bool connectDatabase()
                                                                        QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
                 {
-                    // create copy of database
                     QFile fileOrg(gSettings->databasePath());
+
+                    // create backup of database
+                    ret = QMessageBox::question(nullptr, QApplication::applicationName(), QObject::tr("Soll eine Sicherheitskopie der Datenbank angelegt werden?"));
+                    if (ret == QMessageBox::Yes)
+                    {
+                        QString fileNameBackup = QFileDialog::getSaveFileName(nullptr, QObject::tr("Sicherheitskopie anlegen"),
+                                                                              gSettings->databasePath(),
+                                                                              QObject::tr("Datenbank (*.sqlite);;Alle Dateien (*.*)"));
+                        if (!fileNameBackup.isEmpty())
+                        {
+                            QFile fileBackup(fileNameBackup);
+                            if (!fileOrg.copy(fileBackup.fileName()))
+                            {
+                                QMessageBox::critical(nullptr, QApplication::applicationName(), QObject::tr("Sicherheitskopie konnte nicht erstellt werden."));
+                                continue;
+                            }
+                        }
+                    }
+
+                    // create copy of database and update copy
                     QFile fileUpdate(gSettings->databasePath() + "_update.sqlite");
                     fileUpdate.remove();
                     if (fileOrg.copy(fileUpdate.fileName()))

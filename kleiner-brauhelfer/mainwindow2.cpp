@@ -10,7 +10,6 @@
 #include "biercalc.h"
 #include "definitionen.h"
 #include "tababstract.h"
-#include "dialogs/dlgabout.h"
 #include "dialogs/dlgausruestung.h"
 #include "dialogs/dlgbrauuebersicht.h"
 #include "dialogs/dlgcheckupdate.h"
@@ -1075,12 +1074,6 @@ void MainWindow2::on_actionHilfe_triggered()
 {
     DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this);
     dlg->setHomeUrl(QStringLiteral(URL_HILFE));
-}
-
-void MainWindow2::on_actionUeber_triggered()
-{
-    DlgAbout dlg(this);
-    dlg.exec();
 }
 
 void MainWindow2::on_actionLog_triggered()

@@ -51,6 +51,7 @@ SOURCES += \
     tabrezept.cpp \
     tabsudauswahl.cpp \
     tabsudauswahl_sudinfo.cpp \
+    tabueber.cpp \
     tabzusammenfassung.cpp \
     templatetags.cpp \
     charts/chart3.cpp \
@@ -65,7 +66,6 @@ SOURCES += \
     charts/qcustomplot.cpp \
     commands/setmodeldatacommand.cpp \
     commands/undostack.cpp \
-    dialogs/dlgabout.cpp \
     dialogs/dlgabstract.cpp \
     dialogs/dlgausruestung.cpp \
     dialogs/dlgbrauuebersicht.cpp \
@@ -151,6 +151,7 @@ HEADERS += \
     tabgaerverlauf.h \
     tabrezept.h \
     tabsudauswahl.h \
+    tabueber.h \
     tabzusammenfassung.h \
     templatetags.h \
     charts/chart3.h \
@@ -165,7 +166,6 @@ HEADERS += \
     charts/qcustomplot.h \
     commands/setmodeldatacommand.h \
     commands/undostack.h \
-    dialogs/dlgabout.h \
     dialogs/dlgabstract.h \
     dialogs/dlgabstract-inl.h \
     dialogs/dlgausruestung.h \
@@ -249,8 +249,8 @@ FORMS += \
     tabgaerverlauf.ui \
     tabrezept.ui \
     tabsudauswahl.ui \
+    tabueber.ui \
     tabzusammenfassung.ui \
-    dialogs/dlgabout.ui \
     dialogs/dlgausruestung.ui \
     dialogs/dlgbrauuebersicht.ui \
     dialogs/dlgcheckupdate.ui \

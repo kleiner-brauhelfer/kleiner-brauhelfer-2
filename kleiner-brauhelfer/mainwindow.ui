@@ -192,7 +192,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
         <enum>QTabWidget::West</enum>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>7</number>
        </property>
        <widget class="QWidget" name="tabSudauswahl">
         <attribute name="title">
@@ -229,7 +229,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
          <string>Einstellungen</string>
         </attribute>
        </widget>
-       <widget class="QWidget" name="tabUeber">
+       <widget class="TabUeber" name="tabUeber">
         <attribute name="title">
          <string>Über</string>
         </attribute>
@@ -423,6 +423,14 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TabUeber</class>
+   <extends>QWidget</extends>
+   <header>tabueber.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

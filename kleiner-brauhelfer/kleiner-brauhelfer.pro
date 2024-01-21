@@ -46,6 +46,7 @@ SOURCES += \
     tababfuellen.cpp \
     tabbewertung.cpp \
     tabbraudaten.cpp \
+    tabeinstellungen.cpp \
     tabetikette.cpp \
     tabgaerverlauf.cpp \
     tabrezept.cpp \
@@ -76,7 +77,6 @@ SOURCES += \
     dialogs/dlghilfe.cpp \
     dialogs/dlgimportexport.cpp \
     dialogs/dlgmaischplanmalz.cpp \
-    dialogs/dlgmodule.cpp \
     dialogs/dlgphmalz.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrichtexteditor.cpp \
@@ -147,6 +147,7 @@ HEADERS += \
     tababfuellen.h \
     tabbewertung.h \
     tabbraudaten.h \
+    tabeinstellungen.h \
     tabetikette.h \
     tabgaerverlauf.h \
     tabrezept.h \
@@ -177,7 +178,6 @@ HEADERS += \
     dialogs/dlghilfe.h \
     dialogs/dlgimportexport.h \
     dialogs/dlgmaischplanmalz.h \
-    dialogs/dlgmodule.h \
     dialogs/dlgphmalz.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrichtexteditor.h \
@@ -245,6 +245,7 @@ FORMS += \
     tababfuellen.ui \
     tabbewertung.ui \
     tabbraudaten.ui \
+    tabeinstellungen.ui \
     tabetikette.ui \
     tabgaerverlauf.ui \
     tabrezept.ui \
@@ -260,7 +261,6 @@ FORMS += \
     dialogs/dlghilfe.ui \
     dialogs/dlgimportexport.ui \
     dialogs/dlgmaischplanmalz.ui \
-    dialogs/dlgmodule.ui \
     dialogs/dlgphmalz.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrichtexteditor.ui \

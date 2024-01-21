@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget->tabBar()->setContextMenuPolicy(Qt::ActionsContextMenu);
     ui->tabWidget->tabBar()->addAction(ui->actionShowTabBarLabels);
 
+    connect(ui->tabEinstellungen, &TabEinstellungen::restoreView, this, &MainWindow::restoreView);
+
     connect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
 
     restoreView();

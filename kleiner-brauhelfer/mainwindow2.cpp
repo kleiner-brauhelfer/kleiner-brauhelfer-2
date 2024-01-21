@@ -17,7 +17,6 @@
 #include "dialogs/dlgdatenbank.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgtableview.h"
-#include "dialogs/dlgmodule.h"
 #include "dialogs/dlgconsole.h"
 #include "dialogs/dlgrohstoffe.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
@@ -106,11 +105,6 @@ MainWindow2::MainWindow2(QWidget *parent) :
     }
 
     gSettings->beginGroup("General");
-    ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
-    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
-    ui->actionTooltips->setChecked(gSettings->value("TooltipsEnabled", true).toBool());
-    ui->actionZahlenformat->setChecked(gSettings->value("UseLanguageLocale", false).toBool());
-    ui->actionAnimationen->setChecked(gSettings->value("Animations", true).toBool());
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
 
@@ -276,7 +270,6 @@ void MainWindow2::restoreView()
     ui->tabZusammenfassung->restoreView();
     ui->tabEtikette->restoreView();
     ui->tabBewertung->restoreView();
-    DlgModule::restoreView();
     DlgRohstoffe::restoreView();
     DlgAusruestung::restoreView();
     DlgBrauUebersicht::restoreView();
@@ -289,7 +282,6 @@ void MainWindow2::restoreView()
 
 void MainWindow2::closeDialogs()
 {
-    DlgAbstract::closeDialog<DlgModule>();
     DlgAbstract::closeDialog<DlgConsole>();
     DlgAbstract::closeDialog<DlgBrauUebersicht>();
     DlgAbstract::closeDialog<DlgRohstoffe>();
@@ -669,35 +661,6 @@ void MainWindow2::on_actionEingabefelderEntsperren_changed()
     }
 }
 
-void MainWindow2::on_actionThemeHell_triggered()
-{
-    gSettings->setTheme(Settings::Theme::Light);
-    restart();
-}
-
-void MainWindow2::on_actionThemeDunkel_triggered()
-{
-    gSettings->setTheme(Settings::Theme::Dark);
-    restart();
-}
-
-void MainWindow2::on_actionOeffnen_triggered()
-{
-    QString databasePath = QFileDialog::getOpenFileName(this, tr("Datenbank auswählen"),
-                                                    gSettings->databasePath(),
-                                                    tr("Datenbank (*.sqlite);;Alle Dateien (*.*)"));
-    if (!databasePath.isEmpty())
-    {
-        gSettings->setDatabasePath(databasePath);
-        restart();
-    }
-}
-
-void MainWindow2::on_actionBestaetigungBeenden_triggered(bool checked)
-{
-    gSettings->setValueInGroup("General", "BeendenAbfrage", checked);
-}
-
 void MainWindow2::checkForUpdate(bool force)
 {
   #if QT_NETWORK_LIB
@@ -1012,62 +975,6 @@ void MainWindow2::checkLoadedSud()
             }
         }
     }
-}
-
-void MainWindow2::on_actionCheckUpdate_triggered(bool checked)
-{
-  #if QT_NETWORK_LIB
-    gSettings->setValueInGroup("General", "CheckUpdate", checked);
-    if (checked)
-        checkForUpdate(true);
-  #else
-    Q_UNUSED(checked)
-  #endif
-}
-
-void MainWindow2::on_actionTooltips_triggered(bool checked)
-{
-    gSettings->setValueInGroup("General", "TooltipsEnabled", checked);
-}
-
-void MainWindow2::on_actionAnimationen_triggered(bool checked)
-{
-    gSettings->setValueInGroup("General", "Animations", checked);
-}
-
-void MainWindow2::on_actionDeutsch_triggered()
-{
-    gSettings->setLanguage(QStringLiteral("de"));
-    restart(1001);
-}
-
-void MainWindow2::on_actionEnglisch_triggered()
-{
-    gSettings->setLanguage(QStringLiteral("en"));
-    restart(1001);
-}
-
-void MainWindow2::on_actionSchwedisch_triggered()
-{
-    gSettings->setLanguage(QStringLiteral("sv"));
-    restart(1001);
-}
-
-void MainWindow2::on_actionNiederlaendisch_triggered()
-{
-    gSettings->setLanguage(QStringLiteral("nl"));
-    restart(1001);
-}
-
-void MainWindow2::on_actionZahlenformat_triggered(bool checked)
-{
-    gSettings->setValueInGroup("General", "UseLanguageLocale", checked);
-    restart(1001);
-}
-
-void MainWindow2::on_actionModule_triggered()
-{
-    DlgAbstract::showDialog<DlgModule>(this);
 }
 
 void MainWindow2::on_actionHilfe_triggered()

@@ -62,20 +62,7 @@ private slots:
     void on_actionHefeZugabeZuruecksetzen_triggered();
     void on_actionWeitereZutaten_triggered();
     void on_actionEingabefelderEntsperren_changed();
-    void on_actionThemeHell_triggered();
-    void on_actionThemeDunkel_triggered();
-    void on_actionOeffnen_triggered();
     void on_actionLog_triggered();
-    void on_actionCheckUpdate_triggered(bool checked);
-    void on_actionBestaetigungBeenden_triggered(bool checked);
-    void on_actionTooltips_triggered(bool checked);
-    void on_actionAnimationen_triggered(bool checked);
-    void on_actionDeutsch_triggered();
-    void on_actionEnglisch_triggered();
-    void on_actionSchwedisch_triggered();
-    void on_actionNiederlaendisch_triggered();
-    void on_actionZahlenformat_triggered(bool checked);
-    void on_actionModule_triggered();
     void on_actionHilfe_triggered();
     void on_actionDatenbank_triggered();
     

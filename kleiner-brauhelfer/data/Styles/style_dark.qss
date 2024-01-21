@@ -30,14 +30,14 @@ QPushButton[Category="Kommentar"], .QFrame[Category="Kommentar"], QTableView[Cat
   background-color: rgb(76,76,76);
 }
 	
-QPushButton[ErrorState="true"], QAbstractSpinBox[ErrorState="true"], QComboBox[ErrorState="true"] {
+QLineEdit[ErrorState="true"], QPushButton[ErrorState="true"], QAbstractSpinBox[ErrorState="true"], QComboBox[ErrorState="true"] {
   background-color: rgb(165,84,84);
 }
 
-QLabel[ErrorState="true"] {
+QLabel[ErrorState="true"], QCheckBox[ErrorState="true"] {
   color: rgbr(237,118,118);
 }
 
-*[ChangedState="true"] {
+QLineEdit[ValueChanged="true"], QPushButton[ValueChanged="true"], QAbstractSpinBox[ValueChanged="true"], QComboBox[ValueChanged="true"], QCheckBox[ValueChanged="true"] {
   background-color: rgb(106,73,52);
 }

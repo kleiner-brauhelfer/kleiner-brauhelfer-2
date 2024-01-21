@@ -6,7 +6,7 @@
 class IconThemed : public QIcon
 {
 public:
-    IconThemed(const QString &iconName, bool lightTheme);
+    explicit IconThemed(const QString &iconName, bool lightTheme);
 };
 
 #endif // ICONTHEMED_H

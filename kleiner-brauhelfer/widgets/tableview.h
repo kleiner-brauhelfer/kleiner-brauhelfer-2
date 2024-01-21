@@ -21,7 +21,7 @@ public:
     };
 
 public:
-    TableView(QWidget *parent = nullptr);
+    explicit TableView(QWidget *parent = nullptr);
     void build();
     void setDefaultContextMenu();
     void buildContextMenu(QMenu& menu) const;

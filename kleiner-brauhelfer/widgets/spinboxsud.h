@@ -8,7 +8,7 @@ class SpinBoxSud : public SpinBox
     Q_OBJECT
 
 public:
-    SpinBoxSud(QWidget *parent = nullptr);
+    explicit SpinBoxSud(QWidget *parent = nullptr);
     void setColumn(int col);
     int column() const;
     void updateValue();

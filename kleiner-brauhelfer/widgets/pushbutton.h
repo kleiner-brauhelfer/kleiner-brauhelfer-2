@@ -8,7 +8,7 @@ class PushButton : public QPushButton
     Q_OBJECT
 
 public:
-    PushButton(QWidget *parent = nullptr);
+    explicit PushButton(QWidget *parent = nullptr);
     void setError(bool e);
 };
 

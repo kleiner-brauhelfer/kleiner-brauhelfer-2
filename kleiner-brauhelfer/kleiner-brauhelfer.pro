@@ -9,8 +9,8 @@ ORGANIZATION = kleiner-brauhelfer
 TARGET = kleiner-brauhelfer-2
 
 VER_MAJ = 2
-VER_MIN = 6
-VER_PAT = 2
+VER_MIN = 7
+VER_PAT = 0
 VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"
 
@@ -108,12 +108,14 @@ SOURCES += \
     model/restextraktdelegate.cpp \
     model/spinboxdelegate.cpp \
     model/textdelegate.cpp \
+    widgets/checkbox.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
     widgets/datetimeedit.cpp \
     widgets/doublespinbox.cpp \
     widgets/doublespinboxsud.cpp \
     widgets/iconthemed.cpp \
+    widgets/lineedit.cpp \
     widgets/pushbutton.cpp \
     widgets/spinbox.cpp \
     widgets/spinboxsud.cpp \
@@ -206,12 +208,14 @@ HEADERS += \
     model/restextraktdelegate.h \
     model/spinboxdelegate.h \
     model/textdelegate.h \
+    widgets/checkbox.h \
     widgets/combobox.h \
     widgets/dateedit.h \
     widgets/datetimeedit.h \
     widgets/doublespinbox.h \
     widgets/doublespinboxsud.h \
     widgets/iconthemed.h \
+    widgets/lineedit.h \
     widgets/pushbutton.h \
     widgets/spinbox.h \
     widgets/spinboxsud.h \

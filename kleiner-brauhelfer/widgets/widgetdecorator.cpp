@@ -15,7 +15,7 @@ void WidgetDecorator::valueChanged(QWidget *wdg, bool hasFocus)
     {
         if (!contains(wdg))
         {
-            wdg->setProperty("ChangedState", true);
+            wdg->setProperty("ValueChanged", true);
             wdg->style()->unpolish(wdg);
             wdg->style()->polish(wdg);
             valueChangedWidgets.append(QPointer<QWidget>(wdg));
@@ -25,7 +25,7 @@ void WidgetDecorator::valueChanged(QWidget *wdg, bool hasFocus)
 
 bool WidgetDecorator::contains(const QWidget *wdg)
 {
-    return wdg->property("ChangedState").toBool();
+    return wdg->property("ValueChanged").toBool();
 }
 
 void WidgetDecorator::clearValueChanged()
@@ -36,7 +36,7 @@ void WidgetDecorator::clearValueChanged()
     {
         if (!wdg.isNull())
         {
-            wdg->setProperty("ChangedState", false);
+            wdg->setProperty("ValueChanged", false);
             wdg->style()->unpolish(wdg);
             wdg->style()->polish(wdg);
         }

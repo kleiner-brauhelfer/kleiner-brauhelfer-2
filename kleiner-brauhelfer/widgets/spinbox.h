@@ -8,7 +8,7 @@ class SpinBox : public QSpinBox
     Q_OBJECT
 
 public:
-    SpinBox(QWidget *parent = nullptr);
+    explicit SpinBox(QWidget *parent = nullptr);
     void setReadOnly(bool r);
     void setError(bool e);
     void setErrorRange(int min, int max);

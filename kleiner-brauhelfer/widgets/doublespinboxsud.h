@@ -8,7 +8,7 @@ class DoubleSpinBoxSud : public DoubleSpinBox
     Q_OBJECT
 
 public:
-    DoubleSpinBoxSud(QWidget *parent = nullptr);
+    explicit DoubleSpinBoxSud(QWidget *parent = nullptr);
     void setColumn(int col);
     int column() const;
     void updateValue();

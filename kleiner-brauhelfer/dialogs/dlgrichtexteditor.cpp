@@ -38,8 +38,8 @@ DlgRichTextEditor::DlgRichTextEditor(QWidget *parent) :
         ui->cbSize->addItem(QString::number(size));
 
     gSettings->beginGroup(staticMetaObject.className());
-    ui->cbFont->setCurrentIndex(gSettings->value("font", ui->cbFont->findText(gSettings->font.family())).toInt());
-    ui->cbSize->setCurrentIndex(gSettings->value("fontsize", ui->cbSize->findText(QString::number(gSettings->font.pointSize()))).toInt());
+    ui->cbFont->setCurrentIndex(gSettings->value("font", ui->cbFont->findText(font().family())).toInt());
+    ui->cbSize->setCurrentIndex(gSettings->value("fontsize", ui->cbSize->findText(QString::number(font().pointSize()))).toInt());
     gSettings->endGroup();
 
     QTextCharFormat format;

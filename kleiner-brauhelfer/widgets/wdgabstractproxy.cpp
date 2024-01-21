@@ -40,7 +40,7 @@ bool WdgAbstractProxy::setData(int col, const QVariant& value)
 
 bool WdgAbstractProxy::remove()
 {
-    if (gSettings->animationsEnabled())
+    if (gSettings->valueInGroup("General", "Animations", true).toBool())
     {        
         QVariantAnimation *animation = new QVariantAnimation();
         animation->setDuration(250);
@@ -67,7 +67,7 @@ bool WdgAbstractProxy::moveUp()
     if (mRow <= 0)
         return false;
 
-    if (gSettings->animationsEnabled() && mParentLayout)
+    if (gSettings->valueInGroup("General", "Animations", true).toBool() && mParentLayout)
     {
         QWidget* w = mParentLayout->itemAt(mRow - 1)->widget();
         QVariantAnimation* animation = new QVariantAnimation();
@@ -106,7 +106,7 @@ bool WdgAbstractProxy::moveDown()
     if (mRow >= mModel->rowCount() - 1)
         return false;
 
-    if (gSettings->animationsEnabled() && mParentLayout)
+    if (gSettings->valueInGroup("General", "Animations", true).toBool() && mParentLayout)
     {
         QWidget* w = mParentLayout->itemAt(mRow + 1)->widget();
         QVariantAnimation* animation = new QVariantAnimation();

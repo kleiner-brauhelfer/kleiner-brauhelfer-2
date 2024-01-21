@@ -403,6 +403,9 @@ int main(int argc, char *argv[])
     else
         gSettings = new Settings();
 
+    // set style
+    a.setStyle(QStringLiteral("Fusion"));
+
     // logging
     defaultMessageHandler = qInstallMessageHandler(messageHandler);
     int logLevel = gSettings->logLevel();
@@ -443,9 +446,6 @@ int main(int argc, char *argv[])
             if (connectDatabase())
             {
                 MainWindow2 w(nullptr);
-                a.setStyle(QStyleFactory::create(gSettings->style()));
-                a.setPalette(gSettings->palette);
-                a.setFont(gSettings->font);
                 w.show();
                 try
                 {

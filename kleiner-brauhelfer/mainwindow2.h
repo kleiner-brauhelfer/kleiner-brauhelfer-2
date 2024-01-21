@@ -41,7 +41,6 @@ private slots:
     void sudLoaded();
     void sudDataChanged(const QModelIndex& index);
     void loadSud(int sudId);
-    void changeStyle();
     void checkMessageFinished();
     void modulesChanged(Settings::Modules modules);
     void on_tabMain_currentChanged();
@@ -66,7 +65,6 @@ private slots:
     void on_actionAnsichtWiederherstellen_triggered();
     void on_actionThemeHell_triggered();
     void on_actionThemeDunkel_triggered();
-    void on_actionSchriftart_triggered(bool checked);
     void on_actionOeffnen_triggered();
     void on_actionLog_triggered();
     void on_actionCheckUpdate_triggered(bool checked);

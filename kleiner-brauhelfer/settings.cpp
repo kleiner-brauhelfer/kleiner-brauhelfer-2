@@ -10,7 +10,6 @@
 Settings::Settings(QObject *parent) :
     QSettings(QSettings::IniFormat, QSettings::UserScope, QCoreApplication::organizationName(), QCoreApplication::applicationName(), parent)
 {
-    defaultFont = QGuiApplication::font();
     defaultPalette = QGuiApplication::palette();
     initTheme();
 }
@@ -18,7 +17,6 @@ Settings::Settings(QObject *parent) :
 Settings::Settings(const QString& dir, QObject *parent) :
     QSettings(dir + "/" + QCoreApplication::applicationName() + ".ini", QSettings::IniFormat, parent)
 {
-    defaultFont = QGuiApplication::font();
     defaultPalette = QGuiApplication::palette();
     initTheme();
 }
@@ -48,22 +46,16 @@ void Settings::initTheme()
 {
     beginGroup("Style");
 
-    // font
-    if (value("UseSystemFont", true).toBool())
-        font = defaultFont;
-    else
-        font = value("Font", QFont()).value<QFont>();
-
     // theme
-    mTheme = static_cast<Theme>(value("Theme", Bright).toInt());
+    mTheme = static_cast<Theme>(value("Theme", Light).toInt());
     if (mTheme == Unused)
-        mTheme = Bright;
+        mTheme = Light;
 
     // colors
     switch (mTheme)
     {
     default:
-    case Bright:
+    case Light:
         ErrorBase = QColor(252,171,171);
         ErrorText = QColor(180,10,10);
 
@@ -128,7 +120,7 @@ void Settings::initTheme()
     switch (mTheme)
     {
     default:
-    case Bright:
+    case Light:
         palette.setColorGroup(QPalette::Disabled,
             QColor(128,128,128),//windowText
             QColor(226,226,226),//button
@@ -255,43 +247,6 @@ void Settings::setTheme(Theme theme)
     initTheme();
 }
 
-QString Settings::style()
-{
-    return valueInGroup("Style", "Style", QStringLiteral("Fusion")).toString();
-}
-
-void Settings::setStyle(const QString &style)
-{
-    setValueInGroup("Style", "Style", style);
-}
-
-bool Settings::useSystemFont()
-{
-    return valueInGroup("Style", "UseSystemFont", true).toBool();
-}
-
-void Settings::setUseSystemFont(bool system)
-{
-    setValueInGroup("Style", "UseSystemFont", system);
-    font = defaultFont;
-}
-
-void Settings::setFont(const QFont &font)
-{
-    setValueInGroup("Style", "Font", font);
-    this->font = font;
-}
-
-bool Settings::animationsEnabled()
-{
-    return valueInGroup("General", "Animations", true).toBool();
-}
-
-void Settings::setAnimationsEnabled(bool enabled)
-{
-    setValueInGroup("General", "Animations", enabled);
-}
-
 QString Settings::language()
 {
     return valueInGroup("General", "language", "de").toString();
@@ -350,27 +305,8 @@ QString Settings::dataDir(int type) const
 
 void Settings::initModules()
 {
-    beginGroup("General");
-    if (!contains("Modules"))
-    {
-        modulesFirstTime = true;
-        setValue("Modules", uint(ModuleDefault));
-    }
-    mModules = static_cast<Modules>(value("Modules").toUInt());
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 7, 0))
-    mModules.setFlag(ModuleSudauswahl);
-    mModules.setFlag(ModuleRezept);
-    mModules.setFlag(ModuleBraudaten);
-    mModules.setFlag(ModuleAbfuellen);
-    mModules.setFlag(ModuleRohstoffe);
-  #else
-    mModules |= ModuleSudauswahl;
-    mModules |= ModuleRezept;
-    mModules |= ModuleBraudaten;
-    mModules |= ModuleAbfuellen;
-    mModules |= ModuleRohstoffe;
-  #endif
-    endGroup();
+    uint modules = valueInGroup("General", "Modules", uint(ModuleDefault)).toUInt();
+    mModules = static_cast<Modules>(modules);
 }
 
 Settings::Modules Settings::modules() const

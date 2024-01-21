@@ -17,24 +17,24 @@ public:
     enum Theme
     {
         Unused,
-        Bright,
+        Light,
         Dark
     };
 
     enum Module {
         ModuleKein                  = 0x00000000,
         //
-        ModuleSudauswahl            = 0x00000001,
-        ModuleRezept                = 0x00000002,
-        ModuleBraudaten             = 0x00000004,
-        ModuleAbfuellen             = 0x00000008,
+        _deprecatedModuleSudauswahl = 0x00000001,
+        _deprecatedModuleRezept     = 0x00000002,
+        _deprecatedModuleBraudaten  = 0x00000004,
+        _deprecatedModuleAbfuellen  = 0x00000008,
         ModuleGaerverlauf           = 0x00000010,
         ModuleAusdruck              = 0x00000020,
         ModuleEtikette              = 0x00000040,
         ModuleBewertung             = 0x00000080,
         ModuleBrauuebersicht        = 0x00000100,
         ModuleAusruestung           = 0x00000200,
-        ModuleRohstoffe             = 0x00000400,
+        _deprecatedModuleRohstoffe  = 0x00000400,
         _deprecatedModuleDatenbank  = 0x00000800,
         //
         ModuleWasseraufbereitung    = 0x00010000,
@@ -43,8 +43,7 @@ public:
         ModuleSpeise                = 0x00080000,
         ModuleSchnellgaerprobe      = 0x00100000,
         //
-        ModuleDefault               = ModuleSudauswahl | ModuleRezept | ModuleBraudaten | ModuleAbfuellen |
-                                      ModuleGaerverlauf | ModuleAusdruck | ModuleRohstoffe |
+        ModuleDefault               = ModuleGaerverlauf | ModuleAusdruck |
                                       ModuleLagerverwaltung | ModuleBrauuebersicht,
         ModuleAlle                  = 0xffffffff,
     };
@@ -64,16 +63,6 @@ public:
 
     Theme theme() const;
     void setTheme(Theme theme);
-
-    QString style();
-    void setStyle(const QString &style);
-
-    bool useSystemFont();
-    void setUseSystemFont(bool system);
-    void setFont(const QFont &font);
-
-    bool animationsEnabled();
-    void setAnimationsEnabled(bool enabled);
 
     QString language();
     void setLanguage(const QString &lang);
@@ -106,8 +95,6 @@ private:
     void initTheme();
 
 public:
-    QFont font;
-
     QPalette palette;
     //QPalette paletteChanged;
 
@@ -134,12 +121,10 @@ public:
 
     // run-time settings
     bool ForceEnabled = false;
-    bool modulesFirstTime = false;
 
 private:
     Theme mTheme;
     Modules mModules;
-    QFont defaultFont;
     QPalette defaultPalette;
 };
 

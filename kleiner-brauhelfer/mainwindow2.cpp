@@ -54,10 +54,10 @@ MainWindow2::MainWindow2(QWidget *parent) :
     qApp->installEventFilter(this);
 
     Settings::Theme theme = gSettings->theme();
-    QFile file(theme == Settings::Theme::Bright ? ":/data/Styles/style_light.qss" : ":/data/Styles/style_dark.qss");
+    QFile file(theme == Settings::Theme::Light ? ":/data/Styles/style_light.qss" : ":/data/Styles/style_dark.qss");
     file.open(QFile::ReadOnly);
     setStyleSheet(file.readAll());
-    ui->actionThemeHell->setEnabled(theme != Settings::Theme::Bright);
+    ui->actionThemeHell->setEnabled(theme != Settings::Theme::Light);
     ui->actionThemeDunkel->setEnabled(theme != Settings::Theme::Dark);
     if (theme == Settings::Theme::Dark)
     {
@@ -120,8 +120,6 @@ MainWindow2::MainWindow2(QWidget *parent) :
   #endif
     ui->menuStil->menuAction()->setVisible(!ui->menuStil->isEmpty());
 
-    ui->actionSchriftart->setChecked(gSettings->useSystemFont());
-
     gSettings->beginGroup("MainWindow2");
     restoreGeometry(gSettings->value("geometry").toByteArray());
     mDefaultState = saveState();
@@ -133,9 +131,9 @@ MainWindow2::MainWindow2(QWidget *parent) :
     ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
     ui->actionTooltips->setChecked(gSettings->value("TooltipsEnabled", true).toBool());
     ui->actionZahlenformat->setChecked(gSettings->value("UseLanguageLocale", false).toBool());
+    ui->actionAnimationen->setChecked(gSettings->value("Animations", true).toBool());
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
-    ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
 
     connect(qApp, &QApplication::focusChanged, this, [](QWidget *old, QWidget *now){
         if (!old || !now)
@@ -160,9 +158,6 @@ MainWindow2::MainWindow2(QWidget *parent) :
 
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
-
-    if (gSettings->modulesFirstTime)
-        on_actionModule_triggered();
 
     modulesChanged(Settings::ModuleAlle);
     sudLoaded();
@@ -361,7 +356,7 @@ void MainWindow2::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, IconThemed(QStringLiteral("tabgaerverlauf"), gSettings->theme() == Settings::Theme::Bright), tr("Gärverlauf"));
+                ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, IconThemed(QStringLiteral("tabgaerverlauf"), gSettings->theme() == Settings::Theme::Light), tr("Gärverlauf"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -374,7 +369,7 @@ void MainWindow2::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleAusdruck))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed(QStringLiteral("tabzusammenfassung"), gSettings->theme() == Settings::Theme::Bright), tr("Ausdruck"));
+                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed(QStringLiteral("tabzusammenfassung"), gSettings->theme() == Settings::Theme::Light), tr("Ausdruck"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -387,7 +382,7 @@ void MainWindow2::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleEtikette))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed(QStringLiteral("tabetikette"), gSettings->theme() == Settings::Theme::Bright), tr("Etikett"));
+                ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed(QStringLiteral("tabetikette"), gSettings->theme() == Settings::Theme::Light), tr("Etikett"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -400,7 +395,7 @@ void MainWindow2::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabBewertung, IconThemed(QStringLiteral("tabbewertung"), gSettings->theme() == Settings::Theme::Bright), tr("Bewertung"));
+                ui->tabMain->insertTab(nextIndex, ui->tabBewertung, IconThemed(QStringLiteral("tabbewertung"), gSettings->theme() == Settings::Theme::Light), tr("Bewertung"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -715,7 +710,7 @@ void MainWindow2::on_actionAnsichtWiederherstellen_triggered()
 
 void MainWindow2::on_actionThemeHell_triggered()
 {
-    gSettings->setTheme(Settings::Theme::Bright);
+    gSettings->setTheme(Settings::Theme::Light);
     restart();
 }
 
@@ -723,40 +718,6 @@ void MainWindow2::on_actionThemeDunkel_triggered()
 {
     gSettings->setTheme(Settings::Theme::Dark);
     restart();
-}
-
-void MainWindow2::changeStyle()
-{
-    QAction *action = qobject_cast<QAction*>(sender());
-    if (action)
-    {
-        gSettings->setStyle(action->text());
-        restart();
-    }
-}
-
-void MainWindow2::on_actionSchriftart_triggered(bool checked)
-{
-    if (checked)
-    {
-        gSettings->setUseSystemFont(true);
-        restart();
-    }
-    else
-    {
-        bool ok;
-        QFont font = QFontDialog::getFont(&ok, gSettings->font, this);
-        if (ok)
-        {
-            gSettings->setUseSystemFont(false);
-            gSettings->setFont(font);
-            restart();
-        }
-        else
-        {
-            ui->actionSchriftart->setChecked(true);
-        }
-    }
 }
 
 void MainWindow2::on_actionOeffnen_triggered()
@@ -1110,7 +1071,7 @@ void MainWindow2::on_actionTooltips_triggered(bool checked)
 
 void MainWindow2::on_actionAnimationen_triggered(bool checked)
 {
-    gSettings->setAnimationsEnabled(checked);
+    gSettings->setValueInGroup("General", "Animations", checked);
 }
 
 void MainWindow2::on_actionDeutsch_triggered()

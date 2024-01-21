@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QGroupBox {
+  background-color: #f9f9f9;
+  border: 1px solid #ababab;
+  border-radius: 4px;
+  margin-top: 0.5em;
+}
+
+QGroupBox::title {
+  subcontrol-origin: margin;
+  subcontrol-position: top left;
+  left: 1em;
+  background-color: #f9f9f9;
+}
+
+QToolBox::tab {
+  background-color: #d5d5d5;
+  color: #444444;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  font-weight: bold;
+  font-size: 10pt;
+}
+
+QToolBox::tab:selected {
+  background-color: #44ffc400;
+}
+
+QToolBox::tab:hover {
+  background-color: #22ffc400;
+}
+
+QTextEdit#tbHelp {
+  background-color: #ffffdc;
+  color: #000000;
+}
+
+QTabBar::tab {
+  color: #444444;
+  border: 0;
+  font-weight: bold;
+  font-size: 10pt;
+}
+
+QTabBar::tab:bottom, QTabBar::tab:top {
+  margin: 0 4px;
+  padding: 0 4px;
+  height: 30px;
+}
+
+QTabBar::tab:left, QTabBar::tab:right {
+  margin: 4px 0;
+  padding: 4px 0;
+  width: 30px;
+}
+
+QTabBar::tab:left:selected {
+  color: #ffc400;
+}
+
+QTabBar::tab:top:selected, QTabBar::tab:top:hover {
+  color: #ffc400;
+  border-bottom: 2px solid #ffc400;
+}
+
+QTableView, QTreeView, QListView, QScrollArea, QTextEdit, QPlainTextEdit  {
+  border: 1px solid #ababab;
+  background-color: #fcfcfc;
+}
+
+QScrollArea {
+    border: none;
+}
+
+QScrollArea#scrollAreaAnlagen, QWidget#scrollAreaAnlagenWidgetContents,
+QScrollArea#scrollAreaEinstellungen, QWidget#scrollAreaEinstellungenWidgetContents,
+QScrollArea#scrollAreaBewertungen, QWidget#scrollAreaBewertungenWidgetContents {
+  background-color: #fcfcfc;
+}
+
+QScrollBar {
+    background-color: #f9f9f9;
+    border: 1px solid #ababab;
+    border-radius: 4px;
+    padding: 1px;
+}
+
+QScrollBar:vertical {
+    width: 16px;
+    margin-left: 6px;
+}
+
+QScrollBar:horizontal  {
+    height: 16px;
+    margin-top: 6px;
+}
+
+QScrollBar::handle {
+    border-radius: 2px;
+    background: #d5d5d5;
+    min-width: 16px;
+    min-height: 16px;
+}
+
+QScrollBar::handle:active {
+    background: #ffc400;
+}
+
+QScrollBar::add-line, QScrollBar::sub-line,
+QScrollBar::add-page, QScrollBar::sub-page {
+    width: 0px;
+    background: transparent;
+}
+
+QScrollArea::corner {
+background: transparent;
+}
+
+QPushButton[Category=&quot;Malz&quot;], .QFrame[Category=&quot;Malz&quot;], QTableView[Category=&quot;Malz&quot;] QHeaderView::section {
+  background-color: rgb(252,247,224);
+}
+
+QPushButton[Category=&quot;Hopfen&quot;], .QFrame[Category=&quot;Hopfen&quot;], QTableView[Category=&quot;Hopfen&quot;] QHeaderView::section {
+  background-color: rgb(222,253,224);
+}
+
+QPushButton[Category=&quot;Hefe&quot;], .QFrame[Category=&quot;Hefe&quot;], QTableView[Category=&quot;Hefe&quot;] QHeaderView::section {
+  background-color: rgb(253,237,222);
+}
+
+QPushButton[Category=&quot;Zusatz&quot;], .QFrame[Category=&quot;Zusatz&quot;], QTableView[Category=&quot;Zusatz&quot;] QHeaderView::section {
+  background-color: rgb(247,240,253);
+}
+
+QPushButton[Category=&quot;Wasseraufbereitung&quot;], .QFrame[Category=&quot;Wasseraufbereitung&quot;], QTableView[Category=&quot;Wasseraufbereitung&quot;] QHeaderView::section {
+  background-color: rgb(232,247,253);
+}
+
+QPushButton[Category=&quot;Maischplan&quot;], .QFrame[Category=&quot;Maischplan&quot;], QTableView[Category=&quot;Maischplan&quot;] QHeaderView::section {
+  background-color: rgb(253,232,232);
+}
+
+QPushButton[Category=&quot;Anhang&quot;], .QFrame[Category=&quot;Anhang&quot;], QTableView[Category=&quot;Anhang&quot;] QHeaderView::section {
+  background-color: rgb(235,253,245);
+}
+
+QPushButton[Category=&quot;Kommentar&quot;], .QFrame[Category=&quot;Kommentar&quot;], QTableView[Category=&quot;Kommentar&quot;] QHeaderView::section {
+  background-color: rgb(249,249,249);
+}
+	
+QLineEdit[ErrorState=&quot;true&quot;],
+QPushButton[ErrorState=&quot;true&quot;], 
+QAbstractSpinBox[ErrorState=&quot;true&quot;], 
+QComboBox[ErrorState=&quot;true&quot;] {
+  background-color: rgb(252,171,171);
+}
+
+QLabel[ErrorState=&quot;true&quot;], QCheckBox[ErrorState=&quot;true&quot;] {
+  color: rgb(180,10,10);
+}
+
+QLineEdit[ValueChanged=&quot;true&quot;],
+QPushButton[ValueChanged=&quot;true&quot;],
+QAbstractSpinBox[ValueChanged=&quot;true&quot;],
+QComboBox[ValueChanged=&quot;true&quot;],
+QCheckBox[ValueChanged=&quot;true&quot;] {
+  background-color: rgb(255,240,175);
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QSplitter" name="splitterHelp">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="tabPosition">
+        <enum>QTabWidget::West</enum>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tabSudauswahl">
+        <attribute name="title">
+         <string>Sudauswahl</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="tabSude">
+        <attribute name="title">
+         <string>Sude</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="tabLager">
+        <attribute name="title">
+         <string>Lager</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="tabAnlagen">
+        <attribute name="title">
+         <string>Anlagen</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="tabBrauuebersicht">
+        <attribute name="title">
+         <string>Brauuebersicht</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="tabBewertungen">
+        <attribute name="title">
+         <string>Bewertungen</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="tabEinstellungen">
+        <attribute name="title">
+         <string>Einstellungen</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="tabUeber">
+        <attribute name="title">
+         <string>Über</string>
+        </attribute>
+       </widget>
+      </widget>
+      <widget class="QTextBrowser" name="tbHelp">
+       <property name="openExternalLinks">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QToolBar" name="toolBarSave">
+   <property name="contextMenuPolicy">
+    <enum>Qt::PreventContextMenu</enum>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QToolBar" name="toolBarUndo">
+   <property name="contextMenuPolicy">
+    <enum>Qt::PreventContextMenu</enum>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QToolBar" name="toolBarSudauswahl">
+   <property name="contextMenuPolicy">
+    <enum>Qt::PreventContextMenu</enum>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QToolBar" name="toolBarBewertungen">
+   <property name="contextMenuPolicy">
+    <enum>Qt::PreventContextMenu</enum>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QToolBar" name="toolBarAnlagen">
+   <property name="contextMenuPolicy">
+    <enum>Qt::PreventContextMenu</enum>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QToolBar" name="toolBarLager">
+   <property name="contextMenuPolicy">
+    <enum>Qt::PreventContextMenu</enum>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QToolBar" name="toolBarRight">
+   <property name="contextMenuPolicy">
+    <enum>Qt::PreventContextMenu</enum>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="actionShowTabBarLabels">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Überschriften</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

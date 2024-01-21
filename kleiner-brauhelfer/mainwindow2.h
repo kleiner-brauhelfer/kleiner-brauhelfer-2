@@ -62,7 +62,6 @@ private slots:
     void on_actionHefeZugabeZuruecksetzen_triggered();
     void on_actionWeitereZutaten_triggered();
     void on_actionEingabefelderEntsperren_changed();
-    void on_actionAnsichtWiederherstellen_triggered();
     void on_actionThemeHell_triggered();
     void on_actionThemeDunkel_triggered();
     void on_actionOeffnen_triggered();
@@ -96,7 +95,6 @@ private:
 
 private:
     Ui::MainWindow2 *ui;
-    QByteArray mDefaultState;
 };
 
 #endif // MAINWINDOW2_H

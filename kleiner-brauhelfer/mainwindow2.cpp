@@ -106,26 +106,6 @@ MainWindow2::MainWindow2(QWidget *parent) :
         ui->menuBearbeiten->setEnabled(false);
     }
 
-  #if 0
-    QString style = gSettings->style();
-    for(const QString &key : QStyleFactory::keys())
-    {
-        QAction *action = new QAction(key, this);
-        if (key == style)
-            action->setEnabled(false);
-        else
-            connect(action, &QAction::triggered, this, &MainWindow2::changeStyle);
-        ui->menuStil->addAction(action);
-    }
-  #endif
-    ui->menuStil->menuAction()->setVisible(!ui->menuStil->isEmpty());
-
-    gSettings->beginGroup("MainWindow2");
-    restoreGeometry(gSettings->value("geometry").toByteArray());
-    mDefaultState = saveState();
-    restoreState(gSettings->value("state").toByteArray());
-    gSettings->endGroup();
-
     gSettings->beginGroup("General");
     ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
     ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
@@ -134,14 +114,6 @@ MainWindow2::MainWindow2(QWidget *parent) :
     ui->actionAnimationen->setChecked(gSettings->value("Animations", true).toBool());
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
-
-    connect(qApp, &QApplication::focusChanged, this, [](QWidget *old, QWidget *now){
-        if (!old || !now)
-            return;
-        if (strcmp(old->metaObject()->className(),"QtPrivate::QCalendarView") == 0)
-            return;
-        WidgetDecorator::clearValueChanged();
-    });
 
     connect(gSettings, &Settings::modulesChanged, this, &MainWindow2::modulesChanged);
 
@@ -284,10 +256,6 @@ void MainWindow2::discardDatabase()
 
 void MainWindow2::saveSettings()
 {
-    gSettings->beginGroup("MainWindow2");
-    gSettings->setValue("geometry", saveGeometry());
-    gSettings->setValue("state", saveState());
-    gSettings->endGroup();
     ui->tabSudAuswahl->saveSettings();
     ui->tabRezept->saveSettings();
     ui->tabBraudaten->saveSettings();
@@ -301,7 +269,6 @@ void MainWindow2::saveSettings()
 void MainWindow2::restoreView()
 {
     closeDialogs();
-    restoreState(mDefaultState);
     ui->tabSudAuswahl->restoreView();
     ui->tabRezept->restoreView();
     ui->tabBraudaten->restoreView();
@@ -701,11 +668,6 @@ void MainWindow2::on_actionEingabefelderEntsperren_changed()
         ui->tabAbfuelldaten->checkEnabled();
         ui->tabGaerverlauf->checkEnabled();
     }
-}
-
-void MainWindow2::on_actionAnsichtWiederherstellen_triggered()
-{
-    restoreView();
 }
 
 void MainWindow2::on_actionThemeHell_triggered()

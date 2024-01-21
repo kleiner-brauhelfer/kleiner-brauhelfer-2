@@ -1,4 +1,4 @@
-#include "mainwindow2.h"
+#include "mainwindow.h"
 #include <QApplication>
 #include <QTranslator>
 #include <QLibraryInfo>
@@ -445,7 +445,7 @@ int main(int argc, char *argv[])
         {
             if (connectDatabase())
             {
-                MainWindow2 w(nullptr);
+                MainWindow w(nullptr);
                 w.show();
                 try
                 {

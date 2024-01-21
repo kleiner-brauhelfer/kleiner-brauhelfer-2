@@ -8,7 +8,7 @@
 #include "settings.h"
 #include "proxymodel.h"
 #include "templatetags.h"
-#include "mainwindow.h"
+#include "mainwindow2.h"
 
 extern Brauhelfer *bh;
 extern Settings* gSettings;
@@ -153,12 +153,12 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             {
                 int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, eintrag.Name, ModelHopfen::ColTyp).toInt();
-                eintrag.Typ = MainWindow::HopfenTypname[idx];
+                eintrag.Typ = MainWindow2::HopfenTypname[idx];
                 liste = &ListHopfen;
             }
             else
             {
-                eintrag.Typ = MainWindow::ZusatzTypname[static_cast<int>(typ)];
+                eintrag.Typ = MainWindow2::ZusatzTypname[static_cast<int>(typ)];
                 liste = &ListWeitereZutaten;
             }
             eintrag.Einheit = static_cast<Brauhelfer::Einheit>(modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
@@ -342,9 +342,9 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 }
             }
             int einheit = static_cast<int>(eintrag.Einheit);
-            if (einheit >= 0 && einheit < MainWindow::Einheiten.count())
+            if (einheit >= 0 && einheit < MainWindow2::Einheiten.count())
             {
-                map.insert(QStringLiteral("Einheit"), MainWindow::Einheiten[einheit]);
+                map.insert(QStringLiteral("Einheit"), MainWindow2::Einheiten[einheit]);
                 switch (eintrag.Einheit)
                 {
                 case Brauhelfer::Einheit::Kg:

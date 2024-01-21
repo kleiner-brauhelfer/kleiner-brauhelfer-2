@@ -39,7 +39,7 @@ unix: PRE_TARGETDEPS += $$OUT_PWD/../bin/libkleiner-brauhelfer-core.a
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp \
+    mainwindow2.cpp \
     settings.cpp \
     tababstract.cpp \
     tababfuellen.cpp \
@@ -139,7 +139,7 @@ SOURCES += \
 
 HEADERS += \
     definitionen.h \
-    mainwindow.h \
+    mainwindow2.h \
     settings.h \
     tababstract.h \
     tababfuellen.h \
@@ -238,7 +238,7 @@ HEADERS += \
     widgets/widgetdecorator.h
 
 FORMS += \
-    mainwindow.ui \
+    mainwindow2.ui \
     tababfuellen.ui \
     tabbewertung.ui \
     tabbraudaten.ui \

@@ -8,7 +8,7 @@
 #include "brauhelfer.h"
 #include "biercalc.h"
 #include "settings.h"
-#include "mainwindow.h"
+#include "mainwindow2.h"
 #include "widgets/wdganhang.h"
 
 extern Brauhelfer* bh;
@@ -294,7 +294,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     {
                         QVariantMap map;
                         map[QStringLiteral("Name")] = model->data(row, ModelWasseraufbereitung::ColName);
-                        map[QStringLiteral("Einheit")] = MainWindow::Einheiten[model->data(row, ModelWasseraufbereitung::ColEinheit).toInt()];
+                        map[QStringLiteral("Einheit")] = MainWindow2::Einheiten[model->data(row, ModelWasseraufbereitung::ColEinheit).toInt()];
                         double m = model->data(row, ModelWasseraufbereitung::ColMenge).toDouble();
                         map[QStringLiteral("MengeHauptguss")] = locale.toString(m * f1, 'f', 2);
                         map[QStringLiteral("MengeNachguss")] = locale.toString(m * f2, 'f', 2);
@@ -345,8 +345,8 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     int dauer = model->data(row, ModelHopfengaben::ColZeit).toInt();
                     map.insert(QStringLiteral("Name"), model->data(row, ModelHopfengaben::ColName));
                     int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map[QStringLiteral("Name")], ModelHopfen::ColTyp).toInt();
-                    if (idx >= 0 && idx < MainWindow::HopfenTypname.count())
-                        map.insert(QStringLiteral("Typ"), MainWindow::HopfenTypname[idx]);
+                    if (idx >= 0 && idx < MainWindow2::HopfenTypname.count())
+                        map.insert(QStringLiteral("Typ"), MainWindow2::HopfenTypname[idx]);
                     map.insert(QStringLiteral("Prozent"), locale.toString(model->data(row, ModelHopfengaben::ColProzent).toDouble(), 'f', 1));
                     map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelHopfengaben::Colerg_Menge).toDouble(), 'f', 1));
                     map.insert(QStringLiteral("Alpha"), locale.toString(model->data(row, ModelHopfengaben::ColAlpha).toDouble(), 'f', 1));
@@ -384,8 +384,8 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     QVariantMap map;
                     map.insert(QStringLiteral("Name"), model->data(row, ModelHefegaben::ColName));
                     int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, map[QStringLiteral("Name")], ModelHefe::ColTypOGUG).toInt();
-                    if (idx >= 0 && idx < MainWindow::HefeTypname.count())
-                        map.insert(QStringLiteral("Typ"), MainWindow::HefeTypname[idx]);
+                    if (idx >= 0 && idx < MainWindow2::HefeTypname.count())
+                        map.insert(QStringLiteral("Typ"), MainWindow2::HefeTypname[idx]);
                     map.insert(QStringLiteral("Menge"), menge);
                     if (model->data(row, ModelHefegaben::ColZugegeben).toBool())
                         map.insert(QStringLiteral("Status"), QObject::tr("zugegeben"));
@@ -416,7 +416,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     int dauer;
                     map.insert(QStringLiteral("Name"), model->data(row, ModelWeitereZutatenGaben::ColName));
                     Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(model->data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
-                    map.insert(QStringLiteral("Einheit"), MainWindow::Einheiten[static_cast<int>(einheit)]);
+                    map.insert(QStringLiteral("Einheit"), MainWindow2::Einheiten[static_cast<int>(einheit)]);
                     switch (einheit)
                     {
                     case Brauhelfer::Einheit::Kg:
@@ -502,11 +502,11 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
                     if (typ == Brauhelfer::ZusatzTyp::Hopfen)
                     {
                         int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map[QStringLiteral("Name")], ModelHopfen::ColTyp).toInt();
-                        map.insert(QStringLiteral("Typ"), MainWindow::HopfenTypname[idx]);
+                        map.insert(QStringLiteral("Typ"), MainWindow2::HopfenTypname[idx]);
                     }
                     else
                     {
-                        map.insert(QStringLiteral("Typ"), MainWindow::ZusatzTypname[static_cast<int>(typ)]);
+                        map.insert(QStringLiteral("Typ"), MainWindow2::ZusatzTypname[static_cast<int>(typ)]);
                         listeZusatzAlle << map;
                     }
                     if (listePtr)

@@ -4,7 +4,7 @@
 #include <QStandardItemModel>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "mainwindow.h"
+#include "mainwindow2.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
@@ -135,7 +135,7 @@ void WdgWeitereZutatGabe::updateValues()
     }
     if (!ui->tbMengeTotal->hasFocus())
     {
-        QString str = MainWindow::Einheiten[static_cast<int>(einheit)];
+        QString str = MainWindow2::Einheiten[static_cast<int>(einheit)];
         ui->lblEinheit->setText(str);
         ui->lblVorhandenEinheit->setText(str);
         int colMengeTotal = ui->cbAnstellmenge->isChecked() ? ModelWeitereZutatenGaben::Colerg_MengeIst : ModelWeitereZutatenGaben::Colerg_Menge;
@@ -253,7 +253,7 @@ void WdgWeitereZutatGabe::updateValues()
             QPalette pal = ui->frameColor->palette();
             pal.setColor(QPalette::Window, gSettings->WZTypBackgrounds[idx]);
             ui->frameColor->setPalette(pal);
-            ui->frameColor->setToolTip(MainWindow::ZusatzTypname[idx]);
+            ui->frameColor->setToolTip(MainWindow2::ZusatzTypname[idx]);
         }
         else
         {

@@ -8,7 +8,7 @@
 #include <QScrollBar>
 #include "biercalc.h"
 #include "settings.h"
-#include "mainwindow.h"
+#include "mainwindow2.h"
 #include "model/textdelegate.h"
 #include "model/checkboxdelegate.h"
 #include "widgets/wdgrast.h"
@@ -170,7 +170,7 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(ui->wdgBemerkungMaischplan, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungMaischplan, html));});
     connect(ui->wdgBemerkungWasseraufbereitung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungWasseraufbereitung, html));});
 
-    connect(ui->btnAnlage, &QAbstractButton::clicked, MainWindow::getInstance(), &MainWindow::showDialogAusruestung);
+    connect(ui->btnAnlage, &QAbstractButton::clicked, MainWindow2::getInstance(), &MainWindow2::showDialogAusruestung);
 
     TableView *table = ui->tableTags;
     table->setModel(bh->sud()->modelTags());

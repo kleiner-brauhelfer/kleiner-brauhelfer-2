@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+#include "mainwindow2.h"
 #include <QApplication>
 #include <QTranslator>
 #include <QLibraryInfo>
@@ -442,7 +442,7 @@ int main(int argc, char *argv[])
         {
             if (connectDatabase())
             {
-                MainWindow w(nullptr);
+                MainWindow2 w(nullptr);
                 a.setStyle(QStyleFactory::create(gSettings->style()));
                 a.setPalette(gSettings->palette);
                 a.setFont(gSettings->font);

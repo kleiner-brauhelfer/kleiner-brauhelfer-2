@@ -61,11 +61,11 @@ public:
     void setLogLevel(int level);
     void initLogLevel(int level);
 
-    Theme theme() const;
-    void setTheme(Theme theme);
+    Theme theme() const; // TODO: change to QString
+    void setTheme(const QString &theme);
 
     QString language();
-    void setLanguage(const QString &lang);
+    void setLanguage(const QString &language);
 
     QString settingsDir() const;
 
@@ -89,6 +89,9 @@ public:
   #endif
 
 signals:
+    void themeChanged(const QString &theme);
+    void languageChanged(const QString &language);
+    void databasePathChanged(const QString& path);
     void modulesChanged(Settings::Modules modules);
 
 private:

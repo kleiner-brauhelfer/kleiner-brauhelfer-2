@@ -12,6 +12,7 @@ Settings::Settings(QObject *parent) :
 {
     defaultPalette = QGuiApplication::palette();
     initTheme();
+    initModules();
 }
 
 Settings::Settings(const QString& dir, QObject *parent) :
@@ -19,6 +20,7 @@ Settings::Settings(const QString& dir, QObject *parent) :
 {
     defaultPalette = QGuiApplication::palette();
     initTheme();
+    initModules();
 }
 
 Settings::~Settings()
@@ -47,7 +49,7 @@ void Settings::initTheme()
     beginGroup("Style");
 
     // theme
-    mTheme = static_cast<Theme>(value("Theme", Light).toInt());
+    mTheme = value("Theme", "light").toString() == "light" ? Light : Dark;
     if (mTheme == Unused)
         mTheme = Light;
 
@@ -241,10 +243,11 @@ Settings::Theme Settings::theme() const
     return mTheme;
 }
 
-void Settings::setTheme(Theme theme)
+void Settings::setTheme(const QString &theme)
 {
     setValueInGroup("Style", "Theme", theme);
     initTheme();
+    emit themeChanged(theme);
 }
 
 QString Settings::language()
@@ -252,9 +255,10 @@ QString Settings::language()
     return valueInGroup("General", "language", "de").toString();
 }
 
-void Settings::setLanguage(const QString& lang)
+void Settings::setLanguage(const QString& language)
 {
-    setValueInGroup("General", "language", lang);
+    setValueInGroup("General", "language", language);
+    emit languageChanged(language);
 }
 
 QString Settings::settingsDir() const
@@ -281,6 +285,7 @@ void Settings::setDatabasePath(const QString& path)
         setValueInGroup("General", "database", path);
     else
         setValueInGroup("General", "database", pathRel);
+    emit databasePathChanged(databasePath());
 }
 
 QString Settings::databaseDir()

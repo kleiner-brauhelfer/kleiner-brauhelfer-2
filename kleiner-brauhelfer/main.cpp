@@ -374,18 +374,6 @@ static void messageHandler(QtMsgType type, const QMessageLogContext &context, co
     }
 }
 
-static void installTranslator(QApplication &a, QTranslator &translator, const QString &filename)
-{
-    QLocale locale(gSettings->language());
-    a.removeTranslator(&translator);
-    if (translator.load(locale, filename, QStringLiteral("_"), a.applicationDirPath() + "/translations"))
-        a.installTranslator(&translator);
-    else if (translator.load(locale, filename, QStringLiteral("_"), QStringLiteral(":/translations")))
-        a.installTranslator(&translator);
-    else if (translator.load(locale, filename, QStringLiteral("_"), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
-        a.installTranslator(&translator);
-}
-
 int main(int argc, char *argv[])
 {
     int ret = EXIT_FAILURE;
@@ -413,30 +401,24 @@ int main(int argc, char *argv[])
         logFile = new QFile(gSettings->settingsDir() + "/logfile.txt");
     gSettings->initLogLevel(logLevel);
 
-    // modules
-    gSettings->initModules();
-
-    qInfo("--- Application start ---");
-    qInfo() << "Version:" << QCoreApplication::applicationVersion();
-    if (logLevel > 0)
-        qInfo() << "Log level:" << logLevel;
-
-    // language
-    QTranslator translatorQt, translatorKbh;
-    installTranslator(a, translatorQt, QStringLiteral("qtbase"));
-    installTranslator(a, translatorKbh, QStringLiteral("kbh"));
-
-    // locale
-    bool useLanguageLocale = gSettings->valueInGroup("General", "UseLanguageLocale", false).toBool();
-    if (useLanguageLocale)
-        QLocale::setDefault(QLocale(gSettings->language()));
-
-    // do some checks
-    checkSSL();
-    checkWebView();
-
     try
     {
+        // language
+        MainWindow::installTranslators();
+
+        // locale
+        bool useLanguageLocale = gSettings->valueInGroup("General", "UseLanguageLocale", false).toBool();
+        QLocale::setDefault(useLanguageLocale ? QLocale(gSettings->language()) : QLocale::system());
+
+        qInfo("--- Application start ---");
+        qInfo() << "Version:" << QCoreApplication::applicationVersion();
+        if (logLevel > 0)
+            qInfo() << "Log level:" << logLevel;
+
+        // do some checks
+        checkSSL();
+        checkWebView();
+
         // copy resources
         copyResources();
 
@@ -462,14 +444,6 @@ int main(int argc, char *argv[])
                     qCritical() << "Program error: unknown";
                     QMessageBox::critical(nullptr, QObject::tr("Programmfehler"), QObject::tr("Unbekannter Fehler."));
                     ret = EXIT_FAILURE;
-                }
-                if (ret == 1001)
-                {
-                    installTranslator(a, translatorQt, QStringLiteral("qtbase"));
-                    installTranslator(a, translatorKbh, QStringLiteral("kbh"));
-                    bool useLanguageLocale = gSettings->valueInGroup("General", "UseLanguageLocale", false).toBool();
-                    QLocale::setDefault(useLanguageLocale ? QLocale(gSettings->language()) : QLocale::system());
-                    ret = 1000;
                 }
             }
             else

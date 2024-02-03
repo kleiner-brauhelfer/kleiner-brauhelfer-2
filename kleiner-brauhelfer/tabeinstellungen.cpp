@@ -79,7 +79,6 @@ void TabEinstellungen::on_btnDatabase_clicked()
     {
         ui->tbDatabase->setText(databasePath);
         gSettings->setDatabasePath(databasePath);
-        emit requestRestart(1000);
     }
 }
 
@@ -88,12 +87,10 @@ void TabEinstellungen::on_cbTheme_currentIndexChanged(int index)
     switch (index)
     {
     case 0:
-        gSettings->setTheme(Settings::Theme::Light);
-        emit requestRestart(1000);
+        gSettings->setTheme(QStringLiteral("light"));
         break;
     case 1:
-        gSettings->setTheme(Settings::Theme::Dark);
-        emit requestRestart(1000);
+        gSettings->setTheme(QStringLiteral("dark"));
         break;
     }
 }
@@ -104,19 +101,15 @@ void TabEinstellungen::on_cbLanguage_currentIndexChanged(int index)
     {
     case 0:
         gSettings->setLanguage(QStringLiteral("de"));
-        emit requestRestart(1001);
         break;
     case 1:
         gSettings->setLanguage(QStringLiteral("en"));
-        emit requestRestart(1001);
         break;
     case 2:
         gSettings->setLanguage(QStringLiteral("sv"));
-        emit requestRestart(1001);
         break;
     case 3:
         gSettings->setLanguage(QStringLiteral("nl"));
-        emit requestRestart(1001);
         break;
     }
 }
@@ -124,7 +117,6 @@ void TabEinstellungen::on_cbLanguage_currentIndexChanged(int index)
 void TabEinstellungen::on_cbNumberFormat_clicked(bool checked)
 {
     gSettings->setValueInGroup("General", "UseLanguageLocale", checked);
-    emit requestRestart(1001);
 }
 
 void TabEinstellungen::on_cbShowTooltips_clicked(bool checked)

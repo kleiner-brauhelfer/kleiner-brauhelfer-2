@@ -257,7 +257,7 @@
           <item row="1" column="0" colspan="3">
            <widget class="CheckBox" name="cbNumberFormat">
             <property name="text">
-             <string>Zahlen- und Datumsformat aus Spracheinstellung</string>
+             <string>Zahlen- und Datumsformat aus Spracheinstellung (Neustart erforderlich)</string>
             </property>
            </widget>
           </item>

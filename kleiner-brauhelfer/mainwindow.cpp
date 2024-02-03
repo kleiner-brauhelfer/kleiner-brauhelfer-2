@@ -1,19 +1,51 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QTranslator>
+#include <QFile>
+#include <QLibraryInfo>
 #include <QTabBar>
 #include "widgets/widgetdecorator.h"
 #include "settings.h"
 
 extern Settings* gSettings;
 
+static void installTranslator(QTranslator &translator, const QString &filename)
+{
+    QApplication* app = qApp;
+    QLocale locale(gSettings->language());
+    app->removeTranslator(&translator);
+    if (translator.load(locale, filename, QStringLiteral("_"), app->applicationDirPath() + "/translations"))
+        app->installTranslator(&translator);
+    else if (translator.load(locale, filename, QStringLiteral("_"), QStringLiteral(":/translations")))
+        app->installTranslator(&translator);
+    else if (translator.load(locale, filename, QStringLiteral("_"), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
+        app->installTranslator(&translator);
+}
+
+void MainWindow::installTranslators()
+{
+    static QTranslator translator;
+    static QTranslator translatorQt;
+    installTranslator(translator, QStringLiteral("kbh"));
+    installTranslator(translatorQt, QStringLiteral("qtbase"));
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    // setup ui
     ui->setupUi(this);
+
+    // set theme
+    themeChanged(gSettings->theme() == Settings::Light ? "light" : "dark");
 
     ui->tabWidget->tabBar()->setContextMenuPolicy(Qt::ActionsContextMenu);
     ui->tabWidget->tabBar()->addAction(ui->actionShowTabBarLabels);
+
+    connect(gSettings, &Settings::themeChanged, this, &MainWindow::themeChanged);
+    connect(gSettings, &Settings::languageChanged, this, &MainWindow::languageChanged);
+    connect(gSettings, &Settings::databasePathChanged, this, &MainWindow::databasePathChanged);
 
     connect(ui->tabEinstellungen, &TabEinstellungen::restoreView, this, &MainWindow::restoreView);
 
@@ -21,11 +53,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     restoreView();
     loadViewSettings();
+
+    WidgetDecorator::clearValueChanged();
 }
 
 MainWindow::~MainWindow()
 {
     saveViewSettings();
+    disconnect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
     delete ui;
 }
 
@@ -54,6 +89,39 @@ void MainWindow::restoreView()
     ui->splitterHelp->setSizes({900, 100});
     ui->splitterHelp->setStretchFactor(0, 1);
     ui->splitterHelp->setStretchFactor(1, 0);
+}
+
+void MainWindow::themeChanged(const QString &theme)
+{
+    QFile file(QStringLiteral(":/data/Styles/style_%1.qss").arg(theme));
+    qDebug() << file.fileName();
+    file.open(QFile::ReadOnly);
+    setStyleSheet(file.readAll());
+}
+
+void MainWindow::languageChanged(const QString &language)
+{
+    Q_UNUSED(language)
+    installTranslators();
+    ui->retranslateUi(this);
+}
+
+void MainWindow::databasePathChanged(const QString& path)
+{
+    /*
+    if (bh->isDirty())
+    {
+        int ret = QMessageBox::question(this, tr("Änderungen speichern?"),
+                                        tr("Sollen die Änderungen gespeichert werden?"),
+                                        QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
+                                        QMessageBox::Yes);
+        if (ret == QMessageBox::Yes)
+            saveDatabase();
+        else if (ret == QMessageBox::Cancel)
+            return;
+    }
+    */
+    qApp->exit(1000);
 }
 
 void MainWindow::on_tabWidget_currentChanged(int tab)

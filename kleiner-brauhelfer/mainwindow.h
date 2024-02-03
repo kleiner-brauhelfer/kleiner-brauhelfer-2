@@ -24,6 +24,7 @@ public:
     };
 
 public:
+    static void installTranslators();
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
@@ -34,6 +35,9 @@ private slots:
     void loadViewSettings();
     void saveViewSettings();
     void restoreView();
+    void themeChanged(const QString &theme);
+    void languageChanged(const QString &language);
+    void databasePathChanged(const QString& path);
 
 private:
     Ui::MainWindow *ui;

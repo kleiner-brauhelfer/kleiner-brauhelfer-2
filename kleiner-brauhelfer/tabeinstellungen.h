@@ -18,7 +18,6 @@ public:
 signals:
     void restoreView();
     void checkUpdate();
-    void requestRestart(int code);
 
 private slots:
     void on_btnDatabase_clicked();

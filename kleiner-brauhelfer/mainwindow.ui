@@ -192,44 +192,76 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
         <enum>QTabWidget::West</enum>
        </property>
        <property name="currentIndex">
-        <number>6</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="tabSudauswahl">
+        <attribute name="icon">
+         <iconset theme="sudauswahl" resource="images.qrc">
+          <normaloff>:/images/icons/light/svg/sudauswahl.svg</normaloff>:/images/icons/light/svg/sudauswahl.svg</iconset>
+        </attribute>
         <attribute name="title">
          <string>Sudauswahl</string>
         </attribute>
        </widget>
        <widget class="QWidget" name="tabSude">
+        <attribute name="icon">
+         <iconset theme="sude" resource="images.qrc">
+          <normaloff>:/images/icons/light/svg/sude.svg</normaloff>:/images/icons/light/svg/sude.svg</iconset>
+        </attribute>
         <attribute name="title">
          <string>Sude</string>
         </attribute>
        </widget>
        <widget class="QWidget" name="tabLager">
+        <attribute name="icon">
+         <iconset theme="lager" resource="images.qrc">
+          <normaloff>:/images/icons/light/svg/lager.svg</normaloff>:/images/icons/light/svg/lager.svg</iconset>
+        </attribute>
         <attribute name="title">
          <string>Lager</string>
         </attribute>
        </widget>
        <widget class="QWidget" name="tabAnlagen">
+        <attribute name="icon">
+         <iconset theme="anlagen" resource="images.qrc">
+          <normaloff>:/images/icons/light/svg/anlagen.svg</normaloff>:/images/icons/light/svg/anlagen.svg</iconset>
+        </attribute>
         <attribute name="title">
          <string>Anlagen</string>
         </attribute>
        </widget>
        <widget class="QWidget" name="tabBrauuebersicht">
+        <attribute name="icon">
+         <iconset theme="brauuebersicht" resource="images.qrc">
+          <normaloff>:/images/icons/light/svg/brauuebersicht.svg</normaloff>:/images/icons/light/svg/brauuebersicht.svg</iconset>
+        </attribute>
         <attribute name="title">
-         <string>Brauuebersicht</string>
+         <string>Brauübersicht</string>
         </attribute>
        </widget>
        <widget class="QWidget" name="tabBewertungen">
+        <attribute name="icon">
+         <iconset theme="bewertungen" resource="images.qrc">
+          <normaloff>:/images/icons/light/svg/bewertungen.svg</normaloff>:/images/icons/light/svg/bewertungen.svg</iconset>
+        </attribute>
         <attribute name="title">
          <string>Bewertungen</string>
         </attribute>
        </widget>
        <widget class="TabEinstellungen" name="tabEinstellungen">
+        <attribute name="icon">
+         <iconset theme="settings" resource="images.qrc">
+          <normaloff>:/images/icons/light/svg/settings.svg</normaloff>:/images/icons/light/svg/settings.svg</iconset>
+        </attribute>
         <attribute name="title">
          <string>Einstellungen</string>
         </attribute>
        </widget>
        <widget class="TabUeber" name="tabUeber">
+        <attribute name="icon">
+         <iconset theme="about" resource="images.qrc">
+          <normaloff>:/images/icons/light/svg/about.svg</normaloff>:/images/icons/light/svg/about.svg</iconset>
+        </attribute>
         <attribute name="title">
          <string>Über</string>
         </attribute>

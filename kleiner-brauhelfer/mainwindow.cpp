@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QTranslator>
+#include <QDir>
 #include <QFile>
 #include <QLibraryInfo>
 #include <QTabBar>
@@ -43,44 +44,34 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    // undo stack
+    gUndoStack = new UndoStack(this);
+    gUndoStack->setEnabled(gSettings->valueInGroup("General", "UndoEnabled", true).toBool());
+
     // setup ui
     ui->setupUi(this);
+    setupActions();
 
     // tooltip event filter
     qApp->installEventFilter(this);
 
     // set theme
+    QIcon::setThemeSearchPaths({":/images/icons"});
     themeChanged(gSettings->theme() == Settings::Light ? "light" : "dark");
-
-    ui->tabWidget->tabBar()->setContextMenuPolicy(Qt::ActionsContextMenu);
-    ui->tabWidget->tabBar()->addAction(ui->actionShowTabBarLabels);
 
     connect(gSettings, &Settings::themeChanged, this, &MainWindow::themeChanged);
     connect(gSettings, &Settings::languageChanged, this, &MainWindow::languageChanged);
     connect(gSettings, &Settings::databasePathChanged, this, &MainWindow::databasePathChanged);
 
-    connect(ui->tabEinstellungen, &TabEinstellungen::restoreView, this, &MainWindow::restoreView);
-    connect(ui->tabEinstellungen, &TabEinstellungen::checkUpdate, this, &MainWindow::checkUpdate);
-
     connect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
+
+    connect(bh, &Brauhelfer::modified, this, &MainWindow::databaseModified);
 
     restoreView();
     loadViewSettings();
 
+    databaseModified();
     WidgetDecorator::clearValueChanged();
-
-    // undo stack
-    gUndoStack = new UndoStack(this);
-    gUndoStack->setEnabled(gSettings->valueInGroup("General", "UndoEnabled", true).toBool());
-    if (gUndoStack->isEnabled())
-    {
-        //ui->menuBearbeiten->addAction(gUndoStack->createUndoAction(this, tr("Rückgängig")));
-        //ui->menuBearbeiten->addAction(gUndoStack->createRedoAction(this, tr("Wiederherstellen")));
-    }
-    else
-    {
-        //ui->menuBearbeiten->setEnabled(false);
-    }
 
     // check for update
     if (gSettings->valueInGroup("General", "CheckUpdate", true).toBool())
@@ -92,6 +83,26 @@ MainWindow::~MainWindow()
     saveSettings();
     disconnect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
     delete ui;
+}
+
+void MainWindow::setupActions()
+{
+    ui->actionSave->setShortcut(QKeySequence::Save);
+    connect(ui->actionSave, &QAction::triggered, this, &MainWindow::saveDatabase);
+    connect(ui->actionDiscard, &QAction::triggered, this, &MainWindow::discardDatabase);
+
+    if (gUndoStack->isEnabled())
+    {
+        //ui->menuBearbeiten->addAction(gUndoStack->createUndoAction(this, tr("Rückgängig")));
+        //ui->menuBearbeiten->addAction(gUndoStack->createRedoAction(this, tr("Wiederherstellen")));
+    }
+    on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
+
+    ui->tabWidget->tabBar()->setContextMenuPolicy(Qt::ActionsContextMenu);
+    ui->tabWidget->tabBar()->addAction(ui->actionShowTabBarLabels);
+
+    connect(ui->tabEinstellungen, &TabEinstellungen::restoreView, this, &MainWindow::restoreView);
+    connect(ui->tabEinstellungen, &TabEinstellungen::checkUpdate, this, &MainWindow::checkUpdate);
 }
 
 void MainWindow::loadViewSettings()
@@ -163,6 +174,19 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     return QMainWindow::eventFilter(obj, event);
 }
 
+void MainWindow::databaseModified()
+{
+    bool modified = bh->isDirty();
+    QString title;
+    if (modified)
+        title = QStringLiteral("* ");
+    if (bh->sud()->isLoaded())
+        title += bh->sud()->getSudname() + " - ";
+    title += QCoreApplication::applicationName() + " v" + QCoreApplication::applicationVersion();
+    setWindowTitle(title);
+    ui->toolBarSave->setEnabled(modified);
+}
+
 void MainWindow::saveDatabase()
 {
     QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
@@ -218,6 +242,7 @@ void MainWindow::discardDatabase()
 
 void MainWindow::themeChanged(const QString &theme)
 {
+    QIcon::setThemeName(theme);
     QFile file(QStringLiteral(":/data/Styles/style_%1.qss").arg(theme));
     file.open(QFile::ReadOnly);
     setStyleSheet(file.readAll());
@@ -286,7 +311,7 @@ void MainWindow::checkUpdateFinished()
 
 void MainWindow::on_tabWidget_currentChanged(int tab)
 {
-    ui->toolBarUndo->setVisible(tab == Tab::Sude || tab == Tab::Lager || tab == Tab::Anlagen || tab == Tab::Bewertungen);
+    ui->toolBarUndo->setVisible(gUndoStack->isEnabled() && (tab == Tab::Sude || tab == Tab::Lager || tab == Tab::Anlagen || tab == Tab::Bewertungen));
     ui->toolBarSudauswahl->setVisible(tab == Tab::Sudauswahl);
     ui->toolBarLager->setVisible(tab == Tab::Lager);
     ui->toolBarAnlagen->setVisible(tab == Tab::Anlagen);

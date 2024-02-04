@@ -40,12 +40,14 @@ private slots:
     void databasePathChanged(const QString& path);
     void checkUpdate(bool force);
     void checkUpdateFinished();
+    void databaseModified();
+    void saveDatabase();
+    void discardDatabase();
 
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
-    void saveDatabase();
-    void discardDatabase();
+    void setupActions();
 
 private:
     Ui::MainWindow *ui;

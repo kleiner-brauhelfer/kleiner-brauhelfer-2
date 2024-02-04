@@ -20,7 +20,6 @@
 #include "dialogs/dlgrohstoffeabziehen.h"
 #include "dialogs/dlghilfe.h"
 #include "widgets/iconthemed.h"
-#include "widgets/widgetdecorator.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -92,7 +91,6 @@ MainWindow2::MainWindow2(QWidget *parent) :
 
     connect(ui->tabSudAuswahl, &TabSudAuswahl::clicked, this, &MainWindow2::loadSud);
 
-    connect(bh, &Brauhelfer::modified, this, &MainWindow2::databaseModified);
     connect(bh, &Brauhelfer::discarded, this, &MainWindow2::updateValues);
     connect(bh->sud(), &SudObject::loadedChanged, this, &MainWindow2::sudLoaded);
     connect(bh->sud(), &SudObject::dataChanged, this, &MainWindow2::sudDataChanged);
@@ -233,24 +231,10 @@ void MainWindow2::updateTabs(Settings::Modules modules)
         ui->actionAusruestung->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusruestung));
 }
 
-void MainWindow2::databaseModified()
-{
-    bool modified = bh->isDirty();
-    QString title;
-    if (modified)
-        title = QStringLiteral("* ");
-    if (bh->sud()->isLoaded())
-        title += bh->sud()->getSudname() + " - ";
-    title += QCoreApplication::applicationName() + " v" + QCoreApplication::applicationVersion();
-    setWindowTitle(title);
-    ui->actionSpeichern->setEnabled(modified);
-    ui->actionVerwerfen->setEnabled(modified);
-}
-
 void MainWindow2::updateValues()
 {
     bool loaded = bh->sud()->isLoaded();
-    databaseModified();
+    //databaseModified();
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabRezept), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
@@ -392,16 +376,6 @@ void MainWindow2::on_actionRezept_exportieren_triggered()
     {
         ui->tabSudAuswahl->rezeptExportieren(true);
     }
-}
-
-void MainWindow2::on_actionSpeichern_triggered()
-{
-    //saveDatabase();
-}
-
-void MainWindow2::on_actionVerwerfen_triggered()
-{
-    //discardDatabase();
 }
 
 void MainWindow2::on_actionDruckvorschau_triggered()

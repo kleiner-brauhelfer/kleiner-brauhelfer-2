@@ -35,7 +35,6 @@ public slots:
     DlgAusruestung* showDialogAusruestung();
 
 private slots:
-    void databaseModified();
     void updateTabs(Settings::Modules modules);
     void updateValues();
     void sudLoaded();
@@ -49,8 +48,6 @@ private slots:
     void on_actionSud_l_schen_triggered();
     void on_actionRezept_importieren_triggered();
     void on_actionRezept_exportieren_triggered();
-    void on_actionSpeichern_triggered();
-    void on_actionVerwerfen_triggered();
     void on_actionDruckvorschau_triggered();
     void on_actionDrucken_triggered();
     void on_actionBereinigen_triggered();

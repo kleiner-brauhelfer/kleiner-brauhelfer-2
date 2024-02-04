@@ -266,6 +266,9 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionSave"/>
+   <addaction name="actionDiscard"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QToolBar" name="toolBarUndo">
    <property name="contextMenuPolicy">
@@ -289,6 +292,9 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionRedo"/>
+   <addaction name="actionUndo"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QToolBar" name="toolBarSudauswahl">
    <property name="contextMenuPolicy">
@@ -422,6 +428,54 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
     <enum>QAction::NoRole</enum>
    </property>
   </action>
+  <action name="actionSave">
+   <property name="icon">
+    <iconset theme="save" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/save.svg</normaloff>:/images/icons/light/svg/save.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Speichern</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionDiscard">
+   <property name="icon">
+    <iconset theme="discard" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/discard.svg</normaloff>:/images/icons/light/svg/discard.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Verwerfen</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="icon">
+    <iconset theme="undo" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/undo.svg</normaloff>:/images/icons/light/svg/undo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="icon">
+    <iconset theme="redo" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/redo.svg</normaloff>:/images/icons/light/svg/redo.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -437,6 +491,8 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

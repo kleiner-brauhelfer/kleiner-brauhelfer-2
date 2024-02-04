@@ -41,7 +41,6 @@ private slots:
     void sudLoaded();
     void sudDataChanged(const QModelIndex& index);
     void loadSud(int sudId);
-    void checkMessageFinished();
     void modulesChanged(Settings::Modules modules);
     void on_tabMain_currentChanged();
     void on_actionNeuen_Sud_anlegen_triggered();
@@ -55,27 +54,19 @@ private slots:
     void on_actionDruckvorschau_triggered();
     void on_actionDrucken_triggered();
     void on_actionBereinigen_triggered();
-    void on_actionBeenden_triggered();
     void on_actionSudGebraut_triggered();
     void on_actionSudAbgefuellt_triggered();
     void on_actionSudVerbraucht_triggered();
     void on_actionHefeZugabeZuruecksetzen_triggered();
     void on_actionWeitereZutaten_triggered();
     void on_actionEingabefelderEntsperren_changed();
-    void on_actionLog_triggered();
     void on_actionHilfe_triggered();
     void on_actionDatenbank_triggered();
     
 private:
-    void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
-    bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
-    void restart(int retCode = 1000);
-    void saveDatabase();
-    void discardDatabase();
     void saveSettings();
     void restoreView();
     void closeDialogs();
-    void checkForUpdate(bool force);
     void initLabels();
     void checkLoadedSud();
 

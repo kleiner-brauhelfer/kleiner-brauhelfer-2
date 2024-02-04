@@ -71,7 +71,6 @@ SOURCES += \
     dialogs/dlgausruestung.cpp \
     dialogs/dlgbrauuebersicht.cpp \
     dialogs/dlgcheckupdate.cpp \
-    dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgdatenbank.cpp \
     dialogs/dlghilfe.cpp \
@@ -172,7 +171,6 @@ HEADERS += \
     dialogs/dlgausruestung.h \
     dialogs/dlgbrauuebersicht.h \
     dialogs/dlgcheckupdate.h \
-    dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgdatenbank.h \
     dialogs/dlghilfe.h \
@@ -255,7 +253,6 @@ FORMS += \
     dialogs/dlgausruestung.ui \
     dialogs/dlgbrauuebersicht.ui \
     dialogs/dlgcheckupdate.ui \
-    dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgdatenbank.ui \
     dialogs/dlghilfe.ui \

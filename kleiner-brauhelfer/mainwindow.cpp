@@ -4,10 +4,19 @@
 #include <QFile>
 #include <QLibraryInfo>
 #include <QTabBar>
+#include <QCloseEvent>
+#include <QMessageBox>
+#include "commands/undostack.h"
+#include "dialogs/dlgcheckupdate.h"
 #include "widgets/widgetdecorator.h"
+#include "brauhelfer.h"
 #include "settings.h"
+#include "definitionen.h"
 
+extern Brauhelfer* bh;
 extern Settings* gSettings;
+
+UndoStack* gUndoStack = nullptr;
 
 static void installTranslator(QTranslator &translator, const QString &filename)
 {
@@ -37,6 +46,9 @@ MainWindow::MainWindow(QWidget *parent) :
     // setup ui
     ui->setupUi(this);
 
+    // tooltip event filter
+    qApp->installEventFilter(this);
+
     // set theme
     themeChanged(gSettings->theme() == Settings::Light ? "light" : "dark");
 
@@ -48,6 +60,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(gSettings, &Settings::databasePathChanged, this, &MainWindow::databasePathChanged);
 
     connect(ui->tabEinstellungen, &TabEinstellungen::restoreView, this, &MainWindow::restoreView);
+    connect(ui->tabEinstellungen, &TabEinstellungen::checkUpdate, this, &MainWindow::checkUpdate);
 
     connect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
 
@@ -55,11 +68,28 @@ MainWindow::MainWindow(QWidget *parent) :
     loadViewSettings();
 
     WidgetDecorator::clearValueChanged();
+
+    // undo stack
+    gUndoStack = new UndoStack(this);
+    gUndoStack->setEnabled(gSettings->valueInGroup("General", "UndoEnabled", true).toBool());
+    if (gUndoStack->isEnabled())
+    {
+        //ui->menuBearbeiten->addAction(gUndoStack->createUndoAction(this, tr("Rückgängig")));
+        //ui->menuBearbeiten->addAction(gUndoStack->createRedoAction(this, tr("Wiederherstellen")));
+    }
+    else
+    {
+        //ui->menuBearbeiten->setEnabled(false);
+    }
+
+    // check for update
+    if (gSettings->valueInGroup("General", "CheckUpdate", true).toBool())
+        checkUpdate(false);
 }
 
 MainWindow::~MainWindow()
 {
-    saveViewSettings();
+    saveSettings();
     disconnect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
     delete ui;
 }
@@ -73,7 +103,7 @@ void MainWindow::loadViewSettings()
     gSettings->endGroup();
 }
 
-void MainWindow::saveViewSettings()
+void MainWindow::saveSettings()
 {
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("geometry", saveGeometry());
@@ -91,10 +121,104 @@ void MainWindow::restoreView()
     ui->splitterHelp->setStretchFactor(1, 0);
 }
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (bh->isDirty())
+    {
+        int ret = QMessageBox::question(this, tr("Anwendung schließen?"),
+                                        tr("Sollen die Änderungen vor dem Schließen gespeichert werden?"),
+                                        QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
+                                        QMessageBox::Yes);
+        if (ret == QMessageBox::Yes)
+        {
+            saveDatabase();
+            event->accept();
+        }
+        else if (ret == QMessageBox::No)
+            event->accept();
+        else
+            event->ignore();
+    }
+    else
+    {
+        int ret = QMessageBox::Yes;
+        if (gSettings->valueInGroup("General", "BeendenAbfrage", true).toBool())
+        {
+            ret = QMessageBox::question(this, tr("Anwendung schließen?"),
+                                        tr("Soll die Anwendung geschlossen werden?"),
+                                        QMessageBox::Cancel | QMessageBox::Yes,
+                                        QMessageBox::Yes);
+        }
+        if (ret == QMessageBox::Yes)
+            event->accept();
+        else
+            event->ignore();
+    }
+}
+
+bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+{
+    if (event->type() == QEvent::ToolTip && !gSettings->valueInGroup("General", "TooltipsEnabled", true).toBool())
+        return true;
+    return QMainWindow::eventFilter(obj, event);
+}
+
+void MainWindow::saveDatabase()
+{
+    QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+    setFocus();
+    try
+    {
+        if (bh->save())
+        {
+            gUndoStack->clear();
+            QGuiApplication::restoreOverrideCursor();
+        }
+        else
+        {
+            QGuiApplication::restoreOverrideCursor();
+            QMessageBox::critical(this, tr("Fehler beim Speichern"), bh->lastError());
+        }
+    }
+    catch (const std::exception& ex)
+    {
+        QGuiApplication::restoreOverrideCursor();
+        QMessageBox::critical(this, tr("Fehler beim Speichern"), ex.what());
+    }
+    catch (...)
+    {
+        QGuiApplication::restoreOverrideCursor();
+        QMessageBox::critical(this, tr("Fehler beim Speichern"), tr("Unbekannter Fehler."));
+    }
+}
+
+void MainWindow::discardDatabase()
+{
+    QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+    setFocus();
+    try
+    {
+        WidgetDecorator::focusRequired = false;
+        bh->discard();
+        WidgetDecorator::focusRequired = true;
+        gUndoStack->clear();
+        QGuiApplication::restoreOverrideCursor();
+    }
+    catch (const std::exception& ex)
+    {
+        QGuiApplication::restoreOverrideCursor();
+        QMessageBox::critical(this, tr("Fehler beim Verwerfen"), ex.what());
+    }
+    catch (...)
+    {
+        QGuiApplication::restoreOverrideCursor();
+        QMessageBox::critical(this, tr("Fehler beim Verwerfen"), tr("Unbekannter Fehler."));
+    }
+}
+
 void MainWindow::themeChanged(const QString &theme)
 {
     QFile file(QStringLiteral(":/data/Styles/style_%1.qss").arg(theme));
-    qDebug() << file.fileName();
     file.open(QFile::ReadOnly);
     setStyleSheet(file.readAll());
 }
@@ -108,7 +232,7 @@ void MainWindow::languageChanged(const QString &language)
 
 void MainWindow::databasePathChanged(const QString& path)
 {
-    /*
+    Q_UNUSED(path)
     if (bh->isDirty())
     {
         int ret = QMessageBox::question(this, tr("Änderungen speichern?"),
@@ -120,8 +244,44 @@ void MainWindow::databasePathChanged(const QString& path)
         else if (ret == QMessageBox::Cancel)
             return;
     }
-    */
     qApp->exit(1000);
+}
+
+void MainWindow::checkUpdate(bool force)
+{
+#if QT_NETWORK_LIB
+    QString url;
+    QDate since;
+    gSettings->beginGroup("General");
+    url = gSettings->value("CheckUpdateUrl", URL_CHEKUPDATE).toString();
+    if (!force)
+        since = gSettings->value("CheckUpdateLastDate").toDate();
+    gSettings->endGroup();
+    DlgCheckUpdate *dlg = new DlgCheckUpdate(url, since, this);
+    connect(dlg, &DlgCheckUpdate::checkUpdatefinished, this, &MainWindow::checkUpdateFinished);
+    dlg->checkForUpdate();
+#else
+    Q_UNUSED(force)
+#endif
+}
+
+void MainWindow::checkUpdateFinished()
+{
+#if QT_NETWORK_LIB
+    DlgCheckUpdate *dlg = qobject_cast<DlgCheckUpdate*>(sender());
+    if (!dlg)
+        return;
+    if (dlg->hasUpdate())
+    {
+        dlg->exec();
+        gSettings->beginGroup("General");
+        if (dlg->ignoreUpdate())
+            gSettings->setValue("CheckUpdateLastDate", QDate::currentDate());
+        gSettings->setValue("CheckUpdate", dlg->doCheckUpdate());
+        gSettings->endGroup();
+    }
+    dlg->deleteLater();
+#endif
 }
 
 void MainWindow::on_tabWidget_currentChanged(int tab)

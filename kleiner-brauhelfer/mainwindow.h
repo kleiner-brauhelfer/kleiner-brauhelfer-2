@@ -33,11 +33,19 @@ private slots:
     void on_actionShowTabBarLabels_toggled(bool showLabels);
     void focusChanged(QWidget *old, QWidget *now);
     void loadViewSettings();
-    void saveViewSettings();
+    void saveSettings();
     void restoreView();
     void themeChanged(const QString &theme);
     void languageChanged(const QString &language);
     void databasePathChanged(const QString& path);
+    void checkUpdate(bool force);
+    void checkUpdateFinished();
+
+private:
+    void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
+    void saveDatabase();
+    void discardDatabase();
 
 private:
     Ui::MainWindow *ui;

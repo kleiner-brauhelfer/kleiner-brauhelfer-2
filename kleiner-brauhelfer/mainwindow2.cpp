@@ -6,7 +6,6 @@
 #include <QStyleFactory>
 #include <QDesktopServices>
 #include "brauhelfer.h"
-#include "commands/undostack.h"
 #include "biercalc.h"
 #include "definitionen.h"
 #include "tababstract.h"
@@ -17,7 +16,6 @@
 #include "dialogs/dlgdatenbank.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgtableview.h"
-#include "dialogs/dlgconsole.h"
 #include "dialogs/dlgrohstoffe.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 #include "dialogs/dlghilfe.h"
@@ -26,8 +24,6 @@
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
-
-UndoStack* gUndoStack = nullptr;
 
 QStringList MainWindow2::HopfenTypname;
 QStringList MainWindow2::HefeTypname;
@@ -49,12 +45,8 @@ MainWindow2::MainWindow2(QWidget *parent) :
 {
     initLabels();
     ui->setupUi(this);
-    qApp->installEventFilter(this);
 
     Settings::Theme theme = gSettings->theme();
-    QFile file(theme == Settings::Theme::Light ? ":/data/Styles/style_light.qss" : ":/data/Styles/style_dark.qss");
-    file.open(QFile::ReadOnly);
-    setStyleSheet(file.readAll());
     ui->actionThemeHell->setEnabled(theme != Settings::Theme::Light);
     ui->actionThemeDunkel->setEnabled(theme != Settings::Theme::Dark);
     if (theme == Settings::Theme::Dark)
@@ -92,18 +84,6 @@ MainWindow2::MainWindow2(QWidget *parent) :
         }
     }
 
-    gUndoStack = new UndoStack(this);
-    gUndoStack->setEnabled(gSettings->valueInGroup("General", "UndoEnabled", true).toBool());
-    if (gUndoStack->isEnabled())
-    {
-        ui->menuBearbeiten->addAction(gUndoStack->createUndoAction(this, tr("Rückgängig")));
-        ui->menuBearbeiten->addAction(gUndoStack->createRedoAction(this, tr("Wiederherstellen")));
-    }
-    else
-    {
-        ui->menuBearbeiten->setEnabled(false);
-    }
-
     gSettings->beginGroup("General");
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
@@ -121,8 +101,6 @@ MainWindow2::MainWindow2(QWidget *parent) :
     connect(ui->actionBrauUebersicht, &QAction::triggered, this, &MainWindow2::showDialogBrauUebersicht);
     connect(ui->actionAusruestung, &QAction::triggered, this, &MainWindow2::showDialogAusruestung);
 
-    if (ui->actionCheckUpdate->isChecked())
-        checkForUpdate(false);
 
     modulesChanged(Settings::ModuleAlle);
     sudLoaded();
@@ -136,116 +114,6 @@ MainWindow2::~MainWindow2()
     delete ui;
 }
 
-void MainWindow2::closeEvent(QCloseEvent *event)
-{
-    if (bh->isDirty())
-    {
-        int ret = QMessageBox::question(this, tr("Anwendung schließen?"),
-                                  tr("Sollen die Änderungen vor dem Schließen gespeichert werden?"),
-                                  QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
-                                  QMessageBox::Yes);
-        if (ret == QMessageBox::Yes)
-        {
-            saveDatabase();
-            event->accept();
-        }
-        else if (ret == QMessageBox::No)
-            event->accept();
-        else
-            event->ignore();
-    }
-    else
-    {
-        int ret = QMessageBox::Yes;
-        if (ui->actionBestaetigungBeenden->isChecked())
-        {
-            ret = QMessageBox::question(this, tr("Anwendung schließen?"),
-                                  tr("Soll die Anwendung geschlossen werden?"),
-                                  QMessageBox::Cancel | QMessageBox::Yes,
-                                  QMessageBox::Yes);
-        }
-        if (ret == QMessageBox::Yes)
-            event->accept();
-        else
-            event->ignore();
-    }
-}
-
-bool MainWindow2::eventFilter(QObject *obj, QEvent *event)
-{
-    if (event->type() == QEvent::ToolTip && !ui->actionTooltips->isChecked() )
-        return true;
-    return QMainWindow::eventFilter(obj, event);
-}
-
-void MainWindow2::restart(int retCode)
-{
-    if (bh->isDirty())
-    {
-        int ret = QMessageBox::question(this, tr("Änderungen speichern?"),
-                                  tr("Sollen die Änderungen gespeichert werden?"),
-                                  QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
-                                  QMessageBox::Yes);
-        if (ret == QMessageBox::Yes)
-            saveDatabase();
-        else if (ret == QMessageBox::Cancel)
-            return;
-    }
-    qApp->exit(retCode);
-}
-
-void MainWindow2::saveDatabase()
-{
-    QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
-    setFocus();
-    try
-    {
-        if (bh->save())
-        {
-            gUndoStack->clear();
-        }
-        else
-        {
-            QGuiApplication::restoreOverrideCursor();
-            QMessageBox::critical(this, tr("Fehler beim Speichern"), bh->lastError());
-        }
-        QGuiApplication::restoreOverrideCursor();
-    }
-    catch (const std::exception& ex)
-    {
-        QGuiApplication::restoreOverrideCursor();
-        QMessageBox::critical(this, tr("Fehler beim Speichern"), ex.what());
-    }
-    catch (...)
-    {
-        QGuiApplication::restoreOverrideCursor();
-        QMessageBox::critical(this, tr("Fehler beim Speichern"), tr("Unbekannter Fehler."));
-    }
-}
-
-void MainWindow2::discardDatabase()
-{
-    QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
-    setFocus();
-    try
-    {
-        WidgetDecorator::focusRequired = false;
-        bh->discard();
-        WidgetDecorator::focusRequired = true;
-        gUndoStack->clear();
-        QGuiApplication::restoreOverrideCursor();
-    }
-    catch (const std::exception& ex)
-    {
-        QGuiApplication::restoreOverrideCursor();
-        QMessageBox::critical(this, tr("Fehler beim Verwerfen"), ex.what());
-    }
-    catch (...)
-    {
-        QGuiApplication::restoreOverrideCursor();
-        QMessageBox::critical(this, tr("Fehler beim Verwerfen"), tr("Unbekannter Fehler."));
-    }
-}
 
 void MainWindow2::saveSettings()
 {
@@ -276,13 +144,12 @@ void MainWindow2::restoreView()
     DlgDatenbank::restoreView();
     DlgRohstoffAuswahl::restoreView();
     DlgTableView::restoreView();
-    DlgConsole::restoreView();
     DlgHilfe::restoreView();
+    DlgCheckUpdate::restoreView();
 }
 
 void MainWindow2::closeDialogs()
 {
-    DlgAbstract::closeDialog<DlgConsole>();
     DlgAbstract::closeDialog<DlgBrauUebersicht>();
     DlgAbstract::closeDialog<DlgRohstoffe>();
     DlgAbstract::closeDialog<DlgAusruestung>();
@@ -529,12 +396,12 @@ void MainWindow2::on_actionRezept_exportieren_triggered()
 
 void MainWindow2::on_actionSpeichern_triggered()
 {
-    saveDatabase();
+    //saveDatabase();
 }
 
 void MainWindow2::on_actionVerwerfen_triggered()
 {
-    discardDatabase();
+    //discardDatabase();
 }
 
 void MainWindow2::on_actionDruckvorschau_triggered()
@@ -555,11 +422,6 @@ void MainWindow2::on_actionBereinigen_triggered()
 {
     DlgDatabaseCleaner dlg(this);
     dlg.exec();
-}
-
-void MainWindow2::on_actionBeenden_triggered()
-{
-    close();
 }
 
 void MainWindow2::on_actionSudGebraut_triggered()
@@ -659,46 +521,6 @@ void MainWindow2::on_actionEingabefelderEntsperren_changed()
         ui->tabAbfuelldaten->checkEnabled();
         ui->tabGaerverlauf->checkEnabled();
     }
-}
-
-void MainWindow2::checkForUpdate(bool force)
-{
-  #if QT_NETWORK_LIB
-    QString url;
-    QDate since;
-    gSettings->beginGroup("General");
-    url = gSettings->value("CheckUpdateUrl", URL_CHEKUPDATE).toString();
-    if (!force)
-        since = gSettings->value("CheckUpdateLastDate").toDate();
-    gSettings->endGroup();
-
-    DlgCheckUpdate *dlg = new DlgCheckUpdate(url, since, this);
-    connect(dlg, &DlgCheckUpdate::checkUpdatefinished, this, &MainWindow2::checkMessageFinished);
-    dlg->checkForUpdate();
-  #else
-    Q_UNUSED(force)
-  #endif
-}
-
-void MainWindow2::checkMessageFinished()
-{
-  #if QT_NETWORK_LIB
-    DlgCheckUpdate *dlg = qobject_cast<DlgCheckUpdate*>(sender());
-    if (dlg)
-    {
-        if (dlg->hasUpdate())
-        {
-            dlg->exec();
-            gSettings->beginGroup("General");
-            if (dlg->ignoreUpdate())
-                gSettings->setValue("CheckUpdateLastDate", QDate::currentDate());
-            gSettings->setValue("CheckUpdate", dlg->doCheckUpdate());
-            ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
-            gSettings->endGroup();
-        }
-        dlg->deleteLater();
-    }
-  #endif
 }
 
 void MainWindow2::initLabels()
@@ -981,11 +803,6 @@ void MainWindow2::on_actionHilfe_triggered()
 {
     DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this);
     dlg->setHomeUrl(QStringLiteral(URL_HILFE));
-}
-
-void MainWindow2::on_actionLog_triggered()
-{
-    DlgAbstract::showDialog<DlgConsole>(this, ui->actionLog);
 }
 
 void MainWindow2::on_actionDatenbank_triggered()

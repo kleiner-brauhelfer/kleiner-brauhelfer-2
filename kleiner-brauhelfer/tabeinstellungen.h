@@ -17,7 +17,7 @@ public:
 
 signals:
     void restoreView();
-    void checkUpdate();
+    void checkUpdate(bool force);
 
 private slots:
     void on_btnDatabase_clicked();
@@ -41,7 +41,7 @@ private slots:
     void on_cbModulePreiskalkulation_clicked(bool checked);
 
 private:
-    void updateValue();
+    void updateValues();
 
 private:
     Ui::TabEinstellungen *ui;

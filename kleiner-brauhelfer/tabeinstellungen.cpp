@@ -10,10 +10,10 @@ TabEinstellungen::TabEinstellungen(QWidget *parent) :
     ui(new Ui::TabEinstellungen)
 {
     ui->setupUi(this);
-    updateValue();
+    updateValues();
 
     connect(ui->btnRestoreView, &QAbstractButton::clicked, this, &TabEinstellungen::restoreView);
-    connect(ui->btnCheckUpdate, &QAbstractButton::clicked, this, &TabEinstellungen::checkUpdate);
+    connect(ui->btnCheckUpdate, &QAbstractButton::clicked, this, [this](){emit checkUpdate(true);});
 }
 
 TabEinstellungen::~TabEinstellungen()
@@ -21,7 +21,7 @@ TabEinstellungen::~TabEinstellungen()
     delete ui;
 }
 
-void TabEinstellungen::updateValue()
+void TabEinstellungen::updateValues()
 {
     ui->tbDatabase->setText(gSettings->databasePath());
 
@@ -57,6 +57,7 @@ void TabEinstellungen::updateValue()
 
     ui->cbModuleGaerverlauf->setChecked(gSettings->isModuleEnabled(Settings::ModuleGaerverlauf));
     ui->cbModuleSchnellgaerprobe->setChecked(gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
+    ui->cbModuleSchnellgaerprobe->setEnabled(gSettings->isModuleEnabled(Settings::ModuleGaerverlauf));
     ui->cbModuleAusdruck->setChecked(gSettings->isModuleEnabled(Settings::ModuleAusdruck));
     ui->cbModuleEtiketten->setChecked(gSettings->isModuleEnabled(Settings::ModuleEtikette));
     ui->cbModuleBewertungen->setChecked(gSettings->isModuleEnabled(Settings::ModuleBewertung));
@@ -66,8 +67,6 @@ void TabEinstellungen::updateValue()
     ui->cbModuleSpeise->setChecked(gSettings->isModuleEnabled(Settings::ModuleSpeise));
     ui->cbModuleWasseraufbereitung->setChecked(gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung));
     ui->cbModulePreiskalkulation->setChecked(gSettings->isModuleEnabled(Settings::ModulePreiskalkulation));
-
-    ui->cbModuleSchnellgaerprobe->setEnabled(gSettings->isModuleEnabled(Settings::ModuleGaerverlauf));
 }
 
 void TabEinstellungen::on_btnDatabase_clicked()

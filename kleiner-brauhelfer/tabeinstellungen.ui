@@ -25,7 +25,7 @@
         <x>0</x>
         <y>0</y>
         <width>776</width>
-        <height>612</height>
+        <height>610</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_17">
@@ -108,10 +108,18 @@
              <property name="text">
               <string>hell</string>
              </property>
+             <property name="icon">
+              <iconset resource="images.qrc">
+               <normaloff>:/images/icons/light/light.svg</normaloff>:/images/icons/light/light.svg</iconset>
+             </property>
             </item>
             <item>
              <property name="text">
               <string>dunkel</string>
+             </property>
+             <property name="icon">
+              <iconset resource="images.qrc">
+               <normaloff>:/images/icons/dark/dark.svg</normaloff>:/images/icons/dark/dark.svg</iconset>
              </property>
             </item>
            </widget>
@@ -160,7 +168,7 @@
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/de.svg</normaloff>:/images/de.svg</iconset>
+               <normaloff>:/images/icons/lang/de.svg</normaloff>:/images/icons/lang/de.svg</iconset>
              </property>
             </item>
             <item>
@@ -169,7 +177,7 @@
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/en.svg</normaloff>:/images/en.svg</iconset>
+               <normaloff>:/images/icons/lang/en.svg</normaloff>:/images/icons/lang/en.svg</iconset>
              </property>
             </item>
             <item>
@@ -178,7 +186,7 @@
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/se.svg</normaloff>:/images/se.svg</iconset>
+               <normaloff>:/images/icons/lang/se.svg</normaloff>:/images/icons/lang/se.svg</iconset>
              </property>
             </item>
             <item>
@@ -187,7 +195,7 @@
              </property>
              <property name="icon">
               <iconset resource="images.qrc">
-               <normaloff>:/images/nl.svg</normaloff>:/images/nl.svg</iconset>
+               <normaloff>:/images/icons/lang/nl.svg</normaloff>:/images/icons/lang/nl.svg</iconset>
              </property>
             </item>
            </widget>
@@ -539,7 +547,7 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Dieses Modul aktiviert die Schnellgärprobe.</string>
+             <string>Dieses Modul aktiviert die Schnellgärprobe für die Vorhersage des richtigen Zeitpunktes beim Grünschlauchen.</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>

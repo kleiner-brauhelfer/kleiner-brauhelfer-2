@@ -304,6 +304,7 @@ void DlgBrauUebersicht::on_cbAuswahlL3_currentIndexChanged(int)
 
 void DlgBrauUebersicht::setFilterDate()
 {
+    /*
     bool notAll = ui->cbDatumAlle->isChecked();
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
     if (notAll)
@@ -318,6 +319,7 @@ void DlgBrauUebersicht::setFilterDate()
     }
     ui->tbDatumVon->setEnabled(notAll);
     ui->tbDatumBis->setEnabled(notAll);
+    */
     updateDiagram();
 }
 

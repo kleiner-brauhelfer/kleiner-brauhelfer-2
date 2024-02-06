@@ -8,21 +8,22 @@
 #include "settings.h"
 #include "proxymodel.h"
 #include "templatetags.h"
-#include "mainwindow2.h"
+#include "mainwindow.h"
 
 extern Brauhelfer *bh;
 extern Settings* gSettings;
 
 void TabSudAuswahl::updateWebView()
 {
-    QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
+    /*
+    QModelIndexList selection = ui->table->selectionModel()->selectedRows();
     if (selection.count() == 0)
     {
         ui->webview->clear();
     }
     else if (selection.count() == 1)
     {
-        const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->tableSudauswahl->model());
+        const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->table->model());
         int sudRow = proxyModel->mapRowToSource(selection[0].row());
         TemplateTags::render(ui->webview, std::bind(&TabSudAuswahl::generateTemplateTags, this, std::placeholders::_1), sudRow);
         ui->webview->setPdfName(proxyModel->data(selection[0].row(), ModelSud::ColSudname).toString());
@@ -32,11 +33,12 @@ void TabSudAuswahl::updateWebView()
         TemplateTags::render(ui->webview, std::bind(&TabSudAuswahl::generateTemplateTags, this, std::placeholders::_1), -1);
         ui->webview->setPdfName(QStringLiteral("Rohstoffe"));
     }
+    */
 }
 
 void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
 {
-    const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->tableSudauswahl->model());
+    const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->table->model());
 
     struct Rohstoff
     {
@@ -49,8 +51,8 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     QList<int> ListSudID;
     QLocale locale;
 
-    ListSudID.reserve(ui->tableSudauswahl->selectionModel()->selectedRows().count());
-    for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
+    ListSudID.reserve(ui->table->selectionModel()->selectedRows().count());
+    for (const QModelIndex &index : ui->table->selectionModel()->selectedRows())
     {
         int SudID = proxyModel->data(index.row(), ModelSud::ColID).toInt();
         ListSudID.append(SudID);
@@ -153,12 +155,12 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
             if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             {
                 int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, eintrag.Name, ModelHopfen::ColTyp).toInt();
-                eintrag.Typ = MainWindow2::HopfenTypname[idx];
+                eintrag.Typ = MainWindow::HopfenTypname[idx];
                 liste = &ListHopfen;
             }
             else
             {
-                eintrag.Typ = MainWindow2::ZusatzTypname[static_cast<int>(typ)];
+                eintrag.Typ = MainWindow::ZusatzTypname[static_cast<int>(typ)];
                 liste = &ListWeitereZutaten;
             }
             eintrag.Einheit = static_cast<Brauhelfer::Einheit>(modelWeitereZutatenGaben.data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
@@ -342,9 +344,9 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
                 }
             }
             int einheit = static_cast<int>(eintrag.Einheit);
-            if (einheit >= 0 && einheit < MainWindow2::Einheiten.count())
+            if (einheit >= 0 && einheit < MainWindow::Einheiten.count())
             {
-                map.insert(QStringLiteral("Einheit"), MainWindow2::Einheiten[einheit]);
+                map.insert(QStringLiteral("Einheit"), MainWindow::Einheiten[einheit]);
                 switch (eintrag.Einheit)
                 {
                 case Brauhelfer::Einheit::Kg:

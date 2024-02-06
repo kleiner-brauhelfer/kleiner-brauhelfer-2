@@ -17,12 +17,6 @@ class MainWindow2 : public QMainWindow
     Q_OBJECT
 
 public:
-    static QStringList HopfenTypname;
-    static QStringList HefeTypname;
-    static QStringList HefeTypFlTrName;
-    static QStringList ZusatzTypname;
-    static QStringList Einheiten;
-
     static MainWindow2* getInstance();
 
 public:
@@ -64,7 +58,6 @@ private:
     void saveSettings();
     void restoreView();
     void closeDialogs();
-    void initLabels();
     void checkLoadedSud();
 
 private:

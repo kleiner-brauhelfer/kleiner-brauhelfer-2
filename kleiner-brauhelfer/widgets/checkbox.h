@@ -9,6 +9,7 @@ class CheckBox : public QCheckBox
 
 public:
     explicit CheckBox(QWidget *parent = nullptr);
+    explicit CheckBox(const QString &text, QWidget *parent = nullptr);
     void setError(bool e);
 };
 

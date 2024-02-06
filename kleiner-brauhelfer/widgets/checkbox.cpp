@@ -8,6 +8,12 @@ CheckBox::CheckBox(QWidget *parent) :
     connect(this, &QCheckBox::stateChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
+CheckBox::CheckBox(const QString &text, QWidget *parent) :
+    QCheckBox(text, parent)
+{
+    connect(this, &QCheckBox::stateChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
+}
+
 void CheckBox::setError(bool e)
 {
     if (property("ErrorState").toBool() != e)

@@ -194,7 +194,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
        <property name="currentIndex">
         <number>0</number>
        </property>
-       <widget class="QWidget" name="tabSudauswahl">
+       <widget class="TabSudAuswahl" name="tabSudauswahl">
         <attribute name="icon">
          <iconset theme="sudauswahl" resource="images.qrc">
           <normaloff>:/images/icons/light/svg/sudauswahl.svg</normaloff>:/images/icons/light/svg/sudauswahl.svg</iconset>
@@ -520,6 +520,12 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    <class>TabEinstellungen</class>
    <extends>QWidget</extends>
    <header>tabeinstellungen.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabSudAuswahl</class>
+   <extends>QWidget</extends>
+   <header>tabsudauswahl.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

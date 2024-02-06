@@ -24,6 +24,13 @@ public:
     };
 
 public:
+    static QStringList HopfenTypname;
+    static QStringList HefeTypname;
+    static QStringList HefeTypFlTrName;
+    static QStringList ZusatzTypname;
+    static QStringList Einheiten;
+
+public:
     static void installTranslators();
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -48,6 +55,7 @@ private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
     void setupActions();
+    void setupLabels();
 
 private:
     Ui::MainWindow *ui;

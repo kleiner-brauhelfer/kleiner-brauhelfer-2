@@ -114,6 +114,7 @@ SOURCES += \
     widgets/datetimeedit.cpp \
     widgets/doublespinbox.cpp \
     widgets/doublespinboxsud.cpp \
+    widgets/filterbutton.cpp \
     widgets/iconthemed.cpp \
     widgets/lineedit.cpp \
     widgets/pushbutton.cpp \
@@ -122,6 +123,7 @@ SOURCES += \
     widgets/svgview.cpp \
     widgets/tableview.cpp \
     widgets/timeedit.cpp \
+    widgets/toolbutton.cpp \
     widgets/wdgabstractproxy.cpp \
     widgets/wdganhang.cpp \
     widgets/wdgbemerkung.cpp \
@@ -214,6 +216,7 @@ HEADERS += \
     widgets/datetimeedit.h \
     widgets/doublespinbox.h \
     widgets/doublespinboxsud.h \
+    widgets/filterbutton.h \
     widgets/iconthemed.h \
     widgets/lineedit.h \
     widgets/pushbutton.h \
@@ -222,6 +225,7 @@ HEADERS += \
     widgets/svgview.h \
     widgets/tableview.h \
     widgets/timeedit.h \
+    widgets/toolbutton.h \
     widgets/wdgabstractproxy.h \
     widgets/wdganhang.h \
     widgets/wdgbemerkung.h \

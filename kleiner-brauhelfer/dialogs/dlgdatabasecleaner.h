@@ -16,6 +16,7 @@ class DlgDatabaseCleaner : public DlgAbstract
 public:
     explicit DlgDatabaseCleaner(QWidget* parent = nullptr);
     ~DlgDatabaseCleaner();
+    static void restoreView();
 
 private slots:
     void selectionChanged();

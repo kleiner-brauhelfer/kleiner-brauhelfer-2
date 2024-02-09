@@ -350,6 +350,12 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionSudDelete"/>
+   <addaction name="actionSudLaden"/>
+   <addaction name="separator"/>
+   <addaction name="actionSudAusdruck"/>
+   <addaction name="actionSudEtikett"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QToolBar" name="toolBarBewertungen">
    <property name="contextMenuPolicy">
@@ -445,6 +451,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionHelp"/>
   </widget>
   <action name="actionShowTabBarLabels">
    <property name="checkable">
@@ -503,6 +510,177 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    </property>
    <property name="text">
     <string>Redo</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSudAdd">
+   <property name="icon">
+    <iconset theme="sud_add" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/sud_add.svg</normaloff>:/images/icons/light/svg/sud_add.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Neu</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSudDelete">
+   <property name="icon">
+    <iconset theme="sud_delete" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/sud_delete.svg</normaloff>:/images/icons/light/svg/sud_delete.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Löschen</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSudLaden">
+   <property name="icon">
+    <iconset theme="sud_laden" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/sud_laden.svg</normaloff>:/images/icons/light/svg/sud_laden.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Laden</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSudAusdruck">
+   <property name="icon">
+    <iconset theme="sud_ausdruck" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/sud_ausdruck.svg</normaloff>:/images/icons/light/svg/sud_ausdruck.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Ausdruck</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSudEtikett">
+   <property name="icon">
+    <iconset theme="sud_etikett" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/sud_etikett.svg</normaloff>:/images/icons/light/svg/sud_etikett.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Etikett</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSudCopy">
+   <property name="icon">
+    <iconset theme="sud_copy" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/sud_copy.svg</normaloff>:/images/icons/light/svg/sud_copy.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Kopieren</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSudImport">
+   <property name="icon">
+    <iconset theme="sud_import" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/sud_import.svg</normaloff>:/images/icons/light/svg/sud_import.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Importieren</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSudPin">
+   <property name="icon">
+    <iconset theme="sud_pin" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/sud_pin.svg</normaloff>:/images/icons/light/svg/sud_pin.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Merken</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSudUnpin">
+   <property name="icon">
+    <iconset theme="sud_unpin" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/sud_unpin.svg</normaloff>:/images/icons/light/svg/sud_unpin.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Vergessen</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSudSplit">
+   <property name="icon">
+    <iconset theme="sud_teilen" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/sud_teilen.svg</normaloff>:/images/icons/light/svg/sud_teilen.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Teilen</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionSudExport">
+   <property name="icon">
+    <iconset theme="sud_export" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/sud_export.svg</normaloff>:/images/icons/light/svg/sud_export.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Exportieren</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionDatabase">
+   <property name="icon">
+    <iconset theme="database" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/database.svg</normaloff>:/images/icons/light/svg/database.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Datenbank</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionClean">
+   <property name="icon">
+    <iconset theme="database_clean" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/database_clean.svg</normaloff>:/images/icons/light/svg/database_clean.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Bereinigen</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="help" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/help.svg</normaloff>:/images/icons/light/svg/help.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Hilfe</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>

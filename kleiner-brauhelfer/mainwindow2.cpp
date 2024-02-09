@@ -7,32 +7,19 @@
 #include <QDesktopServices>
 #include "brauhelfer.h"
 #include "biercalc.h"
-#include "definitionen.h"
 #include "tababstract.h"
 #include "dialogs/dlgausruestung.h"
 #include "dialogs/dlgbrauuebersicht.h"
-#include "dialogs/dlgcheckupdate.h"
-#include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgdatenbank.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgtableview.h"
 #include "dialogs/dlgrohstoffe.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
-#include "dialogs/dlghilfe.h"
 #include "widgets/iconthemed.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-
-
-MainWindow2* MainWindow2::getInstance()
-{
-    for (QWidget* wdg: qApp->topLevelWidgets())
-        if (MainWindow2* mainWin = qobject_cast<MainWindow2*>(wdg))
-            return mainWin;
-    return nullptr;
-}
 
 MainWindow2::MainWindow2(QWidget *parent) :
     QMainWindow(parent),
@@ -90,11 +77,6 @@ MainWindow2::MainWindow2(QWidget *parent) :
     connect(bh->sud(), &SudObject::loadedChanged, this, &MainWindow2::sudLoaded);
     connect(bh->sud(), &SudObject::dataChanged, this, &MainWindow2::sudDataChanged);
 
-    connect(ui->actionRohstoffe, &QAction::triggered, this, &MainWindow2::showDialogRohstoffe);
-    connect(ui->actionBrauUebersicht, &QAction::triggered, this, &MainWindow2::showDialogBrauUebersicht);
-    connect(ui->actionAusruestung, &QAction::triggered, this, &MainWindow2::showDialogAusruestung);
-
-
     modulesChanged(Settings::ModuleAlle);
     sudLoaded();
     on_tabMain_currentChanged();
@@ -102,11 +84,9 @@ MainWindow2::MainWindow2(QWidget *parent) :
 
 MainWindow2::~MainWindow2()
 {
-    closeDialogs();
     saveSettings();
     delete ui;
 }
-
 
 void MainWindow2::saveSettings()
 {
@@ -122,7 +102,7 @@ void MainWindow2::saveSettings()
 
 void MainWindow2::restoreView()
 {
-    closeDialogs();
+    //closeDialogs();
     ui->tabSudAuswahl->restoreView();
     ui->tabRezept->restoreView();
     ui->tabBraudaten->restoreView();
@@ -134,20 +114,9 @@ void MainWindow2::restoreView()
     DlgRohstoffe::restoreView();
     DlgAusruestung::restoreView();
     DlgBrauUebersicht::restoreView();
-    DlgDatenbank::restoreView();
     DlgRohstoffAuswahl::restoreView();
     DlgTableView::restoreView();
-    DlgHilfe::restoreView();
-    DlgCheckUpdate::restoreView();
-}
 
-void MainWindow2::closeDialogs()
-{
-    DlgAbstract::closeDialog<DlgBrauUebersicht>();
-    DlgAbstract::closeDialog<DlgRohstoffe>();
-    DlgAbstract::closeDialog<DlgAusruestung>();
-    DlgAbstract::closeDialog<DlgDatenbank>();
-    DlgAbstract::closeDialog<DlgHilfe>();
 }
 
 void MainWindow2::modulesChanged(Settings::Modules modules)
@@ -311,68 +280,6 @@ void MainWindow2::on_tabMain_currentChanged()
     setFocus();
 }
 
-void MainWindow2::on_actionNeuen_Sud_anlegen_triggered()
-{
-    ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-    ui->tabSudAuswahl->sudAnlegen();
-}
-
-void MainWindow2::on_actionSud_kopieren_triggered()
-{
-    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-    {
-        ui->tabSudAuswahl->sudKopieren();
-    }
-    else
-    {
-        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-        ui->tabSudAuswahl->sudKopieren(true);
-    }
-}
-
-void MainWindow2::on_actionSud_teilen_triggered()
-{
-    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-    {
-        ui->tabSudAuswahl->sudTeilen();
-    }
-    else
-    {
-        ui->tabSudAuswahl->sudTeilen(true);
-    }
-}
-
-void MainWindow2::on_actionSud_l_schen_triggered()
-{
-    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-    {
-        ui->tabSudAuswahl->sudLoeschen();
-    }
-    else
-    {
-        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-        ui->tabSudAuswahl->sudLoeschen(true);
-    }
-}
-
-void MainWindow2::on_actionRezept_importieren_triggered()
-{
-    ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-    ui->tabSudAuswahl->rezeptImportieren();
-}
-
-void MainWindow2::on_actionRezept_exportieren_triggered()
-{
-    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-    {
-        ui->tabSudAuswahl->rezeptExportieren();
-    }
-    else
-    {
-        ui->tabSudAuswahl->rezeptExportieren(true);
-    }
-}
-
 void MainWindow2::on_actionDruckvorschau_triggered()
 {
     TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
@@ -385,12 +292,6 @@ void MainWindow2::on_actionDrucken_triggered()
     TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
     if (tab)
         tab->toPdf();
-}
-
-void MainWindow2::on_actionBereinigen_triggered()
-{
-    DlgDatabaseCleaner dlg(this);
-    dlg.exec();
 }
 
 void MainWindow2::on_actionSudGebraut_triggered()
@@ -623,30 +524,4 @@ void MainWindow2::checkLoadedSud()
             }
         }
     }
-}
-
-void MainWindow2::on_actionHilfe_triggered()
-{
-    DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this);
-    dlg->setHomeUrl(QStringLiteral(URL_HILFE));
-}
-
-void MainWindow2::on_actionDatenbank_triggered()
-{
-    DlgAbstract::showDialog<DlgDatenbank>(this, ui->actionDatenbank);
-}
-
-DlgRohstoffe* MainWindow2::showDialogRohstoffe()
-{
-    return DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);
-}
-
-DlgBrauUebersicht* MainWindow2::showDialogBrauUebersicht()
-{
-    return DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);
-}
-
-DlgAusruestung* MainWindow2::showDialogAusruestung()
-{
-    return DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);
 }

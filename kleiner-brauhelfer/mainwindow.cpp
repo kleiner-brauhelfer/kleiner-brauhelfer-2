@@ -5,10 +5,14 @@
 #include <QFile>
 #include <QLibraryInfo>
 #include <QTabBar>
+#include <QToolButton>
 #include <QCloseEvent>
 #include <QMessageBox>
 #include "commands/undostack.h"
 #include "dialogs/dlgcheckupdate.h"
+#include "dialogs/dlghilfe.h"
+#include "dialogs/dlgdatenbank.h"
+#include "dialogs/dlgdatabasecleaner.h"
 #include "widgets/widgetdecorator.h"
 #include "brauhelfer.h"
 #include "settings.h"
@@ -24,6 +28,14 @@ QStringList MainWindow::HefeTypname;
 QStringList MainWindow::HefeTypFlTrName;
 QStringList MainWindow::ZusatzTypname;
 QStringList MainWindow::Einheiten;
+
+MainWindow* MainWindow::getInstance()
+{
+    for (QWidget* wdg: qApp->topLevelWidgets())
+        if (MainWindow* mainWin = qobject_cast<MainWindow*>(wdg))
+            return mainWin;
+    return nullptr;
+}
 
 static void installTranslator(QTranslator &translator, const QString &filename)
 {
@@ -94,6 +106,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::setupActions()
 {
+    QToolButton* toolButton;
+
     ui->actionSave->setShortcut(QKeySequence::Save);
     connect(ui->actionSave, &QAction::triggered, this, &MainWindow::saveDatabase);
     connect(ui->actionDiscard, &QAction::triggered, this, &MainWindow::discardDatabase);
@@ -103,12 +117,52 @@ void MainWindow::setupActions()
         //ui->menuBearbeiten->addAction(gUndoStack->createUndoAction(this, tr("Rückgängig")));
         //ui->menuBearbeiten->addAction(gUndoStack->createRedoAction(this, tr("Wiederherstellen")));
     }
+
+    toolButton = new QToolButton(this);
+    toolButton->setIcon(QIcon::fromTheme(QStringLiteral("sud_add")));
+    toolButton->setText(tr("Anlegen"));
+    toolButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    toolButton->setPopupMode(QToolButton::InstantPopup);
+    toolButton->addAction(ui->actionSudAdd);
+    toolButton->addAction(ui->actionSudCopy);
+    toolButton->addAction(ui->actionSudImport);
+    ui->toolBarSudauswahl->insertWidget(ui->actionSudDelete, toolButton);
+    toolButton = new QToolButton(this);
+    toolButton->setIcon(QIcon::fromTheme(QStringLiteral("sud_erweitert")));
+    toolButton->setText(tr("Erweitert"));
+    toolButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    toolButton->setPopupMode(QToolButton::InstantPopup);
+    toolButton->addAction(ui->actionSudPin);
+    toolButton->addAction(ui->actionSudUnpin);
+    toolButton->addAction(ui->actionSudSplit);
+    toolButton->addAction(ui->actionSudExport);
+    toolButton->addAction(ui->actionDatabase);
+    toolButton->addAction(ui->actionClean);
+    ui->toolBarSudauswahl->addWidget(toolButton);
+    connect(ui->actionSudAdd, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudAnlegen);
+    connect(ui->actionSudCopy, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudKopieren);
+    connect(ui->actionSudImport, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::rezeptImportieren);
+    connect(ui->actionSudDelete, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudLoeschen);
+    connect(ui->actionSudLaden, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudLaden);
+    //connect(ui->actionSudAusdruck, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudAnlegen);
+    //connect(ui->actionSudEtikett, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudAnlegen);
+    connect(ui->actionSudPin, &QAction::triggered, ui->tabSudauswahl, [this](){ui->tabSudauswahl->sudMerken(true);});
+    connect(ui->actionSudUnpin, &QAction::triggered, ui->tabSudauswahl, [this](){ui->tabSudauswahl->sudMerken(false);});
+    connect(ui->actionSudSplit, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudTeilen);
+    connect(ui->actionSudExport, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::rezeptExportieren);
+    connect(ui->actionDatabase, &QAction::triggered, this, &MainWindow::showDatabase);
+    connect(ui->actionClean, &QAction::triggered, this, &MainWindow::showDatabaseClean);
+    connect(ui->tabSudauswahl, &TabSudAuswahl::selectionChanged, this, &MainWindow::tabSudAuswahlSelectionChanged);
+
+    connect(ui->actionHelp, &QAction::triggered, this, &MainWindow::showHelp);
+
     on_tabWidget_currentChanged(ui->tabWidget->currentIndex());
 
     ui->tabWidget->tabBar()->setContextMenuPolicy(Qt::ActionsContextMenu);
     ui->tabWidget->tabBar()->addAction(ui->actionShowTabBarLabels);
 
     connect(ui->tabEinstellungen, &TabEinstellungen::restoreView, this, &MainWindow::restoreView);
+    connect(ui->tabEinstellungen, &TabEinstellungen::restoreView, ui->tabSudauswahl, &TabSudAuswahl::restoreView);
     connect(ui->tabEinstellungen, &TabEinstellungen::checkUpdate, this, &MainWindow::checkUpdate);
 }
 
@@ -280,6 +334,11 @@ void MainWindow::restoreView()
     ui->splitterHelp->setSizes({900, 100});
     ui->splitterHelp->setStretchFactor(0, 1);
     ui->splitterHelp->setStretchFactor(1, 0);
+
+    DlgDatenbank::restoreView();
+    DlgDatabaseCleaner::restoreView();
+    DlgCheckUpdate::restoreView();
+    DlgHilfe::restoreView();
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -503,4 +562,32 @@ void MainWindow::focusChanged(QWidget *old, QWidget *now)
         WidgetDecorator::clearValueChanged();
     if (now && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
         ui->tbHelp->setHtml(now->toolTip());
+}
+
+void MainWindow::showDatabase()
+{
+    DlgAbstract::showDialog<DlgDatenbank>(this, ui->actionDatabase);
+}
+
+void MainWindow::showDatabaseClean()
+{
+    DlgDatabaseCleaner dlg(this);
+    dlg.exec();
+}
+
+void MainWindow::showHelp()
+{
+    DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this, ui->actionHelp);
+    dlg->setHomeUrl(QStringLiteral(URL_HILFE));
+}
+
+void MainWindow::tabSudAuswahlSelectionChanged(bool sudSelected)
+{
+    ui->actionSudPin->setEnabled(sudSelected);
+    ui->actionSudUnpin->setEnabled(sudSelected);
+    ui->actionSudCopy->setEnabled(sudSelected);
+    ui->actionSudDelete->setEnabled(sudSelected);
+    ui->actionSudExport->setEnabled(sudSelected);
+    ui->actionSudLaden->setEnabled(sudSelected);
+    ui->actionSudSplit->setEnabled(sudSelected);
 }

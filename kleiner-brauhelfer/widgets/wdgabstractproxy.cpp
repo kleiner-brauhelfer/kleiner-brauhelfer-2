@@ -2,7 +2,7 @@
 #include <QLayout>
 #include <QVariantAnimation>
 #include <QEventLoop>
-#include "mainwindow2.h"
+#include "mainwindow.h"
 #include "settings.h"
 #include "proxymodel.h"
 #include "commands/undostack.h"
@@ -95,9 +95,9 @@ bool WdgAbstractProxy::moveUp()
         mParentLayout->update();
     }
 
-    MainWindow2::getInstance()->setUpdatesEnabled(false);
+    MainWindow::getInstance()->setUpdatesEnabled(false);
     bool ret = mModel->swap(mRow, mRow - 1);
-    MainWindow2::getInstance()->setUpdatesEnabled(true);
+    MainWindow::getInstance()->setUpdatesEnabled(true);
     return ret;
 }
 
@@ -134,8 +134,8 @@ bool WdgAbstractProxy::moveDown()
         mParentLayout->update();
     }
 
-    MainWindow2::getInstance()->setUpdatesEnabled(false);
+    MainWindow::getInstance()->setUpdatesEnabled(false);
     bool ret = mModel->swap(mRow, mRow + 1);
-    MainWindow2::getInstance()->setUpdatesEnabled(true);
+    MainWindow::getInstance()->setUpdatesEnabled(true);
     return ret;
 }

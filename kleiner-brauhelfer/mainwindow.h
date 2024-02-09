@@ -24,6 +24,7 @@ public:
     };
 
 public:
+    static MainWindow* getInstance();
     static QStringList HopfenTypname;
     static QStringList HefeTypname;
     static QStringList HefeTypFlTrName;
@@ -50,6 +51,10 @@ private slots:
     void databaseModified();
     void saveDatabase();
     void discardDatabase();
+    void showDatabase();
+    void showDatabaseClean();
+    void showHelp();
+    void tabSudAuswahlSelectionChanged(bool sudSelected);
 
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;

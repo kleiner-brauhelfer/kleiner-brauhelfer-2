@@ -14,16 +14,14 @@ class TabSudAuswahl : public QWidget
 
 public:
     explicit TabSudAuswahl(QWidget *parent = nullptr);
-    virtual ~TabSudAuswahl() Q_DECL_OVERRIDE;
-    void saveSettings();
-    void modulesChanged(Settings::Modules modules);
+    ~TabSudAuswahl();
+    void restoreView();
 
 signals:
     void clicked(int sudId);
     void selectionChanged(bool sudSelected);
 
 public slots:
-    void restoreView();
     void sudAnlegen();
     void sudKopieren();
     void sudLoeschen();
@@ -34,6 +32,7 @@ public slots:
     void rezeptExportieren();
 
 private slots:
+    void onModulesChanged(Settings::Modules modules);
     void onDatabaseModified();
     void onFilterChanged();
     void onSelectionChanged();
@@ -41,6 +40,7 @@ private slots:
     void on_tbFilter_textChanged(const QString &pattern);
 
 private:
+    void saveSettings();
     void updateWebView();
     void generateTemplateTags(QVariantMap& tags);
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;

@@ -46,6 +46,7 @@ SOURCES += \
     tababfuellen.cpp \
     tabbewertung.cpp \
     tabbraudaten.cpp \
+    tabbrauuebersicht.cpp \
     tabeinstellungen.cpp \
     tabetikette.cpp \
     tabgaerverlauf.cpp \
@@ -69,7 +70,6 @@ SOURCES += \
     commands/undostack.cpp \
     dialogs/dlgabstract.cpp \
     dialogs/dlgausruestung.cpp \
-    dialogs/dlgbrauuebersicht.cpp \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgdatenbank.cpp \
@@ -148,6 +148,7 @@ HEADERS += \
     tababfuellen.h \
     tabbewertung.h \
     tabbraudaten.h \
+    tabbrauuebersicht.h \
     tabeinstellungen.h \
     tabetikette.h \
     tabgaerverlauf.h \
@@ -171,7 +172,6 @@ HEADERS += \
     dialogs/dlgabstract.h \
     dialogs/dlgabstract-inl.h \
     dialogs/dlgausruestung.h \
-    dialogs/dlgbrauuebersicht.h \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgdatenbank.h \
@@ -247,6 +247,7 @@ FORMS += \
     tababfuellen.ui \
     tabbewertung.ui \
     tabbraudaten.ui \
+    tabbrauuebersicht.ui \
     tabeinstellungen.ui \
     tabetikette.ui \
     tabgaerverlauf.ui \
@@ -255,7 +256,6 @@ FORMS += \
     tabueber.ui \
     tabzusammenfassung.ui \
     dialogs/dlgausruestung.ui \
-    dialogs/dlgbrauuebersicht.ui \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgdatenbank.ui \

@@ -12,7 +12,7 @@ class FilterButton : public ToolButton
 
 public:
     FilterButton(QWidget *parent = nullptr);
-    void init(ProxyModelSud* model);
+    void init(ProxyModelSud* model, bool statusEditable);
 
 private slots:
     void setStatusAlle(bool value);
@@ -26,6 +26,7 @@ private:
     void updateChecked();
 
 private:
+    bool mStatusEditable;
     ProxyModelSud* mModel;
     ProxyModelSud::FilterStatus mStatus;
     CheckBox* mCheckBoxAlle;

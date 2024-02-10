@@ -4,7 +4,7 @@
 #include <QMenu>
 #include <QFileInfo>
 #include <QFileDialog>
-#include <QMimeData>
+#include <QKeyEvent>
 #include "brauhelfer.h"
 #include "settings.h"
 #include "model/proxymodelsudcolored.h"
@@ -24,6 +24,8 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ui(new Ui::TabSudAuswahl)
 {
     ui->setupUi(this);
+
+    restoreView();
 
     ui->webview->setHtmlFile(QStringLiteral("sudinfo"));
 
@@ -50,12 +52,8 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     connect(table, &QAbstractItemView::doubleClicked, this, &TabSudAuswahl::sudLaden);
 
     gSettings->beginGroup(staticMetaObject.className());
-
     table->restoreState(gSettings->value("tableState").toByteArray());
-
-    restoreView();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
-
     ProxyModelSud::FilterStatus filterStatus = static_cast<ProxyModelSud::FilterStatus>(gSettings->value("filterStatus", ProxyModelSud::Alle).toInt());
     proxyModel->setFilterStatus(filterStatus);
     proxyModel->setFilterMerkliste(gSettings->value("filterMerkliste", false).toBool());
@@ -64,16 +62,13 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     QDate maxDate = gSettings->value("ZeitraumBis", QDate::currentDate()).toDate();
     proxyModel->setFilterMinimumDate(QDateTime(minDate, QTime(1,0,0)));
     proxyModel->setFilterMaximumDate(QDateTime(maxDate, QTime(23,59,59)));
-
     gSettings->endGroup();
 
-    ui->btnFilter->init(proxyModel);
+    ui->btnFilter->init(proxyModel, true);
 
     connect(bh, &Brauhelfer::modified, this, &TabSudAuswahl::onDatabaseModified, Qt::QueuedConnection);
-    connect(proxyModel, &ProxyModel::layoutChanged, this, &TabSudAuswahl::onFilterChanged);
-    connect(proxyModel, &ProxyModel::rowsInserted, this, &TabSudAuswahl::onFilterChanged);
-    connect(proxyModel, &ProxyModel::rowsRemoved, this, &TabSudAuswahl::onFilterChanged);
-
+    connect(gSettings, &Settings::modulesChanged, this, &TabSudAuswahl::onModulesChanged);
+    connect(ui->table->model(), &QAbstractItemModel::layoutChanged, this, &TabSudAuswahl::onFilterChanged);
 
     ui->table->selectRow(0);
     onFilterChanged();
@@ -90,25 +85,24 @@ void TabSudAuswahl::saveSettings()
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("tableState", ui->table->horizontalHeader()->saveState());
+    gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->setValue("filterStatus", (int)model->filterStatus());
     gSettings->setValue("filterMerkliste", model->filterMerkliste());
     gSettings->setValue("ZeitraumAlle", model->filterDate());
     gSettings->setValue("ZeitraumVon", model->filterMinimumDate().date());
     gSettings->setValue("ZeitraumBis", model->filterMaximumDate().date());
-    gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->endGroup();
 }
 
 void TabSudAuswahl::restoreView()
 {
     ui->table->restoreDefaultState();
-
     ui->splitter->setStretchFactor(0, 1);
     ui->splitter->setStretchFactor(1, 0);
     ui->splitter->setSizes({100, 200});
 }
 
-void TabSudAuswahl::modulesChanged(Settings::Modules modules)
+void TabSudAuswahl::onModulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModuleBewertung))
     {

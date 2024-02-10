@@ -40,7 +40,6 @@ private slots:
     void on_tabWidget_currentChanged(int tab);
     void on_actionShowTabBarLabels_toggled(bool showLabels);
     void focusChanged(QWidget *old, QWidget *now);
-    void loadViewSettings();
     void saveSettings();
     void restoreView();
     void themeChanged(const QString &theme);

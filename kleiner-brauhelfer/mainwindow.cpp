@@ -86,8 +86,16 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(bh, &Brauhelfer::modified, this, &MainWindow::databaseModified);
 
-    restoreView();
-    loadViewSettings();
+    ui->actionShowTabBarLabels->setChecked(true);
+    ui->splitterHelp->setSizes({900, 100});
+    ui->splitterHelp->setStretchFactor(0, 1);
+    ui->splitterHelp->setStretchFactor(1, 0);
+
+    gSettings->beginGroup(staticMetaObject.className());
+    restoreGeometry(gSettings->value("geometry").toByteArray());
+    ui->actionShowTabBarLabels->setChecked(gSettings->value("showLabels", true).toBool());
+    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
+    gSettings->endGroup();
 
     databaseModified();
     WidgetDecorator::clearValueChanged();
@@ -162,7 +170,6 @@ void MainWindow::setupActions()
     ui->tabWidget->tabBar()->addAction(ui->actionShowTabBarLabels);
 
     connect(ui->tabEinstellungen, &TabEinstellungen::restoreView, this, &MainWindow::restoreView);
-    connect(ui->tabEinstellungen, &TabEinstellungen::restoreView, ui->tabSudauswahl, &TabSudAuswahl::restoreView);
     connect(ui->tabEinstellungen, &TabEinstellungen::checkUpdate, this, &MainWindow::checkUpdate);
 }
 
@@ -309,15 +316,6 @@ void MainWindow::setupLabels()
     model->setHeaderData(ModelTags::ColGlobal, Qt::Horizontal, tr("Global"));
 }
 
-void MainWindow::loadViewSettings()
-{
-    gSettings->beginGroup(staticMetaObject.className());
-    restoreGeometry(gSettings->value("geometry").toByteArray());
-    ui->actionShowTabBarLabels->setChecked(gSettings->value("showLabels", true).toBool());
-    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
-    gSettings->endGroup();
-}
-
 void MainWindow::saveSettings()
 {
     gSettings->beginGroup(staticMetaObject.className());
@@ -330,10 +328,12 @@ void MainWindow::saveSettings()
 void MainWindow::restoreView()
 {
     ui->actionShowTabBarLabels->setChecked(true);
-
     ui->splitterHelp->setSizes({900, 100});
     ui->splitterHelp->setStretchFactor(0, 1);
     ui->splitterHelp->setStretchFactor(1, 0);
+
+    ui->tabSudauswahl->restoreView();
+    ui->tabBrauuebersicht->restoreView();
 
     DlgDatenbank::restoreView();
     DlgDatabaseCleaner::restoreView();

@@ -6,56 +6,62 @@
 #include <QMenu>
 
 FilterButton::FilterButton(QWidget *parent) :
-    ToolButton(parent)
+    ToolButton(parent),
+    mStatusEditable(true)
 {
     setCheckable(true);
     setPopupMode(ToolButtonPopupMode::InstantPopup);
 }
 
-void FilterButton::init(ProxyModelSud* model)
+void FilterButton::init(ProxyModelSud* model, bool statusEditable)
 {
     mModel = model;
+    mStatusEditable = statusEditable;
 
+    QFrame* line;
     QWidget* widget = new QWidget(this);
     widget->setLayout(new QVBoxLayout(widget));
 
-    mCheckBoxAlle= new CheckBox(tr("Alle"), widget);
-    mCheckBoxAlle->setTristate(true);
-    if (model->filterStatus() == ProxyModelSud::Alle)
-        mCheckBoxAlle->setCheckState(Qt::Checked);
-    else if (model->filterStatus() == ProxyModelSud::Keine)
-        mCheckBoxAlle->setCheckState(Qt::Unchecked);
-    else
-        mCheckBoxAlle->setCheckState(Qt::PartiallyChecked);
-    widget->layout()->addWidget(mCheckBoxAlle);
-    connect(mCheckBoxAlle, &QAbstractButton::clicked, this, &FilterButton::setStatusAlle);
+    if (statusEditable)
+    {
+        mCheckBoxAlle= new CheckBox(tr("Alle"), widget);
+        mCheckBoxAlle->setTristate(true);
+        if (model->filterStatus() == ProxyModelSud::Alle)
+            mCheckBoxAlle->setCheckState(Qt::Checked);
+        else if (model->filterStatus() == ProxyModelSud::Keine)
+            mCheckBoxAlle->setCheckState(Qt::Unchecked);
+        else
+            mCheckBoxAlle->setCheckState(Qt::PartiallyChecked);
+        widget->layout()->addWidget(mCheckBoxAlle);
+        connect(mCheckBoxAlle, &QAbstractButton::clicked, this, &FilterButton::setStatusAlle);
 
-    mCheckBoxRezept = new CheckBox(tr("Rezept"), widget);
-    mCheckBoxRezept->setChecked(model->filterStatus() & ProxyModelSud::Rezept);
-    widget->layout()->addWidget(mCheckBoxRezept);
-    connect(mCheckBoxRezept, &QAbstractButton::clicked, this, &FilterButton::setStatus);
+        mCheckBoxRezept = new CheckBox(tr("Rezept"), widget);
+        mCheckBoxRezept->setChecked(model->filterStatus() & ProxyModelSud::Rezept);
+        widget->layout()->addWidget(mCheckBoxRezept);
+        connect(mCheckBoxRezept, &QAbstractButton::clicked, this, &FilterButton::setStatus);
 
-    mCheckBoxGebraut = new CheckBox(tr("Gebraut"), widget);
-    mCheckBoxGebraut->setChecked(model->filterStatus() & ProxyModelSud::Gebraut);
-    widget->layout()->addWidget(mCheckBoxGebraut);
-    connect(mCheckBoxGebraut, &QAbstractButton::clicked, this, &FilterButton::setStatus);
+        mCheckBoxGebraut = new CheckBox(tr("Gebraut"), widget);
+        mCheckBoxGebraut->setChecked(model->filterStatus() & ProxyModelSud::Gebraut);
+        widget->layout()->addWidget(mCheckBoxGebraut);
+        connect(mCheckBoxGebraut, &QAbstractButton::clicked, this, &FilterButton::setStatus);
 
-    mCheckBoxAbgefuellt = new CheckBox(tr("Abgefüllt"), widget);
-    mCheckBoxAbgefuellt->setChecked(model->filterStatus() & ProxyModelSud::Abgefuellt);
-    widget->layout()->addWidget(mCheckBoxAbgefuellt);
-    connect(mCheckBoxAbgefuellt, &QAbstractButton::clicked, this, &FilterButton::setStatus);
+        mCheckBoxAbgefuellt = new CheckBox(tr("Abgefüllt"), widget);
+        mCheckBoxAbgefuellt->setChecked(model->filterStatus() & ProxyModelSud::Abgefuellt);
+        widget->layout()->addWidget(mCheckBoxAbgefuellt);
+        connect(mCheckBoxAbgefuellt, &QAbstractButton::clicked, this, &FilterButton::setStatus);
 
-    mCheckBoxAusgetrunken = new CheckBox(tr("Ausgetrunken"), widget);
-    mCheckBoxAusgetrunken->setChecked(model->filterStatus() & ProxyModelSud::Verbraucht);
-    widget->layout()->addWidget(mCheckBoxAusgetrunken);
-    connect(mCheckBoxAusgetrunken, &QAbstractButton::clicked, this, &FilterButton::setStatus);
+        mCheckBoxAusgetrunken = new CheckBox(tr("Ausgetrunken"), widget);
+        mCheckBoxAusgetrunken->setChecked(model->filterStatus() & ProxyModelSud::Verbraucht);
+        widget->layout()->addWidget(mCheckBoxAusgetrunken);
+        connect(mCheckBoxAusgetrunken, &QAbstractButton::clicked, this, &FilterButton::setStatus);
 
-    QFrame* line = new QFrame(this);
-    line->setFrameShape(QFrame::HLine);
-    line->setFrameShadow(QFrame::Sunken);
-    line->setLineWidth(1);
+        line = new QFrame(this);
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+        line->setLineWidth(1);
+        widget->layout()->addWidget(line);
+    }
 
-    widget->layout()->addWidget(line);
     mCheckBoxMerkliste = new CheckBox(tr("Merkliste"), widget);
     mCheckBoxMerkliste->setChecked(model->filterMerkliste());
     widget->layout()->addWidget(mCheckBoxMerkliste);
@@ -165,7 +171,7 @@ void FilterButton::setMaxdate(const QDate& date)
 void FilterButton::updateChecked()
 {
     bool checked = false;
-    if (mModel->filterStatus() != ProxyModelSud::Alle)
+    if (mStatusEditable && mModel->filterStatus() != ProxyModelSud::Alle)
         checked = true;
     if (mModel->filterMerkliste())
         checked = true;

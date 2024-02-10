@@ -9,7 +9,6 @@
 #include "biercalc.h"
 #include "tababstract.h"
 #include "dialogs/dlgausruestung.h"
-#include "dialogs/dlgbrauuebersicht.h"
 #include "dialogs/dlgdatenbank.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgtableview.h"
@@ -90,7 +89,6 @@ MainWindow2::~MainWindow2()
 
 void MainWindow2::saveSettings()
 {
-    ui->tabSudAuswahl->saveSettings();
     ui->tabRezept->saveSettings();
     ui->tabBraudaten->saveSettings();
     ui->tabAbfuelldaten->saveSettings();
@@ -113,7 +111,6 @@ void MainWindow2::restoreView()
     ui->tabBewertung->restoreView();
     DlgRohstoffe::restoreView();
     DlgAusruestung::restoreView();
-    DlgBrauUebersicht::restoreView();
     DlgRohstoffAuswahl::restoreView();
     DlgTableView::restoreView();
 
@@ -123,7 +120,6 @@ void MainWindow2::modulesChanged(Settings::Modules modules)
 {
     updateTabs(modules);
     updateValues();
-    ui->tabSudAuswahl->modulesChanged(modules);
     ui->tabRezept->modulesChanged(modules);
     ui->tabBraudaten->modulesChanged(modules);
     ui->tabAbfuelldaten->modulesChanged(modules);

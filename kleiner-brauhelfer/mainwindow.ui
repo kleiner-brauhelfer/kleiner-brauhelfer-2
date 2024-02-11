@@ -192,7 +192,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
         <enum>QTabWidget::West</enum>
        </property>
        <property name="currentIndex">
-        <number>4</number>
+        <number>5</number>
        </property>
        <widget class="TabSudAuswahl" name="tabSudauswahl">
         <attribute name="icon">
@@ -239,7 +239,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
          <string>Brauübersicht</string>
         </attribute>
        </widget>
-       <widget class="QWidget" name="tabBewertungen">
+       <widget class="TabBewertungen" name="tabBewertungen">
         <attribute name="icon">
          <iconset theme="bewertungen" resource="images.qrc">
           <normaloff>:/images/icons/light/svg/bewertungen.svg</normaloff>:/images/icons/light/svg/bewertungen.svg</iconset>
@@ -710,6 +710,12 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    <class>TabBrauuebersicht</class>
    <extends>QWidget</extends>
    <header>tabbrauuebersicht.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabBewertungen</class>
+   <extends>QWidget</extends>
+   <header>tabbewertungen.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -15,7 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayoutFilter">
      <item>
       <widget class="FilterButton" name="btnFilter">
        <property name="icon">
@@ -109,7 +109,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <layout class="QHBoxLayout" name="horizontalLayoutAuswahl">
      <item>
       <widget class="ComboBox" name="cbAuswahlL1">
        <property name="toolTip">

@@ -45,6 +45,7 @@ SOURCES += \
     tababstract.cpp \
     tababfuellen.cpp \
     tabbewertung.cpp \
+    tabbewertungen.cpp \
     tabbraudaten.cpp \
     tabbrauuebersicht.cpp \
     tabeinstellungen.cpp \
@@ -108,6 +109,7 @@ SOURCES += \
     model/restextraktdelegate.cpp \
     model/spinboxdelegate.cpp \
     model/textdelegate.cpp \
+    model/treeproxymodel.cpp \
     widgets/checkbox.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
@@ -124,6 +126,7 @@ SOURCES += \
     widgets/tableview.cpp \
     widgets/timeedit.cpp \
     widgets/toolbutton.cpp \
+    widgets/treeview.cpp \
     widgets/wdgabstractproxy.cpp \
     widgets/wdganhang.cpp \
     widgets/wdgbemerkung.cpp \
@@ -147,6 +150,7 @@ HEADERS += \
     tababstract.h \
     tababfuellen.h \
     tabbewertung.h \
+    tabbewertungen.h \
     tabbraudaten.h \
     tabbrauuebersicht.h \
     tabeinstellungen.h \
@@ -210,6 +214,7 @@ HEADERS += \
     model/restextraktdelegate.h \
     model/spinboxdelegate.h \
     model/textdelegate.h \
+    model/treeproxymodel.h \
     widgets/checkbox.h \
     widgets/combobox.h \
     widgets/dateedit.h \
@@ -226,6 +231,7 @@ HEADERS += \
     widgets/tableview.h \
     widgets/timeedit.h \
     widgets/toolbutton.h \
+    widgets/treeview.h \
     widgets/wdgabstractproxy.h \
     widgets/wdganhang.h \
     widgets/wdgbemerkung.h \
@@ -246,6 +252,7 @@ FORMS += \
     mainwindow2.ui \
     tababfuellen.ui \
     tabbewertung.ui \
+    tabbewertungen.ui \
     tabbraudaten.ui \
     tabbrauuebersicht.ui \
     tabeinstellungen.ui \

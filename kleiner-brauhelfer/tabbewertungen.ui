@@ -70,6 +70,9 @@
       <property name="animated">
        <bool>true</bool>
       </property>
+      <property name="allColumnsShowFocus">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QScrollArea" name="scrollArea">
       <property name="toolTip">
@@ -83,7 +86,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>453</width>
+         <width>479</width>
          <height>1613</height>
         </rect>
        </property>

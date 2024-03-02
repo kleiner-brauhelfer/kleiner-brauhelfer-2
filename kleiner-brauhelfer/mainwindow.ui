@@ -75,6 +75,11 @@ QTabBar::tab:top:selected, QTabBar::tab:top:hover {
   border-bottom: 2px solid #ffc400;
 }
 
+QTabBar::tab:left:selected, QTabBar::tab:left:hover {
+  color: #ffc400;
+  border-right: 2px solid #ffc400;
+}
+
 QTableView, QTreeView, QListView, QScrollArea, QTextEdit, QPlainTextEdit  {
   border: 1px solid #ababab;
   background-color: #fcfcfc;
@@ -192,7 +197,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
         <enum>QTabWidget::West</enum>
        </property>
        <property name="currentIndex">
-        <number>5</number>
+        <number>0</number>
        </property>
        <widget class="TabSudAuswahl" name="tabSudauswahl">
         <attribute name="icon">
@@ -200,34 +205,34 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
           <normaloff>:/images/icons/light/svg/sudauswahl.svg</normaloff>:/images/icons/light/svg/sudauswahl.svg</iconset>
         </attribute>
         <attribute name="title">
-         <string>Sudauswahl</string>
+         <string notr="true">Sudauswahl</string>
         </attribute>
        </widget>
-       <widget class="QWidget" name="tabSude">
+       <widget class="TabSude" name="tabSude">
         <attribute name="icon">
          <iconset theme="sude" resource="images.qrc">
           <normaloff>:/images/icons/light/svg/sude.svg</normaloff>:/images/icons/light/svg/sude.svg</iconset>
         </attribute>
         <attribute name="title">
-         <string>Sude</string>
+         <string notr="true">Sude</string>
         </attribute>
        </widget>
-       <widget class="QWidget" name="tabLager">
+       <widget class="TabLager" name="tabLager">
         <attribute name="icon">
          <iconset theme="lager" resource="images.qrc">
           <normaloff>:/images/icons/light/svg/lager.svg</normaloff>:/images/icons/light/svg/lager.svg</iconset>
         </attribute>
         <attribute name="title">
-         <string>Lager</string>
+         <string notr="true">Lager</string>
         </attribute>
        </widget>
-       <widget class="QWidget" name="tabAnlagen">
+       <widget class="TabAusruestung" name="tabAusruestung">
         <attribute name="icon">
-         <iconset theme="anlagen" resource="images.qrc">
-          <normaloff>:/images/icons/light/svg/anlagen.svg</normaloff>:/images/icons/light/svg/anlagen.svg</iconset>
+         <iconset theme="ausruestung" resource="images.qrc">
+          <normaloff>:/images/icons/light/svg/ausruestung.svg</normaloff>:/images/icons/light/svg/ausruestung.svg</iconset>
         </attribute>
         <attribute name="title">
-         <string>Anlagen</string>
+         <string notr="true">Ausrüstung</string>
         </attribute>
        </widget>
        <widget class="TabBrauuebersicht" name="tabBrauuebersicht">
@@ -236,7 +241,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
           <normaloff>:/images/icons/light/svg/brauuebersicht.svg</normaloff>:/images/icons/light/svg/brauuebersicht.svg</iconset>
         </attribute>
         <attribute name="title">
-         <string>Brauübersicht</string>
+         <string notr="true">Brauübersicht</string>
         </attribute>
        </widget>
        <widget class="TabBewertungen" name="tabBewertungen">
@@ -245,7 +250,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
           <normaloff>:/images/icons/light/svg/bewertungen.svg</normaloff>:/images/icons/light/svg/bewertungen.svg</iconset>
         </attribute>
         <attribute name="title">
-         <string>Bewertungen</string>
+         <string notr="true">Bewertungen</string>
         </attribute>
        </widget>
        <widget class="TabEinstellungen" name="tabEinstellungen">
@@ -254,7 +259,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
           <normaloff>:/images/icons/light/svg/settings.svg</normaloff>:/images/icons/light/svg/settings.svg</iconset>
         </attribute>
         <attribute name="title">
-         <string>Einstellungen</string>
+         <string notr="true">Einstellungen</string>
         </attribute>
        </widget>
        <widget class="TabUeber" name="tabUeber">
@@ -263,7 +268,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
           <normaloff>:/images/icons/light/svg/about.svg</normaloff>:/images/icons/light/svg/about.svg</iconset>
         </attribute>
         <attribute name="title">
-         <string>Über</string>
+         <string notr="true">Über</string>
         </attribute>
        </widget>
       </widget>
@@ -380,7 +385,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QToolBar" name="toolBarAnlagen">
+  <widget class="QToolBar" name="toolBarAusruestung">
    <property name="contextMenuPolicy">
     <enum>Qt::PreventContextMenu</enum>
    </property>
@@ -426,7 +431,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QToolBar" name="toolBarRight">
+  <widget class="QToolBar" name="toolBarHelp">
    <property name="contextMenuPolicy">
     <enum>Qt::PreventContextMenu</enum>
    </property>
@@ -716,6 +721,24 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    <class>TabBewertungen</class>
    <extends>QWidget</extends>
    <header>tabbewertungen.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabAusruestung</class>
+   <extends>QWidget</extends>
+   <header>tabausruestung.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabLager</class>
+   <extends>QWidget</extends>
+   <header>tablager.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabSude</class>
+   <extends>QWidget</extends>
+   <header>tabsude.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

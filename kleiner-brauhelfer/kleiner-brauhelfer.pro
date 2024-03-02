@@ -44,6 +44,7 @@ SOURCES += \
     settings.cpp \
     tababstract.cpp \
     tababfuellen.cpp \
+    tabausruestung.cpp \
     tabbewertung.cpp \
     tabbewertungen.cpp \
     tabbraudaten.cpp \
@@ -51,9 +52,11 @@ SOURCES += \
     tabeinstellungen.cpp \
     tabetikette.cpp \
     tabgaerverlauf.cpp \
+    tablager.cpp \
     tabrezept.cpp \
     tabsudauswahl.cpp \
     tabsudauswahl_sudinfo.cpp \
+    tabsude.cpp \
     tabueber.cpp \
     tabzusammenfassung.cpp \
     templatetags.cpp \
@@ -149,6 +152,7 @@ HEADERS += \
     settings.h \
     tababstract.h \
     tababfuellen.h \
+    tabausruestung.h \
     tabbewertung.h \
     tabbewertungen.h \
     tabbraudaten.h \
@@ -156,8 +160,10 @@ HEADERS += \
     tabeinstellungen.h \
     tabetikette.h \
     tabgaerverlauf.h \
+    tablager.h \
     tabrezept.h \
     tabsudauswahl.h \
+    tabsude.h \
     tabueber.h \
     tabzusammenfassung.h \
     templatetags.h \
@@ -251,6 +257,7 @@ FORMS += \
     mainwindow.ui \
     mainwindow2.ui \
     tababfuellen.ui \
+    tabausruestung.ui \
     tabbewertung.ui \
     tabbewertungen.ui \
     tabbraudaten.ui \
@@ -258,8 +265,10 @@ FORMS += \
     tabeinstellungen.ui \
     tabetikette.ui \
     tabgaerverlauf.ui \
+    tablager.ui \
     tabrezept.ui \
     tabsudauswahl.ui \
+    tabsude.ui \
     tabueber.ui \
     tabzusammenfassung.ui \
     dialogs/dlgausruestung.ui \

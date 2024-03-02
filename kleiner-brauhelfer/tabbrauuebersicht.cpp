@@ -56,6 +56,7 @@ TabBrauuebersicht::TabBrauuebersicht(QWidget *parent) :
     proxyModel->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
     proxyModel->sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
     ui->table->setModel(proxyModel);
+    build();
 
     gSettings->beginGroup(staticMetaObject.className());
     ui->table->restoreState(gSettings->value("tableState").toByteArray());
@@ -80,7 +81,6 @@ TabBrauuebersicht::TabBrauuebersicht(QWidget *parent) :
     connect(ui->table->selectionModel(), &QItemSelectionModel::selectionChanged,this, &TabBrauuebersicht::onTableSelectionChanged);
     connect(ui->diagram, &Chart3::selectionChanged, this, &TabBrauuebersicht::onDiagramSelectionChanged);
 
-    onModulesChanged(Settings::ModuleAlle);
     onLayoutChanged();
 }
 
@@ -142,6 +142,9 @@ void TabBrauuebersicht::build()
     ui->table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(ui->table)});
     ui->table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, ui->table)});
     ui->table->appendCol({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, false, ui->table)});
+    int auswahlL1 = ui->cbAuswahlL1->currentIndex();
+    int auswahlL2 = ui->cbAuswahlL2->currentIndex();
+    int auswahlL3 = ui->cbAuswahlL3->currentIndex();
     ui->cbAuswahlL1->clear();
     ui->cbAuswahlL2->clear();
     ui->cbAuswahlL3->clear();
@@ -154,6 +157,9 @@ void TabBrauuebersicht::build()
         ui->cbAuswahlL2->addItem(mAuswahlListe[i].label);
         ui->cbAuswahlL3->addItem(mAuswahlListe[i].label);
     }
+    ui->cbAuswahlL1->setCurrentIndex(auswahlL1);
+    ui->cbAuswahlL2->setCurrentIndex(auswahlL2);
+    ui->cbAuswahlL3->setCurrentIndex(auswahlL3);
     ui->table->build();
     ui->table->setDefaultContextMenu();
 }

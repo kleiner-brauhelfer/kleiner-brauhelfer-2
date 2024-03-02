@@ -1,3 +1,125 @@
+QGroupBox {
+  background-color: #f9f9f9;
+  border: 1px solid #ababab;
+  border-radius: 4px;
+  margin-top: 0.5em;
+}
+
+QGroupBox::title {
+  subcontrol-origin: margin;
+  subcontrol-position: top left;
+  left: 1em;
+  background-color: #f9f9f9;
+}
+
+QToolBox::tab {
+  background-color: #d5d5d5;
+  color: #444444;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  font-weight: bold;
+  font-size: 10pt;
+}
+
+QToolBox::tab:selected {
+  background-color: #44ffc400;
+}
+
+QToolBox::tab:hover {
+  background-color: #22ffc400;
+}
+
+QTextEdit#tbHelp {
+  background-color: #ffffdc;
+  color: #000000;
+}
+
+QTabBar::tab {
+  color: #444444;
+  border: 0;
+  font-weight: bold;
+  font-size: 10pt;
+}
+
+QTabBar::tab:bottom, QTabBar::tab:top {
+  margin: 0 4px;
+  padding: 0 4px;
+  height: 30px;
+}
+
+QTabBar::tab:left, QTabBar::tab:right {
+  margin: 4px 0;
+  padding: 4px 0;
+  width: 30px;
+}
+
+QTabBar::tab:left:selected {
+  color: #ffc400;
+}
+
+QTabBar::tab:top:selected, QTabBar::tab:top:hover {
+  color: #ffc400;
+  border-bottom: 2px solid #ffc400;
+}
+
+QTabBar::tab:left:selected, QTabBar::tab:left:hover {
+  color: #ffc400;
+  border-right: 2px solid #ffc400;
+}
+
+QTableView, QTreeView, QListView, QScrollArea, QTextEdit, QPlainTextEdit  {
+  border: 1px solid #ababab;
+  background-color: #fcfcfc;
+}
+
+QScrollArea {
+    border: none;
+}
+
+QScrollArea#scrollAreaAnlagen, QWidget#scrollAreaAnlagenWidgetContents,
+QScrollArea#scrollAreaEinstellungen, QWidget#scrollAreaEinstellungenWidgetContents,
+QScrollArea#scrollAreaBewertungen, QWidget#scrollAreaBewertungenWidgetContents {
+  background-color: #fcfcfc;
+}
+
+QScrollBar {
+    background-color: #f9f9f9;
+    border: 1px solid #ababab;
+    border-radius: 4px;
+    padding: 1px;
+}
+
+QScrollBar:vertical {
+    width: 16px;
+    margin-left: 6px;
+}
+
+QScrollBar:horizontal  {
+    height: 16px;
+    margin-top: 6px;
+}
+
+QScrollBar::handle {
+    border-radius: 2px;
+    background: #d5d5d5;
+    min-width: 16px;
+    min-height: 16px;
+}
+
+QScrollBar::handle:active {
+    background: #ffc400;
+}
+
+QScrollBar::add-line, QScrollBar::sub-line,
+QScrollBar::add-page, QScrollBar::sub-page {
+    width: 0px;
+    background: transparent;
+}
+
+QScrollArea::corner {
+background: transparent;
+}
+
 QPushButton[Category="Malz"], .QFrame[Category="Malz"], QTableView[Category="Malz"] QHeaderView::section {
   background-color: rgb(252,247,224);
 }
@@ -30,7 +152,10 @@ QPushButton[Category="Kommentar"], .QFrame[Category="Kommentar"], QTableView[Cat
   background-color: rgb(249,249,249);
 }
 	
-QLineEdit[ErrorState="true"], QPushButton[ErrorState="true"], QAbstractSpinBox[ErrorState="true"], QComboBox[ErrorState="true"] {
+QLineEdit[ErrorState="true"],
+QPushButton[ErrorState="true"], 
+QAbstractSpinBox[ErrorState="true"], 
+QComboBox[ErrorState="true"] {
   background-color: rgb(252,171,171);
 }
 
@@ -38,6 +163,10 @@ QLabel[ErrorState="true"], QCheckBox[ErrorState="true"] {
   color: rgb(180,10,10);
 }
 
-QLineEdit[ValueChanged="true"], QPushButton[ValueChanged="true"], QAbstractSpinBox[ValueChanged="true"], QComboBox[ValueChanged="true"], QCheckBox[ValueChanged="true"] {
+QLineEdit[ValueChanged="true"],
+QPushButton[ValueChanged="true"],
+QAbstractSpinBox[ValueChanged="true"],
+QComboBox[ValueChanged="true"],
+QCheckBox[ValueChanged="true"] {
   background-color: rgb(255,240,175);
 }

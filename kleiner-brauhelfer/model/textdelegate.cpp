@@ -28,10 +28,8 @@ void TextDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, cons
         gUndoStack->push(new SetModelDataCommand(model, index.row(), index.column(), editor->property(n)));
 }
 
-void TextDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+void TextDelegate::initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const
 {
-    QStyleOptionViewItem opt(option);
-    initStyleOption(&opt, index);
-    opt.displayAlignment = mAlignment;
-    QStyledItemDelegate::paint(painter, opt, index);
+    QStyledItemDelegate::initStyleOption(option, index);
+    option->displayAlignment = mAlignment;
 }

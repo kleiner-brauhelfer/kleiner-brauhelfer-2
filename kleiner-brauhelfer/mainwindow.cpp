@@ -86,7 +86,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(bh, &Brauhelfer::modified, this, &MainWindow::databaseModified);
 
-    ui->actionShowTabBarLabels->setChecked(true);
     ui->splitterHelp->setSizes({900, 100});
     ui->splitterHelp->setStretchFactor(0, 1);
     ui->splitterHelp->setStretchFactor(1, 0);
@@ -96,6 +95,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionShowTabBarLabels->setChecked(gSettings->value("showLabels", true).toBool());
     ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
     gSettings->endGroup();
+
+    on_actionShowTabBarLabels_toggled(ui->actionShowTabBarLabels->isChecked());
 
     databaseModified();
     WidgetDecorator::clearValueChanged();
@@ -524,7 +525,7 @@ void MainWindow::on_tabWidget_currentChanged(int tab)
     ui->toolBarUndo->setVisible(gUndoStack->isEnabled() && (tab == Tab::Sude || tab == Tab::Lager || tab == Tab::Anlagen || tab == Tab::Bewertungen));
     ui->toolBarSudauswahl->setVisible(tab == Tab::Sudauswahl);
     ui->toolBarLager->setVisible(tab == Tab::Lager);
-    ui->toolBarAnlagen->setVisible(tab == Tab::Anlagen);
+    ui->toolBarAusruestung->setVisible(tab == Tab::Anlagen);
     ui->toolBarBewertungen->setVisible(tab == Tab::Bewertungen);
 }
 
@@ -535,7 +536,7 @@ void MainWindow::on_actionShowTabBarLabels_toggled(bool showLabels)
         ui->tabWidget->setTabText(Tab::Sudauswahl, ui->tabSudauswahl->windowTitle());
         ui->tabWidget->setTabText(Tab::Sude, ui->tabSude->windowTitle());
         ui->tabWidget->setTabText(Tab::Lager, ui->tabLager->windowTitle());
-        ui->tabWidget->setTabText(Tab::Anlagen, ui->tabAnlagen->windowTitle());
+        ui->tabWidget->setTabText(Tab::Anlagen, ui->tabAusruestung->windowTitle());
         ui->tabWidget->setTabText(Tab::Brauubersicht, ui->tabBrauuebersicht->windowTitle());
         ui->tabWidget->setTabText(Tab::Bewertungen, ui->tabBewertungen->windowTitle());
         ui->tabWidget->setTabText(Tab::Einstellungen, ui->tabEinstellungen->windowTitle());

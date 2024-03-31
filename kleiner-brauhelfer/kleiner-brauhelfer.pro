@@ -119,10 +119,12 @@ SOURCES += \
     widgets/datetimeedit.cpp \
     widgets/doublespinbox.cpp \
     widgets/doublespinboxsud.cpp \
-    widgets/filterbutton.cpp \
+    widgets/filterbuttonlager.cpp \
+    widgets/filterbuttonsud.cpp \
     widgets/iconthemed.cpp \
     widgets/lineedit.cpp \
     widgets/pushbutton.cpp \
+    widgets/radiobutton.cpp \
     widgets/spinbox.cpp \
     widgets/spinboxsud.cpp \
     widgets/svgview.cpp \
@@ -227,10 +229,12 @@ HEADERS += \
     widgets/datetimeedit.h \
     widgets/doublespinbox.h \
     widgets/doublespinboxsud.h \
-    widgets/filterbutton.h \
+    widgets/filterbuttonlager.h \
+    widgets/filterbuttonsud.h \
     widgets/iconthemed.h \
     widgets/lineedit.h \
     widgets/pushbutton.h \
+    widgets/radiobutton.h \
     widgets/spinbox.h \
     widgets/spinboxsud.h \
     widgets/svgview.h \

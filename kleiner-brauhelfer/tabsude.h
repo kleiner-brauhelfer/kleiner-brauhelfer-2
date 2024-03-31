@@ -14,6 +14,11 @@ class TabSude : public QWidget
 public:
     explicit TabSude(QWidget *parent = nullptr);
     ~TabSude();
+    void restoreView();
+
+private:
+    void loadSettings();
+    void saveSettings();
 
 private:
     Ui::TabSude *ui;

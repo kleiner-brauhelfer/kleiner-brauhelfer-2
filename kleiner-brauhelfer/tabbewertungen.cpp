@@ -2,8 +2,10 @@
 #include "ui_tabbewertungen.h"
 #include "model/treeproxymodel.h"
 #include "brauhelfer.h"
+#include "settings.h"
 
 extern Brauhelfer* bh;
+extern Settings* gSettings;
 
 TabBewertungen::TabBewertungen(QWidget *parent) :
     QWidget(parent),
@@ -28,5 +30,22 @@ TabBewertungen::TabBewertungen(QWidget *parent) :
 
 TabBewertungen::~TabBewertungen()
 {
+    saveSettings();
     delete ui;
+}
+
+void TabBewertungen::loadSettings()
+{
+    gSettings->beginGroup(staticMetaObject.className());
+    gSettings->endGroup();
+}
+
+void TabBewertungen::saveSettings()
+{
+    gSettings->beginGroup(staticMetaObject.className());
+    gSettings->endGroup();
+}
+
+void TabBewertungen::restoreView()
+{
 }

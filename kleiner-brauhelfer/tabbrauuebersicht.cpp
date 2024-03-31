@@ -90,6 +90,12 @@ TabBrauuebersicht::~TabBrauuebersicht()
     delete ui;
 }
 
+void TabBrauuebersicht::loadSettings()
+{
+    gSettings->beginGroup(staticMetaObject.className());
+    gSettings->endGroup();
+}
+
 void TabBrauuebersicht::saveSettings()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());

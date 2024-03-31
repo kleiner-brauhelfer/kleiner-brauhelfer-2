@@ -1,17 +1,17 @@
-#ifndef FILTERBUTTON_H
-#define FILTERBUTTON_H
+#ifndef FILTERBUTTONSUD_H
+#define FILTERBUTTONSUD_H
 
 #include "toolbutton.h"
 #include "proxymodelsud.h"
 #include "dateedit.h"
 #include "checkbox.h"
 
-class FilterButton : public ToolButton
+class FilterButtonSud : public ToolButton
 {
     Q_OBJECT
 
 public:
-    FilterButton(QWidget *parent = nullptr);
+    FilterButtonSud(QWidget *parent = nullptr);
     void init(ProxyModelSud* model, bool statusEditable);
 
 private slots:
@@ -40,4 +40,4 @@ private:
     DateEdit* mDateEditMax;
 };
 
-#endif // FILTERBUTTON_H
+#endif // FILTERBUTTONSUD_H

@@ -18,8 +18,13 @@
         <file>images/icons/light/svg/discard.svg</file>
         <file>images/icons/light/svg/edit.svg</file>
         <file>images/icons/light/svg/filter.svg</file>
+        <file>images/icons/light/svg/hefe.svg</file>
         <file>images/icons/light/svg/help.svg</file>
+        <file>images/icons/light/svg/hopfen.svg</file>
         <file>images/icons/light/svg/lager.svg</file>
+        <file>images/icons/light/svg/lager_add.svg</file>
+        <file>images/icons/light/svg/lager_delete.svg</file>
+        <file>images/icons/light/svg/malz.svg</file>
         <file>images/icons/light/svg/pdf.svg</file>
         <file>images/icons/light/svg/print.svg</file>
         <file>images/icons/light/svg/redo.svg</file>
@@ -40,6 +45,7 @@
         <file>images/icons/light/svg/sudauswahl.svg</file>
         <file>images/icons/light/svg/sude.svg</file>
         <file>images/icons/light/svg/undo.svg</file>
+        <file>images/icons/light/svg/zusaetze.svg</file>
 
         <file>images/icons/dark/index.theme</file>
         <file>images/icons/dark/dark.svg</file>

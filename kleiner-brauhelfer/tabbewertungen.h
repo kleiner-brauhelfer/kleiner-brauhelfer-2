@@ -14,6 +14,11 @@ class TabBewertungen : public QWidget
 public:
     explicit TabBewertungen(QWidget *parent = nullptr);
     ~TabBewertungen();
+    void restoreView();
+
+private:
+    void loadSettings();
+    void saveSettings();
 
 private:
     Ui::TabBewertungen *ui;

@@ -17,7 +17,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayoutFilter">
      <item>
-      <widget class="FilterButton" name="btnFilter">
+      <widget class="FilterButtonSud" name="btnFilter">
        <property name="icon">
         <iconset theme="filter" resource="images.qrc">
          <normaloff>:/images/icons/light/svg/filter.svg</normaloff>:/images/icons/light/svg/filter.svg</iconset>
@@ -174,9 +174,9 @@
    <header>widgets/lineedit.h</header>
   </customwidget>
   <customwidget>
-   <class>FilterButton</class>
+   <class>FilterButtonSud</class>
    <extends>QToolButton</extends>
-   <header>widgets/filterbutton.h</header>
+   <header>widgets/filterbuttonsud.h</header>
   </customwidget>
  </customwidgets>
  <resources>

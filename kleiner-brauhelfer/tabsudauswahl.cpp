@@ -80,6 +80,12 @@ TabSudAuswahl::~TabSudAuswahl()
     delete ui;
 }
 
+void TabSudAuswahl::loadSettings()
+{
+    gSettings->beginGroup(staticMetaObject.className());
+    gSettings->endGroup();
+}
+
 void TabSudAuswahl::saveSettings()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());

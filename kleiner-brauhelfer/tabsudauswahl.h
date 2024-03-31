@@ -40,6 +40,7 @@ private slots:
     void on_tbFilter_textChanged(const QString &pattern);
 
 private:
+    void loadSettings();
     void saveSettings();
     void updateWebView();
     void generateTemplateTags(QVariantMap& tags);

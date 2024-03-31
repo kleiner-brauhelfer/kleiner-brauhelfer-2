@@ -430,6 +430,7 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionLagerDelete"/>
   </widget>
   <widget class="QToolBar" name="toolBarHelp">
    <property name="contextMenuPolicy">
@@ -686,6 +687,54 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    </property>
    <property name="text">
     <string>Hilfe</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionLagerAdd">
+   <property name="icon">
+    <iconset theme="lager_add" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/lager_add.svg</normaloff>:/images/icons/light/svg/lager_add.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Neu</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionLagerDelete">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/lager_delete.svg</normaloff>:/images/icons/light/svg/lager_delete.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Löschen</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionLagerAddVorlage">
+   <property name="text">
+    <string>Vorlage</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionLagerAddObrama">
+   <property name="text">
+    <string>oBraMa</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionLagerCopy">
+   <property name="text">
+    <string>Kopieren</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>

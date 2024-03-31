@@ -3,7 +3,7 @@
 #include <QStyle>
 
 CheckBox::CheckBox(QWidget *parent) :
-    QCheckBox{parent}
+    QCheckBox(parent)
 {
     connect(this, &QCheckBox::stateChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }

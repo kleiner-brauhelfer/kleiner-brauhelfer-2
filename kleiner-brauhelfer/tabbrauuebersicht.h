@@ -31,6 +31,7 @@ private slots:
     void on_cbAuswahlL3_currentIndexChanged(int index);
 
 private:
+    void loadSettings();
     void saveSettings();
     void build();
     void updateDiagram();

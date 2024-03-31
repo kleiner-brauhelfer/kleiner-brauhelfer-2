@@ -14,6 +14,11 @@ class TabAusruestung : public QWidget
 public:
     explicit TabAusruestung(QWidget *parent = nullptr);
     ~TabAusruestung();
+    void restoreView();
+
+private:
+    void loadSettings();
+    void saveSettings();
 
 private:
     Ui::TabAusruestung *ui;

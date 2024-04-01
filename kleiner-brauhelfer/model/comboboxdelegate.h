@@ -20,6 +20,10 @@ public:
     QString displayText(const QVariant &value, const QLocale &locale) const Q_DECL_OVERRIDE;
     void setColors(const QList<QColor>& colors);
     QList<QColor> colors() const;
+
+protected:
+    virtual void initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const Q_DECL_OVERRIDE;
+
 private:
     QStringList mItems;
     QList<QPair<QString, int> > mItemsMapped;

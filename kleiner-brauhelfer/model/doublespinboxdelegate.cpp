@@ -57,17 +57,27 @@ void DoubleSpinBoxDelegate::updateEditorGeometry(QWidget *editor, const QStyleOp
     editor->setGeometry(option.rect);
 }
 
+void DoubleSpinBoxDelegate::initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const
+{
+    QStyledItemDelegate::initStyleOption(option, index);
+    option->displayAlignment = Qt::AlignCenter;
+    /* called more often than paint()
+    if (mZeroRed)
+    {
+        if (index.data(Qt::DisplayRole).toDouble() <= 0)
+            option->backgroundBrush = gSettings->ErrorBase;
+    }
+    */
+}
+
 void DoubleSpinBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
-    QStyleOptionViewItem opt(option);
-    initStyleOption(&opt, index);
-    opt.displayAlignment = Qt::AlignCenter;
     if (mZeroRed)
     {
         if (index.data(Qt::DisplayRole).toDouble() <= 0.0)
-            painter->fillRect(opt.rect, gSettings->ErrorBase);
+            painter->fillRect(option.rect, gSettings->ErrorBase);
     }
-    QStyledItemDelegate::paint(painter, opt, index);
+    QStyledItemDelegate::paint(painter, option, index);
 }
 
 QString DoubleSpinBoxDelegate::displayText(const QVariant &value, const QLocale &locale) const

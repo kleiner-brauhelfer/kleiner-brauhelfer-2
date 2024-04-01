@@ -120,6 +120,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->appendCol({ModelWeitereZutaten::ColEinheit, true, true, 100, new ComboBoxDelegate({"kg", "g", "mg", tr("Stk.")}, ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::ZusatzTypname, gSettings->WZTypBackgrounds, ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(ui->tableView)});
+        table->appendCol({ModelWeitereZutaten::ColUnvergaerbar, true, true, 100, new CheckBoxDelegate(ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColBemerkung, true, true, 200, new TextDelegate(ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColEigenschaften, true, true, 200, new TextDelegate(ui->tableView)});

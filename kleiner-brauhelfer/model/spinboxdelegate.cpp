@@ -55,17 +55,27 @@ void SpinBoxDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionVi
     editor->setGeometry(option.rect);
 }
 
-void SpinBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+void SpinBoxDelegate::initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const
 {
-    QStyleOptionViewItem opt(option);
-    initStyleOption(&opt, index);
-    opt.displayAlignment = Qt::AlignCenter;
+    QStyledItemDelegate::initStyleOption(option, index);
+    option->displayAlignment = Qt::AlignCenter;
+    /* called more often than paint()
     if (mZeroRed)
     {
         if (index.data(Qt::DisplayRole).toInt() <= 0)
-            painter->fillRect(opt.rect, gSettings->ErrorBase);
+            option->backgroundBrush = gSettings->ErrorBase;
     }
-    QStyledItemDelegate::paint(painter, opt, index);
+    */
+}
+
+void SpinBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+    if (mZeroRed)
+    {
+        if (index.data(Qt::DisplayRole).toInt() <= 0)
+            painter->fillRect(option.rect, gSettings->ErrorBase);
+    }
+    QStyledItemDelegate::paint(painter, option, index);
 }
 
 QString SpinBoxDelegate::displayText(const QVariant &value, const QLocale &locale) const

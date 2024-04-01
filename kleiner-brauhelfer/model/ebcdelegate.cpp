@@ -10,7 +10,6 @@ EbcDelegate::EbcDelegate(QObject *parent) :
 void EbcDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     QStyleOptionViewItem opt(option);
-    initStyleOption(&opt, index);
     double ebc = index.data(Qt::EditRole).toDouble();
     if (ebc > 0)
     {

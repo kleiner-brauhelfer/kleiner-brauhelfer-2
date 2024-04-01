@@ -44,17 +44,27 @@ void DateTimeDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionV
     editor->setGeometry(option.rect);
 }
 
-void DateTimeDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+void DateTimeDelegate::initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const
 {
-    QStyleOptionViewItem opt(option);
-    initStyleOption(&opt, index);
-    opt.displayAlignment = Qt::AlignCenter;
+    QStyledItemDelegate::initStyleOption(option, index);
+    option->displayAlignment = Qt::AlignCenter;
+    /* called more often than paint()
     if (mExpiredRed)
     {
         if (QDate::currentDate().daysTo(index.data(Qt::DisplayRole).toDate()) < 0)
-            painter->fillRect(opt.rect, gSettings->ErrorBase);
+            option->backgroundBrush = gSettings->ErrorBase;
     }
-    QStyledItemDelegate::paint(painter, opt, index);
+    */
+}
+
+void DateTimeDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+    if (mExpiredRed)
+    {
+        if (QDate::currentDate().daysTo(index.data(Qt::DisplayRole).toDate()) < 0)
+            painter->fillRect(option.rect, gSettings->ErrorBase);
+    }
+    QStyledItemDelegate::paint(painter, option, index);
 }
 
 QString DateTimeDelegate::displayText(const QVariant &value, const QLocale &locale) const

@@ -40,13 +40,14 @@ public:
     FilterStatus filterStatus() const;
     void setFilterStatus(FilterStatus status);
 
+    bool filterDate() const;
+    void setFilterDate(bool value);
+
     QDateTime filterMinimumDate() const;
-    void setFilterMinimumDate(const QDateTime &dt = QDateTime());
+    void setFilterMinimumDate(const QDateTime &dt);
 
     QDateTime filterMaximumDate() const;
-    void setFilterMaximumDate(const QDateTime &dt = QDateTime());
-
-    void setFilterDate(const QDateTime &min = QDateTime(), const QDateTime &max = QDateTime());
+    void setFilterMaximumDate(const QDateTime &dt);
 
     QString filterText() const;
     void setFilterText(const QString& text);
@@ -59,6 +60,7 @@ private:
 
 private:
     bool mFilterMerkliste;
+    bool mFilterDate;
     FilterStatus mFilterStatus;
     QDateTime mMinDate;
     QDateTime mMaxDate;

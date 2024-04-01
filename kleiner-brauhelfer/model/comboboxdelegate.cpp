@@ -71,19 +71,31 @@ void ComboBoxDelegate::updateEditorGeometry(QWidget *editor, const QStyleOptionV
     editor->setGeometry(option.rect);
 }
 
-void ComboBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+void ComboBoxDelegate::initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const
 {
-    QStyleOptionViewItem opt(option);
-    initStyleOption(&opt, index);
-    opt.displayAlignment = Qt::AlignCenter;
+    QStyledItemDelegate::initStyleOption(option, index);
+    option->displayAlignment = Qt::AlignCenter;
+    /* called more often than paint()
     int idx = index.data(Qt::DisplayRole).toInt();
     if (idx >= 0 && idx < mColors.count())
     {
         QColor color = mColors.at(idx);
         if (color.isValid())
-            painter->fillRect(opt.rect, color);
+            option->backgroundBrush = color;
     }
-    QStyledItemDelegate::paint(painter, opt, index);
+    */
+}
+
+void ComboBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+    int idx = index.data(Qt::DisplayRole).toInt();
+    if (idx >= 0 && idx < mColors.count())
+    {
+        QColor color = mColors.at(idx);
+        if (color.isValid())
+            painter->fillRect(option.rect, color);
+    }
+    QStyledItemDelegate::paint(painter, option, index);
 }
 
 QString ComboBoxDelegate::displayText(const QVariant &value, const QLocale &locale) const

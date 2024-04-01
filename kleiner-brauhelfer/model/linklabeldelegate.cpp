@@ -14,20 +14,10 @@ void LinkLabelDelegate::setModelData(QWidget *editor, QAbstractItemModel *model,
         gUndoStack->push(new SetModelDataCommand(model, index.row(), index.column(), editor->property(n)));
 }
 
-QSize LinkLabelDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
+void LinkLabelDelegate::initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const
 {
-    QStyleOptionViewItem opt(option);
-    initStyleOption(&opt, index);
-    opt.features &= ~QStyleOptionViewItem::WrapText;
-    return QStyledItemDelegate::sizeHint(opt, index);
-}
-
-void LinkLabelDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
-{
-    QStyleOptionViewItem opt(option);
-    initStyleOption(&opt, index);
-    opt.features &= ~QStyleOptionViewItem::WrapText;
-    opt.font.setUnderline(true);
-    opt.palette.setColor(QPalette::Text, opt.palette.link().color());
-    QStyledItemDelegate::paint(painter, opt, index);
+    QStyledItemDelegate::initStyleOption(option, index);
+    option->features &= ~QStyleOptionViewItem::WrapText;
+    option->font.setUnderline(true);
+    option->palette.setColor(QPalette::Text, option->palette.link().color());
 }

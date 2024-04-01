@@ -23,7 +23,7 @@ void ProxyModelSud::setFilterMerkliste(bool value)
     if (mFilterMerkliste != value)
     {
         mFilterMerkliste = value;
-        invalidate();
+        invalidateRowsFilter();
     }
 }
 
@@ -37,6 +37,20 @@ void ProxyModelSud::setFilterStatus(FilterStatus status)
     if (mFilterStatus != status)
     {
         mFilterStatus = status;
+        invalidateRowsFilter();
+    }
+}
+
+bool ProxyModelSud::filterDate() const
+{
+    return mFilterDate;
+}
+
+void ProxyModelSud::setFilterDate(bool value)
+{
+    if (mFilterDate != value)
+    {
+        mFilterDate = value;
         invalidate();
     }
 }
@@ -65,7 +79,7 @@ void ProxyModelSud::setFilterMinimumDate(const QDateTime &dt)
     if (mMinDate != dt)
     {
         mMinDate = dt;
-        invalidate();
+        invalidateRowsFilter();
     }
 }
 
@@ -79,7 +93,7 @@ void ProxyModelSud::setFilterMaximumDate(const QDateTime &dt)
     if (mMaxDate != dt)
     {
         mMaxDate = dt;
-        invalidate();
+        invalidateRowsFilter();
     }
 }
 
@@ -93,7 +107,7 @@ void ProxyModelSud::setFilterText(const QString& text)
     if (mFilterText != text)
     {
         mFilterText = text;
-        invalidate();
+        invalidateRowsFilter();
     }
 }
 

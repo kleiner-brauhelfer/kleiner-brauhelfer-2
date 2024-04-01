@@ -17,6 +17,14 @@ void IngredientNameDelegate::setModelData(QWidget *editor, QAbstractItemModel *m
         gUndoStack->push(new SetModelDataCommand(model, index.row(), index.column(), editor->property(n)));
 }
 
+void IngredientNameDelegate::initStyleOption(QStyleOptionViewItem *option, const QModelIndex &index) const
+{
+    QStyledItemDelegate::initStyleOption(option, index);
+    /* called more often than paint()
+    option->font.setItalic(isUsed(index));
+    */
+}
+
 void IngredientNameDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
 {
     QStyleOptionViewItem opt(option);

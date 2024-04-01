@@ -5,6 +5,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QDomDocument>
+#include "proxymodel.h"
 #include "brauhelfer.h"
 #include "biercalc.h"
 

@@ -1,14 +1,28 @@
 // clazy:excludeall=skipped-base-method
 #include "modelhopfen.h"
+#include "proxymodel.h"
+#include "proxymodelsud.h"
 #include "brauhelfer.h"
 #include <QDate>
 
 ModelHopfen::ModelHopfen(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
-    bh(bh)
+    bh(bh),
+    inGebrauch(QVector<bool>())
 {
     mVirtualField.append(QStringLiteral("InGebrauch"));
-    mVirtualField.append(QStringLiteral("InGebrauchListe"));
+
+    connect(this, &SqlTableModel::modelReset, this, &ModelHopfen::resetInGebrauch);
+    connect(this, &SqlTableModel::rowsInserted, this, &ModelHopfen::resetInGebrauch);
+    connect(this, &SqlTableModel::rowsRemoved, this, &ModelHopfen::resetInGebrauch);
+    connect(bh->modelSud(), &SqlTableModel::modelReset, this, &ModelHopfen::resetInGebrauch);
+    connect(bh->modelSud(), &SqlTableModel::rowsInserted, this, &ModelHopfen::resetInGebrauch);
+    connect(bh->modelSud(), &SqlTableModel::rowsRemoved, this, &ModelHopfen::resetInGebrauch);
+    connect(bh->modelSud(), &SqlTableModel::dataChanged, this, &ModelHopfen::onSudDataChanged);
+    connect(bh->modelHopfengaben(), &SqlTableModel::modelReset, this, &ModelHopfen::resetInGebrauch);
+    connect(bh->modelHopfengaben(), &SqlTableModel::rowsInserted, this, &ModelHopfen::resetInGebrauch);
+    connect(bh->modelHopfengaben(), &SqlTableModel::rowsRemoved, this, &ModelHopfen::resetInGebrauch);
+    connect(bh->modelHopfengaben(), &SqlTableModel::dataChanged, this, &ModelHopfen::onHopfengabenDataChanged);
 }
 
 QVariant ModelHopfen::dataExt(const QModelIndex &idx) const
@@ -25,38 +39,9 @@ QVariant ModelHopfen::dataExt(const QModelIndex &idx) const
     }
     case ColInGebrauch:
     {
-        ProxyModel model;
-        model.setSourceModel(bh->modelHopfengaben());
-        QVariant name = data(idx.row(), ColName);
-        for (int r = 0; r < model.rowCount(); ++r)
-        {
-            if (model.data(r, ModelHopfengaben::ColName) == name)
-            {
-                QVariant sudId = model.data(r, ModelHopfengaben::ColSudID);
-                Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
-                if (status == Brauhelfer::SudStatus::Rezept)
-                    return true;
-            }
-        }
-        return false;
-    }
-    case ColInGebrauchListe:
-    {
-        QStringList list;
-        ProxyModel model;
-        model.setSourceModel(bh->modelHopfengaben());
-        QVariant name = data(idx.row(), ColName);
-        for (int r = 0; r < model.rowCount(); ++r)
-        {
-            if (model.data(r, ModelHopfengaben::ColName) == name)
-            {
-                QVariant sudId = model.data(r, ModelHopfengaben::ColSudID);
-                Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
-                if (status == Brauhelfer::SudStatus::Rezept)
-                    list.append(bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::ColSudname).toString());
-            }
-        }
-        return list;
+        if (inGebrauch.size() == 0)
+            updateInGebrauch();
+        return inGebrauch[idx.row()];
     }
     default:
         return QVariant();
@@ -122,6 +107,79 @@ bool ModelHopfen::setDataExt(const QModelIndex &idx, const QVariant &value)
     default:
         return false;
     }
+}
+
+void ModelHopfen::resetInGebrauch()
+{
+    inGebrauch.clear();
+}
+
+void ModelHopfen::onSudDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
+{
+    Q_UNUSED(roles)
+    if (ModelSud::ColStatus >= topLeft.column() && ModelSud::ColStatus <= bottomRight.column())
+        resetInGebrauch();
+}
+
+void ModelHopfen::onHopfengabenDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
+{
+    Q_UNUSED(roles)
+    if (ModelHopfengaben::ColSudID >= topLeft.column() && ModelHopfengaben::ColSudID <= bottomRight.column())
+        resetInGebrauch();
+    if (ModelHopfengaben::ColName >= topLeft.column() && ModelHopfengaben::ColName <= bottomRight.column())
+        resetInGebrauch();
+}
+
+void ModelHopfen::updateInGebrauch() const
+{
+    QList<int> sudIds;
+    ProxyModelSud modelSud;
+    modelSud.setSourceModel(bh->modelSud());
+    modelSud.setFilterStatus(ProxyModelSud::Rezept);
+    for (int row = 0; row < modelSud.rowCount(); row++)
+    {
+        sudIds.append(modelSud.data(row, ModelSud::ColID).toInt());
+    }
+
+    QList<QString> hopfengaben;
+    ProxyModel modelHopfengaben;
+    modelHopfengaben.setSourceModel(bh->modelHopfengaben());
+    for (int row = 0; row < modelHopfengaben.rowCount(); row++)
+    {
+        int sudId = modelHopfengaben.data(row, ModelHopfengaben::ColSudID).toInt();
+        if (sudIds.contains(sudId))
+            hopfengaben.append(modelHopfengaben.data(row, ModelHopfengaben::ColName).toString());
+    }
+
+    if (inGebrauch.size() != rowCount())
+        inGebrauch = QVector<bool>(rowCount());
+    for (int row = 0; row < rowCount(); row++)
+    {
+        QString name = data(row,ColName).toString();
+        inGebrauch[row] = hopfengaben.contains(name);
+    }
+}
+
+QStringList ModelHopfen::inGebrauchListe(const QString &name) const
+{
+    QStringList list;
+    ProxyModel model;
+    model.setSourceModel(bh->modelHopfengaben());
+    for (int r = 0; r < model.rowCount(); ++r)
+    {
+        if (model.data(r, ModelHopfengaben::ColName) == name)
+        {
+            QVariant sudId = model.data(r, ModelHopfengaben::ColSudID);
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
+            {
+                QString sudName = bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::ColSudname).toString();
+                if (!list.contains(sudName))
+                    list.append(sudName);
+            }
+        }
+    }
+    return list;
 }
 
 void ModelHopfen::defaultValues(QMap<int, QVariant> &values) const

@@ -1,14 +1,28 @@
 // clazy:excludeall=skipped-base-method
 #include "modelhefe.h"
+#include "proxymodel.h"
+#include "proxymodelsud.h"
 #include "brauhelfer.h"
 #include <QDate>
 
 ModelHefe::ModelHefe(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
-    bh(bh)
+    bh(bh),
+    inGebrauch(QVector<bool>())
 {
     mVirtualField.append(QStringLiteral("InGebrauch"));
-    mVirtualField.append(QStringLiteral("InGebrauchListe"));
+
+    connect(this, &SqlTableModel::modelReset, this, &ModelHefe::resetInGebrauch);
+    connect(this, &SqlTableModel::rowsInserted, this, &ModelHefe::resetInGebrauch);
+    connect(this, &SqlTableModel::rowsRemoved, this, &ModelHefe::resetInGebrauch);
+    connect(bh->modelSud(), &SqlTableModel::modelReset, this, &ModelHefe::resetInGebrauch);
+    connect(bh->modelSud(), &SqlTableModel::rowsInserted, this, &ModelHefe::resetInGebrauch);
+    connect(bh->modelSud(), &SqlTableModel::rowsRemoved, this, &ModelHefe::resetInGebrauch);
+    connect(bh->modelSud(), &SqlTableModel::dataChanged, this, &ModelHefe::onSudDataChanged);
+    connect(bh->modelHefegaben(), &SqlTableModel::modelReset, this, &ModelHefe::resetInGebrauch);
+    connect(bh->modelHefegaben(), &SqlTableModel::rowsInserted, this, &ModelHefe::resetInGebrauch);
+    connect(bh->modelHefegaben(), &SqlTableModel::rowsRemoved, this, &ModelHefe::resetInGebrauch);
+    connect(bh->modelHefegaben(), &SqlTableModel::dataChanged, this, &ModelHefe::onHefegabenDataChanged);
 }
 
 QVariant ModelHefe::dataExt(const QModelIndex &idx) const
@@ -25,38 +39,9 @@ QVariant ModelHefe::dataExt(const QModelIndex &idx) const
     }
     case ColInGebrauch:
     {
-        ProxyModel model;
-        model.setSourceModel(bh->modelHefegaben());
-        QVariant name = data(idx.row(), ColName);
-        for (int r = 0; r < model.rowCount(); ++r)
-        {
-            if (model.data(r, ModelHefegaben::ColName) == name)
-            {
-                QVariant sudId = model.data(r, ModelHefegaben::ColSudID);
-                Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
-                if (status == Brauhelfer::SudStatus::Rezept)
-                    return true;
-            }
-        }
-        return false;
-    }
-    case ColInGebrauchListe:
-    {
-        QStringList list;
-        ProxyModel model;
-        model.setSourceModel(bh->modelHefegaben());
-        QVariant name = data(idx.row(), ColName);
-        for (int r = 0; r < model.rowCount(); ++r)
-        {
-            if (model.data(r, ModelHefegaben::ColName) == name)
-            {
-                QVariant sudId = model.data(r, ModelHefegaben::ColSudID);
-                Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
-                if (status == Brauhelfer::SudStatus::Rezept)
-                    list.append(bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::ColSudname).toString());
-            }
-        }
-        return list;
+        if (inGebrauch.size() == 0)
+            updateInGebrauch();
+        return inGebrauch[idx.row()];
     }
     default:
         return QVariant();
@@ -103,6 +88,79 @@ bool ModelHefe::setDataExt(const QModelIndex &idx, const QVariant &value)
     default:
         return false;
     }
+}
+
+void ModelHefe::resetInGebrauch()
+{
+    inGebrauch.clear();
+}
+
+void ModelHefe::onSudDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
+{
+    Q_UNUSED(roles)
+    if (ModelSud::ColStatus >= topLeft.column() && ModelSud::ColStatus <= bottomRight.column())
+        resetInGebrauch();
+}
+
+void ModelHefe::onHefegabenDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
+{
+    Q_UNUSED(roles)
+    if (ModelHefegaben::ColSudID >= topLeft.column() && ModelHefegaben::ColSudID <= bottomRight.column())
+        resetInGebrauch();
+    if (ModelHefegaben::ColName >= topLeft.column() && ModelHefegaben::ColName <= bottomRight.column())
+        resetInGebrauch();
+}
+
+void ModelHefe::updateInGebrauch() const
+{
+    QList<int> sudIds;
+    ProxyModelSud modelSud;
+    modelSud.setSourceModel(bh->modelSud());
+    modelSud.setFilterStatus(ProxyModelSud::Rezept);
+    for (int row = 0; row < modelSud.rowCount(); row++)
+    {
+        sudIds.append(modelSud.data(row, ModelSud::ColID).toInt());
+    }
+
+    QList<QString> hefegaben;
+    ProxyModel modelHefegaben;
+    modelHefegaben.setSourceModel(bh->modelHefegaben());
+    for (int row = 0; row < modelHefegaben.rowCount(); row++)
+    {
+        int sudId = modelHefegaben.data(row, ModelHefegaben::ColSudID).toInt();
+        if (sudIds.contains(sudId))
+            hefegaben.append(modelHefegaben.data(row, ModelHefegaben::ColName).toString());
+    }
+
+    if (inGebrauch.size() != rowCount())
+        inGebrauch = QVector<bool>(rowCount());
+    for (int row = 0; row < rowCount(); row++)
+    {
+        QString name = data(row,ColName).toString();
+        inGebrauch[row] = hefegaben.contains(name);
+    }
+}
+
+QStringList ModelHefe::inGebrauchListe(const QString &name) const
+{
+    QStringList list;
+    ProxyModel model;
+    model.setSourceModel(bh->modelHefegaben());
+    for (int r = 0; r < model.rowCount(); ++r)
+    {
+        if (model.data(r, ModelHefegaben::ColName) == name)
+        {
+            QVariant sudId = model.data(r, ModelHefegaben::ColSudID);
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
+            {
+                QString sudName = bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::ColSudname).toString();
+                if (!list.contains(sudName))
+                    list.append(sudName);
+            }
+        }
+    }
+    return list;
 }
 
 void ModelHefe::defaultValues(QMap<int, QVariant> &values) const

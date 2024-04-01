@@ -1,13 +1,14 @@
 #ifndef SUDOBJECT_H
 #define SUDOBJECT_H
 
-#include "kleiner-brauhelfer-core_global.h"
 #include <QObject>
 #include <QDateTime>
+#include "kleiner-brauhelfer-core_global.h"
 #include "proxymodel.h"
 #include "modelsud.h"
 
 class Brauhelfer;
+class ProxyModel;
 
 // Property with automatic getter/setter generation
 #define Q_PROPERTY_SUD(type, name, convertion) \

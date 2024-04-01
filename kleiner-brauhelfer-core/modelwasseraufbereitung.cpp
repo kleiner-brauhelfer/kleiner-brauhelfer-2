@@ -1,5 +1,6 @@
 // clazy:excludeall=skipped-base-method
 #include "modelwasseraufbereitung.h"
+#include "proxymodel.h"
 #include "brauhelfer.h"
 
 ModelWasseraufbereitung::ModelWasseraufbereitung(Brauhelfer* bh, const QSqlDatabase &db) :

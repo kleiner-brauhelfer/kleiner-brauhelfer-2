@@ -1,14 +1,28 @@
 // clazy:excludeall=skipped-base-method
 #include "modelmalz.h"
+#include "proxymodel.h"
+#include "proxymodelsud.h"
 #include "brauhelfer.h"
 #include <QDate>
 
 ModelMalz::ModelMalz(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
-    bh(bh)
+    bh(bh),
+    inGebrauch(QVector<bool>())
 {
     mVirtualField.append(QStringLiteral("InGebrauch"));
-    mVirtualField.append(QStringLiteral("InGebrauchListe"));
+
+    connect(this, &SqlTableModel::modelReset, this, &ModelMalz::resetInGebrauch);
+    connect(this, &SqlTableModel::rowsInserted, this, &ModelMalz::resetInGebrauch);
+    connect(this, &SqlTableModel::rowsRemoved, this, &ModelMalz::resetInGebrauch);
+    connect(bh->modelSud(), &SqlTableModel::modelReset, this, &ModelMalz::resetInGebrauch);
+    connect(bh->modelSud(), &SqlTableModel::rowsInserted, this, &ModelMalz::resetInGebrauch);
+    connect(bh->modelSud(), &SqlTableModel::rowsRemoved, this, &ModelMalz::resetInGebrauch);
+    connect(bh->modelSud(), &SqlTableModel::dataChanged, this, &ModelMalz::onSudDataChanged);
+    connect(bh->modelMalzschuettung(), &SqlTableModel::modelReset, this, &ModelMalz::resetInGebrauch);
+    connect(bh->modelMalzschuettung(), &SqlTableModel::rowsInserted, this, &ModelMalz::resetInGebrauch);
+    connect(bh->modelMalzschuettung(), &SqlTableModel::rowsRemoved, this, &ModelMalz::resetInGebrauch);
+    connect(bh->modelMalzschuettung(), &SqlTableModel::dataChanged, this, &ModelMalz::onMalzschuettungDataChanged);
 }
 
 QVariant ModelMalz::dataExt(const QModelIndex &idx) const
@@ -25,38 +39,9 @@ QVariant ModelMalz::dataExt(const QModelIndex &idx) const
     }
     case ColInGebrauch:
     {
-        ProxyModel model;
-        model.setSourceModel(bh->modelMalzschuettung());
-        QVariant name = data(idx.row(), ColName);
-        for (int r = 0; r < model.rowCount(); ++r)
-        {
-            if (model.data(r, ModelMalzschuettung::ColName) == name)
-            {
-                QVariant sudId = model.data(r, ModelMalzschuettung::ColSudID);
-                Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
-                if (status == Brauhelfer::SudStatus::Rezept)
-                    return true;
-            }
-        }
-        return false;
-    }
-    case ColInGebrauchListe:
-    {
-        QStringList list;
-        ProxyModel model;
-        model.setSourceModel(bh->modelMalzschuettung());
-        QVariant name = data(idx.row(), ColName);
-        for (int r = 0; r < model.rowCount(); ++r)
-        {
-            if (model.data(r, ModelMalzschuettung::ColName) == name)
-            {
-                QVariant sudId = model.data(r, ModelMalzschuettung::ColSudID);
-                Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
-                if (status == Brauhelfer::SudStatus::Rezept)
-                    list.append(bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::ColSudname).toString());
-            }
-        }
-        return list;
+        if (inGebrauch.size() == 0)
+            updateInGebrauch();
+        return inGebrauch[idx.row()];
     }
     default:
         return QVariant();
@@ -79,30 +64,40 @@ bool ModelMalz::setDataExt(const QModelIndex &idx, const QVariant &value)
         return false;
     }
     case ColPotential:
+    {
         if (QSqlTableModel::setData(idx, value))
         {
             bh->modelMalzschuettung()->update(data(idx.row(), ColName), ModelMalzschuettung::ColPotential, value);
             return true;
         }
         return false;
+    }
     case ColFarbe:
+    {
         if (QSqlTableModel::setData(idx, value))
         {
             bh->modelMalzschuettung()->update(data(idx.row(), ColName), ModelMalzschuettung::ColFarbe, value);
             return true;
         }
         return false;
+    }
     case ColpH:
+    {
         if (QSqlTableModel::setData(idx, value))
         {
             bh->modelMalzschuettung()->update(data(idx.row(), ColName), ModelMalzschuettung::ColpH, value);
             return true;
         }
         return false;
+    }
     case ColEingelagert:
+    {
         return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
+    }
     case ColMindesthaltbar:
+    {
         return QSqlTableModel::setData(idx, value.toDateTime().toString(Qt::ISODate));
+    }
     case ColMenge:
     {
         double prevValue = data(idx).toDouble();
@@ -120,6 +115,79 @@ bool ModelMalz::setDataExt(const QModelIndex &idx, const QVariant &value)
     default:
         return false;
     }
+}
+
+void ModelMalz::resetInGebrauch()
+{
+    inGebrauch.clear();
+}
+
+void ModelMalz::onSudDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
+{
+    Q_UNUSED(roles)
+    if (ModelSud::ColStatus >= topLeft.column() && ModelSud::ColStatus <= bottomRight.column())
+        resetInGebrauch();
+}
+
+void ModelMalz::onMalzschuettungDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
+{
+    Q_UNUSED(roles)
+    if (ModelMalzschuettung::ColSudID >= topLeft.column() && ModelMalzschuettung::ColSudID <= bottomRight.column())
+        resetInGebrauch();
+    if (ModelMalzschuettung::ColName >= topLeft.column() && ModelMalzschuettung::ColName <= bottomRight.column())
+        resetInGebrauch();
+}
+
+void ModelMalz::updateInGebrauch() const
+{
+    QList<int> sudIds;
+    ProxyModelSud modelSud;
+    modelSud.setSourceModel(bh->modelSud());
+    modelSud.setFilterStatus(ProxyModelSud::Rezept);
+    for (int row = 0; row < modelSud.rowCount(); row++)
+    {
+        sudIds.append(modelSud.data(row, ModelSud::ColID).toInt());
+    }
+
+    QList<QString> malzschuettungen;
+    ProxyModel modelMalzschuettung;
+    modelMalzschuettung.setSourceModel(bh->modelMalzschuettung());
+    for (int row = 0; row < modelMalzschuettung.rowCount(); row++)
+    {
+        int sudId = modelMalzschuettung.data(row, ModelMalzschuettung::ColSudID).toInt();
+        if (sudIds.contains(sudId))
+            malzschuettungen.append(modelMalzschuettung.data(row, ModelMalzschuettung::ColName).toString());
+    }
+
+    if (inGebrauch.size() != rowCount())
+        inGebrauch = QVector<bool>(rowCount());
+    for (int row = 0; row < rowCount(); row++)
+    {
+        QString name = data(row,ColName).toString();
+        inGebrauch[row] = malzschuettungen.contains(name);
+    }
+}
+
+QStringList ModelMalz::inGebrauchListe(const QString &name) const
+{
+    QStringList list;
+    ProxyModel model;
+    model.setSourceModel(bh->modelMalzschuettung());
+    for (int r = 0; r < model.rowCount(); ++r)
+    {
+        if (model.data(r, ModelMalzschuettung::ColName) == name)
+        {
+            QVariant sudId = model.data(r, ModelMalzschuettung::ColSudID);
+            Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->modelSud()->dataSud(sudId, ModelSud::ColStatus).toInt());
+            if (status == Brauhelfer::SudStatus::Rezept)
+            {
+                QString sudName = bh->modelSud()->getValueFromSameRow(ModelSud::ColID, sudId, ModelSud::ColSudname).toString();
+                if (!list.contains(sudName))
+                    list.append(sudName);
+            }
+        }
+    }
+    return list;
 }
 
 void ModelMalz::defaultValues(QMap<int, QVariant> &values) const

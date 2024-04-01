@@ -1,4 +1,5 @@
 #include "sudobject.h"
+#include "proxymodel.h"
 #include "brauhelfer.h"
 #include "modelsud.h"
 

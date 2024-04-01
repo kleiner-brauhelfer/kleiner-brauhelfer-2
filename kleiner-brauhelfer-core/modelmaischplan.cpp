@@ -1,5 +1,6 @@
 // clazy:excludeall=skipped-base-method
 #include "modelmaischplan.h"
+#include "proxymodel.h"
 #include "brauhelfer.h"
 #include "biercalc.h"
 

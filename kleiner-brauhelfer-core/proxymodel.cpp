@@ -5,7 +5,6 @@ ProxyModel::ProxyModel(QObject *parent) :
     QSortFilterProxyModel(parent),
     mDeletedColumn(-1)
 {
-    setDynamicSortFilter(false);
     setFilterCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
     setSortCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
 }
@@ -48,26 +47,6 @@ QVariant ProxyModel::data(int row, int col, int role) const
 bool ProxyModel::setData(int row, int col, const QVariant &value, int role)
 {
     return setData(index(row, col), value, role);
-}
-
-bool ProxyModel::removeRows(int row, int count, const QModelIndex &parent)
-{
-    if (QSortFilterProxyModel::removeRows(row, count, parent))
-    {
-        invalidate();
-        return true;
-    }
-    return false;
-}
-
-bool ProxyModel::removeRow(int arow, const QModelIndex &parent)
-{
-    if (QSortFilterProxyModel::removeRow(arow, parent))
-    {
-        invalidate();
-        return true;
-    }
-    return false;
 }
 
 int ProxyModel::append(const QMap<int, QVariant> &values)
@@ -114,14 +93,14 @@ bool ProxyModel::swap(int row1, int row2)
     if (model)
     {
         bool ret = model->swap(mapRowToSource(row1), mapRowToSource(row2));
-        invalidate();
+        invalidateRowsFilter();
         return ret;
     }
     ProxyModel* proxyModel = qobject_cast<ProxyModel*>(sourceModel());
     if (proxyModel)
     {
         bool ret = proxyModel->swap(mapRowToSource(row1), mapRowToSource(row2));
-        invalidate();
+        invalidateRowsFilter();
         return ret;
     }
     return false;
@@ -129,14 +108,12 @@ bool ProxyModel::swap(int row1, int row2)
 
 int ProxyModel::mapRowToSource(int row) const
 {
-    QModelIndex idx = mapToSource(index(row, 0));
-    return idx.row();
+    return mapToSource(index(row, 0)).row();
 }
 
 int ProxyModel::mapRowFromSource(int row) const
 {
-    QModelIndex index = mapFromSource(sourceModel()->index(row, 0));
-    return index.row();
+    return mapFromSource(sourceModel()->index(row, 0)).row();
 }
 
 int ProxyModel::fieldIndex(const QString &fieldName) const
@@ -203,7 +180,6 @@ void ProxyModel::setFilterKeyColumns(const QList<int> &columns)
     mFilterColumns = columns;
 }
 
-
 bool ProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
     bool accept = true;
@@ -214,11 +190,7 @@ bool ProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_pare
     else
     {
         accept = false;
-      #if (QT_VERSION >= QT_VERSION_CHECK(5, 12, 0))
         QRegularExpression rx = filterRegularExpression();
-      #else
-        QRegExp rx = filterRegExp();
-      #endif
         for (int col : mFilterColumns)
         {
            QModelIndex idx = sourceModel()->index(source_row, col, source_parent);

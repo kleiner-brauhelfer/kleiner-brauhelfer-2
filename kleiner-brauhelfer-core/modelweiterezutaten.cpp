@@ -1,5 +1,6 @@
 // clazy:excludeall=skipped-base-method
 #include "modelweiterezutaten.h"
+#include "proxymodel.h"
 #include "brauhelfer.h"
 #include <QDate>
 

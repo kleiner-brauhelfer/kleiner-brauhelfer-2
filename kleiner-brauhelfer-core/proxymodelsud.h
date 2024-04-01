@@ -4,6 +4,7 @@
 #include "kleiner-brauhelfer-core_global.h"
 #include "proxymodel.h"
 #include <QFlag>
+#include <QDateTime>
 
 class LIB_EXPORT ProxyModelSud : public ProxyModel
 {

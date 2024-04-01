@@ -1,5 +1,6 @@
 // clazy:excludeall=skipped-base-method
 #include "modelsud.h"
+#include "proxymodel.h"
 #include "brauhelfer.h"
 #include <math.h>
 #include <qmath.h>

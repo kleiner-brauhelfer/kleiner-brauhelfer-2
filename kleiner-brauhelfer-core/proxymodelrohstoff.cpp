@@ -45,7 +45,7 @@ void ProxyModelRohstoff::setFilter(Filter value)
     if (mFilter != value)
     {
         mFilter = value;
-        invalidate();
+        invalidateRowsFilter();
     }
 }
 

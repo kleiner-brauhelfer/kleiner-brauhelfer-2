@@ -504,7 +504,23 @@ void DlgRohstoffe::on_buttonDelete_clicked()
         bool del = true;
         if (model->data(index.row(), model->fieldIndex(QStringLiteral("InGebrauch"))).toBool())
         {
-            QStringList liste = model->data(index.row(), model->fieldIndex(QStringLiteral("InGebrauchListe"))).toStringList();
+            QString name = model->data(index.row(), model->fieldIndex(QStringLiteral("Name"))).toString();
+            QStringList liste;
+            switch (ui->toolBoxRohstoffe->currentIndex())
+            {
+            case 0:
+                liste = bh->modelMalz()->inGebrauchListe(name);
+                break;
+            case 1:
+                liste = bh->modelHopfen()->inGebrauchListe(name);
+                break;
+            case 2:
+                liste = bh->modelHefe()->inGebrauchListe(name);
+                break;
+            case 3:
+                liste = bh->modelWeitereZutaten()->inGebrauchListe(name);
+                break;
+            }
             QString strListe = "\n\n- " + liste.join(QStringLiteral("\n- "));
             int ret = QMessageBox::question(this, tr("Rohstoff wird verwendet"),
                                             tr("Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?") + strListe);

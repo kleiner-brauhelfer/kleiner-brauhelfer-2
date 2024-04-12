@@ -8,23 +8,27 @@ class LIB_EXPORT ProxyModelRohstoff : public ProxyModel
 {
     Q_OBJECT
 
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
-    Q_PROPERTY(Filter filter READ filter WRITE setFilter NOTIFY layoutChanged)
-  #endif
+    Q_PROPERTY(Filter filter READ filter WRITE setFilter NOTIFY filterChanged)
 
 public:
     enum Filter
     {
         Alle,
         Vorhanden,
-        InGebrauch
+        InGebrauch,
+        NichtVorhanden
     };
     Q_ENUM(Filter)
 
 public:
     ProxyModelRohstoff(QObject* parent = nullptr);
     Filter filter() const;
+
+public slots:
     void setFilter(Filter value);
+
+signals:
+    void filterChanged(Filter value);
 
 protected:
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const Q_DECL_OVERRIDE;

@@ -10,13 +10,11 @@ class LIB_EXPORT ProxyModelSud : public ProxyModel
 {
     Q_OBJECT
 
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 8, 0))
     Q_PROPERTY(bool filterMerkliste READ filterMerkliste WRITE setFilterMerkliste NOTIFY layoutChanged)
     Q_PROPERTY(FilterStatus filterStatus READ filterStatus WRITE setFilterStatus NOTIFY layoutChanged)
     Q_PROPERTY(QDateTime minDate READ filterMinimumDate WRITE setFilterMinimumDate NOTIFY layoutChanged)
     Q_PROPERTY(QDateTime maxDate READ filterMaximumDate WRITE setFilterMaximumDate NOTIFY layoutChanged)
     Q_PROPERTY(QString filterText READ filterText WRITE setFilterText NOTIFY layoutChanged)
-  #endif
 
 public:
     enum FilterStatusPart

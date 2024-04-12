@@ -45,6 +45,7 @@ void ProxyModelRohstoff::setFilter(Filter value)
     if (mFilter != value)
     {
         mFilter = value;
+        emit filterChanged(mFilter);
         invalidateRowsFilter();
     }
 }
@@ -57,6 +58,12 @@ bool ProxyModelRohstoff::filterAcceptsRow(int source_row, const QModelIndex &sou
         QModelIndex index = sourceModel()->index(source_row, mAmountColumn, source_parent);
         if (index.isValid())
             accept = sourceModel()->data(index).toDouble() > 0.0;
+    }
+    if (accept && mFilter == Filter::NichtVorhanden)
+    {
+        QModelIndex index = sourceModel()->index(source_row, mAmountColumn, source_parent);
+        if (index.isValid())
+            accept = sourceModel()->data(index).toDouble() <= 0.0;
     }
     if (accept && mFilter == Filter::InGebrauch)
     {

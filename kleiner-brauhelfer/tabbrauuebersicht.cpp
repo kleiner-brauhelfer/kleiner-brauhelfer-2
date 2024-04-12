@@ -72,7 +72,7 @@ TabBrauuebersicht::TabBrauuebersicht(QWidget *parent) :
     ui->cbAuswahlL3->setCurrentIndex(gSettings->value("Auswahl3", 0).toInt());
     gSettings->endGroup();
 
-    ui->btnFilter->init(proxyModel, false);
+    ui->btnFilter->setModel(proxyModel, false);
 
     connect(gSettings, &Settings::modulesChanged, this, &TabBrauuebersicht::onModulesChanged);
     connect(ui->table->model(), &QAbstractItemModel::layoutChanged, this, &TabBrauuebersicht::onLayoutChanged);

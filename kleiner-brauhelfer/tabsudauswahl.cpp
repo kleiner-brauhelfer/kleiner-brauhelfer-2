@@ -64,7 +64,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     proxyModel->setFilterMaximumDate(QDateTime(maxDate, QTime(23,59,59)));
     gSettings->endGroup();
 
-    ui->btnFilter->init(proxyModel, true);
+    ui->btnFilter->setModel(proxyModel, true);
 
     connect(bh, &Brauhelfer::modified, this, &TabSudAuswahl::onDatabaseModified, Qt::QueuedConnection);
     connect(gSettings, &Settings::modulesChanged, this, &TabSudAuswahl::onModulesChanged);

@@ -13,7 +13,12 @@ FilterButtonSud::FilterButtonSud(QWidget *parent) :
     setPopupMode(ToolButtonPopupMode::InstantPopup);
 }
 
-void FilterButtonSud::init(ProxyModelSud* model, bool statusEditable)
+ProxyModelSud* FilterButtonSud::model() const
+{
+    return mModel;
+}
+
+void FilterButtonSud::setModel(ProxyModelSud* model, bool statusEditable)
 {
     mModel = model;
     mStatusEditable = statusEditable;

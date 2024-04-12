@@ -2,6 +2,7 @@
 #define TABLAGER_H
 
 #include <QWidget>
+#include <QTableView>
 
 namespace Ui {
 class TabLager;
@@ -33,6 +34,7 @@ private slots:
     void on_tableWeitereZutaten_clicked(const QModelIndex &index);
     void on_tbFilter_textChanged(const QString &pattern);
     void on_toolBoxRohstoffe_currentChanged();
+    void onFilterChanged();
     void updateLabelNumItems();
 
 private:
@@ -41,6 +43,7 @@ private:
     void build();
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
     void addEntry(QTableView *table, const QMap<int, QVariant> &values);
+    QTableView* currentTable() const;
 
 private:
     Ui::TabLager *ui;

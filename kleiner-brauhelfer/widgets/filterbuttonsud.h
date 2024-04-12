@@ -12,7 +12,8 @@ class FilterButtonSud : public ToolButton
 
 public:
     FilterButtonSud(QWidget *parent = nullptr);
-    void init(ProxyModelSud* model, bool statusEditable);
+    ProxyModelSud* model() const;
+    void setModel(ProxyModelSud* model, bool statusEditable);
 
 private slots:
     void setStatusAlle(bool value);

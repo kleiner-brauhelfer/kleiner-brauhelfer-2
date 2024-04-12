@@ -12,7 +12,6 @@
 #include "dialogs/dlgdatenbank.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgtableview.h"
-#include "dialogs/dlgrohstoffe.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 #include "widgets/iconthemed.h"
 
@@ -109,7 +108,6 @@ void MainWindow2::restoreView()
     ui->tabZusammenfassung->restoreView();
     ui->tabEtikette->restoreView();
     ui->tabBewertung->restoreView();
-    DlgRohstoffe::restoreView();
     DlgAusruestung::restoreView();
     DlgRohstoffAuswahl::restoreView();
     DlgTableView::restoreView();

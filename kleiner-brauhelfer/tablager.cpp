@@ -37,8 +37,6 @@ TabLager::TabLager(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(bh->modelMalz());
     table->setModel(proxyModel);
-    connect(proxyModel, &QAbstractItemModel::layoutChanged, this, &TabLager::updateLabelNumItems);
-    ui->btnFilter->setModel(proxyModel);
 
     table = ui->tableHopfen;
     table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
@@ -46,7 +44,6 @@ TabLager::TabLager(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(bh->modelHopfen());
     table->setModel(proxyModel);
-    connect(proxyModel, &QAbstractItemModel::layoutChanged, this, &TabLager::updateLabelNumItems);
 
     table = ui->tableHefe;
     table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
@@ -54,7 +51,6 @@ TabLager::TabLager(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(bh->modelHefe());
     table->setModel(proxyModel);
-    connect(proxyModel, &QAbstractItemModel::layoutChanged, this, &TabLager::updateLabelNumItems);
 
     table = ui->tableWeitereZutaten;
     table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
@@ -62,7 +58,9 @@ TabLager::TabLager(QWidget *parent) :
     proxyModel = new ProxyModelRohstoff(this);
     proxyModel->setSourceModel(bh->modelWeitereZutaten());
     table->setModel(proxyModel);
-    connect(proxyModel, &QAbstractItemModel::layoutChanged, this, &TabLager::updateLabelNumItems);
+
+    ui->btnFilter->setModel(new ProxyModelRohstoff(this));
+    connect(ui->btnFilter->model(), &ProxyModelRohstoff::filterChanged, this, &TabLager::onFilterChanged);
 
     //modulesChanged(Settings::ModuleAlle);
     //connect(gSettings, &Settings::modulesChanged, this, &DlgRohstoffe::modulesChanged);
@@ -86,24 +84,6 @@ void TabLager::loadSettings()
     gSettings->setValue("tableHopfenState", ui->tableHopfen->horizontalHeader()->saveState());
     gSettings->setValue("tableHefeState", ui->tableHefe->horizontalHeader()->saveState());
     gSettings->setValue("tableWeitereZutatenState", ui->tableWeitereZutaten->horizontalHeader()->saveState());
-    /*
-    int filter = gSettings->value("filter", 0).toInt();
-    if (filter == 1)
-    {
-        ui->radioButtonVorhanden->setChecked(true);
-        on_radioButtonVorhanden_clicked();
-    }
-    else if (filter == 2)
-    {
-        ui->radioButtonInGebrauch->setChecked(true);
-        on_radioButtonInGebrauch_clicked();
-    }
-    else
-    {
-        ui->radioButtonAlle->setChecked(true);
-        on_radioButtonAlle_clicked();
-    }
-    */
     gSettings->endGroup();
 }
 
@@ -114,14 +94,6 @@ void TabLager::saveSettings()
     ui->tableHopfen->restoreState(gSettings->value("tableHopfenState").toByteArray());
     ui->tableHefe->restoreState(gSettings->value("tableHefeState").toByteArray());
     ui->tableWeitereZutaten->restoreState(gSettings->value("tableWeitereZutatenState").toByteArray());
-    /*
-    int filter = 0;
-    if (ui->radioButtonVorhanden->isChecked())
-        filter = 1;
-    else if (ui->radioButtonInGebrauch->isChecked())
-        filter = 2;
-    gSettings->setValue("filter", filter);
-    */
     gSettings->endGroup();
 }
 
@@ -153,20 +125,28 @@ void DlgRohstoffe::modulesChanged(Settings::Modules modules)
 
 void TabLager::build()
 {
-    TableView *table = ui->tableMalz;
+    TableView *table;
+
+    table = ui->tableMalz;
     table->clearCols();
     table->appendCol({ModelMalz::ColName, true, false, 200, new IngredientNameDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    {
         table->appendCol({ModelMalz::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    }
     table->appendCol({ModelMalz::ColFarbe, true, true, 100, new EbcDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
+    {
         table->appendCol({ModelMalz::ColpH, true, true, 100, new PhMalzDelegate(table)});
+    }
     table->appendCol({ModelMalz::ColMaxProzent, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
     table->appendCol({ModelMalz::ColBemerkung, true, true, 200, new TextDelegate(table)});
     table->appendCol({ModelMalz::ColEigenschaften, true, true, 200, new TextDelegate(table)});
     table->appendCol({ModelMalz::ColAlternativen, true, true, 200, new TextDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+    {
         table->appendCol({ModelMalz::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    }
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
     {
         table->appendCol({ModelMalz::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
@@ -180,7 +160,9 @@ void TabLager::build()
     table->clearCols();
     table->appendCol({ModelHopfen::ColName, true, false, 200, new IngredientNameDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    {
         table->appendCol({ModelHopfen::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(1, 0.0, std::numeric_limits<double>::max(), 1, false, table)});
+    }
     table->appendCol({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, 0.0, 100.0, 0.1, true, table)});
     table->appendCol({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
     table->appendCol({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::HopfenTypname, gSettings->HopfenTypBackgrounds, table)});
@@ -188,7 +170,9 @@ void TabLager::build()
     table->appendCol({ModelHopfen::ColEigenschaften, true, true, 200, new TextDelegate(table)});
     table->appendCol({ModelHopfen::ColAlternativen, true, true, 200, new TextDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+    {
         table->appendCol({ModelHopfen::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    }
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
     {
         table->appendCol({ModelHopfen::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
@@ -202,7 +186,9 @@ void TabLager::build()
     table->clearCols();
     table->appendCol({ModelHefe::ColName, true, false, 200, new IngredientNameDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    {
         table->appendCol({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(0, std::numeric_limits<int>::max(), 1, false, table)});
+    }
     table->appendCol({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(MainWindow::HefeTypname, gSettings->HefeTypOgUgBackgrounds, table)});
     table->appendCol({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(MainWindow::HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, table)});
     table->appendCol({ModelHefe::ColWuerzemenge, true, true, 100, new DoubleSpinBoxDelegate(1, 0, std::numeric_limits<double>::max(), 1, false, table)});
@@ -213,7 +199,9 @@ void TabLager::build()
     table->appendCol({ModelHefe::ColEigenschaften, true, true, 200, new TextDelegate(table)});
     table->appendCol({ModelHefe::ColAlternativen, true, true, 200, new TextDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+    {
         table->appendCol({ModelHefe::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    }
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
     {
         table->appendCol({ModelHefe::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
@@ -227,7 +215,9 @@ void TabLager::build()
     table->clearCols();
     table->appendCol({ModelWeitereZutaten::ColName, true, false, 200, new IngredientNameDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    {
         table->appendCol({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    }
     table->appendCol({ModelWeitereZutaten::ColEinheit, true, false, 100, new ComboBoxDelegate(MainWindow::Einheiten, table)});
     table->appendCol({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::ZusatzTypname, gSettings->WZTypBackgrounds, table)});
     table->appendCol({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(0, 100, 1, false, table)});
@@ -237,7 +227,9 @@ void TabLager::build()
     table->appendCol({ModelWeitereZutaten::ColEigenschaften, true, true, 200, new TextDelegate(table)});
     table->appendCol({ModelWeitereZutaten::ColAlternativen, true, true, 200, new TextDelegate(table)});
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
+    {
         table->appendCol({ModelWeitereZutaten::ColPreis, true, true, 100, new DoubleSpinBoxDelegate(2, 0.0, std::numeric_limits<double>::max(), 0.1, false, table)});
+    }
     if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
     {
         table->appendCol({ModelWeitereZutaten::ColEingelagert, true, true, 100, new DateDelegate(false, false, table)});
@@ -248,29 +240,27 @@ void TabLager::build()
     table->setDefaultContextMenu();
 }
 
+QTableView* TabLager::currentTable() const
+{
+    switch (ui->toolBoxRohstoffe->currentIndex())
+    {
+    case 0:
+        return ui->tableMalz;
+    case 1:
+        return ui->tableHopfen;
+    case 2:
+        return ui->tableHefe;
+    case 3:
+        return ui->tableWeitereZutaten;
+    default:
+        return nullptr;
+    }
+}
 
 void TabLager::keyPressEvent(QKeyEvent* event)
 {
     QWidget::keyPressEvent(event);
-    QTableView *table;
-    switch (ui->toolBoxRohstoffe->currentIndex())
-    {
-    case 0:
-        table = ui->tableMalz;
-        break;
-    case 1:
-        table = ui->tableHopfen;
-        break;
-    case 2:
-        table = ui->tableHefe;
-        break;
-    case 3:
-        table = ui->tableWeitereZutaten;
-        break;
-    default:
-        return;
-    }
-    if (table->hasFocus())
+    if (currentTable()->hasFocus())
     {
         switch (event->key())
         {
@@ -311,8 +301,7 @@ void TabLager::on_tableWeitereZutaten_clicked(const QModelIndex &index)
 void TabLager::addEntry(QTableView *table, const QMap<int, QVariant> &values)
 {
     ProxyModel *model = static_cast<ProxyModel*>(table->model());
-    //ui->radioButtonAlle->setChecked(true);
-    //on_radioButtonAlle_clicked();
+    ui->btnFilter->model()->setFilter(ProxyModelRohstoff::Alle);
     ui->tbFilter->clear();
     int row = model->append(values);
     if (row >= 0)
@@ -345,24 +334,20 @@ void TabLager::add()
 
 void TabLager::addVorlage()
 {
-    QTableView *table;
+    QTableView *table = currentTable();
     DlgRohstoffVorlage::Art art;
     switch (ui->toolBoxRohstoffe->currentIndex())
     {
     case 0:
-        table = ui->tableMalz;
         art = DlgRohstoffVorlage::Art::Malz;
         break;
     case 1:
-        table = ui->tableHopfen;
         art = DlgRohstoffVorlage::Art::Hopfen;
         break;
     case 2:
-        table = ui->tableHefe;
         art = DlgRohstoffVorlage::Art::Hefe;
         break;
     case 3:
-        table = ui->tableWeitereZutaten;
         art = DlgRohstoffVorlage::Art::WZutaten;
         break;
     default:
@@ -375,24 +360,20 @@ void TabLager::addVorlage()
 
 void TabLager::addObrama()
 {
-    QTableView *table;
+    QTableView *table = currentTable();
     DlgRohstoffVorlage::Art art;
     switch (ui->toolBoxRohstoffe->currentIndex())
     {
     case 0:
-        table = ui->tableMalz;
         art = DlgRohstoffVorlage::Art::MalzOBraMa;
         break;
     case 1:
-        table = ui->tableHopfen;
         art = DlgRohstoffVorlage::Art::HopfenOBraMa;
         break;
     case 2:
-        table = ui->tableHefe;
         art = DlgRohstoffVorlage::Art::HefeOBraMa;
         break;
     case 3:
-        table = ui->tableWeitereZutaten;
         art = DlgRohstoffVorlage::Art::WZutatenOBraMa;
         break;
     default:
@@ -406,24 +387,7 @@ void TabLager::addObrama()
 
 void TabLager::copy()
 {
-    QTableView *table;
-    switch (ui->toolBoxRohstoffe->currentIndex())
-    {
-    case 0:
-        table = ui->tableMalz;
-        break;
-    case 1:
-        table = ui->tableHopfen;
-        break;
-    case 2:
-        table = ui->tableHefe;
-        break;
-    case 3:
-        table = ui->tableWeitereZutaten;
-        break;
-    default:
-        return;
-    }
+    QTableView *table = currentTable();
     ProxyModel *model = static_cast<ProxyModel*>(table->model());
     SqlTableModel *sourceModel = static_cast<SqlTableModel*>(model->sourceModel());
     for (const QModelIndex& index : table->selectionModel()->selectedRows())
@@ -440,24 +404,7 @@ void TabLager::copy()
 
 void TabLager::remove()
 {
-    QTableView *table;
-    switch (ui->toolBoxRohstoffe->currentIndex())
-    {
-    case 0:
-        table = ui->tableMalz;
-        break;
-    case 1:
-        table = ui->tableHopfen;
-        break;
-    case 2:
-        table = ui->tableHefe;
-        break;
-    case 3:
-        table = ui->tableWeitereZutaten;
-        break;
-    default:
-        return;
-    }
+    QTableView *table = currentTable();
     ProxyModel *model = static_cast<ProxyModel*>(table->model());
     QModelIndexList indices = table->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
@@ -466,7 +413,23 @@ void TabLager::remove()
         bool del = true;
         if (model->data(index.row(), model->fieldIndex(QStringLiteral("InGebrauch"))).toBool())
         {
-            QStringList liste = model->data(index.row(), model->fieldIndex(QStringLiteral("InGebrauchListe"))).toStringList();
+            QString name = model->data(index.row(), model->fieldIndex(QStringLiteral("Name"))).toString();
+            QStringList liste;
+            switch (ui->toolBoxRohstoffe->currentIndex())
+            {
+            case 0:
+                liste = bh->modelMalz()->inGebrauchListe(name);
+                break;
+            case 1:
+                liste = bh->modelHopfen()->inGebrauchListe(name);
+                break;
+            case 2:
+                liste = bh->modelHefe()->inGebrauchListe(name);
+                break;
+            case 3:
+                liste = bh->modelWeitereZutaten()->inGebrauchListe(name);
+                break;
+            }
             QString strListe = "\n\n- " + liste.join(QStringLiteral("\n- "));
             int ret = QMessageBox::question(this, tr("Rohstoff wird verwendet"),
                                             tr("Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?") + strListe);
@@ -479,53 +442,31 @@ void TabLager::remove()
     updateLabelNumItems();
 }
 
+void TabLager::onFilterChanged()
+{
+    static_cast<ProxyModelRohstoff*>(currentTable()->model())->setFilter(ui->btnFilter->model()->filter());
+    updateLabelNumItems();
+}
+
 void TabLager::on_tbFilter_textChanged(const QString &pattern)
 {
-    ProxyModelRohstoff *proxyModel;
-    proxyModel = static_cast<ProxyModelRohstoff*>(ui->tableMalz->model());
-    proxyModel->setFilterString(pattern);
-    proxyModel = static_cast<ProxyModelRohstoff*>(ui->tableHopfen->model());
-    proxyModel->setFilterString(pattern);
-    proxyModel = static_cast<ProxyModelRohstoff*>(ui->tableHefe->model());
-    proxyModel->setFilterString(pattern);
-    proxyModel = static_cast<ProxyModelRohstoff*>(ui->tableWeitereZutaten->model());
-    proxyModel->setFilterString(pattern);
+    static_cast<ProxyModelRohstoff*>(currentTable()->model())->setFilterString(pattern);
     updateLabelNumItems();
 }
 
 void TabLager::on_toolBoxRohstoffe_currentChanged()
 {
+    ProxyModelRohstoff* model = static_cast<ProxyModelRohstoff*>(currentTable()->model());
+    model->setFilterString(ui->tbFilter->text());
+    model->setFilter(ui->btnFilter->model()->filter());
     updateLabelNumItems();
 }
 
 void TabLager::updateLabelNumItems()
 {   
-    QAbstractItemModel* model;
-    switch (ui->toolBoxRohstoffe->currentIndex())
-    {
-    case 0:
-        model = ui->tableMalz->model();
-        break;
-    case 1:
-        model = ui->tableHopfen->model();
-        break;
-    case 2:
-        model = ui->tableHefe->model();
-        break;
-    case 3:
-        model = ui->tableWeitereZutaten->model();
-        break;
-    default:
-        ui->lblFilter->clear();
-        return;
-    }
-
-    ProxyModelRohstoff::Filter filter = static_cast<ProxyModelRohstoff*>(ui->tableMalz->model())->filter();
-    static_cast<ProxyModelRohstoff*>(model)->setFilter(filter);
-
+    QAbstractItemModel* model = currentTable()->model();
     QAbstractItemModel* sourceModel = static_cast<ProxyModel*>(model)->sourceModel();
     ProxyModel proxy;
     proxy.setSourceModel(sourceModel);
     ui->lblFilter->setText(QString::number(model->rowCount()) + " / " + QString::number(proxy.rowCount()));
 }
-

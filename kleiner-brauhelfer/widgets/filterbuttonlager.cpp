@@ -8,7 +8,8 @@
 #include <QMenu>
 
 FilterButtonLager::FilterButtonLager(QWidget *parent) :
-    ToolButton(parent)
+    ToolButton(parent),
+    mModel(nullptr)
 {
     setCheckable(true);
     setPopupMode(ToolButtonPopupMode::InstantPopup);
@@ -24,6 +25,10 @@ FilterButtonLager::FilterButtonLager(QWidget *parent) :
     widget->layout()->addWidget(mRadioButtonVorhanden);
     connect(mRadioButtonVorhanden, &QAbstractButton::clicked, this, &FilterButtonLager::updateFilter);
 
+    mRadioButtonNichtVorhanden = new RadioButton(tr("Nicht horhanden"), widget);
+    widget->layout()->addWidget(mRadioButtonNichtVorhanden);
+    connect(mRadioButtonNichtVorhanden, &QAbstractButton::clicked, this, &FilterButtonLager::updateFilter);
+
     mRadioButtonInGebrauch = new RadioButton(tr("Nicht gebraute Rezepte"), widget);
     widget->layout()->addWidget(mRadioButtonInGebrauch);
     connect(mRadioButtonInGebrauch, &QAbstractButton::clicked, this, &FilterButtonLager::updateFilter);
@@ -33,11 +38,17 @@ FilterButtonLager::FilterButtonLager(QWidget *parent) :
     addAction(wdgAction);
 }
 
+ProxyModelRohstoff* FilterButtonLager::model() const
+{
+    return mModel;
+}
+
 void FilterButtonLager::setModel(ProxyModelRohstoff* model)
 {
     mModel = model;
     mRadioButtonAlle->setChecked(model->filter() == ProxyModelRohstoff::Alle);
     mRadioButtonVorhanden->setChecked(model->filter() == ProxyModelRohstoff::Vorhanden);
+    mRadioButtonNichtVorhanden->setChecked(model->filter() == ProxyModelRohstoff::NichtVorhanden);
     mRadioButtonInGebrauch->setChecked(model->filter() == ProxyModelRohstoff::InGebrauch);
     updateChecked();
 }
@@ -48,6 +59,8 @@ void FilterButtonLager::updateFilter()
         mModel->setFilter(ProxyModelRohstoff::Alle);
     else if (mRadioButtonVorhanden->isChecked())
         mModel->setFilter(ProxyModelRohstoff::Vorhanden);
+    else if (mRadioButtonNichtVorhanden->isChecked())
+        mModel->setFilter(ProxyModelRohstoff::NichtVorhanden);
     else if (mRadioButtonInGebrauch->isChecked())
         mModel->setFilter(ProxyModelRohstoff::InGebrauch);
     updateChecked();

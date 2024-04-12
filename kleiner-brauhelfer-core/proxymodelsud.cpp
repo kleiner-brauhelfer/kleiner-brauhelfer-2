@@ -55,20 +55,6 @@ void ProxyModelSud::setFilterDate(bool value)
     }
 }
 
-bool ProxyModelSud::filterDate() const
-{
-    return mFilterDate;
-}
-
-void ProxyModelSud::setFilterDate(bool value)
-{
-    if (mFilterDate != value)
-    {
-        mFilterDate = value;
-        invalidate();
-    }
-}
-
 QDateTime ProxyModelSud::filterMinimumDate() const
 {
     return mMinDate;

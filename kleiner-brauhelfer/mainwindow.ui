@@ -407,6 +407,8 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionAusruestungAdd"/>
+   <addaction name="actionAusruestungDelete"/>
   </widget>
   <widget class="QToolBar" name="toolBarLager">
    <property name="contextMenuPolicy">
@@ -735,6 +737,30 @@ QCheckBox[ValueChanged=&quot;true&quot;] {
   <action name="actionLagerCopy">
    <property name="text">
     <string>Kopieren</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionAusruestungAdd">
+   <property name="icon">
+    <iconset theme="ausruestung_add" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/ausruestung_add.svg</normaloff>:/images/icons/light/svg/ausruestung_add.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Anlegen</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionAusruestungDelete">
+   <property name="icon">
+    <iconset theme="ausruestung_delete" resource="images.qrc">
+     <normaloff>:/images/icons/light/svg/ausruestung_delete.svg</normaloff>:/images/icons/light/svg/ausruestung_delete.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Löschen</string>
    </property>
    <property name="menuRole">
     <enum>QAction::NoRole</enum>

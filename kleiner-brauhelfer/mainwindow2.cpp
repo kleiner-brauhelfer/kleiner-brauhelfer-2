@@ -8,8 +8,6 @@
 #include "brauhelfer.h"
 #include "biercalc.h"
 #include "tababstract.h"
-#include "dialogs/dlgausruestung.h"
-#include "dialogs/dlgdatenbank.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgtableview.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
@@ -108,7 +106,6 @@ void MainWindow2::restoreView()
     ui->tabZusammenfassung->restoreView();
     ui->tabEtikette->restoreView();
     ui->tabBewertung->restoreView();
-    DlgAusruestung::restoreView();
     DlgRohstoffAuswahl::restoreView();
     DlgTableView::restoreView();
 

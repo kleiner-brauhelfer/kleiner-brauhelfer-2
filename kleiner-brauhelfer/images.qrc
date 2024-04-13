@@ -10,11 +10,15 @@
         <file>images/icons/light/index.theme</file>
         <file>images/icons/light/light.svg</file>
         <file>images/icons/light/svg/about.svg</file>
+        <file>images/icons/light/svg/add.svg</file>
         <file>images/icons/light/svg/ausruestung.svg</file>
         <file>images/icons/light/svg/bewertungen.svg</file>
         <file>images/icons/light/svg/brauuebersicht.svg</file>
         <file>images/icons/light/svg/database.svg</file>
         <file>images/icons/light/svg/database_clean.svg</file>
+        <file>images/icons/light/svg/ausruestung_add.svg</file>
+        <file>images/icons/light/svg/ausruestung_delete.svg</file>
+        <file>images/icons/light/svg/delete.svg</file>
         <file>images/icons/light/svg/discard.svg</file>
         <file>images/icons/light/svg/edit.svg</file>
         <file>images/icons/light/svg/filter.svg</file>
@@ -44,11 +48,14 @@
         <file>images/icons/light/svg/sud_unpin.svg</file>
         <file>images/icons/light/svg/sudauswahl.svg</file>
         <file>images/icons/light/svg/sude.svg</file>
+        <file>images/icons/light/svg/uebertrag_oben.svg</file>
         <file>images/icons/light/svg/undo.svg</file>
         <file>images/icons/light/svg/zusaetze.svg</file>
 
         <file>images/icons/dark/index.theme</file>
         <file>images/icons/dark/dark.svg</file>
+		
+		
 
         <file>images/close_button.svg</file>
         <file>images/getreide.svg</file>

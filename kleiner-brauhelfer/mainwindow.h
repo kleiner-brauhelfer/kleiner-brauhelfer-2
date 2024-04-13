@@ -30,6 +30,7 @@ public:
     static QStringList HefeTypFlTrName;
     static QStringList ZusatzTypname;
     static QStringList Einheiten;
+    static QList<QPair<QString, int> > AnlageTypname;
 
 public:
     static void installTranslators();

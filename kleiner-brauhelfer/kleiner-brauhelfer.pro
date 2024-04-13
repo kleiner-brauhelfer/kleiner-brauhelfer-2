@@ -73,7 +73,6 @@ SOURCES += \
     commands/setmodeldatacommand.cpp \
     commands/undostack.cpp \
     dialogs/dlgabstract.cpp \
-    dialogs/dlgausruestung.cpp \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgdatenbank.cpp \
@@ -182,7 +181,6 @@ HEADERS += \
     commands/undostack.h \
     dialogs/dlgabstract.h \
     dialogs/dlgabstract-inl.h \
-    dialogs/dlgausruestung.h \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgdatenbank.h \
@@ -273,7 +271,6 @@ FORMS += \
     tabsude.ui \
     tabueber.ui \
     tabzusammenfassung.ui \
-    dialogs/dlgausruestung.ui \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgdatenbank.ui \

@@ -80,20 +80,21 @@ TabLager::~TabLager()
 void TabLager::loadSettings()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("tableMalzState", ui->tableMalz->horizontalHeader()->saveState());
-    gSettings->setValue("tableHopfenState", ui->tableHopfen->horizontalHeader()->saveState());
-    gSettings->setValue("tableHefeState", ui->tableHefe->horizontalHeader()->saveState());
-    gSettings->setValue("tableWeitereZutatenState", ui->tableWeitereZutaten->horizontalHeader()->saveState());
+    ui->tableMalz->restoreState(gSettings->value("tableMalzState").toByteArray());
+    ui->tableHopfen->restoreState(gSettings->value("tableHopfenState").toByteArray());
+    ui->tableHefe->restoreState(gSettings->value("tableHefeState").toByteArray());
+    ui->tableWeitereZutaten->restoreState(gSettings->value("tableWeitereZutatenState").toByteArray());
     gSettings->endGroup();
 }
 
 void TabLager::saveSettings()
 {
     gSettings->beginGroup(staticMetaObject.className());
-    ui->tableMalz->restoreState(gSettings->value("tableMalzState").toByteArray());
-    ui->tableHopfen->restoreState(gSettings->value("tableHopfenState").toByteArray());
-    ui->tableHefe->restoreState(gSettings->value("tableHefeState").toByteArray());
-    ui->tableWeitereZutaten->restoreState(gSettings->value("tableWeitereZutatenState").toByteArray());
+    gSettings->setValue("tableMalzState", ui->tableMalz->horizontalHeader()->saveState());
+    gSettings->setValue("tableHopfenState", ui->tableHopfen->horizontalHeader()->saveState());
+    gSettings->setValue("tableHefeState", ui->tableHefe->horizontalHeader()->saveState());
+    gSettings->setValue("tableWeitereZutatenState", ui->tableWeitereZutaten->horizontalHeader()->saveState());
+
     gSettings->endGroup();
 }
 

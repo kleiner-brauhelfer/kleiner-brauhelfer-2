@@ -95,6 +95,11 @@ void TreeProxyModel::setCustomGroups(const QVector<QVariant> &groups)
     }
 }
 
+bool TreeProxyModel::isTopLevel(const QModelIndex &index) const
+{
+    return index.internalId() == ID_TOP_LEVEL;
+}
+
 QModelIndex TreeProxyModel::index(int row, int column, const QModelIndex &parent) const
 {
     int id = parent.isValid() ? parent.row() : ID_TOP_LEVEL;
@@ -105,7 +110,7 @@ QModelIndex TreeProxyModel::parent(const QModelIndex &child) const
 {
     if (!child.isValid())
         return QModelIndex();
-    if (child.internalId() == ID_TOP_LEVEL)
+    if (isTopLevel(child))
         return QModelIndex();
     else
         return createIndex(child.internalId(), 0, quintptr(ID_TOP_LEVEL));
@@ -114,7 +119,7 @@ QModelIndex TreeProxyModel::parent(const QModelIndex &child) const
 int TreeProxyModel::rowCount(const QModelIndex &parent) const
 {
     if (parent.isValid())
-        return parent.internalId() == ID_TOP_LEVEL ? mGroups[parent.row()].childCount : 0;
+        return isTopLevel(parent) ? mGroups[parent.row()].childCount : 0;
     return mGroups.size();
 }
 
@@ -142,7 +147,7 @@ QVariant TreeProxyModel::data(const QModelIndex &index, int role) const
     if (!index.isValid() || !mModel)
         return QVariant();
 
-    if (index.internalId() == ID_TOP_LEVEL)
+    if (isTopLevel(index))
     {
         if (role != Qt::DisplayRole)
             return QVariant();
@@ -157,6 +162,9 @@ QVariant TreeProxyModel::data(const QModelIndex &index, int role) const
     if (!parent.isValid())
         return QVariant();
 
+    if (role == Qt::DisplayRole && index.column() == mGroupColumn)
+        return QString();
+
     const int row = sourceRowForGroup(mGroups[parent.row()].key, index.row());
     if (row == -1)
         return QVariant();
@@ -169,7 +177,7 @@ bool TreeProxyModel::setData(const QModelIndex &index, const QVariant &value, in
     if (!index.isValid() || !mModel)
         return false;
 
-    if (index.internalId() == ID_TOP_LEVEL)
+    if (isTopLevel(index))
         return false;
 
     const QModelIndex parent = index.parent();
@@ -196,7 +204,7 @@ Qt::ItemFlags TreeProxyModel::flags(const QModelIndex &index) const
     if (!index.isValid() || !mModel)
         return Qt::NoItemFlags;
 
-    if (index.internalId() == ID_TOP_LEVEL)
+    if (isTopLevel(index))
     {
         if (index.column() == mGroupColumn)
             return Qt::ItemIsSelectable | Qt::ItemIsEnabled;

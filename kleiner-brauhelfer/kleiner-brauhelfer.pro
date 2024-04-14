@@ -95,6 +95,7 @@ SOURCES += \
     helper/htmlhighlighter.cpp \
     helper/mustache.cpp \
     helper/obrama.cpp \
+    model/bewertungtreeproxymodel.cpp \
     model/checkboxdelegate.cpp \
     model/comboboxdelegate.cpp \
     model/datedelegate.cpp \
@@ -203,6 +204,7 @@ HEADERS += \
     helper/htmlhighlighter.h \
     helper/mustache.h \
     helper/obrama.h \
+    model/bewertungtreeproxymodel.h \
     model/checkboxdelegate.h \
     model/comboboxdelegate.h \
     model/datedelegate.h \

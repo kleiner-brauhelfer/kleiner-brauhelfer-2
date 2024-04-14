@@ -350,6 +350,12 @@ void MainWindow::setupLabels()
     model->setHeaderData(ModelNachgaerverlauf::ColCO2, Qt::Horizontal, tr("CO2") + "\n(g/L)");
     model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
 
+    model = bh->modelBewertungen();
+    model->setHeaderData(ModelBewertungen::ColSudName, Qt::Horizontal, tr("Sud"));
+    model->setHeaderData(ModelBewertungen::ColDatum, Qt::Horizontal, tr("Datum"));
+    model->setHeaderData(ModelBewertungen::ColWoche, Qt::Horizontal, tr("Woche"));
+    model->setHeaderData(ModelBewertungen::ColSterne, Qt::Horizontal, tr("Bewertung"));
+
     model = bh->modelAusruestung();
     model->setHeaderData(ModelAusruestung::ColName, Qt::Horizontal, tr("Bezeichnung"));
     model->setHeaderData(ModelAusruestung::ColTyp, Qt::Horizontal, tr("Typ"));

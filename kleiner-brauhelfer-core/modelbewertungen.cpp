@@ -6,6 +6,7 @@ ModelBewertungen::ModelBewertungen(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
+    mVirtualField.append(QStringLiteral("SudName"));
 }
 
 QVariant ModelBewertungen::dataExt(const QModelIndex &idx) const
@@ -22,6 +23,10 @@ QVariant ModelBewertungen::dataExt(const QModelIndex &idx) const
         if (dt.isValid())
             return dt.daysTo(data(idx.row(), ColDatum).toDateTime()) / 7 + 1;
         return 0;
+    }
+    case ColSudName:
+    {
+        return bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColSudname).toString();
     }
     default:
         return QVariant();

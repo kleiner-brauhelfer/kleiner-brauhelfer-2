@@ -76,7 +76,8 @@ QScrollArea {
     border: none;
 }
 
-QScrollArea#scrollAreaAnlagen, QWidget#scrollAreaAnlagenWidgetContents,
+QScrollArea#scrollAreaSud, QWidget#scrollAreaSudWidgetContents,
+QScrollArea#scrollAreaAusruestung, QWidget#scrollAreaAusruestungWidgetContents,
 QScrollArea#scrollAreaEinstellungen, QWidget#scrollAreaEinstellungenWidgetContents,
 QScrollArea#scrollAreaBewertungen, QWidget#scrollAreaBewertungenWidgetContents {
   background-color: #fcfcfc;

@@ -54,6 +54,7 @@ SOURCES += \
     tabgaerverlauf.cpp \
     tablager.cpp \
     tabrezept.cpp \
+    tabsud.cpp \
     tabsudauswahl.cpp \
     tabsudauswahl_sudinfo.cpp \
     tabsude.cpp \
@@ -118,6 +119,7 @@ SOURCES += \
     widgets/datetimeedit.cpp \
     widgets/doublespinbox.cpp \
     widgets/doublespinboxsud.cpp \
+    widgets/expanderpushbutton.cpp \
     widgets/filterbuttonlager.cpp \
     widgets/filterbuttonsud.cpp \
     widgets/iconthemed.cpp \
@@ -163,6 +165,7 @@ HEADERS += \
     tabgaerverlauf.h \
     tablager.h \
     tabrezept.h \
+    tabsud.h \
     tabsudauswahl.h \
     tabsude.h \
     tabueber.h \
@@ -227,6 +230,7 @@ HEADERS += \
     widgets/datetimeedit.h \
     widgets/doublespinbox.h \
     widgets/doublespinboxsud.h \
+    widgets/expanderpushbutton.h \
     widgets/filterbuttonlager.h \
     widgets/filterbuttonsud.h \
     widgets/iconthemed.h \
@@ -269,6 +273,7 @@ FORMS += \
     tabgaerverlauf.ui \
     tablager.ui \
     tabrezept.ui \
+    tabsud.ui \
     tabsudauswahl.ui \
     tabsude.ui \
     tabueber.ui \

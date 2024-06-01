@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TabSud</class>
+ <widget class="QWidget" name="TabSud">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QScrollArea" name="scrollAreaSud">
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaSudWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>776</width>
+        <height>646</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="ExpanderPushButton" name="btnExpRezept">
+         <property name="text">
+          <string>Rezept</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="wdgExpRezept" native="true">
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="7" column="0">
+           <widget class="QWidget" name="wdgExpRezeptWuerzekochen" native="true">
+            <layout class="QGridLayout" name="gridLayout_14">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <widget class="ExpanderPushButton" name="btnExpRezeptWasseraufbereitung">
+            <property name="text">
+             <string>Wasseraufbereitung</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="ExpanderPushButton" name="btnExpRezeptMaischeplan">
+            <property name="text">
+             <string>Maischeplan</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QWidget" name="wdgExpRezeptMaischeplan" native="true">
+            <layout class="QGridLayout" name="gridLayout_12">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QWidget" name="wdgExpRezeptMaischen" native="true">
+            <layout class="QGridLayout" name="gridLayout_11">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_11">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QWidget" name="wdgExpRezeptGaerung" native="true">
+            <layout class="QGridLayout" name="gridLayout_16">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_16">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="ExpanderPushButton" name="btnExpRezeptMaischen">
+            <property name="text">
+             <string>Maischen</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QWidget" name="wdgExpRezeptStammdaten" native="true">
+            <layout class="QGridLayout" name="gridLayout_10">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_10">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="ExpanderPushButton" name="btnExpRezeptStammdaten">
+            <property name="text">
+             <string>Stammdaten</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="ExpanderPushButton" name="btnExpRezeptWuerzekochen">
+            <property name="text">
+             <string>Würzekochen</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="ExpanderPushButton" name="btnExpRezeptGaerung">
+            <property name="text">
+             <string>Gärung</string>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="0">
+           <widget class="QWidget" name="wdgExpRezeptWasseraufbereitung" native="true">
+            <layout class="QGridLayout" name="gridLayout_17">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_17">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="ExpanderPushButton" name="btnExpBraudaten">
+         <property name="text">
+          <string>Braudaten</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="wdgExpBraudaten" native="true">
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="ExpanderPushButton" name="btnExpHauptgaerung">
+         <property name="text">
+          <string>Hauptgärung</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="wdgExpHauptgaerung" native="true">
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="ExpanderPushButton" name="btnExpAbfuelldaten">
+         <property name="text">
+          <string>Abfülldaten</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="wdgExpAbfuelldaten" native="true">
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="ExpanderPushButton" name="btnExpNachgaerung">
+         <property name="text">
+          <string>Nachgärung</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="wdgExpNachgaerung" native="true">
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="ExpanderPushButton" name="btnExpTags">
+         <property name="text">
+          <string>Tags</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="wdgExpTags" native="true">
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="ExpanderPushButton" name="btnExpAnhaenge">
+         <property name="text">
+          <string>Anhänge</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="wdgExpAnhaenge" native="true">
+         <layout class="QGridLayout" name="gridLayout_9">
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>TextLabel</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ExpanderPushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/expanderpushbutton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

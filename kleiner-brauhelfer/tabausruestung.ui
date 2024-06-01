@@ -39,11 +39,11 @@
        <bool>false</bool>
       </attribute>
      </widget>
-     <widget class="QScrollArea" name="scrollArea">
+     <widget class="QScrollArea" name="scrollAreaAusruestung">
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
+      <widget class="QWidget" name="scrollAreaAusruestungWidgetContents">
        <property name="geometry">
         <rect>
          <x>0</x>

@@ -187,13 +187,13 @@ void TabAusruestung::anlage_selectionChanged()
         QString anlage = model->data(model->index(mRow, ModelAusruestung::ColName)).toString();
         regExpId = QRegularExpression(QStringLiteral("^%1$").arg(QRegularExpression::escape(anlage)));
         regExpId2 = QRegularExpression(QStringLiteral("^%1$").arg(model->data(model->index(mRow, ModelAusruestung::ColID)).toInt()));
-        ui->scrollArea->setEnabled(true);
+        ui->scrollAreaAusruestung->setEnabled(true);
     }
     else
     {
         regExpId = QRegularExpression(QStringLiteral("--dummy--"));
         regExpId2 = QRegularExpression(QStringLiteral("--dummy--"));
-        ui->scrollArea->setEnabled(false);
+        ui->scrollAreaAusruestung->setEnabled(false);
     }
     static_cast<ProxyModel*>(ui->tableViewGeraete->model())->setFilterRegularExpression(regExpId2);
     static_cast<ProxyModel*>(ui->tableViewSude->model())->setFilterRegularExpression(regExpId);
@@ -216,7 +216,7 @@ void TabAusruestung::add()
         ui->tableViewAnlagen->scrollTo(ui->tableViewAnlagen->currentIndex());
         ui->tbName->selectAll();
         ui->tbName->setFocus();
-        ui->scrollArea->verticalScrollBar()->setValue(0);
+        ui->scrollAreaAusruestung->verticalScrollBar()->setValue(0);
     }
 }
 

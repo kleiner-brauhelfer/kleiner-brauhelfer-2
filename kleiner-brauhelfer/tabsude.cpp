@@ -11,6 +11,8 @@ TabSude::TabSude(QWidget *parent) :
     ui(new Ui::TabSude)
 {
     ui->setupUi(this);
+
+    loadSettings();
 }
 
 TabSude::~TabSude()
@@ -33,4 +35,5 @@ void TabSude::saveSettings()
 
 void TabSude::restoreView()
 {
+    // TODO: restoreview of TabSud
 }

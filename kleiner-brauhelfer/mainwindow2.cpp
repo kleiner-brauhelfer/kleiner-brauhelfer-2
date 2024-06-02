@@ -23,51 +23,13 @@ MainWindow2::MainWindow2(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    Settings::Theme theme = gSettings->theme();
-    ui->actionThemeHell->setEnabled(theme != Settings::Theme::Light);
-    ui->actionThemeDunkel->setEnabled(theme != Settings::Theme::Dark);
-    if (theme == Settings::Theme::Dark)
-    {
-        ui->tabMain->setTabIcon(0, IconThemed(QStringLiteral("tabsudauswahl"), false));
-        ui->tabMain->setTabIcon(1, IconThemed(QStringLiteral("tabrezept"), false));
-        ui->tabMain->setTabIcon(2, IconThemed(QStringLiteral("tabbraudaten"), false));
-        ui->tabMain->setTabIcon(3, IconThemed(QStringLiteral("tababfuellen"), false));
-        ui->tabMain->setTabIcon(4, IconThemed(QStringLiteral("tabgaerverlauf"), false));
-        ui->tabMain->setTabIcon(5, IconThemed(QStringLiteral("tabzusammenfassung"), false));
-        ui->tabMain->setTabIcon(6, IconThemed(QStringLiteral("tabetikette"), false));
-        ui->tabMain->setTabIcon(7, IconThemed(QStringLiteral("tabbewertung"), false));
-
-        const QList<QAction*> actions = findChildren<QAction*>();
-        for (QAction* action : actions)
-        {
-            QString name = action->whatsThis();
-            QIcon icon = action->icon();
-            if (!icon.isNull() && !name.isEmpty())
-            {
-                icon.addFile(QStringLiteral(":/images/dark/%1.svg").arg(name));
-                action->setIcon(icon);
-            }
-        }
-        const QList<QAbstractButton*> buttons = findChildren<QAbstractButton*>();
-        for (QAbstractButton* button : buttons)
-        {
-            QString name = button->whatsThis();
-            QIcon icon = button->icon();
-            if (!icon.isNull() && !name.isEmpty())
-            {
-                icon.addFile(QStringLiteral(":/images/dark/%1.svg").arg(name));
-                button->setIcon(icon);
-            }
-        }
-    }
-
     gSettings->beginGroup("General");
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
 
     connect(gSettings, &Settings::modulesChanged, this, &MainWindow2::modulesChanged);
 
-    connect(ui->tabSudAuswahl, &TabSudAuswahl::clicked, this, &MainWindow2::loadSud);
+    //connect(ui->tabSudAuswahl, &TabSudAuswahl::clicked, this, &MainWindow2::loadSud);
 
     connect(bh, &Brauhelfer::discarded, this, &MainWindow2::updateValues);
     connect(bh->sud(), &SudObject::loadedChanged, this, &MainWindow2::sudLoaded);
@@ -86,18 +48,12 @@ MainWindow2::~MainWindow2()
 
 void MainWindow2::saveSettings()
 {
-    ui->tabRezept->saveSettings();
-    ui->tabBraudaten->saveSettings();
-    ui->tabAbfuelldaten->saveSettings();
-    ui->tabGaerverlauf->saveSettings();
-    ui->tabZusammenfassung->saveSettings();
-    ui->tabEtikette->saveSettings();
-    ui->tabBewertung->saveSettings();
 }
 
 void MainWindow2::restoreView()
 {
     //closeDialogs();
+    /*
     ui->tabSudAuswahl->restoreView();
     ui->tabRezept->restoreView();
     ui->tabBraudaten->restoreView();
@@ -106,6 +62,7 @@ void MainWindow2::restoreView()
     ui->tabZusammenfassung->restoreView();
     ui->tabEtikette->restoreView();
     ui->tabBewertung->restoreView();
+    */
     DlgRohstoffAuswahl::restoreView();
     DlgTableView::restoreView();
 
@@ -115,6 +72,7 @@ void MainWindow2::modulesChanged(Settings::Modules modules)
 {
     updateTabs(modules);
     updateValues();
+    /*
     ui->tabRezept->modulesChanged(modules);
     ui->tabBraudaten->modulesChanged(modules);
     ui->tabAbfuelldaten->modulesChanged(modules);
@@ -122,11 +80,13 @@ void MainWindow2::modulesChanged(Settings::Modules modules)
     ui->tabZusammenfassung->modulesChanged(modules);
     ui->tabEtikette->modulesChanged(modules);
     ui->tabBewertung->modulesChanged(modules);
+    */
     checkLoadedSud();
 }
 
 void MainWindow2::updateTabs(Settings::Modules modules)
 {
+    /*
     int nextIndex = 4;
     if (modules.testFlag(Settings::ModuleGaerverlauf))
     {
@@ -184,19 +144,13 @@ void MainWindow2::updateTabs(Settings::Modules modules)
         ui->actionBrauUebersicht->setVisible(gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht));
     if (modules.testFlag(Settings::ModuleAusruestung))
         ui->actionAusruestung->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusruestung));
+    */
 }
 
 void MainWindow2::updateValues()
 {
     bool loaded = bh->sud()->isLoaded();
     //databaseModified();
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabRezept), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabGaerverlauf), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabZusammenfassung), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
     ui->menuSud->setEnabled(loaded);
     if (loaded)
     {
@@ -207,8 +161,6 @@ void MainWindow2::updateValues()
         ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
         ui->actionWeitereZutaten->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
     }
-    if (!ui->tabMain->currentWidget()->isEnabled())
-        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
     ui->actionEingabefelderEntsperren->setChecked(false);
 }
 
@@ -218,8 +170,8 @@ void MainWindow2::sudLoaded()
     if (bh->sud()->isLoaded())
     {
         checkLoadedSud();
-        if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-            ui->tabMain->setCurrentWidget(ui->tabRezept);
+        //if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
+        //    ui->tabMain->setCurrentWidget(ui->tabRezept);
     }
 }
 
@@ -233,7 +185,7 @@ void MainWindow2::loadSud(int sudId)
 {
     if (bh->sud()->id() == sudId)
     {
-        ui->tabMain->setCurrentWidget(ui->tabRezept);
+        //ui->tabMain->setCurrentWidget(ui->tabRezept);
     }
     else
     {
@@ -254,6 +206,7 @@ void MainWindow2::loadSud(int sudId)
 
 void MainWindow2::on_tabMain_currentChanged()
 {
+    /*
     TabAbstract* tab;
     for (int i = 0; i < ui->tabMain->count(); ++i)
     {
@@ -268,21 +221,22 @@ void MainWindow2::on_tabMain_currentChanged()
         ui->actionDrucken->setEnabled(tab->isPrintable());
         ui->actionDruckvorschau->setEnabled(tab->isPrintable());
     }
+    */
     setFocus();
 }
 
 void MainWindow2::on_actionDruckvorschau_triggered()
 {
-    TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
-    if (tab)
-        tab->printPreview();
+    //TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
+    //if (tab)
+    //    tab->printPreview();
 }
 
 void MainWindow2::on_actionDrucken_triggered()
 {
-    TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
-    if (tab)
-        tab->toPdf();
+    //TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
+    //if (tab)
+    //    tab->toPdf();
 }
 
 void MainWindow2::on_actionSudGebraut_triggered()
@@ -364,10 +318,10 @@ void MainWindow2::on_actionEingabefelderEntsperren_changed()
         if (ret == QMessageBox::Yes)
         {
             gSettings->ForceEnabled = true;
-            ui->tabRezept->checkEnabled();
-            ui->tabBraudaten->checkEnabled();
-            ui->tabAbfuelldaten->checkEnabled();
-            ui->tabGaerverlauf->checkEnabled();
+            //ui->tabRezept->checkEnabled();
+            //ui->tabBraudaten->checkEnabled();
+            //ui->tabAbfuelldaten->checkEnabled();
+            //ui->tabGaerverlauf->checkEnabled();
         }
         else
         {
@@ -377,10 +331,10 @@ void MainWindow2::on_actionEingabefelderEntsperren_changed()
     else
     {
         gSettings->ForceEnabled = false;
-        ui->tabRezept->checkEnabled();
-        ui->tabBraudaten->checkEnabled();
-        ui->tabAbfuelldaten->checkEnabled();
-        ui->tabGaerverlauf->checkEnabled();
+        //ui->tabRezept->checkEnabled();
+        //ui->tabBraudaten->checkEnabled();
+        //ui->tabAbfuelldaten->checkEnabled();
+        //ui->tabGaerverlauf->checkEnabled();
     }
 }
 

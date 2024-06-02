@@ -41,7 +41,7 @@
          <x>0</x>
          <y>0</y>
          <width>800</width>
-         <height>459</height>
+         <height>456</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -57,93 +57,6 @@
         <property name="bottomMargin">
          <number>6</number>
         </property>
-        <item>
-         <widget class="QTabWidget" name="tabMain">
-          <property name="currentIndex">
-           <number>0</number>
-          </property>
-          <widget class="TabSudAuswahl" name="tabSudAuswahl">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabsudauswahl.svg</normaloff>
-             <disabledoff>:/images/disabled/tabsudauswahl.svg</disabledoff>:/images/light/tabsudauswahl.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Sudauswahl</string>
-           </attribute>
-          </widget>
-          <widget class="TabRezept" name="tabRezept">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabrezept.svg</normaloff>
-             <disabledoff>:/images/disabled/tabrezept.svg</disabledoff>:/images/light/tabrezept.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Rezept</string>
-           </attribute>
-          </widget>
-          <widget class="TabBraudaten" name="tabBraudaten">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabbraudaten.svg</normaloff>
-             <disabledoff>:/images/disabled/tabbraudaten.svg</disabledoff>:/images/light/tabbraudaten.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Braudaten</string>
-           </attribute>
-          </widget>
-          <widget class="TabAbfuellen" name="tabAbfuelldaten">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tababfuellen.svg</normaloff>
-             <disabledoff>:/images/disabled/tababfuellen.svg</disabledoff>:/images/light/tababfuellen.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Abfülldaten</string>
-           </attribute>
-          </widget>
-          <widget class="TabGaerverlauf" name="tabGaerverlauf">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabgaerverlauf.svg</normaloff>
-             <disabledoff>:/images/disabled/tabgaerverlauf.svg</disabledoff>:/images/light/tabgaerverlauf.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Gärverlauf</string>
-           </attribute>
-          </widget>
-          <widget class="TabZusammenfassung" name="tabZusammenfassung">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabzusammenfassung.svg</normaloff>
-             <disabledoff>:/images/disabled/tabzusammenfassung.svg</disabledoff>:/images/light/tabzusammenfassung.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Ausdruck</string>
-           </attribute>
-          </widget>
-          <widget class="TabEtikette" name="tabEtikette">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabetikette.svg</normaloff>
-             <disabledoff>:/images/disabled/tabetikette.svg</disabledoff>:/images/light/tabetikette.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Etikett</string>
-           </attribute>
-          </widget>
-          <widget class="TabBewertung" name="tabBewertung">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabbewertung.svg</normaloff>
-             <disabledoff>:/images/disabled/tabbewertung.svg</disabledoff>:/images/light/tabbewertung.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Bewertung</string>
-           </attribute>
-          </widget>
-         </widget>
-        </item>
        </layout>
       </widget>
      </widget>
@@ -156,7 +69,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -291,7 +204,7 @@
   </widget>
   <action name="actionSpeichern">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset>
      <normaloff>:/images/light/save.svg</normaloff>
      <disabledoff>:/images/disabled/save.svg</disabledoff>:/images/light/save.svg</iconset>
    </property>
@@ -307,7 +220,7 @@
   </action>
   <action name="actionVerwerfen">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset>
      <normaloff>:/images/light/restore.svg</normaloff>
      <disabledoff>:/images/disabled/restore.svg</disabledoff>:/images/light/restore.svg</iconset>
    </property>
@@ -525,7 +438,7 @@
   </action>
   <action name="actionDruckvorschau">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset>
      <normaloff>:/images/light/print.svg</normaloff>
      <disabledoff>:/images/disabled/print.svg</disabledoff>:/images/light/print.svg</iconset>
    </property>
@@ -541,7 +454,7 @@
   </action>
   <action name="actionDrucken">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset>
      <normaloff>:/images/light/pdf.svg</normaloff>
      <disabledoff>:/images/disabled/pdf.svg</disabledoff>:/images/light/pdf.svg</iconset>
    </property>
@@ -568,7 +481,7 @@
   </action>
   <action name="actionDeutsch">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset>
      <normaloff>:/images/de.svg</normaloff>:/images/de.svg</iconset>
    </property>
    <property name="text">
@@ -577,7 +490,7 @@
   </action>
   <action name="actionEnglisch">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset>
      <normaloff>:/images/en.svg</normaloff>:/images/en.svg</iconset>
    </property>
    <property name="text">
@@ -586,7 +499,7 @@
   </action>
   <action name="actionSchwedisch">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset>
      <normaloff>:/images/se.svg</normaloff>:/images/se.svg</iconset>
    </property>
    <property name="text">
@@ -595,7 +508,7 @@
   </action>
   <action name="actionNiederlaendisch">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset>
      <normaloff>:/images/nl.svg</normaloff>:/images/nl.svg</iconset>
    </property>
    <property name="text">
@@ -661,7 +574,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset>
      <normaloff>:/images/light/actionbrauuebersicht.svg</normaloff>:/images/light/actionbrauuebersicht.svg</iconset>
    </property>
    <property name="text">
@@ -713,56 +626,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>TabSudAuswahl</class>
-   <extends>QWidget</extends>
-   <header>tabsudauswahl.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabRezept</class>
-   <extends>QWidget</extends>
-   <header>tabrezept.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabBraudaten</class>
-   <extends>QWidget</extends>
-   <header>tabbraudaten.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabGaerverlauf</class>
-   <extends>QWidget</extends>
-   <header>tabgaerverlauf.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabZusammenfassung</class>
-   <extends>QWidget</extends>
-   <header>tabzusammenfassung.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabEtikette</class>
-   <extends>QWidget</extends>
-   <header>tabetikette.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabBewertung</class>
-   <extends>QWidget</extends>
-   <header>tabbewertung.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabAbfuellen</class>
-   <extends>QWidget</extends>
-   <header>tababfuellen.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="images.qrc"/>
  </resources>

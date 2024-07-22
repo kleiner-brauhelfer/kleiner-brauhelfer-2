@@ -21,7 +21,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          setup-python: 'false'
+          setup-python: 'true'
           version: 6.5.*
           modules: qtwebengine qtwebchannel qtpositioning
 

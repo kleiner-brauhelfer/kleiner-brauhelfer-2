@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
           setup-python: 'false'
           version: 6.5.*

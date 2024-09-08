@@ -40,16 +40,7 @@ private slots:
     void generateTemplateTags(QVariantMap& tags);
     void on_tableSudauswahl_doubleClicked(const QModelIndex &index);
     void on_tableSudauswahl_customContextMenuRequested(const QPoint &pos);
-    void on_cbAlle_clicked();
-    void on_cbRezept_clicked();
-    void on_cbGebraut_clicked();
-    void on_cbAbgefuellt_clicked();
-    void on_cbVerbraucht_clicked();
-    void on_cbMerkliste_stateChanged(int state);
     void on_tbFilter_textChanged(const QString &pattern);
-    void on_tbDatumVon_dateChanged(const QDate &date);
-    void on_tbDatumBis_dateChanged(const QDate &date);
-    void on_cbDatumAlle_stateChanged(int state);
     void on_btnMerken_clicked();
     void on_btnVergessen_clicked();
     void onMerkliste_clicked(bool value);
@@ -67,8 +58,6 @@ private:
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
     void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
     void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;
-    void setFilterStatus();
-    void setFilterDate();
 
 private:
     Ui::TabSudAuswahl *ui;

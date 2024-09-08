@@ -9,7 +9,8 @@ ProxyModelSud::ProxyModelSud(QObject *parent) :
     mFilterStatus(Alle),
     mMinDate(QDateTime()),
     mMaxDate(QDateTime()),
-    mFilterText(QString())
+    mFilterText(QString()),
+    mFilterKategorie(QString())
 {
 }
 
@@ -97,6 +98,20 @@ void ProxyModelSud::setFilterText(const QString& text)
     }
 }
 
+QString ProxyModelSud::filterKategorie() const
+{
+    return mFilterKategorie;
+}
+
+void ProxyModelSud::setFilterKategorie(const QString& kategorie)
+{
+    if (mFilterKategorie != kategorie)
+    {
+        mFilterKategorie = kategorie;
+        invalidateRowsFilter();
+    }
+}
+
 bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
     QModelIndex idx;
@@ -135,6 +150,12 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
         idx = sourceModel()->index(source_row, ModelSud::ColBraudatum, source_parent);
         if (idx.isValid())
             accept = dateInRange(sourceModel()->data(idx).toDateTime());
+    }
+    if (accept && !mFilterKategorie.isEmpty())
+    {
+        idx = sourceModel()->index(source_row, ModelSud::ColKategorie, source_parent);
+        if (idx.isValid())
+            accept = sourceModel()->data(idx).toString() == mFilterKategorie;
     }
     if (accept && !mFilterText.isEmpty())
     {
@@ -240,4 +261,26 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
 bool ProxyModelSud::dateInRange(const QDateTime &dt) const
 {
     return (!mMinDate.isValid() || dt >= mMinDate) && (!mMaxDate.isValid() || dt <= mMaxDate);
+}
+
+void ProxyModelSud::saveSetting(QSettings* settings)
+{
+    settings->setValue("filterSudStatus", (int)filterStatus());
+    settings->setValue("filterSudMerkliste", filterMerkliste());
+    settings->setValue("filterSudDate", filterDate());
+    settings->setValue("filterSudDateVon", filterMinimumDate().date());
+    settings->setValue("filterSudDateBis", filterMaximumDate().date());
+    settings->setValue("filterSudKategorie", filterKategorie());
+}
+
+void ProxyModelSud::loadSettings(QSettings* settings)
+{
+    setFilterStatus(static_cast<ProxyModelSud::FilterStatus>(settings->value("filterSudStatus", ProxyModelSud::Alle).toInt()));
+    setFilterMerkliste(settings->value("filterSudMerkliste", false).toBool());
+    setFilterDate(settings->value("filterSudDate", false).toBool());
+    QDate minDate = settings->value("filterSudDateVon", QDate::currentDate().addYears(-1)).toDate();
+    QDate maxDate = settings->value("filterSudDateBis", QDate::currentDate()).toDate();
+    setFilterMinimumDate(QDateTime(minDate, QTime(1,0,0)));
+    setFilterMaximumDate(QDateTime(maxDate, QTime(23,59,59)));
+    setFilterKategorie(settings->value("filterSudKategorie", "").toString());
 }

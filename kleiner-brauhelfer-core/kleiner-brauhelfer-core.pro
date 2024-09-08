@@ -9,7 +9,7 @@ VER_MAJ = 2
 # Datenbankversion
 VER_MIN = 9
 # Patchversion
-VER_PAT = 4
+VER_PAT = 5
 
 VERSION = $$sprintf("%1.%2.%3", $$VER_MAJ, $$VER_MIN, $$VER_PAT)
 DEFINES += VER_MAJ=\"$$VER_MAJ\" VER_MIN=\"$$VER_MIN\" VER_PAT=\"$$VER_PAT\"

@@ -24,7 +24,7 @@ DlgTableView::DlgTableView(SqlTableModel *model, const QList<TableView::ColumnDe
     mDefaultValues(defaultValues)
 {
     ui->setupUi(this);
-    if (gSettings->theme() == Settings::Theme::Dark)
+    if (gSettings->theme() == Qt::ColorScheme::Dark)
     {
         const QList<QAbstractButton*> buttons = findChildren<QAbstractButton*>();
         for (QAbstractButton* button : buttons)

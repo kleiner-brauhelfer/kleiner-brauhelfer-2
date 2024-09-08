@@ -11,7 +11,7 @@ WdgRating::WdgRating(QWidget *parent) :
 {    
     ui->setupUi(this);
     mPixmapStar = QIcon(":/images/star.svg").pixmap(ui->btnStar1->size());
-    if (gSettings->theme() == Settings::Dark)
+    if (gSettings->theme() == Qt::ColorScheme::Dark)
         mPixmapNoStar = QIcon(":/images/dark/star_gr.svg").pixmap(ui->btnStar1->size());
     else
         mPixmapNoStar = QIcon(":/images/light/star_gr.svg").pixmap(ui->btnStar1->size());

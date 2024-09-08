@@ -11,7 +11,7 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
 {
     HighlightingRule rule;
 
-    if (gSettings->theme() != Settings::Dark)
+    if (gSettings->theme() != Qt::ColorScheme::Dark)
     {
         edgeTagFormat.setForeground(QBrush(QColor(0x32a9dd)));
         insideTagFormat.setForeground(Qt::blue);

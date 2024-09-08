@@ -14,13 +14,6 @@ class Settings : public QSettings
 
 public:
 
-    enum Theme
-    {
-        Unused,
-        Bright,
-        Dark
-    };
-
     enum Module {
         ModuleKein                  = 0x00000000,
         //
@@ -62,8 +55,8 @@ public:
     void setLogLevel(int level);
     void initLogLevel(int level);
 
-    Theme theme() const;
-    void setTheme(Theme theme);
+    Qt::ColorScheme theme() const;
+    void setTheme(Qt::ColorScheme theme);
 
     QString style();
     void setStyle(const QString &style);
@@ -150,7 +143,7 @@ public:
     bool modulesFirstTime = false;
 
 private:
-    Theme mTheme;
+    Qt::ColorScheme mTheme;
     Modules mModules;
     QFont defaultFont;
     QPalette defaultPalette;

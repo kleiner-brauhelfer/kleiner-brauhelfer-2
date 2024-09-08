@@ -128,7 +128,7 @@ TabRezept::TabRezept(QWidget *parent) :
     pal.setColor(QPalette::Button, gSettings->colorAnhang);
     ui->btnNeuerAnhang->setDefaultPalette(pal);
 
-    mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Settings::Theme::Dark ? QStringLiteral(":/images/dark/bier.svg") : QStringLiteral(":/images/light/bier.svg"));
+    mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Qt::ColorScheme::Dark ? QStringLiteral(":/images/dark/bier.svg") : QStringLiteral(":/images/light/bier.svg"));
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
 
     ProxyModel* proxy = new ProxyModel(this);

@@ -111,7 +111,7 @@ void WdgWebViewEditable::printPreview()
 {
   #if defined(QT_PRINTSUPPORT_LIB) && defined(QT_WEBENGINECORE_LIB)
     QVariant style;
-    if (gSettings->theme() == Settings::Dark)
+    if (gSettings->theme() == Qt::ColorScheme::Dark)
     {
         style = mTemplateTags[QStringLiteral("Style")];
         mTemplateTags[QStringLiteral("Style")] = "style_hell.css";
@@ -130,7 +130,7 @@ void WdgWebViewEditable::printPreview()
     gSettings->savePrinter(printer);
     delete printer;
 
-    if (gSettings->theme() == Settings::Dark)
+    if (gSettings->theme() == Qt::ColorScheme::Dark)
     {
         mTemplateTags[QStringLiteral("Style")] = style;
         ui->webview->renderTemplate(mTemplateTags);
@@ -157,7 +157,7 @@ void WdgWebViewEditable::printToPdf()
         gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
         QRectF rect = gSettings->value("PrintMargins", QRectF(5, 10, 5, 15)).toRectF();
         QMarginsF margins = QMarginsF(rect.left(), rect.top(), rect.width(), rect.height());
-        if (gSettings->theme() == Settings::Dark)
+        if (gSettings->theme() == Qt::ColorScheme::Dark)
         {
             QVariant style = mTemplateTags[QStringLiteral("Style")];
             mTemplateTags[QStringLiteral("Style")] = "style_hell.css";

@@ -8,7 +8,7 @@ ChartBase::ChartBase(QWidget *parent) :
 {
     colorText = gSettings->palette.color(QPalette::Active, QPalette::Text);
     colorBack = gSettings->palette.color(QPalette::Active, QPalette::Base);
-    if (gSettings->theme() == Settings::Theme::Dark)
+    if (gSettings->theme() == Qt::ColorScheme::Dark)
     {
         setBackground(colorBack);
         QPen penForeground = QPen(colorText, 1);

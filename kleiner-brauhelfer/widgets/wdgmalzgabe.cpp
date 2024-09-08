@@ -17,7 +17,7 @@ WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
     mFehlProzentExtrakt(0)
 {
     ui->setupUi(this);
-    if (gSettings->theme() == Settings::Theme::Dark)
+    if (gSettings->theme() == Qt::ColorScheme::Dark)
     {
         const QList<QAbstractButton*> buttons = findChildren<QAbstractButton*>();
         for (QAbstractButton* button : buttons)

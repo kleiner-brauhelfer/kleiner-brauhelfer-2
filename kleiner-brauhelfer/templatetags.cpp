@@ -48,7 +48,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
     QLocale locale = QLocale();
 
     // Style
-    ctx[QStringLiteral("Style")] = gSettings->theme() == Settings::Dark ? QStringLiteral("style_dunkel.css") : QStringLiteral("style_hell.css");
+    ctx[QStringLiteral("Style")] = gSettings->theme() == Qt::ColorScheme::Dark ? QStringLiteral("style_dunkel.css") : QStringLiteral("style_hell.css");
 
     // App
     QVariantMap ctxApp;

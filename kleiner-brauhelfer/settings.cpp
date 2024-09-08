@@ -55,16 +55,16 @@ void Settings::initTheme()
         font = value("Font", QFont()).value<QFont>();
 
     // theme
-    mTheme = static_cast<Theme>(value("Theme", Bright).toInt());
-    if (mTheme == Unused)
-        mTheme = Bright;
+    mTheme = static_cast<Qt::ColorScheme>(value("Theme", (int)Qt::ColorScheme::Light).toInt());
+    if (mTheme == Qt::ColorScheme::Unknown)
+        mTheme = Qt::ColorScheme::Light;
 
     // colors
     QColor colorChanged;
     switch (mTheme)
     {
     default:
-    case Bright:
+    case Qt::ColorScheme::Light:
         ErrorBase = QColor(252,171,171);
         ErrorText = QColor(180,10,10);
         colorChanged = QColor(255,240,175);
@@ -104,7 +104,7 @@ void Settings::initTheme()
         DiagramLinie3Light = QColor(211,97,97);
         break;
 
-    case Dark:
+    case Qt::ColorScheme::Dark:
         ErrorBase = QColor(165,84,84);
         ErrorText = QColor(237,118,118);
         colorChanged = QColor(106,73,52);
@@ -149,7 +149,7 @@ void Settings::initTheme()
     switch (mTheme)
     {
     default:
-    case Bright:
+    case Qt::ColorScheme::Light:
         palette.setColorGroup(QPalette::Disabled,
             QColor(128,128,128),//windowText
             QColor(226,226,226),//button
@@ -186,7 +186,7 @@ void Settings::initTheme()
         palette.setColor(QPalette::LinkVisited, QColor(0,120,215));
         break;
 
-    case Dark:
+    case Qt::ColorScheme::Dark:
         palette.setColorGroup(QPalette::Disabled,
             QColor(128,128,128),//windowText
             QColor(53,53,53),//button
@@ -276,14 +276,14 @@ void Settings::initLogLevel(int level)
     QLoggingCategory::setFilterRules(rules);
 }
 
-Settings::Theme Settings::theme() const
+Qt::ColorScheme Settings::theme() const
 {
     return mTheme;
 }
 
-void Settings::setTheme(Theme theme)
+void Settings::setTheme(Qt::ColorScheme theme)
 {
-    setValueInGroup("Style", "Theme", theme);
+    setValueInGroup("Style", "Theme", (int)theme);
     initTheme();
 }
 

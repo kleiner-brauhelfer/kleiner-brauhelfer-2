@@ -53,10 +53,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     qApp->installEventFilter(this);
 
-    Settings::Theme theme = gSettings->theme();
-    ui->actionThemeHell->setEnabled(theme != Settings::Theme::Bright);
-    ui->actionThemeDunkel->setEnabled(theme != Settings::Theme::Dark);
-    if (theme == Settings::Theme::Dark)
+    Qt::ColorScheme theme = gSettings->theme();
+    ui->actionThemeHell->setEnabled(theme != Qt::ColorScheme::Light);
+    ui->actionThemeDunkel->setEnabled(theme != Qt::ColorScheme::Dark);
+    if (theme == Qt::ColorScheme::Dark)
     {
         ui->tabMain->setTabIcon(0, IconThemed(QStringLiteral("tabsudauswahl"), false));
         ui->tabMain->setTabIcon(1, IconThemed(QStringLiteral("tabrezept"), false));
@@ -358,7 +358,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, IconThemed(QStringLiteral("tabgaerverlauf"), gSettings->theme() == Settings::Theme::Bright), tr("Gärverlauf"));
+                ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, IconThemed(QStringLiteral("tabgaerverlauf"), gSettings->theme() == Qt::ColorScheme::Light), tr("Gärverlauf"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -371,7 +371,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleAusdruck))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed(QStringLiteral("tabzusammenfassung"), gSettings->theme() == Settings::Theme::Bright), tr("Ausdruck"));
+                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed(QStringLiteral("tabzusammenfassung"), gSettings->theme() == Qt::ColorScheme::Light), tr("Ausdruck"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -384,7 +384,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleEtikette))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed(QStringLiteral("tabetikette"), gSettings->theme() == Settings::Theme::Bright), tr("Etikett"));
+                ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed(QStringLiteral("tabetikette"), gSettings->theme() == Qt::ColorScheme::Light), tr("Etikett"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -397,7 +397,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabBewertung, IconThemed(QStringLiteral("tabbewertung"), gSettings->theme() == Settings::Theme::Bright), tr("Bewertung"));
+                ui->tabMain->insertTab(nextIndex, ui->tabBewertung, IconThemed(QStringLiteral("tabbewertung"), gSettings->theme() == Qt::ColorScheme::Light), tr("Bewertung"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -712,13 +712,13 @@ void MainWindow::on_actionAnsichtWiederherstellen_triggered()
 
 void MainWindow::on_actionThemeHell_triggered()
 {
-    gSettings->setTheme(Settings::Theme::Bright);
+    gSettings->setTheme(Qt::ColorScheme::Light);
     restart();
 }
 
 void MainWindow::on_actionThemeDunkel_triggered()
 {
-    gSettings->setTheme(Settings::Theme::Dark);
+    gSettings->setTheme(Qt::ColorScheme::Dark);
     restart();
 }
 

@@ -35,6 +35,7 @@ public slots:
     DlgAusruestung* showDialogAusruestung();
 
 private slots:
+    void focusChanged(QWidget *old, QWidget *now);
     void databaseModified();
     void updateTabs(Settings::Modules modules);
     void updateValues();
@@ -99,6 +100,7 @@ private:
 private:
     Ui::MainWindow *ui;
     QByteArray mDefaultState;
+    QByteArray mDefaultSplitterHelpState;
 };
 
 #endif // MAINWINDOW_H

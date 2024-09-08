@@ -22,7 +22,6 @@ public:
     void checkEnabled();
 
 private slots:
-    void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
     void sudDataChanged(const QModelIndex& index);
     void updateValues();
@@ -101,7 +100,6 @@ private:
     Ui::TabRezept *ui;
     QGraphicsItem *mGlasSvg;
     QByteArray mDefaultSplitterState;
-    QByteArray mDefaultSplitterHelpState;
     QByteArray mDefaultSplitterMaischenState;
     QByteArray mDefaultSplitterKochenState;
     QByteArray mDefaultSplitterGaerungState;

@@ -48,11 +48,6 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
     ui->lblDurchschnittWarnung->setPalette(gSettings->paletteErrorLabel);
 
-    QPalette palette = ui->tbHelp->palette();
-    palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
-    palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
-    ui->tbHelp->setPalette(palette);
-
     ui->wdgBemerkung->setPlaceholderText(tr("Bemerkung Braudaten"));
 
     gSettings->beginGroup("TabBraudaten");
@@ -61,13 +56,12 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
-    ui->splitterCharts->setSizes({300, 300, 100, 50});
+    ui->splitterCharts->setSizes({300, 300, 100});
     mDefaultSplitterChartsState = ui->splitterCharts->saveState();
     ui->splitterCharts->restoreState(gSettings->value("splitterChartsState").toByteArray());
 
     gSettings->endGroup();
 
-    connect(qApp, &QApplication::focusChanged, this, &TabBraudaten::focusChanged);
     connect(bh, &Brauhelfer::modified, this, &TabBraudaten::updateValues);
     connect(bh, &Brauhelfer::discarded, this, &TabBraudaten::sudLoaded);
     connect(bh->sud(), &SudObject::loadedChanged, this, &TabBraudaten::sudLoaded);
@@ -142,13 +136,6 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
         checkEnabled();
         updateValues();
     }
-}
-
-void TabBraudaten::focusChanged(QWidget *old, QWidget *now)
-{
-    Q_UNUSED(old)
-    if (now && isAncestorOf(now) && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
-        ui->tbHelp->setHtml(now->toolTip());
 }
 
 void TabBraudaten::sudLoaded()

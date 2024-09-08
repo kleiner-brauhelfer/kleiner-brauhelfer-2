@@ -21,7 +21,6 @@ public:
     void checkEnabled();
 
 private slots:
-    void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
     void updateValues();
     void sudDataChanged(const QModelIndex& index);

@@ -119,10 +119,20 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->actionSchriftart->setChecked(gSettings->useSystemFont());
 
+    QPalette palette = ui->tbHelp->palette();
+    palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
+    palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
+    ui->tbHelp->setPalette(palette);
+
     gSettings->beginGroup("MainWindow");
     restoreGeometry(gSettings->value("geometry").toByteArray());
     mDefaultState = saveState();
     restoreState(gSettings->value("state").toByteArray());
+    ui->splitterHelp->setSizes({900, 100});
+    ui->splitterHelp->setStretchFactor(0, 1);
+    ui->splitterHelp->setStretchFactor(1, 0);
+    mDefaultSplitterHelpState = ui->splitterHelp->saveState();
+    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
     gSettings->endGroup();
 
     gSettings->beginGroup("General");
@@ -134,13 +144,7 @@ MainWindow::MainWindow(QWidget *parent) :
     gSettings->endGroup();
     ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
 
-    connect(qApp, &QApplication::focusChanged, this, [](QWidget *old, QWidget *now){
-        if (!old || !now)
-            return;
-        if (strcmp(old->metaObject()->className(),"QtPrivate::QCalendarView") == 0)
-            return;
-        WidgetDecorator::clearValueChanged();
-    });
+    connect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
 
     connect(gSettings, &Settings::modulesChanged, this, &MainWindow::modulesChanged);
 
@@ -170,6 +174,7 @@ MainWindow::~MainWindow()
 {
     closeDialogs();
     saveSettings();
+    disconnect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
     delete ui;
 }
 
@@ -213,6 +218,14 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     if (event->type() == QEvent::ToolTip && !ui->actionTooltips->isChecked() )
         return true;
     return QMainWindow::eventFilter(obj, event);
+}
+
+void MainWindow::focusChanged(QWidget *old, QWidget *now)
+{
+    if (old && now && strcmp(old->metaObject()->className(),"QtPrivate::QCalendarView") != 0)
+        WidgetDecorator::clearValueChanged();
+    if (now && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
+        ui->tbHelp->setHtml(now->toolTip());
 }
 
 void MainWindow::restart(int retCode)
@@ -289,6 +302,7 @@ void MainWindow::saveSettings()
     gSettings->beginGroup("MainWindow");
     gSettings->setValue("geometry", saveGeometry());
     gSettings->setValue("state", saveState());
+    gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
     gSettings->endGroup();
     ui->tabSudAuswahl->saveSettings();
     ui->tabRezept->saveSettings();
@@ -304,6 +318,7 @@ void MainWindow::restoreView()
 {
     closeDialogs();
     restoreState(mDefaultState);
+    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     ui->tabSudAuswahl->restoreView();
     ui->tabRezept->restoreView();
     ui->tabBraudaten->restoreView();

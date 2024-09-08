@@ -27,7 +27,6 @@ public:
 
 private slots:
     void modulesChanged(Settings::Modules modules);
-    void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
     void anlage_selectionChanged();
     void on_btnNeueAnlage_clicked();

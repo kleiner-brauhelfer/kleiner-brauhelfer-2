@@ -38,11 +38,6 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     ui->lblNebenkostenEinheit->setText(QLocale().currencySymbol());
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
 
-    QPalette palette = ui->tbHelp->palette();
-    palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
-    palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
-    ui->tbHelp->setPalette(palette);
-
     ui->wdgBemerkungAbfuellen->setPlaceholderText(tr("Bemerkung Abfüllen"));
     ui->wdgBemerkungGaerung->setPlaceholderText(tr("Bemerkung Gärung & Reifung"));
 
@@ -52,7 +47,7 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
-    ui->splitterCharts->setSizes({300, 300, 100, 50});
+    ui->splitterCharts->setSizes({300, 300, 100});
     mDefaultSplitterChartsState = ui->splitterCharts->saveState();
     ui->splitterCharts->restoreState(gSettings->value("splitterChartsState").toByteArray());
 
@@ -61,7 +56,6 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
 
     gSettings->endGroup();
 
-    connect(qApp, &QApplication::focusChanged, this, &TabAbfuellen::focusChanged);
     connect(bh, &Brauhelfer::modified, this, &TabAbfuellen::updateValues);
     connect(bh, &Brauhelfer::discarded, this, &TabAbfuellen::sudLoaded);
     connect(bh->sud(), &SudObject::loadedChanged, this, &TabAbfuellen::sudLoaded);
@@ -130,13 +124,6 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
         checkEnabled();
         updateValues();
     }
-}
-
-void TabAbfuellen::focusChanged(QWidget *old, QWidget *now)
-{
-    Q_UNUSED(old)
-    if (now && isAncestorOf(now) && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
-        ui->tbHelp->setHtml(now->toolTip());
 }
 
 void TabAbfuellen::sudLoaded()

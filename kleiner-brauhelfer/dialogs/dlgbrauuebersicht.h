@@ -25,21 +25,20 @@ public:
 
 private slots:
     void modulesChanged(Settings::Modules modules);
-    void updateDiagram();
+    void onLayoutChanged();
     void modelDataChanged(const QModelIndex& index);
     void table_selectionChanged(const QItemSelection &selected);
     void diagram_selectionChanged(int index);
+    void on_tbFilter_textChanged(const QString &pattern);
     void on_cbAuswahlL1_currentIndexChanged(int);
     void on_cbAuswahlL2_currentIndexChanged(int);
     void on_cbAuswahlL3_currentIndexChanged(int);
-    void on_tbDatumVon_dateChanged(const QDate &date);
-    void on_tbDatumBis_dateChanged(const QDate &date);
-    void on_cbDatumAlle_stateChanged(int state);
 
 private:
     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     void build();
-    void setFilterDate();
+    void updateDiagram();
+    void updateFilterLabel();
 
 private:
     struct AuswahlType

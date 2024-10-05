@@ -12,9 +12,19 @@ class FilterButtonSud : public QToolButton
     Q_OBJECT
 
 public:
+    enum Item {
+        Status = 1,
+        Merkliste = 2,
+        Kategorie = 4,
+        Braudatum = 8,
+        Alle = 255
+    };
+    Q_DECLARE_FLAGS(Items, Item)
+
+public:
     FilterButtonSud(QWidget *parent = nullptr);
     ProxyModelSud* model() const;
-    void setModel(ProxyModelSud* model);
+    void setModel(ProxyModelSud* model, Items items = Item::Alle);
 
 private slots:
     void setStatusAlle(bool value);

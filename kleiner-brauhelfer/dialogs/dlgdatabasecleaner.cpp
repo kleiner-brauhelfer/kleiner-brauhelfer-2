@@ -194,6 +194,11 @@ DlgDatabaseCleaner::~DlgDatabaseCleaner()
     delete ui;
 }
 
+void DlgDatabaseCleaner::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 void DlgDatabaseCleaner::next()
 {
     if (mItTestFncs == mTestFncs.end())

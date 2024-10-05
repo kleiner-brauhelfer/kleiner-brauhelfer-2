@@ -19,6 +19,7 @@ class DlgCheckUpdate : public DlgAbstract
 public:
     explicit DlgCheckUpdate(const QString &url, const QDate& since, QWidget *parent = nullptr);
     ~DlgCheckUpdate();
+    static void restoreView();
     void checkForUpdate();
     bool hasUpdate() const;
     bool ignoreUpdate() const;

@@ -1,6 +1,7 @@
 #include "dlgdatenbank.h"
 #include "ui_dlgdatenbank.h"
 #include <QFileDialog>
+#include "dialogs/dlgdatabasecleaner.h"
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -212,4 +213,9 @@ void DlgDatenbank::tableView_selectionChanged()
             bh->sud()->unload();
         }
     }
+}
+
+void DlgDatenbank::on_btnCleanDatabase_clicked()
+{
+    DlgAbstract::showDialog<DlgDatabaseCleaner>(this);
 }

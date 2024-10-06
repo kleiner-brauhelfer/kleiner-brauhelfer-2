@@ -13,6 +13,8 @@
 extern Settings* gSettings;
 extern Brauhelfer* bh;
 
+DlgDatabaseCleaner* DlgDatabaseCleaner::Dialog = nullptr;
+
 class NullFieldsProxyModel : public ProxyModel
 {
 public:
@@ -196,7 +198,7 @@ DlgDatabaseCleaner::~DlgDatabaseCleaner()
 
 void DlgDatabaseCleaner::restoreView()
 {
-    DlgAbstract::restoreView(staticMetaObject.className());
+    DlgAbstract::restoreView(staticMetaObject.className(), Dialog);
 }
 
 void DlgDatabaseCleaner::next()

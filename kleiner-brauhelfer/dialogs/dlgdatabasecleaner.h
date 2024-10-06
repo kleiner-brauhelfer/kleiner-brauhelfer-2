@@ -14,6 +14,9 @@ class DlgDatabaseCleaner : public DlgAbstract
     Q_OBJECT
 
 public:
+    static DlgDatabaseCleaner *Dialog;
+
+public:
     explicit DlgDatabaseCleaner(QWidget* parent = nullptr);
     ~DlgDatabaseCleaner();
     static void restoreView();

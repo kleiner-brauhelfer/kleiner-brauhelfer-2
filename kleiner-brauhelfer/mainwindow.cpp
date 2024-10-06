@@ -16,7 +16,6 @@
 #include "dialogs/dlgausruestung.h"
 #include "dialogs/dlgbrauuebersicht.h"
 #include "dialogs/dlgcheckupdate.h"
-#include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgdatenbank.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgtableview.h"
@@ -615,12 +614,6 @@ void MainWindow::on_actionDrucken_triggered()
     TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
     if (tab)
         tab->toPdf();
-}
-
-void MainWindow::on_actionBereinigen_triggered()
-{
-    DlgDatabaseCleaner dlg(this);
-    dlg.exec();
 }
 
 void MainWindow::on_actionBeenden_triggered()

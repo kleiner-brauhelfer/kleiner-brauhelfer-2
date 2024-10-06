@@ -225,7 +225,6 @@
    </attribute>
    <addaction name="actionUeber"/>
    <addaction name="actionHilfe"/>
-   <addaction name="actionBereinigen"/>
   </widget>
   <action name="actionSpeichern">
    <property name="icon">
@@ -314,11 +313,6 @@
   <action name="actionHefeZugabeZuruecksetzen">
    <property name="text">
     <string>&quot;Hefe Zugabe&quot; zurücksetzen</string>
-   </property>
-  </action>
-  <action name="actionBereinigen">
-   <property name="text">
-    <string>Bereinigen</string>
    </property>
   </action>
   <action name="actionEingabefelderEntsperren">

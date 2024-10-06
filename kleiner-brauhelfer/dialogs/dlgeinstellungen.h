@@ -16,6 +16,7 @@ public:
 
     explicit DlgEinstellungen(QWidget *parent = nullptr);
     ~DlgEinstellungen();
+    static void restoreView();
 
 signals:
     void restoreViewTriggered();

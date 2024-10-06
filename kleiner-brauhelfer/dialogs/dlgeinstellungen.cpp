@@ -25,6 +25,11 @@ DlgEinstellungen::~DlgEinstellungen()
     delete ui;
 }
 
+void DlgEinstellungen::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className(), Dialog);
+}
+
 void DlgEinstellungen::updateValues()
 {
     ui->tbDatabase->setText(gSettings->databasePath());

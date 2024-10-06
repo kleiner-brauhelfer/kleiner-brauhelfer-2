@@ -117,7 +117,7 @@ void DlgBrauUebersicht::loadSettings()
 
 void DlgBrauUebersicht::restoreView()
 {
-    DlgAbstract::restoreView(staticMetaObject.className());
+    DlgAbstract::restoreView(staticMetaObject.className(), Dialog);
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->remove("tableState");
     gSettings->remove("splitterState");

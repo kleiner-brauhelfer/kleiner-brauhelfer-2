@@ -23,7 +23,7 @@ DlgConsole::~DlgConsole()
 
 void DlgConsole::restoreView()
 {
-    DlgAbstract::restoreView(staticMetaObject.className());
+    DlgAbstract::restoreView(staticMetaObject.className(), Dialog);
 }
 
 void DlgConsole::on_btnClear_clicked()

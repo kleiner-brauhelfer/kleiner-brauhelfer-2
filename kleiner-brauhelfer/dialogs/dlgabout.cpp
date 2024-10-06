@@ -3,6 +3,8 @@
 #include <QCoreApplication>
 #include "definitionen.h"
 
+DlgAbout* DlgAbout::Dialog = nullptr;
+
 DlgAbout::DlgAbout(QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgAbout)

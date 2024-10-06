@@ -173,7 +173,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    closeDialogs();
     saveSettings();
     disconnect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
     delete ui;
@@ -327,7 +326,6 @@ void MainWindow::saveSettings()
 
 void MainWindow::restoreView()
 {
-    closeDialogs();
     restoreState(mDefaultState);
     ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     ui->tabSudAuswahl->restoreView();
@@ -347,18 +345,7 @@ void MainWindow::restoreView()
     DlgTableView::restoreView();
     DlgConsole::restoreView();
     DlgHilfe::restoreView();
-}
-
-void MainWindow::closeDialogs()
-{
-    DlgAbstract::closeDialog<DlgModule>();
-    DlgAbstract::closeDialog<DlgConsole>();
-    DlgAbstract::closeDialog<DlgBrauUebersicht>();
-    DlgAbstract::closeDialog<DlgRohstoffe>();
-    DlgAbstract::closeDialog<DlgAusruestung>();
-    DlgAbstract::closeDialog<DlgDatenbank>();
-    DlgAbstract::closeDialog<DlgHilfe>();
-    DlgAbstract::closeDialog<DlgEinstellungen>();
+    DlgEinstellungen::restoreView();
 }
 
 void MainWindow::modulesChanged(Settings::Modules modules)
@@ -1062,14 +1049,13 @@ void MainWindow::on_actionModule_triggered()
 
 void MainWindow::on_actionHilfe_triggered()
 {
-    DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this);
+    DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this, ui->actionHilfe);
     dlg->setHomeUrl(QStringLiteral(URL_HILFE));
 }
 
 void MainWindow::on_actionUeber_triggered()
 {
-    DlgAbout dlg(this);
-    dlg.exec();
+    DlgAbstract::showDialog<DlgAbout>(this, ui->actionUeber);
 }
 
 void MainWindow::on_actionDatenbank_triggered()

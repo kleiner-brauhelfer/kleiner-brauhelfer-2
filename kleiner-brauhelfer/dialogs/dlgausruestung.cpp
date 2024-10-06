@@ -140,7 +140,7 @@ void DlgAusruestung::loadSettings()
 
 void DlgAusruestung::restoreView()
 {
-    DlgAbstract::restoreView(staticMetaObject.className());
+    DlgAbstract::restoreView(staticMetaObject.className(), Dialog);
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->remove("tableStateAnlagen");
     gSettings->remove("tableStateGeraete");

@@ -12,6 +12,9 @@ class DlgAbout : public DlgAbstract
     Q_OBJECT
 
 public:
+    static DlgAbout *Dialog;
+
+public:
     explicit DlgAbout(QWidget *parent = nullptr);
     ~DlgAbout();
 

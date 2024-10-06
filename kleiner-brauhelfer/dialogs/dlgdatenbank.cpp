@@ -84,7 +84,7 @@ void DlgDatenbank::loadSettings()
 
 void DlgDatenbank::restoreView()
 {
-    DlgAbstract::restoreView(staticMetaObject.className());
+    DlgAbstract::restoreView(staticMetaObject.className(), Dialog);
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->remove("splitterState");
     gSettings->endGroup();

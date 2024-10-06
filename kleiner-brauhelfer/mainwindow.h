@@ -83,7 +83,6 @@ private:
     void saveDatabase();
     void discardDatabase();
     void saveSettings();
-    void closeDialogs();
     void initLabels();
     void checkLoadedSud();
 

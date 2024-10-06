@@ -5,6 +5,8 @@
 #include <QFontDialog>
 #include <QStyleFactory>
 #include <QDesktopServices>
+#include <QMenu>
+#include <QToolButton>
 #include "brauhelfer.h"
 #include "commands/undostack.h"
 #include "biercalc.h"
@@ -23,6 +25,7 @@
 #include "dialogs/dlgrohstoffe.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 #include "dialogs/dlghilfe.h"
+#include "dialogs/dlgeinstellungen.h"
 #include "widgets/iconthemed.h"
 #include "widgets/widgetdecorator.h"
 
@@ -54,8 +57,10 @@ MainWindow::MainWindow(QWidget *parent) :
     qApp->installEventFilter(this);
 
     Qt::ColorScheme theme = gSettings->theme();
-    ui->actionThemeHell->setEnabled(theme != Qt::ColorScheme::Light);
-    ui->actionThemeDunkel->setEnabled(theme != Qt::ColorScheme::Dark);
+    QIcon::setThemeSearchPaths({":/images/icons"});
+    themeChanged(gSettings->theme());
+    connect(gSettings, &Settings::themeChanged, this, &MainWindow::themeChanged);
+
     if (theme == Qt::ColorScheme::Dark)
     {
         ui->tabMain->setTabIcon(0, IconThemed(QStringLiteral("tabsudauswahl"), false));
@@ -95,29 +100,27 @@ MainWindow::MainWindow(QWidget *parent) :
     gUndoStack->setEnabled(gSettings->valueInGroup("General", "UndoEnabled", true).toBool());
     if (gUndoStack->isEnabled())
     {
-        ui->menuBearbeiten->addAction(gUndoStack->createUndoAction(this, tr("Rückgängig")));
-        ui->menuBearbeiten->addAction(gUndoStack->createRedoAction(this, tr("Wiederherstellen")));
-    }
-    else
-    {
-        ui->menuBearbeiten->setEnabled(false);
+        ui->toolBarSave->addAction(gUndoStack->createRedoAction(this, tr("Redo")));
+        ui->toolBarSave->addAction(gUndoStack->createUndoAction(this, tr("Undo")));
+        ui->toolBarSave->addSeparator();
     }
 
-  #if 0
-    QString style = gSettings->style();
-    for(const QString &key : QStyleFactory::keys())
-    {
-        QAction *action = new QAction(key, this);
-        if (key == style)
-            action->setEnabled(false);
-        else
-            connect(action, &QAction::triggered, this, &MainWindow::changeStyle);
-        ui->menuStil->addAction(action);
-    }
-  #endif
-    ui->menuStil->menuAction()->setVisible(!ui->menuStil->isEmpty());
-
-    ui->actionSchriftart->setChecked(gSettings->useSystemFont());
+    QToolButton* toolButton = new QToolButton(this);
+    toolButton->setIcon(QIcon::fromTheme(QStringLiteral("sud_erweitert")));
+    toolButton->setText(tr("Sud"));
+    toolButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    toolButton->setPopupMode(QToolButton::InstantPopup);
+    QMenu* menu = new QMenu(this);
+    menu->addAction(ui->actionSudGebraut);
+    menu->addAction(ui->actionSudAbgefuellt);
+    menu->addAction(ui->actionSudVerbraucht);
+    menu->addSeparator();
+    menu->addAction(ui->actionHefeZugabeZuruecksetzen);
+    menu->addAction(ui->actionWeitereZutaten);
+    menu->addSeparator();
+    menu->addAction(ui->actionEingabefelderEntsperren);
+    toolButton->setMenu(menu);
+    ui->toolBarDialogs->addWidget(toolButton);
 
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
@@ -136,16 +139,13 @@ MainWindow::MainWindow(QWidget *parent) :
     gSettings->endGroup();
 
     gSettings->beginGroup("General");
-    ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
-    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
-    ui->actionTooltips->setChecked(gSettings->value("TooltipsEnabled", true).toBool());
-    ui->actionZahlenformat->setChecked(gSettings->value("UseLanguageLocale", false).toBool());
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
-    ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
 
     connect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
 
+    connect(gSettings, &Settings::languageChanged, this, [this](){restart(1001);});
+    connect(gSettings, &Settings::databasePathChanged, this, [this](){restart(1000);});
     connect(gSettings, &Settings::modulesChanged, this, &MainWindow::modulesChanged);
 
     connect(ui->tabSudAuswahl, &TabSudAuswahl::clicked, this, &MainWindow::loadSud);
@@ -158,8 +158,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionRohstoffe, &QAction::triggered, this, &MainWindow::showDialogRohstoffe);
     connect(ui->actionBrauUebersicht, &QAction::triggered, this, &MainWindow::showDialogBrauUebersicht);
     connect(ui->actionAusruestung, &QAction::triggered, this, &MainWindow::showDialogAusruestung);
+    connect(ui->actionSettings, &QAction::triggered, this, &MainWindow::showDialogEinstellungen);
 
-    if (ui->actionCheckUpdate->isChecked())
+    if (gSettings->valueInGroup("General", "CheckUpdate", true).toBool())
         checkForUpdate(false);
 
     if (gSettings->modulesFirstTime)
@@ -183,9 +184,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
     if (bh->isDirty())
     {
         int ret = QMessageBox::question(this, tr("Anwendung schließen?"),
-                                  tr("Sollen die Änderungen vor dem Schließen gespeichert werden?"),
-                                  QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
-                                  QMessageBox::Yes);
+                                        tr("Sollen die Änderungen vor dem Schließen gespeichert werden?"),
+                                        QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
+                                        QMessageBox::Yes);
         if (ret == QMessageBox::Yes)
         {
             saveDatabase();
@@ -199,12 +200,12 @@ void MainWindow::closeEvent(QCloseEvent *event)
     else
     {
         int ret = QMessageBox::Yes;
-        if (ui->actionBestaetigungBeenden->isChecked())
+        if (gSettings->valueInGroup("General", "BeendenAbfrage", true).toBool())
         {
             ret = QMessageBox::question(this, tr("Anwendung schließen?"),
-                                  tr("Soll die Anwendung geschlossen werden?"),
-                                  QMessageBox::Cancel | QMessageBox::Yes,
-                                  QMessageBox::Yes);
+                                        tr("Soll die Anwendung geschlossen werden?"),
+                                        QMessageBox::Cancel | QMessageBox::Yes,
+                                        QMessageBox::Yes);
         }
         if (ret == QMessageBox::Yes)
             event->accept();
@@ -215,7 +216,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    if (event->type() == QEvent::ToolTip && !ui->actionTooltips->isChecked() )
+    if (event->type() == QEvent::ToolTip && !gSettings->valueInGroup("General", "TooltipsEnabled", true).toBool())
         return true;
     return QMainWindow::eventFilter(obj, event);
 }
@@ -226,6 +227,16 @@ void MainWindow::focusChanged(QWidget *old, QWidget *now)
         WidgetDecorator::clearValueChanged();
     if (now && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
         ui->tbHelp->setHtml(now->toolTip());
+}
+
+void MainWindow::themeChanged(Qt::ColorScheme theme)
+{
+    QString themeName = theme == Qt::ColorScheme::Dark ? "dark" : "light";
+    QIcon::setThemeName(themeName);
+    //QFile file(QStringLiteral(":/data/Styles/style_%1.qss").arg(themeName));
+    //file.open(QFile::ReadOnly);
+    //setStyleSheet(file.readAll());
+    restart();
 }
 
 void MainWindow::restart(int retCode)
@@ -253,13 +264,13 @@ void MainWindow::saveDatabase()
         if (bh->save())
         {
             gUndoStack->clear();
+            QGuiApplication::restoreOverrideCursor();
         }
         else
         {
             QGuiApplication::restoreOverrideCursor();
             QMessageBox::critical(this, tr("Fehler beim Speichern"), bh->lastError());
         }
-        QGuiApplication::restoreOverrideCursor();
     }
     catch (const std::exception& ex)
     {
@@ -347,6 +358,7 @@ void MainWindow::closeDialogs()
     DlgAbstract::closeDialog<DlgAusruestung>();
     DlgAbstract::closeDialog<DlgDatenbank>();
     DlgAbstract::closeDialog<DlgHilfe>();
+    DlgAbstract::closeDialog<DlgEinstellungen>();
 }
 
 void MainWindow::modulesChanged(Settings::Modules modules)
@@ -450,7 +462,7 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabZusammenfassung), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
-    ui->menuSud->setEnabled(loaded);
+    //ui->menuSud->setEnabled(loaded);
     if (loaded)
     {
         Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
@@ -459,6 +471,14 @@ void MainWindow::updateValues()
         ui->actionSudVerbraucht->setEnabled(status >= Brauhelfer::SudStatus::Verbraucht);
         ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
         ui->actionWeitereZutaten->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
+    }
+    else
+    {
+        ui->actionSudGebraut->setEnabled(false);
+        ui->actionSudAbgefuellt->setEnabled(false);
+        ui->actionSudVerbraucht->setEnabled(false);
+        ui->actionHefeZugabeZuruecksetzen->setEnabled(false);
+        ui->actionWeitereZutaten->setEnabled(false);
     }
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
@@ -720,74 +740,6 @@ void MainWindow::on_actionEingabefelderEntsperren_changed()
     }
 }
 
-void MainWindow::on_actionAnsichtWiederherstellen_triggered()
-{
-    restoreView();
-}
-
-void MainWindow::on_actionThemeHell_triggered()
-{
-    gSettings->setTheme(Qt::ColorScheme::Light);
-    restart();
-}
-
-void MainWindow::on_actionThemeDunkel_triggered()
-{
-    gSettings->setTheme(Qt::ColorScheme::Dark);
-    restart();
-}
-
-void MainWindow::changeStyle()
-{
-    QAction *action = qobject_cast<QAction*>(sender());
-    if (action)
-    {
-        gSettings->setStyle(action->text());
-        restart();
-    }
-}
-
-void MainWindow::on_actionSchriftart_triggered(bool checked)
-{
-    if (checked)
-    {
-        gSettings->setUseSystemFont(true);
-        restart();
-    }
-    else
-    {
-        bool ok;
-        QFont font = QFontDialog::getFont(&ok, gSettings->font, this);
-        if (ok)
-        {
-            gSettings->setUseSystemFont(false);
-            gSettings->setFont(font);
-            restart();
-        }
-        else
-        {
-            ui->actionSchriftart->setChecked(true);
-        }
-    }
-}
-
-void MainWindow::on_actionOeffnen_triggered()
-{
-    QString databasePath = QFileDialog::getOpenFileName(this, tr("Datenbank auswählen"),
-                                                    gSettings->databasePath(),
-                                                    tr("Datenbank (*.sqlite);;Alle Dateien (*.*)"));
-    if (!databasePath.isEmpty())
-    {
-        gSettings->setDatabasePath(databasePath);
-        restart();
-    }
-}
-
-void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)
-{
-    gSettings->setValueInGroup("General", "BeendenAbfrage", checked);
-}
-
 void MainWindow::checkForUpdate(bool force)
 {
   #if QT_NETWORK_LIB
@@ -820,7 +772,6 @@ void MainWindow::checkMessageFinished()
             if (dlg->ignoreUpdate())
                 gSettings->setValue("CheckUpdateLastDate", QDate::currentDate());
             gSettings->setValue("CheckUpdate", dlg->doCheckUpdate());
-            ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
             gSettings->endGroup();
         }
         dlg->deleteLater();
@@ -1104,57 +1055,6 @@ void MainWindow::checkLoadedSud()
     }
 }
 
-void MainWindow::on_actionCheckUpdate_triggered(bool checked)
-{
-  #if QT_NETWORK_LIB
-    gSettings->setValueInGroup("General", "CheckUpdate", checked);
-    if (checked)
-        checkForUpdate(true);
-  #else
-    Q_UNUSED(checked)
-  #endif
-}
-
-void MainWindow::on_actionTooltips_triggered(bool checked)
-{
-    gSettings->setValueInGroup("General", "TooltipsEnabled", checked);
-}
-
-void MainWindow::on_actionAnimationen_triggered(bool checked)
-{
-    gSettings->setAnimationsEnabled(checked);
-}
-
-void MainWindow::on_actionDeutsch_triggered()
-{
-    gSettings->setLanguage(QStringLiteral("de"));
-    restart(1001);
-}
-
-void MainWindow::on_actionEnglisch_triggered()
-{
-    gSettings->setLanguage(QStringLiteral("en"));
-    restart(1001);
-}
-
-void MainWindow::on_actionSchwedisch_triggered()
-{
-    gSettings->setLanguage(QStringLiteral("sv"));
-    restart(1001);
-}
-
-void MainWindow::on_actionNiederlaendisch_triggered()
-{
-    gSettings->setLanguage(QStringLiteral("nl"));
-    restart(1001);
-}
-
-void MainWindow::on_actionZahlenformat_triggered(bool checked)
-{
-    gSettings->setValueInGroup("General", "UseLanguageLocale", checked);
-    restart(1001);
-}
-
 void MainWindow::on_actionModule_triggered()
 {
     DlgAbstract::showDialog<DlgModule>(this);
@@ -1170,11 +1070,6 @@ void MainWindow::on_actionUeber_triggered()
 {
     DlgAbout dlg(this);
     dlg.exec();
-}
-
-void MainWindow::on_actionLog_triggered()
-{
-    DlgAbstract::showDialog<DlgConsole>(this, ui->actionLog);
 }
 
 void MainWindow::on_actionDatenbank_triggered()
@@ -1195,4 +1090,12 @@ DlgBrauUebersicht* MainWindow::showDialogBrauUebersicht()
 DlgAusruestung* MainWindow::showDialogAusruestung()
 {
     return DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);
+}
+
+DlgEinstellungen* MainWindow::showDialogEinstellungen()
+{
+    DlgEinstellungen* dlg = DlgAbstract::showDialog<DlgEinstellungen>(this, ui->actionSettings);
+    connect(dlg, &DlgEinstellungen::restoreViewTriggered, this, &MainWindow::restoreView);
+    connect(dlg, &DlgEinstellungen::checkUpdateTriggered, this, &MainWindow::checkForUpdate);
+    return dlg;
 }

@@ -7,6 +7,7 @@
 class DlgRohstoffe;
 class DlgBrauUebersicht;
 class DlgAusruestung;
+class DlgEinstellungen;
 
 namespace Ui {
 class MainWindow;
@@ -33,18 +34,21 @@ public slots:
     DlgRohstoffe* showDialogRohstoffe();
     DlgBrauUebersicht* showDialogBrauUebersicht();
     DlgAusruestung* showDialogAusruestung();
+    DlgEinstellungen* showDialogEinstellungen();
 
 private slots:
     void focusChanged(QWidget *old, QWidget *now);
+    void themeChanged(Qt::ColorScheme theme);
     void databaseModified();
     void updateTabs(Settings::Modules modules);
     void updateValues();
     void sudLoaded();
     void sudDataChanged(const QModelIndex& index);
     void loadSud(int sudId);
-    void changeStyle();
     void checkMessageFinished();
     void modulesChanged(Settings::Modules modules);
+    void restoreView();
+    void checkForUpdate(bool force);
     void on_tabMain_currentChanged();
     void on_actionNeuen_Sud_anlegen_triggered();
     void on_actionSud_kopieren_triggered();
@@ -64,26 +68,14 @@ private slots:
     void on_actionHefeZugabeZuruecksetzen_triggered();
     void on_actionWeitereZutaten_triggered();
     void on_actionEingabefelderEntsperren_changed();
-    void on_actionAnsichtWiederherstellen_triggered();
-    void on_actionThemeHell_triggered();
-    void on_actionThemeDunkel_triggered();
-    void on_actionSchriftart_triggered(bool checked);
-    void on_actionOeffnen_triggered();
-    void on_actionLog_triggered();
-    void on_actionCheckUpdate_triggered(bool checked);
-    void on_actionBestaetigungBeenden_triggered(bool checked);
-    void on_actionTooltips_triggered(bool checked);
-    void on_actionAnimationen_triggered(bool checked);
-    void on_actionDeutsch_triggered();
-    void on_actionEnglisch_triggered();
-    void on_actionSchwedisch_triggered();
-    void on_actionNiederlaendisch_triggered();
-    void on_actionZahlenformat_triggered(bool checked);
+
     void on_actionModule_triggered();
     void on_actionHilfe_triggered();
     void on_actionUeber_triggered();
     void on_actionDatenbank_triggered();
     
+
+
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
@@ -91,9 +83,7 @@ private:
     void saveDatabase();
     void discardDatabase();
     void saveSettings();
-    void restoreView();
     void closeDialogs();
-    void checkForUpdate(bool force);
     void initLabels();
     void checkLoadedSud();
 

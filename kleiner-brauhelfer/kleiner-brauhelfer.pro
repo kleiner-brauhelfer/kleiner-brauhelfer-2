@@ -72,6 +72,7 @@ SOURCES += \
     dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgdatenbank.cpp \
+    dialogs/dlgeinstellungen.cpp \
     dialogs/dlghilfe.cpp \
     dialogs/dlgimportexport.cpp \
     dialogs/dlgmaischplanmalz.cpp \
@@ -108,6 +109,7 @@ SOURCES += \
     model/restextraktdelegate.cpp \
     model/spinboxdelegate.cpp \
     model/textdelegate.cpp \
+    widgets/checkbox.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
     widgets/datetimeedit.cpp \
@@ -115,12 +117,16 @@ SOURCES += \
     widgets/doublespinboxsud.cpp \
     widgets/filterbuttonsud.cpp \
     widgets/iconthemed.cpp \
+    widgets/lineedit.cpp \
     widgets/pushbutton.cpp \
+    widgets/radiobutton.cpp \
     widgets/spinbox.cpp \
     widgets/spinboxsud.cpp \
     widgets/svgview.cpp \
     widgets/tableview.cpp \
     widgets/timeedit.cpp \
+    widgets/toolbutton.cpp \
+    widgets/treeview.cpp \
     widgets/wdgabstractproxy.cpp \
     widgets/wdganhang.cpp \
     widgets/wdgbemerkung.cpp \
@@ -171,6 +177,7 @@ HEADERS += \
     dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgdatenbank.h \
+    dialogs/dlgeinstellungen.h \
     dialogs/dlghilfe.h \
     dialogs/dlgimportexport.h \
     dialogs/dlgmaischplanmalz.h \
@@ -207,6 +214,7 @@ HEADERS += \
     model/restextraktdelegate.h \
     model/spinboxdelegate.h \
     model/textdelegate.h \
+    widgets/checkbox.h \
     widgets/combobox.h \
     widgets/dateedit.h \
     widgets/datetimeedit.h \
@@ -214,12 +222,16 @@ HEADERS += \
     widgets/doublespinboxsud.h \
     widgets/filterbuttonsud.h \
     widgets/iconthemed.h \
+    widgets/lineedit.h \
     widgets/pushbutton.h \
+    widgets/radiobutton.h \
     widgets/spinbox.h \
     widgets/spinboxsud.h \
     widgets/svgview.h \
     widgets/tableview.h \
     widgets/timeedit.h \
+    widgets/toolbutton.h \
+    widgets/treeview.h \
     widgets/wdgabstractproxy.h \
     widgets/wdganhang.h \
     widgets/wdgbemerkung.h \
@@ -252,6 +264,7 @@ FORMS += \
     dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgdatenbank.ui \
+    dialogs/dlgeinstellungen.ui \
     dialogs/dlghilfe.ui \
     dialogs/dlgimportexport.ui \
     dialogs/dlgmaischplanmalz.ui \

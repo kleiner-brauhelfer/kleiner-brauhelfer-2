@@ -41,7 +41,7 @@
          <x>0</x>
          <y>0</y>
          <width>800</width>
-         <height>458</height>
+         <height>480</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -201,8 +201,7 @@
    <addaction name="actionRohstoffe"/>
    <addaction name="actionAusruestung"/>
    <addaction name="actionBrauUebersicht"/>
-   <addaction name="actionSettings"/>
-   <addaction name="actionDatenbank"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QToolBar" name="toolBarHelp">
    <property name="windowTitle">
@@ -225,6 +224,10 @@
    </attribute>
    <addaction name="actionUeber"/>
    <addaction name="actionHilfe"/>
+   <addaction name="separator"/>
+   <addaction name="actionDatenbank"/>
+   <addaction name="actionSettings"/>
+   <addaction name="separator"/>
   </widget>
   <action name="actionSpeichern">
    <property name="icon">
@@ -232,6 +235,9 @@
    </property>
    <property name="text">
     <string>Speichern</string>
+   </property>
+   <property name="toolTip">
+    <string>Änderungen speichern</string>
    </property>
    <property name="whatsThis">
     <string notr="true">save</string>
@@ -270,44 +276,31 @@
   </action>
   <action name="actionSudGebraut">
    <property name="text">
-    <string>&quot;Sud gebraut&quot; zurücksetzen</string>
+    <string>Status &quot;gebraut&quot; zurücksetzen</string>
+   </property>
+   <property name="toolTip">
+    <string>Status &quot;gebraut&quot; zurücksetzen</string>
    </property>
   </action>
   <action name="actionSudAbgefuellt">
    <property name="text">
-    <string>&quot;Sud abgefüllt&quot; zurücksetzen</string>
+    <string>Status &quot;abgefüllt&quot; zurücksetzen</string>
+   </property>
+   <property name="toolTip">
+    <string>Status &quot;abgefüllt&quot; zurücksetzen</string>
    </property>
   </action>
   <action name="actionSudVerbraucht">
    <property name="text">
-    <string>&quot;Sud verbraucht&quot; zurücksetzen</string>
+    <string>Status &quot;ausgetrunken&quot; zurücksetzen</string>
+   </property>
+   <property name="toolTip">
+    <string>Status &quot;ausgetrunken&quot; zurücksetzen</string>
    </property>
   </action>
   <action name="actionWeitereZutaten">
    <property name="text">
     <string>&quot;Zusätze Zugabe&quot; zurücksetzen</string>
-   </property>
-  </action>
-  <action name="actionBeenden">
-   <property name="text">
-    <string>Beenden</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Q</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::MenuRole::QuitRole</enum>
-   </property>
-  </action>
-  <action name="actionOeffnen">
-   <property name="text">
-    <string>Datenbank auswählen</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+O</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::MenuRole::PreferencesRole</enum>
    </property>
   </action>
   <action name="actionHefeZugabeZuruecksetzen">
@@ -458,9 +451,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normalon>:/images/light/actionrohstoffe.svg</normalon>
-    </iconset>
+    <iconset theme="lager"/>
    </property>
    <property name="text">
     <string>Rohstoffe</string>
@@ -480,8 +471,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/actionbrauuebersicht.svg</normaloff>:/images/light/actionbrauuebersicht.svg</iconset>
+    <iconset theme="brauuebersicht"/>
    </property>
    <property name="text">
     <string>Brauübersicht</string>
@@ -501,9 +491,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normalon>:/images/light/actionausruestung.svg</normalon>
-    </iconset>
+    <iconset theme="ausruestung"/>
    </property>
    <property name="text">
     <string>Ausrüstung</string>
@@ -523,8 +511,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/datenbank.svg</normaloff>:/images/light/datenbank.svg</iconset>
+    <iconset theme="database"/>
    </property>
    <property name="text">
     <string>Datenbank</string>
@@ -533,6 +520,9 @@
   <action name="actionSettings">
    <property name="checkable">
     <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="settings"/>
    </property>
    <property name="text">
     <string>Einstellungen</string>

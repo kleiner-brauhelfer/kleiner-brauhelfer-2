@@ -31,8 +31,8 @@
         <layout class="QHBoxLayout" name="horizontalLayoutFilter">
          <item>
           <widget class="FilterButtonSud" name="btnFilter">
-           <property name="text">
-            <string>Filter</string>
+           <property name="icon">
+            <iconset theme="filter"/>
            </property>
           </widget>
          </item>

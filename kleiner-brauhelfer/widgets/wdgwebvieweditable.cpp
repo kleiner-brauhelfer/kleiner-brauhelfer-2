@@ -54,6 +54,13 @@ WdgWebViewEditable::~WdgWebViewEditable()
     gSettings->setValueInGroup("General", "WebViewZoomFactor", gZoomFactor);
 }
 
+void WdgWebViewEditable::changeEvent(QEvent * event)
+{
+    if (event->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+    QWidget::changeEvent(event);
+}
+
 void WdgWebViewEditable::clear()
 {
     ui->webview->setHtml(QStringLiteral(""));

@@ -2,6 +2,7 @@
 #define TABABFUELLEN_H
 
 #include "tababstract.h"
+#include "ui_tababfuellen.h"
 #include <QTimer>
 
 namespace Ui {
@@ -11,6 +12,7 @@ class TabAbfuellen;
 class TabAbfuellen : public TabAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabAbfuellen(QWidget *parent = nullptr);

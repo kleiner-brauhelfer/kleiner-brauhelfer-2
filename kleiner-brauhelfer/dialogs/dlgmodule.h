@@ -2,6 +2,7 @@
 #define DLGMODULE_H
 
 #include "dlgabstract.h"
+#include "ui_dlgmodule.h"
 
 namespace Ui {
 class DlgModule;
@@ -10,6 +11,7 @@ class DlgModule;
 class DlgModule : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     static DlgModule *Dialog;

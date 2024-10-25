@@ -49,6 +49,13 @@ WdgMalzGabe::~WdgMalzGabe()
     delete ui;
 }
 
+void WdgMalzGabe::changeEvent(QEvent * event)
+{
+    if (event->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+    WdgAbstractProxy::changeEvent(event);
+}
+
 bool WdgMalzGabe::isEnabled() const
 {
     return mEnabled;

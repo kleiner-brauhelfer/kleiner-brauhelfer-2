@@ -2,6 +2,7 @@
 #define TABSUDAUSWAHL_H
 
 #include "tababstract.h"
+#include "ui_tabsudauswahl.h"
 #include <QAbstractItemModel>
 #include <QAbstractItemDelegate>
 
@@ -12,6 +13,7 @@ class TabSudAuswahl;
 class TabSudAuswahl : public TabAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabSudAuswahl(QWidget *parent = nullptr);

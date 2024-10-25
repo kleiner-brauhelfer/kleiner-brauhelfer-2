@@ -2,6 +2,7 @@
 #define DLGHILFE_H
 
 #include "dlgabstract.h"
+#include "ui_dlghilfe.h"
 #include <QUrl>
 
 namespace Ui {
@@ -11,6 +12,7 @@ class DlgHilfe;
 class DlgHilfe : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     static DlgHilfe *Dialog;

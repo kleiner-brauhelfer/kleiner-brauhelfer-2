@@ -29,6 +29,7 @@ private slots:
     void on_btnLoeschen_clicked();
 
 private:
+    void changeEvent(QEvent * event) Q_DECL_OVERRIDE;
     void checkEnabled();
 
 private:

@@ -2,6 +2,7 @@
 #define DLGRICHTEXTEDITOR_H
 
 #include "dlgabstract.h"
+#include "ui_dlgrichtexteditor.h"
 #include <QTextCharFormat>
 #include "helper/htmlhighlighter.h"
 
@@ -12,6 +13,7 @@ class DlgRichTextEditor;
 class DlgRichTextEditor : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     explicit DlgRichTextEditor(QWidget *parent = nullptr);

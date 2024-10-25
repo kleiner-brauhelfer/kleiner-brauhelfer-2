@@ -2,6 +2,7 @@
 #define DLGPHMALZ_H
 
 #include "dlgabstract.h"
+#include "ui_dlgphmalz.h"
 
 namespace Ui {
 class DlgPhMalz;
@@ -10,6 +11,7 @@ class DlgPhMalz;
 class DlgPhMalz : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     explicit DlgPhMalz(double farbe, QWidget *parent = nullptr);

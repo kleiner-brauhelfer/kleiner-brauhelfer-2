@@ -2,6 +2,7 @@
 #define DLGCONSOLE_H
 
 #include "dlgabstract.h"
+#include "ui_dlgconsole.h"
 
 namespace Ui {
 class DlgConsole;
@@ -10,6 +11,7 @@ class DlgConsole;
 class DlgConsole : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     static DlgConsole *Dialog;

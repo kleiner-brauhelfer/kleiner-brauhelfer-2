@@ -2,6 +2,7 @@
 #define TABGAERVERLAUF_H
 
 #include "tababstract.h"
+#include "ui_tabgaerverlauf.h"
 #include <QItemSelection>
 
 namespace Ui {
@@ -11,6 +12,7 @@ class TabGaerverlauf;
 class TabGaerverlauf : public TabAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabGaerverlauf(QWidget *parent = nullptr);

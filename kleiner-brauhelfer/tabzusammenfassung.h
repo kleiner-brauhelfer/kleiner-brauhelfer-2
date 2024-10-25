@@ -2,6 +2,7 @@
 #define TABZUSAMMENFASSUNG_H
 
 #include "tababstract.h"
+#include "ui_tabzusammenfassung.h"
 
 namespace Ui {
 class TabZusammenfassung;
@@ -10,6 +11,7 @@ class TabZusammenfassung;
 class TabZusammenfassung : public TabAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabZusammenfassung(QWidget *parent = nullptr);

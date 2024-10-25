@@ -52,6 +52,13 @@ WdgWeitereZutatGabe::~WdgWeitereZutatGabe()
     delete ui;
 }
 
+void WdgWeitereZutatGabe::changeEvent(QEvent * event)
+{
+    if (event->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+    WdgAbstractProxy::changeEvent(event);
+}
+
 bool WdgWeitereZutatGabe::isEnabled() const
 {
     return mEnabled;

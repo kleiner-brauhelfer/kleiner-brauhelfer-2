@@ -29,6 +29,13 @@ WdgBewertung::~WdgBewertung()
     delete ui;
 }
 
+void WdgBewertung::changeEvent(QEvent * event)
+{
+    if (event->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+    QWidget::changeEvent(event);
+}
+
 bool WdgBewertung::eventFilter(QObject *obj, QEvent *e)
 {
     if(e->type() == QEvent::MouseButtonPress ||

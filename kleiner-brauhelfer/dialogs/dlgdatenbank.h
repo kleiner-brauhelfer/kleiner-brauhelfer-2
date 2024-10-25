@@ -2,6 +2,7 @@
 #define DLG_DATENBANK_H
 
 #include "dlgabstract.h"
+#include "ui_dlgdatenbank.h"
 
 namespace Ui {
 class DlgDatenbank;
@@ -10,6 +11,7 @@ class DlgDatenbank;
 class DlgDatenbank : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     static DlgDatenbank *Dialog;

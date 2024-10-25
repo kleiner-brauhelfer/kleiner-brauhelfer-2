@@ -2,6 +2,7 @@
 #define TABBRAUDATEN_H
 
 #include "tababstract.h"
+#include "ui_tabbraudaten.h"
 #include <QTimer>
 
 namespace Ui {
@@ -11,6 +12,7 @@ class TabBraudaten;
 class TabBraudaten : public TabAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabBraudaten(QWidget *parent = nullptr);

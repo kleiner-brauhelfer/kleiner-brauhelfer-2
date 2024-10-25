@@ -2,6 +2,7 @@
 #define DLGRESTEXTRAKT_H
 
 #include "dlgabstract.h"
+#include "ui_dlgrestextrakt.h"
 #include <QDateTime>
 
 namespace Ui {
@@ -11,6 +12,7 @@ class DlgRestextrakt;
 class DlgRestextrakt : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     explicit DlgRestextrakt(double value, double sw = 0.0, double temp = -1, const QDateTime& dt = QDateTime(), QWidget *parent = nullptr);

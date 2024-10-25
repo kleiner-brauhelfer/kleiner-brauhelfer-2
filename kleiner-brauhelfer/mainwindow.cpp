@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QTranslator>
+#include <QLibraryInfo>
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QFontDialog>
@@ -38,6 +40,7 @@ QStringList MainWindow::HefeTypname;
 QStringList MainWindow::HefeTypFlTrName;
 QStringList MainWindow::ZusatzTypname;
 QStringList MainWindow::Einheiten;
+QList<QPair<QString, int> > MainWindow::AnlageTypname;
 
 MainWindow* MainWindow::getInstance()
 {
@@ -45,6 +48,27 @@ MainWindow* MainWindow::getInstance()
         if (MainWindow* mainWin = qobject_cast<MainWindow*>(wdg))
             return mainWin;
     return nullptr;
+}
+
+static void installTranslator(QTranslator &translator, const QString &filename)
+{
+    QApplication* app = qApp;
+    QLocale locale(gSettings->language());
+    app->removeTranslator(&translator);
+    if (translator.load(locale, filename, QStringLiteral("_"), app->applicationDirPath() + "/translations"))
+        app->installTranslator(&translator);
+    else if (translator.load(locale, filename, QStringLiteral("_"), QStringLiteral(":/translations")))
+        app->installTranslator(&translator);
+    else if (translator.load(locale, filename, QStringLiteral("_"), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
+        app->installTranslator(&translator);
+}
+
+void MainWindow::installTranslators()
+{
+    static QTranslator translator;
+    static QTranslator translatorQt;
+    installTranslator(translator, QStringLiteral("kbh"));
+    installTranslator(translatorQt, QStringLiteral("qtbase"));
 }
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -143,7 +167,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
 
-    connect(gSettings, &Settings::languageChanged, this, [this](){restart(1001);});
+    connect(gSettings, &Settings::languageChanged, this, [](){installTranslators();});
     connect(gSettings, &Settings::databasePathChanged, this, [this](){restart(1000);});
     connect(gSettings, &Settings::modulesChanged, this, &MainWindow::modulesChanged);
 
@@ -168,6 +192,20 @@ MainWindow::MainWindow(QWidget *parent) :
     modulesChanged(Settings::ModuleAlle);
     sudLoaded();
     on_tabMain_currentChanged();
+}
+
+void MainWindow::changeEvent(QEvent* event)
+{
+    switch(event->type())
+    {
+    case QEvent::LanguageChange:
+        initLabels();
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+    QMainWindow::changeEvent(event);
 }
 
 MainWindow::~MainWindow()
@@ -768,6 +806,18 @@ void MainWindow::initLabels()
     HefeTypFlTrName = QStringList({"", tr("trocken"), tr("flüssig")});
     ZusatzTypname = QStringList({tr("Honig"), tr("Zucker"), tr("Gewürz"), tr("Frucht"), tr("Sonstiges"), tr("Kraut"), tr("Wasseraufbereitung"), tr("Klärmittel")});
     Einheiten = QStringList({"kg", "g", "mg", tr("Stk."), "L", "mL"});
+    AnlageTypname = QList<QPair<QString, int> >({
+        {tr("Standard"), static_cast<int>(Brauhelfer::AnlageTyp::Standard)},
+        {tr("Grainfather G30"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG30)},
+        {tr("Grainfather G70"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG70)},
+        {tr("Braumeister 10L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister10)},
+        {tr("Braumeister 20L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister20)},
+        {tr("Braumeister 50L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister50)},
+        {tr("Braumeister 200L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister200)},
+        {tr("Braumeister 500L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister500)},
+        {tr("Braumeister 1000L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister1000)},
+        {tr("Brauheld Pro 30L"), static_cast<int>(Brauhelfer::AnlageTyp::BrauheldPro30)}
+    });
 
     model = bh->modelSud();
     model->setHeaderData(ModelSud::ColID, Qt::Horizontal, tr("Sud ID"));
@@ -886,8 +936,13 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelNachgaerverlauf::ColCO2, Qt::Horizontal, tr("CO2") + "\n(g/L)");
     model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
 
+    model = bh->modelBewertungen();
+    model->setHeaderData(ModelBewertungen::ColDatum, Qt::Horizontal, tr("Datum"));
+    model->setHeaderData(ModelBewertungen::ColWoche, Qt::Horizontal, tr("Woche"));
+    model->setHeaderData(ModelBewertungen::ColSterne, Qt::Horizontal, tr("Bewertung"));
+
     model = bh->modelAusruestung();
-    model->setHeaderData(ModelAusruestung::ColName, Qt::Horizontal, tr("Anlage"));
+    model->setHeaderData(ModelAusruestung::ColName, Qt::Horizontal, tr("Bezeichnung"));
     model->setHeaderData(ModelAusruestung::ColTyp, Qt::Horizontal, tr("Typ"));
     model->setHeaderData(ModelAusruestung::ColVermoegen, Qt::Horizontal, tr("Vermögen") + "\n(L)");
     model->setHeaderData(ModelAusruestung::ColAnzahlSude, Qt::Horizontal, tr("Anzahl Sude"));

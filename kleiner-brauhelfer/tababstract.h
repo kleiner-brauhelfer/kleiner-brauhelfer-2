@@ -4,6 +4,15 @@
 #include <QWidget>
 #include "settings.h"
 
+#define MAKE_TRANSLATABLE_TAB \
+protected: \
+    void changeEvent(QEvent * event) Q_DECL_OVERRIDE \
+    { \
+        if (event->type() == QEvent::LanguageChange) \
+            ui->retranslateUi(this); \
+        TabAbstract::changeEvent(event); \
+    }
+
 class TabAbstract : public QWidget
 {
     Q_OBJECT

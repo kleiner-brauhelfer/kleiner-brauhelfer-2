@@ -4,6 +4,7 @@
 #if QT_NETWORK_LIB
 
 #include "dlgabstract.h"
+#include "ui_dlgcheckupdate.h"
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QUrl>
@@ -15,6 +16,7 @@ class DlgCheckUpdate;
 class DlgCheckUpdate : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     explicit DlgCheckUpdate(const QString &url, const QDate& since, QWidget *parent = nullptr);

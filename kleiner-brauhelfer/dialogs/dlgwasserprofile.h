@@ -2,6 +2,7 @@
 #define DLGWASSERPROFILE_H
 
 #include "dlgabstract.h"
+#include "ui_dlgwasserprofile.h"
 #include <QItemSelection>
 
 namespace Ui {
@@ -11,6 +12,7 @@ class DlgWasserprofile;
 class DlgWasserprofile : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     explicit DlgWasserprofile(QWidget *parent = nullptr);

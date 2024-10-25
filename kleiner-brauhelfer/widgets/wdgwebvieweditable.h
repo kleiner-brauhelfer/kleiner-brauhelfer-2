@@ -47,6 +47,7 @@ private slots:
     void on_btnPdf_clicked();
 
 private:
+    void changeEvent(QEvent * event) Q_DECL_OVERRIDE;
     bool checkSaveTemplate();
 
 public:

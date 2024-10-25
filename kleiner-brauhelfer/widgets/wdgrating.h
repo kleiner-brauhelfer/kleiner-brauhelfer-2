@@ -30,6 +30,7 @@ private slots:
     void on_btnStar5_clicked();
 
 private:
+    void changeEvent(QEvent * event) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *obj, QEvent *e) Q_DECL_OVERRIDE;
 
 private:

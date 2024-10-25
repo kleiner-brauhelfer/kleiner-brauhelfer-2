@@ -2,6 +2,7 @@
 #define DLGEINSTELLUNGEN_H
 
 #include "dlgabstract.h"
+#include "ui_dlgeinstellungen.h"
 
 namespace Ui {
 class DlgEinstellungen;
@@ -10,6 +11,7 @@ class DlgEinstellungen;
 class DlgEinstellungen : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     static DlgEinstellungen *Dialog;

@@ -2,6 +2,7 @@
 #define TABREZEPT_H
 
 #include "tababstract.h"
+#include "ui_tabrezept.h"
 #include <QGraphicsItem>
 #include "brauhelfer.h"
 
@@ -12,6 +13,7 @@ class TabRezept;
 class TabRezept : public TabAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabRezept(QWidget *parent = nullptr);

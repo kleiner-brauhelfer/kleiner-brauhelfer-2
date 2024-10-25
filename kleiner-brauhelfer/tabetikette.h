@@ -2,6 +2,7 @@
 #define TABETIKETTE_H
 
 #include "tababstract.h"
+#include "ui_tabetikette.h"
 #include "helper/htmlhighlighter.h"
 
 namespace Ui {
@@ -15,6 +16,7 @@ class QPrinter;
 class TabEtikette : public TabAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabEtikette(QWidget *parent = nullptr);

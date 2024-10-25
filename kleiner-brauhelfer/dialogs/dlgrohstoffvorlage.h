@@ -1,8 +1,8 @@
 #ifndef DLGROHSTOFFVORLAGE_H
 #define DLGROHSTOFFVORLAGE_H
 
-#include "ui_dlgrohstoffvorlage.h"
 #include "dlgabstract.h"
+#include "ui_dlgrohstoffvorlage.h"
 
 namespace Ui {
 class DlgRohstoffVorlage;
@@ -11,6 +11,7 @@ class DlgRohstoffVorlage;
 class DlgRohstoffVorlage : public DlgAbstract
 {
 	Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 	
 public:
     enum Art

@@ -18,17 +18,18 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    static MainWindow* getInstance();
+    static void installTranslators();
     static QStringList HopfenTypname;
     static QStringList HefeTypname;
     static QStringList HefeTypFlTrName;
     static QStringList ZusatzTypname;
     static QStringList Einheiten;
-
-    static MainWindow* getInstance();
+    static QList<QPair<QString, int> > AnlageTypname;
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow() Q_DECL_OVERRIDE;
+    ~MainWindow();
 
 public slots:
     DlgRohstoffe* showDialogRohstoffe();
@@ -67,16 +68,14 @@ private slots:
     void on_actionHefeZugabeZuruecksetzen_triggered();
     void on_actionWeitereZutaten_triggered();
     void on_actionEingabefelderEntsperren_changed();
-
     void on_actionModule_triggered();
     void on_actionHilfe_triggered();
     void on_actionUeber_triggered();
     void on_actionDatenbank_triggered();
     
-
-
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
+    void changeEvent(QEvent *event) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
     void restart(int retCode = 1000);
     void saveDatabase();

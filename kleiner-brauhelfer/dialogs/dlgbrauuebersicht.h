@@ -2,6 +2,7 @@
 #define DLG_BRAUUEBERSICHT_H
 
 #include "dlgabstract.h"
+#include "ui_dlgbrauuebersicht.h"
 #include <QAbstractItemModel>
 #include <QItemSelection>
 #include "settings.h"
@@ -13,6 +14,7 @@ class DlgBrauUebersicht;
 class DlgBrauUebersicht : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     static DlgBrauUebersicht *Dialog;

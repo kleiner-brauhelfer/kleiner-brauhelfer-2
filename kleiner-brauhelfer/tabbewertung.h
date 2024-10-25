@@ -2,6 +2,7 @@
 #define TABBEWERTUNG_H
 
 #include "tababstract.h"
+#include "ui_tabbewertung.h"
 
 namespace Ui {
 class TabBewertung;
@@ -10,6 +11,7 @@ class TabBewertung;
 class TabBewertung : public TabAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabBewertung(QWidget *parent = nullptr);

@@ -3,6 +3,7 @@
 
 #include "dlgabstract.h"
 #include "settings.h"
+#include "ui_dlgrohstoffe.h"
 
 namespace Ui {
 class DlgRohstoffe;
@@ -13,6 +14,7 @@ class QTableView;
 class DlgRohstoffe : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     static DlgRohstoffe *Dialog;

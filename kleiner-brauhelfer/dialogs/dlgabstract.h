@@ -4,6 +4,15 @@
 #include <QDialog>
 #include <QAction>
 
+#define MAKE_TRANSLATABLE_DLG \
+protected: \
+    void changeEvent(QEvent * event) Q_DECL_OVERRIDE \
+    { \
+        if (event->type() == QEvent::LanguageChange) \
+            ui->retranslateUi(this); \
+        DlgAbstract::changeEvent(event); \
+    }
+
 class DlgAbstract : public QDialog
 {
     Q_OBJECT

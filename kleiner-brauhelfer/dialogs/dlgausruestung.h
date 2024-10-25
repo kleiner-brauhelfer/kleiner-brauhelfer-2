@@ -2,6 +2,7 @@
 #define DLG_AUSRUESTUNG_H
 
 #include "dlgabstract.h"
+#include "ui_dlgausruestung.h"
 #include <QItemSelection>
 #include "settings.h"
 
@@ -12,6 +13,7 @@ class DlgAusruestung;
 class DlgAusruestung : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     static QList<QPair<QString, int> > Typname;

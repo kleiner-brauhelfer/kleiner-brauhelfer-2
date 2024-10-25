@@ -48,6 +48,13 @@ WdgHefeGabe::~WdgHefeGabe()
     delete ui;
 }
 
+void WdgHefeGabe::changeEvent(QEvent * event)
+{
+    if (event->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+    WdgAbstractProxy::changeEvent(event);
+}
+
 bool WdgHefeGabe::isEnabled() const
 {
     return mEnabled;

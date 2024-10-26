@@ -30,12 +30,7 @@ public:
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
-public slots:
-    DlgRohstoffe* showDialogRohstoffe();
-    DlgBrauUebersicht* showDialogBrauUebersicht();
-    DlgAusruestung* showDialogAusruestung();
-    DlgEinstellungen* showDialogEinstellungen();
+    QAction* getAction(const QString& name) const;
 
 private slots:
     void focusChanged(QWidget *old, QWidget *now);
@@ -45,41 +40,29 @@ private slots:
     void updateValues();
     void sudLoaded();
     void sudDataChanged(const QModelIndex& index);
+    void saveDatabase();
+    void discardDatabase();
     void loadSud(int sudId);
     void checkMessageFinished();
     void modulesChanged(Settings::Modules modules);
     void restoreView();
     void checkForUpdate(bool force);
     void on_tabMain_currentChanged();
-    void on_actionNeuen_Sud_anlegen_triggered();
-    void on_actionSud_kopieren_triggered();
-    void on_actionSud_teilen_triggered();
-    void on_actionSud_l_schen_triggered();
-    void on_actionRezept_importieren_triggered();
-    void on_actionRezept_exportieren_triggered();
-    void on_actionSpeichern_triggered();
-    void on_actionVerwerfen_triggered();
-    void on_actionBeenden_triggered();
     void on_actionSudGebraut_triggered();
     void on_actionSudAbgefuellt_triggered();
     void on_actionSudVerbraucht_triggered();
     void on_actionHefeZugabeZuruecksetzen_triggered();
     void on_actionWeitereZutaten_triggered();
     void on_actionEingabefelderEntsperren_changed();
-    void on_actionModule_triggered();
-    void on_actionHilfe_triggered();
-    void on_actionUeber_triggered();
-    void on_actionDatenbank_triggered();
-    
+
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
     void changeEvent(QEvent *event) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
     void restart(int retCode = 1000);
-    void saveDatabase();
-    void discardDatabase();
     void saveSettings();
-    void initLabels();
+    void setupLabels();
+    void setupActions();
     void checkLoadedSud();
 
 private:

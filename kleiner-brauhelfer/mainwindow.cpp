@@ -75,8 +75,10 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    initLabels();
+    setupLabels();
     ui->setupUi(this);
+    setupActions();
+
     qApp->installEventFilter(this);
 
     Qt::ColorScheme theme = gSettings->theme();
@@ -128,23 +130,6 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->toolBarSave->addSeparator();
     }
 
-    QToolButton* toolButton = new QToolButton(this);
-    toolButton->setIcon(QIcon::fromTheme(QStringLiteral("sud_erweitert")));
-    toolButton->setText(tr("Sud"));
-    toolButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    toolButton->setPopupMode(QToolButton::InstantPopup);
-    QMenu* menu = new QMenu(this);
-    menu->addAction(ui->actionSudGebraut);
-    menu->addAction(ui->actionSudAbgefuellt);
-    menu->addAction(ui->actionSudVerbraucht);
-    menu->addSeparator();
-    menu->addAction(ui->actionHefeZugabeZuruecksetzen);
-    menu->addAction(ui->actionWeitereZutaten);
-    menu->addSeparator();
-    menu->addAction(ui->actionEingabefelderEntsperren);
-    toolButton->setMenu(menu);
-    ui->toolBarDialogs->addWidget(toolButton);
-
     QPalette palette = ui->tbHelp->palette();
     palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
@@ -178,34 +163,18 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(bh->sud(), &SudObject::loadedChanged, this, &MainWindow::sudLoaded);
     connect(bh->sud(), &SudObject::dataChanged, this, &MainWindow::sudDataChanged);
 
-    connect(ui->actionRohstoffe, &QAction::triggered, this, &MainWindow::showDialogRohstoffe);
-    connect(ui->actionBrauUebersicht, &QAction::triggered, this, &MainWindow::showDialogBrauUebersicht);
-    connect(ui->actionAusruestung, &QAction::triggered, this, &MainWindow::showDialogAusruestung);
-    connect(ui->actionSettings, &QAction::triggered, this, &MainWindow::showDialogEinstellungen);
+
+
 
     if (gSettings->valueInGroup("General", "CheckUpdate", true).toBool())
         checkForUpdate(false);
 
     if (gSettings->modulesFirstTime)
-        on_actionModule_triggered();
+        DlgAbstract::showDialog<DlgModule>(this);
 
     modulesChanged(Settings::ModuleAlle);
     sudLoaded();
     on_tabMain_currentChanged();
-}
-
-void MainWindow::changeEvent(QEvent* event)
-{
-    switch(event->type())
-    {
-    case QEvent::LanguageChange:
-        initLabels();
-        ui->retranslateUi(this);
-        break;
-    default:
-        break;
-    }
-    QMainWindow::changeEvent(event);
 }
 
 MainWindow::~MainWindow()
@@ -213,6 +182,108 @@ MainWindow::~MainWindow()
     saveSettings();
     disconnect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
     delete ui;
+}
+
+void MainWindow::setupActions()
+{
+    //QMenu* menu;
+    //QToolButton* toolButton;
+
+    // toolbar save
+    connect(ui->actionSpeichern, &QAction::triggered, this, &MainWindow::saveDatabase);
+    connect(ui->actionVerwerfen, &QAction::triggered, this, &MainWindow::discardDatabase);
+
+    // toolbar dialogs
+    connect(ui->actionRohstoffe, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);});
+    connect(ui->actionBrauUebersicht, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);});
+    connect(ui->actionAusruestung, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);});
+
+    // toolbar help
+    connect(ui->actionSettings, &QAction::triggered, this, [this](){
+        DlgEinstellungen* dlg = DlgAbstract::showDialog<DlgEinstellungen>(this, ui->actionSettings);
+        connect(dlg, &DlgEinstellungen::restoreViewTriggered, this, &MainWindow::restoreView);
+        connect(dlg, &DlgEinstellungen::checkUpdateTriggered, this, &MainWindow::checkForUpdate);
+    });
+    connect(ui->actionDatenbank, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgDatenbank>(this, ui->actionDatenbank);});
+    connect(ui->actionHilfe, &QAction::triggered, this, [this](){
+        DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this, ui->actionHilfe);
+        dlg->setHomeUrl(QStringLiteral(URL_HILFE));
+    });
+    connect(ui->actionUeber, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgAbout>(this, ui->actionUeber);});
+
+    // toolbar sudauswahl
+    ui->tabSudAuswahl->setupActions(ui->toolBarSudauswahl);
+
+    //toolButton = new QToolButton(this);
+    //toolButton->setIcon(QIcon::fromTheme(QStringLiteral("sud_erweitert")));
+    //toolButton->setText(tr("Erweitert"));
+    //toolButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    //toolButton->setPopupMode(QToolButton::InstantPopup);
+    //menu = new QMenu(this);
+    //menu->addAction(ui->actionSudPin);
+    //menu->addAction(ui->actionSudUnpin);
+    //menu->addSeparator();
+    //menu->addAction(ui->actionSudSplit);
+    //menu->addAction(ui->actionSudExport);
+    //menu->addSeparator();
+    //menu->addAction(ui->actionDatabase);
+    //menu->addAction(ui->actionClean);
+    //toolButton->setMenu(menu);
+    //ui->toolBarSudauswahl->addWidget(toolButton);
+    //connect(ui->actionSudAdd, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudAnlegen);
+    //connect(ui->actionSudCopy, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudKopieren);
+    //connect(ui->actionSudImport, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::rezeptImportieren);
+    //connect(ui->actionSudDelete, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudLoeschen);
+    //connect(ui->actionSudLaden, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudLaden);
+    //connect(ui->actionSudAusdruck, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudAnlegen);
+    //connect(ui->actionSudEtikett, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudAnlegen);
+    //connect(ui->actionSudPin, &QAction::triggered, ui->tabSudauswahl, [this](){ui->tabSudauswahl->sudMerken(true);});
+    //connect(ui->actionSudUnpin, &QAction::triggered, ui->tabSudauswahl, [this](){ui->tabSudauswahl->sudMerken(false);});
+    //connect(ui->actionSudSplit, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudTeilen);
+    //connect(ui->actionSudExport, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::rezeptExportieren);
+    //connect(ui->actionDatabase, &QAction::triggered, this, &MainWindow::showDatabase);
+    //connect(ui->actionClean, &QAction::triggered, this, &MainWindow::showDatabaseClean);
+    //connect(ui->tabSudauswahl, &TabSudAuswahl::selectionChanged, this, &MainWindow::tabSudAuswahlSelectionChanged);
+
+    /*
+    toolButton = new QToolButton(this);
+    toolButton->setIcon(QIcon::fromTheme(QStringLiteral("sud_erweitert")));
+    toolButton->setText(tr("Sud"));
+    toolButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    toolButton->setPopupMode(QToolButton::InstantPopup);
+    menu = new QMenu(this);
+    menu->addAction(ui->actionSudGebraut);
+    menu->addAction(ui->actionSudAbgefuellt);
+    menu->addAction(ui->actionSudVerbraucht);
+    menu->addSeparator();
+    menu->addAction(ui->actionHefeZugabeZuruecksetzen);
+    menu->addAction(ui->actionWeitereZutaten);
+    menu->addSeparator();
+    menu->addAction(ui->actionEingabefelderEntsperren);
+    toolButton->setMenu(menu);
+    ui->toolBarDialogs->addWidget(toolButton);
+    */
+}
+
+QAction* MainWindow::getAction(const QString& name) const
+{
+    if (name == "actionAusruestung")
+        return ui->actionAusruestung;
+    return nullptr;
+}
+
+void MainWindow::changeEvent(QEvent* event)
+{
+    switch(event->type())
+    {
+    case QEvent::LanguageChange:
+        setupLabels();
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+    QMainWindow::changeEvent(event);
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -563,85 +634,11 @@ void MainWindow::on_tabMain_currentChanged()
     {
         tab->setTabActive(true);
     }
+    ui->toolBarSudauswahl->setVisible(ui->tabMain->currentWidget() == ui->tabSudAuswahl);
     setFocus();
 }
 
-void MainWindow::on_actionNeuen_Sud_anlegen_triggered()
-{
-    ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-    ui->tabSudAuswahl->sudAnlegen();
-}
 
-void MainWindow::on_actionSud_kopieren_triggered()
-{
-    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-    {
-        ui->tabSudAuswahl->sudKopieren();
-    }
-    else
-    {
-        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-        ui->tabSudAuswahl->sudKopieren(true);
-    }
-}
-
-void MainWindow::on_actionSud_teilen_triggered()
-{
-    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-    {
-        ui->tabSudAuswahl->sudTeilen();
-    }
-    else
-    {
-        ui->tabSudAuswahl->sudTeilen(true);
-    }
-}
-
-void MainWindow::on_actionSud_l_schen_triggered()
-{
-    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-    {
-        ui->tabSudAuswahl->sudLoeschen();
-    }
-    else
-    {
-        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-        ui->tabSudAuswahl->sudLoeschen(true);
-    }
-}
-
-void MainWindow::on_actionRezept_importieren_triggered()
-{
-    ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-    ui->tabSudAuswahl->rezeptImportieren();
-}
-
-void MainWindow::on_actionRezept_exportieren_triggered()
-{
-    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-    {
-        ui->tabSudAuswahl->rezeptExportieren();
-    }
-    else
-    {
-        ui->tabSudAuswahl->rezeptExportieren(true);
-    }
-}
-
-void MainWindow::on_actionSpeichern_triggered()
-{
-    saveDatabase();
-}
-
-void MainWindow::on_actionVerwerfen_triggered()
-{
-    discardDatabase();
-}
-
-void MainWindow::on_actionBeenden_triggered()
-{
-    close();
-}
 
 void MainWindow::on_actionSudGebraut_triggered()
 {
@@ -781,7 +778,7 @@ void MainWindow::checkMessageFinished()
   #endif
 }
 
-void MainWindow::initLabels()
+void MainWindow::setupLabels()
 {
     SqlTableModel *model;
 
@@ -1072,48 +1069,4 @@ void MainWindow::checkLoadedSud()
             }
         }
     }
-}
-
-void MainWindow::on_actionModule_triggered()
-{
-    DlgAbstract::showDialog<DlgModule>(this);
-}
-
-void MainWindow::on_actionHilfe_triggered()
-{
-    DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this, ui->actionHilfe);
-    dlg->setHomeUrl(QStringLiteral(URL_HILFE));
-}
-
-void MainWindow::on_actionUeber_triggered()
-{
-    DlgAbstract::showDialog<DlgAbout>(this, ui->actionUeber);
-}
-
-void MainWindow::on_actionDatenbank_triggered()
-{
-    DlgAbstract::showDialog<DlgDatenbank>(this, ui->actionDatenbank);
-}
-
-DlgRohstoffe* MainWindow::showDialogRohstoffe()
-{
-    return DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);
-}
-
-DlgBrauUebersicht* MainWindow::showDialogBrauUebersicht()
-{
-    return DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);
-}
-
-DlgAusruestung* MainWindow::showDialogAusruestung()
-{
-    return DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);
-}
-
-DlgEinstellungen* MainWindow::showDialogEinstellungen()
-{
-    DlgEinstellungen* dlg = DlgAbstract::showDialog<DlgEinstellungen>(this, ui->actionSettings);
-    connect(dlg, &DlgEinstellungen::restoreViewTriggered, this, &MainWindow::restoreView);
-    connect(dlg, &DlgEinstellungen::checkUpdateTriggered, this, &MainWindow::checkForUpdate);
-    return dlg;
 }

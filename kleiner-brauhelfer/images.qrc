@@ -18,6 +18,14 @@
         <file>images/icons/light/svg/redo.svg</file>
         <file>images/icons/light/svg/save.svg</file>
         <file>images/icons/light/svg/settings.svg</file>
+        <file>images/icons/light/svg/sud_add.svg</file>
+        <file>images/icons/light/svg/sud_copy.svg</file>
+        <file>images/icons/light/svg/sud_delete.svg</file>
+        <file>images/icons/light/svg/sud_export.svg</file>
+        <file>images/icons/light/svg/sud_import.svg</file>
+        <file>images/icons/light/svg/sud_load.svg</file>
+        <file>images/icons/light/svg/sud_pin.svg</file>
+        <file>images/icons/light/svg/sud_split.svg</file>
         <file>images/icons/light/svg/undo.svg</file>
         
         <file>images/icons/dark/index.theme</file>

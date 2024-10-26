@@ -51,8 +51,6 @@ private slots:
     void on_actionSudGebraut_triggered(bool checked);
     void on_actionSudAbgefuellt_triggered(bool checked);
     void on_actionSudAusgetrunken_triggered(bool checked);
-    void on_actionHefeZugabeZuruecksetzen_triggered();
-    void on_actionWeitereZutaten_triggered();
     void on_actionEingabefelderEntsperren_triggered(bool checked);
 
 private:

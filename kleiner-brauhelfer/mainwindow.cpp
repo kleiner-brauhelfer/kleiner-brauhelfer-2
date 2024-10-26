@@ -198,9 +198,6 @@ void MainWindow::setupActions()
     ui->toolBarSud->addAction(ui->actionSudAbgefuellt);
     ui->toolBarSud->addAction(ui->actionSudAusgetrunken);
     ui->toolBarSud->addSeparator();
-    //ui->toolBarSud->addAction(ui->actionHefeZugabeZuruecksetzen);
-    //ui->toolBarSud->addAction(ui->actionWeitereZutaten);
-    //ui->toolBarSud->addSeparator();
     ui->toolBarSud->addAction(ui->actionEingabefelderEntsperren);
     ui->toolBarSud->addSeparator();
 
@@ -524,8 +521,6 @@ void MainWindow::updateValues()
         ui->actionSudGebraut->setChecked(status >= Brauhelfer::SudStatus::Gebraut);
         ui->actionSudAbgefuellt->setChecked(status >= Brauhelfer::SudStatus::Abgefuellt);
         ui->actionSudAusgetrunken->setChecked(status >= Brauhelfer::SudStatus::Verbraucht);
-        ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
-        ui->actionWeitereZutaten->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
         ui->actionEingabefelderEntsperren->setEnabled(status != Brauhelfer::SudStatus::Rezept);
     }
     else
@@ -536,8 +531,6 @@ void MainWindow::updateValues()
         ui->actionSudGebraut->setChecked(false);
         ui->actionSudAbgefuellt->setChecked(false);
         ui->actionSudAusgetrunken->setChecked(false);
-        ui->actionHefeZugabeZuruecksetzen->setEnabled(false);
-        ui->actionWeitereZutaten->setEnabled(false);
         ui->actionEingabefelderEntsperren->setEnabled(false);
     }
     if (!ui->tabMain->currentWidget()->isEnabled())
@@ -758,49 +751,6 @@ void MainWindow::on_actionSudAusgetrunken_triggered(bool checked)
         }
     }
     ui->actionSudAusgetrunken->setChecked(static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus()) >= Brauhelfer::SudStatus::Verbraucht);
-}
-
-void MainWindow::on_actionHefeZugabeZuruecksetzen_triggered()
-{
-    ProxyModel *model = bh->sud()->modelHefegaben();
-    for (int row = 0; row < model->rowCount(); ++row)
-    {
-        bool zugegeben = model->data(row, ModelHefegaben::ColZugegeben).toBool();
-        if (zugegeben)
-        {
-            model->setData(row, ModelHefegaben::ColZugegeben, false);
-            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
-            {
-                DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Hefe,
-                                         model->data(row, ModelHefegaben::ColName).toString(),
-                                         model->data(row, ModelHefegaben::ColMenge).toDouble(),
-                                         this);
-                dlg.exec();
-            }
-        }
-    }
-}
-
-void MainWindow::on_actionWeitereZutaten_triggered()
-{
-    ProxyModel *model = bh->sud()->modelWeitereZutatenGaben();
-    for (int row = 0; row < model->rowCount(); ++row)
-    {
-        Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(model->data(row, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
-        bool zugegeben = status != Brauhelfer::ZusatzStatus::NichtZugegeben;
-        if (zugegeben)
-        {
-            model->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben));
-            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
-            {
-                DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Zusatz,
-                                         model->data(row, ModelWeitereZutatenGaben::ColName).toString(),
-                                         model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
-                                         this);
-                dlg.exec();
-            }
-        }
-    }
 }
 
 void MainWindow::on_actionEingabefelderEntsperren_triggered(bool checked)

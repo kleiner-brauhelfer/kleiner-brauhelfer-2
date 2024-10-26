@@ -368,16 +368,6 @@
     <string>Status &quot;ausgetrunken&quot; setzen/zurücksetzen</string>
    </property>
   </action>
-  <action name="actionWeitereZutaten">
-   <property name="text">
-    <string>&quot;Zusätze Zugabe&quot; zurücksetzen</string>
-   </property>
-  </action>
-  <action name="actionHefeZugabeZuruecksetzen">
-   <property name="text">
-    <string>&quot;Hefe Zugabe&quot; zurücksetzen</string>
-   </property>
-  </action>
   <action name="actionEingabefelderEntsperren">
    <property name="checkable">
     <bool>true</bool>

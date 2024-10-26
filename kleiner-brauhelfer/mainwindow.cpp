@@ -186,12 +186,23 @@ MainWindow::~MainWindow()
 
 void MainWindow::setupActions()
 {
-    //QMenu* menu;
-    //QToolButton* toolButton;
-
     // toolbar save
     connect(ui->actionSpeichern, &QAction::triggered, this, &MainWindow::saveDatabase);
     connect(ui->actionVerwerfen, &QAction::triggered, this, &MainWindow::discardDatabase);
+
+    // toolbar sudauswahl
+    ui->tabSudAuswahl->setupActions(ui->toolBarSudauswahl);
+
+    // toolbar sud
+    ui->toolBarSud->addAction(ui->actionSudGebraut);
+    ui->toolBarSud->addAction(ui->actionSudAbgefuellt);
+    ui->toolBarSud->addAction(ui->actionSudAusgetrunken);
+    ui->toolBarSud->addSeparator();
+    //ui->toolBarSud->addAction(ui->actionHefeZugabeZuruecksetzen);
+    //ui->toolBarSud->addAction(ui->actionWeitereZutaten);
+    //ui->toolBarSud->addSeparator();
+    //ui->toolBarSud->addAction(ui->actionEingabefelderEntsperren);
+    //ui->toolBarSud->addSeparator();
 
     // toolbar dialogs
     connect(ui->actionRohstoffe, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);});
@@ -210,59 +221,6 @@ void MainWindow::setupActions()
         dlg->setHomeUrl(QStringLiteral(URL_HILFE));
     });
     connect(ui->actionUeber, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgAbout>(this, ui->actionUeber);});
-
-    // toolbar sudauswahl
-    ui->tabSudAuswahl->setupActions(ui->toolBarSudauswahl);
-
-    //toolButton = new QToolButton(this);
-    //toolButton->setIcon(QIcon::fromTheme(QStringLiteral("sud_erweitert")));
-    //toolButton->setText(tr("Erweitert"));
-    //toolButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    //toolButton->setPopupMode(QToolButton::InstantPopup);
-    //menu = new QMenu(this);
-    //menu->addAction(ui->actionSudPin);
-    //menu->addAction(ui->actionSudUnpin);
-    //menu->addSeparator();
-    //menu->addAction(ui->actionSudSplit);
-    //menu->addAction(ui->actionSudExport);
-    //menu->addSeparator();
-    //menu->addAction(ui->actionDatabase);
-    //menu->addAction(ui->actionClean);
-    //toolButton->setMenu(menu);
-    //ui->toolBarSudauswahl->addWidget(toolButton);
-    //connect(ui->actionSudAdd, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudAnlegen);
-    //connect(ui->actionSudCopy, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudKopieren);
-    //connect(ui->actionSudImport, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::rezeptImportieren);
-    //connect(ui->actionSudDelete, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudLoeschen);
-    //connect(ui->actionSudLaden, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudLaden);
-    //connect(ui->actionSudAusdruck, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudAnlegen);
-    //connect(ui->actionSudEtikett, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudAnlegen);
-    //connect(ui->actionSudPin, &QAction::triggered, ui->tabSudauswahl, [this](){ui->tabSudauswahl->sudMerken(true);});
-    //connect(ui->actionSudUnpin, &QAction::triggered, ui->tabSudauswahl, [this](){ui->tabSudauswahl->sudMerken(false);});
-    //connect(ui->actionSudSplit, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::sudTeilen);
-    //connect(ui->actionSudExport, &QAction::triggered, ui->tabSudauswahl, &TabSudAuswahl::rezeptExportieren);
-    //connect(ui->actionDatabase, &QAction::triggered, this, &MainWindow::showDatabase);
-    //connect(ui->actionClean, &QAction::triggered, this, &MainWindow::showDatabaseClean);
-    //connect(ui->tabSudauswahl, &TabSudAuswahl::selectionChanged, this, &MainWindow::tabSudAuswahlSelectionChanged);
-
-    /*
-    toolButton = new QToolButton(this);
-    toolButton->setIcon(QIcon::fromTheme(QStringLiteral("sud_erweitert")));
-    toolButton->setText(tr("Sud"));
-    toolButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-    toolButton->setPopupMode(QToolButton::InstantPopup);
-    menu = new QMenu(this);
-    menu->addAction(ui->actionSudGebraut);
-    menu->addAction(ui->actionSudAbgefuellt);
-    menu->addAction(ui->actionSudVerbraucht);
-    menu->addSeparator();
-    menu->addAction(ui->actionHefeZugabeZuruecksetzen);
-    menu->addAction(ui->actionWeitereZutaten);
-    menu->addSeparator();
-    menu->addAction(ui->actionEingabefelderEntsperren);
-    toolButton->setMenu(menu);
-    ui->toolBarDialogs->addWidget(toolButton);
-    */
 }
 
 QAction* MainWindow::getAction(const QString& name) const
@@ -557,13 +515,15 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabZusammenfassung), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
-    //ui->menuSud->setEnabled(loaded);
     if (loaded)
     {
         Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-        ui->actionSudGebraut->setEnabled(status >= Brauhelfer::SudStatus::Gebraut);
-        ui->actionSudAbgefuellt->setEnabled(status >= Brauhelfer::SudStatus::Abgefuellt);
-        ui->actionSudVerbraucht->setEnabled(status >= Brauhelfer::SudStatus::Verbraucht);
+        ui->actionSudGebraut->setEnabled(status == Brauhelfer::SudStatus::Rezept || status == Brauhelfer::SudStatus::Gebraut);
+        ui->actionSudAbgefuellt->setEnabled(status == Brauhelfer::SudStatus::Gebraut || status == Brauhelfer::SudStatus::Abgefuellt);
+        ui->actionSudAusgetrunken->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt || status == Brauhelfer::SudStatus::Verbraucht);
+        ui->actionSudGebraut->setChecked(status >= Brauhelfer::SudStatus::Gebraut);
+        ui->actionSudAbgefuellt->setChecked(status >= Brauhelfer::SudStatus::Abgefuellt);
+        ui->actionSudAusgetrunken->setChecked(status >= Brauhelfer::SudStatus::Verbraucht);
         ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
         ui->actionWeitereZutaten->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
     }
@@ -571,7 +531,10 @@ void MainWindow::updateValues()
     {
         ui->actionSudGebraut->setEnabled(false);
         ui->actionSudAbgefuellt->setEnabled(false);
-        ui->actionSudVerbraucht->setEnabled(false);
+        ui->actionSudAusgetrunken->setEnabled(false);
+        ui->actionSudGebraut->setChecked(false);
+        ui->actionSudAbgefuellt->setChecked(false);
+        ui->actionSudAusgetrunken->setChecked(false);
         ui->actionHefeZugabeZuruecksetzen->setEnabled(false);
         ui->actionWeitereZutaten->setEnabled(false);
     }
@@ -622,6 +585,7 @@ void MainWindow::loadSud(int sudId)
 
 void MainWindow::on_tabMain_currentChanged()
 {
+    QWidget* currentTab = ui->tabMain->currentWidget();
     TabAbstract* tab;
     for (int i = 0; i < ui->tabMain->count(); ++i)
     {
@@ -629,40 +593,169 @@ void MainWindow::on_tabMain_currentChanged()
         if (tab)
             tab->setTabActive(false);
     }
-    tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
+    tab = dynamic_cast<TabAbstract*>(currentTab);
     if (tab)
     {
         tab->setTabActive(true);
     }
-    ui->toolBarSudauswahl->setVisible(ui->tabMain->currentWidget() == ui->tabSudAuswahl);
+    ui->toolBarSudauswahl->setVisible(currentTab == ui->tabSudAuswahl);
+    ui->toolBarSud->setVisible(currentTab == ui->tabRezept || currentTab == ui->tabBraudaten || currentTab == ui->tabAbfuelldaten || currentTab == ui->tabGaerverlauf);
     setFocus();
 }
 
-
-
-void MainWindow::on_actionSudGebraut_triggered()
+void MainWindow::on_actionSudGebraut_triggered(bool checked)
 {
-    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Rezept));
-    if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 1)
-        bh->sud()->modelSchnellgaerverlauf()->removeRow(0);
-    if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 1)
-        bh->sud()->modelHauptgaerverlauf()->removeRow(0);
-    if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
-        bh->sud()->modelNachgaerverlauf()->removeRow(0);
-    DlgRohstoffeAbziehen dlg(false, this);
-    dlg.exec();
+    if (checked)
+    {
+        QDateTime dt = bh->sud()->getBraudatum();
+        if (!dt.isValid())
+            dt = QDateTime::currentDateTime();
+        QString dtStr = QLocale().toString(dt, QLocale::ShortFormat);
+        if (QMessageBox::question(this, tr("Sudstatus auf \"gebraut\" setzen?"),
+                                  tr("Soll der Sudstatus auf \"gebraut\" gesetzt werden?\nBraudatum: %1").arg(dtStr),
+                                  QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
+        {
+            gUndoStack->beginMacro(QStringLiteral("macro"));
+            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, dt));
+            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Gebraut)));
+            gUndoStack->endMacro();
+
+            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+            {
+                DlgRohstoffeAbziehen dlg(true, this);
+                dlg.exec();
+            }
+
+            if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 0)
+            {
+                QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
+                                            {ModelSchnellgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
+                                            {ModelSchnellgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
+                bh->sud()->modelSchnellgaerverlauf()->append(values);
+            }
+
+            if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 0)
+            {
+                QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
+                                            {ModelHauptgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
+                                            {ModelHauptgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
+                bh->sud()->modelHauptgaerverlauf()->append(values);
+            }
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, tr("Sudstatus \"gebraut\" zurücksetzen?"),
+                                  tr("Soll der Sudstatus \"gebraut\" zurückgesetzt werden?"),
+                                  QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
+        {
+            bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Rezept));
+            if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 1)
+                bh->sud()->modelSchnellgaerverlauf()->removeRow(0);
+            if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 1)
+                bh->sud()->modelHauptgaerverlauf()->removeRow(0);
+            if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
+                bh->sud()->modelNachgaerverlauf()->removeRow(0);
+            DlgRohstoffeAbziehen dlg(false, this);
+            dlg.exec();
+        }
+    }
+    ui->actionSudGebraut->setChecked(static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus()) >= Brauhelfer::SudStatus::Gebraut);
 }
 
-void MainWindow::on_actionSudAbgefuellt_triggered()
+void MainWindow::on_actionSudAbgefuellt_triggered(bool checked)
 {
-    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
-    if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
-        bh->sud()->modelNachgaerverlauf()->removeRow(0);
+    if (checked)
+    {
+        if (!bh->sud()->getAbfuellenBereitZutaten())
+        {
+            if (QMessageBox::warning(this, tr("Zutaten Gärung"),
+                                     tr("Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.")
+                                         + "\n" + tr("Soll der Sud trotzdem als abgefüllt markiert werden?"),
+                                     QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
+                return;
+        }
+
+        if (bh->sud()->getSchnellgaerprobeAktiv())
+        {
+            if (bh->sud()->getSWJungbier() > bh->sud()->getGruenschlauchzeitpunkt())
+            {
+                if (QMessageBox::warning(this, tr("Grünschlauchzeitpunkt nicht erreicht"),
+                                         tr("Der Grünschlauchzeitpunkt wurde noch nicht erreicht.")
+                                             + "\n" + tr("Soll der Sud trotzdem als abgefüllt markiert werden?"),
+                                         QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
+                    return;
+            }
+            else if (bh->sud()->getSWJungbier() < bh->sud()->getSWSchnellgaerprobe())
+            {
+                if (QMessageBox::warning(this, tr("Schnellgärprobe"),
+                                         tr("Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe.")
+                                             + "\n" + tr("Soll der Sud trotzdem als abgefüllt markiert werden?"),
+                                         QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
+                    return;
+            }
+        }
+
+        QDateTime dt = bh->sud()->getAbfuelldatum();
+        if (!dt.isValid())
+            dt = QDateTime::currentDateTime();
+        QString dtStr = QLocale().toString(dt, QLocale::ShortFormat);
+        if (QMessageBox::question(this, tr("Sudstatus auf \"abgefüllt\" setzen?"),
+                                  tr("Soll der Sudstatus auf \"abgefüllt\" gesetzt werden?\nAbfülldatum: %1").arg(dtStr),
+                                  QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
+        {
+            gUndoStack->beginMacro(QStringLiteral("macro"));
+            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAbfuelldatum, dt));
+            QDateTime dtReifung = bh->sud()->getReifungStart();
+            if (!dtReifung.isValid())
+                dtReifung = QDateTime::currentDateTime();
+            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColReifungStart, dtReifung));
+            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Abgefuellt)));
+            gUndoStack->endMacro();
+
+            QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
+                                        {ModelNachgaerverlauf::ColZeitstempel, bh->sud()->getAbfuelldatum()},
+                                        {ModelNachgaerverlauf::ColDruck, 0.0},
+                                        {ModelNachgaerverlauf::ColTemp, bh->sud()->getTemperaturJungbier()}});
+            if (bh->sud()->modelNachgaerverlauf()->rowCount() == 0)
+                bh->sud()->modelNachgaerverlauf()->append(values);
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, tr("Sudstatus \"abgefüllt\" zurücksetzen?"),
+                                  tr("Soll der Sudstatus \"abgefüllt\" zurückgesetzt werden?"),
+                                  QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
+        {
+            bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
+            if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
+                bh->sud()->modelNachgaerverlauf()->removeRow(0);
+        }
+    }
+    ui->actionSudAbgefuellt->setChecked(static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus()) >= Brauhelfer::SudStatus::Abgefuellt);
 }
 
-void MainWindow::on_actionSudVerbraucht_triggered()
+void MainWindow::on_actionSudAusgetrunken_triggered(bool checked)
 {
-    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
+    if (checked)
+    {
+        if (QMessageBox::question(this, tr("Sudstatus auf \"ausgetrunken\" setzen?"),
+                                  tr("Soll der Sudstatus auf \"ausgetrunken\" gesetzt werden?"),
+                                  QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
+        {
+            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Verbraucht)));
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, tr("Sudstatus \"ausgetrunken\" zurücksetzen?"),
+                                  tr("Soll der Sudstatus \"ausgetrunken\" zurückgesetzt werden?"),
+                                  QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
+        {
+            bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
+        }
+    }
+    ui->actionSudAusgetrunken->setChecked(static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus()) >= Brauhelfer::SudStatus::Verbraucht);
 }
 
 void MainWindow::on_actionHefeZugabeZuruecksetzen_triggered()

@@ -39,9 +39,6 @@ private slots:
     void on_tbZuckerFaktor_valueChanged(double);
     void on_tbFlaschengroesse_valueChanged(double);
 
-    void on_btnSudAbgefuellt_clicked();
-    void on_btnSudVerbraucht_clicked();
-
 private:
     void onTabActivated() Q_DECL_OVERRIDE;
 

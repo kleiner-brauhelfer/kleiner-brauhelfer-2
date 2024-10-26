@@ -183,8 +183,6 @@ void TabAbfuellen::checkEnabled()
     ui->tbTemperaturKarbonisierung->setReadOnly(abgefuellt);
     ui->tbFlaschengroesse->setReadOnly(abgefuellt);
     ui->tbNebenkosten->setReadOnly(abgefuellt);
-    ui->btnSudAbgefuellt->setEnabled(status == Brauhelfer::SudStatus::Gebraut && !gSettings->ForceEnabled);
-    ui->btnSudVerbraucht->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled);
 }
 
 void TabAbfuellen::updateValues()
@@ -339,65 +337,4 @@ void TabAbfuellen::on_tbFlaschengroesse_valueChanged(double)
 {
     if (ui->tbFlaschengroesse->hasFocus())
         updateValues();
-}
-
-void TabAbfuellen::on_btnSudAbgefuellt_clicked()
-{
-    if (!bh->sud()->getAbfuellenBereitZutaten())
-    {
-        if (QMessageBox::warning(this, tr("Zutaten Gärung"),
-                             tr("Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.")
-                             + "\n" + tr("Soll der Sud trotzdem als abgefüllt markiert werden?"),
-                             QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
-        return;
-    }
-
-    if (bh->sud()->getSchnellgaerprobeAktiv())
-    {
-        if (bh->sud()->getSWJungbier() > bh->sud()->getGruenschlauchzeitpunkt())
-        {
-            if (QMessageBox::warning(this, tr("Grünschlauchzeitpunkt nicht erreicht"),
-                                 tr("Der Grünschlauchzeitpunkt wurde noch nicht erreicht.")
-                                 + "\n" + tr("Soll der Sud trotzdem als abgefüllt markiert werden?"),
-                                 QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
-            return;
-        }
-        else if (bh->sud()->getSWJungbier() < bh->sud()->getSWSchnellgaerprobe())
-        {
-            if (QMessageBox::warning(this, tr("Schnellgärprobe"),
-                                 tr("Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe.")
-                                 + "\n" + tr("Soll der Sud trotzdem als abgefüllt markiert werden?"),
-                                 QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
-            return;
-        }
-    }
-
-    QDateTime dt(ui->tbAbfuelldatum->date(), ui->tbAbfuelldatumZeit->time());
-    QString dtStr = QLocale().toString(dt, QLocale::ShortFormat);
-    if (QMessageBox::question(this, tr("Sud als abgefüllt markieren?"),
-                                    tr("Soll der Sud als abgefüllt markiert werden?\n\nAbfülldatum: %1").arg(dtStr),
-                                    QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
-        return;
-
-    gUndoStack->beginMacro(QStringLiteral("macro"));
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAbfuelldatum, dt));
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColReifungStart, ui->tbReifung->dateTime()));
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Abgefuellt)));
-    gUndoStack->endMacro();
-
-    QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
-                                {ModelNachgaerverlauf::ColZeitstempel, bh->sud()->getAbfuelldatum()},
-                                {ModelNachgaerverlauf::ColDruck, 0.0},
-                                {ModelNachgaerverlauf::ColTemp, bh->sud()->getTemperaturJungbier()}});
-    if (bh->sud()->modelNachgaerverlauf()->rowCount() == 0)
-        bh->sud()->modelNachgaerverlauf()->append(values);
-}
-
-void TabAbfuellen::on_btnSudVerbraucht_clicked()
-{
-    if (QMessageBox::question(this, tr("Sud als verbraucht markieren?"),
-                                    tr("Soll der Sud als verbraucht markiert werden?"),
-                                    QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
-        return;
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Verbraucht)));
 }

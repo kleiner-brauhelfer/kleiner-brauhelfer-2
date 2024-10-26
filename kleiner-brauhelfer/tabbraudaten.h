@@ -47,9 +47,7 @@ private slots:
     void on_tbWasserVerschneidungBrix_valueChanged(double);
     void on_btnVerduennung_clicked();
     void on_btnSpeisemengeNoetig_clicked();
-
     void on_cbDurchschnittIgnorieren_clicked(bool checked);
-    void on_btnSudGebraut_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;

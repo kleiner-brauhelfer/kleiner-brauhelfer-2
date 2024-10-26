@@ -202,6 +202,26 @@
     <bool>false</bool>
    </attribute>
   </widget>
+  <widget class="QToolBar" name="toolBarSud">
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
   <widget class="QToolBar" name="toolBarDialogs">
    <property name="windowTitle">
     <string>toolBar_2</string>
@@ -307,27 +327,45 @@
    </property>
   </action>
   <action name="actionSudGebraut">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="gebraut"/>
+   </property>
    <property name="text">
-    <string>Status &quot;gebraut&quot; zurücksetzen</string>
+    <string>Gebraut</string>
    </property>
    <property name="toolTip">
-    <string>Status &quot;gebraut&quot; zurücksetzen</string>
+    <string>Status &quot;gebraut&quot; setzen/zurücksetzen</string>
    </property>
   </action>
   <action name="actionSudAbgefuellt">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="abgefuellt"/>
+   </property>
    <property name="text">
-    <string>Status &quot;abgefüllt&quot; zurücksetzen</string>
+    <string>Abgefüllt</string>
    </property>
    <property name="toolTip">
-    <string>Status &quot;abgefüllt&quot; zurücksetzen</string>
+    <string>Status &quot;abgefüllt&quot; setzen/zurücksetzen</string>
    </property>
   </action>
-  <action name="actionSudVerbraucht">
+  <action name="actionSudAusgetrunken">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="ausgetrunken"/>
+   </property>
    <property name="text">
-    <string>Status &quot;ausgetrunken&quot; zurücksetzen</string>
+    <string>Ausgetrunken</string>
    </property>
    <property name="toolTip">
-    <string>Status &quot;ausgetrunken&quot; zurücksetzen</string>
+    <string>Status &quot;ausgetrunken&quot; setzen/zurücksetzen</string>
    </property>
   </action>
   <action name="actionWeitereZutaten">

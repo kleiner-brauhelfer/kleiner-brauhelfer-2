@@ -7,12 +7,15 @@
         
         <file>images/icons/light/index.theme</file>
         <file>images/icons/light/light.svg</file>
+        <file>images/icons/light/svg/abgefuellt.svg</file>
         <file>images/icons/light/svg/about.svg</file>
+        <file>images/icons/light/svg/ausgetrunken.svg</file>
         <file>images/icons/light/svg/ausruestung.svg</file>
         <file>images/icons/light/svg/brauuebersicht.svg</file>
         <file>images/icons/light/svg/database.svg</file>
         <file>images/icons/light/svg/discard.svg</file>
         <file>images/icons/light/svg/filter.svg</file>
+        <file>images/icons/light/svg/gebraut.svg</file>
         <file>images/icons/light/svg/help.svg</file>
         <file>images/icons/light/svg/lager.svg</file>
         <file>images/icons/light/svg/redo.svg</file>

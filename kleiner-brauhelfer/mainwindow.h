@@ -48,9 +48,9 @@ private slots:
     void restoreView();
     void checkForUpdate(bool force);
     void on_tabMain_currentChanged();
-    void on_actionSudGebraut_triggered();
-    void on_actionSudAbgefuellt_triggered();
-    void on_actionSudVerbraucht_triggered();
+    void on_actionSudGebraut_triggered(bool checked);
+    void on_actionSudAbgefuellt_triggered(bool checked);
+    void on_actionSudAusgetrunken_triggered(bool checked);
     void on_actionHefeZugabeZuruecksetzen_triggered();
     void on_actionWeitereZutaten_triggered();
     void on_actionEingabefelderEntsperren_changed();

@@ -202,7 +202,6 @@ void TabBraudaten::checkEnabled()
     ui->tbVerduennung->setReadOnly(gebraut);
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);
-    ui->btnSudGebraut->setEnabled(!gebraut);
     ui->tbTempKochbeginn->setReadOnly(gebraut);
     ui->tbTempKochende->setReadOnly(gebraut);
     ui->tbSpeiseSRE->setReadOnly(gebraut);
@@ -444,41 +443,4 @@ void TabBraudaten::on_btnSpeisemengeNoetig_clicked()
 void TabBraudaten::on_cbDurchschnittIgnorieren_clicked(bool checked)
 {
     gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAusbeuteIgnorieren, checked));
-}
-
-void TabBraudaten::on_btnSudGebraut_clicked()
-{
-    QDateTime dt(ui->tbBraudatum->date(), ui->tbBraudatumZeit->time());
-    QString dtStr = QLocale().toString(dt, QLocale::ShortFormat);
-    if (QMessageBox::question(this, tr("Sud als gebraut markieren?"),
-                                    tr("Soll der Sud als gebraut markiert werden?\n\nBraudatum: %1").arg(dtStr),
-                                    QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
-        return;
-
-    gUndoStack->beginMacro(QStringLiteral("macro"));
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, dt));
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Gebraut)));
-    gUndoStack->endMacro();
-
-    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
-    {
-        DlgRohstoffeAbziehen dlg(true, this);
-        dlg.exec();
-    }
-
-    if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 0)
-    {
-        QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
-                                    {ModelSchnellgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
-                                    {ModelSchnellgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
-        bh->sud()->modelSchnellgaerverlauf()->append(values);
-    }
-
-    if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 0)
-    {
-        QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
-                                    {ModelHauptgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
-                                    {ModelHauptgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
-        bh->sud()->modelHauptgaerverlauf()->append(values);
-    }
 }

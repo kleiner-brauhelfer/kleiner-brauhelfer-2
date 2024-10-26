@@ -53,7 +53,7 @@ private slots:
     void on_actionSudAusgetrunken_triggered(bool checked);
     void on_actionHefeZugabeZuruecksetzen_triggered();
     void on_actionWeitereZutaten_triggered();
-    void on_actionEingabefelderEntsperren_changed();
+    void on_actionEingabefelderEntsperren_triggered(bool checked);
 
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;

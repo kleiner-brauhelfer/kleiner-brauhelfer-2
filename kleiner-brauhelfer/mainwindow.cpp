@@ -201,8 +201,8 @@ void MainWindow::setupActions()
     //ui->toolBarSud->addAction(ui->actionHefeZugabeZuruecksetzen);
     //ui->toolBarSud->addAction(ui->actionWeitereZutaten);
     //ui->toolBarSud->addSeparator();
-    //ui->toolBarSud->addAction(ui->actionEingabefelderEntsperren);
-    //ui->toolBarSud->addSeparator();
+    ui->toolBarSud->addAction(ui->actionEingabefelderEntsperren);
+    ui->toolBarSud->addSeparator();
 
     // toolbar dialogs
     connect(ui->actionRohstoffe, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);});
@@ -526,6 +526,7 @@ void MainWindow::updateValues()
         ui->actionSudAusgetrunken->setChecked(status >= Brauhelfer::SudStatus::Verbraucht);
         ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
         ui->actionWeitereZutaten->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
+        ui->actionEingabefelderEntsperren->setEnabled(status != Brauhelfer::SudStatus::Rezept);
     }
     else
     {
@@ -537,10 +538,11 @@ void MainWindow::updateValues()
         ui->actionSudAusgetrunken->setChecked(false);
         ui->actionHefeZugabeZuruecksetzen->setEnabled(false);
         ui->actionWeitereZutaten->setEnabled(false);
+        ui->actionEingabefelderEntsperren->setEnabled(false);
     }
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-    ui->actionEingabefelderEntsperren->setChecked(false);
+    ui->actionEingabefelderEntsperren->setChecked(gSettings->ForceEnabled);
 }
 
 void MainWindow::sudLoaded()
@@ -801,35 +803,28 @@ void MainWindow::on_actionWeitereZutaten_triggered()
     }
 }
 
-void MainWindow::on_actionEingabefelderEntsperren_changed()
+void MainWindow::on_actionEingabefelderEntsperren_triggered(bool checked)
 {
-    if (ui->actionEingabefelderEntsperren->isChecked())
+    if (checked)
     {
-        int ret = QMessageBox::question(this, tr("Eingabefelder entsperren?"),
+        int ret = QMessageBox::question(this, tr("Eingabefelder entsperren"),
                                   tr("Vorsicht! Eingabefelder entsperren kann zu inkonsistenten Daten führen und sollte mit Bedacht eingesetzt werden."),
                                   QMessageBox::Yes | QMessageBox::No,
                                   QMessageBox::Yes);
         if (ret == QMessageBox::Yes)
         {
             gSettings->ForceEnabled = true;
-            ui->tabRezept->checkEnabled();
-            ui->tabBraudaten->checkEnabled();
-            ui->tabAbfuelldaten->checkEnabled();
-            ui->tabGaerverlauf->checkEnabled();
-        }
-        else
-        {
-            ui->actionEingabefelderEntsperren->setChecked(false);
         }
     }
     else
     {
         gSettings->ForceEnabled = false;
-        ui->tabRezept->checkEnabled();
-        ui->tabBraudaten->checkEnabled();
-        ui->tabAbfuelldaten->checkEnabled();
-        ui->tabGaerverlauf->checkEnabled();
     }
+    ui->tabRezept->checkEnabled();
+    ui->tabBraudaten->checkEnabled();
+    ui->tabAbfuelldaten->checkEnabled();
+    ui->tabGaerverlauf->checkEnabled();
+    ui->actionEingabefelderEntsperren->setChecked(gSettings->ForceEnabled);
 }
 
 void MainWindow::checkForUpdate(bool force)

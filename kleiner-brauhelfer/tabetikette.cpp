@@ -595,9 +595,14 @@ void TabEtikette::toPdf()
   #endif
 }
 
-void TabEtikette::on_btnToPdf_clicked()
+void TabEtikette::on_btnPrint_clicked()
 {
     printPreview();
+}
+
+void TabEtikette::on_btnToPdf_clicked()
+{
+    toPdf();
 }
 
 void TabEtikette::updateValues()

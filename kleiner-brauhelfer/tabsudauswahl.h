@@ -21,9 +21,6 @@ public:
     void saveSettings() Q_DECL_OVERRIDE;
     void restoreView() Q_DECL_OVERRIDE;
     void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
-    bool isPrintable() const Q_DECL_OVERRIDE;
-    void printPreview() Q_DECL_OVERRIDE;
-    void toPdf() Q_DECL_OVERRIDE;
     void sudAnlegen();
     void sudKopieren(bool loadedSud = false);
     void sudTeilen(bool loadedSud = false);
@@ -40,8 +37,8 @@ private slots:
     void selectionChanged();
     void updateWebView();
     void generateTemplateTags(QVariantMap& tags);
-    void on_tableSudauswahl_doubleClicked(const QModelIndex &index);
-    void on_tableSudauswahl_customContextMenuRequested(const QPoint &pos);
+    void on_table_doubleClicked(const QModelIndex &index);
+    void on_table_customContextMenuRequested(const QPoint &pos);
     void on_tbFilter_textChanged(const QString &pattern);
     void on_btnMerken_clicked();
     void on_btnVergessen_clicked();
@@ -58,8 +55,6 @@ private slots:
 private:
     void onTabActivated() Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
-    void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
-    void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;
 
 private:
     Ui::TabSudAuswahl *ui;

@@ -189,6 +189,12 @@
    <property name="movable">
     <bool>false</bool>
    </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
    <property name="toolButtonStyle">
     <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
    </property>
@@ -203,6 +209,26 @@
    <addaction name="actionBrauUebersicht"/>
    <addaction name="separator"/>
   </widget>
+  <widget class="QToolBar" name="toolBarSudauswahl">
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
   <widget class="QToolBar" name="toolBarHelp">
    <property name="windowTitle">
     <string>toolBar_2</string>
@@ -212,6 +238,12 @@
    </property>
    <property name="movable">
     <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
    </property>
    <property name="toolButtonStyle">
     <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
@@ -395,38 +427,6 @@
    </property>
    <property name="whatsThis">
     <string notr="true">sud_teilen</string>
-   </property>
-  </action>
-  <action name="actionDruckvorschau">
-   <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/print.svg</normaloff>
-     <disabledoff>:/images/disabled/print.svg</disabledoff>:/images/light/print.svg</iconset>
-   </property>
-   <property name="text">
-    <string>Drucken</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">print</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Shift+P</string>
-   </property>
-  </action>
-  <action name="actionDrucken">
-   <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/pdf.svg</normaloff>
-     <disabledoff>:/images/disabled/pdf.svg</disabledoff>:/images/light/pdf.svg</iconset>
-   </property>
-   <property name="text">
-    <string>PDF</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">pdf</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+P</string>
    </property>
   </action>
   <action name="actionHilfe">

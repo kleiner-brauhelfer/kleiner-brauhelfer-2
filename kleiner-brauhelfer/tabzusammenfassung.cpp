@@ -75,21 +75,6 @@ void TabZusammenfassung::updateWebView()
     TemplateTags::render(ui->webview, bh->sud()->row());
 }
 
-bool TabZusammenfassung::isPrintable() const
-{
-    return true;
-}
-
-void TabZusammenfassung::printPreview()
-{
-    ui->webview->printPreview();
-}
-
-void TabZusammenfassung::toPdf()
-{
-    ui->webview->printToPdf();
-}
-
 void TabZusammenfassung::on_cbAuswahl_currentTextChanged(const QString &txt)
 {
     Q_UNUSED(txt)

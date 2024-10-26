@@ -22,9 +22,8 @@ public:
     explicit TabEtikette(QWidget *parent = nullptr);
     virtual ~TabEtikette() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    bool isPrintable() const Q_DECL_OVERRIDE;
-    void printPreview() Q_DECL_OVERRIDE;
-    void toPdf() Q_DECL_OVERRIDE;
+    void printPreview();
+    void toPdf();
 
 private slots:
     void updateAll();

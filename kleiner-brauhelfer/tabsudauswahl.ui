@@ -55,7 +55,7 @@
         </layout>
        </item>
        <item>
-        <widget class="TableView" name="tableSudauswahl">
+        <widget class="TableView" name="table">
          <property name="contextMenuPolicy">
           <enum>Qt::ContextMenuPolicy::CustomContextMenu</enum>
          </property>
@@ -410,7 +410,7 @@
  </customwidgets>
  <tabstops>
   <tabstop>tbFilter</tabstop>
-  <tabstop>tableSudauswahl</tabstop>
+  <tabstop>table</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

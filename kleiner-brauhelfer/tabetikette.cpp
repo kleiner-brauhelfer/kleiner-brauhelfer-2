@@ -543,11 +543,6 @@ void TabEtikette::savePageLayout(const QPrinter *printer)
 
 #endif
 
-bool TabEtikette::isPrintable() const
-{
-    return true;
-}
-
 void TabEtikette::printPreview()
 {
   #ifdef QT_PRINTSUPPORT_LIB

@@ -59,8 +59,6 @@ private slots:
     void on_actionRezept_exportieren_triggered();
     void on_actionSpeichern_triggered();
     void on_actionVerwerfen_triggered();
-    void on_actionDruckvorschau_triggered();
-    void on_actionDrucken_triggered();
     void on_actionBeenden_triggered();
     void on_actionSudGebraut_triggered();
     void on_actionSudAbgefuellt_triggered();

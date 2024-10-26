@@ -562,8 +562,6 @@ void MainWindow::on_tabMain_currentChanged()
     if (tab)
     {
         tab->setTabActive(true);
-        ui->actionDrucken->setEnabled(tab->isPrintable());
-        ui->actionDruckvorschau->setEnabled(tab->isPrintable());
     }
     setFocus();
 }
@@ -638,20 +636,6 @@ void MainWindow::on_actionSpeichern_triggered()
 void MainWindow::on_actionVerwerfen_triggered()
 {
     discardDatabase();
-}
-
-void MainWindow::on_actionDruckvorschau_triggered()
-{
-    TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
-    if (tab)
-        tab->printPreview();
-}
-
-void MainWindow::on_actionDrucken_triggered()
-{
-    TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
-    if (tab)
-        tab->toPdf();
 }
 
 void MainWindow::on_actionBeenden_triggered()

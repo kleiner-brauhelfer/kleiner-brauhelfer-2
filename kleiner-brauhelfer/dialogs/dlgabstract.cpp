@@ -38,4 +38,3 @@ void DlgAbstract::restoreView(const QString& settingsGroup, DlgAbstract* dlg)
     if (dlg)
         dlg->restoreGeometry(dlg->mDefaultGeometry);
 }
-

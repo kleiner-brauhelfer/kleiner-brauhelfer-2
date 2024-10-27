@@ -104,16 +104,6 @@
              <string>Gärverlauf</string>
             </attribute>
            </widget>
-           <widget class="TabZusammenfassung" name="tabZusammenfassung">
-            <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabzusammenfassung.svg</normaloff>
-              <disabledoff>:/images/disabled/tabzusammenfassung.svg</disabledoff>:/images/light/tabzusammenfassung.svg</iconset>
-            </attribute>
-            <attribute name="title">
-             <string>Ausdruck</string>
-            </attribute>
-           </widget>
            <widget class="TabEtikette" name="tabEtikette">
             <attribute name="icon">
              <iconset resource="images.qrc">
@@ -246,6 +236,7 @@
    </attribute>
    <addaction name="actionRohstoffe"/>
    <addaction name="actionAusruestung"/>
+   <addaction name="actionPrintout"/>
    <addaction name="actionBrauUebersicht"/>
    <addaction name="separator"/>
   </widget>
@@ -487,6 +478,29 @@
     <enum>QAction::MenuRole::PreferencesRole</enum>
    </property>
   </action>
+  <action name="actionPrintout">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="printout"/>
+   </property>
+   <property name="text">
+    <string>Ausdruck</string>
+   </property>
+   <property name="toolTip">
+    <string>Ausdruck</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">actionrohstoffe</string>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -512,12 +526,6 @@
    <class>TabGaerverlauf</class>
    <extends>QWidget</extends>
    <header>tabgaerverlauf.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabZusammenfassung</class>
-   <extends>QWidget</extends>
-   <header>tabzusammenfassung.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

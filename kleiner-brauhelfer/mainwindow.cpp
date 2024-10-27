@@ -17,6 +17,7 @@
 #include "dialogs/dlgabout.h"
 #include "dialogs/dlgausruestung.h"
 #include "dialogs/dlgbrauuebersicht.h"
+#include "dialogs/dlgprintout.h"
 #include "dialogs/dlgcheckupdate.h"
 #include "dialogs/dlgdatenbank.h"
 #include "dialogs/dlgrohstoffauswahl.h"
@@ -204,6 +205,7 @@ void MainWindow::setupActions()
     // toolbar dialogs
     connect(ui->actionRohstoffe, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);});
     connect(ui->actionBrauUebersicht, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);});
+    connect(ui->actionPrintout, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgPrintout>(this, ui->actionPrintout);});
     connect(ui->actionAusruestung, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);});
 
     // toolbar help
@@ -382,7 +384,6 @@ void MainWindow::saveSettings()
     ui->tabBraudaten->saveSettings();
     ui->tabAbfuelldaten->saveSettings();
     ui->tabGaerverlauf->saveSettings();
-    ui->tabZusammenfassung->saveSettings();
     ui->tabEtikette->saveSettings();
     ui->tabBewertung->saveSettings();
 }
@@ -396,13 +397,13 @@ void MainWindow::restoreView()
     ui->tabBraudaten->restoreView();
     ui->tabAbfuelldaten->restoreView();
     ui->tabGaerverlauf->restoreView();
-    ui->tabZusammenfassung->restoreView();
     ui->tabEtikette->restoreView();
     ui->tabBewertung->restoreView();
     DlgModule::restoreView();
     DlgRohstoffe::restoreView();
     DlgAusruestung::restoreView();
     DlgBrauUebersicht::restoreView();
+    DlgPrintout::restoreView();
     DlgDatenbank::restoreView();
     DlgRohstoffAuswahl::restoreView();
     DlgTableView::restoreView();
@@ -420,7 +421,6 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabBraudaten->modulesChanged(modules);
     ui->tabAbfuelldaten->modulesChanged(modules);
     ui->tabGaerverlauf->modulesChanged(modules);
-    ui->tabZusammenfassung->modulesChanged(modules);
     ui->tabEtikette->modulesChanged(modules);
     ui->tabBewertung->modulesChanged(modules);
     checkLoadedSud();
@@ -441,19 +441,6 @@ void MainWindow::updateTabs(Settings::Modules modules)
             ui->tabMain->removeTab(index);
     }
     if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
-        nextIndex++;
-    if (modules.testFlag(Settings::ModuleAusdruck))
-    {
-        int index = ui->tabMain->indexOf(ui->tabZusammenfassung);
-        if (gSettings->isModuleEnabled(Settings::ModuleAusdruck))
-        {
-            if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed(QStringLiteral("tabzusammenfassung"), gSettings->theme() == Qt::ColorScheme::Light), tr("Ausdruck"));
-        }
-        else
-            ui->tabMain->removeTab(index);
-    }
-    if (gSettings->isModuleEnabled(Settings::ModuleAusdruck))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleEtikette))
     {
@@ -483,6 +470,8 @@ void MainWindow::updateTabs(Settings::Modules modules)
         nextIndex++;
     if (modules.testFlag(Settings::ModuleBrauuebersicht))
         ui->actionBrauUebersicht->setVisible(gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht));
+    if (modules.testFlag(Settings::ModuleAusdruck))
+        ui->actionPrintout->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusdruck));
     if (modules.testFlag(Settings::ModuleAusruestung))
         ui->actionAusruestung->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusruestung));
 }
@@ -509,7 +498,6 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabGaerverlauf), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabZusammenfassung), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
     if (loaded)

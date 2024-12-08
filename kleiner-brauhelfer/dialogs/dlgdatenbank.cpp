@@ -16,6 +16,9 @@ DlgDatenbank::DlgDatenbank(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    sud = new SudObject(bh);
+    sud->init();
+
     ui->tableViewSud->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
     ui->comboBox->clear();
@@ -59,13 +62,12 @@ DlgDatenbank::DlgDatenbank(QWidget *parent) :
     ui->comboBoxSud->addItem(bh->modelWeitereZutatenGaben()->tableName());
     ui->comboBoxSud->setCurrentIndex(7);
 
-    connect(bh->sud(), &SudObject::loadedChanged, this, &DlgDatenbank::sudLoaded);
-
     updateValues();
 }
 
 DlgDatenbank::~DlgDatenbank()
 {
+    delete sud;
     delete ui;
 }
 
@@ -89,11 +91,6 @@ void DlgDatenbank::restoreView()
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->remove("splitterState");
     gSettings->endGroup();
-}
-
-void DlgDatenbank::sudLoaded()
-{
-    on_comboBoxSud_currentTextChanged(ui->comboBoxSud->currentText());
 }
 
 void DlgDatenbank::updateValues()
@@ -164,31 +161,31 @@ void DlgDatenbank::on_comboBoxSud_currentTextChanged(const QString &table)
 {
     ProxyModel* model = nullptr;
     if (table == bh->modelAnhang()->tableName())
-        model = bh->sud()->modelAnhang();
+        model = sud->modelAnhang();
     else if (table == bh->modelBewertungen()->tableName())
-        model = bh->sud()->modelBewertungen();
+        model = sud->modelBewertungen();
     else if (table == bh->modelEtiketten()->tableName())
-        model = bh->sud()->modelEtiketten();
+        model = sud->modelEtiketten();
     else if (table == bh->modelTags()->tableName())
-        model = bh->sud()->modelTags();
+        model = sud->modelTags();
     else if (table == bh->modelHauptgaerverlauf()->tableName())
-        model = bh->sud()->modelHauptgaerverlauf();
+        model = sud->modelHauptgaerverlauf();
     else if (table == bh->modelHefegaben()->tableName())
-        model = bh->sud()->modelHefegaben();
+        model = sud->modelHefegaben();
     else if (table == bh->modelHopfengaben()->tableName())
-        model = bh->sud()->modelHopfengaben();
+        model = sud->modelHopfengaben();
     else if (table == bh->modelMalzschuettung()->tableName())
-        model = bh->sud()->modelMalzschuettung();
+        model = sud->modelMalzschuettung();
     else if (table == bh->modelNachgaerverlauf()->tableName())
-        model = bh->sud()->modelNachgaerverlauf();
+        model = sud->modelNachgaerverlauf();
     else if (table == bh->modelMaischplan()->tableName())
-        model = bh->sud()->modelMaischplan();
+        model = sud->modelMaischplan();
     else if (table == bh->modelSchnellgaerverlauf()->tableName())
-        model = bh->sud()->modelSchnellgaerverlauf();
+        model = sud->modelSchnellgaerverlauf();
     else if (table == bh->modelWasseraufbereitung()->tableName())
-        model = bh->sud()->modelWasseraufbereitung();
+        model = sud->modelWasseraufbereitung();
     else if (table == bh->modelWeitereZutatenGaben()->tableName())
-        model = bh->sud()->modelWeitereZutatenGaben();
+        model = sud->modelWeitereZutatenGaben();
     if (model)
     {
         ui->tableViewSud->setModel(model);
@@ -206,11 +203,11 @@ void DlgDatenbank::tableView_selectionChanged()
         if (indexes.count() > 0)
         {
             int sudId = bh->modelSud()->data(indexes[0].row(), ModelSud::ColID).toInt();
-            bh->sud()->load(sudId);
+            sud->load(sudId);
         }
         else
         {
-            bh->sud()->unload();
+            sud->unload();
         }
     }
 }

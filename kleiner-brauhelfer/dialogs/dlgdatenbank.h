@@ -4,6 +4,8 @@
 #include "dlgabstract.h"
 #include "ui_dlgdatenbank.h"
 
+class SudObject;
+
 namespace Ui {
 class DlgDatenbank;
 }
@@ -23,7 +25,6 @@ public:
     static void restoreView();
 
 private slots:
-    void sudLoaded();
     void updateValues();
     void on_comboBox_currentTextChanged(const QString &table);
     void on_comboBoxSud_currentTextChanged(const QString &table);
@@ -33,6 +34,7 @@ private slots:
 
 private:
     Ui::DlgDatenbank *ui;
+    SudObject *sud;
 };
 
 #endif // DLG_DATENBANK_H

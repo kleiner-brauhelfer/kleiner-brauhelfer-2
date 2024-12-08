@@ -176,6 +176,9 @@
          <property name="wordWrap">
           <bool>false</bool>
          </property>
+         <attribute name="verticalHeaderDefaultSectionSize">
+          <number>20</number>
+         </attribute>
         </widget>
        </item>
       </layout>
@@ -228,6 +231,9 @@
          <property name="wordWrap">
           <bool>false</bool>
          </property>
+         <attribute name="verticalHeaderDefaultSectionSize">
+          <number>20</number>
+         </attribute>
         </widget>
        </item>
       </layout>

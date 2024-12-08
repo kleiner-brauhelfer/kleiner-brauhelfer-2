@@ -104,9 +104,10 @@ SOURCES += \
     model/ingredientnamedelegate.cpp \
     model/linklabeldelegate.cpp \
     model/phmalzdelegate.cpp \
-    model/proxymodelsudcolored.cpp \
     model/ratingdelegate.cpp \
     model/restextraktdelegate.cpp \
+    model/sudnamedelegate.cpp \
+    model/sudwochedelegate.cpp \
     model/spinboxdelegate.cpp \
     model/textdelegate.cpp \
     widgets/checkbox.cpp \
@@ -209,9 +210,10 @@ HEADERS += \
     model/ingredientnamedelegate.h \
     model/linklabeldelegate.h \
     model/phmalzdelegate.h \
-    model/proxymodelsudcolored.h \
     model/ratingdelegate.h \
     model/restextraktdelegate.h \
+    model/sudnamedelegate.h \
+    model/sudwochedelegate.h \
     model/spinboxdelegate.h \
     model/textdelegate.h \
     widgets/checkbox.h \

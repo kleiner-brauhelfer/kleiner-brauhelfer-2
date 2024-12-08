@@ -4,11 +4,9 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "templatetags.h"
-#include "model/proxymodelsudcolored.h"
 #include "model/textdelegate.h"
 #include "model/datedelegate.h"
-#include "model/doublespinboxdelegate.h"
-#include "model/ratingdelegate.h"
+#include "model/sudnamedelegate.h"
 #include "model/spinboxdelegate.h"
 
 extern Brauhelfer* bh;
@@ -23,10 +21,10 @@ DlgPrintout::DlgPrintout(QWidget *parent) :
     ui->setupUi(this);
 
     TableView *table = ui->table;
-    ProxyModelSudColored *proxyModel = new ProxyModelSudColored(this);
+    ProxyModelSud *proxyModel = new ProxyModelSud(this);
     proxyModel->setSourceModel(bh->modelSud());
     table->setModel(proxyModel);
-    table->appendCol({ModelSud::ColSudname, true, false, -1, new TextDelegate(table)});
+    table->appendCol({ModelSud::ColSudname, true, false, -1, new SudNameDelegate(table)});
     table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
     table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
     table->appendCol({ModelSud::ColBraudatum, false, true, 100, new DateDelegate(false, true, table)});
@@ -43,7 +41,7 @@ DlgPrintout::DlgPrintout(QWidget *parent) :
         int lastUnderscore = filename.lastIndexOf('_');
         if (filename.length() - lastUnderscore == 3)
             filename = filename.left(lastUnderscore);
-        if (!lst.contains(filename))
+        if (!lst.contains(filename) && filename != QStringLiteral("sudinfo"))
             lst.append(filename);
     }
     ui->cbAuswahl->clear();

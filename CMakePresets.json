@@ -1,0 +1,25 @@
+{
+  "version": 10,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 18,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "release@kbh",
+      "description": "Release Build",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/release@kbh",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "build-release@kbh",
+      "configurePreset": "release@kbh"
+    }
+  ]
+}

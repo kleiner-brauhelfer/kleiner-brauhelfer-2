@@ -283,8 +283,12 @@ Qt::ColorScheme Settings::theme() const
 
 void Settings::setTheme(Qt::ColorScheme theme)
 {
-    setValueInGroup("Style", "Theme", (int)theme);
-    initTheme();
+    if (theme != mTheme)
+    {
+        setValueInGroup("Style", "Theme", (int)theme);
+        initTheme();
+        emit themeChanged(theme);
+    }
 }
 
 QString Settings::style()
@@ -329,9 +333,13 @@ QString Settings::language()
     return valueInGroup("General", "language", "de").toString();
 }
 
-void Settings::setLanguage(const QString& lang)
+void Settings::setLanguage(const QString& language)
 {
-    setValueInGroup("General", "language", lang);
+    if (language != this->language())
+    {
+        setValueInGroup("General", "language", language);
+        emit languageChanged(language);
+    }
 }
 
 QString Settings::settingsDir() const
@@ -358,6 +366,7 @@ void Settings::setDatabasePath(const QString& path)
         setValueInGroup("General", "database", path);
     else
         setValueInGroup("General", "database", pathRel);
+    emit databasePathChanged(databasePath());
 }
 
 QString Settings::databaseDir()

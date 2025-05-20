@@ -425,8 +425,7 @@ int main(int argc, char *argv[])
 
     // locale
     bool useLanguageLocale = gSettings->valueInGroup("General", "UseLanguageLocale", false).toBool();
-    if (useLanguageLocale)
-        QLocale::setDefault(QLocale(gSettings->language()));
+    QLocale::setDefault(useLanguageLocale ? QLocale(gSettings->language()) : QLocale::system());
 
     // do some checks
     checkSSL();

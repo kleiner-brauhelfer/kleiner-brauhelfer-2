@@ -20,7 +20,6 @@ https://hobbybrauer.de/forum/viewtopic.php?f=3&t=21510
 - Bibliothek für Diagramme: [QCustomPlot](http://www.qcustomplot.com)
 - Code für Mustache Templates: [Qt Mustache](http://github.com/robertknight/qt-mustache)
 - Code HTML Syntaxhighlighting: [Evgenii Legotckoi](http://evileg.com/en/post/218/)
-- Flaggenicons: [Freepik](http://www.flaticon.com/authors/freepik) von [www.flaticon.com](http://www.flaticon.com/)
 
 
 ## Download

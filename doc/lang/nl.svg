@@ -1,40 +1,66 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-<path style="fill:#FF4B55;" d="M473.655,88.276H38.345C17.167,88.276,0,105.443,0,126.621v73.471h512v-73.471
-	C512,105.443,494.833,88.276,473.655,88.276z"/>
-<path style="fill:#41479B;" d="M0,385.379c0,21.177,17.167,38.345,38.345,38.345h435.31c21.177,0,38.345-17.167,38.345-38.345
-	v-73.471H0V385.379z"/>
-<rect y="200.09" style="fill:#F5F5F5;" width="512" height="111.81"/>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 16.933333 16.933333"
+   version="1.1"
+   id="svg716"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="nl.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview718"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="false"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="true"
+     showborder="false"
+     inkscape:zoom="14.638496"
+     inkscape:cx="-6.1823291"
+     inkscape:cy="25.207508"
+     inkscape:window-width="3840"
+     inkscape:window-height="2066"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid837"
+       spacingx="2.1166666"
+       spacingy="2.1166666"
+       empspacing="1" />
+  </sodipodi:namedview>
+  <defs
+     id="defs713" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#ff4b55;stroke-width:0.0250213"
+       d="M 15.665166,2.1166667 H 1.2681662 C 0.56776101,2.1166667 1.0577777e-6,2.7666052 1.0577777e-6,3.5684038 V 6.3500014 H 16.933333 V 3.5684038 c 0,-0.8017986 -0.567762,-1.4517371 -1.268167,-1.4517371 z"
+       id="path146363" />
+    <path
+       style="fill:#41479b;stroke-width:0.0250213"
+       d="m 1.0577777e-6,13.364934 c 0,0.801754 0.5677599522223,1.451733 1.2681651422223,1.451733 H 15.665166 c 0.700371,0 1.268167,-0.649939 1.268167,-1.451733 V 10.583332 H 1.0577777e-6 Z"
+       id="path146365" />
+    <rect
+       y="6.3499236"
+       style="fill:#f5f5f5;stroke-width:0.0250213"
+       width="16.933332"
+       height="4.2331061"
+       id="rect146367"
+       x="-1.195741e-07" />
+  </g>
 </svg>

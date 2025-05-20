@@ -37,7 +37,7 @@ jobs:
           chmod +x ./deployment/linux/64bit/AppImage/linuxdeploy-plugin-qt-x86_64.AppImage
           chmod +x ./deployment/linux/64bit/AppImage/linuxdeploy-plugin-appimage-x86_64.AppImage
           chmod +x ./deployment/linux/64bit/AppImage/AppRun
-          ./build_linux64.sh "${Qt6_DIR}/bin/"
+          ./build_linux64.sh "${QT_ROOT_DIR}/bin/"
           mkdir -p deploy
           cp ./build-linux64/bin/kleiner-brauhelfer-2 deploy
           cp ./build-linux64/bin/kbh2_v2.x.x_linux_x64.deb deploy

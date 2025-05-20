@@ -32,7 +32,7 @@ jobs:
           mkdir build
           mkdir deploy
           cd build
-          "%Qt6_Dir%\bin\qmake.exe" "..\kleiner-brauhelfer-2.pro" -config release
+          "%QT_ROOT_DIR%\bin\qmake.exe" "..\kleiner-brauhelfer-2.pro" -config release
           nmake
           cd bin
           copy "kleiner-brauhelfer-2.exe" "../../deploy"

@@ -15,14 +15,14 @@ extern Settings* gSettings;
 
 void TabSudAuswahl::updateWebView()
 {
-    QModelIndexList selection = ui->table->selectionModel()->selectedRows();
+    QModelIndexList selection = ui->tableSudauswahl->selectionModel()->selectedRows();
     if (selection.count() == 0)
     {
         ui->webview->clear();
     }
     else if (selection.count() == 1)
     {
-        const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->table->model());
+        const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->tableSudauswahl->model());
         int sudRow = proxyModel->mapRowToSource(selection[0].row());
         TemplateTags::render(ui->webview, std::bind(&TabSudAuswahl::generateTemplateTags, this, std::placeholders::_1), sudRow);
         ui->webview->setPdfName(proxyModel->data(selection[0].row(), ModelSud::ColSudname).toString());
@@ -36,7 +36,7 @@ void TabSudAuswahl::updateWebView()
 
 void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
 {
-    const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->table->model());
+    const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->tableSudauswahl->model());
 
     struct Rohstoff
     {
@@ -49,8 +49,8 @@ void TabSudAuswahl::generateTemplateTags(QVariantMap& tags)
     QList<int> ListSudID;
     QLocale locale;
 
-    ListSudID.reserve(ui->table->selectionModel()->selectedRows().count());
-    for (const QModelIndex &index : ui->table->selectionModel()->selectedRows())
+    ListSudID.reserve(ui->tableSudauswahl->selectionModel()->selectedRows().count());
+    for (const QModelIndex &index : ui->tableSudauswahl->selectionModel()->selectedRows())
     {
         int SudID = proxyModel->data(index.row(), ModelSud::ColID).toInt();
         ListSudID.append(SudID);

@@ -1,8 +1,8 @@
 #ifndef DLGROHSTOFFAUSWAHL_H
 #define DLGROHSTOFFAUSWAHL_H
 
-#include "dlgabstract.h"
 #include "ui_dlgrohstoffauswahl.h"
+#include "dlgabstract.h"
 #include "brauhelfer.h"
 
 namespace Ui {
@@ -12,7 +12,6 @@ class DlgRohstoffAuswahl;
 class DlgRohstoffAuswahl : public DlgAbstract
 {
 	Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
 	
 public:
 

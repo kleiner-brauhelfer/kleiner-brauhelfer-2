@@ -20,96 +20,117 @@
   <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_4">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
-     <widget class="QWidget" name="verticalLayoutWidget">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="TableView" name="tableViewAnlagen">
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlagen&lt;/span&gt; aufgeführt, nicht aber zusätzliches Equipment. Dieses wird gesondert erfasst.&lt;/p&gt;&lt;p&gt;Anlagen sind definiert als unabdingbare Gerätschaften, mit denen man Malz maischt und Hopfen kocht. Eine Brauanlage beginnt mit dem größten Topf in der Küche und endet mit Systemen aus drei und mehr Kesseln. Sie ist definiert durch die Hauptschritte Maischen - Läutern - Kochen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="alternatingRowColors">
-          <bool>true</bool>
-         </property>
-         <property name="selectionMode">
-          <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
-         </property>
-         <property name="selectionBehavior">
-          <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
-         </property>
-         <property name="sortingEnabled">
-          <bool>true</bool>
-         </property>
-         <attribute name="verticalHeaderVisible">
-          <bool>false</bool>
-         </attribute>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <spacer name="horizontalSpacer_5">
-           <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="PushButton" name="btnNeueAnlage">
-           <property name="minimumSize">
-            <size>
-             <width>40</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage&lt;/span&gt; angelegt und benannt. Verfügt man über mehrere Kessel in unterschiedlichen Größen, bietet es sich an, hier seine &lt;span style=&quot; font-weight:600;&quot;&gt;Konfigurationen&lt;/span&gt; zu speichern, um die jeweilige Anlage bei der Rezepterstellung mit einem Klick im Tab Rezept bequem zu wählen.&lt;/p&gt;&lt;p&gt;Unter einer Brauanlage ist mindestens ein Kessel zu verstehen. Im Hobbybrauerbereich sind platzsparende All-in-one-Anlagen oft üblich. Meist sind es aber mindestens zwei Kessel – der Kleine Brauhelfer nimmt auf diese Standard-Konfiguration in den Feldern rechts Bezug: &lt;/p&gt;&lt;p&gt;Ein &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; für das Maischen mit Malz und eine &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; für das Hopfenkochen. Bei All-in-one-Geräten, die Maischekessel und Sudpfanne vereinen, gibt man den einen Wert für Maischekessel und Sudpfanne an.&lt;/p&gt;&lt;p&gt;Bei größeren Konfigurationen kommt mindestens noch ein Läuterkessel hinzu, der zwischen Maischekessel und Sudpfanne eingesetzt wird. Im Kleinen Brauhelfer wird diese zusätzliche, für die Bierherstellung nicht zwingend nötige Ausstattung unter &lt;span style=&quot; font-weight:600;&quot;&gt;Geräte&lt;/span&gt; erfasst. Der Kleine Brauhelfer berücksichtigt für seine Berechnungen allein die Werte für Maischekessel und Sudpfanne.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="whatsThis">
-            <string notr="true">plus</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../images.qrc">
-             <normaloff>:/images/light/plus.svg</normaloff>
-             <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="PushButton" name="btnAnlageLoeschen">
-           <property name="minimumSize">
-            <size>
-             <width>40</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine nicht mehr benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Bei dieser Aktion empfiehlt es sich, die mit der zu löschenden Anlage gebrauten Sude vorab zu überpüfen und im Tab Rezept gegebenenfalls anzupassen. Die Gefahr von hausgemachten Verwechselungen liegt hier nah. Es empfiehlt sich alle noch zu brauenden Sude dieser Analge auf eine neue Anlage umzustellen. Bei gebrauten Suden erübrigt sich diese Vorsichtsmaßnahme.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="whatsThis">
-            <string notr="true">minus</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../images.qrc">
-             <normaloff>:/images/light/minus.svg</normaloff>
-             <disabledoff>:/images/disabled/minus.svg</disabledoff>:/images/light/minus.svg</iconset>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
+     <widget class="QSplitter" name="splitterHelp">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="TableView" name="tableViewAnlagen">
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlagen&lt;/span&gt; aufgeführt, nicht aber zusätzliches Equipment. Dieses wird gesondert erfasst.&lt;/p&gt;&lt;p&gt;Anlagen sind definiert als unabdingbare Gerätschaften, mit denen man Malz maischt und Hopfen kocht. Eine Brauanlage beginnt mit dem größten Topf in der Küche und endet mit Systemen aus drei und mehr Kesseln. Sie ist definiert durch die Hauptschritte Maischen - Läutern - Kochen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="PushButton" name="btnNeueAnlage">
+            <property name="minimumSize">
+             <size>
+              <width>40</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage&lt;/span&gt; angelegt und benannt. Verfügt man über mehrere Kessel in unterschiedlichen Größen, bietet es sich an, hier seine &lt;span style=&quot; font-weight:600;&quot;&gt;Konfigurationen&lt;/span&gt; zu speichern, um die jeweilige Anlage bei der Rezepterstellung mit einem Klick im Tab Rezept bequem zu wählen.&lt;/p&gt;&lt;p&gt;Unter einer Brauanlage ist mindestens ein Kessel zu verstehen. Im Hobbybrauerbereich sind platzsparende All-in-one-Anlagen oft üblich. Meist sind es aber mindestens zwei Kessel – der Kleine Brauhelfer nimmt auf diese Standard-Konfiguration in den Feldern rechts Bezug: &lt;/p&gt;&lt;p&gt;Ein &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; für das Maischen mit Malz und eine &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; für das Hopfenkochen. Bei All-in-one-Geräten, die Maischekessel und Sudpfanne vereinen, gibt man den einen Wert für Maischekessel und Sudpfanne an.&lt;/p&gt;&lt;p&gt;Bei größeren Konfigurationen kommt mindestens noch ein Läuterkessel hinzu, der zwischen Maischekessel und Sudpfanne eingesetzt wird. Im Kleinen Brauhelfer wird diese zusätzliche, für die Bierherstellung nicht zwingend nötige Ausstattung unter &lt;span style=&quot; font-weight:600;&quot;&gt;Geräte&lt;/span&gt; erfasst. Der Kleine Brauhelfer berücksichtigt für seine Berechnungen allein die Werte für Maischekessel und Sudpfanne.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="whatsThis">
+             <string notr="true">plus</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images.qrc">
+              <normaloff>:/images/light/plus.svg</normaloff>
+              <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="PushButton" name="btnAnlageLoeschen">
+            <property name="minimumSize">
+             <size>
+              <width>40</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine nicht mehr benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Anlage gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Bei dieser Aktion empfiehlt es sich, die mit der zu löschenden Anlage gebrauten Sude vorab zu überpüfen und im Tab Rezept gegebenenfalls anzupassen. Die Gefahr von hausgemachten Verwechselungen liegt hier nah. Es empfiehlt sich alle noch zu brauenden Sude dieser Analge auf eine neue Anlage umzustellen. Bei gebrauten Suden erübrigt sich diese Vorsichtsmaßnahme.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="whatsThis">
+             <string notr="true">minus</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../images.qrc">
+              <normaloff>:/images/light/minus.svg</normaloff>
+              <disabledoff>:/images/disabled/minus.svg</disabledoff>:/images/light/minus.svg</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QTextBrowser" name="tbHelp">
+       <property name="font">
+        <font>
+         <italic>true</italic>
+        </font>
+       </property>
+       <property name="toolTip">
+        <string notr="true">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle Sud ungefiltert augeführt, die mit der Anlage verknüpft sind. Mehr Suchkomfort bietet der Reiter Sudauswahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="openExternalLinks">
+        <bool>true</bool>
+       </property>
+      </widget>
      </widget>
      <widget class="QScrollArea" name="scrollArea">
       <property name="sizePolicy">
@@ -126,8 +147,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>438</width>
-         <height>1021</height>
+         <width>447</width>
+         <height>1109</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -150,7 +171,7 @@
           <item row="0" column="1">
            <spacer name="horizontalSpacer_2">
             <property name="orientation">
-             <enum>Qt::Orientation::Horizontal</enum>
+             <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -179,7 +200,7 @@
         <item>
          <widget class="Line" name="line_5">
           <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
@@ -211,7 +232,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage eingegeben werden.&lt;/p&gt;&lt;p&gt;Die Verdampfungsrate ist ein konstanter Wert der Anlage, nahezu unabhängig von der Schüttung. Einmal eingestellt, liefert sie daher einen verlässlichen Wert für die Effizienz der Anlage.&lt;/p&gt;&lt;p&gt;Der Wert selbst beschreibt die Verdampfungsmenge pro Stunde beim &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenkochen&lt;/span&gt;. Eine geringere Menge verdampft bereits beim Maischen.&lt;/p&gt;&lt;p&gt;Der Wert wird automatisch im Tab Rezept als Benchmark hinterlegt. Er kann dort aber sudspezfisch festgelegt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -230,13 +251,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert &lt;/span&gt;der letzten &lt;span style=&quot; font-weight:600;&quot;&gt;effektiven Sudhausausbeuten&lt;/span&gt;. Unerwünschte Sude können von der Durchschnittsberechnung ausgenommen werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;p&gt;Aber: Erfahrungsgemäß lernt der Brauer siene Anlage mit der Zahl der Sude besser kennen. Deswegen kann es besser sein die Anzahl der Sude für die Durchschnittsberechnung einzugrenzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -291,7 +312,7 @@
            <item row="4" column="1">
             <spacer name="horizontalSpacer_91">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -328,13 +349,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über den nebenstehenden &lt;span style=&quot; font-weight:600;&quot;&gt;Schieberegler&lt;/span&gt; kann die Anzahl der Sude für die &lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittsberechnung&lt;/span&gt; festgelegt werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;p&gt;Aber: Erfahrungsgemäß lernt der Brauer seine Anlage mit der Zahl der Sude besser kennen. Deswegen kann es besser ein die Anzahl der Sude für die Durchschnittsberechnung einzugrenzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -347,13 +368,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Durchschnittswert&lt;/span&gt; der letzten Verdampfungsraten. Unerwünschte Sude können von der Durchschnittsberechnung ausgenommen werden.&lt;/p&gt;&lt;p&gt;Je mehr Sude in die Berechnung einbezogen werden, um so aussagekräftiger wird der Durchschnittswert.&lt;/p&gt;&lt;p&gt;Aber: Erfahrungsgemäß lernt der Brauer siene Anlage mit der Zahl der Sude besser kennen. Deswegen kann es besser sein die Anzahl der Sude für die Durchschnittsberechnung der Verdampfungsrate einzugrenzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -402,7 +423,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Fachsprech &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; genannt, gibt die Ausbeute für die Schüttungsberechnung an, welcher Anteil des Malzes während des Maischens in Lösung gegangen ist.&lt;br/&gt;Ein idealer Wert im Hobbymaßstab ist 70%. Tatsächlich bewegt sich die Effizienz zwischen 50% und 70%. Im semi- und professionellern Bereich werden 80% Sudhausausbeute angestrebt.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Optimierung&lt;/span&gt; der Sudhausausbeute ist ein weites Feld. Angefangen beim Wasser, über das eingesetzte Malz, die Schrotung, die Zutaten bis zu den Faktoren Härtegrad, pH-Wert, Zeit – um nur einige Faktoren zu nennen – eröffnet sich hier dem Brauer ein weites Feld, um seine Sude zu optimieren.&lt;/p&gt;&lt;p&gt;Der Wert wird automatisch im Tab Rezept als Benchmark hinterlegt. Er kann dort aber sudspezfisch festgelegt werden&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -467,21 +488,21 @@
               <number>9999</number>
              </property>
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
            <item row="6" column="0" colspan="5">
             <widget class="Line" name="line_2">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
            <item row="3" column="0" colspan="5">
             <widget class="Line" name="line">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -515,7 +536,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der individuellen Anlage, kann hier entgegen der vom Kleinen Brauhelfer im Tab Rezept berechneten &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; eine &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur&lt;/span&gt; nötig sein.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Eine Korrektur kann beispielsweise nötig sein, wenn die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; oder die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagsmenge&lt;/span&gt; immer mit den gleichen Werten abweichen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -557,7 +578,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier erfolgt die Korrektur der durchschnittlichen &lt;span style=&quot; font-weight:600;&quot;&gt;Abweichungen&lt;/span&gt; von den im Rezept festgelegten Farbwerten aller Sude.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Der Farbwert von Bier, genauer: die &lt;span style=&quot; font-weight:600;&quot;&gt;Farbstärke&lt;/span&gt;, wird im europäischen Raum in EBC nach der European Brewery Convention angegeben.&lt;/p&gt;&lt;p&gt;Für die &lt;span style=&quot; font-weight:600;&quot;&gt;Farbwertkorrektur&lt;/span&gt; im Kleinen Brauhelfer empfiehlt sich ein farbkorrigierter Bildschirm bei 6.500 Kelvin Tageslicht und einem Gammwert von 1,8. Üblicherweise sind in Europa Monitore mit 2.0 Gamma  kontrastreicher kalibriert, was eine eine exakte Übertragung von Bierfarbe im Glas in ein Computerprogramm schwierig macht. An einem normalen Büro-Bildschirm werden Farbwerte daher nur annähernd richtig dargestellt. Eine exakte Wiedergabe ist Profi-Hard- und Software vorbehalten. Bei Fragen helfen hier Fachforen im Designbereich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="minimum">
               <number>-99</number>
@@ -567,7 +588,7 @@
            <item row="0" column="1">
             <spacer name="horizontalSpacer">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -590,7 +611,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier sind die &lt;span style=&quot; font-weight:600;&quot;&gt;Betriebskosten&lt;/span&gt; (Pauschalen) für den Sud einzutragen. Dazu gehören &lt;span style=&quot; font-weight:600;&quot;&gt;Strom&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Wasser&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Gas&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Aber auch Verschleiß- und Abschreibungskosten der Ausstattung können hier anteilig mit einem Satz individuell festgelegt werden.&lt;/p&gt;&lt;p&gt;Die hier angegebenen Kosten gehen in die Gesamtkosten pro Liter automatisch mit ein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>2</number>
@@ -643,7 +664,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der individuellen Anlage, kann hier eine &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur&lt;/span&gt; für die &lt;span style=&quot; font-weight:600;&quot;&gt;Sollmenge&lt;/span&gt; eingetragen werden.&lt;/p&gt;&lt;p&gt;Üblicherweise kann der Korrekturwert erst nach einigen Suden bestimmt werden.&lt;/p&gt;&lt;p&gt;Eine Korrektur kann beispielsweise nötig sein, wenn konstant die gleiche Verlustmenge entsteht und die angepeilte Menge dadurch nicht erreicht wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -680,7 +701,7 @@
            <item row="0" column="1">
             <spacer name="horizontalSpacer_81">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -696,13 +717,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Volumen&lt;/span&gt; des Maischekessels an. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Das Volumen ist nicht gleichzusetzen mit der größtmöglichen Würzemenge. So dehnt sich der Sud bei höheren Temperaturen aus, Schaum entsteht.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um ein Überlaufen der Maische zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Maischevolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -741,13 +762,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchmesser&lt;/span&gt; des Maischekessels zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Für eine korrekte Berechnung sollte der Kessel &lt;span style=&quot; font-weight:600;&quot;&gt;zylindrisch&lt;/span&gt; sein.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um eine überlaufende Maische zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Maischevolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>false</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+              <enum>QAbstractSpinBox::UpDownArrows</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -780,13 +801,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe&lt;/span&gt; des Maischekessels zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Bei Bodenunebenheiten sollte die anteilmäßig größte Fläche für eine möglichst korrekte Messung gewählt werden.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um eine überlaufende Masiche zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Maischevolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>false</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+              <enum>QAbstractSpinBox::UpDownArrows</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -853,13 +874,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;maximal nutzbare Füllhöhe&lt;/span&gt; definiert letztlich die zu erzielende Biermenge bei festgelegter Stammwürze.&lt;/p&gt;&lt;p&gt;So der &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; plan steht, ist man mit 5 Zentimetern unterhalb der Kesseloberkante in einem sicheren Bereich.&lt;/p&gt;&lt;p&gt;Werden weniger schäumende Zutaten eingesetzt, können diese 5 Zentimeter auch unterschritten werden. Der exakte Wert ist individuell von der Anlage abhängig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>false</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+              <enum>QAbstractSpinBox::UpDownArrows</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -878,13 +899,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der maximal nutzbaren Füllhöhe, definiert der Kleine Brauhelfer hier das &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; des Maischekessels.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -900,14 +921,14 @@
            <item row="1" column="0" colspan="4">
             <widget class="Line" name="line_4">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
            <item row="6" column="0" colspan="4">
             <widget class="Line" name="line_13">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -948,13 +969,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Das Volumen ist nicht gleichzusetzen mit der größtmöglichen Würzemenge. Der Sud dehnt sich bein Kochen aus, Schaum entsteht.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um ein Überlaufen des Sudes zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Kochvolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -994,13 +1015,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;maximal nutzbare Füllhöhe&lt;/span&gt; definiert letztlich die zu erzielende Biermenge bei festgelegter Stammwürze.&lt;/p&gt;&lt;p&gt;So die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; plan steht, ist man mit 5 Zentimetern bei 100°C unterhalb der Pfannenoberkante in einem sicheren Bereich.&lt;/p&gt;&lt;p&gt;Hopfen schäumt beim Würzebruch. Hopfendolden noch mehr. Ausgehend von den individuellen Gegebenheiten sollte man bei der Größe der Sudpfanne anfangs konservativ vorgehen und einen genügend großen Puffer einrechnen. Dies vermeidet unliebsame Überraschungen und Putzaktionen. Der exakte Wert ist individuell von der Anlage abhängig.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>false</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+              <enum>QAbstractSpinBox::UpDownArrows</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1033,13 +1054,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe&lt;/span&gt; der Sudpfanne zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Bei Bodenunebenheiten sollte die anteilmäßig größte Fläche für eine möglichst korrekte Messung gewählt werden.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung und um einen überlaufenden Sud zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Kochvolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>false</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+              <enum>QAbstractSpinBox::UpDownArrows</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1062,7 +1083,7 @@
            <item row="0" column="1">
             <spacer name="horizontalSpacer_86">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -1098,13 +1119,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Durchmesser&lt;/span&gt; des Sudpfanne zur &lt;span style=&quot; font-weight:600;&quot;&gt;Volumenberechnung&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Für eine korrekte Berechnung sollte der Kessel &lt;span style=&quot; font-weight:600;&quot;&gt;zylindrisch&lt;/span&gt; sein.&lt;/p&gt;&lt;p&gt;Die Volumenangabe ist eine wichtige Kenngröße im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; zur Gussberechnung  und um einen überlaufenden Sud zu verhindern. Ein rot hinterlegtes Feld warnt in diesem Fall vor einem zu großen Kochvolumen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>false</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::UpDownArrows</enum>
+              <enum>QAbstractSpinBox::UpDownArrows</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1130,13 +1151,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ausgehend von der maximal nutzbaren Füllhöhe, definiert der Kleine Brauhelfer hier das &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; der Sudpfanne.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1152,14 +1173,14 @@
            <item row="1" column="0" colspan="4">
             <widget class="Line" name="line_3">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
            <item row="4" column="0" colspan="4">
             <widget class="Line" name="line_14">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -1208,7 +1229,7 @@
               <bool>true</bool>
              </property>
              <property name="selectionBehavior">
-              <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+              <enum>QAbstractItemView::SelectRows</enum>
              </property>
              <property name="sortingEnabled">
               <bool>true</bool>
@@ -1232,7 +1253,7 @@
              <item>
               <spacer name="horizontalSpacer_4">
                <property name="orientation">
-                <enum>Qt::Orientation::Horizontal</enum>
+                <enum>Qt::Horizontal</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1313,7 +1334,7 @@
               </size>
              </property>
              <property name="contextMenuPolicy">
-              <enum>Qt::ContextMenuPolicy::CustomContextMenu</enum>
+              <enum>Qt::CustomContextMenu</enum>
              </property>
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle &lt;span style=&quot; font-weight:600;&quot;&gt;Sude&lt;/span&gt; aufgeführt, welche mit der ausgewählten Anlage verknüpft sind.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1322,7 +1343,7 @@
               <bool>true</bool>
              </property>
              <property name="selectionBehavior">
-              <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+              <enum>QAbstractItemView::SelectRows</enum>
              </property>
              <property name="sortingEnabled">
               <bool>true</bool>
@@ -1341,7 +1362,7 @@
         <item>
          <spacer name="verticalSpacer">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -1359,7 +1380,7 @@
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="standardButtons">
-      <set>QDialogButtonBox::StandardButton::Close</set>
+      <set>QDialogButtonBox::Close</set>
      </property>
     </widget>
    </item>
@@ -1402,6 +1423,7 @@
   <tabstop>tableViewAnlagen</tabstop>
   <tabstop>btnNeueAnlage</tabstop>
   <tabstop>btnAnlageLoeschen</tabstop>
+  <tabstop>tbHelp</tabstop>
   <tabstop>scrollArea</tabstop>
   <tabstop>tbName</tabstop>
   <tabstop>cbTyp</tabstop>

@@ -48,9 +48,6 @@ private slots:
     void on_btnEdit_clicked();
 
 private:
-    void changeEvent(QEvent * event) Q_DECL_OVERRIDE;
-
-private:
     Ui::WdgBemerkung *ui;
 };
 

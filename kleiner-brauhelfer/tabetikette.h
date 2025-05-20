@@ -2,7 +2,6 @@
 #define TABETIKETTE_H
 
 #include "tababstract.h"
-#include "ui_tabetikette.h"
 #include "helper/htmlhighlighter.h"
 
 namespace Ui {
@@ -16,14 +15,14 @@ class QPrinter;
 class TabEtikette : public TabAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabEtikette(QWidget *parent = nullptr);
     virtual ~TabEtikette() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    void printPreview();
-    void toPdf();
+    bool isPrintable() const Q_DECL_OVERRIDE;
+    void printPreview() Q_DECL_OVERRIDE;
+    void toPdf() Q_DECL_OVERRIDE;
 
 private slots:
     void updateAll();
@@ -52,7 +51,6 @@ private slots:
     void on_tbTemplate_textChanged();
     void on_btnSaveTemplate_clicked();
     void on_btnExport_clicked();
-    void on_btnPrint_clicked();
     void on_btnToPdf_clicked();
     void on_btnTagNeu_clicked();
     void on_btnTagLoeschen_clicked();

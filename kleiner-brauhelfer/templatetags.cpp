@@ -204,329 +204,328 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
         }
         ctx[QStringLiteral("Sud")] = ctxSud;
 
-        SudObject sud(bh);
-        sud.init();
-        sud.load(bh->modelSud()->data(sudRow, ModelSud::ColID).toInt());
-
-        int kochDauer = bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt();
-        int dauerIsomerisierung = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();
-
-        liste.clear();
-        ProxyModel *model = sud.modelMaischplan();
-        for (int row = 0; row < model->rowCount(); ++row)
+        if (sudRow == bh->sud()->row())
         {
-            int temp;
-            QVariantMap map;
-            map[QStringLiteral("Name")] = model->data(row, ModelMaischplan::ColName).toString();
-            map[QStringLiteral("Temp")] = QString::number(model->data(row, ModelMaischplan::ColTempRast).toInt());
-            map[QStringLiteral("Dauer")] = QString::number(model->data(row, ModelMaischplan::ColDauerRast).toInt());
-            switch (static_cast<Brauhelfer::RastTyp>(model->data(row, ModelMaischplan::ColTyp).toInt()))
-            {
-            case Brauhelfer::RastTyp::Einmaischen:
-                map[QStringLiteral("Einmaischen")] = true;
-                map[QStringLiteral("MengeWasser")] = locale.toString(model->data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
-                map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempWasser).toInt());
-                map[QStringLiteral("MengeMalz")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMalz).toDouble(), 'f', 2);
-                map[QStringLiteral("MalzTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempMalz).toInt());
-                break;
-            case Brauhelfer::RastTyp::Aufheizen:
-                map[QStringLiteral("Aufheizen")] = true;
-                break;
-            case Brauhelfer::RastTyp::Zubruehen:
-                map[QStringLiteral("Zubruehen")] = true;
-                map[QStringLiteral("MengeWasser")] = locale.toString(model->data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
-                map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempWasser).toInt());
-                break;
-            case Brauhelfer::RastTyp::Zuschuetten:
-                map[QStringLiteral("Zuschuetten")] = true;
-                map[QStringLiteral("MengeWasser")] = locale.toString(model->data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
-                map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempWasser).toInt());
-                map[QStringLiteral("MengeMalz")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMalz).toDouble(), 'f', 2);
-                map[QStringLiteral("MalzTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempMalz).toInt());
-                break;
-            case Brauhelfer::RastTyp::Dekoktion:
-                map[QStringLiteral("Dekoktion")] = true;
-                map[QStringLiteral("MengeMaische")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMaische).toDouble(), 'f', 1);
-                temp = model->data(row, ModelMaischplan::ColDauerExtra1).toInt();
-                if (temp > 0)
+                int kochDauer = bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt();
+                int dauerIsomerisierung = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();
+
+                liste.clear();
+                ProxyModel *model = bh->sud()->modelMaischplan();
+                for (int row = 0; row < model->rowCount(); ++row)
                 {
-                    map[QStringLiteral("TeilmaischeRastTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempExtra1).toInt());
-                    map[QStringLiteral("TeilmaischeRastDauer")] = QString::number(temp);
+                    int temp;
+                    QVariantMap map;
+                    map[QStringLiteral("Name")] = model->data(row, ModelMaischplan::ColName).toString();
+                    map[QStringLiteral("Temp")] = QString::number(model->data(row, ModelMaischplan::ColTempRast).toInt());
+                    map[QStringLiteral("Dauer")] = QString::number(model->data(row, ModelMaischplan::ColDauerRast).toInt());
+                    switch (static_cast<Brauhelfer::RastTyp>(model->data(row, ModelMaischplan::ColTyp).toInt()))
+                    {
+                    case Brauhelfer::RastTyp::Einmaischen:
+                        map[QStringLiteral("Einmaischen")] = true;
+                        map[QStringLiteral("MengeWasser")] = locale.toString(model->data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
+                        map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempWasser).toInt());
+                        map[QStringLiteral("MengeMalz")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMalz).toDouble(), 'f', 2);
+                        map[QStringLiteral("MalzTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempMalz).toInt());
+                        break;
+                    case Brauhelfer::RastTyp::Aufheizen:
+                        map[QStringLiteral("Aufheizen")] = true;
+                        break;
+                    case Brauhelfer::RastTyp::Zubruehen:
+                        map[QStringLiteral("Zubruehen")] = true;
+                        map[QStringLiteral("MengeWasser")] = locale.toString(model->data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
+                        map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempWasser).toInt());
+                        break;
+                    case Brauhelfer::RastTyp::Zuschuetten:
+                        map[QStringLiteral("Zuschuetten")] = true;
+                        map[QStringLiteral("MengeWasser")] = locale.toString(model->data(row, ModelMaischplan::ColMengeWasser).toDouble(), 'f', 1);
+                        map[QStringLiteral("WasserTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempWasser).toInt());
+                        map[QStringLiteral("MengeMalz")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMalz).toDouble(), 'f', 2);
+                        map[QStringLiteral("MalzTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempMalz).toInt());
+                        break;
+                    case Brauhelfer::RastTyp::Dekoktion:
+                        map[QStringLiteral("Dekoktion")] = true;
+                        map[QStringLiteral("MengeMaische")] = locale.toString(model->data(row, ModelMaischplan::ColMengeMaische).toDouble(), 'f', 1);
+                        temp = model->data(row, ModelMaischplan::ColDauerExtra1).toInt();
+                        if (temp > 0)
+                        {
+                            map[QStringLiteral("TeilmaischeRastTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempExtra1).toInt());
+                            map[QStringLiteral("TeilmaischeRastDauer")] = QString::number(temp);
+                        }
+                        temp = model->data(row, ModelMaischplan::ColDauerExtra2).toInt();
+                        if (temp > 0)
+                        {
+                            map[QStringLiteral("TeilmaischeZusatzRastTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempExtra2).toInt());
+                            map[QStringLiteral("TeilmaischeZusatzRastDauer")] = QString::number(temp);
+                        }
+                        break;
+                    }
+                    liste << map;
                 }
-                temp = model->data(row, ModelMaischplan::ColDauerExtra2).toInt();
-                if (temp > 0)
+                if (!liste.empty())
+                    ctx[QStringLiteral("Maischplan")] = QVariantMap({{"Liste", liste}});
+
+                QVariantMap mapWasser;
+                double f1 = 0.0, f2 = 0.0, f3 = 0.0;
+                f1 = bh->sud()->geterg_WHauptguss();
+                mapWasser[QStringLiteral("Hauptguss")] = locale.toString(f1, 'f', 1);
+                if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
                 {
-                    map[QStringLiteral("TeilmaischeZusatzRastTemp")] = QString::number(model->data(row, ModelMaischplan::ColTempExtra2).toInt());
-                    map[QStringLiteral("TeilmaischeZusatzRastDauer")] = QString::number(temp);
+                    double A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+                    double h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
+                    mapWasser[QStringLiteral("HauptgussUnten")] = locale.toString(f1 / A, 'f', 1);
+                    mapWasser[QStringLiteral("HauptgussOben")] = locale.toString(h - f1 / A, 'f', 1);
                 }
-                break;
-            }
-            liste << map;
-        }
-        if (!liste.empty())
-            ctx[QStringLiteral("Maischplan")] = QVariantMap({{"Liste", liste}});
-
-        QVariantMap mapWasser;
-        double f1 = 0.0, f2 = 0.0, f3 = 0.0;
-        f1 = sud.geterg_WHauptguss();
-        mapWasser[QStringLiteral("Hauptguss")] = locale.toString(f1, 'f', 1);
-        if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
-        {
-            double A = pow(bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
-            double h = bh->modelSud()->dataAnlage(sudRow, ModelAusruestung::ColMaischebottich_Hoehe).toDouble();
-            mapWasser[QStringLiteral("HauptgussUnten")] = locale.toString(f1 / A, 'f', 1);
-            mapWasser[QStringLiteral("HauptgussOben")] = locale.toString(h - f1 / A, 'f', 1);
-        }
-        f2 = sud.geterg_WNachguss();
-        mapWasser[QStringLiteral("Nachguss")] = locale.toString(f2, 'f', 1);
-        if (sud.gethighGravityFaktor() != 0)
-        {
-            f3 = sud.getMengeSollHgf();
-            mapWasser[QStringLiteral("Verduennung")] = locale.toString(f3, 'f', 2);
-        }
-        mapWasser[QStringLiteral("Gesamt")] = locale.toString(f1 + f2 + f3, 'f', 2);
-
-        // Wasseraufbereitung
-        if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
-        {
-            liste.clear();
-            liste.reserve(model->rowCount());
-            model = sud.modelWasseraufbereitung();
-            for (int row = 0; row < model->rowCount(); ++row)
-            {
-                QVariantMap map;
-                map[QStringLiteral("Name")] = model->data(row, ModelWasseraufbereitung::ColName);
-                map[QStringLiteral("Einheit")] = MainWindow::Einheiten[model->data(row, ModelWasseraufbereitung::ColEinheit).toInt()];
-                double m = model->data(row, ModelWasseraufbereitung::ColMenge).toDouble();
-                map[QStringLiteral("MengeHauptguss")] = locale.toString(m * f1, 'f', 2);
-                map[QStringLiteral("MengeNachguss")] = locale.toString(m * f2, 'f', 2);
-                if (sud.gethighGravityFaktor() != 0)
-                    map[QStringLiteral("MengeVerduennung")] = locale.toString(m * f3, 'f', 2);
-                map[QStringLiteral("Menge")] = locale.toString(m * (f1 + f2 + f3), 'f', 2);
-                liste << map;
-            }
-            if (!liste.empty())
-                mapWasser[QStringLiteral("Wasseraufbereitung")] = QVariantMap({{"Liste", liste}});
-        }
-
-        // Wasserprofil
-        if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
-        {
-            QVariantMap map;
-            map[QStringLiteral("Name")] = sud.getWasserData(ModelWasser::ColName).toString();
-            QString str = sud.getWasserData(ModelWasser::ColBemerkung).toString();
-            if (!str.isEmpty())
-                map[QStringLiteral("Bemerkung")] = str;
-            mapWasser[QStringLiteral("Wasserprofil")] = map;
-        }
-
-        ctx[QStringLiteral("Wasser")] = mapWasser;
-
-        QVariantMap ctxZutaten;
-
-        liste.clear();
-        model = sud.modelMalzschuettung();
-        for (int row = 0; row < model->rowCount(); ++row)
-        {
-            QVariantMap map;
-            map.insert(QStringLiteral("Name"), model->data(row, ModelMalzschuettung::ColName));
-            map.insert(QStringLiteral("Prozent"), locale.toString(model->data(row, ModelMalzschuettung::ColProzent).toDouble(), 'f', 1));
-            map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelMalzschuettung::Colerg_Menge).toDouble(), 'f', 2));
-            map.insert(QStringLiteral("Farbe"), QString::number(model->data(row, ModelMalzschuettung::ColFarbe).toInt()));
-            liste << map;
-        }
-        if (!liste.empty())
-            ctxZutaten[QStringLiteral("Malz")] = QVariantMap({{"Liste", liste}});
-
-        liste.clear();
-        liste.reserve(model->rowCount());
-        model = sud.modelHopfengaben();
-        for (int row = 0; row < model->rowCount(); ++row)
-        {
-            QVariantMap map;
-            int dauer = model->data(row, ModelHopfengaben::ColZeit).toInt();
-            map.insert(QStringLiteral("Name"), model->data(row, ModelHopfengaben::ColName));
-            int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map[QStringLiteral("Name")], ModelHopfen::ColTyp).toInt();
-            if (idx >= 0 && idx < MainWindow::HopfenTypname.count())
-                map.insert(QStringLiteral("Typ"), MainWindow::HopfenTypname[idx]);
-            map.insert(QStringLiteral("Prozent"), locale.toString(model->data(row, ModelHopfengaben::ColProzent).toDouble(), 'f', 1));
-            map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelHopfengaben::Colerg_Menge).toDouble(), 'f', 1));
-            map.insert(QStringLiteral("Alpha"), locale.toString(model->data(row, ModelHopfengaben::ColAlpha).toDouble(), 'f', 1));
-            if (static_cast<Brauhelfer::HopfenZeitpunkt>(model->data(row, ModelHopfengaben::ColZeitpunkt).toInt()) == Brauhelfer::HopfenZeitpunkt::Vorderwuerze)
-            {
-                map.insert(QStringLiteral("Kochdauer"), QString::number(dauer));
-                map.insert(QStringLiteral("ZugabeNach"), QString::number(kochDauer - dauer));
-                map.insert(QStringLiteral("Vorderwuerze"), true);
-                ctxZutaten[QStringLiteral("HatVorderwuerzehopfen")] = true;
-            }
-            else if (dauer > 0)
-            {
-                map.insert(QStringLiteral("Kochdauer"), QString::number(dauer));
-                map.insert(QStringLiteral("ZugabeNach"), QString::number(kochDauer - dauer));
-                map.insert(QStringLiteral("Kochen"), true);
-            }
-            else
-            {
-                map.insert(QStringLiteral("Dauer"), QString::number(dauerIsomerisierung+dauer));
-                map.insert(QStringLiteral("ZugabeNach"), QString::number(-dauer));
-                map.insert(QStringLiteral("Ausschlagen"), true);
-            }
-            liste << map;
-        }
-        if (!liste.empty())
-            ctxZutaten[QStringLiteral("Hopfen")] = QVariantMap({{"Liste", liste}});
-
-        liste.clear();
-        model = sud.modelHefegaben();
-        for (int row = 0; row < model->rowCount(); ++row)
-        {
-            int menge = model->data(row, ModelHefegaben::ColMenge).toInt();
-            if (menge <= 0)
-                continue;
-            QVariantMap map;
-            map.insert(QStringLiteral("Name"), model->data(row, ModelHefegaben::ColName));
-            int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, map[QStringLiteral("Name")], ModelHefe::ColTypOGUG).toInt();
-            if (idx >= 0 && idx < MainWindow::HefeTypname.count())
-                map.insert(QStringLiteral("Typ"), MainWindow::HefeTypname[idx]);
-            map.insert(QStringLiteral("Menge"), menge);
-            if (model->data(row, ModelHefegaben::ColZugegeben).toBool())
-                map.insert(QStringLiteral("Status"), QObject::tr("zugegeben"));
-            else
-                map.insert(QStringLiteral("Status"), QObject::tr("nicht zugegeben"));
-            int zugabeNach = model->data(row, ModelHefegaben::ColZugabeNach).toInt();
-            if (zugabeNach > 0)
-            {
-                map.insert(QStringLiteral("ZugabeNach"), zugabeNach);
-                map.insert(QStringLiteral("ZugabeDatum"), locale.toString(model->data(row, ModelHefegaben::ColZugabeDatum).toDate(), QLocale::ShortFormat));
-            }
-            liste << map;
-        }
-        if (!liste.empty())
-            ctxZutaten[QStringLiteral("Hefe")] = QVariantMap({{"Liste", liste}});
-
-        QVariantList listeZusatzAlle;
-        QVariantList listeZusatzMaischen;
-        QVariantList listeZusatzKochen;
-        QVariantList listeZusatzAusschlagen;
-        QVariantList listeZusatzGaerung;
-        QVariantList listeKalthopfen;
-        model = sud.modelWeitereZutatenGaben();
-        for (int row = 0; row < model->rowCount(); ++row)
-        {
-            QVariantList* listePtr = nullptr;
-            QVariantMap map;
-            int dauer;
-            map.insert(QStringLiteral("Name"), model->data(row, ModelWeitereZutatenGaben::ColName));
-            Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(model->data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
-            map.insert(QStringLiteral("Einheit"), MainWindow::Einheiten[static_cast<int>(einheit)]);
-            switch (einheit)
-            {
-            case Brauhelfer::Einheit::Kg:
-                map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2));
-                break;
-            case Brauhelfer::Einheit::g:
-                map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 2));
-                break;
-            case Brauhelfer::Einheit::mg:
-                map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000, 'f', 2));
-                break;
-            case Brauhelfer::Einheit::Stk:
-                map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 2));
-                break;
-            case Brauhelfer::Einheit::l:
-                map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2));
-                break;
-            case Brauhelfer::Einheit::ml:
-                map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 2));
-                break;
-            }
-            Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model->data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
-            Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model->data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
-            Brauhelfer::ZusatzEntnahmeindex entnahmeindex = static_cast<Brauhelfer::ZusatzEntnahmeindex>(model->data(row, ModelWeitereZutatenGaben::ColEntnahmeindex).toInt());
-            Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(model->data(row, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
-            switch (zeitpunkt)
-            {
-            case Brauhelfer::ZusatzZeitpunkt::Gaerung:
-                map.insert(QStringLiteral("Gaerung"), true);
-                map.insert(QStringLiteral("ZugabeNach"), QString::number(model->data(row, ModelWeitereZutatenGaben::ColZugabeNach).toInt()));
-                map.insert(QStringLiteral("ZugabeDatum"), locale.toString(model->data(row, ModelWeitereZutatenGaben::ColZugabeDatum).toDate(), QLocale::ShortFormat));
-                map.insert(QStringLiteral("EntnahmeDatum"), locale.toString(model->data(row, ModelWeitereZutatenGaben::ColEntnahmeDatum).toDate(), QLocale::ShortFormat));
-                if (entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme)
+                f2 = bh->sud()->geterg_WNachguss();
+                mapWasser[QStringLiteral("Nachguss")] = locale.toString(f2, 'f', 1);
+                if (bh->sud()->gethighGravityFaktor() != 0)
                 {
-                    map.insert(QStringLiteral("Entnahme"), true);
-                    map.insert(QStringLiteral("Dauer"), model->data(row, ModelWeitereZutatenGaben::ColZugabedauer).toInt() / 1440);
+                    f3 = bh->sud()->getMengeSollHgf();
+                    mapWasser[QStringLiteral("Verduennung")] = locale.toString(f3, 'f', 2);
                 }
-                switch (status)
+                mapWasser[QStringLiteral("Gesamt")] = locale.toString(f1 + f2 + f3, 'f', 2);
+
+                // Wasseraufbereitung
+                if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
                 {
-                case Brauhelfer::ZusatzStatus::NichtZugegeben:
-                    map.insert(QStringLiteral("Status"), QObject::tr("nicht zugegeben"));
-                    break;
-                case Brauhelfer::ZusatzStatus::Zugegeben:
-                    if (entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme)
-                        map.insert(QStringLiteral("Status"), QObject::tr("nicht entnommen"));
+                    liste.clear();
+                    liste.reserve(model->rowCount());
+                    model = bh->sud()->modelWasseraufbereitung();
+                    for (int row = 0; row < model->rowCount(); ++row)
+                    {
+                        QVariantMap map;
+                        map[QStringLiteral("Name")] = model->data(row, ModelWasseraufbereitung::ColName);
+                        map[QStringLiteral("Einheit")] = MainWindow::Einheiten[model->data(row, ModelWasseraufbereitung::ColEinheit).toInt()];
+                        double m = model->data(row, ModelWasseraufbereitung::ColMenge).toDouble();
+                        map[QStringLiteral("MengeHauptguss")] = locale.toString(m * f1, 'f', 2);
+                        map[QStringLiteral("MengeNachguss")] = locale.toString(m * f2, 'f', 2);
+                        if (bh->sud()->gethighGravityFaktor() != 0)
+                            map[QStringLiteral("MengeVerduennung")] = locale.toString(m * f3, 'f', 2);
+                        map[QStringLiteral("Menge")] = locale.toString(m * (f1 + f2 + f3), 'f', 2);
+                        liste << map;
+                    }
+                    if (!liste.empty())
+                        mapWasser[QStringLiteral("Wasseraufbereitung")] = QVariantMap({{"Liste", liste}});
+                }
+
+                // Wasserprofil
+                if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
+                {
+                    QVariantMap map;
+                    map[QStringLiteral("Name")] = bh->sud()->getWasserData(ModelWasser::ColName).toString();
+                    QString str = bh->sud()->getWasserData(ModelWasser::ColBemerkung).toString();
+                    if (!str.isEmpty())
+                        map[QStringLiteral("Bemerkung")] = str;
+                    mapWasser[QStringLiteral("Wasserprofil")] = map;
+                }
+
+                ctx[QStringLiteral("Wasser")] = mapWasser;
+
+                QVariantMap ctxZutaten;
+
+                liste.clear();
+                model = bh->sud()->modelMalzschuettung();
+                for (int row = 0; row < model->rowCount(); ++row)
+                {
+                    QVariantMap map;
+                    map.insert(QStringLiteral("Name"), model->data(row, ModelMalzschuettung::ColName));
+                    map.insert(QStringLiteral("Prozent"), locale.toString(model->data(row, ModelMalzschuettung::ColProzent).toDouble(), 'f', 1));
+                    map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelMalzschuettung::Colerg_Menge).toDouble(), 'f', 2));
+                    map.insert(QStringLiteral("Farbe"), QString::number(model->data(row, ModelMalzschuettung::ColFarbe).toInt()));
+                    liste << map;
+                }
+                if (!liste.empty())
+                    ctxZutaten[QStringLiteral("Malz")] = QVariantMap({{"Liste", liste}});
+
+                liste.clear();
+                liste.reserve(model->rowCount());
+                model = bh->sud()->modelHopfengaben();
+                for (int row = 0; row < model->rowCount(); ++row)
+                {
+                    QVariantMap map;
+                    int dauer = model->data(row, ModelHopfengaben::ColZeit).toInt();
+                    map.insert(QStringLiteral("Name"), model->data(row, ModelHopfengaben::ColName));
+                    int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map[QStringLiteral("Name")], ModelHopfen::ColTyp).toInt();
+                    if (idx >= 0 && idx < MainWindow::HopfenTypname.count())
+                        map.insert(QStringLiteral("Typ"), MainWindow::HopfenTypname[idx]);
+                    map.insert(QStringLiteral("Prozent"), locale.toString(model->data(row, ModelHopfengaben::ColProzent).toDouble(), 'f', 1));
+                    map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelHopfengaben::Colerg_Menge).toDouble(), 'f', 1));
+                    map.insert(QStringLiteral("Alpha"), locale.toString(model->data(row, ModelHopfengaben::ColAlpha).toDouble(), 'f', 1));
+                    if (static_cast<Brauhelfer::HopfenZeitpunkt>(model->data(row, ModelHopfengaben::ColZeitpunkt).toInt()) == Brauhelfer::HopfenZeitpunkt::Vorderwuerze)
+                    {
+                        map.insert(QStringLiteral("Kochdauer"), QString::number(dauer));
+                        map.insert(QStringLiteral("ZugabeNach"), QString::number(kochDauer - dauer));
+                        map.insert(QStringLiteral("Vorderwuerze"), true);
+                        ctxZutaten[QStringLiteral("HatVorderwuerzehopfen")] = true;
+                    }
+                    else if (dauer > 0)
+                    {
+                        map.insert(QStringLiteral("Kochdauer"), QString::number(dauer));
+                        map.insert(QStringLiteral("ZugabeNach"), QString::number(kochDauer - dauer));
+                        map.insert(QStringLiteral("Kochen"), true);
+                    }
                     else
+                    {
+                        map.insert(QStringLiteral("Dauer"), QString::number(dauerIsomerisierung+dauer));
+                        map.insert(QStringLiteral("ZugabeNach"), QString::number(-dauer));
+                        map.insert(QStringLiteral("Ausschlagen"), true);
+                    }
+                    liste << map;
+                }
+                if (!liste.empty())
+                    ctxZutaten[QStringLiteral("Hopfen")] = QVariantMap({{"Liste", liste}});
+
+                liste.clear();
+                model = bh->sud()->modelHefegaben();
+                for (int row = 0; row < model->rowCount(); ++row)
+                {
+                    int menge = model->data(row, ModelHefegaben::ColMenge).toInt();
+                    if (menge <= 0)
+                        continue;
+                    QVariantMap map;
+                    map.insert(QStringLiteral("Name"), model->data(row, ModelHefegaben::ColName));
+                    int idx = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, map[QStringLiteral("Name")], ModelHefe::ColTypOGUG).toInt();
+                    if (idx >= 0 && idx < MainWindow::HefeTypname.count())
+                        map.insert(QStringLiteral("Typ"), MainWindow::HefeTypname[idx]);
+                    map.insert(QStringLiteral("Menge"), menge);
+                    if (model->data(row, ModelHefegaben::ColZugegeben).toBool())
                         map.insert(QStringLiteral("Status"), QObject::tr("zugegeben"));
-                    break;
-                case Brauhelfer::ZusatzStatus::Entnommen:
-                    map.insert(QStringLiteral("Status"), QObject::tr("entnommen"));
-                    break;
+                    else
+                        map.insert(QStringLiteral("Status"), QObject::tr("nicht zugegeben"));
+                    int zugabeNach = model->data(row, ModelHefegaben::ColZugabeNach).toInt();
+                    if (zugabeNach > 0)
+                    {
+                        map.insert(QStringLiteral("ZugabeNach"), zugabeNach);
+                        map.insert(QStringLiteral("ZugabeDatum"), locale.toString(model->data(row, ModelHefegaben::ColZugabeDatum).toDate(), QLocale::ShortFormat));
+                    }
+                    liste << map;
                 }
-                if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-                    listePtr = &listeKalthopfen;
-                else
-                    listePtr = &listeZusatzGaerung;
-                break;
-            case Brauhelfer::ZusatzZeitpunkt::Kochen:
-                dauer =  model->data(row, ModelWeitereZutatenGaben::ColZugabedauer).toInt();
-                if (dauer > 0)
+                if (!liste.empty())
+                    ctxZutaten[QStringLiteral("Hefe")] = QVariantMap({{"Liste", liste}});
+
+                QVariantList listeZusatzAlle;
+                QVariantList listeZusatzMaischen;
+                QVariantList listeZusatzKochen;
+                QVariantList listeZusatzAusschlagen;
+                QVariantList listeZusatzGaerung;
+                QVariantList listeKalthopfen;
+                model = bh->sud()->modelWeitereZutatenGaben();
+                for (int row = 0; row < model->rowCount(); ++row)
                 {
-                    map.insert(QStringLiteral("Kochdauer"), QString::number(dauer));
-                    map.insert(QStringLiteral("ZugabeNach"), QString::number(kochDauer - dauer));
-                    map.insert(QStringLiteral("Kochen"), true);
-                    listePtr = &listeZusatzKochen;
-                }
-                else
-                {
-                    map.insert(QStringLiteral("Dauer"), QString::number(dauerIsomerisierung+dauer));
-                    map.insert(QStringLiteral("ZugabeNach"), QString::number(-dauer));
-                    map.insert(QStringLiteral("Ausschlagen"), true);
-                    listePtr = &listeZusatzAusschlagen;
-                }
-                break;
-            case Brauhelfer::ZusatzZeitpunkt::Maischen:
-                map.insert(QStringLiteral("Maischen"), true);
-                listePtr = &listeZusatzMaischen;
-                break;
-            }
-            QString str = model->data(row, ModelWeitereZutatenGaben::ColBemerkung).toString();
-            if (!str.isEmpty())
-                map.insert(QStringLiteral("Bemerkung"), str);
-            if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-            {
-                int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map[QStringLiteral("Name")], ModelHopfen::ColTyp).toInt();
-                map.insert(QStringLiteral("Typ"), MainWindow::HopfenTypname[idx]);
-            }
-            else
-            {
-                map.insert(QStringLiteral("Typ"), MainWindow::ZusatzTypname[static_cast<int>(typ)]);
-                listeZusatzAlle << map;
-            }
-            if (listePtr)
-                *listePtr << map;
+                    QVariantList* listePtr = nullptr;
+                    QVariantMap map;
+                    int dauer;
+                    map.insert(QStringLiteral("Name"), model->data(row, ModelWeitereZutatenGaben::ColName));
+                    Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(model->data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
+                    map.insert(QStringLiteral("Einheit"), MainWindow::Einheiten[static_cast<int>(einheit)]);
+                    switch (einheit)
+                    {
+                    case Brauhelfer::Einheit::Kg:
+                        map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2));
+                        break;
+                    case Brauhelfer::Einheit::g:
+                        map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 2));
+                        break;
+                    case Brauhelfer::Einheit::mg:
+                        map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() * 1000, 'f', 2));
+                        break;
+                    case Brauhelfer::Einheit::Stk:
+                        map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 2));
+                        break;
+                    case Brauhelfer::Einheit::l:
+                        map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble() / 1000, 'f', 2));
+                        break;
+                    case Brauhelfer::Einheit::ml:
+                        map.insert(QStringLiteral("Menge"), locale.toString(model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(), 'f', 2));
+                        break;
+                    }
+                    Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model->data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
+                    Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(model->data(row, ModelWeitereZutatenGaben::ColTyp).toInt());
+                    Brauhelfer::ZusatzEntnahmeindex entnahmeindex = static_cast<Brauhelfer::ZusatzEntnahmeindex>(model->data(row, ModelWeitereZutatenGaben::ColEntnahmeindex).toInt());
+                    Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(model->data(row, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
+                    switch (zeitpunkt)
+                    {
+                    case Brauhelfer::ZusatzZeitpunkt::Gaerung:
+                        map.insert(QStringLiteral("Gaerung"), true);
+                        map.insert(QStringLiteral("ZugabeNach"), QString::number(model->data(row, ModelWeitereZutatenGaben::ColZugabeNach).toInt()));
+                        map.insert(QStringLiteral("ZugabeDatum"), locale.toString(model->data(row, ModelWeitereZutatenGaben::ColZugabeDatum).toDate(), QLocale::ShortFormat));
+                        map.insert(QStringLiteral("EntnahmeDatum"), locale.toString(model->data(row, ModelWeitereZutatenGaben::ColEntnahmeDatum).toDate(), QLocale::ShortFormat));
+                        if (entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme)
+                        {
+                            map.insert(QStringLiteral("Entnahme"), true);
+                            map.insert(QStringLiteral("Dauer"), model->data(row, ModelWeitereZutatenGaben::ColZugabedauer).toInt() / 1440);
+                        }
+                        switch (status)
+                        {
+                        case Brauhelfer::ZusatzStatus::NichtZugegeben:
+                            map.insert(QStringLiteral("Status"), QObject::tr("nicht zugegeben"));
+                            break;
+                        case Brauhelfer::ZusatzStatus::Zugegeben:
+                            if (entnahmeindex == Brauhelfer::ZusatzEntnahmeindex::MitEntnahme)
+                                map.insert(QStringLiteral("Status"), QObject::tr("nicht entnommen"));
+                            else
+                                map.insert(QStringLiteral("Status"), QObject::tr("zugegeben"));
+                            break;
+                        case Brauhelfer::ZusatzStatus::Entnommen:
+                            map.insert(QStringLiteral("Status"), QObject::tr("entnommen"));
+                            break;
+                        }
+                        if (typ == Brauhelfer::ZusatzTyp::Hopfen)
+                            listePtr = &listeKalthopfen;
+                        else
+                            listePtr = &listeZusatzGaerung;
+                        break;
+                    case Brauhelfer::ZusatzZeitpunkt::Kochen:
+                        dauer =  model->data(row, ModelWeitereZutatenGaben::ColZugabedauer).toInt();
+                        if (dauer > 0)
+                        {
+                            map.insert(QStringLiteral("Kochdauer"), QString::number(dauer));
+                            map.insert(QStringLiteral("ZugabeNach"), QString::number(kochDauer - dauer));
+                            map.insert(QStringLiteral("Kochen"), true);
+                            listePtr = &listeZusatzKochen;
+                        }
+                        else
+                        {
+                            map.insert(QStringLiteral("Dauer"), QString::number(dauerIsomerisierung+dauer));
+                            map.insert(QStringLiteral("ZugabeNach"), QString::number(-dauer));
+                            map.insert(QStringLiteral("Ausschlagen"), true);
+                            listePtr = &listeZusatzAusschlagen;
+                        }
+                        break;
+                    case Brauhelfer::ZusatzZeitpunkt::Maischen:
+                        map.insert(QStringLiteral("Maischen"), true);
+                        listePtr = &listeZusatzMaischen;
+                        break;
+                    }
+                    QString str = model->data(row, ModelWeitereZutatenGaben::ColBemerkung).toString();
+                    if (!str.isEmpty())
+                        map.insert(QStringLiteral("Bemerkung"), str);
+                    if (typ == Brauhelfer::ZusatzTyp::Hopfen)
+                    {
+                        int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map[QStringLiteral("Name")], ModelHopfen::ColTyp).toInt();
+                        map.insert(QStringLiteral("Typ"), MainWindow::HopfenTypname[idx]);
+                    }
+                    else
+                    {
+                        map.insert(QStringLiteral("Typ"), MainWindow::ZusatzTypname[static_cast<int>(typ)]);
+                        listeZusatzAlle << map;
+                    }
+                    if (listePtr)
+                        *listePtr << map;
+                }                
+                if (!listeZusatzAlle.empty())
+                    ctxZutaten[QStringLiteral("Zusatz")] = QVariantMap({{"Liste", listeZusatzAlle}});
+                if (!listeZusatzMaischen.empty())
+                    ctxZutaten[QStringLiteral("ZusatzMaischen")] = QVariantMap({{"Liste", listeZusatzMaischen}});
+                if (!listeZusatzKochen.empty())
+                    ctxZutaten[QStringLiteral("ZusatzKochen")] = QVariantMap({{"Liste", listeZusatzKochen}});
+                if (!listeZusatzAusschlagen.empty())
+                    ctxZutaten[QStringLiteral("ZusatzAusschlagen")] = QVariantMap({{"Liste", listeZusatzAusschlagen}});
+                if (!listeZusatzGaerung.empty())
+                    ctxZutaten[QStringLiteral("ZusatzGaerung")] = QVariantMap({{"Liste", listeZusatzGaerung}});
+                if (!listeKalthopfen.empty())
+                    ctxZutaten[QStringLiteral("Kalthopfen")] = QVariantMap({{"Liste", listeKalthopfen}});
+                ctx[QStringLiteral("Zutaten")] = ctxZutaten;
         }
-        if (!listeZusatzAlle.empty())
-            ctxZutaten[QStringLiteral("Zusatz")] = QVariantMap({{"Liste", listeZusatzAlle}});
-        if (!listeZusatzMaischen.empty())
-            ctxZutaten[QStringLiteral("ZusatzMaischen")] = QVariantMap({{"Liste", listeZusatzMaischen}});
-        if (!listeZusatzKochen.empty())
-            ctxZutaten[QStringLiteral("ZusatzKochen")] = QVariantMap({{"Liste", listeZusatzKochen}});
-        if (!listeZusatzAusschlagen.empty())
-            ctxZutaten[QStringLiteral("ZusatzAusschlagen")] = QVariantMap({{"Liste", listeZusatzAusschlagen}});
-        if (!listeZusatzGaerung.empty())
-            ctxZutaten[QStringLiteral("ZusatzGaerung")] = QVariantMap({{"Liste", listeZusatzGaerung}});
-        if (!listeKalthopfen.empty())
-            ctxZutaten[QStringLiteral("Kalthopfen")] = QVariantMap({{"Liste", listeKalthopfen}});
-        ctx[QStringLiteral("Zutaten")] = ctxZutaten;
 
         // Anlage
         if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))

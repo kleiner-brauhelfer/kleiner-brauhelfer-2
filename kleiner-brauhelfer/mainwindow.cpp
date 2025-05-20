@@ -1,14 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QTranslator>
-#include <QLibraryInfo>
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QFontDialog>
 #include <QStyleFactory>
 #include <QDesktopServices>
-#include <QMenu>
-#include <QToolButton>
 #include "brauhelfer.h"
 #include "commands/undostack.h"
 #include "biercalc.h"
@@ -17,8 +13,8 @@
 #include "dialogs/dlgabout.h"
 #include "dialogs/dlgausruestung.h"
 #include "dialogs/dlgbrauuebersicht.h"
-#include "dialogs/dlgprintout.h"
 #include "dialogs/dlgcheckupdate.h"
+#include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgdatenbank.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgtableview.h"
@@ -27,7 +23,6 @@
 #include "dialogs/dlgrohstoffe.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 #include "dialogs/dlghilfe.h"
-#include "dialogs/dlgeinstellungen.h"
 #include "widgets/iconthemed.h"
 #include "widgets/widgetdecorator.h"
 
@@ -41,7 +36,6 @@ QStringList MainWindow::HefeTypname;
 QStringList MainWindow::HefeTypFlTrName;
 QStringList MainWindow::ZusatzTypname;
 QStringList MainWindow::Einheiten;
-QList<QPair<QString, int> > MainWindow::AnlageTypname;
 
 MainWindow* MainWindow::getInstance()
 {
@@ -51,42 +45,17 @@ MainWindow* MainWindow::getInstance()
     return nullptr;
 }
 
-static void installTranslator(QTranslator &translator, const QString &filename)
-{
-    QApplication* app = qApp;
-    QLocale locale(gSettings->language());
-    app->removeTranslator(&translator);
-    if (translator.load(locale, filename, QStringLiteral("_"), app->applicationDirPath() + "/translations"))
-        app->installTranslator(&translator);
-    else if (translator.load(locale, filename, QStringLiteral("_"), QStringLiteral(":/translations")))
-        app->installTranslator(&translator);
-    else if (translator.load(locale, filename, QStringLiteral("_"), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
-        app->installTranslator(&translator);
-}
-
-void MainWindow::installTranslators()
-{
-    static QTranslator translator;
-    static QTranslator translatorQt;
-    installTranslator(translator, QStringLiteral("kbh"));
-    installTranslator(translatorQt, QStringLiteral("qtbase"));
-}
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    setupLabels();
+    initLabels();
     ui->setupUi(this);
-    setupActions();
-
     qApp->installEventFilter(this);
 
     Qt::ColorScheme theme = gSettings->theme();
-    QIcon::setThemeSearchPaths({":/images/icons"});
-    themeChanged(gSettings->theme());
-    connect(gSettings, &Settings::themeChanged, this, &MainWindow::themeChanged);
-
+    ui->actionThemeHell->setEnabled(theme != Qt::ColorScheme::Light);
+    ui->actionThemeDunkel->setEnabled(theme != Qt::ColorScheme::Dark);
     if (theme == Qt::ColorScheme::Dark)
     {
         ui->tabMain->setTabIcon(0, IconThemed(QStringLiteral("tabsudauswahl"), false));
@@ -126,35 +95,53 @@ MainWindow::MainWindow(QWidget *parent) :
     gUndoStack->setEnabled(gSettings->valueInGroup("General", "UndoEnabled", true).toBool());
     if (gUndoStack->isEnabled())
     {
-        ui->toolBarSave->addAction(gUndoStack->createRedoAction(this, tr("Redo")));
-        ui->toolBarSave->addAction(gUndoStack->createUndoAction(this, tr("Undo")));
-        ui->toolBarSave->addSeparator();
+        ui->menuBearbeiten->addAction(gUndoStack->createUndoAction(this, tr("Rückgängig")));
+        ui->menuBearbeiten->addAction(gUndoStack->createRedoAction(this, tr("Wiederherstellen")));
+    }
+    else
+    {
+        ui->menuBearbeiten->setEnabled(false);
     }
 
-    QPalette palette = ui->tbHelp->palette();
-    palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
-    palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
-    ui->tbHelp->setPalette(palette);
+  #if 0
+    QString style = gSettings->style();
+    for(const QString &key : QStyleFactory::keys())
+    {
+        QAction *action = new QAction(key, this);
+        if (key == style)
+            action->setEnabled(false);
+        else
+            connect(action, &QAction::triggered, this, &MainWindow::changeStyle);
+        ui->menuStil->addAction(action);
+    }
+  #endif
+    ui->menuStil->menuAction()->setVisible(!ui->menuStil->isEmpty());
+
+    ui->actionSchriftart->setChecked(gSettings->useSystemFont());
 
     gSettings->beginGroup("MainWindow");
     restoreGeometry(gSettings->value("geometry").toByteArray());
     mDefaultState = saveState();
     restoreState(gSettings->value("state").toByteArray());
-    ui->splitterHelp->setSizes({900, 100});
-    ui->splitterHelp->setStretchFactor(0, 1);
-    ui->splitterHelp->setStretchFactor(1, 0);
-    mDefaultSplitterHelpState = ui->splitterHelp->saveState();
-    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
     gSettings->endGroup();
 
     gSettings->beginGroup("General");
+    ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
+    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
+    ui->actionTooltips->setChecked(gSettings->value("TooltipsEnabled", true).toBool());
+    ui->actionZahlenformat->setChecked(gSettings->value("UseLanguageLocale", false).toBool());
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
+    ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
 
-    connect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
+    connect(qApp, &QApplication::focusChanged, this, [](QWidget *old, QWidget *now){
+        if (!old || !now)
+            return;
+        if (strcmp(old->metaObject()->className(),"QtPrivate::QCalendarView") == 0)
+            return;
+        WidgetDecorator::clearValueChanged();
+    });
 
-    connect(gSettings, &Settings::languageChanged, this, [](){installTranslators();});
-    connect(gSettings, &Settings::databasePathChanged, this, [this](){restart(1000);});
     connect(gSettings, &Settings::modulesChanged, this, &MainWindow::modulesChanged);
 
     connect(ui->tabSudAuswahl, &TabSudAuswahl::clicked, this, &MainWindow::loadSud);
@@ -164,14 +151,15 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(bh->sud(), &SudObject::loadedChanged, this, &MainWindow::sudLoaded);
     connect(bh->sud(), &SudObject::dataChanged, this, &MainWindow::sudDataChanged);
 
+    connect(ui->actionRohstoffe, &QAction::triggered, this, &MainWindow::showDialogRohstoffe);
+    connect(ui->actionBrauUebersicht, &QAction::triggered, this, &MainWindow::showDialogBrauUebersicht);
+    connect(ui->actionAusruestung, &QAction::triggered, this, &MainWindow::showDialogAusruestung);
 
-
-
-    if (gSettings->valueInGroup("General", "CheckUpdate", true).toBool())
+    if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
 
     if (gSettings->modulesFirstTime)
-        DlgAbstract::showDialog<DlgModule>(this);
+        on_actionModule_triggered();
 
     modulesChanged(Settings::ModuleAlle);
     sudLoaded();
@@ -180,67 +168,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    closeDialogs();
     saveSettings();
-    disconnect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
     delete ui;
-}
-
-void MainWindow::setupActions()
-{
-    // toolbar save
-    connect(ui->actionSpeichern, &QAction::triggered, this, &MainWindow::saveDatabase);
-    connect(ui->actionVerwerfen, &QAction::triggered, this, &MainWindow::discardDatabase);
-
-    // toolbar sudauswahl
-    ui->tabSudAuswahl->setupActions(ui->toolBarSudauswahl);
-
-    // toolbar sud
-    ui->toolBarSud->addAction(ui->actionSudGebraut);
-    ui->toolBarSud->addAction(ui->actionSudAbgefuellt);
-    ui->toolBarSud->addAction(ui->actionSudAusgetrunken);
-    ui->toolBarSud->addSeparator();
-    ui->toolBarSud->addAction(ui->actionEingabefelderEntsperren);
-    ui->toolBarSud->addSeparator();
-
-    // toolbar dialogs
-    connect(ui->actionRohstoffe, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);});
-    connect(ui->actionBrauUebersicht, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);});
-    connect(ui->actionPrintout, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgPrintout>(this, ui->actionPrintout);});
-    connect(ui->actionAusruestung, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);});
-
-    // toolbar help
-    connect(ui->actionSettings, &QAction::triggered, this, [this](){
-        DlgEinstellungen* dlg = DlgAbstract::showDialog<DlgEinstellungen>(this, ui->actionSettings);
-        connect(dlg, &DlgEinstellungen::restoreViewTriggered, this, &MainWindow::restoreView);
-        connect(dlg, &DlgEinstellungen::checkUpdateTriggered, this, &MainWindow::checkForUpdate);
-    });
-    connect(ui->actionDatenbank, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgDatenbank>(this, ui->actionDatenbank);});
-    connect(ui->actionHilfe, &QAction::triggered, this, [this](){
-        DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this, ui->actionHilfe);
-        dlg->setHomeUrl(QStringLiteral(URL_HILFE));
-    });
-    connect(ui->actionUeber, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgAbout>(this, ui->actionUeber);});
-}
-
-QAction* MainWindow::getAction(const QString& name) const
-{
-    if (name == "actionAusruestung")
-        return ui->actionAusruestung;
-    return nullptr;
-}
-
-void MainWindow::changeEvent(QEvent* event)
-{
-    switch(event->type())
-    {
-    case QEvent::LanguageChange:
-        setupLabels();
-        ui->retranslateUi(this);
-        break;
-    default:
-        break;
-    }
-    QMainWindow::changeEvent(event);
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -248,9 +178,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
     if (bh->isDirty())
     {
         int ret = QMessageBox::question(this, tr("Anwendung schließen?"),
-                                        tr("Sollen die Änderungen vor dem Schließen gespeichert werden?"),
-                                        QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
-                                        QMessageBox::Yes);
+                                  tr("Sollen die Änderungen vor dem Schließen gespeichert werden?"),
+                                  QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
+                                  QMessageBox::Yes);
         if (ret == QMessageBox::Yes)
         {
             saveDatabase();
@@ -264,12 +194,12 @@ void MainWindow::closeEvent(QCloseEvent *event)
     else
     {
         int ret = QMessageBox::Yes;
-        if (gSettings->valueInGroup("General", "BeendenAbfrage", true).toBool())
+        if (ui->actionBestaetigungBeenden->isChecked())
         {
             ret = QMessageBox::question(this, tr("Anwendung schließen?"),
-                                        tr("Soll die Anwendung geschlossen werden?"),
-                                        QMessageBox::Cancel | QMessageBox::Yes,
-                                        QMessageBox::Yes);
+                                  tr("Soll die Anwendung geschlossen werden?"),
+                                  QMessageBox::Cancel | QMessageBox::Yes,
+                                  QMessageBox::Yes);
         }
         if (ret == QMessageBox::Yes)
             event->accept();
@@ -280,27 +210,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    if (event->type() == QEvent::ToolTip && !gSettings->valueInGroup("General", "TooltipsEnabled", true).toBool())
+    if (event->type() == QEvent::ToolTip && !ui->actionTooltips->isChecked() )
         return true;
     return QMainWindow::eventFilter(obj, event);
-}
-
-void MainWindow::focusChanged(QWidget *old, QWidget *now)
-{
-    if (old && now && strcmp(old->metaObject()->className(),"QtPrivate::QCalendarView") != 0)
-        WidgetDecorator::clearValueChanged();
-    if (now && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
-        ui->tbHelp->setHtml(now->toolTip());
-}
-
-void MainWindow::themeChanged(Qt::ColorScheme theme)
-{
-    QString themeName = theme == Qt::ColorScheme::Dark ? "dark" : "light";
-    QIcon::setThemeName(themeName);
-    //QFile file(QStringLiteral(":/data/Styles/style_%1.qss").arg(themeName));
-    //file.open(QFile::ReadOnly);
-    //setStyleSheet(file.readAll());
-    restart();
 }
 
 void MainWindow::restart(int retCode)
@@ -328,13 +240,13 @@ void MainWindow::saveDatabase()
         if (bh->save())
         {
             gUndoStack->clear();
-            QGuiApplication::restoreOverrideCursor();
         }
         else
         {
             QGuiApplication::restoreOverrideCursor();
             QMessageBox::critical(this, tr("Fehler beim Speichern"), bh->lastError());
         }
+        QGuiApplication::restoreOverrideCursor();
     }
     catch (const std::exception& ex)
     {
@@ -377,39 +289,49 @@ void MainWindow::saveSettings()
     gSettings->beginGroup("MainWindow");
     gSettings->setValue("geometry", saveGeometry());
     gSettings->setValue("state", saveState());
-    gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
     gSettings->endGroup();
     ui->tabSudAuswahl->saveSettings();
     ui->tabRezept->saveSettings();
     ui->tabBraudaten->saveSettings();
     ui->tabAbfuelldaten->saveSettings();
     ui->tabGaerverlauf->saveSettings();
+    ui->tabZusammenfassung->saveSettings();
     ui->tabEtikette->saveSettings();
     ui->tabBewertung->saveSettings();
 }
 
 void MainWindow::restoreView()
 {
+    closeDialogs();
     restoreState(mDefaultState);
-    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     ui->tabSudAuswahl->restoreView();
     ui->tabRezept->restoreView();
     ui->tabBraudaten->restoreView();
     ui->tabAbfuelldaten->restoreView();
     ui->tabGaerverlauf->restoreView();
+    ui->tabZusammenfassung->restoreView();
     ui->tabEtikette->restoreView();
     ui->tabBewertung->restoreView();
     DlgModule::restoreView();
     DlgRohstoffe::restoreView();
     DlgAusruestung::restoreView();
     DlgBrauUebersicht::restoreView();
-    DlgPrintout::restoreView();
     DlgDatenbank::restoreView();
     DlgRohstoffAuswahl::restoreView();
     DlgTableView::restoreView();
     DlgConsole::restoreView();
     DlgHilfe::restoreView();
-    DlgEinstellungen::restoreView();
+}
+
+void MainWindow::closeDialogs()
+{
+    DlgAbstract::closeDialog<DlgModule>();
+    DlgAbstract::closeDialog<DlgConsole>();
+    DlgAbstract::closeDialog<DlgBrauUebersicht>();
+    DlgAbstract::closeDialog<DlgRohstoffe>();
+    DlgAbstract::closeDialog<DlgAusruestung>();
+    DlgAbstract::closeDialog<DlgDatenbank>();
+    DlgAbstract::closeDialog<DlgHilfe>();
 }
 
 void MainWindow::modulesChanged(Settings::Modules modules)
@@ -421,6 +343,7 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabBraudaten->modulesChanged(modules);
     ui->tabAbfuelldaten->modulesChanged(modules);
     ui->tabGaerverlauf->modulesChanged(modules);
+    ui->tabZusammenfassung->modulesChanged(modules);
     ui->tabEtikette->modulesChanged(modules);
     ui->tabBewertung->modulesChanged(modules);
     checkLoadedSud();
@@ -441,6 +364,19 @@ void MainWindow::updateTabs(Settings::Modules modules)
             ui->tabMain->removeTab(index);
     }
     if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
+        nextIndex++;
+    if (modules.testFlag(Settings::ModuleAusdruck))
+    {
+        int index = ui->tabMain->indexOf(ui->tabZusammenfassung);
+        if (gSettings->isModuleEnabled(Settings::ModuleAusdruck))
+        {
+            if (index < 0)
+                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed(QStringLiteral("tabzusammenfassung"), gSettings->theme() == Qt::ColorScheme::Light), tr("Ausdruck"));
+        }
+        else
+            ui->tabMain->removeTab(index);
+    }
+    if (gSettings->isModuleEnabled(Settings::ModuleAusdruck))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleEtikette))
     {
@@ -470,8 +406,6 @@ void MainWindow::updateTabs(Settings::Modules modules)
         nextIndex++;
     if (modules.testFlag(Settings::ModuleBrauuebersicht))
         ui->actionBrauUebersicht->setVisible(gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht));
-    if (modules.testFlag(Settings::ModuleAusdruck))
-        ui->actionPrintout->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusdruck));
     if (modules.testFlag(Settings::ModuleAusruestung))
         ui->actionAusruestung->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusruestung));
 }
@@ -498,32 +432,22 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabGaerverlauf), loaded);
+    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabZusammenfassung), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
+    ui->menuSud->setEnabled(loaded);
     if (loaded)
     {
         Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-        ui->actionSudGebraut->setEnabled(status == Brauhelfer::SudStatus::Rezept || status == Brauhelfer::SudStatus::Gebraut);
-        ui->actionSudAbgefuellt->setEnabled(status == Brauhelfer::SudStatus::Gebraut || status == Brauhelfer::SudStatus::Abgefuellt);
-        ui->actionSudAusgetrunken->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt || status == Brauhelfer::SudStatus::Verbraucht);
-        ui->actionSudGebraut->setChecked(status >= Brauhelfer::SudStatus::Gebraut);
-        ui->actionSudAbgefuellt->setChecked(status >= Brauhelfer::SudStatus::Abgefuellt);
-        ui->actionSudAusgetrunken->setChecked(status >= Brauhelfer::SudStatus::Verbraucht);
-        ui->actionEingabefelderEntsperren->setEnabled(status != Brauhelfer::SudStatus::Rezept);
-    }
-    else
-    {
-        ui->actionSudGebraut->setEnabled(false);
-        ui->actionSudAbgefuellt->setEnabled(false);
-        ui->actionSudAusgetrunken->setEnabled(false);
-        ui->actionSudGebraut->setChecked(false);
-        ui->actionSudAbgefuellt->setChecked(false);
-        ui->actionSudAusgetrunken->setChecked(false);
-        ui->actionEingabefelderEntsperren->setEnabled(false);
+        ui->actionSudGebraut->setEnabled(status >= Brauhelfer::SudStatus::Gebraut);
+        ui->actionSudAbgefuellt->setEnabled(status >= Brauhelfer::SudStatus::Abgefuellt);
+        ui->actionSudVerbraucht->setEnabled(status >= Brauhelfer::SudStatus::Verbraucht);
+        ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
+        ui->actionWeitereZutaten->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
     }
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-    ui->actionEingabefelderEntsperren->setChecked(gSettings->ForceEnabled);
+    ui->actionEingabefelderEntsperren->setChecked(false);
 }
 
 void MainWindow::sudLoaded()
@@ -568,7 +492,6 @@ void MainWindow::loadSud(int sudId)
 
 void MainWindow::on_tabMain_currentChanged()
 {
-    QWidget* currentTab = ui->tabMain->currentWidget();
     TabAbstract* tab;
     for (int i = 0; i < ui->tabMain->count(); ++i)
     {
@@ -576,193 +499,278 @@ void MainWindow::on_tabMain_currentChanged()
         if (tab)
             tab->setTabActive(false);
     }
-    tab = dynamic_cast<TabAbstract*>(currentTab);
+    tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
     if (tab)
     {
         tab->setTabActive(true);
+        ui->actionDrucken->setEnabled(tab->isPrintable());
+        ui->actionDruckvorschau->setEnabled(tab->isPrintable());
     }
-    ui->toolBarSudauswahl->setVisible(currentTab == ui->tabSudAuswahl);
-    ui->toolBarSud->setVisible(currentTab == ui->tabRezept || currentTab == ui->tabBraudaten || currentTab == ui->tabAbfuelldaten || currentTab == ui->tabGaerverlauf);
     setFocus();
 }
 
-void MainWindow::on_actionSudGebraut_triggered(bool checked)
+void MainWindow::on_actionNeuen_Sud_anlegen_triggered()
 {
-    if (checked)
-    {
-        QDateTime dt = bh->sud()->getBraudatum();
-        if (!dt.isValid())
-            dt = QDateTime::currentDateTime();
-        QString dtStr = QLocale().toString(dt, QLocale::ShortFormat);
-        if (QMessageBox::question(this, tr("Sudstatus auf \"gebraut\" setzen?"),
-                                  tr("Soll der Sudstatus auf \"gebraut\" gesetzt werden?\nBraudatum: %1").arg(dtStr),
-                                  QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
-        {
-            gUndoStack->beginMacro(QStringLiteral("macro"));
-            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, dt));
-            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Gebraut)));
-            gUndoStack->endMacro();
+    ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
+    ui->tabSudAuswahl->sudAnlegen();
+}
 
+void MainWindow::on_actionSud_kopieren_triggered()
+{
+    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
+    {
+        ui->tabSudAuswahl->sudKopieren();
+    }
+    else
+    {
+        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
+        ui->tabSudAuswahl->sudKopieren(true);
+    }
+}
+
+void MainWindow::on_actionSud_teilen_triggered()
+{
+    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
+    {
+        ui->tabSudAuswahl->sudTeilen();
+    }
+    else
+    {
+        ui->tabSudAuswahl->sudTeilen(true);
+    }
+}
+
+void MainWindow::on_actionSud_l_schen_triggered()
+{
+    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
+    {
+        ui->tabSudAuswahl->sudLoeschen();
+    }
+    else
+    {
+        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
+        ui->tabSudAuswahl->sudLoeschen(true);
+    }
+}
+
+void MainWindow::on_actionRezept_importieren_triggered()
+{
+    ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
+    ui->tabSudAuswahl->rezeptImportieren();
+}
+
+void MainWindow::on_actionRezept_exportieren_triggered()
+{
+    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
+    {
+        ui->tabSudAuswahl->rezeptExportieren();
+    }
+    else
+    {
+        ui->tabSudAuswahl->rezeptExportieren(true);
+    }
+}
+
+void MainWindow::on_actionSpeichern_triggered()
+{
+    saveDatabase();
+}
+
+void MainWindow::on_actionVerwerfen_triggered()
+{
+    discardDatabase();
+}
+
+void MainWindow::on_actionDruckvorschau_triggered()
+{
+    TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
+    if (tab)
+        tab->printPreview();
+}
+
+void MainWindow::on_actionDrucken_triggered()
+{
+    TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
+    if (tab)
+        tab->toPdf();
+}
+
+void MainWindow::on_actionBereinigen_triggered()
+{
+    DlgDatabaseCleaner dlg(this);
+    dlg.exec();
+}
+
+void MainWindow::on_actionBeenden_triggered()
+{
+    close();
+}
+
+void MainWindow::on_actionSudGebraut_triggered()
+{
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Rezept));
+    if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 1)
+        bh->sud()->modelSchnellgaerverlauf()->removeRow(0);
+    if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 1)
+        bh->sud()->modelHauptgaerverlauf()->removeRow(0);
+    if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
+        bh->sud()->modelNachgaerverlauf()->removeRow(0);
+    DlgRohstoffeAbziehen dlg(false, this);
+    dlg.exec();
+}
+
+void MainWindow::on_actionSudAbgefuellt_triggered()
+{
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
+    if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
+        bh->sud()->modelNachgaerverlauf()->removeRow(0);
+}
+
+void MainWindow::on_actionSudVerbraucht_triggered()
+{
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
+}
+
+void MainWindow::on_actionHefeZugabeZuruecksetzen_triggered()
+{
+    ProxyModel *model = bh->sud()->modelHefegaben();
+    for (int row = 0; row < model->rowCount(); ++row)
+    {
+        bool zugegeben = model->data(row, ModelHefegaben::ColZugegeben).toBool();
+        if (zugegeben)
+        {
+            model->setData(row, ModelHefegaben::ColZugegeben, false);
             if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
-                DlgRohstoffeAbziehen dlg(true, this);
+                DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Hefe,
+                                         model->data(row, ModelHefegaben::ColName).toString(),
+                                         model->data(row, ModelHefegaben::ColMenge).toDouble(),
+                                         this);
                 dlg.exec();
             }
-
-            if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 0)
-            {
-                QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
-                                            {ModelSchnellgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
-                                            {ModelSchnellgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
-                bh->sud()->modelSchnellgaerverlauf()->append(values);
-            }
-
-            if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 0)
-            {
-                QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
-                                            {ModelHauptgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
-                                            {ModelHauptgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
-                bh->sud()->modelHauptgaerverlauf()->append(values);
-            }
         }
     }
-    else
-    {
-        if (QMessageBox::question(this, tr("Sudstatus \"gebraut\" zurücksetzen?"),
-                                  tr("Soll der Sudstatus \"gebraut\" zurückgesetzt werden?"),
-                                  QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
-        {
-            bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Rezept));
-            if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 1)
-                bh->sud()->modelSchnellgaerverlauf()->removeRow(0);
-            if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 1)
-                bh->sud()->modelHauptgaerverlauf()->removeRow(0);
-            if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
-                bh->sud()->modelNachgaerverlauf()->removeRow(0);
-            DlgRohstoffeAbziehen dlg(false, this);
-            dlg.exec();
-        }
-    }
-    ui->actionSudGebraut->setChecked(static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus()) >= Brauhelfer::SudStatus::Gebraut);
 }
 
-void MainWindow::on_actionSudAbgefuellt_triggered(bool checked)
+void MainWindow::on_actionWeitereZutaten_triggered()
 {
-    if (checked)
+    ProxyModel *model = bh->sud()->modelWeitereZutatenGaben();
+    for (int row = 0; row < model->rowCount(); ++row)
     {
-        if (!bh->sud()->getAbfuellenBereitZutaten())
+        Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(model->data(row, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
+        bool zugegeben = status != Brauhelfer::ZusatzStatus::NichtZugegeben;
+        if (zugegeben)
         {
-            if (QMessageBox::warning(this, tr("Zutaten Gärung"),
-                                     tr("Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.")
-                                         + "\n" + tr("Soll der Sud trotzdem als abgefüllt markiert werden?"),
-                                     QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
-                return;
-        }
-
-        if (bh->sud()->getSchnellgaerprobeAktiv())
-        {
-            if (bh->sud()->getSWJungbier() > bh->sud()->getGruenschlauchzeitpunkt())
+            model->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben));
+            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             {
-                if (QMessageBox::warning(this, tr("Grünschlauchzeitpunkt nicht erreicht"),
-                                         tr("Der Grünschlauchzeitpunkt wurde noch nicht erreicht.")
-                                             + "\n" + tr("Soll der Sud trotzdem als abgefüllt markiert werden?"),
-                                         QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
-                    return;
-            }
-            else if (bh->sud()->getSWJungbier() < bh->sud()->getSWSchnellgaerprobe())
-            {
-                if (QMessageBox::warning(this, tr("Schnellgärprobe"),
-                                         tr("Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe.")
-                                             + "\n" + tr("Soll der Sud trotzdem als abgefüllt markiert werden?"),
-                                         QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
-                    return;
+                DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Zusatz,
+                                         model->data(row, ModelWeitereZutatenGaben::ColName).toString(),
+                                         model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
+                                         this);
+                dlg.exec();
             }
         }
-
-        QDateTime dt = bh->sud()->getAbfuelldatum();
-        if (!dt.isValid())
-            dt = QDateTime::currentDateTime();
-        QString dtStr = QLocale().toString(dt, QLocale::ShortFormat);
-        if (QMessageBox::question(this, tr("Sudstatus auf \"abgefüllt\" setzen?"),
-                                  tr("Soll der Sudstatus auf \"abgefüllt\" gesetzt werden?\nAbfülldatum: %1").arg(dtStr),
-                                  QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
-        {
-            gUndoStack->beginMacro(QStringLiteral("macro"));
-            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAbfuelldatum, dt));
-            QDateTime dtReifung = bh->sud()->getReifungStart();
-            if (!dtReifung.isValid())
-                dtReifung = QDateTime::currentDateTime();
-            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColReifungStart, dtReifung));
-            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Abgefuellt)));
-            gUndoStack->endMacro();
-
-            QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
-                                        {ModelNachgaerverlauf::ColZeitstempel, bh->sud()->getAbfuelldatum()},
-                                        {ModelNachgaerverlauf::ColDruck, 0.0},
-                                        {ModelNachgaerverlauf::ColTemp, bh->sud()->getTemperaturJungbier()}});
-            if (bh->sud()->modelNachgaerverlauf()->rowCount() == 0)
-                bh->sud()->modelNachgaerverlauf()->append(values);
-        }
     }
-    else
-    {
-        if (QMessageBox::question(this, tr("Sudstatus \"abgefüllt\" zurücksetzen?"),
-                                  tr("Soll der Sudstatus \"abgefüllt\" zurückgesetzt werden?"),
-                                  QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
-        {
-            bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
-            if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
-                bh->sud()->modelNachgaerverlauf()->removeRow(0);
-        }
-    }
-    ui->actionSudAbgefuellt->setChecked(static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus()) >= Brauhelfer::SudStatus::Abgefuellt);
 }
 
-void MainWindow::on_actionSudAusgetrunken_triggered(bool checked)
+void MainWindow::on_actionEingabefelderEntsperren_changed()
 {
-    if (checked)
+    if (ui->actionEingabefelderEntsperren->isChecked())
     {
-        if (QMessageBox::question(this, tr("Sudstatus auf \"ausgetrunken\" setzen?"),
-                                  tr("Soll der Sudstatus auf \"ausgetrunken\" gesetzt werden?"),
-                                  QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
-        {
-            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Verbraucht)));
-        }
-    }
-    else
-    {
-        if (QMessageBox::question(this, tr("Sudstatus \"ausgetrunken\" zurücksetzen?"),
-                                  tr("Soll der Sudstatus \"ausgetrunken\" zurückgesetzt werden?"),
-                                  QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
-        {
-            bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
-        }
-    }
-    ui->actionSudAusgetrunken->setChecked(static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus()) >= Brauhelfer::SudStatus::Verbraucht);
-}
-
-void MainWindow::on_actionEingabefelderEntsperren_triggered(bool checked)
-{
-    if (checked)
-    {
-        int ret = QMessageBox::question(this, tr("Eingabefelder entsperren"),
+        int ret = QMessageBox::question(this, tr("Eingabefelder entsperren?"),
                                   tr("Vorsicht! Eingabefelder entsperren kann zu inkonsistenten Daten führen und sollte mit Bedacht eingesetzt werden."),
                                   QMessageBox::Yes | QMessageBox::No,
                                   QMessageBox::Yes);
         if (ret == QMessageBox::Yes)
         {
             gSettings->ForceEnabled = true;
+            ui->tabRezept->checkEnabled();
+            ui->tabBraudaten->checkEnabled();
+            ui->tabAbfuelldaten->checkEnabled();
+            ui->tabGaerverlauf->checkEnabled();
+        }
+        else
+        {
+            ui->actionEingabefelderEntsperren->setChecked(false);
         }
     }
     else
     {
         gSettings->ForceEnabled = false;
+        ui->tabRezept->checkEnabled();
+        ui->tabBraudaten->checkEnabled();
+        ui->tabAbfuelldaten->checkEnabled();
+        ui->tabGaerverlauf->checkEnabled();
     }
-    ui->tabRezept->checkEnabled();
-    ui->tabBraudaten->checkEnabled();
-    ui->tabAbfuelldaten->checkEnabled();
-    ui->tabGaerverlauf->checkEnabled();
-    ui->actionEingabefelderEntsperren->setChecked(gSettings->ForceEnabled);
+}
+
+void MainWindow::on_actionAnsichtWiederherstellen_triggered()
+{
+    restoreView();
+}
+
+void MainWindow::on_actionThemeHell_triggered()
+{
+    gSettings->setTheme(Qt::ColorScheme::Light);
+    restart();
+}
+
+void MainWindow::on_actionThemeDunkel_triggered()
+{
+    gSettings->setTheme(Qt::ColorScheme::Dark);
+    restart();
+}
+
+void MainWindow::changeStyle()
+{
+    QAction *action = qobject_cast<QAction*>(sender());
+    if (action)
+    {
+        gSettings->setStyle(action->text());
+        restart();
+    }
+}
+
+void MainWindow::on_actionSchriftart_triggered(bool checked)
+{
+    if (checked)
+    {
+        gSettings->setUseSystemFont(true);
+        restart();
+    }
+    else
+    {
+        bool ok;
+        QFont font = QFontDialog::getFont(&ok, gSettings->font, this);
+        if (ok)
+        {
+            gSettings->setUseSystemFont(false);
+            gSettings->setFont(font);
+            restart();
+        }
+        else
+        {
+            ui->actionSchriftart->setChecked(true);
+        }
+    }
+}
+
+void MainWindow::on_actionOeffnen_triggered()
+{
+    QString databasePath = QFileDialog::getOpenFileName(this, tr("Datenbank auswählen"),
+                                                    gSettings->databasePath(),
+                                                    tr("Datenbank (*.sqlite);;Alle Dateien (*.*)"));
+    if (!databasePath.isEmpty())
+    {
+        gSettings->setDatabasePath(databasePath);
+        restart();
+    }
+}
+
+void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)
+{
+    gSettings->setValueInGroup("General", "BeendenAbfrage", checked);
 }
 
 void MainWindow::checkForUpdate(bool force)
@@ -797,6 +805,7 @@ void MainWindow::checkMessageFinished()
             if (dlg->ignoreUpdate())
                 gSettings->setValue("CheckUpdateLastDate", QDate::currentDate());
             gSettings->setValue("CheckUpdate", dlg->doCheckUpdate());
+            ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
             gSettings->endGroup();
         }
         dlg->deleteLater();
@@ -804,7 +813,7 @@ void MainWindow::checkMessageFinished()
   #endif
 }
 
-void MainWindow::setupLabels()
+void MainWindow::initLabels()
 {
     SqlTableModel *model;
 
@@ -813,18 +822,6 @@ void MainWindow::setupLabels()
     HefeTypFlTrName = QStringList({"", tr("trocken"), tr("flüssig")});
     ZusatzTypname = QStringList({tr("Honig"), tr("Zucker"), tr("Gewürz"), tr("Frucht"), tr("Sonstiges"), tr("Kraut"), tr("Wasseraufbereitung"), tr("Klärmittel")});
     Einheiten = QStringList({"kg", "g", "mg", tr("Stk."), "L", "mL"});
-    AnlageTypname = QList<QPair<QString, int> >({
-        {tr("Standard"), static_cast<int>(Brauhelfer::AnlageTyp::Standard)},
-        {tr("Grainfather G30"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG30)},
-        {tr("Grainfather G70"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG70)},
-        {tr("Braumeister 10L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister10)},
-        {tr("Braumeister 20L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister20)},
-        {tr("Braumeister 50L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister50)},
-        {tr("Braumeister 200L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister200)},
-        {tr("Braumeister 500L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister500)},
-        {tr("Braumeister 1000L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister1000)},
-        {tr("Brauheld Pro 30L"), static_cast<int>(Brauhelfer::AnlageTyp::BrauheldPro30)}
-    });
 
     model = bh->modelSud();
     model->setHeaderData(ModelSud::ColID, Qt::Horizontal, tr("Sud ID"));
@@ -943,13 +940,8 @@ void MainWindow::setupLabels()
     model->setHeaderData(ModelNachgaerverlauf::ColCO2, Qt::Horizontal, tr("CO2") + "\n(g/L)");
     model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
 
-    model = bh->modelBewertungen();
-    model->setHeaderData(ModelBewertungen::ColDatum, Qt::Horizontal, tr("Datum"));
-    model->setHeaderData(ModelBewertungen::ColWoche, Qt::Horizontal, tr("Woche"));
-    model->setHeaderData(ModelBewertungen::ColSterne, Qt::Horizontal, tr("Bewertung"));
-
     model = bh->modelAusruestung();
-    model->setHeaderData(ModelAusruestung::ColName, Qt::Horizontal, tr("Bezeichnung"));
+    model->setHeaderData(ModelAusruestung::ColName, Qt::Horizontal, tr("Anlage"));
     model->setHeaderData(ModelAusruestung::ColTyp, Qt::Horizontal, tr("Typ"));
     model->setHeaderData(ModelAusruestung::ColVermoegen, Qt::Horizontal, tr("Vermögen") + "\n(L)");
     model->setHeaderData(ModelAusruestung::ColAnzahlSude, Qt::Horizontal, tr("Anzahl Sude"));
@@ -1095,4 +1087,97 @@ void MainWindow::checkLoadedSud()
             }
         }
     }
+}
+
+void MainWindow::on_actionCheckUpdate_triggered(bool checked)
+{
+  #if QT_NETWORK_LIB
+    gSettings->setValueInGroup("General", "CheckUpdate", checked);
+    if (checked)
+        checkForUpdate(true);
+  #else
+    Q_UNUSED(checked)
+  #endif
+}
+
+void MainWindow::on_actionTooltips_triggered(bool checked)
+{
+    gSettings->setValueInGroup("General", "TooltipsEnabled", checked);
+}
+
+void MainWindow::on_actionAnimationen_triggered(bool checked)
+{
+    gSettings->setAnimationsEnabled(checked);
+}
+
+void MainWindow::on_actionDeutsch_triggered()
+{
+    gSettings->setLanguage(QStringLiteral("de"));
+    restart(1001);
+}
+
+void MainWindow::on_actionEnglisch_triggered()
+{
+    gSettings->setLanguage(QStringLiteral("en"));
+    restart(1001);
+}
+
+void MainWindow::on_actionSchwedisch_triggered()
+{
+    gSettings->setLanguage(QStringLiteral("sv"));
+    restart(1001);
+}
+
+void MainWindow::on_actionNiederlaendisch_triggered()
+{
+    gSettings->setLanguage(QStringLiteral("nl"));
+    restart(1001);
+}
+
+void MainWindow::on_actionZahlenformat_triggered(bool checked)
+{
+    gSettings->setValueInGroup("General", "UseLanguageLocale", checked);
+    restart(1001);
+}
+
+void MainWindow::on_actionModule_triggered()
+{
+    DlgAbstract::showDialog<DlgModule>(this);
+}
+
+void MainWindow::on_actionHilfe_triggered()
+{
+    DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this);
+    dlg->setHomeUrl(QStringLiteral(URL_HILFE));
+}
+
+void MainWindow::on_actionUeber_triggered()
+{
+    DlgAbout dlg(this);
+    dlg.exec();
+}
+
+void MainWindow::on_actionLog_triggered()
+{
+    DlgAbstract::showDialog<DlgConsole>(this, ui->actionLog);
+}
+
+void MainWindow::on_actionDatenbank_triggered()
+{
+    DlgAbstract::showDialog<DlgDatenbank>(this, ui->actionDatenbank);
+}
+
+DlgRohstoffe* MainWindow::showDialogRohstoffe()
+{
+    return DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);
+}
+
+DlgBrauUebersicht* MainWindow::showDialogBrauUebersicht()
+{
+    return DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);
+}
+
+DlgAusruestung* MainWindow::showDialogAusruestung()
+{
+    return DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);
 }

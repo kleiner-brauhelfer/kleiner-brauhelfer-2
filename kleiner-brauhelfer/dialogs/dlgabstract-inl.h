@@ -24,7 +24,7 @@ DLG* DlgAbstract::showDialog(QWidget *parent, QAction* action)
         connect(DLG::Dialog, &DLG::finished, []{
             DLG::Dialog->deleteLater();
             DLG::Dialog = nullptr;
-        });
+            });
         DLG::Dialog->show();
         if (action)
         {

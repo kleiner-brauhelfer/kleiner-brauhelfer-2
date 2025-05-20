@@ -50,13 +50,6 @@ WdgHopfenGabe::~WdgHopfenGabe()
     delete ui;
 }
 
-void WdgHopfenGabe::changeEvent(QEvent * event)
-{
-    if (event->type() == QEvent::LanguageChange)
-        ui->retranslateUi(this);
-    WdgAbstractProxy::changeEvent(event);
-}
-
 bool WdgHopfenGabe::isEnabled() const
 {
     return mEnabled;

@@ -69,7 +69,7 @@ public:
     void setAnimationsEnabled(bool enabled);
 
     QString language();
-    void setLanguage(const QString &language);
+    void setLanguage(const QString &lang);
 
     QString settingsDir() const;
 
@@ -93,9 +93,6 @@ public:
   #endif
 
 signals:
-    void themeChanged(Qt::ColorScheme theme);
-    void languageChanged(const QString &language);
-    void databasePathChanged(const QString& path);
     void modulesChanged(Settings::Modules modules);
 
 private:

@@ -79,9 +79,6 @@
       <attribute name="verticalHeaderVisible">
        <bool>false</bool>
       </attribute>
-      <attribute name="verticalHeaderDefaultSectionSize">
-       <number>20</number>
-      </attribute>
      </widget>
      <widget class="TableView" name="tableViewIds">
       <property name="sizePolicy">
@@ -104,9 +101,6 @@
       </attribute>
       <attribute name="verticalHeaderVisible">
        <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderDefaultSectionSize">
-       <number>20</number>
       </attribute>
      </widget>
     </widget>

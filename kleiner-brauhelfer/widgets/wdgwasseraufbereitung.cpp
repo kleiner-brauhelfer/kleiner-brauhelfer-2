@@ -41,13 +41,6 @@ WdgWasseraufbereitung::~WdgWasseraufbereitung()
     delete ui;
 }
 
-void WdgWasseraufbereitung::changeEvent(QEvent * event)
-{
-    if (event->type() == QEvent::LanguageChange)
-        ui->retranslateUi(this);
-    WdgAbstractProxy::changeEvent(event);
-}
-
 void WdgWasseraufbereitung::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());

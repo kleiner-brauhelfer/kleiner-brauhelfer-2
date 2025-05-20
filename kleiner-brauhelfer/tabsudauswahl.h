@@ -2,10 +2,8 @@
 #define TABSUDAUSWAHL_H
 
 #include "tababstract.h"
-#include "ui_tabsudauswahl.h"
 #include <QAbstractItemModel>
 #include <QAbstractItemDelegate>
-#include <QToolBar>
 
 namespace Ui {
 class TabSudAuswahl;
@@ -14,7 +12,6 @@ class TabSudAuswahl;
 class TabSudAuswahl : public TabAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabSudAuswahl(QWidget *parent = nullptr);
@@ -22,34 +19,56 @@ public:
     void saveSettings() Q_DECL_OVERRIDE;
     void restoreView() Q_DECL_OVERRIDE;
     void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
-    void setupActions(QToolBar* toolbar);
+    bool isPrintable() const Q_DECL_OVERRIDE;
+    void printPreview() Q_DECL_OVERRIDE;
+    void toPdf() Q_DECL_OVERRIDE;
+    void sudAnlegen();
+    void sudKopieren(bool loadedSud = false);
+    void sudTeilen(bool loadedSud = false);
+    void sudLoeschen(bool loadedSud = false);
+    void rezeptImportieren(const QString& filePath = QString());
+    void rezeptExportieren(bool loadedSud = false);
 
 signals:
     void clicked(int sudId);
 
-public slots:
-    void sudAnlegen();
-    void sudKopieren();
-    void sudLoeschen();
-    void sudLaden();
-    void sudMerken(bool value);
-    void sudTeilen();
-    void rezeptImportieren();
-    void rezeptExportieren();
-
 private slots:
-    void onDatabaseModified();
-    void onFilterChanged();
-    void onSelectionChanged();
+    void databaseModified();
+    void filterChanged();
+    void selectionChanged();
     void updateWebView();
     void generateTemplateTags(QVariantMap& tags);
-    void on_table_customContextMenuRequested(const QPoint &pos);
+    void on_tableSudauswahl_doubleClicked(const QModelIndex &index);
+    void on_tableSudauswahl_customContextMenuRequested(const QPoint &pos);
+    void on_cbAlle_clicked();
+    void on_cbRezept_clicked();
+    void on_cbGebraut_clicked();
+    void on_cbAbgefuellt_clicked();
+    void on_cbVerbraucht_clicked();
+    void on_cbMerkliste_stateChanged(int state);
     void on_tbFilter_textChanged(const QString &pattern);
+    void on_tbDatumVon_dateChanged(const QDate &date);
+    void on_tbDatumBis_dateChanged(const QDate &date);
+    void on_cbDatumAlle_stateChanged(int state);
+    void on_btnMerken_clicked();
+    void on_btnVergessen_clicked();
+    void onMerkliste_clicked(bool value);
     void onVerbraucht_clicked(bool value);
+    void on_btnAnlegen_clicked();
+    void on_btnKopieren_clicked();
+    void on_btnLoeschen_clicked();
+    void on_btnImportieren_clicked();
+    void on_btnExportieren_clicked();
+    void on_btnTeilen_clicked();
+    void on_btnLaden_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
+    void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
+    void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;
+    void setFilterStatus();
+    void setFilterDate();
 
 private:
     Ui::TabSudAuswahl *ui;

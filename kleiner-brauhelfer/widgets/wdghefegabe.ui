@@ -150,12 +150,6 @@
         </item>
         <item row="1" column="6" colspan="2">
          <widget class="PushButton" name="btnZugeben">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>0</height>
-           </size>
-          </property>
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Klick auf diesen Button teilt dem Kleinen Brauhelfer mit, dass die&lt;span style=&quot; font-weight:600;&quot;&gt; Hefegabe &lt;/span&gt;erfolgt ist. Automatisch geschieht dies mit „Sud gebraut“ im Reiter Braudaten. &lt;/p&gt;&lt;p&gt;An verschiedenen Stellen des Programms wird diese Aktion nun berücksichtigt. So kann damit ein Sud später als abgefüllt markiert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>

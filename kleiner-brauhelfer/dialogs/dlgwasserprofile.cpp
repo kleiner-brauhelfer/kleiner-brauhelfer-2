@@ -40,6 +40,11 @@ DlgWasserprofile::DlgWasserprofile(QWidget *parent) :
         }
     }
 
+    QPalette palette = ui->tbHelp->palette();
+    palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
+    palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
+    ui->tbHelp->setPalette(palette);
+
     ProxyModel *proxyModelWasser = new ProxyModel(this);
     TableView *table = ui->tableWasser;
     proxyModelWasser->setSourceModel(bh->modelWasser());
@@ -48,8 +53,9 @@ DlgWasserprofile::DlgWasserprofile(QWidget *parent) :
     table->appendCol({ModelWasser::ColRestalkalitaet, true, false, 120, new DoubleSpinBoxDelegate(2, table)});
     table->build();
 
-    ui->splitter->setSizes({200, 200});
+    ui->splitter->setSizes({200, 200, 50});
 
+    connect(qApp, &QApplication::focusChanged, this, &DlgWasserprofile::focusChanged);
     connect(ui->tableWasser->selectionModel(), &QItemSelectionModel::selectionChanged, this, &DlgWasserprofile::wasser_selectionChanged);
     connect(bh->modelWasser(), &ModelWasser::modified, this, &DlgWasserprofile::updateWasser);
 
@@ -111,6 +117,13 @@ void DlgWasserprofile::keyPressEvent(QKeyEvent* event)
             break;
         }
     }
+}
+
+void DlgWasserprofile::focusChanged(QWidget *old, QWidget *now)
+{
+    Q_UNUSED(old)
+    if (now && isAncestorOf(now) && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
+        ui->tbHelp->setHtml(now->toolTip());
 }
 
 void DlgWasserprofile::on_btnNeu_clicked()

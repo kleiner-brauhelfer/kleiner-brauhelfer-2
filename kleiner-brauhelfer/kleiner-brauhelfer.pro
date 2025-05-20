@@ -50,6 +50,7 @@ SOURCES += \
     tabrezept.cpp \
     tabsudauswahl.cpp \
     tabsudauswahl_sudinfo.cpp \
+    tabzusammenfassung.cpp \
     templatetags.cpp \
     charts/chart3.cpp \
     charts/chartabfuelldaten.cpp \
@@ -71,13 +72,11 @@ SOURCES += \
     dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgdatenbank.cpp \
-    dialogs/dlgeinstellungen.cpp \
     dialogs/dlghilfe.cpp \
     dialogs/dlgimportexport.cpp \
     dialogs/dlgmaischplanmalz.cpp \
     dialogs/dlgmodule.cpp \
     dialogs/dlgphmalz.cpp \
-    dialogs/dlgprintout.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrichtexteditor.cpp \
     dialogs/dlgrohstoffe.cpp \
@@ -104,30 +103,23 @@ SOURCES += \
     model/ingredientnamedelegate.cpp \
     model/linklabeldelegate.cpp \
     model/phmalzdelegate.cpp \
+    model/proxymodelsudcolored.cpp \
     model/ratingdelegate.cpp \
     model/restextraktdelegate.cpp \
-    model/sudnamedelegate.cpp \
-    model/sudwochedelegate.cpp \
     model/spinboxdelegate.cpp \
     model/textdelegate.cpp \
-    widgets/checkbox.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
     widgets/datetimeedit.cpp \
     widgets/doublespinbox.cpp \
     widgets/doublespinboxsud.cpp \
-    widgets/filterbuttonsud.cpp \
     widgets/iconthemed.cpp \
-    widgets/lineedit.cpp \
     widgets/pushbutton.cpp \
-    widgets/radiobutton.cpp \
     widgets/spinbox.cpp \
     widgets/spinboxsud.cpp \
     widgets/svgview.cpp \
     widgets/tableview.cpp \
     widgets/timeedit.cpp \
-    widgets/toolbutton.cpp \
-    widgets/treeview.cpp \
     widgets/wdgabstractproxy.cpp \
     widgets/wdganhang.cpp \
     widgets/wdgbemerkung.cpp \
@@ -155,6 +147,7 @@ HEADERS += \
     tabgaerverlauf.h \
     tabrezept.h \
     tabsudauswahl.h \
+    tabzusammenfassung.h \
     templatetags.h \
     charts/chart3.h \
     charts/chartabfuelldaten.h \
@@ -177,13 +170,11 @@ HEADERS += \
     dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgdatenbank.h \
-    dialogs/dlgeinstellungen.h \
     dialogs/dlghilfe.h \
     dialogs/dlgimportexport.h \
     dialogs/dlgmaischplanmalz.h \
     dialogs/dlgmodule.h \
     dialogs/dlgphmalz.h \
-    dialogs/dlgprintout.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrichtexteditor.h \
     dialogs/dlgrohstoffe.h \
@@ -210,30 +201,23 @@ HEADERS += \
     model/ingredientnamedelegate.h \
     model/linklabeldelegate.h \
     model/phmalzdelegate.h \
+    model/proxymodelsudcolored.h \
     model/ratingdelegate.h \
     model/restextraktdelegate.h \
-    model/sudnamedelegate.h \
-    model/sudwochedelegate.h \
     model/spinboxdelegate.h \
     model/textdelegate.h \
-    widgets/checkbox.h \
     widgets/combobox.h \
     widgets/dateedit.h \
     widgets/datetimeedit.h \
     widgets/doublespinbox.h \
     widgets/doublespinboxsud.h \
-    widgets/filterbuttonsud.h \
     widgets/iconthemed.h \
-    widgets/lineedit.h \
     widgets/pushbutton.h \
-    widgets/radiobutton.h \
     widgets/spinbox.h \
     widgets/spinboxsud.h \
     widgets/svgview.h \
     widgets/tableview.h \
     widgets/timeedit.h \
-    widgets/toolbutton.h \
-    widgets/treeview.h \
     widgets/wdgabstractproxy.h \
     widgets/wdganhang.h \
     widgets/wdgbemerkung.h \
@@ -258,6 +242,7 @@ FORMS += \
     tabgaerverlauf.ui \
     tabrezept.ui \
     tabsudauswahl.ui \
+    tabzusammenfassung.ui \
     dialogs/dlgabout.ui \
     dialogs/dlgausruestung.ui \
     dialogs/dlgbrauuebersicht.ui \
@@ -265,13 +250,11 @@ FORMS += \
     dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgdatenbank.ui \
-    dialogs/dlgeinstellungen.ui \
     dialogs/dlghilfe.ui \
     dialogs/dlgimportexport.ui \
     dialogs/dlgmaischplanmalz.ui \
     dialogs/dlgmodule.ui \
     dialogs/dlgphmalz.ui \
-    dialogs/dlgprintout.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrichtexteditor.ui \
     dialogs/dlgrohstoffe.ui \

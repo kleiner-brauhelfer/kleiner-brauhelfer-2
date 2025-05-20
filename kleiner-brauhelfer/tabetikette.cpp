@@ -543,6 +543,11 @@ void TabEtikette::savePageLayout(const QPrinter *printer)
 
 #endif
 
+bool TabEtikette::isPrintable() const
+{
+    return true;
+}
+
 void TabEtikette::printPreview()
 {
   #ifdef QT_PRINTSUPPORT_LIB
@@ -595,14 +600,9 @@ void TabEtikette::toPdf()
   #endif
 }
 
-void TabEtikette::on_btnPrint_clicked()
-{
-    printPreview();
-}
-
 void TabEtikette::on_btnToPdf_clicked()
 {
-    toPdf();
+    printPreview();
 }
 
 void TabEtikette::updateValues()

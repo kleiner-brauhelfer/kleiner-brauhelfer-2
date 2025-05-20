@@ -166,7 +166,7 @@ void DlgRohstoffe::loadSettings()
 
 void DlgRohstoffe::restoreView()
 {
-    DlgAbstract::restoreView(staticMetaObject.className(), Dialog);
+    DlgAbstract::restoreView(staticMetaObject.className());
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->remove("tableMalzState");
     gSettings->remove("tableHopfenState");

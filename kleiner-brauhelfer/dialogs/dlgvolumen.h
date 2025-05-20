@@ -2,7 +2,6 @@
 #define DLGVOLUMEN_H
 
 #include "dlgabstract.h"
-#include "ui_dlgvolumen.h"
 
 namespace Ui {
 class DlgVolumen;
@@ -11,7 +10,6 @@ class DlgVolumen;
 class DlgVolumen : public DlgAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
     
 public:
     DlgVolumen(double durchmesser, double hoehe, QWidget * parent = nullptr);

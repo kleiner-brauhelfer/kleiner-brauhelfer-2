@@ -17,7 +17,7 @@
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <widget class="QScrollArea" name="scrollArea">
       <property name="sizePolicy">
@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1221</width>
-         <height>902</height>
+         <width>1228</width>
+         <height>949</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -76,7 +76,7 @@
            <item row="1" column="0">
             <spacer name="horizontalSpacer_3">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -89,7 +89,7 @@
            <item row="1" column="5">
             <spacer name="horizontalSpacer_7">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -102,7 +102,7 @@
            <item row="0" column="4">
             <widget class="Line" name="line_17">
              <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
+              <enum>Qt::Vertical</enum>
              </property>
             </widget>
            </item>
@@ -125,7 +125,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum&lt;/span&gt; bezeichnet den Zeitpunkt, zu dem zur Würze die Hefe hinzugegeben wurde. Mit dem Braudatum endet der eigentliche Brauprozess und die Gärphase beginnt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
@@ -144,7 +144,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Das &lt;span style=&quot; font-weight:600;&quot;&gt;Braudatum&lt;/span&gt; bezeichnet den Zeitpunkt, zu dem zur Würze die Hefe hinzugegeben wurde. Mit dem Braudatum endet der eigentliche Brauprozess und die Gärphase beginnt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
@@ -182,7 +182,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze bei Kochbeginn&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer in °Plato eingetragen.&lt;/p&gt;&lt;p&gt;°Brix muss vorher umgerechnet werden. Ein Klick auf das Widget rechts öffnet ein schwebendes Fenster und hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Sind Stammwürze bei Kochbeginn und Zielstammwürze weitgehend &lt;span style=&quot; font-weight:600;&quot;&gt;identisch&lt;/span&gt;, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -220,7 +220,7 @@
               <item>
                <spacer name="horizontalSpacer_15">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -242,13 +242,13 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Beitrag zur &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze &lt;/span&gt;aller &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze beim Kochen in °Brix &lt;/span&gt;angegeben. Zusammen mit der Zielstammwürze des Maischeprozesses sowie Zusätzen während der Gärung ist der Wert Teil der &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtstammwürze&lt;/span&gt;. Ziel ist es, die festgeegte Stammwrüze im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept &lt;/span&gt;zu treffen. &lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitgehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -277,13 +277,13 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Beitrag zur &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze &lt;/span&gt;aller &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze beim Kochen in °Plato &lt;/span&gt;angegeben. Zusammen mit der Zielstammwürze des Maischeprozesses sowie Zusätzen während der Gärung ist der Wert Teil der &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtstammwürze&lt;/span&gt;. Ziel ist es, die festgeegte Stammwrüze im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept &lt;/span&gt;zu treffen. &lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitgehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -322,13 +322,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei definierter Temperatur berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Zielwürzemenge und Würzemenge bei Kochbeginn weitegehend &lt;span style=&quot; font-weight:600;&quot;&gt;identisch&lt;/span&gt;, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -369,7 +369,7 @@
               <item>
                <spacer name="horizontalSpacer_20">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -391,13 +391,13 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;vom Boden &lt;/span&gt;zur Berechnung der Würzemenge angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -429,7 +429,7 @@
            <item row="7" column="5">
             <spacer name="horizontalSpacer_2">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -468,7 +468,7 @@
            <item row="0" column="4" rowspan="7">
             <widget class="Line" name="line_14">
              <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
+              <enum>Qt::Vertical</enum>
              </property>
             </widget>
            </item>
@@ -494,7 +494,7 @@
              <item>
               <spacer name="horizontalSpacer_13">
                <property name="orientation">
-                <enum>Qt::Orientation::Horizontal</enum>
+                <enum>Qt::Horizontal</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -516,7 +516,7 @@
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Feld erfolgt die &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigierte&lt;/span&gt; Berechnung der &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Grundlage hierfür ist die Würzemenge im Rezept, die bei 20°C berechnet ist.&lt;/p&gt;&lt;p&gt;Das größte Volumen wird bei 100°C erreicht. Es empfiehlt sich etwas Abstand zur Oberkante des Kessels, da Hopfen bis zum Würzebruch stark schäumen, der Sud damit überkochen kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
+                <set>Qt::AlignCenter</set>
                </property>
                <property name="decimals">
                 <number>1</number>
@@ -578,13 +578,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze bei Kochbeginn&lt;/span&gt; angegeben. Dieser Wert entspricht der Zielstammwürze bei Kochende abzüglich Verdampfungsseffekten während des Kochvorgangs&lt;span style=&quot; font-weight:600;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sind Zielstammwürze und Stammwürze bei Kochbeginn weitgehend &lt;span style=&quot; font-weight:600;&quot;&gt;identisch&lt;/span&gt;, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -607,13 +607,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier hat der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge zu Kochbeginn&lt;/span&gt; bei 20°C berechnet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Soll- und Istwerte&lt;/span&gt; der Würze- und Stammwürzemenge werden auf dem Spickzettel notiert, respektive vermerkt.&lt;/p&gt;&lt;p&gt;Sind Zielwürzemenge und Würzemenge bei Kochbeginn weitegehend identisch, ist dieser Zwischenwert ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -665,7 +665,7 @@
            <item row="2" column="0" colspan="4">
             <widget class="Line" name="line_9">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -679,7 +679,7 @@
            <item row="2" column="5" colspan="3">
             <widget class="Line" name="line_10">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -689,7 +689,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge bei Kochbeginn&lt;/span&gt; gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf das Widget rechts öffnet ein schwebendes Fenster und hilft bei der Berechnung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -717,7 +717,7 @@
              <item>
               <spacer name="horizontalSpacer_16">
                <property name="orientation">
-                <enum>Qt::Orientation::Horizontal</enum>
+                <enum>Qt::Horizontal</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -739,13 +739,13 @@
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze bei Kochbeginn&lt;/span&gt; angegeben. Dieser Wert entspricht der Zielstammwürze bei Kochende abzüglich Verdampfungsseffekten während des Kochvorgangs&lt;span style=&quot; font-weight:600;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sind Würzemenge und Zielwürzemenge mit der Zielstammwürze weitgehend identisch, ist dies ein Indikator für eine gut kalibrierte Brauanlage und gute Maischeführung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
+                <set>Qt::AlignCenter</set>
                </property>
                <property name="readOnly">
                 <bool>true</bool>
                </property>
                <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                <enum>QAbstractSpinBox::NoButtons</enum>
                </property>
                <property name="decimals">
                 <number>1</number>
@@ -792,7 +792,7 @@
               <item>
                <spacer name="horizontalSpacer_19">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -814,13 +814,13 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;von der Oberkante&lt;/span&gt; zur Berechnung der Würzemenge angegeben.&lt;/p&gt;&lt;p&gt;Grundlage der Berechnung sind die Angaben im&lt;span style=&quot; font-weight:600;&quot;&gt; Tab Ausrüstung.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -852,7 +852,7 @@
            <item row="7" column="0">
             <spacer name="horizontalSpacer_6">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -890,13 +890,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; pro Stunde des Sudes aus.&lt;/p&gt;&lt;p&gt;Der Wert fließt in die &lt;span style=&quot; font-weight:600;&quot;&gt;Duchschnittsberechnung&lt;/span&gt; im Tab Ausrüstung ein, sofern er nicht als &amp;quot;zu ignorieren&amp;quot; gekennzeichnet wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -915,13 +915,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute(SHA) &lt;/span&gt;wird aus der gemessenen Stammwürze und Würzemenge bei &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; berechnet. &lt;/p&gt;&lt;p&gt;Der SHA-Faktor beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Effizienz&lt;/span&gt; einer Brauanlage ab dem Einmaischen bis zu Anstellen des Sudes mit Hefe. Die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute &lt;/span&gt;der verwendeten Rohstoffe ist ein wesentlicher Bestandteil der SHA.&lt;/p&gt;&lt;p&gt;Im Hobbymaßstab wird ein Faktor von 70% angestrebt, tatsächlich liegt er aber oft darunter. Ein Wert von 60% gilt als gut und ist daher im Kleinen Brauhelfer im Tab Rezept voreingestellt. Im Profibereich sind 80% Zielgröße.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -948,7 +948,7 @@
            <item row="10" column="5">
             <spacer name="horizontalSpacer_10">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -961,7 +961,7 @@
            <item row="10" column="0">
             <spacer name="horizontalSpacer_12">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -992,13 +992,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; aus dem Rezept angegeben.&lt;/p&gt;&lt;p&gt;Die Verdampfungsrate kann als Durchschnittswert bisheriger Sude im Tab Ausrüstung angegeben und dann im Tab Rezept übernommen werden. Eine zweite Möglichkeit ist es, die Verdampfungsrate im Tab Rezept manuell zu definieren. Der Durchschnittswert einer Anlage im Hobbybrauerbereich liegt bei 10% und ist im Kleinen Brauhelfer im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;voreingestellt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Zu Beginn der Braudatenerfassung und -berechnung im Kleinen Brauhelfer empfiehlt es sich den voreingestellten Wert nicht zu verändern. Mit spätestens zehn Suden durchschnittlich sollte sich die spezifische Verdampfungsrate der Anlage eingestellt haben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1045,7 +1045,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze bei Kochende&lt;/span&gt; anhand der Daten von Bierspindel oder Refraktometer in °Plato eingetragen.&lt;/p&gt;&lt;p&gt;°Brix muss vorher umgerechnet werden. Ein Klick auf das Widget rechts öffnet ein schwebendes Fenster und hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Liegt der ermittelte &lt;span style=&quot; font-weight:600;&quot;&gt;Wert&lt;/span&gt; nahe beim zuvor errechneten Wert wie im &lt;span style=&quot; font-weight:600;&quot;&gt;Spickzettel&lt;/span&gt; oder im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; angegeben, bestätigt dies die zuvor festgelegten Parameter von Brauanlage, Rezept und Sudarbeit.&lt;/p&gt;&lt;p&gt;Die Stammwürze bei Kochende ist ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zwischenschritt&lt;/span&gt;. Sie liefert Informationen über Angaben zur Anlage und den Rezeptkalkulationen sowie der Sudarbeit selbst. Ferner ist sie ein Wert, um korrigierend einzugreifen, etwa wenn die Stammwürze zu hoch sein sollte.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1061,7 +1061,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge vor dem Hopfenseihen &lt;/span&gt;gemessen bei 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden.  Ein Klick auf das Widget rechts hilft bei der Berechnung und öffnet hierfür ein schwebendes Fenster.&lt;/p&gt;&lt;p&gt;Dieser Wert wird für die Berechnung der Verdampfungsrate und der Sudhausausbeute benötigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1103,7 +1103,7 @@
              <item>
               <spacer name="horizontalSpacer_11">
                <property name="orientation">
-                <enum>Qt::Orientation::Horizontal</enum>
+                <enum>Qt::Horizontal</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1125,7 +1125,7 @@
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über dieses Feld erfolgt die &lt;span style=&quot; font-weight:600;&quot;&gt;temperaturkorrigierte&lt;/span&gt; Berechnung der &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge. &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Grundlage hierfür ist die Würzemenge im Rezept, die bei 20°C berechnet ist. Für einen korrekten Wert ist die Temperatur der Würze zu berücksichtigen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
+                <set>Qt::AlignCenter</set>
                </property>
                <property name="decimals">
                 <number>1</number>
@@ -1163,7 +1163,7 @@
            <item row="1" column="0" colspan="4">
             <widget class="Line" name="line_5">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -1205,7 +1205,7 @@
              <item>
               <spacer name="horizontalSpacer_17">
                <property name="orientation">
-                <enum>Qt::Orientation::Horizontal</enum>
+                <enum>Qt::Horizontal</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1227,13 +1227,13 @@
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze nach Kochende&lt;/span&gt; angegeben. Dieser Wert enspricht der Zielstammwürze beim Anstellen zuzüglich Verdickungseffekte durch den &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity Faktor.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Der Wert eignet sich zum Überprüfen von Rezept, Brauanlage und Brauprozess und gibt Auskunft, ob mögliche &lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturen&lt;/span&gt; vorgenommen werden sollen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
+                <set>Qt::AlignCenter</set>
                </property>
                <property name="readOnly">
                 <bool>true</bool>
                </property>
                <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                <enum>QAbstractSpinBox::NoButtons</enum>
                </property>
                <property name="decimals">
                 <number>1</number>
@@ -1269,7 +1269,7 @@
            <item row="1" column="5" colspan="3">
             <widget class="Line" name="line_6">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -1301,7 +1301,7 @@
               <item>
                <spacer name="horizontalSpacer_21">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -1323,13 +1323,13 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;von der Oberkante&lt;/span&gt; zur Berechnung der Würzemenge beim Hopfenkochen angegeben.&lt;/p&gt;&lt;p&gt;Der Wert errechnet sich aus den Maßen der Anlage und der Würzemenge zum Kochenende.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -1364,13 +1364,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses Feld zeigt die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge bei 100°C &lt;/span&gt;bei Kochende an.&lt;/p&gt;&lt;p&gt;Grundlage hierfür sind die Rohstoffzutaten und Prozessschritte im Rezept.&lt;/p&gt;&lt;p&gt;Das Volumen ist höher als im abgekühlten Zustand. Über nebenstehendes Eingabefeld kann das unterschiedliche Volumen bei jeder Temperatur angezeigt werden. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1409,13 +1409,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die berechnete temperaturabhängige &lt;span style=&quot; font-weight:600;&quot;&gt;Zielwürzemenge&lt;/span&gt; nach Abkühlen des Sudes auf &lt;span style=&quot; font-weight:600;&quot;&gt;20°C&lt;/span&gt; und vor dem Anstellen mit Hefe angegeben.&lt;/p&gt;&lt;p&gt;Abhängig von Faktoren, beispielsweise &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze, Verdünng&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Verlust beim Abfüllen&lt;/span&gt;, entspricht dieser Wert nicht der der im Rezept angestrebten Biermenge, ist aber ein guter Indikator, ob diese Menge erreicht wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1462,13 +1462,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze nach Kochende&lt;/span&gt; angegeben. Dieser Wert enspricht der Zielstammwürze beim Anstellen zuzüglich Verdickungseffekte durch den &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity Faktor.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Der Wert eignet sich zum Überprüfen von Rezept, Brauanlage und Brauprozess und gibt Auskunft, ob mögliche &lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturen&lt;/span&gt; vorgenommen werden sollen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1481,7 +1481,7 @@
            <item row="6" column="5" colspan="3">
             <widget class="Line" name="line_7">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -1495,7 +1495,7 @@
            <item row="0" column="4" rowspan="10">
             <widget class="Line" name="line_3">
              <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
+              <enum>Qt::Vertical</enum>
              </property>
             </widget>
            </item>
@@ -1527,7 +1527,7 @@
               <item>
                <spacer name="horizontalSpacer_22">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -1549,13 +1549,13 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Füllhöhe des Maischekessels &lt;span style=&quot; font-weight:600;&quot;&gt;vom Boden &lt;/span&gt;zur Berechnung der Würzemenge beim Hopfenkochen angegeben.&lt;/p&gt;&lt;p&gt;Der Wert errechnet sich aus den Maßen der Anlage und der Würzemenge zum Kochenende.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -1587,7 +1587,7 @@
            <item row="6" column="0" colspan="4">
             <widget class="Line" name="line_2">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -1657,7 +1657,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die Stammwürze in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato beim Anstellen &lt;/span&gt;eingetragen.&lt;/p&gt;&lt;p&gt;Die Stammwürze beim Anstellen ist Grundlage für die Gärungsberechnung im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Gärverlauf &lt;/span&gt;und gleichzeitig dort immer die erste Messung. Ein Klick auf das Widget rechts öffnet ein schwebendes Fenster und hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Die Stammwürze beim Anstellen kann sich je nach &lt;span style=&quot; font-weight:600;&quot;&gt;Brauverfahren&lt;/span&gt; von der Stammwürze bei Kochende unterscheiden. Beispiele hierfür sind ein Hefestarter oder Zusätze wie Honig Zucker oder Sirup, die die Stammwürze beeinflussen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1670,7 +1670,7 @@
            <item row="5" column="5" colspan="3">
             <widget class="Line" name="lineWuerzemengeAnstellenTotal2">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -1684,7 +1684,7 @@
            <item row="10" column="5">
             <spacer name="horizontalSpacer_9">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -1700,13 +1700,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Würzeverlust durch das &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenseihen&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Die Verlustmenge ist neben baulichen Faktoren der Anlage vom Hopfen selbst abhängig. &lt;span style=&quot; font-weight:600;&quot;&gt;Doldenhopfen&lt;/span&gt; binden deutlich mehr Flüssigkeit als Hopfenpellets wie &lt;span style=&quot; font-weight:600;&quot;&gt;T90&lt;/span&gt; oder &lt;span style=&quot; font-weight:600;&quot;&gt;T45&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1722,7 +1722,7 @@
            <item row="9" column="5" colspan="3">
             <widget class="Line" name="line_8">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -1780,7 +1780,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anstellmenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Die Anstellmenge ist die Menge Sud, der vergoren wird. Sie ist die Menge ab &lt;span style=&quot; font-weight:600;&quot;&gt;Gärungsbeginn&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Anstellmenge unterscheidet sich bei Entnahme von &lt;span style=&quot; font-weight:600;&quot;&gt;Speise&lt;/span&gt; für die spätere Karbonisierung signifikant von der Würzemenge. Die Speise wird später bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt; wieder zugegeben. Dies wird im Tab Abfülldaten erfasst.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Speise neigt zur Infektion bei der Lagerung. Es besteht erhöhte Gefahr unerwünschter Keime oder Fehlgeschmäcker bei der späteren Gabe ins Jungbier einzutragen. Eine hygienische Aufbewahrung und eine baldige Kühlung schützt vor Enttäuschungen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1799,7 +1799,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Wassermenge&lt;/span&gt; für die Verdünnung, um die Zielstammwürze zu erreichen, eingetragen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Danach sollte die Stammwürze nochmals gemessen und eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>2</number>
@@ -1825,7 +1825,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllte Speisemenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Speise ist eine Teilmenge der Würze, die nach dem Hopfenkochen zurückbehalten wird. Diese Würze wird nach der Hauptgärung dem weitgehend durchgegorenem Jungbier hinzugegeben. Die Speisegabe leitet die Produktion von Kohlensäure ein. Die Gabe von Speise ist auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Aufspeisen &lt;/span&gt;bekannt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Speise neigt zur Infektion bei der Lagerung. Es besteht erhöhte Gefahr unerwünschter Keime oder Fehlgeschmäcker bei der späteren Gabe ins Jungbier einzutragen. Eine hygienische Aufbewahrung und eine baldige Kühlung schützt vor Enttäuschungen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>2</number>
@@ -1895,7 +1895,7 @@
               <item>
                <spacer name="horizontalSpacer">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -1924,7 +1924,7 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die erwartete &lt;span style=&quot; font-weight:600;&quot;&gt;Temperatur&lt;/span&gt; des Jungbiers beim Abfüllen für die Schätzung der benötigten Speisemenge aus.&lt;/p&gt;&lt;p&gt;Den Wert schlägt der Kleine Brauhelfer vor. Über den Regler rechts kann er verändert werden. Die Funktion Sud gebraut sperrt diese Möglichkeit.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -1969,7 +1969,7 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer den erwarteten &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Restextrakt&lt;/span&gt; des Jungbiers beim Abfüllen für die Schätzung der benötigten &lt;span style=&quot; font-weight:600;&quot;&gt;Speisemenge&lt;/span&gt; aus.&lt;/p&gt;&lt;p&gt;Der vorgeschlagene Wert ergibt sich aus den Angaben zur Karbonisierung im Tab Rezept. Über den Regler rechts kann er verändert werden. Die Funktion Sud gebraut sperrt diese Möglichkeit. &lt;/p&gt;&lt;p&gt;Im SRE fixiert sich der &lt;span style=&quot; font-weight:600;&quot;&gt;Vergärungsgrad&lt;/span&gt; der Hefe. Ein zu niedriger Wert ist Indiz für Störungen im Gärprozess. Biere mit zu wenig Hefe, von &lt;span style=&quot; font-weight:600;&quot;&gt;underpitched &lt;/span&gt;genannt, sind oft unausgewogen süß und mastig. Eine übermäßige Hefegabe, die Fachwelt spricht von &lt;span style=&quot; font-weight:600;&quot;&gt;overpitched&lt;/span&gt;, ist weniger problematisch. Sie wird auch bewusst eingesetzt. Overpitching kann auch Geschmacksabweichungen zur Folge haben, etwa weil mehr Alkohol produziert, das Bier trockener wird. Biere, die overpitched wurden, schmecken oft dünner und &amp;quot;flacher&amp;quot; als solche mit der richtigen Hefemenge.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -2001,13 +2001,13 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die geschätzte &lt;span style=&quot; font-weight:600;&quot;&gt;notwendige Speisemenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert beruht auf der gewählten Karbonisierung im Rezept sowie auf anderen Faktoren. Zu diesem Zeitpunkt ist er jedoch nur ein Näherungswert, da unter anderem die Hefearbeit und damit der Endvergärungsgrad unberücksichtigt sind.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Speise neigt zur Infektion bei der Lagerung. Es besteht erhöhte Gefahr unerwünschter Keime oder Fehlgeschmäcker bei der späteren Gabe ins Jungbier einzutragen. Eine hygienische Aufbewahrung und eine baldige Kühlung schützt vor Enttäuschungen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="decimals">
                  <number>2</number>
@@ -2064,7 +2064,7 @@
               <item>
                <spacer name="horizontalSpacer_14">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -2083,7 +2083,7 @@
                  </size>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -2109,7 +2109,7 @@
                  </size>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -2138,13 +2138,13 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Liegt die gemessene Stammwürze beim Anstellen &lt;span style=&quot; font-weight:600;&quot;&gt;über&lt;/span&gt; die im Rezept festgelegte &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze&lt;/span&gt;, wird hier die &lt;span style=&quot; font-weight:600;&quot;&gt;Wassermenge zum Verdünnen&lt;/span&gt; angegeben, um den angestrebten Wert zu erreichen.&lt;/p&gt;&lt;p&gt;Wurde ein &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity Faktor&lt;/span&gt; angegeben, so wird die Verdünnung hier vorgenommen.&lt;/p&gt;&lt;p&gt;Dazu gibt man vorsichtig eine Wassermenge zu, misst die Stammwürze neu und trägt den neuen Wert bei der Stammwürze beim Anstellen ein und passt die Würzemenge entsprechend an. Der Vorgang wird wiederholt, bis die Zielstammwürze erreicht wurde.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Es empfiehlt sich mehrfach zu messen und die Wassermenge schrittweise und immer leicht unter dem angegebenen Wert beizufügen. Damit vermeidet man die Gefahr einer übermäßigen Verdünnung. Das vermeidet die Gefahr, dass ein Bier nicht mehr stilchecht, der Volksmund sagt: verpanscht, ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="decimals">
                  <number>2</number>
@@ -2184,13 +2184,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;effektive Sudhausausbeute&lt;/span&gt; des Rezeptes angegeben. Der Wert errechnet sich aus dem &lt;span style=&quot; font-weight:600;&quot;&gt;praktischen Brauprozess&lt;/span&gt;. In vielen Fällen wird er nicht identisch mit dem im Tab Rezept festgelegten theoretischen Wert sein. Wenn doch, gilt die Anlage als optimal eingestellt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Weicht der Wert vom Durchschnittsert im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt;, respektive dem eingestellten Wert im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept &lt;/span&gt;ab, kan dies vielfältige Ursachen haben. Ist die Abweichung einmalig, sollte man die Ursache im Rezept selbst suchen.&lt;/p&gt;&lt;p&gt;Sind Abweichungen die Regel, gilt es die Werte im Tab Ausrüstung anzupassen. Zu erwähnen sind hier Maße der Brauanlage, SHA, Verdampfungsrate Durchschnittswerte, Farbkorrektur, Korrektur der Nachguss- und Hauptgussmenge. Dies beseitigt aller Erfahrung nach die meisten Probleme mit abweichenden Werten im Brauprozess.&lt;/p&gt;&lt;p&gt;Ist man sich bei einer neuen Anlage zunächst unsicher, empfiehlt es sich zunächst die voreingestellten Werte des Kleinen Brauhelfers nicht zu verändern, die sich auf vielen Anlagen bewährt haben.Bei Fragen hierzu helfen Fachbücher und Fachforen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -2206,13 +2206,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;effektive Sudhausausbeute&lt;/span&gt; wird aus der gemessenen Stammwürze und Würzemenge beim &lt;span style=&quot; font-weight:600;&quot;&gt;Anstellen&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Der Faktor beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Effizienz&lt;/span&gt; der Brauanlage sowie die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; der verwendeten Rohstoffe.&lt;/p&gt;&lt;p&gt;Im Hobbymaßstab wird ein Faktor von 70% angestrebt, liegt aber tatsächlich oft darunter. Im Profibereich sind 80% Zielgröße.&lt;/p&gt;&lt;p&gt;Dieser Wert bietet Orientierung für die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute der Schüttungsberechnung. &lt;/span&gt;Er wird im Tab Ausrüstung zur Durchschnittsberechnung herangezogen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -2262,7 +2262,7 @@
            <item row="10" column="0">
             <spacer name="horizontalSpacer_5">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -2312,7 +2312,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die gemessene &lt;span style=&quot; font-weight:600;&quot;&gt;Würzemenge nach dem Hopfenseihen&lt;/span&gt; umgerechnet auf 20°C eingetragen.&lt;/p&gt;&lt;p&gt;Bei abweichender Temperatur muss das Volumen korrigiert werden. Ein Klick auf das Widget rechts hilft bei der Berechnung und öffnet hierfür ein schwebendes Fenster.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -2335,7 +2335,7 @@
            <item row="0" column="4" rowspan="13">
             <widget class="Line" name="line">
              <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
+              <enum>Qt::Vertical</enum>
              </property>
             </widget>
            </item>
@@ -2349,14 +2349,14 @@
            <item row="1" column="0" colspan="4">
             <widget class="Line" name="line_4">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
            <item row="1" column="5" colspan="3">
             <widget class="Line" name="line_11">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -2370,7 +2370,7 @@
            <item row="9" column="0" colspan="4">
             <widget class="Line" name="line_12">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -2386,13 +2386,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze beim Anstellen&lt;/span&gt; entspricht der Stammwürze aus dem Rezept abzüglich allfällige Anteile aus weiteren Zutaten, welche bei der Gärung dazugegeben werden.&lt;/p&gt;&lt;p&gt;Der Wert eignet sich zum überprüfen von Rezept, Brauanlage und Brauprozess und gibt Auskunft, ob mögliche &lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturen&lt;/span&gt; vorgenommen werden sollen.&lt;/p&gt;&lt;p&gt;Die Stammwürze beim Anstellen schließt jede Form der Hefegabe ein. Wird etwa ein großer &lt;span style=&quot; font-weight:600;&quot;&gt;Hefestarter&lt;/span&gt; mit einer anderen Plato-Wert zugegeben, verändert dies die Stammwürze beim Anstellen. In diesem Fall empfiehlt sich im Vorfeld die Berechnung beider Mengen durch ein sogenanntes Mischkreuz, um die Abweichung zu egalisieren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -2466,7 +2466,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwürzemenge&lt;/span&gt; eingetragen.&lt;/p&gt;&lt;p&gt;Der Wert kann sich je nach &lt;span style=&quot; font-weight:600;&quot;&gt;Brauverfahren&lt;/span&gt; von der Würzemenge nach dem Hopfenseihen unterscheiden, etwa wenn ein Hefestarter oder Zusätze wie Honig, Zucker oder Sirup zur Gärung hinzugegeben werden. In allen Fällen ist die Gesamtwürzemenge die maximale Menge des Brautages mitsamt etwaiger Speisemenge. Diese wird im nächsten Schritt, so benötigt, abgezogen. Ein Klick auf das Widget rechts öffnet ein schwebendes Fenster und hilft bei der Berechnung.&lt;/p&gt;&lt;p&gt;Die Gesamtwürzemenge unterscheidet sich bei Entnahme von &lt;span style=&quot; font-weight:600;&quot;&gt;Speise&lt;/span&gt; für die spätere Karbonisierung signifikant von der Anstellmenge. Wird keine Speise entnommen, sind Würzemenge und Anstellmenge identisch.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -2482,7 +2482,7 @@
            <item row="5" column="0" colspan="4">
             <widget class="Line" name="lineWuerzemengeAnstellenTotal">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -2508,7 +2508,7 @@
              <item>
               <spacer name="horizontalSpacer_18">
                <property name="orientation">
-                <enum>Qt::Orientation::Horizontal</enum>
+                <enum>Qt::Horizontal</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -2530,13 +2530,13 @@
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Zielstammwürze beim Anstellen&lt;/span&gt; entspricht der Stammwürze aus dem Rezept abzüglich allfällige Anteile aus weiteren Zutaten, welche bei der Gärung dazugegeben werden.&lt;/p&gt;&lt;p&gt;Der Wert eignet sich zum Überprüfen von Rezept, Brauanlage und Brauprozess und gibt Auskunft, ob mögliche &lt;span style=&quot; font-weight:600;&quot;&gt;Korrekturen&lt;/span&gt; vorgenommen werden sollen.&lt;/p&gt;&lt;p&gt;Die Stammwürze beim Anstellen schließt jede Form der Hefegabe ein. Wird etwa ein großer &lt;span style=&quot; font-weight:600;&quot;&gt;Hefestarter&lt;/span&gt; mit einer anderen Plato-Wert zugegeben, verändert dies die Stammwürze beim Anstellen. In diesem Fall empfiehlt sich im Vorfeld die Berechnung beider Mengen durch ein sogenanntes &lt;span style=&quot; font-weight:600;&quot;&gt;Mischkreuz&lt;/span&gt;, um die Abweichung zu egalisieren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
+                <set>Qt::AlignCenter</set>
                </property>
                <property name="readOnly">
                 <bool>true</bool>
                </property>
                <property name="buttonSymbols">
-                <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                <enum>QAbstractSpinBox::NoButtons</enum>
                </property>
                <property name="decimals">
                 <number>1</number>
@@ -2574,7 +2574,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Menge&lt;/span&gt; des &lt;span style=&quot; font-weight:700;&quot;&gt;Hefestarters&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff0000;&quot;&gt;Achtung: &lt;/span&gt;Das ist der gleiche Wert, wie im Reiter Rezept. Eine Änderung hier wirkt sich geringfügig auf die Berechnung der erforderlichen Schüttungsmenge und Hautpusses aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>2</number>
@@ -2621,7 +2621,7 @@
               <item>
                <spacer name="horizontalSpacer_23">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -2643,7 +2643,7 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Stammwürze in Brix&lt;/span&gt; des &lt;span style=&quot; font-weight:700;&quot;&gt;Hefestarters&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff0000;&quot;&gt;Achtung: &lt;/span&gt;Das ist der gleiche Wert, wie im Reiter Rezept. Eine Änderung hier wirkt sich geringfügig auf die Berechnung der erforderlichen Schüttungsmenge und Hautpusses aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -2672,7 +2672,7 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Stammwürze&lt;/span&gt; des &lt;span style=&quot; font-weight:700;&quot;&gt;Hefestarters&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff0000;&quot;&gt;Achtung: &lt;/span&gt;Das ist der gleiche Wert, wie im Reiter Rezept. Eine Änderung hier wirkt sich geringfügig auf die Berechnung der erforderlichen Schüttungsmenge und Hautpusses aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -2720,7 +2720,7 @@
            <item row="5" column="0" colspan="8">
             <widget class="Line" name="lineDurchschnittIgnorieren">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -2753,7 +2753,7 @@
            <item row="4" column="0">
             <spacer name="horizontalSpacer_8">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -2769,7 +2769,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der einzelne &lt;span style=&quot; font-weight:600;&quot;&gt;Sud für Durschnittsberechnungen&lt;/span&gt; ignoriert werden.&lt;/p&gt;&lt;p&gt;Diese Funktion wird genutzt, wenn der Sud stark von den bisherigen Suden abweicht und die Durchschnittsberechnung negativ beeinflussen würde. Ist dem nicht der Fall, sollte diese Funktion ignoriert werden.&lt;/p&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; ist die Durchschnittsberechung möglich sowie Filtermöglichkeiten für die Sude vorhanden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="layoutDirection">
-              <enum>Qt::LayoutDirection::RightToLeft</enum>
+              <enum>Qt::RightToLeft</enum>
              </property>
             </widget>
            </item>
@@ -2793,7 +2793,7 @@
            <item row="0" column="4">
             <widget class="Line" name="lineKosten">
              <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
+              <enum>Qt::Vertical</enum>
              </property>
             </widget>
            </item>
@@ -2816,13 +2816,13 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten pro Liter&lt;/span&gt; ergibt sich aus den Kosten für Malz, Hopfen, Hefe und Zusätze, den sudspezifischen zusätzlichen Kosten und dem im Tab Ausrüstung definierten Betriebskosten.&lt;/p&gt;&lt;p&gt;Basale betriebswirtschaftliche Grundsätze schaden indes nicht, wenn es darum geht einen Überblick über die Kosten seines Hobbys zu erhalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="readOnly">
               <bool>true</bool>
              </property>
              <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>2</number>
@@ -2851,7 +2851,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier können &lt;span style=&quot; font-weight:600;&quot;&gt;sudspezifische zusätzliche Kosten&lt;/span&gt; angegeben werden.&lt;/p&gt;&lt;p&gt;Beispielsweise können hier die Kosten für Malz, Hopfen und Zusätze zusammengefasst werden. Was der Brauer hier einrechnet, ist ihm überlassen. Betriebswirtschaftliche Grundsätze schaden aber nicht, wenn es darum geht einen Überblick über die Kosten seines Hobbys zu erhalten.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>2</number>
@@ -2870,7 +2870,7 @@
            <item row="4" column="5">
             <spacer name="horizontalSpacer_4">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -2883,7 +2883,7 @@
            <item row="7" column="0" colspan="8">
             <widget class="WdgBemerkung" name="wdgBemerkung" native="true">
              <property name="focusPolicy">
-              <enum>Qt::FocusPolicy::StrongFocus</enum>
+              <enum>Qt::StrongFocus</enum>
              </property>
             </widget>
            </item>
@@ -2900,7 +2900,7 @@
            <item row="1" column="0" colspan="8">
             <widget class="Line" name="lineKosten2">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -2910,7 +2910,7 @@
         <item>
          <spacer name="verticalSpacer">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -2920,15 +2920,37 @@
           </property>
          </spacer>
         </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="PushButton" name="btnSudGebraut">
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Sud&lt;/span&gt; als &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt; markiert.&lt;/p&gt;&lt;p&gt;Nach Klick wird der Button Sud gebraut ausgegraut und inaktiv. Der Kleine Brauhelfer fragt, ob die verwendeten Zutaten von den Rohstoffvorräten abgezogen werden sollen. Bei Korrekturen ist diese Frage zu verneinen und die Rohstoffvorräte bleiben unverändert. Popups fragen zur Sicherheit nach, ob beim Zrücksetzen Zutaten zurückgebucht werden sollen oder nicht.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Unaufmerksamkeit kann eine Inkonsistenz im Rohstofflager nach sich ziehen.Im schlimmsten Fall stellt sich dann am Brautag ein Rohstoff als nicht in ausreichender Menge oder gar nicht vorhanden heraus!&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Sud gebraut &lt;/span&gt;schaltet weitere Aktionen im Kleinen Brauhelfer frei. So legt diese Aktion den ersten Eintrag im Tab Gärdaten an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="whatsThis">
+             <string notr="true">sud_gebraut</string>
+            </property>
+            <property name="text">
+             <string>Sud gebraut</string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/light/sud_gebraut.svg</normaloff>
+              <disabledoff>:/images/disabled/sud_gebraut.svg</disabledoff>:/images/light/sud_gebraut.svg</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
        </layout>
       </widget>
      </widget>
      <widget class="QSplitter" name="splitterCharts">
       <property name="focusPolicy">
-       <enum>Qt::FocusPolicy::StrongFocus</enum>
+       <enum>Qt::StrongFocus</enum>
       </property>
       <property name="orientation">
-       <enum>Qt::Orientation::Vertical</enum>
+       <enum>Qt::Vertical</enum>
       </property>
       <widget class="ChartBraudaten" name="chartBraudaten" native="true"/>
       <widget class="ChartAusbeute" name="chartAusbeute" native="true"/>
@@ -2938,6 +2960,19 @@
          <horstretch>0</horstretch>
          <verstretch>1</verstretch>
         </sizepolicy>
+       </property>
+      </widget>
+      <widget class="QTextBrowser" name="tbHelp">
+       <property name="font">
+        <font>
+         <italic>true</italic>
+        </font>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="openExternalLinks">
+        <bool>true</bool>
        </property>
       </widget>
      </widget>
@@ -3050,7 +3085,9 @@
   <tabstop>tbKosten</tabstop>
   <tabstop>cbDurchschnittIgnorieren</tabstop>
   <tabstop>wdgBemerkung</tabstop>
+  <tabstop>btnSudGebraut</tabstop>
   <tabstop>splitterCharts</tabstop>
+  <tabstop>tbHelp</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

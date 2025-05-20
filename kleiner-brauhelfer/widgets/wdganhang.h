@@ -32,7 +32,6 @@ private slots:
     void on_btnLoeschen_clicked();
 
 private:
-    void changeEvent(QEvent * event) Q_DECL_OVERRIDE;
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);
 

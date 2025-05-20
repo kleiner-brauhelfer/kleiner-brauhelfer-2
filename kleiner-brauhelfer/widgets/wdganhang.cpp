@@ -38,13 +38,6 @@ WdgAnhang::~WdgAnhang()
     delete ui;
 }
 
-void WdgAnhang::changeEvent(QEvent * event)
-{
-    if (event->type() == QEvent::LanguageChange)
-        ui->retranslateUi(this);
-    QWidget::changeEvent(event);
-}
-
 QVariant WdgAnhang::data(int col) const
 {
     return bh->sud()->modelAnhang()->data(mIndex, col);

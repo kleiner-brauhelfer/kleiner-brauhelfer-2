@@ -30,7 +30,7 @@
     <item>
      <widget class="QScrollArea" name="scrollArea">
       <property name="frameShape">
-       <enum>QFrame::Shape::NoFrame</enum>
+       <enum>QFrame::NoFrame</enum>
       </property>
       <property name="widgetResizable">
        <bool>true</bool>
@@ -41,99 +41,106 @@
          <x>0</x>
          <y>0</y>
          <width>800</width>
-         <height>480</height>
+         <height>459</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>6</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
         <item>
-         <widget class="QSplitter" name="splitterHelp">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+         <widget class="QTabWidget" name="tabMain">
+          <property name="currentIndex">
+           <number>0</number>
           </property>
-          <widget class="QTabWidget" name="tabMain">
-           <property name="currentIndex">
-            <number>0</number>
-           </property>
-           <widget class="TabSudAuswahl" name="tabSudAuswahl">
-            <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabsudauswahl.svg</normaloff>
-              <disabledoff>:/images/disabled/tabsudauswahl.svg</disabledoff>:/images/light/tabsudauswahl.svg</iconset>
-            </attribute>
-            <attribute name="title">
-             <string>Sudauswahl</string>
-            </attribute>
-           </widget>
-           <widget class="TabRezept" name="tabRezept">
-            <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabrezept.svg</normaloff>
-              <disabledoff>:/images/disabled/tabrezept.svg</disabledoff>:/images/light/tabrezept.svg</iconset>
-            </attribute>
-            <attribute name="title">
-             <string>Rezept</string>
-            </attribute>
-           </widget>
-           <widget class="TabBraudaten" name="tabBraudaten">
-            <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabbraudaten.svg</normaloff>
-              <disabledoff>:/images/disabled/tabbraudaten.svg</disabledoff>:/images/light/tabbraudaten.svg</iconset>
-            </attribute>
-            <attribute name="title">
-             <string>Braudaten</string>
-            </attribute>
-           </widget>
-           <widget class="TabAbfuellen" name="tabAbfuelldaten">
-            <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tababfuellen.svg</normaloff>
-              <disabledoff>:/images/disabled/tababfuellen.svg</disabledoff>:/images/light/tababfuellen.svg</iconset>
-            </attribute>
-            <attribute name="title">
-             <string>Abfülldaten</string>
-            </attribute>
-           </widget>
-           <widget class="TabGaerverlauf" name="tabGaerverlauf">
-            <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabgaerverlauf.svg</normaloff>
-              <disabledoff>:/images/disabled/tabgaerverlauf.svg</disabledoff>:/images/light/tabgaerverlauf.svg</iconset>
-            </attribute>
-            <attribute name="title">
-             <string>Gärverlauf</string>
-            </attribute>
-           </widget>
-           <widget class="TabEtikette" name="tabEtikette">
-            <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabetikette.svg</normaloff>
-              <disabledoff>:/images/disabled/tabetikette.svg</disabledoff>:/images/light/tabetikette.svg</iconset>
-            </attribute>
-            <attribute name="title">
-             <string>Etikett</string>
-            </attribute>
-           </widget>
-           <widget class="TabBewertung" name="tabBewertung">
-            <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabbewertung.svg</normaloff>
-              <disabledoff>:/images/disabled/tabbewertung.svg</disabledoff>:/images/light/tabbewertung.svg</iconset>
-            </attribute>
-            <attribute name="title">
-             <string>Bewertung</string>
-            </attribute>
-           </widget>
+          <widget class="TabSudAuswahl" name="tabSudAuswahl">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabsudauswahl.svg</normaloff>
+             <disabledoff>:/images/disabled/tabsudauswahl.svg</disabledoff>:/images/light/tabsudauswahl.svg</iconset>
+           </attribute>
+           <attribute name="title">
+            <string>Sudauswahl</string>
+           </attribute>
           </widget>
-          <widget class="QTextBrowser" name="tbHelp">
-           <property name="font">
-            <font>
-             <italic>true</italic>
-            </font>
-           </property>
-           <property name="openExternalLinks">
-            <bool>true</bool>
-           </property>
+          <widget class="TabRezept" name="tabRezept">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabrezept.svg</normaloff>
+             <disabledoff>:/images/disabled/tabrezept.svg</disabledoff>:/images/light/tabrezept.svg</iconset>
+           </attribute>
+           <attribute name="title">
+            <string>Rezept</string>
+           </attribute>
+          </widget>
+          <widget class="TabBraudaten" name="tabBraudaten">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabbraudaten.svg</normaloff>
+             <disabledoff>:/images/disabled/tabbraudaten.svg</disabledoff>:/images/light/tabbraudaten.svg</iconset>
+           </attribute>
+           <attribute name="title">
+            <string>Braudaten</string>
+           </attribute>
+          </widget>
+          <widget class="TabAbfuellen" name="tabAbfuelldaten">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tababfuellen.svg</normaloff>
+             <disabledoff>:/images/disabled/tababfuellen.svg</disabledoff>:/images/light/tababfuellen.svg</iconset>
+           </attribute>
+           <attribute name="title">
+            <string>Abfülldaten</string>
+           </attribute>
+          </widget>
+          <widget class="TabGaerverlauf" name="tabGaerverlauf">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabgaerverlauf.svg</normaloff>
+             <disabledoff>:/images/disabled/tabgaerverlauf.svg</disabledoff>:/images/light/tabgaerverlauf.svg</iconset>
+           </attribute>
+           <attribute name="title">
+            <string>Gärverlauf</string>
+           </attribute>
+          </widget>
+          <widget class="TabZusammenfassung" name="tabZusammenfassung">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabzusammenfassung.svg</normaloff>
+             <disabledoff>:/images/disabled/tabzusammenfassung.svg</disabledoff>:/images/light/tabzusammenfassung.svg</iconset>
+           </attribute>
+           <attribute name="title">
+            <string>Ausdruck</string>
+           </attribute>
+          </widget>
+          <widget class="TabEtikette" name="tabEtikette">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabetikette.svg</normaloff>
+             <disabledoff>:/images/disabled/tabetikette.svg</disabledoff>:/images/light/tabetikette.svg</iconset>
+           </attribute>
+           <attribute name="title">
+            <string>Etikett</string>
+           </attribute>
+          </widget>
+          <widget class="TabBewertung" name="tabBewertung">
+           <attribute name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/tabbewertung.svg</normaloff>
+             <disabledoff>:/images/disabled/tabbewertung.svg</disabledoff>:/images/light/tabbewertung.svg</iconset>
+           </attribute>
+           <attribute name="title">
+            <string>Bewertung</string>
+           </attribute>
           </widget>
          </widget>
         </item>
@@ -143,16 +150,124 @@
     </item>
    </layout>
   </widget>
-  <widget class="QToolBar" name="toolBarSave">
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
    </property>
-   <property name="movable">
-    <bool>false</bool>
-   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>Datei</string>
+    </property>
+    <addaction name="actionNeuen_Sud_anlegen"/>
+    <addaction name="actionSud_kopieren"/>
+    <addaction name="actionSud_teilen"/>
+    <addaction name="actionSud_l_schen"/>
+    <addaction name="separator"/>
+    <addaction name="actionRezept_importieren"/>
+    <addaction name="actionRezept_exportieren"/>
+    <addaction name="separator"/>
+    <addaction name="actionSpeichern"/>
+    <addaction name="actionVerwerfen"/>
+    <addaction name="separator"/>
+    <addaction name="actionDruckvorschau"/>
+    <addaction name="actionDrucken"/>
+    <addaction name="separator"/>
+    <addaction name="actionBereinigen"/>
+    <addaction name="separator"/>
+    <addaction name="actionBeenden"/>
+   </widget>
+   <widget class="QMenu" name="menuAnsicht">
+    <property name="title">
+     <string>Ansicht</string>
+    </property>
+    <widget class="QMenu" name="menuFarbschema">
+     <property name="title">
+      <string>Farbschema</string>
+     </property>
+     <addaction name="actionThemeHell"/>
+     <addaction name="actionThemeDunkel"/>
+    </widget>
+    <widget class="QMenu" name="menuStil">
+     <property name="title">
+      <string>Stil</string>
+     </property>
+    </widget>
+    <addaction name="actionAnsichtWiederherstellen"/>
+    <addaction name="separator"/>
+    <addaction name="menuFarbschema"/>
+    <addaction name="menuStil"/>
+    <addaction name="actionSchriftart"/>
+    <addaction name="separator"/>
+    <addaction name="actionRohstoffe"/>
+    <addaction name="actionAusruestung"/>
+    <addaction name="actionBrauUebersicht"/>
+    <addaction name="separator"/>
+    <addaction name="actionLog"/>
+    <addaction name="actionDatenbank"/>
+   </widget>
+   <widget class="QMenu" name="menuHilfe">
+    <property name="title">
+     <string>Hilfe</string>
+    </property>
+    <addaction name="actionHilfe"/>
+    <addaction name="actionUeber"/>
+   </widget>
+   <widget class="QMenu" name="menuSud">
+    <property name="title">
+     <string>Sud</string>
+    </property>
+    <addaction name="actionSudGebraut"/>
+    <addaction name="actionSudAbgefuellt"/>
+    <addaction name="actionSudVerbraucht"/>
+    <addaction name="separator"/>
+    <addaction name="actionHefeZugabeZuruecksetzen"/>
+    <addaction name="actionWeitereZutaten"/>
+    <addaction name="separator"/>
+    <addaction name="actionEingabefelderEntsperren"/>
+   </widget>
+   <widget class="QMenu" name="menuEinstellungen">
+    <property name="title">
+     <string>Einstellungen</string>
+    </property>
+    <widget class="QMenu" name="menuSprache">
+     <property name="title">
+      <string>Sprache</string>
+     </property>
+     <addaction name="actionDeutsch"/>
+     <addaction name="actionEnglisch"/>
+     <addaction name="actionSchwedisch"/>
+     <addaction name="actionNiederlaendisch"/>
+    </widget>
+    <addaction name="actionOeffnen"/>
+    <addaction name="separator"/>
+    <addaction name="actionBestaetigungBeenden"/>
+    <addaction name="actionCheckUpdate"/>
+    <addaction name="actionTooltips"/>
+    <addaction name="actionAnimationen"/>
+    <addaction name="separator"/>
+    <addaction name="menuSprache"/>
+    <addaction name="actionZahlenformat"/>
+    <addaction name="separator"/>
+    <addaction name="actionModule"/>
+   </widget>
+   <widget class="QMenu" name="menuBearbeiten">
+    <property name="title">
+     <string>Bearbeiten</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuBearbeiten"/>
+   <addaction name="menuSud"/>
+   <addaction name="menuAnsicht"/>
+   <addaction name="menuEinstellungen"/>
+   <addaction name="menuHilfe"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
    <property name="iconSize">
     <size>
      <width>16</width>
@@ -160,7 +275,7 @@
     </size>
    </property>
    <property name="toolButtonStyle">
-    <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
+    <enum>Qt::ToolButtonTextBesideIcon</enum>
    </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
@@ -169,118 +284,19 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionSpeichern"/>
-   <addaction name="actionVerwerfen"/>
    <addaction name="separator"/>
-  </widget>
-  <widget class="QToolBar" name="toolBarSudauswahl">
-   <property name="movable">
-    <bool>false</bool>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>16</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="toolButtonStyle">
-    <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QToolBar" name="toolBarSud">
-   <property name="movable">
-    <bool>false</bool>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>16</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="toolButtonStyle">
-    <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QToolBar" name="toolBarDialogs">
-   <property name="windowTitle">
-    <string>toolBar_2</string>
-   </property>
-   <property name="movable">
-    <bool>false</bool>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>16</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="toolButtonStyle">
-    <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
    <addaction name="actionRohstoffe"/>
    <addaction name="actionAusruestung"/>
-   <addaction name="actionPrintout"/>
    <addaction name="actionBrauUebersicht"/>
-   <addaction name="separator"/>
-  </widget>
-  <widget class="QToolBar" name="toolBarHelp">
-   <property name="windowTitle">
-    <string>toolBar_2</string>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LayoutDirection::RightToLeft</enum>
-   </property>
-   <property name="movable">
-    <bool>false</bool>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>16</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="toolButtonStyle">
-    <enum>Qt::ToolButtonStyle::ToolButtonTextUnderIcon</enum>
-   </property>
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-   <addaction name="actionUeber"/>
-   <addaction name="actionHilfe"/>
-   <addaction name="separator"/>
-   <addaction name="actionDatenbank"/>
-   <addaction name="actionSettings"/>
-   <addaction name="separator"/>
   </widget>
   <action name="actionSpeichern">
    <property name="icon">
-    <iconset theme="save"/>
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/save.svg</normaloff>
+     <disabledoff>:/images/disabled/save.svg</disabledoff>:/images/light/save.svg</iconset>
    </property>
    <property name="text">
     <string>Speichern</string>
-   </property>
-   <property name="toolTip">
-    <string>Änderungen speichern</string>
    </property>
    <property name="whatsThis">
     <string notr="true">save</string>
@@ -291,100 +307,328 @@
   </action>
   <action name="actionVerwerfen">
    <property name="icon">
-    <iconset theme="discard"/>
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/restore.svg</normaloff>
+     <disabledoff>:/images/disabled/restore.svg</disabledoff>:/images/light/restore.svg</iconset>
    </property>
    <property name="text">
-    <string>Verwerfen</string>
-   </property>
-   <property name="toolTip">
     <string>Änderungen verwerfen</string>
    </property>
    <property name="whatsThis">
     <string notr="true">restore</string>
    </property>
   </action>
+  <action name="actionAnsichtWiederherstellen">
+   <property name="text">
+    <string>Zurücksetzen</string>
+   </property>
+  </action>
   <action name="actionUeber">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset theme="about"/>
-   </property>
    <property name="text">
     <string>Über</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::AboutRole</enum>
+    <enum>QAction::AboutRole</enum>
    </property>
   </action>
   <action name="actionSudGebraut">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset theme="gebraut"/>
-   </property>
    <property name="text">
-    <string>Gebraut</string>
-   </property>
-   <property name="toolTip">
-    <string>Status &quot;gebraut&quot; setzen/zurücksetzen</string>
+    <string>&quot;Sud gebraut&quot; zurücksetzen</string>
    </property>
   </action>
   <action name="actionSudAbgefuellt">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset theme="abgefuellt"/>
-   </property>
    <property name="text">
-    <string>Abgefüllt</string>
-   </property>
-   <property name="toolTip">
-    <string>Status &quot;abgefüllt&quot; setzen/zurücksetzen</string>
+    <string>&quot;Sud abgefüllt&quot; zurücksetzen</string>
    </property>
   </action>
-  <action name="actionSudAusgetrunken">
+  <action name="actionSudVerbraucht">
+   <property name="text">
+    <string>&quot;Sud verbraucht&quot; zurücksetzen</string>
+   </property>
+  </action>
+  <action name="actionWeitereZutaten">
+   <property name="text">
+    <string>&quot;Zusätze Zugabe&quot; zurücksetzen</string>
+   </property>
+  </action>
+  <action name="actionBeenden">
+   <property name="text">
+    <string>Beenden</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
+  </action>
+  <action name="actionOeffnen">
+   <property name="text">
+    <string>Datenbank auswählen</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::PreferencesRole</enum>
+   </property>
+  </action>
+  <action name="actionThemeHell">
+   <property name="text">
+    <string>Hell</string>
+   </property>
+  </action>
+  <action name="actionThemeDunkel">
+   <property name="text">
+    <string>Dunkel</string>
+   </property>
+  </action>
+  <action name="actionBestaetigungBeenden">
    <property name="checkable">
     <bool>true</bool>
    </property>
-   <property name="icon">
-    <iconset theme="ausgetrunken"/>
+   <property name="checked">
+    <bool>true</bool>
    </property>
    <property name="text">
-    <string>Ausgetrunken</string>
+    <string>Bestätigung beim Beenden</string>
    </property>
-   <property name="toolTip">
-    <string>Status &quot;ausgetrunken&quot; setzen/zurücksetzen</string>
+  </action>
+  <action name="actionSchriftart">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Systemschriftart</string>
+   </property>
+  </action>
+  <action name="actionCheckUpdate">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Auf Updates prüfen</string>
+   </property>
+  </action>
+  <action name="actionHefeZugabeZuruecksetzen">
+   <property name="text">
+    <string>&quot;Hefe Zugabe&quot; zurücksetzen</string>
+   </property>
+  </action>
+  <action name="actionBereinigen">
+   <property name="text">
+    <string>Bereinigen</string>
    </property>
   </action>
   <action name="actionEingabefelderEntsperren">
    <property name="checkable">
     <bool>true</bool>
    </property>
-   <property name="icon">
-    <iconset theme="entsperren"/>
-   </property>
    <property name="text">
-    <string>Entsperren</string>
-   </property>
-   <property name="toolTip">
     <string>Eingabefelder entsperren</string>
    </property>
   </action>
-  <action name="actionHilfe">
+  <action name="actionTooltips">
    <property name="checkable">
     <bool>true</bool>
    </property>
-   <property name="icon">
-    <iconset theme="help"/>
+   <property name="checked">
+    <bool>true</bool>
    </property>
+   <property name="text">
+    <string>Tooltips</string>
+   </property>
+  </action>
+  <action name="actionNeuen_Sud_anlegen">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/sud_neu.svg</normaloff>
+     <disabledoff>:/images/disabled/sud_neu.svg</disabledoff>:/images/light/sud_neu.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Neuen Sud anlegen</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">sud_neu</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionRezept_importieren">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/sud_import.svg</normaloff>
+     <disabledoff>:/images/disabled/sud_import.svg</disabledoff>:/images/light/sud_import.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Rezept importieren</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">sud_import</string>
+   </property>
+  </action>
+  <action name="actionRezept_exportieren">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/sud_export.svg</normaloff>
+     <disabledoff>:/images/disabled/sud_export.svg</disabledoff>:/images/light/sud_export.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Rezept exportieren</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">sud_export</string>
+   </property>
+  </action>
+  <action name="actionSud_kopieren">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/sud_kopie.svg</normaloff>
+     <disabledoff>:/images/disabled/sud_kopie.svg</disabledoff>:/images/light/sud_kopie.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Sud kopieren</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">sud_kopie</string>
+   </property>
+  </action>
+  <action name="actionSud_l_schen">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/sud_loeschen.svg</normaloff>
+     <disabledoff>:/images/disabled/sud_loeschen.svg</disabledoff>:/images/light/sud_loeschen.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Sud löschen</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">sud_loeschen</string>
+   </property>
+  </action>
+  <action name="actionSud_teilen">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/sud_teilen.svg</normaloff>
+     <disabledoff>:/images/disabled/sud_teilen.svg</disabledoff>:/images/light/sud_teilen.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Sud teilen</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">sud_teilen</string>
+   </property>
+  </action>
+  <action name="actionDruckvorschau">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/print.svg</normaloff>
+     <disabledoff>:/images/disabled/print.svg</disabledoff>:/images/light/print.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Drucken</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">print</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+P</string>
+   </property>
+  </action>
+  <action name="actionDrucken">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/pdf.svg</normaloff>
+     <disabledoff>:/images/disabled/pdf.svg</disabledoff>:/images/light/pdf.svg</iconset>
+   </property>
+   <property name="text">
+    <string>PDF</string>
+   </property>
+   <property name="whatsThis">
+    <string notr="true">pdf</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionAnimationen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Animationen</string>
+   </property>
+  </action>
+  <action name="actionDeutsch">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/de.svg</normaloff>:/images/de.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Deutsch</string>
+   </property>
+  </action>
+  <action name="actionEnglisch">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/en.svg</normaloff>:/images/en.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Englisch</string>
+   </property>
+  </action>
+  <action name="actionSchwedisch">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/se.svg</normaloff>:/images/se.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Schwedisch</string>
+   </property>
+  </action>
+  <action name="actionNiederlaendisch">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/images/nl.svg</normaloff>:/images/nl.svg</iconset>
+   </property>
+   <property name="text">
+    <string>Niederländisch</string>
+   </property>
+  </action>
+  <action name="actionLog">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Log</string>
+   </property>
+  </action>
+  <action name="actionModule">
+   <property name="text">
+    <string>Module</string>
+   </property>
+  </action>
+  <action name="actionZahlenformat">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Zahlen- &amp;&amp; Datumsformat aus Spracheinstellung</string>
+   </property>
+  </action>
+  <action name="actionHilfe">
    <property name="text">
     <string>Hilfe</string>
    </property>
    <property name="shortcut">
-    <string>F1</string>
+    <string notr="true">F1</string>
    </property>
   </action>
   <action name="actionRohstoffe">
@@ -395,7 +639,9 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset theme="lager"/>
+    <iconset>
+     <normalon>:/images/light/actionrohstoffe.svg</normalon>
+    </iconset>
    </property>
    <property name="text">
     <string>Rohstoffe</string>
@@ -415,7 +661,8 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="brauuebersicht"/>
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/actionbrauuebersicht.svg</normaloff>:/images/light/actionbrauuebersicht.svg</iconset>
    </property>
    <property name="text">
     <string>Brauübersicht</string>
@@ -435,7 +682,9 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="ausruestung"/>
+    <iconset>
+     <normalon>:/images/light/actionausruestung.svg</normalon>
+    </iconset>
    </property>
    <property name="text">
     <string>Ausrüstung</string>
@@ -455,50 +704,11 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="database"/>
+    <iconset resource="images.qrc">
+     <normaloff>:/images/light/datenbank.svg</normaloff>:/images/light/datenbank.svg</iconset>
    </property>
    <property name="text">
     <string>Datenbank</string>
-   </property>
-  </action>
-  <action name="actionSettings">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset theme="settings"/>
-   </property>
-   <property name="text">
-    <string>Einstellungen</string>
-   </property>
-   <property name="toolTip">
-    <string>Einstellungen</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::MenuRole::PreferencesRole</enum>
-   </property>
-  </action>
-  <action name="actionPrintout">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="checked">
-    <bool>false</bool>
-   </property>
-   <property name="icon">
-    <iconset theme="printout"/>
-   </property>
-   <property name="text">
-    <string>Ausdruck</string>
-   </property>
-   <property name="toolTip">
-    <string>Ausdruck</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">actionrohstoffe</string>
-   </property>
-   <property name="visible">
-    <bool>true</bool>
    </property>
   </action>
  </widget>
@@ -526,6 +736,12 @@
    <class>TabGaerverlauf</class>
    <extends>QWidget</extends>
    <header>tabgaerverlauf.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TabZusammenfassung</class>
+   <extends>QWidget</extends>
+   <header>tabzusammenfassung.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

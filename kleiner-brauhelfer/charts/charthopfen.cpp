@@ -49,7 +49,7 @@ void ChartHopfen::update()
         if (typ >= 0 && typ < gSettings->HopfenTypBackgrounds.count())
             bars->setBrush(gSettings->HopfenTypBackgrounds[typ]);
         else
-            bars->setBrush(Qt::gray);
+            bars->setBrush(gSettings->colorHopfen);
         bars->addData(row+1, val);
         if (nRows <= 3 || row % 2 == 0)
             textTicker->addTick(row+1, name);

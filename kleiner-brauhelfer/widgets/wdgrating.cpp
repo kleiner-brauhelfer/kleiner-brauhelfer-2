@@ -23,13 +23,6 @@ WdgRating::~WdgRating()
     delete ui;
 }
 
-void WdgRating::changeEvent(QEvent * event)
-{
-    if (event->type() == QEvent::LanguageChange)
-        ui->retranslateUi(this);
-    QWidget::changeEvent(event);
-}
-
 void WdgRating::setReadOnly(bool readonly)
 {
     mReadOnly = readonly;

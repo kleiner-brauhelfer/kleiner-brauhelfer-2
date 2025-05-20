@@ -2,7 +2,6 @@
 #define DLGROHSTOFFEABZIEHEN_H
 
 #include "dlgabstract.h"
-#include "ui_dlgrohstoffeabziehen.h"
 #include "brauhelfer.h"
 
 namespace Ui {
@@ -12,7 +11,6 @@ class DlgRohstoffeAbziehen;
 class DlgRohstoffeAbziehen : public DlgAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
 
 public:
     explicit DlgRohstoffeAbziehen(bool abziehen, QWidget *parent = nullptr);

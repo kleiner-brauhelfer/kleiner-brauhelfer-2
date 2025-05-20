@@ -2,7 +2,6 @@
 #define TABREZEPT_H
 
 #include "tababstract.h"
-#include "ui_tabrezept.h"
 #include <QGraphicsItem>
 #include "brauhelfer.h"
 
@@ -13,7 +12,6 @@ class TabRezept;
 class TabRezept : public TabAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabRezept(QWidget *parent = nullptr);
@@ -24,6 +22,7 @@ public:
     void checkEnabled();
 
 private slots:
+    void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
     void sudDataChanged(const QModelIndex& index);
     void updateValues();
@@ -102,6 +101,7 @@ private:
     Ui::TabRezept *ui;
     QGraphicsItem *mGlasSvg;
     QByteArray mDefaultSplitterState;
+    QByteArray mDefaultSplitterHelpState;
     QByteArray mDefaultSplitterMaischenState;
     QByteArray mDefaultSplitterKochenState;
     QByteArray mDefaultSplitterGaerungState;

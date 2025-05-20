@@ -2,7 +2,6 @@
 #define DLGDATABASECLEANER_H
 
 #include "dlgabstract.h"
-#include "ui_dlgdatabasecleaner.h"
 #include <functional>
 #include "sqltablemodel.h"
 
@@ -13,15 +12,10 @@ class DlgDatabaseCleaner;
 class DlgDatabaseCleaner : public DlgAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
-
-public:
-    static DlgDatabaseCleaner *Dialog;
 
 public:
     explicit DlgDatabaseCleaner(QWidget* parent = nullptr);
     ~DlgDatabaseCleaner();
-    static void restoreView();
 
 private slots:
     void selectionChanged();

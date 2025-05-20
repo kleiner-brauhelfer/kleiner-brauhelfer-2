@@ -14,7 +14,6 @@ QAction *UndoStack::createUndoAction(QObject *parent, const QString &prefix) con
 {
     QAction *result = new QAction(prefix, parent);
     result->setShortcuts(QKeySequence::Undo);
-    result->setIcon(QIcon::fromTheme("undo"));
     result->setEnabled(canUndo());
     connect(this, &QUndoStack::canUndoChanged, result, &QAction::setEnabled);
     connect(result, &QAction::triggered, this, &UndoStack::undo);
@@ -25,7 +24,6 @@ QAction *UndoStack::createRedoAction(QObject *parent, const QString &prefix) con
 {
     QAction *result = new QAction(prefix, parent);
     result->setShortcuts(QKeySequence::Redo);
-    result->setIcon(QIcon::fromTheme("redo"));
     result->setEnabled(canRedo());
     connect(this, &QUndoStack::canRedoChanged, result, &QAction::setEnabled);
     connect(result, &QAction::triggered, this, &UndoStack::redo);

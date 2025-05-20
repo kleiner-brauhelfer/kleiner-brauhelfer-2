@@ -136,6 +136,11 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->cbKategorie->setModel(proxy);
     ui->cbKategorie->setModelColumn(ModelKategorien::ColName);
 	
+    pal = ui->tbHelp->palette();
+    pal.setBrush(QPalette::Base, pal.brush(QPalette::ToolTipBase));
+    pal.setBrush(QPalette::Text, pal.brush(QPalette::ToolTipText));
+    ui->tbHelp->setPalette(pal);
+
     ui->wdgBemerkung->setPlaceholderText(tr("Bemerkung Rezept"));
     ui->wdgBemerkungMaischen->setPlaceholderText(tr("Bemerkung Maischen"));
     ui->wdgBemerkungKochen->setPlaceholderText(tr("Bemerkung Kochen"));
@@ -148,6 +153,10 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->splitter->setSizes({200, 100, 200});
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
+
+    ui->splitterHelp->setSizes({100, 50});
+    mDefaultSplitterHelpState = ui->splitterHelp->saveState();
+    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
 
     ui->splitterMaischen->setSizes({1, 150, 50});
     mDefaultSplitterMaischenState = ui->splitterMaischen->saveState();
@@ -166,6 +175,8 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->splitterWasseraufbereitung->restoreState(gSettings->value("splitterWasseraufbereitungState").toByteArray());
 
     gSettings->endGroup();
+
+    connect(qApp, &QApplication::focusChanged, this, &TabRezept::focusChanged);
 
     connect(bh, &Brauhelfer::modified, this, &TabRezept::updateValues);
     connect(bh, &Brauhelfer::discarded, this, &TabRezept::sudLoaded);
@@ -211,7 +222,7 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(ui->wdgBemerkungMaischplan, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungMaischplan, html));});
     connect(ui->wdgBemerkungWasseraufbereitung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungWasseraufbereitung, html));});
 
-    connect(ui->btnAnlage, &QAbstractButton::clicked, MainWindow::getInstance()->getAction("actionAusruestung"), &QAction::triggered);
+    connect(ui->btnAnlage, &QAbstractButton::clicked, MainWindow::getInstance(), &MainWindow::showDialogAusruestung);
 
     TableView *table = ui->tableTags;
     table->setModel(bh->sud()->modelTags());
@@ -231,6 +242,7 @@ void TabRezept::saveSettings()
 {
     gSettings->beginGroup("TabRezept");
     gSettings->setValue("splitterState", ui->splitter->saveState());
+    gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
     gSettings->setValue("splitterMaischenState", ui->splitterMaischen->saveState());
     gSettings->setValue("splitterKochenState", ui->splitterKochen->saveState());
     gSettings->setValue("splitterGaerungState", ui->splitterGaerung->saveState());
@@ -242,6 +254,7 @@ void TabRezept::saveSettings()
 void TabRezept::restoreView()
 {
     ui->splitter->restoreState(mDefaultSplitterState);
+    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     ui->splitterMaischen->restoreState(mDefaultSplitterMaischenState);
     ui->splitterKochen->restoreState(mDefaultSplitterKochenState);
     ui->splitterGaerung->restoreState(mDefaultSplitterGaerungState);
@@ -291,6 +304,13 @@ void TabRezept::modulesChanged(Settings::Modules modules)
         checkEnabled();
         updateValues();
     }
+}
+
+void TabRezept::focusChanged(QWidget *old, QWidget *now)
+{
+    Q_UNUSED(old)
+    if (now && isAncestorOf(now) && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
+        ui->tbHelp->setHtml(now->toolTip());
 }
 
 void TabRezept::sudLoaded()

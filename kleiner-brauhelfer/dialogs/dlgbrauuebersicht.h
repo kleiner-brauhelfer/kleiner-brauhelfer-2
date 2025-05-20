@@ -2,7 +2,6 @@
 #define DLG_BRAUUEBERSICHT_H
 
 #include "dlgabstract.h"
-#include "ui_dlgbrauuebersicht.h"
 #include <QAbstractItemModel>
 #include <QItemSelection>
 #include "settings.h"
@@ -14,7 +13,6 @@ class DlgBrauUebersicht;
 class DlgBrauUebersicht : public DlgAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
 
 public:
     static DlgBrauUebersicht *Dialog;
@@ -27,20 +25,21 @@ public:
 
 private slots:
     void modulesChanged(Settings::Modules modules);
-    void onLayoutChanged();
+    void updateDiagram();
     void modelDataChanged(const QModelIndex& index);
     void table_selectionChanged(const QItemSelection &selected);
     void diagram_selectionChanged(int index);
-    void on_tbFilter_textChanged(const QString &pattern);
     void on_cbAuswahlL1_currentIndexChanged(int);
     void on_cbAuswahlL2_currentIndexChanged(int);
     void on_cbAuswahlL3_currentIndexChanged(int);
+    void on_tbDatumVon_dateChanged(const QDate &date);
+    void on_tbDatumBis_dateChanged(const QDate &date);
+    void on_cbDatumAlle_stateChanged(int state);
 
 private:
     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     void build();
-    void updateDiagram();
-    void updateFilterLabel();
+    void setFilterDate();
 
 private:
     struct AuswahlType

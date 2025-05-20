@@ -6,177 +6,562 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>980</width>
+    <height>491</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayoutFilter">
-     <item>
-      <widget class="FilterButtonSud" name="btnFilter">
-       <property name="icon">
-        <iconset theme="filter"/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="tbFilter">
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Textfilter&lt;/span&gt; für die Sudsuche. Gesucht wird in den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Sudname&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Kommentar&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hefe&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="placeholderText">
-        <string>Suche</string>
-       </property>
-       <property name="clearButtonEnabled">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="lblFilter">
-       <property name="text">
-        <string notr="true">n / N</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_4">
+   <property name="spacing">
+    <number>4</number>
+   </property>
    <item>
     <widget class="QSplitter" name="splitter">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
-     <widget class="TableView" name="table">
-      <property name="contextMenuPolicy">
-       <enum>Qt::ContextMenuPolicy::CustomContextMenu</enum>
-      </property>
-      <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Sude&lt;/span&gt; ausgeführt und können nach &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;gemerkt&lt;/span&gt; abgefüllt werden. Es stehen mehrere versteckte Funktionen zu Verfügung:&lt;/p&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Rechtsklick&lt;/span&gt; auf den einzelnen Sud oder die Spalte lassen sich Spalten mit diversen Parametern hinzufügen oder entfernen.&lt;/p&gt;&lt;p&gt;Ferner kann mit Rechtsklick ein markierter Sud jederzeit der Merkliste hinzugefügt sowie als nicht verbraucht markiert werden.&lt;/p&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Shift&lt;/span&gt; können alle oder mehrere Sude zusammen angewählt und ihre Mengenwerte im rechten Fensterteil ausgegeben werden.&lt;/p&gt;&lt;p&gt;Dabei wird für jede einzelne Zutat die Gesamtmenge in Benötigt, Vorhanden und Rest berechnet. Besonders hilfreich für die Sudplanung ist der Hinweis auf &lt;span style=&quot; font-weight:600;&quot;&gt;Fehlmengen&lt;/span&gt;, als &lt;span style=&quot; font-weight:600;&quot;&gt;negativer Wert &lt;/span&gt;mit pinkener Einfärbung angegeben.&lt;/p&gt;&lt;p&gt;Nicht in der Rohstofliste vorhandene Zutaten werden ausgegraut mit 0 angezeigt.&lt;/p&gt;&lt;p&gt;Alle Einträge können jetzt kopiert und ausgdruckt werden. Per Shift lassen sich auch Auszüge kopieren und ausdrucken.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="editTriggers">
-       <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
-      </property>
-      <property name="alternatingRowColors">
-       <bool>true</bool>
-      </property>
-      <property name="selectionBehavior">
-       <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
-      </property>
-      <property name="horizontalScrollMode">
-       <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
-      </property>
-      <property name="sortingEnabled">
-       <bool>true</bool>
-      </property>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>4</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QCheckBox" name="cbAlle">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Sude&lt;/span&gt; angezeigt. Bei vielen Suden in der Datenbank, kann diese Ansicht überfordernd sein. Es empfiehlt sich, feinere Filter anzuwenden. Alle Sude werden in allen Markierungsfarben unsortiert angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>alle</string>
+           </property>
+           <property name="tristate">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string notr="true">[ </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="cbRezept">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Rezept</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="cbGebraut">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt; angezeigt. Als gebraut gelten Rezepte, die im Tab Braudaten entsprechend markiert wurden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>gebraut</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="cbAbgefuellt">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt; angezeigt. Als abgefüllt gelten Rezepte, die im Tab Abfülldaten entsprechend markiert wurden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>abgefüllt</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="cbVerbraucht">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude im Stadium &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; (ausgetrunken) angezeigt. Als verbraucht gelten Rezepte, die im Tab Abfülldaten entsprechend markiert wurden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>verbraucht</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string notr="true">]</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="Line" name="line_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="cbMerkliste">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Sude auf der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Merkliste</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QCheckBox" name="cbDatumAlle">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Suchzeitraum&lt;/span&gt; aktiviert oder deaktiviert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>Gebraut zwischen</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DateEdit" name="tbDatumVon">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das &lt;span style=&quot; font-weight:600;&quot;&gt;Anfangsdatum&lt;/span&gt; des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>und</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DateEdit" name="tbDatumBis">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dies ist das &lt;span style=&quot; font-weight:600;&quot;&gt;Enddatum&lt;/span&gt; des Suchzeitraums.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_3">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="tbFilter">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Textfilter&lt;/span&gt; für die Sudsuche. Gesucht wird in den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Sudname&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Kommentar&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hefe&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="placeholderText">
+            <string>Suche</string>
+           </property>
+           <property name="clearButtonEnabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="lblNumSude"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="TableView" name="tableSudauswahl">
+         <property name="contextMenuPolicy">
+          <enum>Qt::CustomContextMenu</enum>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Sude&lt;/span&gt; ausgeführt und können nach &lt;span style=&quot; font-weight:600;&quot;&gt;gebraut&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;abgefüllt&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;verbraucht&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;gemerkt&lt;/span&gt; abgefüllt werden. Es stehen mehrere versteckte Funktionen zu Verfügung:&lt;/p&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Rechtsklick&lt;/span&gt; auf den einzelnen Sud oder die Spalte lassen sich Spalten mit diversen Parametern hinzufügen oder entfernen.&lt;/p&gt;&lt;p&gt;Ferner kann mit Rechtsklick ein markierter Sud jederzeit der Merkliste hinzugefügt sowie als nicht verbraucht markiert werden.&lt;/p&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Shift&lt;/span&gt; können alle oder mehrere Sude zusammen angewählt und ihre Mengenwerte im rechten Fensterteil ausgegeben werden.&lt;/p&gt;&lt;p&gt;Dabei wird für jede einzelne Zutat die Gesamtmenge in Benötigt, Vorhanden und Rest berechnet. Besonders hilfreich für die Sudplanung ist der Hinweis auf &lt;span style=&quot; font-weight:600;&quot;&gt;Fehlmengen&lt;/span&gt;, als &lt;span style=&quot; font-weight:600;&quot;&gt;negativer Wert &lt;/span&gt;mit pinkener Einfärbung angegeben.&lt;/p&gt;&lt;p&gt;Nicht in der Rohstofliste vorhandene Zutaten werden ausgegraut mit 0 angezeigt.&lt;/p&gt;&lt;p&gt;Alle Einträge können jetzt kopiert und ausgdruckt werden. Per Shift lassen sich auch Auszüge kopieren und ausdrucken.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::ExtendedSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QToolButton" name="btnAnlegen">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer &lt;/span&gt;Sud angelegt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Aus Gründen der Konsistenz der Datenbank ist es ratsam Namensgleichheiten zu vermeiden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string notr="true">sud_neu</string>
+           </property>
+           <property name="text">
+            <string>Anlegen</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/sud_neu.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_neu.svg</disabledoff>:/images/light/sud_neu.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="btnKopieren">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; aller ausgewählten Sude erstellt. An den Sudnamen angehängt wird immer das Suffix &amp;quot;Kopie&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string notr="true">sud_kopie</string>
+           </property>
+           <property name="text">
+            <string>Kopieren</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/sud_kopie.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_kopie.svg</disabledoff>:/images/light/sud_kopie.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="btnLoeschen">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string notr="true">sud_loeschen</string>
+           </property>
+           <property name="text">
+            <string>Löschen</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/sud_loeschen.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_loeschen.svg</disabledoff>:/images/light/sud_loeschen.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="btnImportieren">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden. Der Kleine Brauhelfer verarbeitet die Formate json und xml.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string notr="true">sud_import</string>
+           </property>
+           <property name="text">
+            <string>Importieren</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/sud_import.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_import.svg</disabledoff>:/images/light/sud_import.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="btnExportieren">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werde alle ausgewählten Rezepte/Sude in ein anderes Format &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden. Der Kleine Brauhelfer verarbeitet die Formate json und xml.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string notr="true">sud_export</string>
+           </property>
+           <property name="text">
+            <string>Exportieren</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/sud_export.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_export.svg</disabledoff>:/images/light/sud_export.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_5">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="btnTeilen">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;geteilt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Diese Funktion ist auch in den &lt;span style=&quot; font-weight:600;&quot;&gt;Tabs Braudaten&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Abfülldaten&lt;/span&gt; vorhanden.&lt;/p&gt;&lt;p&gt;Es gibt viele Anwendungsfälle für einen gteiliten Sud. Diese reichen von unterschiedlichen Gaben bei der Nachgärung, über Aspekte der Hopfung bis hin zum Parti-Gyle-Verfahren oder Notwendigkeiten der Sudanlage. Bei Fragen zu diesem Anwendungsszenarien sind die Fachforen die beste Anlaufstelle.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string notr="true">sud_teilen</string>
+           </property>
+           <property name="text">
+            <string>Teilen</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/sud_teilen.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_teilen.svg</disabledoff>:/images/light/sud_teilen.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_7">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="btnMerken">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude zur &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste hinzugefügt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string notr="true">sud_merken</string>
+           </property>
+           <property name="text">
+            <string>Merken</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/sud_merken.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_merken.svg</disabledoff>:/images/light/sud_merken.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="btnVergessen">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string notr="true">sud_vergessen</string>
+           </property>
+           <property name="text">
+            <string>Vergessen</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/sud_vergessen.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_vergessen.svg</disabledoff>:/images/light/sud_vergessen.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_6">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="btnLaden">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud &lt;span style=&quot; font-weight:600;&quot;&gt;geladen&lt;/span&gt;. Es öffnet sich eine Maske, bei der auf das Dateiformat zu achten ist. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;p&gt;Hiermit springt man automatisch in den &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="whatsThis">
+            <string notr="true">sud_laden</string>
+           </property>
+           <property name="text">
+            <string>Laden</string>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/images/light/sud_laden.svg</normaloff>
+             <disabledoff>:/images/disabled/sud_laden.svg</disabledoff>:/images/light/sud_laden.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
-     <widget class="WdgWebViewEditable" name="webview" native="true"/>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>4</number>
+       </property>
+       <item>
+        <widget class="WdgWebViewEditable" name="webview" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
   </layout>
-  <action name="actionAdd">
-   <property name="icon">
-    <iconset theme="sud_add"/>
-   </property>
-   <property name="text">
-    <string>Anlegen</string>
-   </property>
-   <property name="toolTip">
-    <string>Neuer Sud anlegen</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+N</string>
-   </property>
-  </action>
-  <action name="actionImport">
-   <property name="icon">
-    <iconset theme="sud_import"/>
-   </property>
-   <property name="text">
-    <string>Importieren</string>
-   </property>
-   <property name="toolTip">
-    <string>Rezept importieren</string>
-   </property>
-  </action>
-  <action name="actionExport">
-   <property name="icon">
-    <iconset theme="sud_export"/>
-   </property>
-   <property name="text">
-    <string>Exportieren</string>
-   </property>
-   <property name="toolTip">
-    <string>Sud exportieren</string>
-   </property>
-  </action>
-  <action name="actionCopy">
-   <property name="icon">
-    <iconset theme="sud_copy"/>
-   </property>
-   <property name="text">
-    <string>Kopieren</string>
-   </property>
-   <property name="toolTip">
-    <string>Sud kopieren</string>
-   </property>
-  </action>
-  <action name="actionDelete">
-   <property name="icon">
-    <iconset theme="sud_delete"/>
-   </property>
-   <property name="text">
-    <string>Löschen</string>
-   </property>
-   <property name="toolTip">
-    <string>Sud löschen</string>
-   </property>
-  </action>
-  <action name="actionSplit">
-   <property name="icon">
-    <iconset theme="sud_split"/>
-   </property>
-   <property name="text">
-    <string>Teilen</string>
-   </property>
-   <property name="toolTip">
-    <string>Sud teilen</string>
-   </property>
-  </action>
-  <action name="actionPin">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="icon">
-    <iconset theme="sud_pin"/>
-   </property>
-   <property name="text">
-    <string>Merken</string>
-   </property>
-   <property name="toolTip">
-    <string>Sud merken</string>
-   </property>
-  </action>
-  <action name="actionLoad">
-   <property name="icon">
-    <iconset theme="sud_load"/>
-   </property>
-   <property name="text">
-    <string>Laden</string>
-   </property>
-   <property name="toolTip">
-    <string>Sud laden</string>
-   </property>
-  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -185,22 +570,31 @@
    <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
+  </customwidget>
+  <customwidget>
    <class>WdgWebViewEditable</class>
    <extends>QWidget</extends>
    <header>widgets/wdgwebvieweditable.h</header>
    <container>1</container>
   </customwidget>
-  <customwidget>
-   <class>FilterButtonSud</class>
-   <extends>QToolButton</extends>
-   <header>widgets/filterbuttonsud.h</header>
-  </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>btnFilter</tabstop>
+  <tabstop>cbAlle</tabstop>
+  <tabstop>cbRezept</tabstop>
+  <tabstop>cbGebraut</tabstop>
+  <tabstop>cbAbgefuellt</tabstop>
+  <tabstop>cbVerbraucht</tabstop>
+  <tabstop>cbMerkliste</tabstop>
+  <tabstop>tbDatumVon</tabstop>
+  <tabstop>tbDatumBis</tabstop>
   <tabstop>tbFilter</tabstop>
-  <tabstop>table</tabstop>
+  <tabstop>tableSudauswahl</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

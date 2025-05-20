@@ -2,8 +2,8 @@
 #define DLGTABLEVIEW_H
 
 #include "dlgabstract.h"
-#include "ui_dlgtableview.h"
 #include <QMap>
+
 #include "widgets/tableview.h"
 
 class SqlTableModel;
@@ -15,7 +15,6 @@ class DlgTableView;
 class DlgTableView : public DlgAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
 
 public:
 

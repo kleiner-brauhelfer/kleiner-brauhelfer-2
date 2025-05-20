@@ -31,7 +31,7 @@ DlgModule::~DlgModule()
 
 void DlgModule::restoreView()
 {
-    DlgAbstract::restoreView(staticMetaObject.className(), Dialog);
+    DlgAbstract::restoreView(staticMetaObject.className());
 }
 
 void DlgModule::on_gbModuleGaerverlauf_clicked(bool checked)

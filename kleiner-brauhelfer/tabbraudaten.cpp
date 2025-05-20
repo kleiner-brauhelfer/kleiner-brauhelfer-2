@@ -48,6 +48,11 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
     ui->lblDurchschnittWarnung->setPalette(gSettings->paletteErrorLabel);
 
+    QPalette palette = ui->tbHelp->palette();
+    palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
+    palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
+    ui->tbHelp->setPalette(palette);
+
     ui->wdgBemerkung->setPlaceholderText(tr("Bemerkung Braudaten"));
 
     gSettings->beginGroup("TabBraudaten");
@@ -56,12 +61,13 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
     mDefaultSplitterState = ui->splitter->saveState();
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
-    ui->splitterCharts->setSizes({300, 300, 100});
+    ui->splitterCharts->setSizes({300, 300, 100, 50});
     mDefaultSplitterChartsState = ui->splitterCharts->saveState();
     ui->splitterCharts->restoreState(gSettings->value("splitterChartsState").toByteArray());
 
     gSettings->endGroup();
 
+    connect(qApp, &QApplication::focusChanged, this, &TabBraudaten::focusChanged);
     connect(bh, &Brauhelfer::modified, this, &TabBraudaten::updateValues);
     connect(bh, &Brauhelfer::discarded, this, &TabBraudaten::sudLoaded);
     connect(bh->sud(), &SudObject::loadedChanged, this, &TabBraudaten::sudLoaded);
@@ -138,6 +144,13 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
     }
 }
 
+void TabBraudaten::focusChanged(QWidget *old, QWidget *now)
+{
+    Q_UNUSED(old)
+    if (now && isAncestorOf(now) && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
+        ui->tbHelp->setHtml(now->toolTip());
+}
+
 void TabBraudaten::sudLoaded()
 {
     checkEnabled();
@@ -202,6 +215,7 @@ void TabBraudaten::checkEnabled()
     ui->tbVerduennung->setReadOnly(gebraut);
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);
+    ui->btnSudGebraut->setEnabled(!gebraut);
     ui->tbTempKochbeginn->setReadOnly(gebraut);
     ui->tbTempKochende->setReadOnly(gebraut);
     ui->tbSpeiseSRE->setReadOnly(gebraut);
@@ -443,4 +457,41 @@ void TabBraudaten::on_btnSpeisemengeNoetig_clicked()
 void TabBraudaten::on_cbDurchschnittIgnorieren_clicked(bool checked)
 {
     gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAusbeuteIgnorieren, checked));
+}
+
+void TabBraudaten::on_btnSudGebraut_clicked()
+{
+    QDateTime dt(ui->tbBraudatum->date(), ui->tbBraudatumZeit->time());
+    QString dtStr = QLocale().toString(dt, QLocale::ShortFormat);
+    if (QMessageBox::question(this, tr("Sud als gebraut markieren?"),
+                                    tr("Soll der Sud als gebraut markiert werden?\n\nBraudatum: %1").arg(dtStr),
+                                    QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
+        return;
+
+    gUndoStack->beginMacro(QStringLiteral("macro"));
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, dt));
+    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Gebraut)));
+    gUndoStack->endMacro();
+
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    {
+        DlgRohstoffeAbziehen dlg(true, this);
+        dlg.exec();
+    }
+
+    if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 0)
+    {
+        QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
+                                    {ModelSchnellgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
+                                    {ModelSchnellgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
+        bh->sud()->modelSchnellgaerverlauf()->append(values);
+    }
+
+    if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 0)
+    {
+        QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
+                                    {ModelHauptgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
+                                    {ModelHauptgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
+        bh->sud()->modelHauptgaerverlauf()->append(values);
+    }
 }

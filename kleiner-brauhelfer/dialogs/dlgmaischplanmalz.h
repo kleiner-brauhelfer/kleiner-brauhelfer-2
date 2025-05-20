@@ -2,7 +2,6 @@
 #define DLGMAISCHPLANMALZ_H
 
 #include "dlgabstract.h"
-#include "ui_dlgmaischplanmalz.h"
 
 namespace Ui {
 class DlgMaischplanMalz;
@@ -11,7 +10,6 @@ class DlgMaischplanMalz;
 class DlgMaischplanMalz : public DlgAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
 
 public:
     explicit DlgMaischplanMalz(double value, QWidget *parent = nullptr);

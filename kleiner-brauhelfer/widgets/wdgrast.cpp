@@ -62,13 +62,6 @@ WdgRast::~WdgRast()
 	delete ui;
 }
 
-void WdgRast::changeEvent(QEvent * event)
-{
-    if (event->type() == QEvent::LanguageChange)
-        ui->retranslateUi(this);
-    WdgAbstractProxy::changeEvent(event);
-}
-
 bool WdgRast::isEnabled() const
 {
     return mEnabled;

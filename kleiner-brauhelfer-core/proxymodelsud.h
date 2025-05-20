@@ -5,7 +5,6 @@
 #include "proxymodel.h"
 #include <QFlag>
 #include <QDateTime>
-#include <QSettings>
 
 class LIB_EXPORT ProxyModelSud : public ProxyModel
 {
@@ -51,12 +50,6 @@ public:
     QString filterText() const;
     void setFilterText(const QString& text);
 
-    QString filterKategorie() const;
-    void setFilterKategorie(const QString& kategorie);
-
-    void saveSetting(QSettings* settings);
-    void loadSettings(QSettings* settings);
-
 protected:
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const Q_DECL_OVERRIDE;
 
@@ -70,7 +63,6 @@ private:
     QDateTime mMinDate;
     QDateTime mMaxDate;
     QString mFilterText;
-    QString mFilterKategorie;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ProxyModelSud::FilterStatus)

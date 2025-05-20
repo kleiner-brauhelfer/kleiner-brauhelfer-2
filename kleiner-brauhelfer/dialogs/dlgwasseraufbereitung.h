@@ -2,7 +2,6 @@
 #define DLGWASSERAUFBEREITUNG_H
 
 #include "dlgabstract.h"
-#include "ui_dlgwasseraufbereitung.h"
 
 namespace Ui {
 class DlgWasseraufbereitung;
@@ -11,7 +10,6 @@ class DlgWasseraufbereitung;
 class DlgWasseraufbereitung : public DlgAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
 
 public:
     explicit DlgWasseraufbereitung(QWidget *parent = nullptr);

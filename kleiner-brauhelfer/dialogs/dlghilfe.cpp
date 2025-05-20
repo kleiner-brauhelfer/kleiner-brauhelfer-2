@@ -20,7 +20,7 @@ DlgHilfe::~DlgHilfe()
 
 void DlgHilfe::restoreView()
 {
-    DlgAbstract::restoreView(staticMetaObject.className(), Dialog);
+    DlgAbstract::restoreView(staticMetaObject.className());
 }
 
 void DlgHilfe::setHomeUrl(const QUrl &url)

@@ -2,7 +2,6 @@
 #define DLGUEBERNAHMEREZEPT_H
 
 #include "dlgabstract.h"
-#include "ui_dlguebernahmerezept.h"
 
 namespace Ui {
 class DlgUebernahmeRezept;
@@ -11,7 +10,6 @@ class DlgUebernahmeRezept;
 class DlgUebernahmeRezept : public DlgAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
 
 public:
     enum Art

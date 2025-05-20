@@ -58,7 +58,7 @@
      <item>
       <widget class="QSplitter" name="splitter_1">
        <property name="orientation">
-        <enum>Qt::Orientation::Vertical</enum>
+        <enum>Qt::Vertical</enum>
        </property>
        <widget class="QWidget" name="verticalLayoutWidget">
         <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -175,7 +175,7 @@
             <item>
              <widget class="Line" name="line">
               <property name="orientation">
-               <enum>Qt::Orientation::Vertical</enum>
+               <enum>Qt::Vertical</enum>
               </property>
              </widget>
             </item>
@@ -202,7 +202,7 @@
             <item>
              <spacer name="horizontalSpacer">
               <property name="orientation">
-               <enum>Qt::Orientation::Horizontal</enum>
+               <enum>Qt::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -219,14 +219,14 @@
        </widget>
        <widget class="QSplitter" name="splitter_2">
         <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
         <widget class="QPlainTextEdit" name="tbTemplate">
          <property name="toolTip">
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Bereich wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Etikett&lt;/span&gt; mittels Tags und XML-Elementen gemäß der Beschreibungssprache &lt;span style=&quot; font-weight:600;&quot;&gt;SVG&lt;/span&gt; layoutet. SVG ermöglicht skalierbare, verlustfreie Grafiken.&lt;/p&gt;&lt;p&gt;Das jeweils gewählte Tag wird hierfür mit einem Wert aus dem Bereich rechts definiert. Bei Fragen zur Auszeichnungssprache des SVG-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher. Zeitsparender ist es, extern ein spezialisiertes Vektorprogramm wie Inkscape oder Adobe Illustrator einzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="lineWrapMode">
-          <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
+          <enum>QPlainTextEdit::NoWrap</enum>
          </property>
         </widget>
         <widget class="QPlainTextEdit" name="tbTags">
@@ -234,7 +234,7 @@
           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld sind die &lt;span style=&quot; font-weight:600;&quot;&gt;Werte&lt;/span&gt; der Tags aufgeführt. &lt;/p&gt;&lt;p&gt;Die Werte stammen aus den einzelnen Tabs (Reiter) des Kleinen Brauhelfers, insbesondere aus dem Tab Rezept sowie aus den Tabs Braudaten und Abfülldaten. Der Aufruf dieser Werte kann im linken Bereich umgesetzt werden. &lt;/p&gt;&lt;p&gt;Bei Fragen zur Auszeichnungssprache des SVG-Formates helfen einschlägige Seiten und Foren online oder auch Fachbücher. Zeitsparender ist es, extern ein spezialisiertes Vektorprogramm wie Inkscape oder Adobe Illustrator einzusetzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="lineWrapMode">
-          <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
+          <enum>QPlainTextEdit::NoWrap</enum>
          </property>
          <property name="readOnly">
           <bool>true</bool>
@@ -252,14 +252,14 @@
         <bool>true</bool>
        </property>
        <property name="textInteractionFlags">
-        <set>Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextSelectableByMouse</set>
+        <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
        </property>
       </widget>
      </item>
      <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -287,8 +287,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>282</width>
-        <height>618</height>
+        <width>284</width>
+        <height>677</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -317,7 +317,7 @@
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Anzahl &lt;/span&gt;der Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Aus praktischen Erwägungen sollte die gewählte Zahl mit dem später gewählten Druckformat übereinstimmen. Üblicherweise werden Halsspitzetiketten auf einem handelsüblichen Drucker in DINA A4 210 x 297 mm ausgedruckt und der &lt;span style=&quot; font-weight:600;&quot;&gt;Druckbogen&lt;/span&gt; dann zurechtgeschnitten. Fortgeschrittene Anwender rechnen 1 mm Beschnittzuwachs hinzu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="maximum">
              <number>999</number>
@@ -380,7 +380,7 @@
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Höhe &lt;/span&gt;des Etiketts festgelegt.&lt;/p&gt;&lt;p&gt;Die ideale Höhe ist abhängig vom Hals des Gebindes und sollte vorher ausgemessen werden.&lt;/p&gt;&lt;p&gt;So es sich nicht um vorgestanzte Etiketten handelt müssen diese immer geschnitten werden.  Fortgeschrittene Anwender rechnen 1 mm Beschnittzuwachs je Seite hinzu.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Beschnittzuwachs:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Beim Schnitt mit einem Schneidebrett sollte immer 1 mm Beschnittzuwachs einkalkuliert werden. Farbflächen am Rand sollten gleichfalls 1 mm über das Format hinausgehen. Die Fachsprache nennt dies Beschnittzuwachs. Aus einem Standardetikett hier im Kleinen Brauhelfer wird dann ein Etikett mit den Maßen 189 x 22 mm. Dies bedeutet eine Beschnittzugabe von 1 mm auf jeder Seite.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="decimals">
              <number>1</number>
@@ -402,7 +402,7 @@
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Breite &lt;/span&gt;des Etiketts festgelegt.&lt;/p&gt;&lt;p&gt;Die ideale Breite ist abhängig vom Umfang des Gebindes und sollte vorher ausgemessen werden. Fortgeschrittene Anwender rechnen 1 mm Beschnittzuwachs je Seite hinzu.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Beschnittzuwachs:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Beim Schnitt mit einem Schneidebrett sollte immer 1 mm Beschnittzuwachs einkalkuliert werden. Farbflächen am Rand sollten gleichfalls 1 mm über das Format hinausgehen. Die Fachsprache nennt dies Beschnittzuwachs. Aus einem Standardetikett hier im Kleinen Brauhelfer wird dann ein Etikett mit den Maßen 189 x 22 mm. Dies bedeutet eine Beschnittzugabe von 1 mm auf jeder Seite.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="decimals">
              <number>1</number>
@@ -524,10 +524,10 @@
              <bool>true</bool>
             </property>
             <property name="frameShape">
-             <enum>QFrame::Shape::StyledPanel</enum>
+             <enum>QFrame::StyledPanel</enum>
             </property>
             <property name="frameShadow">
-             <enum>QFrame::Shadow::Plain</enum>
+             <enum>QFrame::Plain</enum>
             </property>
            </widget>
           </item>
@@ -617,7 +617,7 @@
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;horizontaler Abstand&lt;/span&gt; zwischen den einzelnen Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Üblich sind 1 mm &lt;span style=&quot; font-weight:700;&quot;&gt;Beschnittzugabe&lt;/span&gt;, um Ungenauigkeiten und sogenannte &lt;span style=&quot; font-weight:700;&quot;&gt;Blitzer&lt;/span&gt; zu vermeiden, wenn Farbe bis zum Rand gedruckt wird. Dabei werden 1 mm Farbauftrag zum Rand addiert. Blitzer (dünne weiße Streifen am Papierrand) entstehen bei Ungenauigkeiten während des Papierzuschnitts. Hier sollte üben den eigentlichen Rand hinaus 1 mm layoutet werden.&lt;/p&gt;&lt;p&gt;Ist man mit einem guten Papierschneider gesegnet, sind bei kleinen Auflagen 0mm kein Problem. Die Fehlerhäufigkeit steigt allerdings mit der Bogendicke des Papiers, da Teile beim Schneiden verrutschen.&lt;/p&gt;&lt;p&gt;Wer es weniger akribisch haben will, arbeitet mit der Schere und nimmt Ungenauigkeiten als Ausdruck echter Handarbeit in Kauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="decimals">
              <number>1</number>
@@ -636,7 +636,7 @@
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;vertikaler Abstand&lt;/span&gt; zwischen den einzelnen Etiketten festgelegt.&lt;/p&gt;&lt;p&gt;Üblich sind 1 mm &lt;span style=&quot; font-weight:700;&quot;&gt;Beschnittzugabe&lt;/span&gt;, um Ungenauigkeiten und sogenannte &lt;span style=&quot; font-weight:700;&quot;&gt;Blitzer&lt;/span&gt; zu vermeiden, wenn Farbe bis zum Rand gedruckt wird. Dabei werden 1 mm Farbauftrag zum Rand addiert. Blitzer (dünne weiße Streifen am Papierrand) entstehen bei Ungenauigkeiten während des Papierzuschnitts. Hier sollte üben den eigentlichen Rand hinaus 1 mm layoutet werden.&lt;/p&gt;&lt;p&gt;Ist man mit einem guten Papierschneider gesegnet, sind bei kleinen Auflagen 0mm kein Problem. Die Fehlerhäufigkeit steigt allerdings mit der Bogendicke des Papiers, da Teile beim Schneiden verrutschen.&lt;/p&gt;&lt;p&gt;Wer es weniger akribisch haben will, arbeitet mit der Schere und nimmt Ungenauigkeiten als Ausdruck echter Handarbeit in Kauf.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="decimals">
              <number>1</number>
@@ -759,7 +759,7 @@
        <item>
         <spacer name="verticalSpacer_6">
          <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
+          <enum>Qt::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -770,31 +770,19 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <item>
-          <widget class="PushButton" name="btnPrint">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick wird hiermit die Banderole oder das Etikett als &lt;span style=&quot; font-weight:600;&quot;&gt;druckbares PDF &lt;/span&gt;gespeichert.&lt;/p&gt;&lt;p&gt;Direktes Drucken ist im Kleinen Brauhelfer über die Druckvorschau möglich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="whatsThis">
-            <string notr="true">print</string>
-           </property>
-           <property name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/print.svg</normaloff>
-             <disabledoff>:/images/disabled/print.svg</disabledoff>:/images/light/print.svg</iconset>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="btnToPdf">
-           <property name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/pdf.svg</normaloff>:/images/light/pdf.svg</iconset>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="PushButton" name="btnToPdf">
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick wird hiermit die Banderole oder das Etikett als &lt;span style=&quot; font-weight:600;&quot;&gt;druckbares PDF &lt;/span&gt;gespeichert.&lt;/p&gt;&lt;p&gt;Direktes Drucken ist im Kleinen Brauhelfer über die Druckvorschau möglich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="whatsThis">
+          <string notr="true">print</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/images/light/print.svg</normaloff>
+           <disabledoff>:/images/disabled/print.svg</disabledoff>:/images/light/print.svg</iconset>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -804,11 +792,6 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TableView</class>
-   <extends>QTableView</extends>
-   <header>widgets/tableview.h</header>
-  </customwidget>
-  <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>
    <header>widgets/doublespinbox.h</header>
@@ -817,6 +800,11 @@
    <class>PushButton</class>
    <extends>QPushButton</extends>
    <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
    <class>SpinBox</class>
@@ -856,6 +844,7 @@
   <tabstop>btnTagNeu</tabstop>
   <tabstop>btnTagLoeschen</tabstop>
   <tabstop>cbUseImagePainter</tabstop>
+  <tabstop>btnToPdf</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

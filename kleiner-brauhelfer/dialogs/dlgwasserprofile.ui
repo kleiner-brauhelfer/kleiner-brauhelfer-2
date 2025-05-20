@@ -20,7 +20,7 @@
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
-      <enum>Qt::Orientation::Vertical</enum>
+      <enum>Qt::Vertical</enum>
      </property>
      <widget class="QWidget" name="verticalLayoutWidget">
       <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -33,10 +33,10 @@
           <bool>true</bool>
          </property>
          <property name="selectionMode">
-          <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+          <enum>QAbstractItemView::SingleSelection</enum>
          </property>
          <property name="selectionBehavior">
-          <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+          <enum>QAbstractItemView::SelectRows</enum>
          </property>
          <property name="sortingEnabled">
           <bool>true</bool>
@@ -60,7 +60,7 @@
          <item>
           <spacer name="horizontalSpacer_5">
            <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
+            <enum>Qt::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -151,8 +151,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>569</width>
-         <height>463</height>
+         <width>576</width>
+         <height>496</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
@@ -169,7 +169,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Natriummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="decimals">
            <number>3</number>
@@ -188,7 +188,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Chloridmenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Chloridionen sollten einen Wert von 150 mg/l (ppm) im Brauwasser nicht übersteigen, da sonst ein unangenehmer Chlorgeschmack zu befürchten ist. In der Praxis gilt – bis auf Ausnahme mit besonderen Wässern – eine Grenze von 100 ml/l (ppm).&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="maximum">
            <double>9999.000000000000000</double>
@@ -224,7 +224,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwaseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Säurekapazität&lt;/span&gt; ein Ausdruck für die Restalkalität. Verschiedentlich liest man in Trinkwasseranalysen auch &lt;span style=&quot; font-weight:600;&quot;&gt;Alkalität&lt;/span&gt;. Säurekapazität beschreibt das Puffervermögen des Wassers gegenüber Säuren. Sie gibt die Stabilität des pH-Wertes im Wasser an.&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Die Restalkalität ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Kalzium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (Hydrogencarbonat) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Das Verhältnis entscheidet beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="maximum">
            <double>9999.000000000000000</double>
@@ -247,7 +247,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sulfatmenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="decimals">
            <number>3</number>
@@ -266,7 +266,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit diesem Wert kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; werden, falls der berechnete vom tatsächlichem Wert abweicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="decimals">
            <number>2</number>
@@ -288,7 +288,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Chloridmenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="decimals">
            <number>3</number>
@@ -311,14 +311,14 @@
         <item row="23" column="0" colspan="4">
          <widget class="Line" name="line_8">
           <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
         <item row="3" column="0" colspan="4">
          <widget class="Line" name="line">
           <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
@@ -335,7 +335,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciumhärte&lt;/span&gt; in °dH berechnet. Die Calciumhärte wird aus den Angaben von Calcium in mg/l nach der Formel Ca⁺ * 1,4 / 10 berechnet.&lt;/p&gt;&lt;p&gt;Aus Calciumhärte und Magnesiumhärte resultiert die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;des Wassers. Damit kann man beurteilen, ob das Wasser weich genug ist, um damit ein Pils zu brauen oder ob es ohne Vorbehandlung doch besser ein Münchner Dunkles sein soll.&lt;/p&gt;&lt;p&gt;Die Calciumhärte ist ein theoretischer Zwischenwert und wird in Analysen von Wasserversorgern oft ignoriert. Brauer sollten es auch so halten.&lt;/p&gt;&lt;p&gt;Wichtig ist im Brauprozess die sogenannte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;. Sie ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Calcium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (auch Bibcarbonat, Karbonathärte, temporäre Härte) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="decimals">
            <number>2</number>
@@ -351,7 +351,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Natriummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Natriumionen sollten einen Wert von 50 mg/l (ppm) im Brauwasser nicht übersteigen, da sonst ein salzig hervorstechender Geschmack zu befürchten ist. In der Praxis gilt – bis auf nachfolgende Ausnahmenn – eine Grenze von 20 ml/l (ppm) als üblich.&lt;/p&gt;&lt;p&gt;Es gibt indes Bierstile, deren Merkmal ein besonderer Salzgeschmack ist. Die sächsische Gose etwa wird mit 14–28 g Tafelsalz und Koriandersamen im 19l-Sud gebraut.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="maximum">
            <double>9999.000000000000000</double>
@@ -378,7 +378,7 @@
         <item row="14" column="0" colspan="4">
          <widget class="Line" name="line_7">
           <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
@@ -401,7 +401,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Calciumionen sollten einen Wert von 150 mg/l (ppm) im Brauwasser nicht übersteigen, da sonst ein salziger Geschmack auftreten kann. Der Brauer soll aber auch von einem Wert unter 50 mg/l (ppm) Abstand nehmen: Zu wenig Calcium behindert die Hefearbeit. Sude, deren Rezept eein Wasserprofil unter 50 mg/l (ppm) vorsehen, sollten mit entsprechend Hefenahrung angestellt werden.&lt;/p&gt;&lt;p&gt;Bei einem hohen Sulfatanteil, wie er oft in hopfenstarken Bierstilen verlangt wird, kann es schwer sein, Calcium und Sulfat richtig auszubalancieren. In diesem Fall hilft oft eine Kombination verschiedener Brausalze, besonders Bittersalz MgSO₄, das aber den Magnesiumgehalt ungünstig nach anhebt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="maximum">
            <double>9999.000000000000000</double>
@@ -417,7 +417,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Calciummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="decimals">
            <number>3</number>
@@ -454,7 +454,7 @@
         <item row="17" column="0" colspan="4">
          <widget class="Line" name="line_6">
           <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
@@ -464,7 +464,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiumhärte&lt;/span&gt; in °dH berechnet. Die Magnesiumhärte wird aus den Angaben von &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesium&lt;/span&gt; in mg/l nach der Formel Mg⁺ * 2,307 / 10 berechnet.&lt;/p&gt;&lt;p&gt;Aus Calciumhärte und Magnesiumhärte resultiert die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamthärte &lt;/span&gt;des Wassers. Damit kann man beurteilen, ob das Wasser weich genug ist, um damit ein Pils zu brauen oder ob es ohne Vorbehandlung doch besser ein Münchner Dunkles sein soll.&lt;/p&gt;&lt;p&gt;Die Magnesiumhärte ist ein theoretischer Zwischenwert und wird in Analysen von Wasserversorgern oft ignoriert. Brauer sollten es auch so halten.&lt;/p&gt;&lt;p&gt;Wichtig ist im Brauprozess die sogenannte &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt;. Sie ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Kalzium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (auch Bibcarbonat, Karbonathärte, temporäre Härte) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="decimals">
            <number>2</number>
@@ -508,7 +508,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwasseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Carbonathärte &lt;/span&gt;der geläufigste Ausdruck für die Restalkalität. Carbonathärte beschreibt das Verhältnis der im Wasser gelösten säurevernichtenden Carbonat- (CO₃²⁻) und Hyrogencarbonationen (HCO³⁻) und der säurefördernden Erdalkaliionen Calcium (Ca⁺) und Magnesium (Mg⁺).&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Wenn der gewünschte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierstil&lt;/span&gt; mit dem vorhandenen Wasser nicht umzusetzen ist, greifen Hobby- und Nanobrauer gerne zu Salzen wie Braugips (Calciumsulfat), um doch noch ein leckeres Pils oder IPA zu brauen. Dabei wird das Gleichgewicht der gelösten Stoffe zugunsten der Erdalkaliionen verschoben, der Härtegrad sinkt, der richtige pH-Bereich für helles Malz wird erreicht.&lt;/p&gt;&lt;p&gt;Selten ist es umgekehrt, da ist dann ein dunkles Bier aufgrund seiner dunklen Zutaten zu sauer und der pH-Wert wird angehoben, so mit Natron oder Kalk. Das Verhältnis beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="decimals">
            <number>2</number>
@@ -531,7 +531,7 @@
         <item row="7" column="0" colspan="4">
          <widget class="Line" name="line_2">
           <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
@@ -555,13 +555,13 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; des Brauwassers ist entscheidend für den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; der Maische und damit für die Effizienz der Stärkespaltung. Ob ein Bier mit der Schüttung in den angepeilten Parametern umfänglich gelingt, entscheidet sich hier. Der pH-Wert beim Maischen ist Ausgangspunkt aller weiterer Brauschritte.&lt;/p&gt;&lt;p&gt;Brauwasser ist kein reines Wasser, sondern enthält Salze und Ionen wie Chlorid (Cl⁻) und Sulfat (SO₄²⁻), die sich gemschmacklich auswirken. Während des Einmaischens wird das Brauwasser durch das Malz angesäuert. Es reichern sich Hydronium-Ionen (H⁺) an, was zu einem Abfall des pH-Wertes führt. Dabei verhalten sich dunkle Malze generell saurer als hell abgedarrte Malze. Ungehindert senkt sich der pH-Wert dadurch von allein in einen für den Maischeprozess günstigen Bereich zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,2 bis 5,8&lt;/span&gt; ab. &lt;/p&gt;&lt;p&gt;Der Knackpunkt ist, dass manches Wasser sich diesem pH-Abfall widersetzt. Dieses Alkalität genannte Phänomen gründet in der Konzentration des Ions Bicarbonat, chemisch &lt;span style=&quot; font-weight:600;&quot;&gt;HCO³⁻&lt;/span&gt;. Das HCO³⁻ fängt die H⁺-Ionen einfach ab. Die pH-Wert-senkende Wirkung der H⁺-Ionen verpufft wirkungslos. Dieser Effekt ist um so größer, je mehr HCO³- im Wassser vorhanden ist.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="readOnly">
            <bool>true</bool>
           </property>
           <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+           <enum>QAbstractSpinBox::NoButtons</enum>
           </property>
           <property name="decimals">
            <number>2</number>
@@ -601,7 +601,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Magnesiumionen sollten einen Wert von 20 mg/l (ppm) im Brauwasser nicht übersteigen, da sonst ein kratiger, harscher Geschmack zu befürchten ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="maximum">
            <double>9999.000000000000000</double>
@@ -614,7 +614,7 @@
         <item row="10" column="0" colspan="4">
          <widget class="Line" name="line_4">
           <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
@@ -628,7 +628,7 @@
         <item row="0" column="1">
          <spacer name="horizontalSpacer_103">
           <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
+           <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -644,7 +644,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sulfatmenge&lt;/span&gt; in mg/l eingetragen.&lt;/p&gt;&lt;p&gt;Manche Wasserversorger geben diesen Wert auch mit ppm an.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mmol/l&lt;/span&gt; kann das untenstehende Feld benutzt werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Sulfat unterstützt kpmlexe Hopfenaromen, sollte aber einen Wert von 250 mg/l (ppm) im Brauwasser nicht übersteigen, da das Brauwasser sonst übersäuert und übersalzt wird, was wiederum zu einem salzigen Geschmack führt.&lt;/p&gt;&lt;p&gt;Es gibt jedoch Bierstile, die bewusst mit dieser Regel brechen. Das wektberühmte Wasser aus Burton-on-Trent protzt mit über 400-700 mg/l und hat mit dem English IPA einen Geschmackstrend unter den Craft-Bieren etabliert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="maximum">
            <double>9999.000000000000000</double>
@@ -667,7 +667,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Magnesiummenge&lt;/span&gt; in mmol/l eingetragen.&lt;/p&gt;&lt;p&gt;Für Angaben in &lt;span style=&quot; font-weight:600;&quot;&gt;mg/l&lt;/span&gt; kann das obenstehende Feld  benutzt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="decimals">
            <number>3</number>
@@ -700,7 +700,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In der Trinkwaseranalyse ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Säurekapazität&lt;/span&gt; ein Ausdruck für die Restalkalität. Verschiedentlich liest man in Trinkwasseranalysen auch &lt;span style=&quot; font-weight:600;&quot;&gt;Alkalität&lt;/span&gt;. Säurekapazität beschreibt das Puffervermögen des Wassers gegenüber Säuren. Sie gibt die Stabilität des pH-Wertes im Wasser an.&lt;/p&gt;&lt;p&gt;Die Säurekapazität pH 4,3 ist das Äqivalent zur Carbonathärte (auch Temporäre Härte, Bicarbonathärte). Sie beschreibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom Standpunkt des Säureverbrauchs aus. Der Kleine Brauhelfer berechnet daher beide Werte simultan. &lt;/p&gt;&lt;p&gt;Während des Einmaischens säuert das Malz das Brauwasser an. Oft ist eine niedrige &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;dabei Voraussetzung, dass die Schüttung auch im richtigen pH-Bereich arbeiten kann.&lt;/p&gt;&lt;p&gt;Die Restalkalität ergibt sich aus &lt;span style=&quot; font-weight:600;&quot;&gt;säurevernichtendem HCO₃⁻ &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; säureförderndem Kalzium- und Magnesium&lt;/span&gt;. Malz arbeitet am besten in leicht saurer Umgebung von pH 5,2 bis 5.8. &lt;span style=&quot; font-weight:600;&quot;&gt;HCO₃⁻&lt;/span&gt; (Hydrogencarbonat) versucht diese saure Umgebung zu verhindern, Calcium und Magnesium wiederum unterstützen das Malz und seine Maischearbeit.&lt;/p&gt;&lt;p&gt;Das Verhältnis entscheidet beider &lt;span style=&quot; font-weight:600;&quot;&gt;Antipoden &lt;/span&gt;entscheidet. Brauer machen sich das zunutze.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
+           <set>Qt::AlignCenter</set>
           </property>
           <property name="maximum">
            <double>9999.000000000000000</double>
@@ -713,12 +713,28 @@
         <item row="26" column="0" colspan="4">
          <widget class="Line" name="line_3">
           <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
        </layout>
       </widget>
+     </widget>
+     <widget class="QTextBrowser" name="tbHelp">
+      <property name="font">
+       <font>
+        <italic>true</italic>
+       </font>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In dieses Feld können Bemerkungen eingetragen werden, die vom Programm nicht erfasst werden. Anwendungsmöglichkeiten gibt es bei angestrebten Wasserprofilen, Rechenwegen und so fort.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Grundsätzlich gilt: Der Maische-pH-Wert ist oberste Instanz. Alsdann folgt die Zusammensetzung der Salze. Lässt sich ein Wasserprofil durch Salze und Säuren nicht exakt einstellen, hilft es oft ein Mischwasser aus dem Leitungswasser und Osmosewasser herzustellen oder gleich 100 % Osmosewasser zu nehmen und dieses wie gewünscht aufzusalzen.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Die Dokumentation an dieser Stelle ist hilfreich, wenn es gilt, Routinen bei der Wasseraufbereitung zu entwickeln.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="openExternalLinks">
+       <bool>true</bool>
+      </property>
      </widget>
     </widget>
    </item>

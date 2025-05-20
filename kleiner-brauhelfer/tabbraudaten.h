@@ -2,7 +2,6 @@
 #define TABBRAUDATEN_H
 
 #include "tababstract.h"
-#include "ui_tabbraudaten.h"
 #include <QTimer>
 
 namespace Ui {
@@ -12,7 +11,6 @@ class TabBraudaten;
 class TabBraudaten : public TabAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabBraudaten(QWidget *parent = nullptr);
@@ -23,6 +21,7 @@ public:
     void checkEnabled();
 
 private slots:
+    void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
     void updateValues();
     void sudDataChanged(const QModelIndex& index);
@@ -47,7 +46,9 @@ private slots:
     void on_tbWasserVerschneidungBrix_valueChanged(double);
     void on_btnVerduennung_clicked();
     void on_btnSpeisemengeNoetig_clicked();
+
     void on_cbDurchschnittIgnorieren_clicked(bool checked);
+    void on_btnSudGebraut_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;

@@ -2,7 +2,6 @@
 #define TABABFUELLEN_H
 
 #include "tababstract.h"
-#include "ui_tababfuellen.h"
 #include <QTimer>
 
 namespace Ui {
@@ -12,7 +11,6 @@ class TabAbfuellen;
 class TabAbfuellen : public TabAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_TAB
 
 public:
     explicit TabAbfuellen(QWidget *parent = nullptr);
@@ -23,6 +21,7 @@ public:
     void checkEnabled();
 
 private slots:
+    void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
     void updateValues();
     void sudDataChanged(const QModelIndex& index);
@@ -38,6 +37,9 @@ private slots:
     void on_cbSpunden_clicked(bool checked);
     void on_tbZuckerFaktor_valueChanged(double);
     void on_tbFlaschengroesse_valueChanged(double);
+
+    void on_btnSudAbgefuellt_clicked();
+    void on_btnSudVerbraucht_clicked();
 
 private:
     void onTabActivated() Q_DECL_OVERRIDE;

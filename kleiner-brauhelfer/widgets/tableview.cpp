@@ -22,20 +22,12 @@
 extern Settings* gSettings;
 
 TableView::TableView(QWidget *parent) :
-    QTableView(parent),
-    mContextMenuCopy(true),
-    mContextMenuPrint(true)
+    QTableView(parent)
 {
     setEditTriggers(QAbstractItemView::DoubleClicked |
                     QAbstractItemView::SelectedClicked |
                     QAbstractItemView::EditKeyPressed |
                     QAbstractItemView::AnyKeyPressed);
-}
-
-void TableView::setContextMenuFeatures(bool copy, bool print)
-{
-    mContextMenuCopy = copy;
-    mContextMenuPrint = print;
 }
 
 void TableView::build()
@@ -145,27 +137,21 @@ void TableView::buildContextMenu(QMenu& menu) const
     action = new QAction(tr("Zurücksetzen"), &menu);
     connect(action, &QAction::triggered, this, &TableView::restoreDefaultState);
     menu.addAction(action);
-    if (mContextMenuCopy)
-    {
-        menu.addSeparator();
-        action = new QAction(tr("Alles kopieren"), &menu);
-        connect(action, &QAction::triggered, this, &TableView::copyToClipboard);
-        menu.addAction(action);
-        action = new QAction(tr("Auswahl kopieren"), &menu);
-        connect(action, &QAction::triggered, this, &TableView::copyToClipboardSelection);
-        menu.addAction(action);
-    }
-    if (mContextMenuPrint)
-    {
-      #ifdef QT_PRINTSUPPORT_LIB
-        action = new QAction(tr("Alles drucken"), &menu);
-        connect(action, &QAction::triggered, this, &TableView::printPreview);
-        menu.addAction(action);
-        action = new QAction(tr("Auswahl drucken"), &menu);
-        connect(action, &QAction::triggered, this, &TableView::printPreviewSelection);
-        menu.addAction(action);
-      #endif
-    }
+    menu.addSeparator();
+    action = new QAction(tr("Alles kopieren"), &menu);
+    connect(action, &QAction::triggered, this, &TableView::copyToClipboard);
+    menu.addAction(action);
+    action = new QAction(tr("Auswahl kopieren"), &menu);
+    connect(action, &QAction::triggered, this, &TableView::copyToClipboardSelection);
+    menu.addAction(action);
+  #ifdef QT_PRINTSUPPORT_LIB
+    action = new QAction(tr("Alles drucken"), &menu);
+    connect(action, &QAction::triggered, this, &TableView::printPreview);
+    menu.addAction(action);
+    action = new QAction(tr("Auswahl drucken"), &menu);
+    connect(action, &QAction::triggered, this, &TableView::printPreviewSelection);
+    menu.addAction(action);
+  #endif
 }
 
 void TableView::clearCols()

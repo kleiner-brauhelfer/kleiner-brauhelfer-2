@@ -2,7 +2,6 @@
 #define DLG_AUSRUESTUNG_H
 
 #include "dlgabstract.h"
-#include "ui_dlgausruestung.h"
 #include <QItemSelection>
 #include "settings.h"
 
@@ -13,7 +12,6 @@ class DlgAusruestung;
 class DlgAusruestung : public DlgAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
 
 public:
     static QList<QPair<QString, int> > Typname;
@@ -29,6 +27,7 @@ public:
 
 private slots:
     void modulesChanged(Settings::Modules modules);
+    void focusChanged(QWidget *old, QWidget *now);
     void sudLoaded();
     void anlage_selectionChanged();
     void on_btnNeueAnlage_clicked();

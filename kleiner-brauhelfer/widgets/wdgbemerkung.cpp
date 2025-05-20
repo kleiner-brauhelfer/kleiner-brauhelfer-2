@@ -19,13 +19,6 @@ WdgBemerkung::~WdgBemerkung()
     delete ui;
 }
 
-void WdgBemerkung::changeEvent(QEvent * event)
-{
-    if (event->type() == QEvent::LanguageChange)
-        ui->retranslateUi(this);
-    QWidget::changeEvent(event);
-}
-
 void WdgBemerkung::setToolTip(const QString &text)
 {
     ui->tbRichText->setToolTip(text);

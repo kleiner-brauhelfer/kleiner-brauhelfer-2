@@ -53,3 +53,16 @@ void TabAbstract::onTabDeactivated()
 {
     setFocus();
 }
+
+bool TabAbstract::isPrintable() const
+{
+    return false;
+}
+
+void TabAbstract::printPreview()
+{
+}
+
+void TabAbstract::toPdf()
+{
+}

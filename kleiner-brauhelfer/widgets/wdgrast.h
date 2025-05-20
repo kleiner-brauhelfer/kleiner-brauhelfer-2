@@ -60,7 +60,6 @@ private:
     static const QList<Rast> rasten;
 
 private:
-    void changeEvent(QEvent * event) Q_DECL_OVERRIDE;
     void checkEnabled();
 
 private:

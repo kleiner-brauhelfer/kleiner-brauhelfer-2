@@ -2,7 +2,6 @@
 #define DLGSUDTEILEN_H
 
 #include "dlgabstract.h"
-#include "ui_dlgsudteilen.h"
 
 namespace Ui {
 class DlgSudTeilen;
@@ -11,7 +10,6 @@ class DlgSudTeilen;
 class DlgSudTeilen : public DlgAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
 
 public:
     explicit DlgSudTeilen(const QString& name, double amount, QWidget *parent = 0);

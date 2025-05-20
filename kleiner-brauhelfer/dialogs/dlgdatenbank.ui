@@ -27,6 +27,7 @@
       <widget class="QLabel" name="label">
        <property name="font">
         <font>
+         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -49,6 +50,7 @@
       <widget class="QLabel" name="label_2">
        <property name="font">
         <font>
+         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -75,27 +77,10 @@
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier steht die &lt;span style=&quot; font-weight:600;&quot;&gt;Versionsnummer&lt;/span&gt; der gewählten Datenbank.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Die Datenbanversionen im Kleinen Brauhelfer sind &lt;span style=&quot; font-weight:600;&quot;&gt;nicht abwärtskompatibel&lt;/span&gt;! Mit einem Update kann sich die Versionsnummer der Datenbank ändern. Es wird daher dringend angeraten vor jeden Update ein Backup der aktuellen Datenbank zu machen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
+        <set>Qt::AlignCenter</set>
        </property>
        <property name="readOnly">
         <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line_2">
-       <property name="orientation">
-        <enum>Qt::Orientation::Vertical</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnCleanDatabase">
-       <property name="text">
-        <string>Bereinigen</string>
-       </property>
-       <property name="autoDefault">
-        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -104,26 +89,20 @@
    <item>
     <widget class="Line" name="line">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QSplitter" name="splitter">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
      <property name="frameShape">
-      <enum>QFrame::Shape::NoFrame</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="lineWidth">
       <number>1</number>
      </property>
      <property name="orientation">
-      <enum>Qt::Orientation::Vertical</enum>
+      <enum>Qt::Vertical</enum>
      </property>
      <widget class="QWidget" name="verticalLayoutWidget">
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -139,6 +118,7 @@
           <widget class="QLabel" name="label_3">
            <property name="font">
             <font>
+             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -171,14 +151,11 @@
           <bool>true</bool>
          </property>
          <property name="selectionBehavior">
-          <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+          <enum>QAbstractItemView::SelectRows</enum>
          </property>
          <property name="wordWrap">
           <bool>false</bool>
          </property>
-         <attribute name="verticalHeaderDefaultSectionSize">
-          <number>20</number>
-         </attribute>
         </widget>
        </item>
       </layout>
@@ -197,6 +174,7 @@
           <widget class="QLabel" name="label_4">
            <property name="font">
             <font>
+             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -231,9 +209,6 @@
          <property name="wordWrap">
           <bool>false</bool>
          </property>
-         <attribute name="verticalHeaderDefaultSectionSize">
-          <number>20</number>
-         </attribute>
         </widget>
        </item>
       </layout>
@@ -244,14 +219,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ComboBox</class>
-   <extends>QComboBox</extends>
-   <header>widgets/combobox.h</header>
-  </customwidget>
-  <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ComboBox</class>
+   <extends>QComboBox</extends>
+   <header>widgets/combobox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

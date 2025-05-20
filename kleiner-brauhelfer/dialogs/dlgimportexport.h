@@ -2,7 +2,6 @@
 #define DLGIMPORTEXPORT_H
 
 #include "dlgabstract.h"
-#include "ui_dlgimportexport.h"
 
 namespace Ui {
 class DlgImportExport;
@@ -11,7 +10,6 @@ class DlgImportExport;
 class DlgImportExport : public DlgAbstract
 {
     Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
 
 public:
     explicit DlgImportExport(bool import, int row, QWidget *parent = nullptr);

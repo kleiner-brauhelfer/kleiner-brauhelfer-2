@@ -17,7 +17,7 @@
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <widget class="QScrollArea" name="scrollArea">
       <property name="sizePolicy">
@@ -34,7 +34,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>371</width>
+         <width>365</width>
          <height>700</height>
         </rect>
        </property>
@@ -57,7 +57,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; eingestellt. Der Wert ist von vielen Faktoren abhängig, beispielsweise der Anlage, aber auch Zeit und Zutaten. In manchen Fällen kann es hilfreich sein, zusätzlich ein Mischkreuz zur Berechnung einzusetzen, um die angepeilte Stammwürze zu erreichen.&lt;/p&gt;&lt;p&gt;Das Erreichen der Stammwürze stellt vor allem für Brauanfänger eine Herausforderung dar. In allen Fällen sollten &lt;span style=&quot; font-weight:600;&quot;&gt;große Abweichungen vermieden&lt;/span&gt; werden, wenn das Ziel ein bestimmter Bierstil ist. Bei Fragen hilft die Fachliteratur oder das Fachforum der Wahl.&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte &lt;/span&gt;für die Stammwürze in °&lt;span style=&quot; font-weight:600;&quot;&gt;Plato &lt;/span&gt;sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Bockbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;16 – 17&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Doppelbock &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;18 – 19&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Exportbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;12 – 13&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Altbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 12&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;10 – 11&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pilsener &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 12&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Helles &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 13&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizen&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;11 – 14&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;13 – 18&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -83,7 +83,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der angepeilte Bittereintrag beim Hopfenkochen des Sudes festgelegt. Fachsprachlich nennt sich der Eintrag &lt;span style=&quot; font-weight:600;&quot;&gt;Bittere&lt;/span&gt;, angegeben mit der Maßeinheit &lt;span style=&quot; font-weight:600;&quot;&gt;International Bitterness Units (IBU)&lt;/span&gt;.&lt;br/&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte &lt;/span&gt;für die Bittere in IBU sind:&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weißbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;8 - 15&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Märzen &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;20 - 28&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Export &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;28 - 30&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;20 - 30&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Stout &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 40&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Altbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 40&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pils &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;25 - 45&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;40 - 70&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IIPA &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;60 - 120&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Neutrales Geschmacksempfinden bei IBU = 2°P Stammwürze&lt;/p&gt;&lt;p&gt;Das Festlegen der richtigen Bittere und damit der passende Hopfen, die passende Hopfenkombination, Zeit und Temperatur ist eines der kreativsten Betätigungsfelder beim Bierbrauen, gehört aber auch mithin zu den größten Herausforderungen. Um ein Gefühl für die richtige Bittere zu bekommen, empfiehlt sich eine gründliche Rezeptrecherche, das Studium von Fachliteratur und nicht zuletzt die Sektionen für Hopfen und Rezepte in den Fachforen.&lt;/p&gt;&lt;p&gt;Amerikanische Bierbrauer bittern ihre Biere oft nach Empfehlungen des sogenannten Verhältnisses von Bittere und Stammwürze, &lt;a href=&quot;http://1.bp.blogspot.com/_TUbRWLhsAGE/TD5Yc6mVyoI/AAAAAAAAAUk/K5yohzR5ZDo/s1600/IBU-to-OG+Ratio+Chart.JPG&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;IBU-To-OG Range Ratio &lt;/span&gt;&lt;/a&gt;genannt. Allgemein sind diese Angaben den &lt;a href=&quot;https://www.bjcp.org/docs/2015_Guidelines_Beer.pdf&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;2015 Style Guidelines&lt;/span&gt;&lt;/a&gt; des BJCP ähnlich.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="minimum">
               <number>1</number>
@@ -110,7 +110,7 @@
            <item row="3" column="0" colspan="4">
             <widget class="Line" name="line_10">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -120,7 +120,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Beim Brauen mit &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity&lt;/span&gt; wird die Würzemenge beim Kochen reduziert, indem stärker eingebraut wird. Erst beim Anstellen wird mit Wasser auf die gewünschte Stammwürze verdünnt.&lt;/p&gt;&lt;p&gt;Die Methode eignet sich im Rahmen des Möglichen für zu kleine, limitierte Anlagen, um Sude mit hoher Stammwürze zu brauen, bei denen die &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagmenge&lt;/span&gt; sonst zu gering wäre. Im Fachsprech werden solche Sude Platobomben genannt. &lt;/p&gt;&lt;p&gt;Das High-Gravity-Verfahren ist für eine größere Ausschlagmenge als üblich geeignet. Da das später hinzugegebene Wasser ab einem gewissen Grad nachteilig auf den Geschmack wirkt, ist High Gravity auf 50% beschränkt. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Viele Hobbybrauer nutzen den Bereich bei weitem nicht aus, sie arbeiten ledigliech zwischen 5% und 20%. Dies hat vor allem geschmackliche Gründe und ist damit der Qualität geschuldet.&lt;/p&gt;&lt;p&gt;Bei Detailfragen hilft die Fachliteratur oder das Forum der Wahl.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="maximum">
               <number>50</number>
@@ -168,7 +168,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Rate erwartet, kann der Wert hier verändert werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Die Verdampungsrate der Anlage wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;eingestellt. Der Wert ist eine Kenngröße für korrekte Berechnungen im Kleinen Brauhelfer. Ist die Verdampfungsrate unbekannt, empfiehlt es sich, den voreingestellte Wert des Kleinen Brauhelfers beizubehalten. Bei einem zu hohen Wert besteht die Gefahr eines zu dünnen Bieres: Die Wassermenge wird nicht korrekt berechnet, die angestrebte Stammwürze nicht erreicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -212,7 +212,7 @@
            <item row="14" column="0" colspan="4">
             <widget class="Line" name="line_12">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -222,7 +222,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Kochzeit&lt;/span&gt; des Hopfens eingestellt. Dieser Werte hat direkten Einfluss auf die &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenausbeute&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Üblich sind Werte zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;60 und 120 Minuten&lt;/span&gt;. Die Mindestdauer von 60 Minuten Kochzeit sind ein Schutz der Würze. Grund ist die Eigenschaften von Hopfen empfindliche Würze keimarm zu machen.&lt;/p&gt;&lt;p&gt;Kurze Kochzeiten führen zu einer geringeren Bildung von Iso-Alphasäure und betonen Begleitbitterstoffe und Aromaöle. Dem steht eine bessere Ausnutzung des Hopfens bei längeren Kochzeiten gegenüber.&lt;/p&gt;&lt;p&gt;Der Hautpbestandteil der Iso-Alphasäure löst sich bis 60 Minuten. Danach flacht die Kurve bis zum Zeitpunkt von 90 Minuten ab. Zwischen 90 und 120 Minuten ist die Bitterung minimal. Eine nenneswerte Bitterung findet danach nicht mehr statt. Dieses Verhalten von Hopfen ist der Grund für die Kochzeiten der Würze&lt;/p&gt;&lt;p&gt;Die Iso- Betasäure des Hopfens ist bereits nach 30 Minuten isomerisiert, weswegen Hopfen, bei dem es auf die Betasäure ankommt, oft als Aromagabe genutzt wird.&lt;/p&gt;&lt;p&gt;Hopfen und seine Wirkung ist eines der schwierigsten Themen der Bierbereitung. Nähere Informationen finden sich dazu in der Fachliteratur, Fragen werden in den Fachforen gerne beantwortet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="maximum">
               <number>200</number>
@@ -257,7 +257,7 @@
               <item>
                <spacer name="horizontalSpacer_3">
                 <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
+                 <enum>Qt::Horizontal</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
@@ -286,13 +286,13 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; basiert auf die Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
                 <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+                 <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -320,7 +320,7 @@
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschter Faktor &lt;/span&gt;für den Hauptguss manuell eingestellt. Der Hauptgussfaktor beschreibt das Verhältnis Einmaischwasser zu Schüttung.&lt;/p&gt;&lt;p&gt;Orientierung gibt die &lt;span style=&quot; font-weight:600;&quot;&gt;Empfehlung&lt;/span&gt; im Feld links. Sie basiert auf der Bierfarbe für eine optimale Maischearbeit. Generell empfehlen sich Werte um 3,0 und höher. &lt;/p&gt;&lt;p&gt;Viele Hobbybrauer meiden einen Faktor unter 2,4. Unter diesem Wert ist die Maische zu dick und das Malz wird schlecht gelöst. Ist die &lt;span style=&quot; font-weight:600;&quot;&gt;Brauanlage limitiert&lt;/span&gt;, der Sud aber zu mächtig, ist eine Sudteilung oder High Gravity eine Überlegung wert.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu hilft seltener die Fachliteratur, sehr oft aber das Fachforum der Wahl. Brauerschicksal eint.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                 <property name="decimals">
                  <number>1</number>
@@ -349,7 +349,7 @@
            <item row="9" column="0" colspan="4">
             <widget class="Line" name="line_11">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -380,7 +380,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der erwünschte &lt;span style=&quot; font-weight:600;&quot;&gt;CO₂-Gehalt&lt;/span&gt; definiert.&lt;/p&gt;&lt;p&gt;Kohlendioxid im Bier garantiert das prickelnde Geschmackserlebnis, auch Rezens genannt. Ziel ist es, das CO₂ gut im Bier einzubinden.&lt;/p&gt;&lt;p&gt;Um Kohlendioxid ins Bier einzutragen, sind Verfahren wie das Karbonisieren mit Speise oder Zucker, das Grünschlauchen oder der Ausbau im Fass (Spunden) gebräuchlich. Der Kohlensäuregehalt schwankt je nach Biertyp und ist Teil eines jeden Bierstils.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte&lt;/span&gt; für einzelne Bierstile sind: &lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Lager, Pilsner &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;4,00 - 5,50&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizenbier &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;6,50 - 9,00&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Britische Ales &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;3,00 - 4,00&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Porter Stout &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;3,40 - 4,50&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Belgische Ales &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;3,80 - 4,80&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Lambic &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;4,80 - 5,50&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Frucht-Lambic &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;6,00 - 9,00&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -425,7 +425,7 @@
              <item>
               <spacer name="horizontalSpacer_11">
                <property name="orientation">
-                <enum>Qt::Orientation::Horizontal</enum>
+                <enum>Qt::Horizontal</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -473,7 +473,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; für den Sud angegeben werden. Im Normalfall sollte der Anlagewert übernommen werden. Wird eine andere Ausbeute erwartet, z.B. durch spezielle Malzgaben, kann der Wert hier verändert werden.&lt;/p&gt;&lt;p&gt;Die Sudhausausbeute beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. 60% gelten als Durchschnitt. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Die Sudhausausbeute der Anlage wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;eingestellt. Der Wert ist eine Kenngröße für korrekte Berechnungen im Kleinen Brauhelfer. Ist die Sudhausausbeute unbekannt, empfiehlt es sich, den voreingestellte Wert des Kleinen Brauhelfers beizubehalten. Bei einer zu positiven Annahme besteht die Gefahr eines zu dünnen Bieres: Die Wassermenge wird nicht korrekt berechnet, die angestrebte Stammwürze  nicht erreicht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -503,7 +503,7 @@
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Unter &lt;span style=&quot; font-weight:600;&quot;&gt;Nachisomerisierungszeit&lt;/span&gt; versteht sich geläufig die Zeitspanne zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;100°C und 80°C&lt;/span&gt;, in der Hopfen nach dem Hopfenkochen in der Heißwürze noch nahezu Kochtemperatur ausgesetzt ist und auf 80°C abkühlt. Dabei gibt der Hopfen noch einmal &lt;span style=&quot; font-weight:600;&quot;&gt;Bittere&lt;/span&gt; und Aroma ab. Bei &lt;span style=&quot; font-weight:600;&quot;&gt;80°C&lt;/span&gt; endet die Bitterung und Hopfen gibt nur noch &lt;span style=&quot; font-weight:600;&quot;&gt;Aromastoffe&lt;/span&gt; ab. Die Kurve der Bitterabgabe flacht dabei in Richtung 80°C ab.&lt;/p&gt;&lt;p&gt;Im Reiter Hopfen werden Gaben in dieser Temperaturspanne durch den Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Kochende&lt;/span&gt; erfasst, Gaben bis oder unterhalb 80°C durch den Begriff &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagen&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Die Nachisomerisierungszeit wird zur Kochdauer addiert. Eine Angabe &amp;gt; 0 ist zwingend. Ohne Angabe der Nachisomerisierungszeit kann die Funktion Ausschlagen im Reiter Kochen nicht aktiviert werden. Die Nachisomerisierungszeit wird positiv angegeben, im Reiter Kochen rechts bei gewähltem Verfahren &lt;span style=&quot; font-weight:600;&quot;&gt;Ausschlagen&lt;/span&gt; erscheint sie &lt;span style=&quot; font-weight:600;&quot;&gt;negativ&lt;/span&gt;. Beispiel: -&lt;span style=&quot; font-weight:600;&quot;&gt;5min&lt;/span&gt;. &lt;/p&gt;&lt;p&gt;Bei unter 80°C findet keine Nachisomerisierung mehr statt. Hobbybrauer nutzen diese Temperaturstufe für den gezielten &lt;span style=&quot; font-weight:600;&quot;&gt;Aromaeintrag&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Zeitspanne der Nachisomerisierung ist abhänigig von den &lt;span style=&quot; font-weight:600;&quot;&gt;Kühlmöglichkeiten&lt;/span&gt;. Sie reicht vom Abkühlen &lt;span style=&quot; font-weight:600;&quot;&gt;über Nacht &lt;/span&gt;für lange bis zu kurzen Ausschlagszeiten wie -5 min mit einer &lt;span style=&quot; font-weight:600;&quot;&gt;Kühlschlange&lt;/span&gt; oder einem &lt;span style=&quot; font-weight:600;&quot;&gt;Plattenkühler&lt;/span&gt;. Längere Zeiten wie -20min und mehr können ohne Hilfsmittel umgesetzt werden.&lt;/p&gt;&lt;p&gt;Manche Brauer wählen bewusst eine etwas längere Nachisomerisierungzeit, um bestimmte Nuancen eines Hopfens, eines Gewürzes oder einer anderen Zutat herauszuarbeiten. Einen guten Eindruck davon vermitteln Rezeptdatenbanken, Fachbücher und Fachforen.&lt;/p&gt;&lt;p&gt;Verschiedentlich wird die Nachisomerisierungszeit auch &lt;span style=&quot; font-weight:600;&quot;&gt;Flame-Out&lt;/span&gt; genannt, ungenau oft auch als &lt;span style=&quot; font-weight:600;&quot;&gt;Whirlpool&lt;/span&gt;, da dieser Prozessschritt ein Trubabscheidungsverfahren nach dem Kochen beschreibt, der oft mit der Nachisomerisierung zusammenfällt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="maximum">
               <number>90</number>
@@ -558,21 +558,21 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Wit: 1-6 Wochen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
            <item row="18" column="0" colspan="4">
             <widget class="Line" name="line_14">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
            <item row="4" column="1">
             <spacer name="horizontalSpacer_4">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
              <property name="sizeHint" stdset="0">
               <size>
@@ -594,7 +594,7 @@ p, li { white-space: pre-wrap; }
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird die angepeilte &lt;span style=&quot; font-weight:600;&quot;&gt;Biermenge&lt;/span&gt; eingestellt.&lt;/p&gt;&lt;p&gt;Zusammen mit &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze &lt;/span&gt;und &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; wird damit unter anderem Hauptguss und und Nachguss definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Biermenge meint das am Ende konsumierbare Bier mit allen Verlusten und nicht, wie manchmal fälschlich angenommen, Haupt- und Nachguss zusammen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -613,7 +613,7 @@ p, li { white-space: pre-wrap; }
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann der erwartete &lt;span style=&quot; font-weight:600;&quot;&gt;scheinbarer Endvergärungsgrad&lt;/span&gt; eingegeben werden.&lt;/p&gt;&lt;p&gt;Dies hat nur informativen Charakter und dient der Abschätzung des Alkoholgehalts.&lt;/p&gt;&lt;p&gt;Allgemein können die Angaben der Hefehersteller übernommen werden. Bei Starksuden übersteigt der tatsächliche Vergärungsgrad dagegen oft die Herstellerangaben.&lt;/p&gt;&lt;p&gt;Fragen werden im Einzelfall hierzu am besten in einem Fachforum beantwortet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
@@ -625,7 +625,7 @@ p, li { white-space: pre-wrap; }
              <item>
               <spacer name="horizontalSpacer_12">
                <property name="orientation">
-                <enum>Qt::Orientation::Horizontal</enum>
+                <enum>Qt::Horizontal</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -674,7 +674,7 @@ p, li { white-space: pre-wrap; }
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Der Kleine Brauhelfer &lt;span style=&quot; font-weight:600;&quot;&gt;nummeriert &lt;/span&gt;die Sude &lt;span style=&quot; font-weight:600;&quot;&gt;nicht automatisch&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Der Anwender legt eigene Richtlinien der Nummerierung fest. Es empfiehlt sich aber eine fortlaufende Nummerierung für eine bessere Übersicht im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Sudauswahl&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Die Nummerierung wirkt sich nicht auf das Rezept aus.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
+              <set>Qt::AlignCenter</set>
              </property>
              <property name="prefix">
               <string>Nr. </string>
@@ -874,7 +874,7 @@ p, li { white-space: pre-wrap; }
                </size>
               </property>
               <property name="frameShape">
-               <enum>QFrame::Shape::NoFrame</enum>
+               <enum>QFrame::NoFrame</enum>
               </property>
               <property name="widgetResizable">
                <bool>true</bool>
@@ -884,8 +884,8 @@ p, li { white-space: pre-wrap; }
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>341</width>
-                 <height>215</height>
+                 <width>337</width>
+                 <height>182</height>
                 </rect>
                </property>
                <property name="sizePolicy">
@@ -920,7 +920,7 @@ p, li { white-space: pre-wrap; }
                 <item>
                  <spacer name="verticalSpacer_5">
                   <property name="orientation">
-                   <enum>Qt::Orientation::Vertical</enum>
+                   <enum>Qt::Vertical</enum>
                   </property>
                   <property name="sizeHint" stdset="0">
                    <size>
@@ -937,7 +937,7 @@ p, li { white-space: pre-wrap; }
             <item>
              <widget class="Line" name="line_5">
               <property name="orientation">
-               <enum>Qt::Orientation::Horizontal</enum>
+               <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
@@ -1053,7 +1053,7 @@ p, li { white-space: pre-wrap; }
         <item>
          <widget class="QSplitter" name="splitterMaischen">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <widget class="QScrollArea" name="scrollAreaMalzGaben">
            <property name="sizePolicy">
@@ -1063,7 +1063,7 @@ p, li { white-space: pre-wrap; }
             </sizepolicy>
            </property>
            <property name="frameShape">
-            <enum>QFrame::Shape::NoFrame</enum>
+            <enum>QFrame::NoFrame</enum>
            </property>
            <property name="widgetResizable">
             <bool>true</bool>
@@ -1073,8 +1073,8 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>317</width>
-              <height>540</height>
+              <width>341</width>
+              <height>541</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1110,7 +1110,7 @@ p, li { white-space: pre-wrap; }
              <item>
               <spacer name="verticalSpacer">
                <property name="orientation">
-                <enum>Qt::Orientation::Vertical</enum>
+                <enum>Qt::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1152,7 +1152,7 @@ p, li { white-space: pre-wrap; }
            <item>
             <widget class="Line" name="lineNeueMalzGabe">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -1197,7 +1197,7 @@ p, li { white-space: pre-wrap; }
              <item>
               <widget class="Line" name="line_15">
                <property name="orientation">
-                <enum>Qt::Orientation::Vertical</enum>
+                <enum>Qt::Vertical</enum>
                </property>
               </widget>
              </item>
@@ -1338,7 +1338,7 @@ p, li { white-space: pre-wrap; }
         <item>
          <widget class="QSplitter" name="splitterKochen">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <widget class="QScrollArea" name="scrollAreaHopfenGaben">
            <property name="sizePolicy">
@@ -1348,7 +1348,7 @@ p, li { white-space: pre-wrap; }
             </sizepolicy>
            </property>
            <property name="frameShape">
-            <enum>QFrame::Shape::NoFrame</enum>
+            <enum>QFrame::NoFrame</enum>
            </property>
            <property name="widgetResizable">
             <bool>true</bool>
@@ -1358,8 +1358,8 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>317</width>
-              <height>521</height>
+              <width>341</width>
+              <height>519</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1395,7 +1395,7 @@ p, li { white-space: pre-wrap; }
              <item>
               <spacer name="verticalSpacer_2">
                <property name="orientation">
-                <enum>Qt::Orientation::Vertical</enum>
+                <enum>Qt::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1437,7 +1437,7 @@ p, li { white-space: pre-wrap; }
            <item>
             <widget class="Line" name="lineNeueHopfenGabe">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -1482,7 +1482,7 @@ p, li { white-space: pre-wrap; }
              <item>
               <widget class="Line" name="line_17">
                <property name="orientation">
-                <enum>Qt::Orientation::Vertical</enum>
+                <enum>Qt::Vertical</enum>
                </property>
               </widget>
              </item>
@@ -1548,7 +1548,7 @@ p, li { white-space: pre-wrap; }
           <item row="0" column="1">
            <spacer name="horizontalSpacer_14">
             <property name="orientation">
-             <enum>Qt::Orientation::Horizontal</enum>
+             <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -1580,7 +1580,7 @@ p, li { white-space: pre-wrap; }
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Angepeilte &lt;span style=&quot; font-weight:700;&quot;&gt;Menge&lt;/span&gt; des &lt;span style=&quot; font-weight:700;&quot;&gt;Hefestarters&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="decimals">
              <number>1</number>
@@ -1612,7 +1612,7 @@ p, li { white-space: pre-wrap; }
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Angepeilte &lt;span style=&quot; font-weight:700;&quot;&gt;Stammwürze&lt;/span&gt; des &lt;span style=&quot; font-weight:700;&quot;&gt;Hefestarters&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="decimals">
              <number>1</number>
@@ -1663,7 +1663,7 @@ p, li { white-space: pre-wrap; }
         <item>
          <widget class="QSplitter" name="splitterGaerung">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <widget class="QScrollArea" name="scrollAreaHefeGaben">
            <property name="sizePolicy">
@@ -1673,7 +1673,7 @@ p, li { white-space: pre-wrap; }
             </sizepolicy>
            </property>
            <property name="frameShape">
-            <enum>QFrame::Shape::NoFrame</enum>
+            <enum>QFrame::NoFrame</enum>
            </property>
            <property name="widgetResizable">
             <bool>true</bool>
@@ -1683,8 +1683,8 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>317</width>
-              <height>505</height>
+              <width>341</width>
+              <height>502</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1720,7 +1720,7 @@ p, li { white-space: pre-wrap; }
              <item>
               <spacer name="verticalSpacer_4">
                <property name="orientation">
-                <enum>Qt::Orientation::Vertical</enum>
+                <enum>Qt::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -1761,7 +1761,7 @@ p, li { white-space: pre-wrap; }
            <item>
             <widget class="Line" name="lineNeueHefeGabe">
              <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
+              <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
@@ -1846,7 +1846,7 @@ p, li { white-space: pre-wrap; }
              <item>
               <widget class="Line" name="line_18">
                <property name="orientation">
-                <enum>Qt::Orientation::Vertical</enum>
+                <enum>Qt::Vertical</enum>
                </property>
               </widget>
              </item>
@@ -1999,7 +1999,7 @@ p, li { white-space: pre-wrap; }
         <item>
          <widget class="QSplitter" name="splitterMaischplan">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <widget class="QScrollArea" name="scrollAreaRasten">
            <property name="sizePolicy">
@@ -2009,7 +2009,7 @@ p, li { white-space: pre-wrap; }
             </sizepolicy>
            </property>
            <property name="frameShape">
-            <enum>QFrame::Shape::NoFrame</enum>
+            <enum>QFrame::NoFrame</enum>
            </property>
            <property name="widgetResizable">
             <bool>true</bool>
@@ -2019,8 +2019,8 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>317</width>
-              <height>500</height>
+              <width>341</width>
+              <height>501</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_93">
@@ -2049,7 +2049,7 @@ p, li { white-space: pre-wrap; }
              <item>
               <spacer name="verticalSpacer_6">
                <property name="orientation">
-                <enum>Qt::Orientation::Vertical</enum>
+                <enum>Qt::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -2073,7 +2073,7 @@ p, li { white-space: pre-wrap; }
         <item>
          <widget class="Line" name="lineNeueRast">
           <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
@@ -2142,13 +2142,13 @@ p, li { white-space: pre-wrap; }
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität &lt;/span&gt;vom &lt;span style=&quot; font-weight:600;&quot;&gt;unbehandelten Wasser&lt;/span&gt; angegeben.&lt;/p&gt;&lt;p&gt;Die muss nicht zwingend Leitungs- oder Brunnenwasser sein, es kann auch destilliertes oder Osmosewasser sein. Entscheidend für die Wasseraufbereitung ist die Restalkalität, die die Menge der Aufsalzung bestimmt.&lt;/p&gt;&lt;p&gt;Manche Wasserprofile wie das extrem sulfathaltige Wasser von Burton-on-Trent verhindern eine Aufbereitung mit Hauswasser. Die Werte sind so extrem, dass Calcium, Magnesium, Sulfat, Natrium und Chlorid nicht in das gewünschte Verhältnis gebracht werden können.&lt;/p&gt;&lt;p&gt;Viele Brauer, vor allem wenn sie sehr hartes Wasser haben, greifen in solchen Fällen auf &lt;span style=&quot; font-weight:600;&quot;&gt;Osmosewasser&lt;/span&gt; zurück und salzen gezielt ausgehend von entmineralisiertem Wasser auf. Dafür sind allerdings profunde Kenntnisse der Wasserchemie nötig. Fachforen, seltener Fachbücher, sind hier eine große Hilfe.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer unterstützt den Brauer entscheidend dabei sein Leitungs- oder Brunnnwasser und ein Wasserprofil abzustimmen.&lt;/p&gt;&lt;p&gt;Dazu wird zuerst das &lt;span style=&quot; font-weight:600;&quot;&gt;Rohwasser &lt;/span&gt;im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; gewählt, dann das &lt;span style=&quot; font-weight:600;&quot;&gt;Wasserprofil &lt;/span&gt;im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;. Anhand der Differenzen tastet man sich an das gewählte Profil mit Salzen und Säuren heran.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="readOnly">
              <bool>true</bool>
             </property>
             <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             <enum>QAbstractSpinBox::NoButtons</enum>
             </property>
             <property name="decimals">
              <number>2</number>
@@ -2184,13 +2184,13 @@ p, li { white-space: pre-wrap; }
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Schüttung&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Malze wirken im warmen Brauwasser leicht sauer, indem sie den pH-Wert senken. Man spricht daher von einem eigenen pH-Wert von Malz, den Schrot-pH. Malze wirken um so sauer, je dunkler sie sind. Zusätzlich ist die Malzsorte ein wichtiger Faktor. Karamellmalze oder Röstmalze etwa wirken säuresenkender als Basismalze oder Rohfrucht.&lt;/p&gt;&lt;p&gt;Ausführlich iInformationen zur Wasserchemie im allgemeinen und zur Säurebildung von Malz finden sich auf der &lt;a href=&quot;https://maischemalzundmehr.de/index.php?inhaltmitte=toolswasserrechner&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Wasserseite von Maische, Malz und Meh&lt;/span&gt;&lt;/a&gt;r (auf Deutsch) und auf den Seiten vom amerikanischen Brauer und &lt;a href=&quot;https://www.brunwater.com/water-knowledge&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Wasserspezialist Martin Brungard &lt;/span&gt;&lt;/a&gt;und seines Tools Brew'n Water (auf Englisch).&lt;/p&gt;&lt;p&gt;Wasserchemie gehört im Brauwesen mit zu den schwersten Kapiteln. Viele gute Artikel finden sich neben Fachbüchern auch bei Aquaristen. Wasserversorger müssen aktuelle, regionale Daten spätestens auf Anfrage bereitstellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="readOnly">
              <bool>true</bool>
             </property>
             <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             <enum>QAbstractSpinBox::NoButtons</enum>
             </property>
             <property name="decimals">
              <number>2</number>
@@ -2230,14 +2230,14 @@ p, li { white-space: pre-wrap; }
           <item row="6" column="0" colspan="4">
            <widget class="Line" name="line_13">
             <property name="orientation">
-             <enum>Qt::Orientation::Horizontal</enum>
+             <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
           <item row="1" column="0" colspan="4">
            <widget class="Line" name="line_6">
             <property name="orientation">
-             <enum>Qt::Orientation::Horizontal</enum>
+             <enum>Qt::Horizontal</enum>
             </property>
            </widget>
           </item>
@@ -2274,13 +2274,13 @@ p, li { white-space: pre-wrap; }
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert der Maische&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden. Malze haben je nach Sorte einen unterschiedlichen Malz-pH. Zusammen mit dem Wasser-pH addieren sich sich zum Maische-pH zusammen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="readOnly">
              <bool>true</bool>
             </property>
             <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             <enum>QAbstractSpinBox::NoButtons</enum>
             </property>
             <property name="decimals">
              <number>2</number>
@@ -2293,13 +2293,13 @@ p, li { white-space: pre-wrap; }
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität des aufbereiteten Wassers&lt;/span&gt; angegeben. Diese setzt sich zusammen aus der Restalkalität des Wassers und der Restalkalität der unten eingetragenen Wasseraufbereitungsmitteln.&lt;/p&gt;&lt;p&gt;Die Restalkalität wird im deutschsprachigen Raum in deutscher Härte °dH als Gesamthärte angegeben. Wochtig für den Brauer sit jedoch allein die Carbonathärte °dH. In der Schweiz finden sich häufig französische Härtegrad °fH.&lt;/p&gt;&lt;p&gt;Die deutsche Härte Sie definiert sich duch die Menge Calciumcarbonat mmol/l. Brauer benötigen in den meisten Fällen weiches Wasser. Der Grund liegt darin, dass weiches Wasser die Hefeaktivität fördert, mehr aber noch – und gerade bei hellen Biere – die Hopfenbittere angenehm weich und nicht kratzig wirken lässt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="readOnly">
              <bool>true</bool>
             </property>
             <property name="buttonSymbols">
-             <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
+             <enum>QAbstractSpinBox::NoButtons</enum>
             </property>
             <property name="decimals">
              <number>2</number>
@@ -2318,7 +2318,7 @@ p, li { white-space: pre-wrap; }
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschter pH-Wert &lt;/span&gt;der&lt;span style=&quot; font-weight:600;&quot;&gt; Maische&lt;/span&gt; angegeben. Zuvor müssen im Reiter &lt;span style=&quot; font-style:italic;&quot;&gt;Rohstoffe&lt;/span&gt; die pH-Werte aller Malze eingetragen werden.&lt;/p&gt;&lt;p&gt;Für den Maischprozess sollte der pH-Wert zwischen 5.3 und 5.7 liegen. &lt;/p&gt;&lt;p&gt;Additive wie Salze und Säuren, aber auch laugisch wirkende Zusätze stellen den gewünschten Maische-pH ein, wenn Schüttung und Brauwasser nicht den angepeilten Werten entsprechen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="decimals">
              <number>2</number>
@@ -2367,7 +2367,7 @@ p, li { white-space: pre-wrap; }
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;gewünschte Restalkalität&lt;/span&gt; eingestellt. Sie ist mithin ein Faktor für den richtigen pH-Wert beim Maischen. Ein hoher Wert erhöht den pH-Wert der Maische und mindert die Enymaktivität des Malzes und umgekehrt. Allgemein verlangen helle und hopfenaromatische Biere einen Wert kleiner als 5°dH. Dunkle Biere beinhalten säurefördernde dunkle Malze . Hier sind bis zu 10°dH ein Richtwert&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Typische Werte:&lt;/span&gt;&lt;/p&gt;&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Helles &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Bock hell&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Export &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;0 – 2°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Alt &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;0 – 5°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Kölsch &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Pilsener &lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-2 – 0°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Weizen&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;Stout&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;5 – 10°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;p&gt;IPA&lt;/p&gt;&lt;/td&gt;&lt;td&gt;&lt;p&gt;-3 – 0°dH&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;p&gt;Die &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; (RA) des Brauwassers ist entscheidend für den &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; der Maischearbeit und somit für die Effizienz der Stärkespaltung, somit der Frage, ob das Bier mit der Schüttung gelingt. Zugleich ist der pH-Wert beim Maischen Ausgangspunkt aller weiterer Brauschritte.&lt;/p&gt;&lt;p&gt;Brauwasser ist kein reines Wasser, sondern enthält Salze und Ionen wie Chlorid (Cl⁻) und Sulfat (SO₄²⁻), die sich gemschmacklich auswirken. Während des Einmaischens wird das Brauwasser durch das Malz angesäuert. Es reichern sich Hydronium-Ionen (H⁺) an, was zu einem Abfall des pH-Wertes führt. Dabei verhalten sich dunkle Malze generell saurer als hell abgedarrte Malze. Ungehindert senkt sich der pH-Wert dadurch von allein in einen für den Maischeprozess günstigen Bereich zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,2 bis 5,8&lt;/span&gt; ab. &lt;/p&gt;&lt;p&gt;Der Knackpunkt ist, dass manches Wasser sich diesem pH-Abfall widersetzt. Dieses Alkalität genannte Phänomen gründet in der Konzentration des Ions Bicarbonat, chemisch &lt;span style=&quot; font-weight:600;&quot;&gt;HCO³⁻&lt;/span&gt;. Das HCO³⁻ fängt die H+-Ionen einfach ab. Die pH-Wert-senkende Wirkung der H+-Ionen verpufft wirkungslos. Dieser Effekt ist um so größer, je mehr HCO3- im Wassser vorhanden ist.&lt;/p&gt;&lt;p&gt;Damit erklärt sich simpel, warum mancher Bierstil mit dem einen Brauwasser funktioniert, ein anderer dagegen nicht. Mithin ist das der Grund, warum Hobbybrauer ihr Wasser vorbehandeln und Salze wie Calciumsulfat (Braugips) hinzugeben, um doch erfolgreich ein Bier oder ein IPA brauen zu können.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignCenter</set>
+             <set>Qt::AlignCenter</set>
             </property>
             <property name="readOnly">
              <bool>false</bool>
@@ -2389,7 +2389,7 @@ p, li { white-space: pre-wrap; }
           <item row="3" column="1">
            <spacer name="horizontalSpacer_7">
             <property name="orientation">
-             <enum>Qt::Orientation::Horizontal</enum>
+             <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -2444,7 +2444,7 @@ p, li { white-space: pre-wrap; }
         <item>
          <widget class="QSplitter" name="splitterWasseraufbereitung">
           <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
+           <enum>Qt::Vertical</enum>
           </property>
           <widget class="QScrollArea" name="scrollAreaWasseraufbereitung">
            <property name="sizePolicy">
@@ -2454,7 +2454,7 @@ p, li { white-space: pre-wrap; }
             </sizepolicy>
            </property>
            <property name="frameShape">
-            <enum>QFrame::Shape::NoFrame</enum>
+            <enum>QFrame::NoFrame</enum>
            </property>
            <property name="widgetResizable">
             <bool>true</bool>
@@ -2464,8 +2464,8 @@ p, li { white-space: pre-wrap; }
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>317</width>
-              <height>363</height>
+              <width>341</width>
+              <height>350</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -2494,7 +2494,7 @@ p, li { white-space: pre-wrap; }
              <item>
               <spacer name="verticalSpacer_8">
                <property name="orientation">
-                <enum>Qt::Orientation::Vertical</enum>
+                <enum>Qt::Vertical</enum>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
@@ -2517,7 +2517,7 @@ p, li { white-space: pre-wrap; }
         <item>
          <widget class="Line" name="lineNeueWasseraufbereitung">
           <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
@@ -2558,1316 +2558,1343 @@ p, li { white-space: pre-wrap; }
        </layout>
       </widget>
      </widget>
-     <widget class="QScrollArea" name="scrollArea_6">
+     <widget class="QSplitter" name="splitterHelp">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
         <horstretch>1</horstretch>
-        <verstretch>1</verstretch>
+        <verstretch>0</verstretch>
        </sizepolicy>
       </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
+      <property name="focusPolicy">
+       <enum>Qt::StrongFocus</enum>
       </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents_6">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>341</width>
-         <height>757</height>
-        </rect>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QScrollArea" name="scrollArea_6">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>1</horstretch>
+         <verstretch>1</verstretch>
+        </sizepolicy>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout_11">
-        <property name="spacing">
-         <number>4</number>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents_6">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>332</width>
+          <height>810</height>
+         </rect>
         </property>
-        <item>
-         <widget class="QGroupBox" name="groupBox">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="title">
-           <string>Sud</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_5">
-           <property name="horizontalSpacing">
-            <number>9</number>
+        <layout class="QVBoxLayout" name="verticalLayout_11">
+         <property name="spacing">
+          <number>4</number>
+         </property>
+         <item>
+          <widget class="QGroupBox" name="groupBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
            </property>
-           <property name="verticalSpacing">
-            <number>4</number>
+           <property name="title">
+            <string>Sud</string>
            </property>
-           <item row="3" column="0" colspan="4">
-            <widget class="Line" name="line">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="15" column="0">
-            <widget class="QLabel" name="label_63">
-             <property name="text">
-              <string>Alkoholgehalt</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_10">
-             <property name="text">
-              <string>Farbe</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="2">
-            <widget class="DoubleSpinBoxSud" name="tbRestextrakt">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der berechnete Anteil an &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; nach der Gärung in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato&lt;/span&gt; ausgegeben. Auch negative Werte sind möglich.&lt;/p&gt;&lt;p&gt;Aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Differenz&lt;/span&gt; zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze beim Anstellen&lt;/span&gt; und Restextrakt wird wiederum der scheinbare Endvergärungsgrad (sEVG) gebildet, der die Gärfähigkeit einer Hefe beschreibt. Durchschnittlich sind 60 – 80% bei einer vitalen Hefe üblich, bei sogenannten Supervergärern auch mehr. &lt;/p&gt;&lt;p&gt;Der Restextrakt ist zunächst ein theoretischer Sollwert, den der Kleine Brauhelfer für ein erfolgreich vergorenes Jungbier festlegt. Der Restextrakt berechnet sich - in Verbindung mit der Stammwürze - aus den Angaben im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Vergärungsgrad&lt;/span&gt; links.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Zum Zeitpunkt der Rezepterstellung ist der Vergärungsgrad nur eine theoretische Größe&lt;span style=&quot; font-weight:600;&quot;&gt;. &lt;/span&gt;Der reale in der Braupraxis wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Gärverlauf&lt;/span&gt;, hier: Hauptgärung,ermittelt und im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2" colspan="2">
-            <widget class="QGraphicsView" name="gvGlas">
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>80</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>80</width>
-               <height>80</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die geschätzte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierfarbe&lt;/span&gt; in EBC an. &lt;span style=&quot; font-weight:600;&quot;&gt;EBC&lt;/span&gt; ist die genormte Farbstärke der European Brewers Convention. &lt;/p&gt;&lt;p&gt;Im amerikanischen Raum beschreibt man die Bierfarbe bevorzugt mit SRM.&lt;/p&gt;&lt;p&gt;Zur korrekten Darstellung der Bierfarbe empfiehlt sich ein für Tageslicht kalibrierter Monitor. In die Berechnung der Bierfarbe fließen die Farbwertangaben in den Sektionen Malz und Zusätze im Tab Rohstoffe sowie der Korrekturfaktor für die Bierfarbe im Tab Ausrüstung ein.&lt;/p&gt;&lt;p&gt;Die anlagentypische Abweichung des Farbwertes kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; programmweit festgelegt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::Shape::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Shadow::Plain</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="13" column="0" colspan="4">
-            <widget class="Line" name="line_7">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="3">
-            <widget class="QLabel" name="label_23">
-             <property name="text">
-              <string notr="true">kg</string>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="0">
-            <widget class="QLabel" name="label_62">
-             <property name="text">
-              <string>Restextrakt</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="3">
-            <widget class="QLabel" name="label_24">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string notr="true">EBC</string>
-             </property>
-            </widget>
-           </item>
-           <item row="17" column="2">
-            <widget class="DoubleSpinBoxSud" name="tbKosten">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechneten &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten&lt;/span&gt; auf.&lt;/p&gt;&lt;p&gt;Sie setzen sich zusammen aus den im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;gemachten fixen Betriebskosten und den individuellen Kosten des Rezeptes links im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>2</number>
-             </property>
-             <property name="maximum">
-              <double>999.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="15" column="2">
-            <widget class="DoubleSpinBoxSud" name="tbAlkohol">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholgehalt&lt;/span&gt; des Rezeptes in &lt;span style=&quot; font-weight:600;&quot;&gt;%vol &lt;/span&gt;ausgegeben. Der berechnete Alkoholgehalt setzt sich zusammen aus der Stamwürze und dem tatsächlichen Endvergärungsgrad (tEVG).&lt;/p&gt;&lt;p&gt;Für die Zollanmeldung ist die Stammwürze Bezugsgröße, nicht der Alkoholgehalt.&lt;/p&gt;&lt;p&gt;Bei Unklarheiten empfehlen sich Fachforen und Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="0">
-            <widget class="QLabel" name="label_68">
-             <property name="text">
-              <string>Bittere</string>
-             </property>
-            </widget>
-           </item>
-           <item row="16" column="0" colspan="4">
-            <widget class="Line" name="lineKosten">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="15" column="3">
-            <widget class="QLabel" name="label_65">
-             <property name="text">
-              <string notr="true">%vol</string>
-             </property>
-            </widget>
-           </item>
-           <item row="17" column="3">
-            <widget class="QLabel" name="lblKostenEinheit"/>
-           </item>
-           <item row="8" column="0" colspan="4">
-            <widget class="QWidget" name="wdgSWWZGaerung" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_6">
-              <property name="spacing">
-               <number>9</number>
+           <layout class="QGridLayout" name="gridLayout_5">
+            <property name="horizontalSpacing">
+             <number>9</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>4</number>
+            </property>
+            <item row="3" column="0" colspan="4">
+             <widget class="Line" name="line">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
-              <property name="topMargin">
-               <number>0</number>
+             </widget>
+            </item>
+            <item row="15" column="0">
+             <widget class="QLabel" name="label_63">
+              <property name="text">
+               <string>Alkoholgehalt</string>
               </property>
-              <property name="rightMargin">
-               <number>0</number>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="label_10">
+              <property name="text">
+               <string>Farbe</string>
               </property>
-              <property name="bottomMargin">
-               <number>0</number>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
               </property>
-              <item>
-               <widget class="QLabel" name="label_60">
-                <property name="text">
-                 <string>Zusätze &quot;Gärung&quot;</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_10">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="DoubleSpinBoxSud" name="tbSWWZGaerung">
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze von&lt;span style=&quot; font-weight:600;&quot;&gt; Zusätzen &lt;/span&gt;bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Gärung&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Zusätze bei der Gärung können Zucker, Honig, Gewürze, Additive etc. sein. &lt;span style=&quot; font-weight:600;&quot;&gt;Zeitpunkt&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder beeinträchtigen die Hefetätigkeit.&lt;/p&gt;&lt;p&gt;Eine – nicht bindende – Regel besagt, dass Zusätze nicht &lt;span style=&quot; font-weight:600;&quot;&gt;20% der Schüttung&lt;/span&gt; übersteigen sollten. Die ist einerseits sensorisch begründet, andererseits in einer nicht beeinträchtigten Enzymtätigkeit der Maische und nicht zuletzt um Läuterkatastrophen zu verhindern. Üblich sind maximal &lt;span style=&quot; font-weight:600;&quot;&gt;15% pro Zusatz&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Zusätze in der Gärunng können Zucker, Honig, Gewürze, Additive etc. sein. Bei Zucker, Honig gelten 10-15% maximal als Richtwert. Oft werden Zusätze nach der Hauptgärung hinzugegeben.&lt;/p&gt;&lt;p&gt;Zusätze sind ein komplexes Feld beim Bier brauen – und eines der kreativsten, da nahezu jede Zutat ihre Eigenheiten hat. Bei Unklarheiten empfehlen sich Fachforen und Fachbücher, aber auch &lt;span style=&quot; font-weight:600;&quot;&gt;braufremde Seiten&lt;/span&gt; im Netz.&lt;/p&gt;&lt;p&gt;Geht es um &lt;span style=&quot; font-weight:600;&quot;&gt;Spezialbiere&lt;/span&gt; mit Frucht oder &amp;quot;gebackene&amp;quot; Biere wie Kveik interessieren andere Erwägungen. Ein guter Einstieg für &lt;span style=&quot; font-weight:600;&quot;&gt;zusatzlastige Biere&lt;/span&gt; wie Kveik sind zunächst Fachbücher, mehr aber Fachforen, in denen die Proponenten dieser Stile gerne Fragen beantworten und Tipps geben.&lt;/p&gt;&lt;p&gt;Eine erste Anlaufstelle mit grundlegenden Informationen ist die &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama-Datenbank&lt;/span&gt;, die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; integriert ist.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Grundätzlich ist bei der Gabe von Zusätzen in der Gärung die Gefahr einer Kontamination mit bierfremden Bakterien abzuwägen. Ist die Gefahr nicht auszuschließen, sollte die Gabe zum Kochende oder im Whirlpool eine Überlegung wert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_61">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string notr="true">°P</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_9">
-             <property name="text">
-              <string>Gesamtschüttung</string>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="2" colspan="2">
-            <widget class="QLabel" name="lblBittere">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier erfolgt die sensorische Einordnung des Rezeptes anhand des Bittereindrucks.&lt;/p&gt;&lt;p&gt;Unterschieden werden die Kategorien:&lt;/p&gt;&lt;p&gt;• sehr mild&lt;/p&gt;&lt;p&gt;• mild&lt;/p&gt;&lt;p&gt;• ausgewogen&lt;/p&gt;&lt;p&gt;• moderat herb&lt;/p&gt;&lt;p&gt;• sehr herb&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label_55">
-             <property name="text">
-              <string>Anteile Stammwürze</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="DoubleSpinBoxSud" name="tbGesamtschuettung">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtgewicht&lt;/span&gt; aller eingesetzten Rohstoffe ausgegeben.&lt;/p&gt;&lt;p&gt;Das Gesamtgewicht der Schüttung ist Grundlage für die Berechnung des &lt;span style=&quot; font-weight:600;&quot;&gt;Maische-pH-Wert&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Reiter Waseraufbereitung &lt;/span&gt;und damit ein ultimative Faktor für eine erfolgreiche Maischearbeit.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer nutzt dafür die Daten aus den Sektionen &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze &lt;/span&gt;im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;. Malz, Rohfrucht und mancher Zusätze, die (aber nicht alle) den pH-Wert beim Maischen beeinfllussen.&lt;/p&gt;&lt;p&gt;Festgelegt werden dort diese Angaben im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;. Bei Malz geht man immer von 100% aus, es interessiert allein der erlaubte Schüttungsanteil; dieser wird in den Feldern&lt;span style=&quot; font-weight:600;&quot;&gt; Max. Antei [%] &lt;/span&gt;definiert.&lt;/p&gt;&lt;p&gt;Welche &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; dagegen wieviel in den&lt;span style=&quot; font-weight:600;&quot;&gt; Maische-pH&lt;/span&gt; hinwirken, wird im Tab Rohstoffe in den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; festgelegt. Ein wesentlicher Faktor der Ausbeute ist der Wasseranteil eines Zusatzes und der Anteil an fermentierbarer Stärke.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>2</number>
-             </property>
-             <property name="maximum">
-              <double>999.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0" colspan="4">
-            <widget class="QWidget" name="wdgSWWZKochen" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_5">
-              <property name="spacing">
-               <number>9</number>
+             </widget>
+            </item>
+            <item row="14" column="2">
+             <widget class="DoubleSpinBoxSud" name="tbRestextrakt">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der berechnete Anteil an &lt;span style=&quot; font-weight:600;&quot;&gt;Restextrakt&lt;/span&gt; nach der Gärung in &lt;span style=&quot; font-weight:600;&quot;&gt;°Plato&lt;/span&gt; ausgegeben. Auch negative Werte sind möglich.&lt;/p&gt;&lt;p&gt;Aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Differenz&lt;/span&gt; zwischen &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze beim Anstellen&lt;/span&gt; und Restextrakt wird wiederum der scheinbare Endvergärungsgrad (sEVG) gebildet, der die Gärfähigkeit einer Hefe beschreibt. Durchschnittlich sind 60 – 80% bei einer vitalen Hefe üblich, bei sogenannten Supervergärern auch mehr. &lt;/p&gt;&lt;p&gt;Der Restextrakt ist zunächst ein theoretischer Sollwert, den der Kleine Brauhelfer für ein erfolgreich vergorenes Jungbier festlegt. Der Restextrakt berechnet sich - in Verbindung mit der Stammwürze - aus den Angaben im Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Vergärungsgrad&lt;/span&gt; links.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Zum Zeitpunkt der Rezepterstellung ist der Vergärungsgrad nur eine theoretische Größe&lt;span style=&quot; font-weight:600;&quot;&gt;. &lt;/span&gt;Der reale in der Braupraxis wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Gärverlauf&lt;/span&gt;, hier: Hauptgärung,ermittelt und im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;ausgegeben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
-              <property name="topMargin">
-               <number>0</number>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
-              <property name="rightMargin">
-               <number>0</number>
+              <property name="readOnly">
+               <bool>true</bool>
               </property>
-              <property name="bottomMargin">
-               <number>0</number>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
               </property>
-              <item>
-               <widget class="QLabel" name="label_58">
-                <property name="text">
-                 <string>Zusätze &quot;Kochen&quot;</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_9">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="DoubleSpinBoxSud" name="tbSWWZKochen">
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze von&lt;span style=&quot; font-weight:600;&quot;&gt; Zusätzen &lt;/span&gt;beim &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenkochen &lt;/span&gt;berechnet.&lt;/p&gt;&lt;p&gt;Zusätze beim Hopfenkochen können Zucker, Honig, Gewürze, Additive etc. sein. &lt;span style=&quot; font-weight:600;&quot;&gt;Zeitpunkt&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder beeinträchtigen die Hefetätigkeit. Üblich ist eine Gabe zum Kochende hin.&lt;/p&gt;&lt;p&gt;Eine – nicht bindende – Regel besagt, dass Zusätze nicht &lt;span style=&quot; font-weight:600;&quot;&gt;20% der Schüttung&lt;/span&gt; übersteigen sollten. Die ist einerseits sensorisch begründet, andererseits in einer nicht beeinträchtigten Enzymtätigkeit der Maische und nicht zuletzt um Läuterkatastrophen zu verhindern. Üblich sind maximal &lt;span style=&quot; font-weight:600;&quot;&gt;15% pro Zusatz&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Zusätze beim Kochen können Zucker, Honig, Gewürze, Additive, Früchte, sogar Tannenzweige etc. sein. Bei Zucker, Honig gelten 10-15% maximal als Richtwert.&lt;/p&gt;&lt;p&gt;Zusätze sind ein komplexes Feld beim Bier brauen – und eines der kreativsten, da nahezu jede Zutat ihre Eigenheiten hat. Bei Unklarheiten empfehlen sich Fachforen und Fachbücher, aber auch &lt;span style=&quot; font-weight:600;&quot;&gt;braufremde Seiten&lt;/span&gt; im Netz.&lt;/p&gt;&lt;p&gt;Geht es um &lt;span style=&quot; font-weight:600;&quot;&gt;Spezialbiere&lt;/span&gt; mit Frucht oder &amp;quot;gebackene&amp;quot; Biere wie Kveik interessieren andere Erwägungen. Ein guter Einstieg für &lt;span style=&quot; font-weight:600;&quot;&gt;zusatzlastige Biere&lt;/span&gt; wie Kveik sind zunächst Fachbücher, mehr aber Fachforen, in denen die Proponenten dieser Stile gerne Fragen beantworten und Tipps geben.&lt;/p&gt;&lt;p&gt;Eine erste Anlaufstelle mit grundlegenden Informationen ist die &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama-Datenbank&lt;/span&gt;, die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; integriert ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_59">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string notr="true">°P</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="17" column="0">
-            <widget class="QLabel" name="lblKosten">
-             <property name="text">
-              <string>Gesamtkosten</string>
-             </property>
-            </widget>
-           </item>
-           <item row="14" column="3">
-            <widget class="QLabel" name="label_64">
-             <property name="text">
-              <string notr="true">°P</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="2">
-            <widget class="SpinBoxSud" name="tbFarbe">
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Bierfarbe&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;EBC&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert setzt sich aus den &lt;span style=&quot; font-weight:600;&quot;&gt;Farbwerten&lt;/span&gt; im Tab Rohstoffe des Reiters &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, der Menge und dem Verhältnis im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; sowie aus dem Korrekturfaktor im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Ausrüstung&lt;/span&gt; zusammen.&lt;/p&gt;&lt;p&gt;Die Angabe ist nur eine Schätzung. Viele weitere Faktoren können die Bierfarbe beeinflussen.&lt;/p&gt;&lt;p&gt;Stimmt nach der Reifung die Bierfarbe generell nicht mit der angezeigten Farbe im Tab Rezept überein, kann die Abweichung programmweit im Tab Ausrüstung definiert werden.&lt;/p&gt;&lt;p&gt;Die Farbe am Bildschirm lässt sich am besten bei mittlerem Tageslicht beurteilen.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu sind die Fachforen eine gute Anlaufstelle.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="maximum">
-              <number>1000</number>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0" colspan="4">
-            <widget class="QWidget" name="wdgSWWZMaischen" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_4">
-              <property name="spacing">
-               <number>9</number>
+              <property name="decimals">
+               <number>1</number>
               </property>
-              <property name="topMargin">
-               <number>0</number>
+             </widget>
+            </item>
+            <item row="0" column="2" colspan="2">
+             <widget class="QGraphicsView" name="gvGlas">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>80</height>
+               </size>
               </property>
-              <property name="rightMargin">
-               <number>0</number>
+              <property name="maximumSize">
+               <size>
+                <width>80</width>
+                <height>80</height>
+               </size>
               </property>
-              <property name="bottomMargin">
-               <number>0</number>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die geschätzte &lt;span style=&quot; font-weight:600;&quot;&gt;Bierfarbe&lt;/span&gt; in EBC an. &lt;span style=&quot; font-weight:600;&quot;&gt;EBC&lt;/span&gt; ist die genormte Farbstärke der European Brewers Convention. &lt;/p&gt;&lt;p&gt;Im amerikanischen Raum beschreibt man die Bierfarbe bevorzugt mit SRM.&lt;/p&gt;&lt;p&gt;Zur korrekten Darstellung der Bierfarbe empfiehlt sich ein für Tageslicht kalibrierter Monitor. In die Berechnung der Bierfarbe fließen die Farbwertangaben in den Sektionen Malz und Zusätze im Tab Rohstoffe sowie der Korrekturfaktor für die Bierfarbe im Tab Ausrüstung ein.&lt;/p&gt;&lt;p&gt;Die anlagentypische Abweichung des Farbwertes kann im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; programmweit festgelegt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
-              <item>
-               <widget class="QLabel" name="label_56">
-                <property name="text">
-                 <string>Zusätze &quot;Maischen&quot;</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_8">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="DoubleSpinBoxSud" name="tbSWWZMaischen">
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; in der &lt;span style=&quot; font-weight:600;&quot;&gt;Maische&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Zusätze beim Maischen können Zucker, Honig und Frucht, seltener Gewürze und, Additive etc. sein. &lt;span style=&quot; font-weight:600;&quot;&gt;Zeitpunkt&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder &lt;span style=&quot; font-weight:600;&quot;&gt;beeinträchtigen&lt;/span&gt; die &lt;span style=&quot; font-weight:600;&quot;&gt;Läuterarbeit&lt;/span&gt;. Üblich ist eine Gabe zum Kochende hin.&lt;/p&gt;&lt;p&gt;Eine – nicht bindende – Regel besagt, dass Zusätze nicht &lt;span style=&quot; font-weight:600;&quot;&gt;20% der Schüttung&lt;/span&gt; übersteigen sollten. Die ist einerseits sensorisch begründet, andererseits in einer nicht beeinträchtigten Enzymtätigkeit der Maische und nicht zuletzt um Läuterkatastrophen zu verhindern. Üblich sind maximal &lt;span style=&quot; font-weight:600;&quot;&gt;15% pro Zusatz&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Allgemein ist zu sagen, dass Zusätze bereits beim Maischen eine &lt;span style=&quot; font-weight:600;&quot;&gt;Ausnahme&lt;/span&gt; sind. Begründet wird dies mit dem Verlust beim Läutern, da ein guter Teil mit dem Treber entsorgt wird.&lt;/p&gt;&lt;p&gt;Zusätze beim Maischen können Zucker, Honig, Gewürze, Additive, Früchte, sogar Tannenzweige etc. sein. &lt;/p&gt;&lt;p&gt;Zusätze sind ein komplexes Feld beim Bier brauen – und eines der kreativsten, da nahezu jede Zutat ihre Eigenheiten hat. Bei Unklarheiten empfehlen sich Fachforen und Fachbücher, aber auch &lt;span style=&quot; font-weight:600;&quot;&gt;braufremde Seiten&lt;/span&gt; im Netz.&lt;/p&gt;&lt;p&gt;Geht es um &lt;span style=&quot; font-weight:600;&quot;&gt;Spezialbiere&lt;/span&gt; mit Frucht oder &amp;quot;gebackene&amp;quot; Biere wie Kveik interessieren andere Erwägungen. Ein guter Einstieg für &lt;span style=&quot; font-weight:600;&quot;&gt;zusatzlastige Biere&lt;/span&gt; wie Kveik sind vor allem Fachforen, in denen die Proponenten dieser Stile gerne Fragen beantworten und Tipps geben.&lt;/p&gt;&lt;p&gt;Eine erste Anlaufstelle mit grundlegenden Informationen ist die &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama-Datenbank&lt;/span&gt;, die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; integriert ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_57">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string notr="true">°P</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="9" column="0" colspan="4">
-            <widget class="QWidget" name="wdgSWAnteilHefestarter" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_20">
-              <property name="spacing">
-               <number>9</number>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
               </property>
-              <property name="topMargin">
-               <number>0</number>
+              <property name="frameShadow">
+               <enum>QFrame::Plain</enum>
               </property>
-              <property name="rightMargin">
-               <number>0</number>
+             </widget>
+            </item>
+            <item row="13" column="0" colspan="4">
+             <widget class="Line" name="line_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
-              <property name="bottomMargin">
-               <number>0</number>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="QLabel" name="label_23">
+              <property name="text">
+               <string notr="true">kg</string>
               </property>
-              <item>
-               <widget class="QLabel" name="label_79">
-                <property name="text">
-                 <string>Hefestarter</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_17">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="DoubleSpinBoxSud" name="tbSWAnteilHefestarter">
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze des &lt;span style=&quot; font-weight:600;&quot;&gt;Hefestarters&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_80">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string notr="true">°P</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="10" column="0" colspan="4">
-            <widget class="Line" name="line_2">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0" colspan="4">
-            <widget class="QWidget" name="wdgSWMalz" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_3">
-              <property name="spacing">
-               <number>9</number>
+             </widget>
+            </item>
+            <item row="14" column="0">
+             <widget class="QLabel" name="label_62">
+              <property name="text">
+               <string>Restextrakt</string>
               </property>
-              <property name="topMargin">
-               <number>0</number>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="QLabel" name="label_24">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
               </property>
-              <property name="rightMargin">
-               <number>0</number>
+              <property name="text">
+               <string notr="true">EBC</string>
               </property>
-              <property name="bottomMargin">
-               <number>0</number>
+             </widget>
+            </item>
+            <item row="17" column="2">
+             <widget class="DoubleSpinBoxSud" name="tbKosten">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechneten &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtkosten&lt;/span&gt; auf.&lt;/p&gt;&lt;p&gt;Sie setzen sich zusammen aus den im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;gemachten fixen Betriebskosten und den individuellen Kosten des Rezeptes links im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
-              <item>
-               <widget class="QLabel" name="label_47">
-                <property name="text">
-                 <string>Malz</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_6">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="DoubleSpinBoxSud" name="tbSWMalz">
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der berechnete Anteil der &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Malzgaben&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;p&gt;Malzgaben sollten immer der Hauptanteil der Stammwürze sein. In ihr befinden sich gewöhnliche die meisten Enzyme, um verwertbare Einfachzucker für die Hefe bereit zu stellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_51">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string notr="true">°P</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <spacer name="horizontalSpacer_5">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <widget class="QGroupBox" name="groupWasser">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="title">
-           <string>Wasser</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_2">
-           <property name="horizontalSpacing">
-            <number>9</number>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>2</number>
+              </property>
+              <property name="maximum">
+               <double>999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="15" column="2">
+             <widget class="DoubleSpinBoxSud" name="tbAlkohol">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Alkoholgehalt&lt;/span&gt; des Rezeptes in &lt;span style=&quot; font-weight:600;&quot;&gt;%vol &lt;/span&gt;ausgegeben. Der berechnete Alkoholgehalt setzt sich zusammen aus der Stamwürze und dem tatsächlichen Endvergärungsgrad (tEVG).&lt;/p&gt;&lt;p&gt;Für die Zollanmeldung ist die Stammwürze Bezugsgröße, nicht der Alkoholgehalt.&lt;/p&gt;&lt;p&gt;Bei Unklarheiten empfehlen sich Fachforen und Fachbücher.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="0">
+             <widget class="QLabel" name="label_68">
+              <property name="text">
+               <string>Bittere</string>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="0" colspan="4">
+             <widget class="Line" name="lineKosten">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="15" column="3">
+             <widget class="QLabel" name="label_65">
+              <property name="text">
+               <string notr="true">%vol</string>
+              </property>
+             </widget>
+            </item>
+            <item row="17" column="3">
+             <widget class="QLabel" name="lblKostenEinheit"/>
+            </item>
+            <item row="8" column="0" colspan="4">
+             <widget class="QWidget" name="wdgSWWZGaerung" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <property name="spacing">
+                <number>9</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_60">
+                 <property name="text">
+                  <string>Zusätze &quot;Gärung&quot;</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_10">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="DoubleSpinBoxSud" name="tbSWWZGaerung">
+                 <property name="minimumSize">
+                  <size>
+                   <width>80</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze von&lt;span style=&quot; font-weight:600;&quot;&gt; Zusätzen &lt;/span&gt;bei der &lt;span style=&quot; font-weight:600;&quot;&gt;Gärung&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Zusätze bei der Gärung können Zucker, Honig, Gewürze, Additive etc. sein. &lt;span style=&quot; font-weight:600;&quot;&gt;Zeitpunkt&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder beeinträchtigen die Hefetätigkeit.&lt;/p&gt;&lt;p&gt;Eine – nicht bindende – Regel besagt, dass Zusätze nicht &lt;span style=&quot; font-weight:600;&quot;&gt;20% der Schüttung&lt;/span&gt; übersteigen sollten. Die ist einerseits sensorisch begründet, andererseits in einer nicht beeinträchtigten Enzymtätigkeit der Maische und nicht zuletzt um Läuterkatastrophen zu verhindern. Üblich sind maximal &lt;span style=&quot; font-weight:600;&quot;&gt;15% pro Zusatz&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Zusätze in der Gärunng können Zucker, Honig, Gewürze, Additive etc. sein. Bei Zucker, Honig gelten 10-15% maximal als Richtwert. Oft werden Zusätze nach der Hauptgärung hinzugegeben.&lt;/p&gt;&lt;p&gt;Zusätze sind ein komplexes Feld beim Bier brauen – und eines der kreativsten, da nahezu jede Zutat ihre Eigenheiten hat. Bei Unklarheiten empfehlen sich Fachforen und Fachbücher, aber auch &lt;span style=&quot; font-weight:600;&quot;&gt;braufremde Seiten&lt;/span&gt; im Netz.&lt;/p&gt;&lt;p&gt;Geht es um &lt;span style=&quot; font-weight:600;&quot;&gt;Spezialbiere&lt;/span&gt; mit Frucht oder &amp;quot;gebackene&amp;quot; Biere wie Kveik interessieren andere Erwägungen. Ein guter Einstieg für &lt;span style=&quot; font-weight:600;&quot;&gt;zusatzlastige Biere&lt;/span&gt; wie Kveik sind zunächst Fachbücher, mehr aber Fachforen, in denen die Proponenten dieser Stile gerne Fragen beantworten und Tipps geben.&lt;/p&gt;&lt;p&gt;Eine erste Anlaufstelle mit grundlegenden Informationen ist die &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama-Datenbank&lt;/span&gt;, die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; integriert ist.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Grundätzlich ist bei der Gabe von Zusätzen in der Gärung die Gefahr einer Kontamination mit bierfremden Bakterien abzuwägen. Ist die Gefahr nicht auszuschließen, sollte die Gabe zum Kochende oder im Whirlpool eine Überlegung wert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::NoButtons</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>1</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_61">
+                 <property name="minimumSize">
+                  <size>
+                   <width>40</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string notr="true">°P</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_9">
+              <property name="text">
+               <string>Gesamtschüttung</string>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="2" colspan="2">
+             <widget class="QLabel" name="lblBittere">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier erfolgt die sensorische Einordnung des Rezeptes anhand des Bittereindrucks.&lt;/p&gt;&lt;p&gt;Unterschieden werden die Kategorien:&lt;/p&gt;&lt;p&gt;• sehr mild&lt;/p&gt;&lt;p&gt;• mild&lt;/p&gt;&lt;p&gt;• ausgewogen&lt;/p&gt;&lt;p&gt;• moderat herb&lt;/p&gt;&lt;p&gt;• sehr herb&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_55">
+              <property name="text">
+               <string>Anteile Stammwürze</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="DoubleSpinBoxSud" name="tbGesamtschuettung">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtgewicht&lt;/span&gt; aller eingesetzten Rohstoffe ausgegeben.&lt;/p&gt;&lt;p&gt;Das Gesamtgewicht der Schüttung ist Grundlage für die Berechnung des &lt;span style=&quot; font-weight:600;&quot;&gt;Maische-pH-Wert&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Reiter Waseraufbereitung &lt;/span&gt;und damit ein ultimative Faktor für eine erfolgreiche Maischearbeit.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer nutzt dafür die Daten aus den Sektionen &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze &lt;/span&gt;im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;. Malz, Rohfrucht und mancher Zusätze, die (aber nicht alle) den pH-Wert beim Maischen beeinfllussen.&lt;/p&gt;&lt;p&gt;Festgelegt werden dort diese Angaben im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;. Bei Malz geht man immer von 100% aus, es interessiert allein der erlaubte Schüttungsanteil; dieser wird in den Feldern&lt;span style=&quot; font-weight:600;&quot;&gt; Max. Antei [%] &lt;/span&gt;definiert.&lt;/p&gt;&lt;p&gt;Welche &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; dagegen wieviel in den&lt;span style=&quot; font-weight:600;&quot;&gt; Maische-pH&lt;/span&gt; hinwirken, wird im Tab Rohstoffe in den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Ausbeute&lt;/span&gt; festgelegt. Ein wesentlicher Faktor der Ausbeute ist der Wasseranteil eines Zusatzes und der Anteil an fermentierbarer Stärke.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>2</number>
+              </property>
+              <property name="maximum">
+               <double>999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="0" colspan="4">
+             <widget class="QWidget" name="wdgSWWZKochen" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <property name="spacing">
+                <number>9</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_58">
+                 <property name="text">
+                  <string>Zusätze &quot;Kochen&quot;</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_9">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="DoubleSpinBoxSud" name="tbSWWZKochen">
+                 <property name="minimumSize">
+                  <size>
+                   <width>80</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze von&lt;span style=&quot; font-weight:600;&quot;&gt; Zusätzen &lt;/span&gt;beim &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenkochen &lt;/span&gt;berechnet.&lt;/p&gt;&lt;p&gt;Zusätze beim Hopfenkochen können Zucker, Honig, Gewürze, Additive etc. sein. &lt;span style=&quot; font-weight:600;&quot;&gt;Zeitpunkt&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder beeinträchtigen die Hefetätigkeit. Üblich ist eine Gabe zum Kochende hin.&lt;/p&gt;&lt;p&gt;Eine – nicht bindende – Regel besagt, dass Zusätze nicht &lt;span style=&quot; font-weight:600;&quot;&gt;20% der Schüttung&lt;/span&gt; übersteigen sollten. Die ist einerseits sensorisch begründet, andererseits in einer nicht beeinträchtigten Enzymtätigkeit der Maische und nicht zuletzt um Läuterkatastrophen zu verhindern. Üblich sind maximal &lt;span style=&quot; font-weight:600;&quot;&gt;15% pro Zusatz&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Zusätze beim Kochen können Zucker, Honig, Gewürze, Additive, Früchte, sogar Tannenzweige etc. sein. Bei Zucker, Honig gelten 10-15% maximal als Richtwert.&lt;/p&gt;&lt;p&gt;Zusätze sind ein komplexes Feld beim Bier brauen – und eines der kreativsten, da nahezu jede Zutat ihre Eigenheiten hat. Bei Unklarheiten empfehlen sich Fachforen und Fachbücher, aber auch &lt;span style=&quot; font-weight:600;&quot;&gt;braufremde Seiten&lt;/span&gt; im Netz.&lt;/p&gt;&lt;p&gt;Geht es um &lt;span style=&quot; font-weight:600;&quot;&gt;Spezialbiere&lt;/span&gt; mit Frucht oder &amp;quot;gebackene&amp;quot; Biere wie Kveik interessieren andere Erwägungen. Ein guter Einstieg für &lt;span style=&quot; font-weight:600;&quot;&gt;zusatzlastige Biere&lt;/span&gt; wie Kveik sind zunächst Fachbücher, mehr aber Fachforen, in denen die Proponenten dieser Stile gerne Fragen beantworten und Tipps geben.&lt;/p&gt;&lt;p&gt;Eine erste Anlaufstelle mit grundlegenden Informationen ist die &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama-Datenbank&lt;/span&gt;, die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; integriert ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::NoButtons</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>1</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_59">
+                 <property name="minimumSize">
+                  <size>
+                   <width>40</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string notr="true">°P</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="17" column="0">
+             <widget class="QLabel" name="lblKosten">
+              <property name="text">
+               <string>Gesamtkosten</string>
+              </property>
+             </widget>
+            </item>
+            <item row="14" column="3">
+             <widget class="QLabel" name="label_64">
+              <property name="text">
+               <string notr="true">°P</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="SpinBoxSud" name="tbFarbe">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die errechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Bierfarbe&lt;/span&gt; in &lt;span style=&quot; font-weight:600;&quot;&gt;EBC&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert setzt sich aus den &lt;span style=&quot; font-weight:600;&quot;&gt;Farbwerten&lt;/span&gt; im Tab Rohstoffe des Reiters &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, der Menge und dem Verhältnis im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept&lt;/span&gt; sowie aus dem Korrekturfaktor im Tab &lt;span style=&quot; font-weight:600;&quot;&gt;Ausrüstung&lt;/span&gt; zusammen.&lt;/p&gt;&lt;p&gt;Die Angabe ist nur eine Schätzung. Viele weitere Faktoren können die Bierfarbe beeinflussen.&lt;/p&gt;&lt;p&gt;Stimmt nach der Reifung die Bierfarbe generell nicht mit der angezeigten Farbe im Tab Rezept überein, kann die Abweichung programmweit im Tab Ausrüstung definiert werden.&lt;/p&gt;&lt;p&gt;Die Farbe am Bildschirm lässt sich am besten bei mittlerem Tageslicht beurteilen.&lt;/p&gt;&lt;p&gt;Bei Fragen hierzu sind die Fachforen eine gute Anlaufstelle.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="maximum">
+               <number>1000</number>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="0" colspan="4">
+             <widget class="QWidget" name="wdgSWWZMaischen" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <property name="spacing">
+                <number>9</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_56">
+                 <property name="text">
+                  <string>Zusätze &quot;Maischen&quot;</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_8">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="DoubleSpinBoxSud" name="tbSWWZMaischen">
+                 <property name="minimumSize">
+                  <size>
+                   <width>80</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze &lt;span style=&quot; font-weight:600;&quot;&gt;weiterer Zutaten&lt;/span&gt; in der &lt;span style=&quot; font-weight:600;&quot;&gt;Maische&lt;/span&gt; berechnet.&lt;/p&gt;&lt;p&gt;Zusätze beim Maischen können Zucker, Honig und Frucht, seltener Gewürze und, Additive etc. sein. &lt;span style=&quot; font-weight:600;&quot;&gt;Zeitpunkt&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; wirken sich unter Umständen entscheidend auf den Geschmack aus, fördern oder &lt;span style=&quot; font-weight:600;&quot;&gt;beeinträchtigen&lt;/span&gt; die &lt;span style=&quot; font-weight:600;&quot;&gt;Läuterarbeit&lt;/span&gt;. Üblich ist eine Gabe zum Kochende hin.&lt;/p&gt;&lt;p&gt;Eine – nicht bindende – Regel besagt, dass Zusätze nicht &lt;span style=&quot; font-weight:600;&quot;&gt;20% der Schüttung&lt;/span&gt; übersteigen sollten. Die ist einerseits sensorisch begründet, andererseits in einer nicht beeinträchtigten Enzymtätigkeit der Maische und nicht zuletzt um Läuterkatastrophen zu verhindern. Üblich sind maximal &lt;span style=&quot; font-weight:600;&quot;&gt;15% pro Zusatz&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Allgemein ist zu sagen, dass Zusätze bereits beim Maischen eine &lt;span style=&quot; font-weight:600;&quot;&gt;Ausnahme&lt;/span&gt; sind. Begründet wird dies mit dem Verlust beim Läutern, da ein guter Teil mit dem Treber entsorgt wird.&lt;/p&gt;&lt;p&gt;Zusätze beim Maischen können Zucker, Honig, Gewürze, Additive, Früchte, sogar Tannenzweige etc. sein. &lt;/p&gt;&lt;p&gt;Zusätze sind ein komplexes Feld beim Bier brauen – und eines der kreativsten, da nahezu jede Zutat ihre Eigenheiten hat. Bei Unklarheiten empfehlen sich Fachforen und Fachbücher, aber auch &lt;span style=&quot; font-weight:600;&quot;&gt;braufremde Seiten&lt;/span&gt; im Netz.&lt;/p&gt;&lt;p&gt;Geht es um &lt;span style=&quot; font-weight:600;&quot;&gt;Spezialbiere&lt;/span&gt; mit Frucht oder &amp;quot;gebackene&amp;quot; Biere wie Kveik interessieren andere Erwägungen. Ein guter Einstieg für &lt;span style=&quot; font-weight:600;&quot;&gt;zusatzlastige Biere&lt;/span&gt; wie Kveik sind vor allem Fachforen, in denen die Proponenten dieser Stile gerne Fragen beantworten und Tipps geben.&lt;/p&gt;&lt;p&gt;Eine erste Anlaufstelle mit grundlegenden Informationen ist die &lt;span style=&quot; font-weight:600;&quot;&gt;oBrama-Datenbank&lt;/span&gt;, die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; integriert ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::NoButtons</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>1</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_57">
+                 <property name="minimumSize">
+                  <size>
+                   <width>40</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string notr="true">°P</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="9" column="0" colspan="4">
+             <widget class="QWidget" name="wdgSWAnteilHefestarter" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_20">
+               <property name="spacing">
+                <number>9</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_79">
+                 <property name="text">
+                  <string>Hefestarter</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_17">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="DoubleSpinBoxSud" name="tbSWAnteilHefestarter">
+                 <property name="minimumSize">
+                  <size>
+                   <width>80</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der Anteil an Stammwürze des &lt;span style=&quot; font-weight:600;&quot;&gt;Hefestarters&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::NoButtons</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>1</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_80">
+                 <property name="minimumSize">
+                  <size>
+                   <width>40</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string notr="true">°P</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="10" column="0" colspan="4">
+             <widget class="Line" name="line_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0" colspan="4">
+             <widget class="QWidget" name="wdgSWMalz" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <property name="spacing">
+                <number>9</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_47">
+                 <property name="text">
+                  <string>Malz</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_6">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="DoubleSpinBoxSud" name="tbSWMalz">
+                 <property name="minimumSize">
+                  <size>
+                   <width>80</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der berechnete Anteil der &lt;span style=&quot; font-weight:600;&quot;&gt;Stammwürze&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Malzgaben&lt;/span&gt; ausgegeben.&lt;/p&gt;&lt;p&gt;Malzgaben sollten immer der Hauptanteil der Stammwürze sein. In ihr befinden sich gewöhnliche die meisten Enzyme, um verwertbare Einfachzucker für die Hefe bereit zu stellen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::NoButtons</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>1</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_51">
+                 <property name="minimumSize">
+                  <size>
+                   <width>40</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string notr="true">°P</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupWasser">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
            </property>
-           <property name="verticalSpacing">
-            <number>4</number>
+           <property name="title">
+            <string>Wasser</string>
            </property>
-           <item row="1" column="0" colspan="2">
-            <widget class="QLabel" name="label_S1_7">
-             <property name="text">
-              <string>Hauptguss</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0" colspan="2">
-            <widget class="QLabel" name="label_S1_3">
-             <property name="text">
-              <string>Nachguss</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="3">
-            <widget class="DoubleSpinBoxSud" name="tbHauptguss">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; anhand der Schüttung beim Maischen.&lt;/p&gt;&lt;p&gt;Die Schüttung beim maischen muss wegen Zusätzen bei folgenden Brauprozessen wie Kochen oder Gärung nicht zwigend mit der Gesamtschüttung übereinstimmen.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wid der Wert des Hauptgusses zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <spacer name="horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="1" column="4">
-            <widget class="QLabel" name="label_32">
-             <property name="text">
-              <string notr="true">L</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="4">
-            <widget class="QLabel" name="label_33">
-             <property name="text">
-              <string notr="true">L</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0" colspan="2">
-            <widget class="QLabel" name="label_37">
-             <property name="text">
-              <string>Gesamt</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="4">
-            <widget class="QLabel" name="label_28">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string notr="true">L</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="3">
-            <widget class="DoubleSpinBoxSud" name="tbNachguss">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity. Ferner kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; im Tab Ausrüstung &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; werden. Dazu sind gemeinhin einige Sude nötig, um eine Festlegung treffen zu können.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wid der Wert des Nachgusses zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="3">
-            <widget class="DoubleSpinBoxSud" name="tbWasserGesamt">
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwassermenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert wird nicht allein durch die Schüttung beeinflusst, sondern auch durch technische Eigenheiten der Anlage. Ein Faktor hierbei ist unter anderem die Korrektur der Nachgussmenge im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wird der Wert der Gesamtwassermenge zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0" colspan="5">
-            <widget class="QWidget" name="wdgWasserHGF" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout_18">
-              <property name="spacing">
+           <layout class="QGridLayout" name="gridLayout_2">
+            <property name="horizontalSpacing">
+             <number>9</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>4</number>
+            </property>
+            <item row="1" column="0" colspan="2">
+             <widget class="QLabel" name="label_S1_7">
+              <property name="text">
+               <string>Hauptguss</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0" colspan="2">
+             <widget class="QLabel" name="label_S1_3">
+              <property name="text">
+               <string>Nachguss</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="3">
+             <widget class="DoubleSpinBoxSud" name="tbHauptguss">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; anhand der Schüttung beim Maischen.&lt;/p&gt;&lt;p&gt;Die Schüttung beim maischen muss wegen Zusätzen bei folgenden Brauprozessen wie Kochen oder Gärung nicht zwigend mit der Gesamtschüttung übereinstimmen.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wid der Wert des Hauptgusses zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="1" column="4">
+             <widget class="QLabel" name="label_32">
+              <property name="text">
+               <string notr="true">L</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="4">
+             <widget class="QLabel" name="label_33">
+              <property name="text">
+               <string notr="true">L</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0" colspan="2">
+             <widget class="QLabel" name="label_37">
+              <property name="text">
+               <string>Gesamt</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="4">
+             <widget class="QLabel" name="label_28">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string notr="true">L</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="3">
+             <widget class="DoubleSpinBoxSud" name="tbNachguss">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer den &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Der Wert wird neben den Faktoren der Schüttung stark beeinflusst vom Hauptgussfaktor und zu geringen Teilen High Gravity. Ferner kann die &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussmenge&lt;/span&gt; im Tab Ausrüstung &lt;span style=&quot; font-weight:600;&quot;&gt;korrigiert&lt;/span&gt; werden. Dazu sind gemeinhin einige Sude nötig, um eine Festlegung treffen zu können.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wid der Wert des Nachgusses zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="3">
+             <widget class="DoubleSpinBoxSud" name="tbWasserGesamt">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die benötigte &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtwassermenge&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der Wert wird nicht allein durch die Schüttung beeinflusst, sondern auch durch technische Eigenheiten der Anlage. Ein Faktor hierbei ist unter anderem die Korrektur der Nachgussmenge im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wird der Wert der Gesamtwassermenge zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0" colspan="5">
+             <widget class="QWidget" name="wdgWasserHGF" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout_18">
+               <property name="spacing">
+                <number>9</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_14">
+                 <property name="text">
+                  <string>High-Gravity Verdünnung</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_16">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="DoubleSpinBoxSud" name="tbWasserHGF">
+                 <property name="minimumSize">
+                  <size>
+                   <width>80</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdünnungsmenge Wasser&lt;/span&gt; für den &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity-Faktor&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wird der Wert für High Gravity zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::NoButtons</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <double>9999.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_16">
+                 <property name="minimumSize">
+                  <size>
+                   <width>40</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string notr="true">L</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupAnlage">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="title">
+            <string>Anlage</string>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <property name="horizontalSpacing">
+             <number>9</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>4</number>
+            </property>
+            <item row="6" column="0">
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Maischekessel nutzbares Volumen</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0" colspan="5">
+             <widget class="Line" name="line_9">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="4">
+             <widget class="QLabel" name="label_35">
+              <property name="text">
+               <string notr="true">L/h</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0" colspan="5">
+             <widget class="Line" name="line_16">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="3">
+             <widget class="DoubleSpinBox" name="tbAnlageSudhausausbeute">
+              <property name="minimumSize">
+               <size>
+                <width>80</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; der Anlage ausgegeben. Dieser anlagentypische Wert kann aus dem Durchschnitt der gebrauten Suden im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;progrmmweit berechnet werden.&lt;/p&gt;&lt;p&gt;Sie beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0" colspan="2">
+             <widget class="QLabel" name="label_43">
+              <property name="text">
+               <string>Sudhausausbeute</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="4">
+             <widget class="QLabel" name="label_29">
+              <property name="minimumSize">
+               <size>
+                <width>40</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string notr="true">%</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0" colspan="2">
+             <widget class="QLabel" name="label_S1_8">
+              <property name="text">
+               <string>Verdampfungsrate</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="3">
+             <widget class="DoubleSpinBox" name="tbAnlageVolumenMaische">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das definierte &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben sind hierfür programmweite Grundlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="4">
+             <widget class="QLabel" name="label_31">
+              <property name="text">
+               <string notr="true">L</string>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="0">
+             <widget class="QLabel" name="label_34">
+              <property name="text">
+               <string>Sudpfanne nutzbares Volumen</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="3">
+             <widget class="DoubleSpinBox" name="tbVolumenMaische">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben dienen als Grundlage für die programmweite Berechnung. Das Feld wird rot, wenn der Kessel zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="3">
+             <widget class="DoubleSpinBox" name="tbAnlageVerdampfung">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage ausgegeben. Dieser anlagentypische Wert kann aus dem Durchschnitt der gebrauten Suden programmweit im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;festgelegt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="3">
+             <widget class="DoubleSpinBox" name="tbVolumenKochen">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben dienen als Grundlage für die programmweite Berechnung. Das Feld wird rot, wenn die Sudpfanne zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="0">
+             <widget class="QLabel" name="label_PfanneVoll">
+              <property name="text">
+               <string>Benötigtes Volumen ca.</string>
+              </property>
+              <property name="indent">
                <number>9</number>
               </property>
-              <property name="leftMargin">
-               <number>0</number>
+             </widget>
+            </item>
+            <item row="6" column="4">
+             <widget class="QLabel" name="label_44">
+              <property name="text">
+               <string notr="true">L</string>
               </property>
-              <property name="topMargin">
-               <number>0</number>
+             </widget>
+            </item>
+            <item row="7" column="0">
+             <widget class="QLabel" name="label_VolumenMaischen">
+              <property name="text">
+               <string>Benötigtes Volumen ca.</string>
               </property>
-              <property name="rightMargin">
-               <number>0</number>
-              </property>
-              <property name="bottomMargin">
-               <number>0</number>
-              </property>
-              <item>
-               <widget class="QLabel" name="label_14">
-                <property name="text">
-                 <string>High-Gravity Verdünnung</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_16">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="DoubleSpinBoxSud" name="tbWasserHGF">
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier errechnet der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdünnungsmenge Wasser&lt;/span&gt; für den &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity-Faktor&lt;/span&gt; anhand der Schüttung.&lt;/p&gt;&lt;p&gt;Bei übernommen Rezepten kann der Wert stark abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist kein Fehler, im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Bei übernommen Rezepten wird der Wert für High Gravity zumeist abweichen. Grund ist die Beschaffenheit der individuellen Brauanlage. Dies ist &lt;span style=&quot; font-weight:600;&quot;&gt;kein Fehler,&lt;/span&gt; im Gegenteil: Der Kleine Brauhelfer passt das Rezept an.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="maximum">
-                 <double>9999.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_16">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string notr="true">L</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <widget class="QGroupBox" name="groupAnlage">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="title">
-           <string>Anlage</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_4">
-           <property name="horizontalSpacing">
-            <number>9</number>
-           </property>
-           <property name="verticalSpacing">
-            <number>4</number>
-           </property>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Maischekessel nutzbares Volumen</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0" colspan="5">
-            <widget class="Line" name="line_9">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="4">
-            <widget class="QLabel" name="label_35">
-             <property name="text">
-              <string notr="true">L/h</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0" colspan="5">
-            <widget class="Line" name="line_16">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="3">
-            <widget class="DoubleSpinBox" name="tbAnlageSudhausausbeute">
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Sudhausausbeute&lt;/span&gt; der Anlage ausgegeben. Dieser anlagentypische Wert kann aus dem Durchschnitt der gebrauten Suden im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;progrmmweit berechnet werden.&lt;/p&gt;&lt;p&gt;Sie beschreibt die Effizienz der Brauanlage. Im Hobbybereich werden 70% angestrebt, tatsächlich liegt der Wert meist darunter. Im Profibereich werden 80% angepeilt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0" colspan="2">
-            <widget class="QLabel" name="label_43">
-             <property name="text">
-              <string>Sudhausausbeute</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="4">
-            <widget class="QLabel" name="label_29">
-             <property name="minimumSize">
-              <size>
-               <width>40</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="text">
-              <string notr="true">%</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0" colspan="2">
-            <widget class="QLabel" name="label_S1_8">
-             <property name="text">
-              <string>Verdampfungsrate</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="3">
-            <widget class="DoubleSpinBox" name="tbAnlageVolumenMaische">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das definierte &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben sind hierfür programmweite Grundlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="4">
-            <widget class="QLabel" name="label_31">
-             <property name="text">
-              <string notr="true">L</string>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="0">
-            <widget class="QLabel" name="label_34">
-             <property name="text">
-              <string>Sudpfanne nutzbares Volumen</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="3">
-            <widget class="DoubleSpinBox" name="tbVolumenMaische">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben dienen als Grundlage für die programmweite Berechnung. Das Feld wird rot, wenn der Kessel zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="3">
-            <widget class="DoubleSpinBox" name="tbAnlageVerdampfung">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Verdampfungsrate&lt;/span&gt; der Anlage ausgegeben. Dieser anlagentypische Wert kann aus dem Durchschnitt der gebrauten Suden programmweit im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung &lt;/span&gt;festgelegt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="3">
-            <widget class="DoubleSpinBox" name="tbVolumenKochen">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das &lt;span style=&quot; font-weight:600;&quot;&gt;benötigte Volumen&lt;/span&gt; der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudpfanne&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben dienen als Grundlage für die programmweite Berechnung. Das Feld wird rot, wenn die Sudpfanne zu klein ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="0">
-            <widget class="QLabel" name="label_PfanneVoll">
-             <property name="text">
-              <string>Benötigtes Volumen ca.</string>
-             </property>
-             <property name="indent">
-              <number>9</number>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="4">
-            <widget class="QLabel" name="label_44">
-             <property name="text">
-              <string notr="true">L</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="label_VolumenMaischen">
-             <property name="text">
-              <string>Benötigtes Volumen ca.</string>
-             </property>
-             <property name="indent">
-              <number>9</number>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="2">
-            <spacer name="horizontalSpacer_2">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="7" column="4">
-            <widget class="QLabel" name="label_30">
-             <property name="text">
-              <string notr="true">L</string>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="4">
-            <widget class="QLabel" name="label_45">
-             <property name="text">
-              <string notr="true">L</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0" colspan="4">
-            <widget class="QLabel" name="lblAnlageName"/>
-           </item>
-           <item row="8" column="3">
-            <widget class="DoubleSpinBox" name="tbAnlageVolumenKochen">
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das definierte &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben sind hierfür programmweite Grundlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignmentFlag::AlignCenter</set>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="buttonSymbols">
-              <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0" colspan="5">
-            <widget class="QWidget" name="wdgAnlageKorrekturSollmenge" native="true">
-             <layout class="QHBoxLayout" name="horizontalLayout">
-              <property name="spacing">
+              <property name="indent">
                <number>9</number>
               </property>
-              <property name="leftMargin">
-               <number>0</number>
+             </widget>
+            </item>
+            <item row="3" column="2">
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
-              <property name="topMargin">
-               <number>0</number>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
               </property>
-              <property name="rightMargin">
-               <number>0</number>
+             </spacer>
+            </item>
+            <item row="7" column="4">
+             <widget class="QLabel" name="label_30">
+              <property name="text">
+               <string notr="true">L</string>
               </property>
-              <property name="bottomMargin">
-               <number>0</number>
+             </widget>
+            </item>
+            <item row="8" column="4">
+             <widget class="QLabel" name="label_45">
+              <property name="text">
+               <string notr="true">L</string>
               </property>
-              <item>
-               <widget class="QLabel" name="label_66">
-                <property name="text">
-                 <string>Korrektur der Sollmenge</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_13">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="DoubleSpinBox" name="tbAnlageKorrekturSollmenge">
-                <property name="minimumSize">
-                 <size>
-                  <width>80</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur der Sollmenge&lt;/span&gt; der Anlage angegeben.&lt;/p&gt;&lt;p&gt;Der anlagentypische Korrekturwert für die Sollmenge wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; programmweit festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignmentFlag::AlignCenter</set>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-                <property name="buttonSymbols">
-                 <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
-                </property>
-                <property name="decimals">
-                 <number>1</number>
-                </property>
-                <property name="maximum">
-                 <double>9999.000000000000000</double>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="label_67">
-                <property name="minimumSize">
-                 <size>
-                  <width>40</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string notr="true">L</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer_7">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
+             </widget>
+            </item>
+            <item row="0" column="0" colspan="4">
+             <widget class="QLabel" name="lblAnlageName"/>
+            </item>
+            <item row="8" column="3">
+             <widget class="DoubleSpinBox" name="tbAnlageVolumenKochen">
+              <property name="toolTip">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer das definierte &lt;span style=&quot; font-weight:600;&quot;&gt;nutzbare Volumen&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Maischekessel&lt;/span&gt; an. &lt;/p&gt;&lt;p&gt;Die im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; anlagentypisch gemachten Angaben sind hierfür programmweite Grundlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="buttonSymbols">
+               <enum>QAbstractSpinBox::NoButtons</enum>
+              </property>
+              <property name="decimals">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <double>9999.000000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0" colspan="5">
+             <widget class="QWidget" name="wdgAnlageKorrekturSollmenge" native="true">
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <property name="spacing">
+                <number>9</number>
+               </property>
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_66">
+                 <property name="text">
+                  <string>Korrektur der Sollmenge</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_13">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="DoubleSpinBox" name="tbAnlageKorrekturSollmenge">
+                 <property name="minimumSize">
+                  <size>
+                   <width>80</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="toolTip">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Korrektur der Sollmenge&lt;/span&gt; der Anlage angegeben.&lt;/p&gt;&lt;p&gt;Der anlagentypische Korrekturwert für die Sollmenge wird im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; programmweit festgelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                 <property name="buttonSymbols">
+                  <enum>QAbstractSpinBox::NoButtons</enum>
+                 </property>
+                 <property name="decimals">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <double>9999.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_67">
+                 <property name="minimumSize">
+                  <size>
+                   <width>40</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="text">
+                  <string notr="true">L</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QTextBrowser" name="tbHelp">
+       <property name="font">
+        <font>
+         <italic>true</italic>
+        </font>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+       <property name="openExternalLinks">
+        <bool>true</bool>
+       </property>
       </widget>
      </widget>
     </widget>
@@ -3995,6 +4022,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>scrollAreaWasseraufbereitung</tabstop>
   <tabstop>btnNeueWasseraufbereitung</tabstop>
   <tabstop>btnWasseraufbereitungUebernehmen</tabstop>
+  <tabstop>splitterHelp</tabstop>
   <tabstop>gvGlas</tabstop>
   <tabstop>tbFarbe</tabstop>
   <tabstop>tbGesamtschuettung</tabstop>
@@ -4017,6 +4045,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>tbVolumenMaische</tabstop>
   <tabstop>tbAnlageVolumenKochen</tabstop>
   <tabstop>tbVolumenKochen</tabstop>
+  <tabstop>tbHelp</tabstop>
   <tabstop>scrollArea_6</tabstop>
   <tabstop>tbSWHefestarter</tabstop>
   <tabstop>tbMengeHefestarter</tabstop>

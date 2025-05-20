@@ -2,7 +2,6 @@
 #define DLGVERDAMPFUNG_H
 
 #include "dlgabstract.h"
-#include "ui_dlgverdampfung.h"
 
 namespace Ui {
 class DlgVerdampfung;
@@ -11,7 +10,6 @@ class DlgVerdampfung;
 class DlgVerdampfung : public DlgAbstract
 {
 	Q_OBJECT
-    MAKE_TRANSLATABLE_DLG
 
 public:
     explicit DlgVerdampfung(QWidget *parent = nullptr);

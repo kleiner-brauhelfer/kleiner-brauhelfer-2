@@ -6,14 +6,13 @@
 #include "brauhelfer.h"
 #include "biercalc.h"
 #include "settings.h"
-#include "proxymodel.h"
-#include "model/proxymodelsudcolored.h"
+#include "proxymodelsud.h"
 #include "model/textdelegate.h"
 #include "model/spinboxdelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/checkboxdelegate.h"
-#include "model/comboboxdelegate.h"
 #include "model/datedelegate.h"
+#include "model/sudnamedelegate.h"
 #include "dialogs/dlgverdampfung.h"
 #include "tababstract.h"
 
@@ -89,11 +88,11 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     table->setDefaultContextMenu();
 
     table = ui->tableViewSude;
-    proxyModel = new ProxyModelSudColored(this);
+    proxyModel = new ProxyModelSud(this);
     proxyModel->setSourceModel(bh->modelSud());
     proxyModel->setFilterKeyColumn(ModelSud::ColAnlage);
     table->setModel(proxyModel);
-    table->appendCol({ModelSud::ColSudname, true, false, 200, new TextDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, table)});
+    table->appendCol({ModelSud::ColSudname, true, false, 200, new SudNameDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, table)});
     table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
     table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
     table->appendCol({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, true, table)});

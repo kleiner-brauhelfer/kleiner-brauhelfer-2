@@ -7,12 +7,14 @@
 #include <QMimeData>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "model/proxymodelsudcolored.h"
+#include "proxymodelsud.h"
 #include "model/textdelegate.h"
 #include "model/datedelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/ratingdelegate.h"
 #include "model/spinboxdelegate.h"
+#include "model/sudnamedelegate.h"
+#include "model/sudwochedelegate.h"
 #include "dialogs/dlgsudteilen.h"
 #include "dialogs/dlgimportexport.h"
 
@@ -40,17 +42,17 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ui->webview->setHtmlFile(QStringLiteral("sudinfo"));
 
     TableView *table = ui->tableSudauswahl;
-    ProxyModelSudColored *proxyModel = new ProxyModelSudColored(this);
+    ProxyModelSud *proxyModel = new ProxyModelSud(this);
     proxyModel->setSourceModel(bh->modelSud());
     table->setModel(proxyModel);
-    table->appendCol({ModelSud::ColSudname, true, false, -1, new TextDelegate(table)});
+    table->appendCol({ModelSud::ColSudname, true, false, -1, new SudNameDelegate(table)});
     table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
     table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
     table->appendCol({ModelSud::ColBraudatum, true, true, 100, new DateDelegate(false, true, table)});
     table->appendCol({ModelSud::ColAbfuelldatum, false, true, 100, new DateDelegate(false, true, table)});
     table->appendCol({ModelSud::ColErstellt, true, true, 100, new DateDelegate(false, true, table)});
     table->appendCol({ModelSud::ColGespeichert, true, true, 100, new DateDelegate(false, true, table)});
-    table->appendCol({ModelSud::ColWoche, true, true, 80, new TextDelegate(table)});
+    table->appendCol({ModelSud::ColWoche, true, true, 80, new SudWocheDelegate(table)});
     table->appendCol({ModelSud::ColBewertungMittel, true, true, 80, new RatingDelegate(table)});
     table->appendCol({ModelSud::ColMenge, false, true, 80, new DoubleSpinBoxDelegate(1, table)});
     table->appendCol({ModelSud::ColSW, false, true, 80, new DoubleSpinBoxDelegate(1, table)});

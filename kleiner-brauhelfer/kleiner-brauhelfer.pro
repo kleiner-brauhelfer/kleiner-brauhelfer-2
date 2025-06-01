@@ -24,14 +24,14 @@ CONFIG += c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += warn_on
 
-DESTDIR = $$OUT_PWD/..
+DESTDIR = $$OUT_PWD/../bin
 
-LIBS += -L$$OUT_PWD/../ -lkleiner-brauhelfer-core
+LIBS += -L$$OUT_PWD/../bin/ -lkleiner-brauhelfer-core
 INCLUDEPATH += $$PWD/../kleiner-brauhelfer-core
 DEPENDPATH += $$PWD/../kleiner-brauhelfer-core
 DEFINES += KLEINERBRAUHELFERCORE_LIBRARY_STATIC
-win32: PRE_TARGETDEPS += $$OUT_PWD/../kleiner-brauhelfer-core.lib
-unix: PRE_TARGETDEPS += $$OUT_PWD/../libkleiner-brauhelfer-core.a
+win32: PRE_TARGETDEPS += $$OUT_PWD/../bin/kleiner-brauhelfer-core.lib
+unix: PRE_TARGETDEPS += $$OUT_PWD/../bin/libkleiner-brauhelfer-core.a
 
 SOURCES += \
     main.cpp \

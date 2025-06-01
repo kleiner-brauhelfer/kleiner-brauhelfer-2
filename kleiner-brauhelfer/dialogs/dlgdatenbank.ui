@@ -14,8 +14,7 @@
    <string>Datenbank</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../images.qrc">
-    <normaloff>:/images/light/datenbank.svg</normaloff>:/images/light/datenbank.svg</iconset>
+   <iconset theme="datenbank"/>
   </property>
   <property name="sizeGripEnabled">
    <bool>true</bool>

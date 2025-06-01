@@ -86,15 +86,15 @@ img.nichtgefunden {
 }
 
 img.glas {
-  content:url("qrc:/images/light/bier.svg");
+  content:url("qrc:/images/icons/light/svg/bier.svg");
 }
 
 img.star {
-  content:url("qrc:/images/star.svg");
+  content:url("qrc:/images/icons/light/svg/star.svg");
 }
 
 img.star_grey {
-  content:url("qrc:/images/light/star_gr.svg");
+  content:url("qrc:/images/icons/light/svg/star_gr.svg");
 }
 
 .version {

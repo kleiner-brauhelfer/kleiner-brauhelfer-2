@@ -14,8 +14,7 @@
    <string>Brauübersicht</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../images.qrc">
-    <normaloff>:/images/light/actionbrauuebersicht.svg</normaloff>:/images/light/actionbrauuebersicht.svg</iconset>
+   <iconset theme="actionbrauuebersicht"/>
   </property>
   <property name="sizeGripEnabled">
    <bool>true</bool>
@@ -25,12 +24,8 @@
     <layout class="QHBoxLayout" name="horizontalLayoutFilter">
      <item>
       <widget class="FilterButtonSud" name="btnFilter">
-       <property name="whatsThis">
-        <string>filter</string>
-       </property>
        <property name="icon">
-        <iconset resource="../images.qrc">
-         <normaloff>:/images/light/filter.svg</normaloff>:/images/light/filter.svg</iconset>
+        <iconset theme="filter"/>
        </property>
       </widget>
      </item>

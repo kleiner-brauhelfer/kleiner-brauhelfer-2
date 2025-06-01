@@ -8,7 +8,7 @@
    version="1.1"
    id="svg716"
    inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
-   sodipodi:docname="filter.svg"
+   sodipodi:docname="se.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -26,13 +26,13 @@
      showgrid="true"
      showborder="false"
      inkscape:zoom="14.638496"
-     inkscape:cx="19.776622"
-     inkscape:cy="24.968412"
-     inkscape:window-width="1918"
-     inkscape:window-height="2054"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
+     inkscape:cx="-6.1823291"
+     inkscape:cy="25.207508"
+     inkscape:window-width="3840"
+     inkscape:window-height="2066"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
      inkscape:current-layer="layer1">
     <inkscape:grid
        type="xygrid"
@@ -48,13 +48,13 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:none;stroke:#808080;stroke-width:1.32292;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-       d="M 1.2236983,2.1166666 H 15.569075 v 3.1554309 l -4.985742,5.3112355 0,4.233333 -4.2333332,1.455207 v -5.68854 L 1.2236983,5.2720975 Z"
-       id="path1661"
-       sodipodi:nodetypes="ccccccccc" />
-    <path
-       style="fill:#808080;fill-opacity:1;stroke-width:1.32292;stroke-linecap:round;stroke-linejoin:round"
-       d="M 4.2333333,4.2333333 8.4666666,8.4666666 12.7,4.2333333 H 4.2333333"
-       id="path2453" />
+       style="fill:#4173cd;stroke-width:0.0250212"
+       d="M 15.665166,2.1166696 H 1.2681654 C 0.56776054,2.1166696 0,2.7666032 0,3.5683938 v 9.7965472 c 0,0.80175 0.56776054,1.451726 1.2681654,1.451726 H 15.665166 c 0.700371,0 1.268166,-0.649935 1.268166,-1.451726 V 3.5683938 c 0,-0.8017906 -0.56776,-1.4517242 -1.268166,-1.4517242 z"
+       id="path147876" />
+    <polygon
+       style="fill:#ffe15a;stroke-width:0.707107"
+       points="158.897,229.516 0,229.516 0,282.482 158.897,282.482 158.897,423.724 211.862,423.724 211.862,282.482 512,282.482 512,229.516 211.862,229.516 211.862,88.275 158.897,88.275 "
+       id="polygon147878"
+       transform="matrix(0.03307292,0,0,0.03785958,0,-1.2253882)" />
   </g>
 </svg>

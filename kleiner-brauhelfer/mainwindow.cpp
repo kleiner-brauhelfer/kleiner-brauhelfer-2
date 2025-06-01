@@ -23,7 +23,6 @@
 #include "dialogs/dlgrohstoffe.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 #include "dialogs/dlghilfe.h"
-#include "widgets/iconthemed.h"
 #include "widgets/widgetdecorator.h"
 
 extern Brauhelfer* bh;
@@ -49,47 +48,17 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    Qt::ColorScheme theme = gSettings->theme();
+    QIcon::setThemeSearchPaths({":/images/icons"});
+    initTheme(theme);
+
     initLabels();
     ui->setupUi(this);
     qApp->installEventFilter(this);
 
-    Qt::ColorScheme theme = gSettings->theme();
+    connect(gSettings, &Settings::themeChanged, this, &MainWindow::themeChanged);
     ui->actionThemeHell->setEnabled(theme != Qt::ColorScheme::Light);
     ui->actionThemeDunkel->setEnabled(theme != Qt::ColorScheme::Dark);
-    if (theme == Qt::ColorScheme::Dark)
-    {
-        ui->tabMain->setTabIcon(0, IconThemed(QStringLiteral("tabsudauswahl"), false));
-        ui->tabMain->setTabIcon(1, IconThemed(QStringLiteral("tabrezept"), false));
-        ui->tabMain->setTabIcon(2, IconThemed(QStringLiteral("tabbraudaten"), false));
-        ui->tabMain->setTabIcon(3, IconThemed(QStringLiteral("tababfuellen"), false));
-        ui->tabMain->setTabIcon(4, IconThemed(QStringLiteral("tabgaerverlauf"), false));
-        ui->tabMain->setTabIcon(5, IconThemed(QStringLiteral("tabzusammenfassung"), false));
-        ui->tabMain->setTabIcon(6, IconThemed(QStringLiteral("tabetikette"), false));
-        ui->tabMain->setTabIcon(7, IconThemed(QStringLiteral("tabbewertung"), false));
-
-        const QList<QAction*> actions = findChildren<QAction*>();
-        for (QAction* action : actions)
-        {
-            QString name = action->whatsThis();
-            QIcon icon = action->icon();
-            if (!icon.isNull() && !name.isEmpty())
-            {
-                icon.addFile(QStringLiteral(":/images/dark/%1.svg").arg(name));
-                action->setIcon(icon);
-            }
-        }
-        const QList<QAbstractButton*> buttons = findChildren<QAbstractButton*>();
-        for (QAbstractButton* button : buttons)
-        {
-            QString name = button->whatsThis();
-            QIcon icon = button->icon();
-            if (!icon.isNull() && !name.isEmpty())
-            {
-                icon.addFile(QStringLiteral(":/images/dark/%1.svg").arg(name));
-                button->setIcon(icon);
-            }
-        }
-    }
 
     gUndoStack = new UndoStack(this);
     gUndoStack->setEnabled(gSettings->valueInGroup("General", "UndoEnabled", true).toBool());
@@ -174,6 +143,7 @@ MainWindow::~MainWindow()
 {
     closeDialogs();
     saveSettings();
+    disconnect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
     delete ui;
 }
 
@@ -225,6 +195,18 @@ void MainWindow::focusChanged(QWidget *old, QWidget *now)
         WidgetDecorator::clearValueChanged();
     if (now && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
         ui->tbHelp->setHtml(now->toolTip());
+}
+
+void MainWindow::initTheme(Qt::ColorScheme theme)
+{
+    QString themeName = theme == Qt::ColorScheme::Dark ? "dark" : "light";
+    QIcon::setThemeName(themeName);
+}
+
+void MainWindow::themeChanged(Qt::ColorScheme theme)
+{
+    initTheme(theme);
+    restart();
 }
 
 void MainWindow::restart(int retCode)
@@ -372,7 +354,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, IconThemed(QStringLiteral("tabgaerverlauf"), gSettings->theme() == Qt::ColorScheme::Light), tr("Gärverlauf"));
+                ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, QIcon::fromTheme("tabgaerverlauf"), tr("Gärverlauf"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -385,7 +367,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleAusdruck))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, IconThemed(QStringLiteral("tabzusammenfassung"), gSettings->theme() == Qt::ColorScheme::Light), tr("Ausdruck"));
+                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, QIcon::fromTheme("tabzusammenfassung"), tr("Ausdruck"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -398,7 +380,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleEtikette))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabEtikette, IconThemed(QStringLiteral("tabetikette"), gSettings->theme() == Qt::ColorScheme::Light), tr("Etikett"));
+                ui->tabMain->insertTab(nextIndex, ui->tabEtikette, QIcon::fromTheme("tabetikette"), tr("Etikett"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -411,7 +393,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabBewertung, IconThemed(QStringLiteral("tabbewertung"), gSettings->theme() == Qt::ColorScheme::Light), tr("Bewertung"));
+                ui->tabMain->insertTab(nextIndex, ui->tabBewertung, QIcon::fromTheme("tabbewertung"), tr("Bewertung"));
         }
         else
             ui->tabMain->removeTab(index);
@@ -727,13 +709,11 @@ void MainWindow::on_actionAnsichtWiederherstellen_triggered()
 void MainWindow::on_actionThemeHell_triggered()
 {
     gSettings->setTheme(Qt::ColorScheme::Light);
-    restart();
 }
 
 void MainWindow::on_actionThemeDunkel_triggered()
 {
     gSettings->setTheme(Qt::ColorScheme::Dark);
-    restart();
 }
 
 void MainWindow::changeStyle()

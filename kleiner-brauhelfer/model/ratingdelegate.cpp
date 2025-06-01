@@ -5,7 +5,7 @@ RatingDelegate::RatingDelegate(QObject *parent) :
     QStyledItemDelegate(parent)
 {
     mSize = 16;
-    mPixmap = QIcon(":/images/star.svg").pixmap(QSize(mSize, mSize));
+    mPixmap = QIcon::fromTheme("star").pixmap(QSize(mSize, mSize));
 }
 
 void RatingDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const

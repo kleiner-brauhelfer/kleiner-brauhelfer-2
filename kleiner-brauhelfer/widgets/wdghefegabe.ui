@@ -95,13 +95,8 @@
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hopfensorte eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="whatsThis">
-           <string notr="true">nach_oben</string>
-          </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/light/nach_oben.svg</normaloff>
-            <disabledoff>:/images/disabled/nach_oben.svg</disabledoff>:/images/light/nach_oben.svg</iconset>
+           <iconset theme="nach_oben"/>
           </property>
          </widget>
         </item>
@@ -110,13 +105,8 @@
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hefesorte eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="whatsThis">
-           <string notr="true">nach_unten</string>
-          </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/light/nach_unten.svg</normaloff>
-            <disabledoff>:/images/disabled/nach_unten.svg</disabledoff>:/images/light/nach_unten.svg</iconset>
+           <iconset theme="nach_unten"/>
           </property>
          </widget>
         </item>
@@ -126,8 +116,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hefesorte aus der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Wurden Hefegaben auf den Sud zeitlich aufgeteilt und werden während der Gärung nicht berücksichtigt, ist darauf zu achten, dass die Zahl der &lt;span style=&quot; font-weight:600;&quot;&gt;Hefezellzahl&lt;/span&gt; nicht unter die &lt;span style=&quot; font-weight:600;&quot;&gt;Mindestanforderung&lt;/span&gt; rutscht.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Im Einzelnen muss man genauer hinschauen, denn Biere haben bis Faktor 3 einen unterschiedlichen Bedarf an &lt;span style=&quot; font-weight:600;&quot;&gt;Hefemengen&lt;/span&gt;, sprich bis zu 3 Päckchen für einen Kleinsud oder entsprechend der Bedarf für eine größere Sudmenge:&lt;/p&gt;&lt;p&gt;• Ale (obergärig, &amp;lt; 16°P): 0,75&lt;/p&gt;&lt;p&gt;• Strong Ale (obergärig, &amp;gt; 16°P): 1,00&lt;/p&gt;&lt;p&gt;• Lager (untergärig, &amp;lt; 16°P): 1,50&lt;/p&gt;&lt;p&gt;• Strong Lager (untergärig, &amp;gt; 16°P): 2,00&lt;/p&gt;&lt;p&gt;Wird dies nicht berücksichtigt, besteht die Gefahr des sogenanten &lt;span style=&quot; font-weight:600;&quot;&gt;Underpitching. &lt;/span&gt;Darunter versteht man Hefe, die Fehlaromen produzieren kann, weil sie zu die zu wenig Nahrung bekommt. Im gewissen Sinn reagiert sie &amp;quot;panisch&amp;quot;. In geringerem Maße trifft die auch beim &lt;span style=&quot; font-weight:600;&quot;&gt;Over-Pitching&lt;/span&gt; zu, wenn zu viel Hefezellen dem Sud zugesetzt sind.&lt;/p&gt;&lt;p&gt;Viele Seiten für Hefestarter (engl.: yeast starter) berechnen die benötigte Zellmenge. Für den Brauer reicht das meistens aus und erspart das Labor mit Mikroskop unf Zählkammer. Da diese Seiten alle die amerikanische Stammwürze als Grundlage haben, muss vorher Specific Gravity (SG) in °Plato umgerechnet werden.&lt;/p&gt;&lt;p&gt;Ein sehr guter Heferechner findet sich &lt;a href=&quot;https://www.brewuk.co.uk/yeast_pitch_calculator&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;hier&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Eine Umrechnungstabelle Gravity zu °Plato findet sich &lt;a href=&quot;https://hobbybrauer.de/forum/wiki/doku.php/konvertierung_sg_plato&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;hier&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
+           <iconset theme="close_button"/>
           </property>
          </widget>
         </item>
@@ -259,13 +248,8 @@
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene Menge &lt;/span&gt;eines Hefevorrates aus dem Rohstofflager im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe &lt;/span&gt;übernommen.&lt;/p&gt;&lt;p&gt;Diese Funktion macht bei Restmengen im Rohstofflager Sinn, wenn mehrere Packungen für einen Sud erforderlich sind oder bei Großssuden.&lt;/p&gt;&lt;p&gt;Die Packungen von Trocken- wie Flüssighefe sind überwiegend für Sude von 20 Litern (5,5 Gallonen) konfektioniert.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="whatsThis">
-           <string notr="true">uebertrag_links</string>
-          </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/light/uebertrag_links.svg</normaloff>
-            <disabledoff>:/images/disabled/uebertrag_links.svg</disabledoff>:/images/light/uebertrag_links.svg</iconset>
+           <iconset theme="uebertrag_links"/>
           </property>
          </widget>
         </item>

@@ -151,13 +151,8 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird das bearbeitete &lt;span style=&quot; font-weight:600;&quot;&gt;Template gespeichert&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
-           <property name="whatsThis">
-            <string notr="true">save</string>
-           </property>
            <property name="icon">
-            <iconset resource="../images.qrc">
-             <normaloff>:/images/light/save.svg</normaloff>
-             <disabledoff>:/images/disabled/save.svg</disabledoff>:/images/light/save.svg</iconset>
+            <iconset theme="save"/>
            </property>
           </widget>
          </item>
@@ -172,13 +167,8 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Originaltemplate wiederhergestellt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Alle vorhergehenden Änderungen gehen dabei verloren.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
-           <property name="whatsThis">
-            <string notr="true">restore</string>
-           </property>
            <property name="icon">
-            <iconset resource="../images.qrc">
-             <normaloff>:/images/light/restore.svg</normaloff>
-             <disabledoff>:/images/disabled/restore.svg</disabledoff>:/images/light/restore.svg</iconset>
+            <iconset theme="restore"/>
            </property>
           </widget>
          </item>
@@ -193,13 +183,8 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Ausgabe des Spickzettels &lt;span style=&quot; font-weight:600;&quot;&gt;ausgedruckt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Handelt es sich um ein gebrautes Rezept, heißt der Spickzettel &lt;span style=&quot; font-weight:600;&quot;&gt;Zusammenfassung&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
-           <property name="whatsThis">
-            <string notr="true">print</string>
-           </property>
            <property name="icon">
-            <iconset resource="../images.qrc">
-             <normaloff>:/images/light/print.svg</normaloff>
-             <disabledoff>:/images/disabled/print.svg</disabledoff>:/images/light/print.svg</iconset>
+            <iconset theme="print"/>
            </property>
           </widget>
          </item>
@@ -214,13 +199,8 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die Ausgabe des Spickzettels als &lt;span style=&quot; font-weight:600;&quot;&gt;PDF&lt;/span&gt; abgespeichert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Handelt es sich um ein gebrautes Rezept, heißt der Spickzettel &lt;span style=&quot; font-weight:600;&quot;&gt;Zusammenfassung&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
-           <property name="whatsThis">
-            <string notr="true">pdf</string>
-           </property>
            <property name="icon">
-            <iconset resource="../images.qrc">
-             <normaloff>:/images/light/pdf.svg</normaloff>
-             <disabledoff>:/images/disabled/pdf.svg</disabledoff>:/images/light/pdf.svg</iconset>
+            <iconset theme="pdf"/>
            </property>
           </widget>
          </item>
@@ -235,13 +215,8 @@
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im &lt;span style=&quot; font-weight:600;&quot;&gt;Editiermodus&lt;/span&gt; kann das HTML- und CSS-Template nach eigenen Vorlieben und in wesentlichen Teilen selbst gestaltet werden.&lt;/p&gt;&lt;p&gt;Etwas Erfahrung in CSS und HTML wird vorausgesetzt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
-           <property name="whatsThis">
-            <string notr="true">edit</string>
-           </property>
            <property name="icon">
-            <iconset resource="../images.qrc">
-             <normaloff>:/images/light/edit.svg</normaloff>
-             <disabledoff>:/images/disabled/edit.svg</disabledoff>:/images/light/edit.svg</iconset>
+            <iconset theme="edit"/>
            </property>
            <property name="checkable">
             <bool>true</bool>

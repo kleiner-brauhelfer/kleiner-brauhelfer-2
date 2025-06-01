@@ -62,8 +62,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine komplette Bewertung&lt;span style=&quot; font-weight:600;&quot;&gt; gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Dies hat keine Auswirkung auf die Markeriung als Sud abgefüllt oder verbraucht.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
+           <iconset theme="close_button"/>
           </property>
          </widget>
         </item>

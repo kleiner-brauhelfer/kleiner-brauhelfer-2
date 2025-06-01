@@ -86,13 +86,8 @@
           <property name="toolTip">
            <string>Hiermit wird eine neue Kategorie angelegt. Dazu erscheint ein eigenes Pop-up-Fenster.</string>
           </property>
-          <property name="whatsThis">
-           <string notr="true">plus</string>
-          </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/light/plus.svg</normaloff>
-            <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+           <iconset theme="plus"/>
           </property>
          </widget>
         </item>
@@ -113,13 +108,8 @@
           <property name="toolTip">
            <string>Hiermit wird eine neue Kategorie entfernt. Eine oder mehrere Kategorien müssen dazu markiert sein.</string>
           </property>
-          <property name="whatsThis">
-           <string notr="true">minus</string>
-          </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/light/minus.svg</normaloff>
-            <disabledoff>:/images/disabled/minus.svg</disabledoff>:/images/light/minus.svg</iconset>
+           <iconset theme="minus"/>
           </property>
          </widget>
         </item>
@@ -140,13 +130,8 @@
           <property name="toolTip">
            <string>Hiermit wird eine Kategorie nach oben verschoben.</string>
           </property>
-          <property name="whatsThis">
-           <string notr="true">nach_oben</string>
-          </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/light/nach_oben.svg</normaloff>
-            <disabledoff>:/images/disabled/nach_oben.svg</disabledoff>:/images/light/nach_oben.svg</iconset>
+           <iconset theme="nach_oben"/>
           </property>
          </widget>
         </item>
@@ -167,13 +152,8 @@
           <property name="toolTip">
            <string>Hiermit wird eine Kategorie nach unten verschoben.</string>
           </property>
-          <property name="whatsThis">
-           <string notr="true">nach_unten</string>
-          </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/light/nach_unten.svg</normaloff>
-            <disabledoff>:/images/disabled/nach_unten.svg</disabledoff>:/images/light/nach_unten.svg</iconset>
+           <iconset theme="nach_unten"/>
           </property>
          </widget>
         </item>

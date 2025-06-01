@@ -24,20 +24,6 @@ DlgTableView::DlgTableView(SqlTableModel *model, const QList<TableView::ColumnDe
     mDefaultValues(defaultValues)
 {
     ui->setupUi(this);
-    if (gSettings->theme() == Qt::ColorScheme::Dark)
-    {
-        const QList<QAbstractButton*> buttons = findChildren<QAbstractButton*>();
-        for (QAbstractButton* button : buttons)
-        {
-            QString name = button->whatsThis();
-            QIcon icon = button->icon();
-            if (!icon.isNull() && !name.isEmpty())
-            {
-                icon.addFile(QStringLiteral(":/images/dark/%1.svg").arg(name));
-                button->setIcon(icon);
-            }
-        }
-    }
 
     ProxyModel* proxy = new ProxyModel(this);
     proxy->setFilterKeyColumn(filterColumn);

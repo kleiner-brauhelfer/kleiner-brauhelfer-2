@@ -44,20 +44,6 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     mRow(0)
 {
     ui->setupUi(this);
-    if (gSettings->theme() == Qt::ColorScheme::Dark)
-    {
-        const QList<QAbstractButton*> buttons = findChildren<QAbstractButton*>();
-        for (QAbstractButton* button : buttons)
-        {
-            QString name = button->whatsThis();
-            QIcon icon = button->icon();
-            if (!icon.isNull() && !name.isEmpty())
-            {
-                icon.addFile(QStringLiteral(":/images/dark/%1.svg").arg(name));
-                button->setIcon(icon);
-            }
-        }
-    }
     for (const auto& type : qAsConst(Typname))
         ui->cbTyp->addItem(type.first, type.second);
     ui->lblCurrency->setText(QLocale().currencySymbol());

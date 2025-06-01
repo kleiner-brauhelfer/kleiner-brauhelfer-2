@@ -105,13 +105,8 @@
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Rast&lt;/span&gt; eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="whatsThis">
-           <string notr="true">nach_oben</string>
-          </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/light/nach_oben.svg</normaloff>
-            <disabledoff>:/images/disabled/nach_oben.svg</disabledoff>:/images/light/nach_oben.svg</iconset>
+           <iconset theme="nach_oben"/>
           </property>
          </widget>
         </item>
@@ -120,13 +115,8 @@
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Rast&lt;/span&gt; eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="whatsThis">
-           <string notr="true">nach_unten</string>
-          </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/light/nach_unten.svg</normaloff>
-            <disabledoff>:/images/disabled/nach_unten.svg</disabledoff>:/images/light/nach_unten.svg</iconset>
+           <iconset theme="nach_unten"/>
           </property>
          </widget>
         </item>
@@ -136,8 +126,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Rast&lt;/span&gt; aus der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Es ist immer darauf zu achten, ob mit den verbleibenden Raststufen die gewünschte Verzuckerung erreicht wird.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
+           <iconset theme="close_button"/>
           </property>
          </widget>
         </item>

@@ -92,13 +92,8 @@
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hopfensorte eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;oben&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="whatsThis">
-           <string notr="true">nach_oben</string>
-          </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/light/nach_oben.svg</normaloff>
-            <disabledoff>:/images/disabled/nach_oben.svg</disabledoff>:/images/light/nach_oben.svg</iconset>
+           <iconset theme="nach_oben"/>
           </property>
          </widget>
         </item>
@@ -107,13 +102,8 @@
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hopfensorte eine Position &lt;span style=&quot; font-weight:600;&quot;&gt;nach&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;unten&lt;/span&gt; verschoben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="whatsThis">
-           <string notr="true">nach_unten</string>
-          </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/light/nach_unten.svg</normaloff>
-            <disabledoff>:/images/disabled/nach_unten.svg</disabledoff>:/images/light/nach_unten.svg</iconset>
+           <iconset theme="nach_unten"/>
           </property>
          </widget>
         </item>
@@ -123,8 +113,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine Hopfengabe aus der Liste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Sollte ein andere Hopfensorte an die Stelle der Gabe treten, ist es zeitsparender die Hopfensorte einfach über die Rohstoffliste auszutauschen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/close_button.svg</normaloff>:/images/close_button.svg</iconset>
+           <iconset theme="close_button"/>
           </property>
          </widget>
         </item>
@@ -458,13 +447,8 @@
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird die gesamte &lt;span style=&quot; font-weight:600;&quot;&gt;vorhandene&lt;/span&gt; Menge einer Hopfensorte übernommen.&lt;/p&gt;&lt;p&gt;Diese Funktion macht überwiegend nur bei Restbeständen Sinn. Ein beliebter Anwendungsfall ist in der Rezeptentwicklung, wenn Reste verwertet werden wollen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Achtung: &lt;/span&gt;Handwerklichgute Craftbiere nutzen Hopfenkombinationen zur richtigen Zeit, um dem Bierstil den nötigen Charakter zu verleihen.Hopfenschemata sind eines der kreativsten Felder in der Rezeptentwicklung, nicht jeder Hopfen harmoniert mit jedem Hopfen, nicht jeder Hopfenaroma schmeckt zu jeder Zeit gleich. Fachforen wie die &lt;a href=&quot;https://hobbybrauer.de/forum/viewforum.php?f=17&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Rezepteabteilung &lt;/span&gt;&lt;/a&gt;bei &lt;span style=&quot; font-weight:600;&quot;&gt;Hobbybrauer.de&lt;/span&gt; sind gerade bei den ersten Schritten in der Rezepteentwicklung eine große Hilfe. In anderen Ländern existieren ähnliche Fachbereiche auf Brauer-Sites.&lt;/p&gt;&lt;p&gt;Empfohlene &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfenschemata&lt;/span&gt; nach &lt;span style=&quot; font-weight:600;&quot;&gt;Jan Brücklmeier:Bier brauen&lt;/span&gt;, 2018, Ulmer Verlag:&lt;/p&gt;&lt;p&gt;Beispiel: 60:40:0 = 60% Kochbeginn, 40% Kochmitte 0% Kochende&lt;/p&gt;&lt;p&gt;Weißbier &amp;lt; 25 IBU, geringe Bittere, geringes Hopfenaroma &lt;span style=&quot; font-weight:600;&quot;&gt;100&lt;/span&gt;&lt;/p&gt;&lt;p&gt;American Lager &amp;lt; 25 IBU, geringe Bittere, dezentesHopfenaroma &lt;span style=&quot; font-weight:600;&quot;&gt;60:40&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Deutsches Pils &amp;lt; 40 IBU,betonte Bittere, dezentes Hopfenaroma &lt;span style=&quot; font-weight:600;&quot;&gt;80:20&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Bömisches Pilsener &amp;lt; 28 IBU, geringe Bittere, feines Hopfenaroma&lt;span style=&quot; font-weight:600;&quot;&gt; 70-80:20-30&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Pale Ale &amp;lt; 40 IBU, kräftige Bittere, betontes Hopfenaroma &lt;span style=&quot; font-weight:600;&quot;&gt;50:30:20&lt;/span&gt;&lt;/p&gt;&lt;p&gt;India Pale Ale &amp;lt; 70 IBU, hohe Bittere, sehr betontes Hopfenaroma &lt;span style=&quot; font-weight:600;&quot;&gt;10:20:70 &lt;/span&gt;/&lt;span style=&quot; font-weight:600;&quot;&gt; VWH* 40:0:60&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Imperial Pale Ale &amp;gt; 50 IBU, ausgeprägte Bittere, dominantes Hopfenaroma &lt;span style=&quot; font-weight:600;&quot;&gt; 25:0:75 / VWH* 20:0:30:50**&lt;/span&gt;&lt;/p&gt;&lt;p&gt;* Vorderwürzehopfung&lt;/p&gt;&lt;p&gt;** 2x Kochende, 15 min und 10 min&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
-          <property name="whatsThis">
-           <string notr="true">uebertrag_links</string>
-          </property>
           <property name="icon">
-           <iconset resource="../images.qrc">
-            <normaloff>:/images/light/uebertrag_links.svg</normaloff>
-            <disabledoff>:/images/disabled/uebertrag_links.svg</disabledoff>:/images/light/uebertrag_links.svg</iconset>
+           <iconset theme="uebertrag_links"/>
           </property>
          </widget>
         </item>

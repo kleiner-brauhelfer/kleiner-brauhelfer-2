@@ -18,12 +18,8 @@
     <layout class="QHBoxLayout" name="horizontalLayoutFilter">
      <item>
       <widget class="FilterButtonSud" name="btnFilter">
-       <property name="whatsThis">
-        <string>filter</string>
-       </property>
        <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/filter.svg</normaloff>:/images/light/filter.svg</iconset>
+        <iconset theme="filter"/>
        </property>
       </widget>
      </item>
@@ -102,16 +98,11 @@
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer &lt;/span&gt;Sud angelegt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Aus Gründen der Konsistenz der Datenbank ist es ratsam Namensgleichheiten zu vermeiden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
-       <property name="whatsThis">
-        <string notr="true">sud_neu</string>
-       </property>
        <property name="text">
         <string>Anlegen</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/sud_neu.svg</normaloff>
-         <disabledoff>:/images/disabled/sud_neu.svg</disabledoff>:/images/light/sud_neu.svg</iconset>
+        <iconset theme="sud_neu"/>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -129,16 +120,11 @@
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Kopie&lt;/span&gt; aller ausgewählten Sude erstellt. An den Sudnamen angehängt wird immer das Suffix &amp;quot;Kopie&amp;quot;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
-       <property name="whatsThis">
-        <string notr="true">sud_kopie</string>
-       </property>
        <property name="text">
         <string>Kopieren</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/sud_kopie.svg</normaloff>
-         <disabledoff>:/images/disabled/sud_kopie.svg</disabledoff>:/images/light/sud_kopie.svg</iconset>
+        <iconset theme="sud_kopie"/>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -156,16 +142,11 @@
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
-       <property name="whatsThis">
-        <string notr="true">sud_loeschen</string>
-       </property>
        <property name="text">
         <string>Löschen</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/sud_loeschen.svg</normaloff>
-         <disabledoff>:/images/disabled/sud_loeschen.svg</disabledoff>:/images/light/sud_loeschen.svg</iconset>
+        <iconset theme="sud_loeschen"/>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -190,16 +171,11 @@
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein Rezept aus einem anderen Format &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Import überprüft und gegebenenfalls nachkorrigiert werden. Der Kleine Brauhelfer verarbeitet die Formate json und xml.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
-       <property name="whatsThis">
-        <string notr="true">sud_import</string>
-       </property>
        <property name="text">
         <string>Importieren</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/sud_import.svg</normaloff>
-         <disabledoff>:/images/disabled/sud_import.svg</disabledoff>:/images/light/sud_import.svg</iconset>
+        <iconset theme="sud_import"/>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -217,16 +193,11 @@
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werde alle ausgewählten Rezepte/Sude in ein anderes Format &lt;span style=&quot; font-weight:600;&quot;&gt;exportiert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Da die Formate nicht 100% kompatibel sind, sollte das Rezept nach dem Export überprüft und gegebenenfalls nachkorrigiert werden. Der Kleine Brauhelfer verarbeitet die Formate json und xml.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
-       <property name="whatsThis">
-        <string notr="true">sud_export</string>
-       </property>
        <property name="text">
         <string>Exportieren</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/sud_export.svg</normaloff>
-         <disabledoff>:/images/disabled/sud_export.svg</disabledoff>:/images/light/sud_export.svg</iconset>
+        <iconset theme="sud_export"/>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -251,16 +222,11 @@
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude &lt;span style=&quot; font-weight:600;&quot;&gt;geteilt&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Diese Funktion ist auch in den &lt;span style=&quot; font-weight:600;&quot;&gt;Tabs Braudaten&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Abfülldaten&lt;/span&gt; vorhanden.&lt;/p&gt;&lt;p&gt;Es gibt viele Anwendungsfälle für einen gteiliten Sud. Diese reichen von unterschiedlichen Gaben bei der Nachgärung, über Aspekte der Hopfung bis hin zum Parti-Gyle-Verfahren oder Notwendigkeiten der Sudanlage. Bei Fragen zu diesem Anwendungsszenarien sind die Fachforen die beste Anlaufstelle.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
-       <property name="whatsThis">
-        <string notr="true">sud_teilen</string>
-       </property>
        <property name="text">
         <string>Teilen</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/sud_teilen.svg</normaloff>
-         <disabledoff>:/images/disabled/sud_teilen.svg</disabledoff>:/images/light/sud_teilen.svg</iconset>
+        <iconset theme="sud_teilen"/>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -285,16 +251,11 @@
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude zur &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste hinzugefügt&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
-       <property name="whatsThis">
-        <string notr="true">sud_merken</string>
-       </property>
        <property name="text">
         <string>Merken</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/sud_merken.svg</normaloff>
-         <disabledoff>:/images/disabled/sud_merken.svg</disabledoff>:/images/light/sud_merken.svg</iconset>
+        <iconset theme="sud_merken"/>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -312,16 +273,11 @@
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle ausgewählten Sude aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Merkliste gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
-       <property name="whatsThis">
-        <string notr="true">sud_vergessen</string>
-       </property>
        <property name="text">
         <string>Vergessen</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/sud_vergessen.svg</normaloff>
-         <disabledoff>:/images/disabled/sud_vergessen.svg</disabledoff>:/images/light/sud_vergessen.svg</iconset>
+        <iconset theme="sud_vergessen"/>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -346,16 +302,11 @@
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der ausgewählte Sud &lt;span style=&quot; font-weight:600;&quot;&gt;geladen&lt;/span&gt;. Es öffnet sich eine Maske, bei der auf das Dateiformat zu achten ist. Ein Sud kann auch mit Doppelklick geladen werden.&lt;/p&gt;&lt;p&gt;Hiermit springt man automatisch in den &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
-       <property name="whatsThis">
-        <string notr="true">sud_laden</string>
-       </property>
        <property name="text">
         <string>Laden</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
-         <normaloff>:/images/light/sud_laden.svg</normaloff>
-         <disabledoff>:/images/disabled/sud_laden.svg</disabledoff>:/images/light/sud_laden.svg</iconset>
+        <iconset theme="sud_laden"/>
        </property>
        <property name="toolButtonStyle">
         <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -402,8 +353,6 @@
   <tabstop>tbFilter</tabstop>
   <tabstop>table</tabstop>
  </tabstops>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

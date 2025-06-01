@@ -10,11 +10,8 @@ WdgRating::WdgRating(QWidget *parent) :
     mReadOnly(false)
 {    
     ui->setupUi(this);
-    mPixmapStar = QIcon(":/images/star.svg").pixmap(ui->btnStar1->size());
-    if (gSettings->theme() == Qt::ColorScheme::Dark)
-        mPixmapNoStar = QIcon(":/images/dark/star_gr.svg").pixmap(ui->btnStar1->size());
-    else
-        mPixmapNoStar = QIcon(":/images/light/star_gr.svg").pixmap(ui->btnStar1->size());
+    mPixmapStar = QIcon::fromTheme("star").pixmap(ui->btnStar1->size());
+    mPixmapNoStar = QIcon::fromTheme("star_gr").pixmap(ui->btnStar1->size());
     setSterne(0);
 }
 

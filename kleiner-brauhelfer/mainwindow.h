@@ -36,6 +36,7 @@ public slots:
 
 private slots:
     void focusChanged(QWidget *old, QWidget *now);
+    void themeChanged(Qt::ColorScheme theme);
     void databaseModified();
     void updateTabs(Settings::Modules modules);
     void updateValues();
@@ -95,6 +96,7 @@ private:
     void closeDialogs();
     void checkForUpdate(bool force);
     void initLabels();
+    void initTheme(Qt::ColorScheme theme);
     void checkLoadedSud();
 
 private:

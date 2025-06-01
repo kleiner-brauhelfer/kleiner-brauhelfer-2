@@ -56,9 +56,7 @@
            </property>
            <widget class="TabSudAuswahl" name="tabSudAuswahl">
             <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabsudauswahl.svg</normaloff>
-              <disabledoff>:/images/disabled/tabsudauswahl.svg</disabledoff>:/images/light/tabsudauswahl.svg</iconset>
+             <iconset theme="tabsudauswahl"/>
             </attribute>
             <attribute name="title">
              <string>Sudauswahl</string>
@@ -66,9 +64,7 @@
            </widget>
            <widget class="TabRezept" name="tabRezept">
             <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabrezept.svg</normaloff>
-              <disabledoff>:/images/disabled/tabrezept.svg</disabledoff>:/images/light/tabrezept.svg</iconset>
+             <iconset theme="tabrezept"/>
             </attribute>
             <attribute name="title">
              <string>Rezept</string>
@@ -76,9 +72,7 @@
            </widget>
            <widget class="TabBraudaten" name="tabBraudaten">
             <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabbraudaten.svg</normaloff>
-              <disabledoff>:/images/disabled/tabbraudaten.svg</disabledoff>:/images/light/tabbraudaten.svg</iconset>
+             <iconset theme="tabbraudaten"/>
             </attribute>
             <attribute name="title">
              <string>Braudaten</string>
@@ -86,9 +80,7 @@
            </widget>
            <widget class="TabAbfuellen" name="tabAbfuelldaten">
             <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tababfuellen.svg</normaloff>
-              <disabledoff>:/images/disabled/tababfuellen.svg</disabledoff>:/images/light/tababfuellen.svg</iconset>
+             <iconset theme="tababfuellen"/>
             </attribute>
             <attribute name="title">
              <string>Abfülldaten</string>
@@ -96,9 +88,7 @@
            </widget>
            <widget class="TabGaerverlauf" name="tabGaerverlauf">
             <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabgaerverlauf.svg</normaloff>
-              <disabledoff>:/images/disabled/tabgaerverlauf.svg</disabledoff>:/images/light/tabgaerverlauf.svg</iconset>
+             <iconset theme="tabgaerverlauf"/>
             </attribute>
             <attribute name="title">
              <string>Gärverlauf</string>
@@ -106,9 +96,7 @@
            </widget>
            <widget class="TabZusammenfassung" name="tabZusammenfassung">
             <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabzusammenfassung.svg</normaloff>
-              <disabledoff>:/images/disabled/tabzusammenfassung.svg</disabledoff>:/images/light/tabzusammenfassung.svg</iconset>
+             <iconset theme="tabzusammenfassung"/>
             </attribute>
             <attribute name="title">
              <string>Ausdruck</string>
@@ -116,9 +104,7 @@
            </widget>
            <widget class="TabEtikette" name="tabEtikette">
             <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabetikette.svg</normaloff>
-              <disabledoff>:/images/disabled/tabetikette.svg</disabledoff>:/images/light/tabetikette.svg</iconset>
+             <iconset theme="tabetikette"/>
             </attribute>
             <attribute name="title">
              <string>Etikett</string>
@@ -126,9 +112,7 @@
            </widget>
            <widget class="TabBewertung" name="tabBewertung">
             <attribute name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/tabbewertung.svg</normaloff>
-              <disabledoff>:/images/disabled/tabbewertung.svg</disabledoff>:/images/light/tabbewertung.svg</iconset>
+             <iconset theme="tabbewertung"/>
             </attribute>
             <attribute name="title">
              <string>Bewertung</string>
@@ -294,15 +278,10 @@
   </widget>
   <action name="actionSpeichern">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/save.svg</normaloff>
-     <disabledoff>:/images/disabled/save.svg</disabledoff>:/images/light/save.svg</iconset>
+    <iconset theme="save"/>
    </property>
    <property name="text">
     <string>Speichern</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">save</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
@@ -310,15 +289,10 @@
   </action>
   <action name="actionVerwerfen">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/restore.svg</normaloff>
-     <disabledoff>:/images/disabled/restore.svg</disabledoff>:/images/light/restore.svg</iconset>
+    <iconset theme="restore"/>
    </property>
    <property name="text">
     <string>Änderungen verwerfen</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">restore</string>
    </property>
   </action>
   <action name="actionAnsichtWiederherstellen">
@@ -447,15 +421,10 @@
   </action>
   <action name="actionNeuen_Sud_anlegen">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/sud_neu.svg</normaloff>
-     <disabledoff>:/images/disabled/sud_neu.svg</disabledoff>:/images/light/sud_neu.svg</iconset>
+    <iconset theme="sud_neu"/>
    </property>
    <property name="text">
     <string>Neuen Sud anlegen</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">sud_neu</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -463,80 +432,50 @@
   </action>
   <action name="actionRezept_importieren">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/sud_import.svg</normaloff>
-     <disabledoff>:/images/disabled/sud_import.svg</disabledoff>:/images/light/sud_import.svg</iconset>
+    <iconset theme="sud_import"/>
    </property>
    <property name="text">
     <string>Rezept importieren</string>
    </property>
-   <property name="whatsThis">
-    <string notr="true">sud_import</string>
-   </property>
   </action>
   <action name="actionRezept_exportieren">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/sud_export.svg</normaloff>
-     <disabledoff>:/images/disabled/sud_export.svg</disabledoff>:/images/light/sud_export.svg</iconset>
+    <iconset theme="sud_export"/>
    </property>
    <property name="text">
     <string>Rezept exportieren</string>
    </property>
-   <property name="whatsThis">
-    <string notr="true">sud_export</string>
-   </property>
   </action>
   <action name="actionSud_kopieren">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/sud_kopie.svg</normaloff>
-     <disabledoff>:/images/disabled/sud_kopie.svg</disabledoff>:/images/light/sud_kopie.svg</iconset>
+    <iconset theme="sud_kopie"/>
    </property>
    <property name="text">
     <string>Sud kopieren</string>
    </property>
-   <property name="whatsThis">
-    <string notr="true">sud_kopie</string>
-   </property>
   </action>
   <action name="actionSud_l_schen">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/sud_loeschen.svg</normaloff>
-     <disabledoff>:/images/disabled/sud_loeschen.svg</disabledoff>:/images/light/sud_loeschen.svg</iconset>
+    <iconset theme="sud_loeschen"/>
    </property>
    <property name="text">
     <string>Sud löschen</string>
    </property>
-   <property name="whatsThis">
-    <string notr="true">sud_loeschen</string>
-   </property>
   </action>
   <action name="actionSud_teilen">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/sud_teilen.svg</normaloff>
-     <disabledoff>:/images/disabled/sud_teilen.svg</disabledoff>:/images/light/sud_teilen.svg</iconset>
+    <iconset theme="sud_teilen"/>
    </property>
    <property name="text">
     <string>Sud teilen</string>
    </property>
-   <property name="whatsThis">
-    <string notr="true">sud_teilen</string>
-   </property>
   </action>
   <action name="actionDruckvorschau">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/print.svg</normaloff>
-     <disabledoff>:/images/disabled/print.svg</disabledoff>:/images/light/print.svg</iconset>
+    <iconset theme="print"/>
    </property>
    <property name="text">
     <string>Drucken</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">print</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+Shift+P</string>
@@ -544,15 +483,10 @@
   </action>
   <action name="actionDrucken">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/pdf.svg</normaloff>
-     <disabledoff>:/images/disabled/pdf.svg</disabledoff>:/images/light/pdf.svg</iconset>
+    <iconset theme="pdf"/>
    </property>
    <property name="text">
     <string>PDF</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">pdf</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+P</string>
@@ -571,8 +505,8 @@
   </action>
   <action name="actionDeutsch">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/de.svg</normaloff>:/images/de.svg</iconset>
+    <iconset>
+     <normaloff>:/images/lang/de.svg</normaloff>:/images/lang/de.svg</iconset>
    </property>
    <property name="text">
     <string>Deutsch</string>
@@ -580,8 +514,8 @@
   </action>
   <action name="actionEnglisch">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/en.svg</normaloff>:/images/en.svg</iconset>
+    <iconset>
+     <normaloff>:/images/lang/en.svg</normaloff>:/images/lang/en.svg</iconset>
    </property>
    <property name="text">
     <string>Englisch</string>
@@ -589,8 +523,8 @@
   </action>
   <action name="actionSchwedisch">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/se.svg</normaloff>:/images/se.svg</iconset>
+    <iconset>
+     <normaloff>:/images/lang/se.svg</normaloff>:/images/lang/se.svg</iconset>
    </property>
    <property name="text">
     <string>Schwedisch</string>
@@ -598,8 +532,8 @@
   </action>
   <action name="actionNiederlaendisch">
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/nl.svg</normaloff>:/images/nl.svg</iconset>
+    <iconset>
+     <normaloff>:/images/lang/nl.svg</normaloff>:/images/lang/nl.svg</iconset>
    </property>
    <property name="text">
     <string>Niederländisch</string>
@@ -642,15 +576,10 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normalon>:/images/light/actionrohstoffe.svg</normalon>
-    </iconset>
+    <iconset theme="actionrohstoffe"/>
    </property>
    <property name="text">
     <string>Rohstoffe</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">actionrohstoffe</string>
    </property>
    <property name="visible">
     <bool>true</bool>
@@ -664,14 +593,10 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/actionbrauuebersicht.svg</normaloff>:/images/light/actionbrauuebersicht.svg</iconset>
+    <iconset theme="actionbrauuebersicht"/>
    </property>
    <property name="text">
     <string>Brauübersicht</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">actionbrauuebersicht</string>
    </property>
    <property name="visible">
     <bool>true</bool>
@@ -685,15 +610,10 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset>
-     <normalon>:/images/light/actionausruestung.svg</normalon>
-    </iconset>
+    <iconset theme="actionausruestung"/>
    </property>
    <property name="text">
     <string>Ausrüstung</string>
-   </property>
-   <property name="whatsThis">
-    <string notr="true">actionausruestung</string>
    </property>
    <property name="visible">
     <bool>true</bool>
@@ -707,8 +627,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="images.qrc">
-     <normaloff>:/images/light/datenbank.svg</normaloff>:/images/light/datenbank.svg</iconset>
+    <iconset theme="datenbank"/>
    </property>
    <property name="text">
     <string>Datenbank</string>
@@ -766,8 +685,6 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

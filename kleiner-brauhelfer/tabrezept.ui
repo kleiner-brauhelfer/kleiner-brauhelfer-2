@@ -695,12 +695,8 @@ p, li { white-space: pre-wrap; }
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Kategorien &lt;/span&gt;angelegt, sortiert und verwaltet.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Kategorien&lt;/span&gt; dienen dazu, Sude unterscheidbar zu machen. Dies macht vor allem Sinn, wenn die Zahl der Sude wächst und Übersicht gefordert ist.&lt;/p&gt;&lt;p&gt;Dem Brauer sein das Vorgehen dabei selbst überlassen. So können die Sude allein &lt;span style=&quot; font-weight:600;&quot;&gt;grob&lt;/span&gt; in unter- oder obergärig unterteilt werden oder &lt;span style=&quot; font-weight:600;&quot;&gt;fein&lt;/span&gt; nach Bierstilen oder &lt;span style=&quot; font-weight:600;&quot;&gt;kreativ außer Kategorie&lt;/span&gt; nach saisonalen Vorlieben wie Geburtstags- oder Weihnachtsbier.&lt;/p&gt;&lt;p&gt;Sehr beliebt sind die &lt;a href=&quot;https://www.bjcp.org/docs/2015_Guidelines_Beer.pdf&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;2015 Style Guidelines&lt;/span&gt;&lt;/a&gt; des amerikanischen Beer Judge Certification Programs (BJCP). Sie klassifizieren und beschreiben weltweit Bierstile und machen sie vergleichbar. Diese ist eine wertvolle Hilfe bei Rezeptdatenbanken wie Maische, Malz und Mehr oder von &lt;a href=&quot;https://www.brewersfriend.com/search/&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brewer's Friend&lt;/span&gt;&lt;/a&gt;, aber auch für Brauer, die an Wettbewerben teilnehmen oder dies beabsichtigen, um den Anforderungen zu entsprechen. Oft gibt es aber auch Wettbewerbe mit einer freien Kategorie, bei denen auch ein Geburtstagsbier zugelassen ist. Näheres erfährt man zeitnah in den Fachforen.&lt;/p&gt;&lt;p&gt;Einträge in diesem Feld haben keine Auswirkungen auf das Rezept.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
-             <property name="whatsThis">
-              <string notr="true">edit</string>
-             </property>
              <property name="icon">
-              <iconset resource="images.qrc">
-               <normaloff>:/images/light/edit.svg</normaloff>:/images/light/edit.svg</iconset>
+              <iconset theme="edit"/>
              </property>
             </widget>
            </item>
@@ -719,12 +715,8 @@ p, li { white-space: pre-wrap; }
                <height>0</height>
               </size>
              </property>
-             <property name="whatsThis">
-              <string notr="true">edit</string>
-             </property>
              <property name="icon">
-              <iconset resource="images.qrc">
-               <normaloff>:/images/light/edit.svg</normaloff>:/images/light/edit.svg</iconset>
+              <iconset theme="edit"/>
              </property>
             </widget>
            </item>
@@ -796,13 +788,8 @@ p, li { white-space: pre-wrap; }
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Im Bereich &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt; können Begriffe für Sortierregeln angelegt werden, um bei späteren Suchen schnell ans Ziel zu kommen.&lt;/p&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Neuer Eintrag &lt;/span&gt;wird ein neuer &lt;span style=&quot; font-weight:600;&quot;&gt;Tag&lt;/span&gt; (Etikett) angelegt. Ein Tag wird mit einem Begriff und einem Wert versehen.&lt;/p&gt;&lt;p&gt;Der Wert kann dabei eine Zahl als auch ein Begriff sein, in dem der Tag gesammelt wird. Ferner wird vermerkt, ob der Tag programmweitt (global) zu finden ist.&lt;/p&gt;&lt;p&gt;Beispiel: Tripel - belgisch - global&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="whatsThis">
-                 <string notr="true">plus</string>
-                </property>
                 <property name="icon">
-                 <iconset resource="images.qrc">
-                  <normaloff>:/images/light/plus.svg</normaloff>
-                  <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+                 <iconset theme="plus"/>
                 </property>
                </widget>
               </item>
@@ -817,12 +804,8 @@ p, li { white-space: pre-wrap; }
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Tag&lt;/span&gt; bequem mit einem Klick aus einem bestehenden Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;übernommen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="whatsThis">
-                 <string notr="true">import</string>
-                </property>
                 <property name="icon">
-                 <iconset resource="images.qrc">
-                  <normaloff>:/images/light/import.svg</normaloff>:/images/light/import.svg</iconset>
+                 <iconset theme="import"/>
                 </property>
                </widget>
               </item>
@@ -837,13 +820,8 @@ p, li { white-space: pre-wrap; }
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Eintrag löschen &lt;/span&gt;werden zuvor ausgewählte oder mehrere markierte &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt; aus der Liste entfernt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
-                <property name="whatsThis">
-                 <string notr="true">minus</string>
-                </property>
                 <property name="icon">
-                 <iconset resource="images.qrc">
-                  <normaloff>:/images/light/minus.svg</normaloff>
-                  <disabledoff>:/images/disabled/minus.svg</disabledoff>:/images/light/minus.svg</iconset>
+                 <iconset theme="minus"/>
                 </property>
                </widget>
               </item>
@@ -952,13 +930,8 @@ p, li { white-space: pre-wrap; }
               <property name="toolTip">
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang hinzufügen&lt;/span&gt; wird eine Quelle mit dem Rezept verknüpft.&lt;/p&gt;&lt;p&gt;Das Feld &lt;span style=&quot; font-weight:600;&quot;&gt;Anhänge&lt;/span&gt; ist ein Freiformfeld für Quellen und Medien aller Art.&lt;/p&gt;&lt;p&gt;Es eignet sich hervorragend als Zettelkasten für die Recherche zum Rezept. Der Kleine Brauhelfer verknüpft lediglich den Pfad, die Datenbestände selbst verbleiben an ihrem ursprünglichen Ort.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
-              <property name="whatsThis">
-               <string notr="true">plus</string>
-              </property>
               <property name="icon">
-               <iconset resource="images.qrc">
-                <normaloff>:/images/light/plus.svg</normaloff>
-                <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+               <iconset theme="plus"/>
               </property>
              </widget>
             </item>
@@ -1163,16 +1136,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Malzgabe&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">plus</string>
-               </property>
                <property name="text">
                 <string>Malz</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>
-                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+                <iconset theme="plus"/>
                </property>
               </widget>
              </item>
@@ -1181,16 +1149,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Malzgaben&lt;/span&gt; aus einem bestehenden Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;übernommen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">import</string>
-               </property>
                <property name="text">
                 <string>Malz</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>
-                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
+                <iconset theme="import"/>
                </property>
               </widget>
              </item>
@@ -1206,16 +1169,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">plus</string>
-               </property>
                <property name="text">
                 <string>Zusatz</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>
-                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+                <iconset theme="plus"/>
                </property>
               </widget>
              </item>
@@ -1224,16 +1182,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zusatzgaben&lt;/span&gt; aus einem bestehenden Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;übernommen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">import</string>
-               </property>
                <property name="text">
                 <string>Zusatz</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>
-                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
+                <iconset theme="import"/>
                </property>
               </widget>
              </item>
@@ -1448,16 +1401,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfensorte&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">plus</string>
-               </property>
                <property name="text">
                 <string>Hopfen</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>
-                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+                <iconset theme="plus"/>
                </property>
               </widget>
              </item>
@@ -1466,16 +1414,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Hopfengaben&lt;/span&gt; aus einem bestehenden Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;übernommen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">import</string>
-               </property>
                <property name="text">
                 <string>Hopfen</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>
-                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
+                <iconset theme="import"/>
                </property>
               </widget>
              </item>
@@ -1491,16 +1434,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Wichtig: &lt;/span&gt;Zusätze werden jetzt auch mit ihrem anteil zur Stammwürze in der Kalkulation berücksichtigt. Dazu muss die Ausbeute in der Rohstoffliste definiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">plus</string>
-               </property>
                <property name="text">
                 <string>Zusatz</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>
-                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+                <iconset theme="plus"/>
                </property>
               </widget>
              </item>
@@ -1509,16 +1447,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zusatzgaben&lt;/span&gt; aus einem bestehenden Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;übernommen&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Wichtig: &lt;/span&gt;Zusätze werden jetzt auch mit ihrem anteil zur Stammwürze in der Kalkulation berücksichtigt. Dazu muss die Ausbeute in der Rohstoffliste definiert sein.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">import</string>
-               </property>
                <property name="text">
                 <string>Zusatz</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>
-                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
+                <iconset theme="import"/>
                </property>
               </widget>
              </item>
@@ -1772,16 +1705,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Hefesorte&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer für die Gärung festgelegt. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">plus</string>
-               </property>
                <property name="text">
                 <string>Hefe</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>
-                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+                <iconset theme="plus"/>
                </property>
               </widget>
              </item>
@@ -1790,16 +1718,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Hefegaben&lt;/span&gt; aus einem bestehenden Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;übernommen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">import</string>
-               </property>
                <property name="text">
                 <string>Hefe</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>
-                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
+                <iconset theme="import"/>
                </property>
               </widget>
              </item>
@@ -1812,16 +1735,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfensorte&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer für die Kalthopfung übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">plus</string>
-               </property>
                <property name="text">
                 <string>Hopfen</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>
-                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+                <iconset theme="plus"/>
                </property>
               </widget>
              </item>
@@ -1830,16 +1748,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Kalthopfengaben&lt;/span&gt; aus einem bestehenden Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;übernommen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">import</string>
-               </property>
                <property name="text">
                 <string>Hopfen</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>
-                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
+                <iconset theme="import"/>
                </property>
               </widget>
              </item>
@@ -1855,16 +1768,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Zusatz&lt;/span&gt; aus der &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffliste &lt;/span&gt;im Kleinen Brauhelfer für die Kalthopfung übernommen. Dazu öffnet sich ein Fenster mit den Einträgen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">plus</string>
-               </property>
                <property name="text">
                 <string>Zusatz</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/plus.svg</normaloff>
-                 <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+                <iconset theme="plus"/>
                </property>
               </widget>
              </item>
@@ -1873,16 +1781,11 @@ p, li { white-space: pre-wrap; }
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zusatzgaben&lt;/span&gt; aus einem bestehenden Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;übernommen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
-               <property name="whatsThis">
-                <string notr="true">import</string>
-               </property>
                <property name="text">
                 <string>Zusatz</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
-                 <normaloff>:/images/light/import.svg</normaloff>
-                 <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
+                <iconset theme="import"/>
                </property>
               </widget>
              </item>
@@ -2084,13 +1987,8 @@ p, li { white-space: pre-wrap; }
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;neue Raststufe&lt;/span&gt; im Kleinen Brauhelfer angelegt.&lt;/p&gt;&lt;p&gt;Dabei muss sich der Brauer zunächst für ein Maischeverfahren entscheiden; derzeit hält der Kleine Brauhelfer drei Maischverfahren vorrätig:&lt;/p&gt;&lt;p&gt;1. &lt;span style=&quot; font-weight:600;&quot;&gt;Aufheizen&lt;/span&gt; (auch bekannt als Kesselmaische, Infusion), bei der die Raststufen mit aufsteigenden Temperaturen gefahren werden&lt;/p&gt;&lt;p&gt;2. &lt;span style=&quot; font-weight:600;&quot;&gt;Zubrühen&lt;/span&gt; (auch bekannt als aufsteigende Infusion oder Bottichmaische), bei der die Raststudufen unter Zugabe von heißem Wasser gefahren werden&lt;/p&gt;&lt;p&gt;3. &lt;span style=&quot; font-weight:600;&quot;&gt;Dekoktion&lt;/span&gt;, bei der mit Entnahme und Zubrühen von Teilmaischen die Raststufen gesteuert werden&lt;/p&gt;&lt;p&gt;4. &lt;span style=&quot; font-weight:600;&quot;&gt;Einmaischen&lt;/span&gt; behandelt der Kleine Brauhelfer gesondert, da dies allen drei genannten Verfahren gmeinsam ist. &lt;/p&gt;&lt;p&gt;zu 1.) Für das Aufheizen stehen folgende Raststufen zu Verfügung: Gummirast, Maltaserast, Weizenrast, Eiweißrast, Maltoserast, Zwischenrast, Verzuckerungsrast, Kombirast und Abmaischen. Die Rasten sind in den jeweiligen Feldern ausführlich erklärt. Ferner sind sie immer Bestandteil eines jeden Fachbuches.&lt;/p&gt;&lt;p&gt;zu 2.) Für das Zubrühen steht allein Kochendes Waser zur Auswahl. Dessen Temperatur ergibt die Temperaturmischung mit der Maische und bestimmt damit die Raststufe.&lt;/p&gt;&lt;p&gt;zu 3. Für die Dekoktion stehen folgende Teilmaischen zu Verfügung: ½ Dickmaische, ⅓ Dickmaische, ⅓ Dünnmaische, ⅓ Läutermaische. Die Teilmaischen sind Bestandteil eines jeden traditionellen Fachbuches. &lt;/p&gt;&lt;p&gt;zu 4.) Für das Einmaischen gibt es allein das Einmaischen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
-            <property name="whatsThis">
-             <string notr="true">plus</string>
-            </property>
             <property name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/plus.svg</normaloff>
-              <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+             <iconset theme="plus"/>
             </property>
            </widget>
           </item>
@@ -2099,13 +1997,8 @@ p, li { white-space: pre-wrap; }
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Maischplan&lt;/span&gt; aus einem bestehenden Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;übernommen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
-            <property name="whatsThis">
-             <string notr="true">import</string>
-            </property>
             <property name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/import.svg</normaloff>
-              <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
+             <iconset theme="import"/>
             </property>
            </widget>
           </item>
@@ -2430,12 +2323,8 @@ p, li { white-space: pre-wrap; }
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier öffnet man die Eingabemaske für das detaillierte &lt;span style=&quot; font-weight:700;&quot;&gt;Wasserprofil.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Über nebenstehendes Pop-p-Menü kann dann das Wunschprofil für das Rezept bequem ausgewählt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
-            <property name="whatsThis">
-             <string notr="true">edit</string>
-            </property>
             <property name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/edit.svg</normaloff>:/images/light/edit.svg</iconset>
+             <iconset theme="edit"/>
             </property>
            </widget>
           </item>
@@ -2528,13 +2417,8 @@ p, li { white-space: pre-wrap; }
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Zutat&lt;/span&gt; zur &lt;span style=&quot; font-weight:600;&quot;&gt;Wasseraufbereitung&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;p&gt;Eine Wasserzutat kann ein pH-senkendes Salz wie Calciumsulfat CaSO₄ sein, eine pH-senkende Säure wie Milchsäure 80% oder eine pH-hebendes Salz wie Natron (Natriumhydrogencarbonat NaHCO₃) sein.&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer nutzt die konservative Messgröße der deutschen &lt;span style=&quot; font-weight:600;&quot;&gt;Härte °dH &lt;/span&gt;pro Zutat als Menge &lt;span style=&quot; font-weight:600;&quot;&gt;g/l&lt;/span&gt; oder &lt;span style=&quot; font-weight:600;&quot;&gt;m/l&lt;/span&gt;. Dies hat lediglich informativen Wert. Für den Brauer von zentralem Interesse ist letztlich die Angabe vom &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; des aufbereiteten Brauwassers. Dabei ist von folgender Regel auszugehen:&lt;/p&gt;&lt;p&gt;Zuerst werden die Brausalze eingesetzt, ist der optimale pH-Wert dann noch nicht erreicht, die Säuren.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Generell gilt für helle und dunkler Biere:&lt;span style=&quot; font-weight:600;&quot;&gt; pH 5,5 &lt;/span&gt;ist der &lt;span style=&quot; font-weight:600;&quot;&gt;Richtwert&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; color:#333333;&quot;&gt;Wer es genauer haben will: &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-weight:600; color:#333333;&quot;&gt;pH 5,4 &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; color:#333333;&quot;&gt;für &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-weight:600; color:#333333;&quot;&gt;helle Biere&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; color:#333333;&quot;&gt;, &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-weight:600; color:#333333;&quot;&gt;pH 5,6&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; color:#333333;&quot;&gt; für &lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; font-weight:600; color:#333333;&quot;&gt;dunkle Biere&lt;/span&gt;&lt;span style=&quot; font-family:'Lucida Grande','Trebuchet MS','Verdana','Helvetica','Arial','sans-serif'; color:#333333;&quot;&gt;. Ober- und Untergrenze sind pH 5,8 und pH 5,2. Da man allgemein Messfehler von pH ±0,1 annimt (auch bei guten pH-Metern), empfiehlt esich pH 5,3 und pH 7,7 nie zu unter- bzw. überschreiten.&lt;br/&gt;&lt;br/&gt;Die Werte sind allgemeingültig.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
-            <property name="whatsThis">
-             <string notr="true">plus</string>
-            </property>
             <property name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/plus.svg</normaloff>
-              <disabledoff>:/images/disabled/plus.svg</disabledoff>:/images/light/plus.svg</iconset>
+             <iconset theme="plus"/>
             </property>
            </widget>
           </item>
@@ -2543,13 +2427,8 @@ p, li { white-space: pre-wrap; }
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Wasseraufbereitungseinträge&lt;/span&gt; aus einem bestehenden Rezept &lt;span style=&quot; font-weight:600;&quot;&gt;übernommen&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
-            <property name="whatsThis">
-             <string notr="true">import</string>
-            </property>
             <property name="icon">
-             <iconset resource="images.qrc">
-              <normaloff>:/images/light/import.svg</normaloff>
-              <disabledoff>:/images/disabled/import.svg</disabledoff>:/images/light/import.svg</iconset>
+             <iconset theme="import"/>
             </property>
            </widget>
           </item>

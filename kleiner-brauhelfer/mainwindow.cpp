@@ -103,6 +103,11 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->menuBearbeiten->setEnabled(false);
     }
 
+    QPalette palette = ui->tbHelp->palette();
+    palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
+    palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
+    ui->tbHelp->setPalette(palette);
+
   #if 0
     QString style = gSettings->style();
     for(const QString &key : QStyleFactory::keys())
@@ -123,6 +128,11 @@ MainWindow::MainWindow(QWidget *parent) :
     restoreGeometry(gSettings->value("geometry").toByteArray());
     mDefaultState = saveState();
     restoreState(gSettings->value("state").toByteArray());
+    ui->splitterHelp->setSizes({900, 100});
+    ui->splitterHelp->setStretchFactor(0, 1);
+    ui->splitterHelp->setStretchFactor(1, 0);
+    mDefaultSplitterHelpState = ui->splitterHelp->saveState();
+    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
     gSettings->endGroup();
 
     gSettings->beginGroup("General");
@@ -134,13 +144,7 @@ MainWindow::MainWindow(QWidget *parent) :
     gSettings->endGroup();
     ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
 
-    connect(qApp, &QApplication::focusChanged, this, [](QWidget *old, QWidget *now){
-        if (!old || !now)
-            return;
-        if (strcmp(old->metaObject()->className(),"QtPrivate::QCalendarView") == 0)
-            return;
-        WidgetDecorator::clearValueChanged();
-    });
+    connect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
 
     connect(gSettings, &Settings::modulesChanged, this, &MainWindow::modulesChanged);
 
@@ -215,6 +219,14 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
     return QMainWindow::eventFilter(obj, event);
 }
 
+void MainWindow::focusChanged(QWidget *old, QWidget *now)
+{
+    if (old && now && strcmp(old->metaObject()->className(),"QtPrivate::QCalendarView") != 0)
+        WidgetDecorator::clearValueChanged();
+    if (now && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
+        ui->tbHelp->setHtml(now->toolTip());
+}
+
 void MainWindow::restart(int retCode)
 {
     if (bh->isDirty())
@@ -240,13 +252,13 @@ void MainWindow::saveDatabase()
         if (bh->save())
         {
             gUndoStack->clear();
+            QGuiApplication::restoreOverrideCursor();
         }
         else
         {
             QGuiApplication::restoreOverrideCursor();
             QMessageBox::critical(this, tr("Fehler beim Speichern"), bh->lastError());
         }
-        QGuiApplication::restoreOverrideCursor();
     }
     catch (const std::exception& ex)
     {
@@ -289,6 +301,7 @@ void MainWindow::saveSettings()
     gSettings->beginGroup("MainWindow");
     gSettings->setValue("geometry", saveGeometry());
     gSettings->setValue("state", saveState());
+    gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
     gSettings->endGroup();
     ui->tabSudAuswahl->saveSettings();
     ui->tabRezept->saveSettings();
@@ -304,6 +317,7 @@ void MainWindow::restoreView()
 {
     closeDialogs();
     restoreState(mDefaultState);
+    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     ui->tabSudAuswahl->restoreView();
     ui->tabRezept->restoreView();
     ui->tabBraudaten->restoreView();

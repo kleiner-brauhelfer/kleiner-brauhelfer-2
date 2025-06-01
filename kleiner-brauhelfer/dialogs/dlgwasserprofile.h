@@ -26,7 +26,6 @@ private:
     bool setDataWasser(int col, const QVariant &value);
 
 private slots:
-    void focusChanged(QWidget *old, QWidget *now);
     void updateWasser();
     void wasser_selectionChanged(const QItemSelection &selected);
     void on_btnNeu_clicked();

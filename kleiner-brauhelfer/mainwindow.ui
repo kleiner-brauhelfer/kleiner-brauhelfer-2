@@ -45,102 +45,105 @@
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
-        <property name="leftMargin">
-         <number>6</number>
-        </property>
-        <property name="topMargin">
-         <number>6</number>
-        </property>
-        <property name="rightMargin">
-         <number>6</number>
-        </property>
-        <property name="bottomMargin">
-         <number>6</number>
-        </property>
         <item>
-         <widget class="QTabWidget" name="tabMain">
-          <property name="currentIndex">
-           <number>0</number>
+         <widget class="QSplitter" name="splitterHelp">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
-          <widget class="TabSudAuswahl" name="tabSudAuswahl">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabsudauswahl.svg</normaloff>
-             <disabledoff>:/images/disabled/tabsudauswahl.svg</disabledoff>:/images/light/tabsudauswahl.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Sudauswahl</string>
-           </attribute>
+          <widget class="QTabWidget" name="tabMain">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <widget class="TabSudAuswahl" name="tabSudAuswahl">
+            <attribute name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/light/tabsudauswahl.svg</normaloff>
+              <disabledoff>:/images/disabled/tabsudauswahl.svg</disabledoff>:/images/light/tabsudauswahl.svg</iconset>
+            </attribute>
+            <attribute name="title">
+             <string>Sudauswahl</string>
+            </attribute>
+           </widget>
+           <widget class="TabRezept" name="tabRezept">
+            <attribute name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/light/tabrezept.svg</normaloff>
+              <disabledoff>:/images/disabled/tabrezept.svg</disabledoff>:/images/light/tabrezept.svg</iconset>
+            </attribute>
+            <attribute name="title">
+             <string>Rezept</string>
+            </attribute>
+           </widget>
+           <widget class="TabBraudaten" name="tabBraudaten">
+            <attribute name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/light/tabbraudaten.svg</normaloff>
+              <disabledoff>:/images/disabled/tabbraudaten.svg</disabledoff>:/images/light/tabbraudaten.svg</iconset>
+            </attribute>
+            <attribute name="title">
+             <string>Braudaten</string>
+            </attribute>
+           </widget>
+           <widget class="TabAbfuellen" name="tabAbfuelldaten">
+            <attribute name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/light/tababfuellen.svg</normaloff>
+              <disabledoff>:/images/disabled/tababfuellen.svg</disabledoff>:/images/light/tababfuellen.svg</iconset>
+            </attribute>
+            <attribute name="title">
+             <string>Abfülldaten</string>
+            </attribute>
+           </widget>
+           <widget class="TabGaerverlauf" name="tabGaerverlauf">
+            <attribute name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/light/tabgaerverlauf.svg</normaloff>
+              <disabledoff>:/images/disabled/tabgaerverlauf.svg</disabledoff>:/images/light/tabgaerverlauf.svg</iconset>
+            </attribute>
+            <attribute name="title">
+             <string>Gärverlauf</string>
+            </attribute>
+           </widget>
+           <widget class="TabZusammenfassung" name="tabZusammenfassung">
+            <attribute name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/light/tabzusammenfassung.svg</normaloff>
+              <disabledoff>:/images/disabled/tabzusammenfassung.svg</disabledoff>:/images/light/tabzusammenfassung.svg</iconset>
+            </attribute>
+            <attribute name="title">
+             <string>Ausdruck</string>
+            </attribute>
+           </widget>
+           <widget class="TabEtikette" name="tabEtikette">
+            <attribute name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/light/tabetikette.svg</normaloff>
+              <disabledoff>:/images/disabled/tabetikette.svg</disabledoff>:/images/light/tabetikette.svg</iconset>
+            </attribute>
+            <attribute name="title">
+             <string>Etikett</string>
+            </attribute>
+           </widget>
+           <widget class="TabBewertung" name="tabBewertung">
+            <attribute name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/images/light/tabbewertung.svg</normaloff>
+              <disabledoff>:/images/disabled/tabbewertung.svg</disabledoff>:/images/light/tabbewertung.svg</iconset>
+            </attribute>
+            <attribute name="title">
+             <string>Bewertung</string>
+            </attribute>
+           </widget>
           </widget>
-          <widget class="TabRezept" name="tabRezept">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabrezept.svg</normaloff>
-             <disabledoff>:/images/disabled/tabrezept.svg</disabledoff>:/images/light/tabrezept.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Rezept</string>
-           </attribute>
-          </widget>
-          <widget class="TabBraudaten" name="tabBraudaten">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabbraudaten.svg</normaloff>
-             <disabledoff>:/images/disabled/tabbraudaten.svg</disabledoff>:/images/light/tabbraudaten.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Braudaten</string>
-           </attribute>
-          </widget>
-          <widget class="TabAbfuellen" name="tabAbfuelldaten">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tababfuellen.svg</normaloff>
-             <disabledoff>:/images/disabled/tababfuellen.svg</disabledoff>:/images/light/tababfuellen.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Abfülldaten</string>
-           </attribute>
-          </widget>
-          <widget class="TabGaerverlauf" name="tabGaerverlauf">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabgaerverlauf.svg</normaloff>
-             <disabledoff>:/images/disabled/tabgaerverlauf.svg</disabledoff>:/images/light/tabgaerverlauf.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Gärverlauf</string>
-           </attribute>
-          </widget>
-          <widget class="TabZusammenfassung" name="tabZusammenfassung">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabzusammenfassung.svg</normaloff>
-             <disabledoff>:/images/disabled/tabzusammenfassung.svg</disabledoff>:/images/light/tabzusammenfassung.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Ausdruck</string>
-           </attribute>
-          </widget>
-          <widget class="TabEtikette" name="tabEtikette">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabetikette.svg</normaloff>
-             <disabledoff>:/images/disabled/tabetikette.svg</disabledoff>:/images/light/tabetikette.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Etikett</string>
-           </attribute>
-          </widget>
-          <widget class="TabBewertung" name="tabBewertung">
-           <attribute name="icon">
-            <iconset resource="images.qrc">
-             <normaloff>:/images/light/tabbewertung.svg</normaloff>
-             <disabledoff>:/images/disabled/tabbewertung.svg</disabledoff>:/images/light/tabbewertung.svg</iconset>
-           </attribute>
-           <attribute name="title">
-            <string>Bewertung</string>
-           </attribute>
+          <widget class="QTextBrowser" name="tbHelp">
+           <property name="font">
+            <font>
+             <italic>true</italic>
+            </font>
+           </property>
+           <property name="openExternalLinks">
+            <bool>true</bool>
+           </property>
           </widget>
          </widget>
         </item>

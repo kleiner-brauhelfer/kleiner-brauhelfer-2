@@ -2061,19 +2061,6 @@
         </sizepolicy>
        </property>
       </widget>
-      <widget class="QTextBrowser" name="tbHelp">
-       <property name="font">
-        <font>
-         <italic>true</italic>
-        </font>
-       </property>
-       <property name="readOnly">
-        <bool>true</bool>
-       </property>
-       <property name="openExternalLinks">
-        <bool>true</bool>
-       </property>
-      </widget>
      </widget>
     </widget>
    </item>
@@ -2180,7 +2167,6 @@
   <tabstop>splitterCharts</tabstop>
   <tabstop>chartAbfuelldaten</tabstop>
   <tabstop>chartRestextrakt</tabstop>
-  <tabstop>tbHelp</tabstop>
  </tabstops>
  <resources>
   <include location="images.qrc"/>

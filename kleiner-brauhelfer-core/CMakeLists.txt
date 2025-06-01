@@ -1,47 +1,77 @@
-# Qt6 Requirements
-find_package(Qt6 REQUIRED COMPONENTS Core Sql Xml)
+cmake_minimum_required(VERSION 3.16)
 
-# Configure Auto MOC,UIC and RCC
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
+# Define project organization, name, version and build type of the library
+set(ORGANIZATION kleiner-brauhelfer)
+set(TARGET kleiner-brauhelfer-core)
+set(VERSION 2.9.5)
+set(BUILD_TYPE STATIC)
 
-# Set the version numbers for the core
-set(KBH_VER_MAJ 2)
-set(KBH_VER_MIN 9)
-set(KBH_VER_PAT 5)
+# Set name, version and language of the project
+project(${TARGET} VERSION ${VERSION} LANGUAGES CXX)
 
-# Search all source files
-file(GLOB LIB_SOURCES
-        ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+# Qt6 requirements
+find_package(Qt6 REQUIRED COMPONENTS
+    Core
+    Sql
+    Xml
 )
 
-# Define the new static library
-add_library(kleiner-brauhelfer-core STATIC
-        ${LIB_SOURCES}
+# Setup project-wide defaults to a standard arrangement
+qt_standard_project_setup(REQUIRES 6.5)
+
+# Globally disable static linkage for Qt6
+set(Qt6_STATIC OFF CACHE BOOL "" FORCE)
+
+# Set required C++ standard
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Enables building multi-ABI packages for Android
+set(QT_ANDROID_BUILD_ALL_ABIS TRUE)
+
+# Source files
+file(GLOB SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
 )
 
-# Add the current directory as include search path
-target_include_directories(kleiner-brauhelfer-core PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}
+# Header files
+file(GLOB HEADERS
+    ${CMAKE_CURRENT_SOURCE_DIR}/*.h
 )
 
-# Compile definitions
-target_compile_definitions(kleiner-brauhelfer-core PRIVATE
-        KLEINERBRAUHELFERCORE_LIBRARY_STATIC
-        VER_MAJ=${KBH_VER_MAJ}
-        VER_MIN=${KBH_VER_MIN}
-        VER_PAT=${KBH_VER_PAT}
+# Add the library to the build system
+qt_add_library(${PROJECT_NAME} ${BUILD_TYPE}
+    ${SOURCES}
+    ${HEADERS}
 )
 
-# Link the QT libraries
-target_link_libraries(kleiner-brauhelfer-core PUBLIC
-        Qt6::Core
-        Qt6::Sql
-        Qt6::Xml
+# Add directories to the include search path
+target_include_directories(${PROJECT_NAME} PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_compile_options(kleiner-brauhelfer-core PRIVATE
-        -Wall
+# Set the definitions
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    ORGANIZATION="${ORGANIZATION}"
+    TARGET="${TARGET}"
+    VER_MAJ=${PROJECT_VERSION_MAJOR}
+    VER_MIN=${PROJECT_VERSION_MINOR}
+    VER_PAT=${PROJECT_VERSION_PATCH}
+    VERSION="${PROJECT_VERSION}"
 )
 
+# Set the definition of the library build type
+if(${BUILD_TYPE} STREQUAL STATIC)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE KLEINERBRAUHELFERCORE_LIBRARY_STATIC)
+elseif(${BUILD_TYPE} STREQUAL SHARED)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE KLEINERBRAUHELFERCORE_LIBRARY_SHARED)
+else()
+    message(FATAL_ERROR "BUILD_TYPE must be either STATIC or SHARED" )
+endif()
+
+# Link the Qt libraries
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    Qt6::Core
+    Qt6::Sql
+    Qt6::Xml
+)

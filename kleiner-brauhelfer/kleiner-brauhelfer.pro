@@ -114,6 +114,7 @@ SOURCES += \
     widgets/datetimeedit.cpp \
     widgets/doublespinbox.cpp \
     widgets/doublespinboxsud.cpp \
+    widgets/filterbuttonsud.cpp \
     widgets/iconthemed.cpp \
     widgets/pushbutton.cpp \
     widgets/spinbox.cpp \
@@ -213,6 +214,7 @@ HEADERS += \
     widgets/datetimeedit.h \
     widgets/doublespinbox.h \
     widgets/doublespinboxsud.h \
+    widgets/filterbuttonsud.h \
     widgets/iconthemed.h \
     widgets/pushbutton.h \
     widgets/spinbox.h \

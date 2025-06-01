@@ -18,6 +18,7 @@
         <file>images/light/bier.svg</file>
         <file>images/light/edit.svg</file>
         <file>images/light/export.svg</file>
+        <file>images/light/filter.svg</file>
         <file>images/light/import.svg</file>
         <file>images/light/minus.svg</file>
         <file>images/light/nach_oben.svg</file>
@@ -59,6 +60,7 @@
         <file>images/dark/bier.svg</file>
         <file>images/dark/edit.svg</file>
         <file>images/dark/export.svg</file>
+        <file>images/dark/filter.svg</file>
         <file>images/dark/import.svg</file>
         <file>images/dark/minus.svg</file>
         <file>images/dark/nach_oben.svg</file>
@@ -99,6 +101,7 @@
         <file>images/dark/uebertrag_oben.svg</file>
         <file>images/disabled/edit.svg</file>
         <file>images/disabled/export.svg</file>
+        <file>images/disabled/filter.svg</file>
         <file>images/disabled/import.svg</file>
         <file>images/disabled/minus.svg</file>
         <file>images/disabled/nach_oben.svg</file>

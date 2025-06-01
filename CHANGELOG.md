@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 2.6.3 (in Entwicklung)
+- Neu: Knopf ersetzt die Filteroptionen in der Sudauswahl und Brauübersicht.
+
 ## Version 2.6.2 (30.12.2023)
 - Neu: Undofunktion über INI Datei ausschaltbar ([General] UndoEnabled=false).
 - Neu: Unterstützt [MMuM](https://www.maischemalzundmehr.de) Rezepte Version 2.

@@ -28,11 +28,7 @@ CONFIG += c++11
 DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += warn_on
 
-!android: DESTDIR = $$OUT_PWD/../bin
-OBJECTS_DIR = tmp
-MOC_DIR = tmp
-UI_DIR = tmp
-RCC_DIR = tmp
+!android: DESTDIR = $$OUT_PWD/..
 
 SOURCES += \
     biercalc.cpp \

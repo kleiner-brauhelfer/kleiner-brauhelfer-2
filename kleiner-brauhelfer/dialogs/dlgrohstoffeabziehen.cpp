@@ -54,6 +54,11 @@ DlgRohstoffeAbziehen::~DlgRohstoffeAbziehen()
     delete ui;
 }
 
+void DlgRohstoffeAbziehen::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 void DlgRohstoffeAbziehen::reject()
 {
     if (mAbziehen && !mAbgezogen)

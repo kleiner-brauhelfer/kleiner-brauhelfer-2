@@ -14,6 +14,7 @@ class DlgPhMalz : public DlgAbstract
 public:
     explicit DlgPhMalz(double farbe, QWidget *parent = nullptr);
     ~DlgPhMalz();
+    static void restoreView();
     double pH() const;
     void setPh(double value);
 

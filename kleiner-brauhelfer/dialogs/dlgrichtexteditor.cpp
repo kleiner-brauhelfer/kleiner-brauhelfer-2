@@ -59,6 +59,11 @@ DlgRichTextEditor::~DlgRichTextEditor()
     delete ui;
 }
 
+void DlgRichTextEditor::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 QString DlgRichTextEditor::extractBody(const QString& html) const
 {
     if (html.isEmpty())

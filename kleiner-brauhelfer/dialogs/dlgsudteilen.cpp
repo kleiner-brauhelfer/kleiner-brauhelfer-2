@@ -25,6 +25,11 @@ DlgSudTeilen::~DlgSudTeilen()
     delete ui;
 }
 
+void DlgSudTeilen::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 double DlgSudTeilen::prozent() const
 {
     return ui->horizontalSlider_Percent->value() / 100.0;

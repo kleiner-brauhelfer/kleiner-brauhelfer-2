@@ -129,7 +129,19 @@ void WdgHefeGabe::updateValues()
     }
 
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-    ui->btnZugeben->setVisible(mEnabled && status == Brauhelfer::SudStatus::Gebraut);
+    ui->btnZugeben->setVisible(status == Brauhelfer::SudStatus::Gebraut);
+    if (data(ModelHefegaben::ColZugegeben).toBool())
+    {
+        ui->btnZugeben->setError(false);
+        ui->btnZugeben->setText(tr("Zurückgeben"));
+    }
+    else
+    {
+        QDate currentDate = QDate::currentDate();
+        QDate dateSoll = data(ModelHefegaben::ColZugabeDatum).toDate();
+        ui->btnZugeben->setError(currentDate >= dateSoll);
+        ui->btnZugeben->setText(tr("Zugeben"));
+    }
 
     if (mEnabled)
     {
@@ -179,14 +191,26 @@ void WdgHefeGabe::on_tbDatum_dateChanged(const QDate &date)
 
 void WdgHefeGabe::on_btnZugeben_clicked()
 {
-    QDate currentDate = QDate::currentDate();
-    QDate date = ui->tbDatum->date();
-    setData(ModelHefegaben::ColZugabeDatum, currentDate < date ? currentDate : date);
-    setData(ModelHefegaben::ColZugegeben, true);
-    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    if (!data(ModelHefegaben::ColZugegeben).toBool())
     {
-        DlgRohstoffeAbziehen dlg(true, Brauhelfer::RohstoffTyp::Hefe, name(), menge(), this);
-        dlg.exec();
+        QDate currentDate = QDate::currentDate();
+        QDate date = ui->tbDatum->date();
+        setData(ModelHefegaben::ColZugabeDatum, currentDate < date ? currentDate : date);
+        setData(ModelHefegaben::ColZugegeben, true);
+        if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+        {
+            DlgRohstoffeAbziehen dlg(true, Brauhelfer::RohstoffTyp::Hefe, name(), menge(), this);
+            dlg.exec();
+        }
+    }
+    else
+    {
+        setData(ModelHefegaben::ColZugegeben, false);
+        if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+        {
+            DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Hefe, name(),  menge(), this);
+            dlg.exec();
+        }
     }
 }
 

@@ -14,15 +14,27 @@
 #include "dialogs/dlgausruestung.h"
 #include "dialogs/dlgbrauuebersicht.h"
 #include "dialogs/dlgcheckupdate.h"
+#include "dialogs/dlgconsole.h"
 #include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgdatenbank.h"
-#include "dialogs/dlgrohstoffauswahl.h"
-#include "dialogs/dlgtableview.h"
+#include "dialogs/dlghilfe.h"
+#include "dialogs/dlgimportexport.h"
+#include "dialogs/dlgmaischplanmalz.h"
 #include "dialogs/dlgmodule.h"
-#include "dialogs/dlgconsole.h"
+#include "dialogs/dlgphmalz.h"
+#include "dialogs/dlgrestextrakt.h"
+#include "dialogs/dlgrichtexteditor.h"
+#include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgrohstoffe.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
-#include "dialogs/dlghilfe.h"
+#include "dialogs/dlgrohstoffvorlage.h"
+#include "dialogs/dlgsudteilen.h"
+#include "dialogs/dlgtableview.h"
+#include "dialogs/dlguebernahmerezept.h"
+#include "dialogs/dlgverdampfung.h"
+#include "dialogs/dlgvolumen.h"
+#include "dialogs/dlgwasseraufbereitung.h"
+#include "dialogs/dlgwasserprofile.h"
 #include "widgets/widgetdecorator.h"
 
 extern Brauhelfer* bh;
@@ -141,7 +153,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    closeDialogs();
     saveSettings();
     disconnect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
     delete ui;
@@ -152,9 +163,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
     if (bh->isDirty())
     {
         int ret = QMessageBox::question(this, tr("Anwendung schließen?"),
-                                  tr("Sollen die Änderungen vor dem Schließen gespeichert werden?"),
-                                  QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
-                                  QMessageBox::Yes);
+                                        tr("Sollen die Änderungen vor dem Schließen gespeichert werden?"),
+                                        QMessageBox::Cancel | QMessageBox::Yes | QMessageBox::No,
+                                        QMessageBox::Yes);
         if (ret == QMessageBox::Yes)
         {
             saveDatabase();
@@ -171,9 +182,9 @@ void MainWindow::closeEvent(QCloseEvent *event)
         if (ui->actionBestaetigungBeenden->isChecked())
         {
             ret = QMessageBox::question(this, tr("Anwendung schließen?"),
-                                  tr("Soll die Anwendung geschlossen werden?"),
-                                  QMessageBox::Cancel | QMessageBox::Yes,
-                                  QMessageBox::Yes);
+                                        tr("Soll die Anwendung geschlossen werden?"),
+                                        QMessageBox::Cancel | QMessageBox::Yes,
+                                        QMessageBox::Yes);
         }
         if (ret == QMessageBox::Yes)
             event->accept();
@@ -297,7 +308,6 @@ void MainWindow::saveSettings()
 
 void MainWindow::restoreView()
 {
-    closeDialogs();
     restoreState(mDefaultState);
     ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     ui->tabSudAuswahl->restoreView();
@@ -308,26 +318,31 @@ void MainWindow::restoreView()
     ui->tabZusammenfassung->restoreView();
     ui->tabEtikette->restoreView();
     ui->tabBewertung->restoreView();
-    DlgModule::restoreView();
-    DlgRohstoffe::restoreView();
+    DlgAbout::restoreView();
     DlgAusruestung::restoreView();
     DlgBrauUebersicht::restoreView();
-    DlgDatenbank::restoreView();
-    DlgRohstoffAuswahl::restoreView();
-    DlgTableView::restoreView();
+    DlgCheckUpdate::restoreView();
     DlgConsole::restoreView();
+    DlgDatabaseCleaner::restoreView();
+    DlgDatenbank::restoreView();
     DlgHilfe::restoreView();
-}
-
-void MainWindow::closeDialogs()
-{
-    DlgAbstract::closeDialog<DlgModule>();
-    DlgAbstract::closeDialog<DlgConsole>();
-    DlgAbstract::closeDialog<DlgBrauUebersicht>();
-    DlgAbstract::closeDialog<DlgRohstoffe>();
-    DlgAbstract::closeDialog<DlgAusruestung>();
-    DlgAbstract::closeDialog<DlgDatenbank>();
-    DlgAbstract::closeDialog<DlgHilfe>();
+    DlgImportExport::restoreView();
+    DlgMaischplanMalz::restoreView();
+    DlgModule::restoreView();
+    DlgPhMalz::restoreView();
+    DlgRestextrakt::restoreView();
+    DlgRichTextEditor::restoreView();
+    DlgRohstoffAuswahl::restoreView();
+    DlgRohstoffe::restoreView();
+    DlgRohstoffeAbziehen::restoreView();
+    DlgRohstoffVorlage::restoreView();
+    DlgSudTeilen::restoreView();
+    DlgTableView::restoreView();
+    DlgUebernahmeRezept::restoreView();
+    DlgVerdampfung::restoreView();
+    DlgVolumen::restoreView();
+    DlgWasseraufbereitung::restoreView();
+    DlgWasserprofile::restoreView();
 }
 
 void MainWindow::modulesChanged(Settings::Modules modules)
@@ -934,8 +949,13 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelNachgaerverlauf::ColCO2, Qt::Horizontal, tr("CO2") + "\n(g/L)");
     model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
 
+    model = bh->modelBewertungen();
+    model->setHeaderData(ModelBewertungen::ColDatum, Qt::Horizontal, tr("Datum"));
+    model->setHeaderData(ModelBewertungen::ColWoche, Qt::Horizontal, tr("Woche"));
+    model->setHeaderData(ModelBewertungen::ColSterne, Qt::Horizontal, tr("Bewertung"));
+
     model = bh->modelAusruestung();
-    model->setHeaderData(ModelAusruestung::ColName, Qt::Horizontal, tr("Anlage"));
+    model->setHeaderData(ModelAusruestung::ColName, Qt::Horizontal, tr("Bezeichnung"));
     model->setHeaderData(ModelAusruestung::ColTyp, Qt::Horizontal, tr("Typ"));
     model->setHeaderData(ModelAusruestung::ColVermoegen, Qt::Horizontal, tr("Vermögen") + "\n(L)");
     model->setHeaderData(ModelAusruestung::ColAnzahlSude, Qt::Horizontal, tr("Anzahl Sude"));

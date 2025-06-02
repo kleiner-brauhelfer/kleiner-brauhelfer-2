@@ -14,6 +14,7 @@ class DlgAbout : public DlgAbstract
 public:
     explicit DlgAbout(QWidget *parent = nullptr);
     ~DlgAbout();
+    static void restoreView();
 
 private:
     QString generateLink(const QString &url, const QString &name = QString());

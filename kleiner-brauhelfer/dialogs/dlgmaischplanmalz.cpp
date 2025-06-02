@@ -51,6 +51,11 @@ DlgMaischplanMalz::~DlgMaischplanMalz()
     delete ui;
 }
 
+void DlgMaischplanMalz::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 void DlgMaischplanMalz::updateAnteile()
 {
     QAbstractItemModel* model = ui->tableView->model();

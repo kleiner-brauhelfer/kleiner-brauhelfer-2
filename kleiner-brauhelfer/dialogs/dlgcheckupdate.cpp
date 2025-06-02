@@ -24,6 +24,11 @@ DlgCheckUpdate::~DlgCheckUpdate()
     delete ui;
 }
 
+void DlgCheckUpdate::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 void DlgCheckUpdate::checkForUpdate()
 {
     mHasUpdate = false;

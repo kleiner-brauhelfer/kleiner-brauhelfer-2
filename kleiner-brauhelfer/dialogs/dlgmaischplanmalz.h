@@ -14,6 +14,7 @@ class DlgMaischplanMalz : public DlgAbstract
 public:
     explicit DlgMaischplanMalz(double value, QWidget *parent = nullptr);
     ~DlgMaischplanMalz();
+    static void restoreView();
     double value() const;
 
 private slots:

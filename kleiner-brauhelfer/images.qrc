@@ -9,10 +9,10 @@
         <file>images/warning.svg</file>
         <file>images/wasser.svg</file>
         <file>images/zusatz.svg</file>
-		<file>images/icons/dark/index.theme</file>
+        <file>images/icons/dark/index.theme</file>
         <file>images/icons/dark/dark.svg</file>
         <file>images/icons/dark/svg/bier.svg</file>
-		<file>images/icons/dark/svg/close_button.svg</file>
+        <file>images/icons/dark/svg/close_button.svg</file>
         <file>images/icons/dark/svg/edit.svg</file>
         <file>images/icons/dark/svg/export.svg</file>
         <file>images/icons/dark/svg/filter.svg</file>
@@ -23,6 +23,7 @@
         <file>images/icons/dark/svg/pdf.svg</file>
         <file>images/icons/dark/svg/plus.svg</file>
         <file>images/icons/dark/svg/print.svg</file>
+        <file>images/icons/dark/svg/redo.svg</file>
         <file>images/icons/dark/svg/refresh.svg</file>
         <file>images/icons/dark/svg/restore.svg</file>
         <file>images/icons/dark/svg/save.svg</file>
@@ -55,10 +56,11 @@
         <file>images/icons/dark/svg/tabzusammenfassung.svg</file>
         <file>images/icons/dark/svg/uebertrag_links.svg</file>
         <file>images/icons/dark/svg/uebertrag_oben.svg</file>
-		<file>images/icons/light/index.theme</file>
+        <file>images/icons/dark/svg/undo.svg</file>
+        <file>images/icons/light/index.theme</file>
         <file>images/icons/light/light.svg</file>
         <file>images/icons/light/svg/bier.svg</file>
-		<file>images/icons/light/svg/close_button.svg</file>
+        <file>images/icons/light/svg/close_button.svg</file>
         <file>images/icons/light/svg/edit.svg</file>
         <file>images/icons/light/svg/export.svg</file>
         <file>images/icons/light/svg/filter.svg</file>
@@ -69,6 +71,7 @@
         <file>images/icons/light/svg/pdf.svg</file>
         <file>images/icons/light/svg/plus.svg</file>
         <file>images/icons/light/svg/print.svg</file>
+        <file>images/icons/light/svg/redo.svg</file>
         <file>images/icons/light/svg/refresh.svg</file>
         <file>images/icons/light/svg/restore.svg</file>
         <file>images/icons/light/svg/save.svg</file>
@@ -101,6 +104,7 @@
         <file>images/icons/light/svg/tabzusammenfassung.svg</file>
         <file>images/icons/light/svg/uebertrag_links.svg</file>
         <file>images/icons/light/svg/uebertrag_oben.svg</file>
+        <file>images/icons/light/svg/undo.svg</file>
         <file>images/lang/de.svg</file>
         <file>images/lang/en.svg</file>
         <file>images/lang/nl.svg</file>

@@ -186,6 +186,11 @@ DlgUebernahmeRezept::~DlgUebernahmeRezept()
     delete ui;
 }
 
+void DlgUebernahmeRezept::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 int DlgUebernahmeRezept::sudId() const
 {
     return mSudId;

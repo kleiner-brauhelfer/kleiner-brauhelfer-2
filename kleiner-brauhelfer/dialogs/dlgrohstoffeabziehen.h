@@ -16,6 +16,7 @@ public:
     explicit DlgRohstoffeAbziehen(bool abziehen, QWidget *parent = nullptr);
     DlgRohstoffeAbziehen(bool abziehen, Brauhelfer::RohstoffTyp typ, const QString& name, double menge, QWidget *parent = nullptr);
     virtual ~DlgRohstoffeAbziehen() Q_DECL_OVERRIDE;
+    static void restoreView();
 
 private slots:
     void reject() Q_DECL_OVERRIDE;

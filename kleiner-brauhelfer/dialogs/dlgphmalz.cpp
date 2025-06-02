@@ -20,6 +20,11 @@ DlgPhMalz::~DlgPhMalz()
     delete ui;
 }
 
+void DlgPhMalz::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 double DlgPhMalz::pH() const
 {
     return ui->tbPh->value();

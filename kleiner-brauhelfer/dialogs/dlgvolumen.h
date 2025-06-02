@@ -15,6 +15,7 @@ public:
     DlgVolumen(double durchmesser, double hoehe, QWidget * parent = nullptr);
     DlgVolumen(QWidget * parent = nullptr);
     ~DlgVolumen();
+    static void restoreView();
     void setValue(double Liter);
     double value() const;
     

@@ -15,6 +15,7 @@ public:
     explicit DlgWasseraufbereitung(QWidget *parent = nullptr);
     DlgWasseraufbereitung(const QString& name, int einheit, double faktor, QWidget *parent = nullptr);
     ~DlgWasseraufbereitung();
+    static void restoreView();
     QString name() const;
     int einheit() const;
     double faktor() const;

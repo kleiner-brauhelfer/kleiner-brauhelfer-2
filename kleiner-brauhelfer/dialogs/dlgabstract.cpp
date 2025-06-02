@@ -7,11 +7,13 @@ DlgAbstract::DlgAbstract(const QString &settingsGroup, QWidget *parent, Qt::Wind
     QDialog(parent,f),
     mSettingsGroup(settingsGroup)
 {
+    connect(parent, &QWidget::destroyed, this, &QDialog::close);
     connect(this, &QDialog::finished, this, &DlgAbstract::on_finished);
 }
 
 void DlgAbstract::showEvent(QShowEvent *event)
 {
+    mDefaultGeometry = saveGeometry();
     gSettings->beginGroup(mSettingsGroup);
     restoreGeometry(gSettings->value("geometry").toByteArray());
     gSettings->endGroup();
@@ -28,17 +30,11 @@ void DlgAbstract::on_finished(int result)
     saveSettings();
 }
 
-void DlgAbstract::restoreView(const QString& settingsGroup)
+void DlgAbstract::restoreView(const QString& settingsGroup, DlgAbstract* dlg)
 {
     gSettings->beginGroup(settingsGroup);
     gSettings->remove("geometry");
     gSettings->endGroup();
-}
-
-void DlgAbstract::saveSettings()
-{
-}
-
-void DlgAbstract::loadSettings()
-{
+    if (dlg)
+        dlg->restoreGeometry(dlg->mDefaultGeometry);
 }

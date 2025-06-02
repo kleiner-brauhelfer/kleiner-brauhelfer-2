@@ -14,6 +14,7 @@ class DlgImportExport : public DlgAbstract
 public:
     explicit DlgImportExport(bool import, int row, QWidget *parent = nullptr);
     ~DlgImportExport();
+    static void restoreView();
     int row() const;
     bool oeffnen(const QString& filename = QString());
     bool download(const QString& url);

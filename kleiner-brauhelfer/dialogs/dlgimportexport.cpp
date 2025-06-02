@@ -87,6 +87,11 @@ DlgImportExport::~DlgImportExport()
     delete ui;
 }
 
+void DlgImportExport::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 void DlgImportExport::accept()
 {
     if (!ui->textEdit->toPlainText().isEmpty())

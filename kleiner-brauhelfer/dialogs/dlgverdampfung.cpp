@@ -21,6 +21,11 @@ DlgVerdampfung::~DlgVerdampfung()
 	delete ui;
 }
 
+void DlgVerdampfung::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 void DlgVerdampfung::on_buttonBox_accepted()
 {
 	accept();

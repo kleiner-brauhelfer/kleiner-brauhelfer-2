@@ -93,6 +93,11 @@ DlgRestextrakt::~DlgRestextrakt()
     delete ui;
 }
 
+void DlgRestextrakt::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 void DlgRestextrakt::on_DlgRestextrakt_accepted()
 {
     gSettings->beginGroup("General");

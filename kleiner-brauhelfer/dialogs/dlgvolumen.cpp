@@ -44,6 +44,11 @@ DlgVolumen::~DlgVolumen()
     delete ui;
 }
 
+void DlgVolumen::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 void DlgVolumen::on_buttonBox_accepted()
 {
 	accept();

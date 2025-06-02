@@ -26,6 +26,7 @@ private slots:
     void on_comboBox_currentTextChanged(const QString &table);
     void on_comboBoxSud_currentTextChanged(const QString &table);
     void tableView_selectionChanged();
+    void on_btnCleanDatabase_clicked();
 
 private:
     Ui::DlgDatenbank *ui;

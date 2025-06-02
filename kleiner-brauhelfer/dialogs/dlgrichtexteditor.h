@@ -16,6 +16,7 @@ class DlgRichTextEditor : public DlgAbstract
 public:
     explicit DlgRichTextEditor(QWidget *parent = nullptr);
     ~DlgRichTextEditor();
+    static void restoreView();
     void setHtml(const QString& html);
     QString toHtml() const;
 

@@ -14,18 +14,19 @@ public:
 
 public:
     explicit DlgAbstract(const QString& settingsGroup, QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
-    static void restoreView(const QString& settingsGroup);
+    static void restoreView(const QString& settingsGroup, DlgAbstract* dlg = nullptr);
 
 protected:
     virtual void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
-    virtual void saveSettings();
-    virtual void loadSettings();
+    virtual void saveSettings() {};
+    virtual void loadSettings() {};
 
 private slots:
     void on_finished(int result);
 
 private:
     const QString mSettingsGroup;
+    QByteArray mDefaultGeometry;
 };
 
 

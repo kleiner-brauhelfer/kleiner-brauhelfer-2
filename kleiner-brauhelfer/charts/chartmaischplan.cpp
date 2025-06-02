@@ -8,7 +8,7 @@ extern Settings* gSettings;
 ChartMaischplan::ChartMaischplan(QWidget *parent) :
     ChartBase(parent)
 {
-    QColor colRect = gSettings->colorRast;
+    QColor colRect = gSettings->ErrorBase;
     colRect.setAlpha(80);
 
     xAxis->setLabel(tr("Zeit") + " (min)");

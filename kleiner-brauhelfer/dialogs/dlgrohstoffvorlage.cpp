@@ -61,6 +61,11 @@ DlgRohstoffVorlage::~DlgRohstoffVorlage()
 	delete ui;
 }
 
+void DlgRohstoffVorlage::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 QString DlgRohstoffVorlage::getFileName(bool withPath) const
 {
     QString fileName;

@@ -474,9 +474,12 @@ void Settings::savePrinter(const QPrinter* printer)
     setValue("Orientation", printer->pageLayout().orientation());
     QPageSize pageSize = printer->pageLayout().pageSize();
     if (pageSize.id() == QPageSize::Custom)
-        pageSize = QPageSize(printer->pageLayout().pageSize().sizePoints().transposed());
-    if (pageSize.id() == QPageSize::Custom)
-        pageSize = QPageSize(printer->pageLayout().pageSize().sizePoints());
+    {
+        if (printer->pageLayout().orientation() == QPageLayout::Orientation::Landscape)
+            pageSize = QPageSize(printer->pageLayout().pageSize().sizePoints().transposed());
+        else
+            pageSize = QPageSize(printer->pageLayout().pageSize().sizePoints());
+    }
     setValue("Size", pageSize.id());
     QMarginsF margins = printer->pageLayout().margins(QPageLayout::Millimeter);
     QRectF rect(margins.left(), margins.top(), margins.right(), margins.bottom());

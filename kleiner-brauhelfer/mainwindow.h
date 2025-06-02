@@ -27,7 +27,7 @@ public:
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow() Q_DECL_OVERRIDE;
+    ~MainWindow();
 
 public slots:
     DlgRohstoffe* showDialogRohstoffe();
@@ -93,7 +93,6 @@ private:
     void discardDatabase();
     void saveSettings();
     void restoreView();
-    void closeDialogs();
     void checkForUpdate(bool force);
     void initLabels();
     void initTheme(Qt::ColorScheme theme);

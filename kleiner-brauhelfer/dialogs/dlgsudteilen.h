@@ -14,6 +14,7 @@ class DlgSudTeilen : public DlgAbstract
 public:
     explicit DlgSudTeilen(const QString& name, double amount, QWidget *parent = 0);
     ~DlgSudTeilen();
+    static void restoreView();
     double prozent() const;
     QString nameTeil1() const;
     QString nameTeil2() const;

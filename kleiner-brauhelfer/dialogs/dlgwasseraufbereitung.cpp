@@ -46,6 +46,11 @@ DlgWasseraufbereitung::~DlgWasseraufbereitung()
     delete ui;
 }
 
+void DlgWasseraufbereitung::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 QString DlgWasseraufbereitung::name() const
 {
     return ui->tbName->text();

@@ -29,6 +29,7 @@ public:
 public:
     explicit DlgRohstoffVorlage(Art art, QWidget *parent = nullptr);
     virtual ~DlgRohstoffVorlage() Q_DECL_OVERRIDE;
+    static void restoreView();
     QMap<int, QVariant> values() const;
 
 private slots:

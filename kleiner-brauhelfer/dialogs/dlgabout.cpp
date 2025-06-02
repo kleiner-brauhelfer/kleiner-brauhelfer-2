@@ -21,6 +21,11 @@ DlgAbout::~DlgAbout()
     delete ui;
 }
 
+void DlgAbout::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className());
+}
+
 QString DlgAbout::generateLink(const QString &url, const QString &name)
 {
     return "<a href=\"" + url + "\">" + (name.isEmpty() ? url : name) + "</a>";

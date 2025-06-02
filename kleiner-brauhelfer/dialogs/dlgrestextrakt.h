@@ -15,6 +15,7 @@ class DlgRestextrakt : public DlgAbstract
 public:
     explicit DlgRestextrakt(double value, double sw = 0.0, double temp = -1, const QDateTime& dt = QDateTime(), QWidget *parent = nullptr);
     ~DlgRestextrakt();
+    static void restoreView();
     double value() const;
     void setValue(double value);
     double temperatur() const;

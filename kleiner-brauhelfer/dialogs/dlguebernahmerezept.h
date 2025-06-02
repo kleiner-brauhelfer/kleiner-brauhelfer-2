@@ -30,6 +30,7 @@ public:
 public:
     explicit DlgUebernahmeRezept(Art art, QWidget *parent = nullptr);
     ~DlgUebernahmeRezept();
+    static void restoreView();
     int sudId() const;
 
 private slots:

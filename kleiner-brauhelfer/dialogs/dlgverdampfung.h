@@ -14,6 +14,7 @@ class DlgVerdampfung : public DlgAbstract
 public:
     explicit DlgVerdampfung(QWidget *parent = nullptr);
 	~DlgVerdampfung();
+    static void restoreView();
 
 private slots:
 	void on_buttonBox_accepted();

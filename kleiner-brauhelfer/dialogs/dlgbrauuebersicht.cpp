@@ -60,13 +60,15 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
     model->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
     model->sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
     ui->tableView->setModel(model);
-    ui->btnFilter->setModel(model, FilterButtonSud::Braudatum);
+    ui->btnFilter->setModel(model, FilterButtonSud::Braudatum | FilterButtonSud::Kategorie | FilterButtonSud::Anlage);
 
     modulesChanged(Settings::ModuleAlle);
     connect(gSettings, &Settings::modulesChanged, this, &DlgBrauUebersicht::modulesChanged);
 
-    connect(model, &ModelSud::layoutChanged, this, &DlgBrauUebersicht::onLayoutChanged);
-    connect(model, &ModelSud::dataChanged, this, &DlgBrauUebersicht::modelDataChanged);
+    connect(model, &ProxyModel::layoutChanged, this, &DlgBrauUebersicht::onLayoutChanged);
+    connect(model, &ProxyModel::rowsInserted, this, &DlgBrauUebersicht::onLayoutChanged);
+    connect(model, &ProxyModel::rowsRemoved, this, &DlgBrauUebersicht::onLayoutChanged);
+    connect(model, &ProxyModel::dataChanged, this, &DlgBrauUebersicht::modelDataChanged);
     connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,this, &DlgBrauUebersicht::table_selectionChanged);
     connect(ui->diagram, &Chart3::selectionChanged, this, &DlgBrauUebersicht::diagram_selectionChanged);
 }
@@ -146,6 +148,7 @@ void DlgBrauUebersicht::build()
     ui->tableView->appendCol({ModelSud::ColSudname, true, false, 200, new SudNameDelegate(ui->tableView)});
     ui->tableView->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(ui->tableView)});
     ui->tableView->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, ui->tableView)});
+    ui->tableView->appendCol({ModelSud::ColAnlage, true, true, 100, new TextDelegate(false, Qt::AlignCenter, ui->tableView)});
     ui->tableView->appendCol({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, false, ui->tableView)});
     ui->cbAuswahlL1->clear();
     ui->cbAuswahlL2->clear();

@@ -7,6 +7,7 @@
 #include "biercalc.h"
 #include "settings.h"
 #include "proxymodelsud.h"
+#include "mainwindow.h"
 #include "model/textdelegate.h"
 #include "model/spinboxdelegate.h"
 #include "model/doublespinboxdelegate.h"
@@ -23,19 +24,6 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-QList<QPair<QString, int> > DlgAusruestung::Typname = {
-    {tr("Standard"), static_cast<int>(Brauhelfer::AnlageTyp::Standard)},
-    {tr("Grainfather G30"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG30)},
-    {tr("Grainfather G70"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG70)},
-    {tr("Braumeister 10L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister10)},
-    {tr("Braumeister 20L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister20)},
-    {tr("Braumeister 50L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister50)},
-    {tr("Braumeister 200L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister200)},
-    {tr("Braumeister 500L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister500)},
-    {tr("Braumeister 1000L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister1000)},
-    {tr("Brauheld Pro 30L"), static_cast<int>(Brauhelfer::AnlageTyp::BrauheldPro30)}
-};
-
 DlgAusruestung* DlgAusruestung::Dialog = nullptr;
 
 DlgAusruestung::DlgAusruestung(QWidget *parent) :
@@ -44,7 +32,7 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     mRow(0)
 {
     ui->setupUi(this);
-    for (const auto& type : qAsConst(Typname))
+    for (const auto& type : qAsConst(MainWindow::AnlageTypname))
         ui->cbTyp->addItem(type.first, type.second);
     ui->lblCurrency->setText(QLocale().currencySymbol());
 
@@ -58,6 +46,7 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     table->appendCol({ModelAusruestung::ColAnzahlGebrauteSude, true, true, 100, new SpinBoxDelegate(table)});
     table->build();
     table->setDefaultContextMenu();
+    table->setContextMenuFeatures(false, false);
 
     table = ui->tableViewGeraete;
     proxyModel = new ProxyModel(this);

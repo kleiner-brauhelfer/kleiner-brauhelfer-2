@@ -13,9 +13,12 @@ class LIB_EXPORT ProxyModelSud : public ProxyModel
 
     Q_PROPERTY(bool filterMerkliste READ filterMerkliste WRITE setFilterMerkliste NOTIFY layoutChanged)
     Q_PROPERTY(FilterStatus filterStatus READ filterStatus WRITE setFilterStatus NOTIFY layoutChanged)
+    Q_PROPERTY(bool filterDate READ filterDate WRITE setFilterDate NOTIFY layoutChanged)
     Q_PROPERTY(QDateTime minDate READ filterMinimumDate WRITE setFilterMinimumDate NOTIFY layoutChanged)
     Q_PROPERTY(QDateTime maxDate READ filterMaximumDate WRITE setFilterMaximumDate NOTIFY layoutChanged)
     Q_PROPERTY(QString filterText READ filterText WRITE setFilterText NOTIFY layoutChanged)
+    Q_PROPERTY(QString filterKategorie READ filterKategorie WRITE setFilterKategorie NOTIFY layoutChanged)
+    Q_PROPERTY(QString filterAnlage READ filterAnlage WRITE setFilterAnlage NOTIFY layoutChanged)
 
 public:
     enum FilterStatusPart
@@ -54,6 +57,9 @@ public:
     QString filterKategorie() const;
     void setFilterKategorie(const QString& kategorie);
 
+    QString filterAnlage() const;
+    void setFilterAnlage(const QString& anlage);
+
     void saveSetting(QSettings* settings);
     void loadSettings(QSettings* settings);
 
@@ -71,6 +77,7 @@ private:
     QDateTime mMaxDate;
     QString mFilterText;
     QString mFilterKategorie;
+    QString mFilterAnlage;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ProxyModelSud::FilterStatus)

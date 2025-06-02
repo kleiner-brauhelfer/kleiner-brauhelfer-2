@@ -10,7 +10,8 @@ ProxyModelSud::ProxyModelSud(QObject *parent) :
     mMinDate(QDateTime()),
     mMaxDate(QDateTime()),
     mFilterText(QString()),
-    mFilterKategorie(QString())
+    mFilterKategorie(QString()),
+    mFilterAnlage(QString())
 {
 }
 
@@ -52,7 +53,7 @@ void ProxyModelSud::setFilterDate(bool value)
     if (mFilterDate != value)
     {
         mFilterDate = value;
-        invalidate();
+        invalidateRowsFilter();
     }
 }
 
@@ -112,6 +113,20 @@ void ProxyModelSud::setFilterKategorie(const QString& kategorie)
     }
 }
 
+QString ProxyModelSud::filterAnlage() const
+{
+    return mFilterAnlage;
+}
+
+void ProxyModelSud::setFilterAnlage(const QString& anlage)
+{
+    if (mFilterAnlage != anlage)
+    {
+        mFilterAnlage = anlage;
+        invalidateRowsFilter();
+    }
+}
+
 bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_parent) const
 {
     QModelIndex idx;
@@ -156,6 +171,12 @@ bool ProxyModelSud::filterAcceptsRow(int source_row, const QModelIndex &source_p
         idx = sourceModel()->index(source_row, ModelSud::ColKategorie, source_parent);
         if (idx.isValid())
             accept = sourceModel()->data(idx).toString() == mFilterKategorie;
+    }
+    if (accept && !mFilterAnlage.isEmpty())
+    {
+        idx = sourceModel()->index(source_row, ModelSud::ColAnlage, source_parent);
+        if (idx.isValid())
+            accept = sourceModel()->data(idx).toString() == mFilterAnlage;
     }
     if (accept && !mFilterText.isEmpty())
     {
@@ -271,6 +292,7 @@ void ProxyModelSud::saveSetting(QSettings* settings)
     settings->setValue("filterSudDateVon", filterMinimumDate().date());
     settings->setValue("filterSudDateBis", filterMaximumDate().date());
     settings->setValue("filterSudKategorie", filterKategorie());
+    settings->setValue("filterSudAnlage", filterAnlage());
 }
 
 void ProxyModelSud::loadSettings(QSettings* settings)
@@ -283,4 +305,5 @@ void ProxyModelSud::loadSettings(QSettings* settings)
     setFilterMinimumDate(QDateTime(minDate, QTime(1,0,0)));
     setFilterMaximumDate(QDateTime(maxDate, QTime(23,59,59)));
     setFilterKategorie(settings->value("filterSudKategorie", "").toString());
+    setFilterAnlage(settings->value("filterSudAnlage", "").toString());
 }

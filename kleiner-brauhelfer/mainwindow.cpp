@@ -47,6 +47,7 @@ QStringList MainWindow::HefeTypname;
 QStringList MainWindow::HefeTypFlTrName;
 QStringList MainWindow::ZusatzTypname;
 QStringList MainWindow::Einheiten;
+QList<QPair<QString, int> > MainWindow::AnlageTypname;
 
 MainWindow* MainWindow::getInstance()
 {
@@ -831,6 +832,18 @@ void MainWindow::initLabels()
     HefeTypFlTrName = QStringList({"", tr("trocken"), tr("flüssig")});
     ZusatzTypname = QStringList({tr("Honig"), tr("Zucker"), tr("Gewürz"), tr("Frucht"), tr("Sonstiges"), tr("Kraut"), tr("Wasseraufbereitung"), tr("Klärmittel")});
     Einheiten = QStringList({"kg", "g", "mg", tr("Stk."), "L", "mL"});
+    AnlageTypname = QList<QPair<QString, int> >({
+        {tr("Standard"), static_cast<int>(Brauhelfer::AnlageTyp::Standard)},
+        {tr("Grainfather G30"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG30)},
+        {tr("Grainfather G70"), static_cast<int>(Brauhelfer::AnlageTyp::GrainfatherG70)},
+        {tr("Braumeister 10L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister10)},
+        {tr("Braumeister 20L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister20)},
+        {tr("Braumeister 50L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister50)},
+        {tr("Braumeister 200L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister200)},
+        {tr("Braumeister 500L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister500)},
+        {tr("Braumeister 1000L"), static_cast<int>(Brauhelfer::AnlageTyp::Braumeister1000)},
+        {tr("Brauheld Pro 30L"), static_cast<int>(Brauhelfer::AnlageTyp::BrauheldPro30)}
+    });
 
     model = bh->modelSud();
     model->setHeaderData(ModelSud::ColID, Qt::Horizontal, tr("Sud ID"));

@@ -14,8 +14,6 @@ class DlgAusruestung : public DlgAbstract
     Q_OBJECT
 
 public:
-    static QList<QPair<QString, int> > Typname;
-
     static DlgAusruestung *Dialog;
 
 public:

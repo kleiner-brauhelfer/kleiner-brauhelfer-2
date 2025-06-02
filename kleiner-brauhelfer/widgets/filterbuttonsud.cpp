@@ -20,6 +20,7 @@ FilterButtonSud::FilterButtonSud(QWidget *parent) :
     mCheckBoxAusgetrunken(nullptr),
     mCheckBoxMerkliste(nullptr),
     mComboBoxKategorie(nullptr),
+    mComboBoxAnlage(nullptr),
     mCheckBoxDatum(nullptr),
     mDateEditMin(nullptr),
     mDateEditMax(nullptr)
@@ -104,6 +105,22 @@ void FilterButtonSud::setModel(ProxyModelSud* model, Items items)
         line->setMidLineWidth(1);
         layout->addWidget(line, layout->rowCount(), 0, 1, 2);
     }
+    if (items.testFlag(Item::Anlage))
+    {
+        layout->addWidget(new QLabel(tr("Anlage"), widget), layout->rowCount(), 0);
+        mComboBoxAnlage = new QComboBox(this);
+        mComboBoxAnlage->addItem("");
+        for (int i = 0; i < bh->modelAusruestung()->rowCount(); i++)
+            mComboBoxAnlage->addItem(bh->modelAusruestung()->data(i, ModelAusruestung::ColName).toString());
+        layout->addWidget(mComboBoxAnlage, layout->rowCount()-1, 1);
+        connect(mComboBoxAnlage, &QComboBox::currentTextChanged, this, &FilterButtonSud::setAnlage);
+        line = new QFrame(this);
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+        line->setLineWidth(0);
+        line->setMidLineWidth(1);
+        layout->addWidget(line, layout->rowCount(), 0, 1, 2);
+    }
     if (items.testFlag(Item::Braudatum))
     {
         layout->addWidget(new QLabel(tr("Gebraut"), widget), layout->rowCount(), 0);
@@ -179,6 +196,12 @@ void FilterButtonSud::setKategorie(const QString& value)
     updateChecked();
 }
 
+void FilterButtonSud::setAnlage(const QString& value)
+{
+    mModel->setFilterAnlage(value);
+    updateChecked();
+}
+
 void FilterButtonSud::setDateAlle(bool value)
 {
     mModel->setFilterDate(value);
@@ -222,6 +245,8 @@ void FilterButtonSud::updateWidgets()
         mCheckBoxMerkliste->setChecked(mModel->filterMerkliste());
     if (mComboBoxKategorie)
         mComboBoxKategorie->setCurrentText(mModel->filterKategorie());
+    if (mComboBoxAnlage)
+        mComboBoxAnlage->setCurrentText(mModel->filterAnlage());
     if (mCheckBoxDatum)
         mCheckBoxDatum->setChecked(mModel->filterDate());
     if (mDateEditMin)
@@ -243,6 +268,8 @@ void FilterButtonSud::updateChecked()
     if (!checked && mModel->filterMerkliste())
         checked = true;
     if (!checked && !mModel->filterKategorie().isEmpty())
+        checked = true;
+    if (!checked && !mModel->filterAnlage().isEmpty())
         checked = true;
     if (!checked && mModel->filterDate())
         checked = true;

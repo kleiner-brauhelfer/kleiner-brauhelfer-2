@@ -141,7 +141,6 @@ void TableView::buildContextMenu(QMenu& menu) const
             menu.addAction(action);
         }
     }
-    menu.addSeparator();
     action = new QAction(tr("Zurücksetzen"), &menu);
     connect(action, &QAction::triggered, this, &TableView::restoreDefaultState);
     menu.addAction(action);

@@ -16,7 +16,8 @@ public:
         Status = 1,
         Merkliste = 2,
         Kategorie = 4,
-        Braudatum = 8,
+        Anlage = 8,
+        Braudatum = 16,
         Alle = 255
     };
     Q_DECLARE_FLAGS(Items, Item)
@@ -31,6 +32,7 @@ private slots:
     void setStatus();
     void setMerkliste(bool value);
     void setKategorie(const QString& value);
+    void setAnlage(const QString& value);
     void setDateAlle(bool value);
     void setMindate(const QDate& date);
     void setMaxdate(const QDate& date);
@@ -48,9 +50,12 @@ private:
     QCheckBox* mCheckBoxAusgetrunken;
     QCheckBox* mCheckBoxMerkliste;
     QComboBox* mComboBoxKategorie;
+    QComboBox* mComboBoxAnlage;
     QCheckBox* mCheckBoxDatum;
     DateEdit* mDateEditMin;
     DateEdit* mDateEditMax;
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(FilterButtonSud::Items)
 
 #endif // FILTERBUTTONSUD_H

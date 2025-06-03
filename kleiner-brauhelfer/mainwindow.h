@@ -7,6 +7,7 @@
 class DlgRohstoffe;
 class DlgBrauUebersicht;
 class DlgAusruestung;
+class DlgPrintout;
 
 namespace Ui {
 class MainWindow;
@@ -34,6 +35,7 @@ public slots:
     DlgRohstoffe* showDialogRohstoffe();
     DlgBrauUebersicht* showDialogBrauUebersicht();
     DlgAusruestung* showDialogAusruestung();
+    DlgPrintout* showDialogPrintout();
 
 private slots:
     void focusChanged(QWidget *old, QWidget *now);

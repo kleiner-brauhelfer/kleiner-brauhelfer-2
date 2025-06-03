@@ -253,6 +253,7 @@ void TabSudAuswahl::sudAnlegen()
     model->setFilterMerkliste(false);
     model->setFilterDate(false);
     model->setFilterKategorie("");
+    model->setFilterAnlage("");
     ui->tbFilter->clear();
 
     QMap<int, QVariant> values({{ModelSud::ColSudname, tr("Neuer Sud")}});
@@ -282,6 +283,7 @@ void TabSudAuswahl::sudKopieren(bool loadedSud)
     model->setFilterMerkliste(false);
     model->setFilterDate(false);
     model->setFilterKategorie("");
+    model->setFilterAnlage("");
     ui->tbFilter->clear();
 
     int row = -1;
@@ -404,6 +406,7 @@ void TabSudAuswahl::rezeptImportieren(const QString& filePath)
             model->setFilterMerkliste(false);
             model->setFilterDate(false);
             model->setFilterKategorie("");
+            model->setFilterAnlage("");
             ui->tbFilter->clear();
             filterChanged();
             sudRow = model->mapRowFromSource(sudRow);

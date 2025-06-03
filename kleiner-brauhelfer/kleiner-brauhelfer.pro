@@ -46,7 +46,6 @@ SOURCES += \
     tabrezept.cpp \
     tabsudauswahl.cpp \
     tabsudauswahl_sudinfo.cpp \
-    tabzusammenfassung.cpp \
     templatetags.cpp \
     charts/chart3.cpp \
     charts/chartabfuelldaten.cpp \
@@ -73,6 +72,7 @@ SOURCES += \
     dialogs/dlgmaischplanmalz.cpp \
     dialogs/dlgmodule.cpp \
     dialogs/dlgphmalz.cpp \
+    dialogs/dlgprintout.cpp \
     dialogs/dlgrestextrakt.cpp \
     dialogs/dlgrichtexteditor.cpp \
     dialogs/dlgrohstoffe.cpp \
@@ -144,7 +144,6 @@ HEADERS += \
     tabgaerverlauf.h \
     tabrezept.h \
     tabsudauswahl.h \
-    tabzusammenfassung.h \
     templatetags.h \
     charts/chart3.h \
     charts/chartabfuelldaten.h \
@@ -172,6 +171,7 @@ HEADERS += \
     dialogs/dlgmaischplanmalz.h \
     dialogs/dlgmodule.h \
     dialogs/dlgphmalz.h \
+    dialogs/dlgprintout.h \
     dialogs/dlgrestextrakt.h \
     dialogs/dlgrichtexteditor.h \
     dialogs/dlgrohstoffe.h \
@@ -240,7 +240,6 @@ FORMS += \
     tabgaerverlauf.ui \
     tabrezept.ui \
     tabsudauswahl.ui \
-    tabzusammenfassung.ui \
     dialogs/dlgabout.ui \
     dialogs/dlgausruestung.ui \
     dialogs/dlgbrauuebersicht.ui \
@@ -253,6 +252,7 @@ FORMS += \
     dialogs/dlgmaischplanmalz.ui \
     dialogs/dlgmodule.ui \
     dialogs/dlgphmalz.ui \
+    dialogs/dlgprintout.ui \
     dialogs/dlgrestextrakt.ui \
     dialogs/dlgrichtexteditor.ui \
     dialogs/dlgrohstoffe.ui \

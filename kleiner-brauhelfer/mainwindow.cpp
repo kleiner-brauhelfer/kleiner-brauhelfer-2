@@ -22,6 +22,7 @@
 #include "dialogs/dlgmaischplanmalz.h"
 #include "dialogs/dlgmodule.h"
 #include "dialogs/dlgphmalz.h"
+#include "dialogs/dlgprintout.h"
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgrichtexteditor.h"
 #include "dialogs/dlgrohstoffauswahl.h"
@@ -140,6 +141,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionRohstoffe, &QAction::triggered, this, &MainWindow::showDialogRohstoffe);
     connect(ui->actionBrauUebersicht, &QAction::triggered, this, &MainWindow::showDialogBrauUebersicht);
     connect(ui->actionAusruestung, &QAction::triggered, this, &MainWindow::showDialogAusruestung);
+    connect(ui->actionPrintout, &QAction::triggered, this, &MainWindow::showDialogPrintout);
 
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
@@ -302,7 +304,6 @@ void MainWindow::saveSettings()
     ui->tabBraudaten->saveSettings();
     ui->tabAbfuelldaten->saveSettings();
     ui->tabGaerverlauf->saveSettings();
-    ui->tabZusammenfassung->saveSettings();
     ui->tabEtikette->saveSettings();
     ui->tabBewertung->saveSettings();
 }
@@ -316,7 +317,6 @@ void MainWindow::restoreView()
     ui->tabBraudaten->restoreView();
     ui->tabAbfuelldaten->restoreView();
     ui->tabGaerverlauf->restoreView();
-    ui->tabZusammenfassung->restoreView();
     ui->tabEtikette->restoreView();
     ui->tabBewertung->restoreView();
     DlgAbout::restoreView();
@@ -331,6 +331,7 @@ void MainWindow::restoreView()
     DlgMaischplanMalz::restoreView();
     DlgModule::restoreView();
     DlgPhMalz::restoreView();
+    DlgPrintout::restoreView();
     DlgRestextrakt::restoreView();
     DlgRichTextEditor::restoreView();
     DlgRohstoffAuswahl::restoreView();
@@ -355,7 +356,6 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabBraudaten->modulesChanged(modules);
     ui->tabAbfuelldaten->modulesChanged(modules);
     ui->tabGaerverlauf->modulesChanged(modules);
-    ui->tabZusammenfassung->modulesChanged(modules);
     ui->tabEtikette->modulesChanged(modules);
     ui->tabBewertung->modulesChanged(modules);
     checkLoadedSud();
@@ -376,19 +376,6 @@ void MainWindow::updateTabs(Settings::Modules modules)
             ui->tabMain->removeTab(index);
     }
     if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
-        nextIndex++;
-    if (modules.testFlag(Settings::ModuleAusdruck))
-    {
-        int index = ui->tabMain->indexOf(ui->tabZusammenfassung);
-        if (gSettings->isModuleEnabled(Settings::ModuleAusdruck))
-        {
-            if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabZusammenfassung, QIcon::fromTheme("tabzusammenfassung"), tr("Ausdruck"));
-        }
-        else
-            ui->tabMain->removeTab(index);
-    }
-    if (gSettings->isModuleEnabled(Settings::ModuleAusdruck))
         nextIndex++;
     if (modules.testFlag(Settings::ModuleEtikette))
     {
@@ -420,6 +407,8 @@ void MainWindow::updateTabs(Settings::Modules modules)
         ui->actionBrauUebersicht->setVisible(gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht));
     if (modules.testFlag(Settings::ModuleAusruestung))
         ui->actionAusruestung->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusruestung));
+    if (modules.testFlag(Settings::ModuleAusdruck))
+        ui->actionPrintout->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusdruck));
 }
 
 void MainWindow::databaseModified()
@@ -444,7 +433,6 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabGaerverlauf), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabZusammenfassung), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
     ui->menuSud->setEnabled(loaded);
@@ -1207,4 +1195,9 @@ DlgBrauUebersicht* MainWindow::showDialogBrauUebersicht()
 DlgAusruestung* MainWindow::showDialogAusruestung()
 {
     return DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);
+}
+
+DlgPrintout* MainWindow::showDialogPrintout()
+{
+    return DlgAbstract::showDialog<DlgPrintout>(this, ui->actionPrintout);
 }

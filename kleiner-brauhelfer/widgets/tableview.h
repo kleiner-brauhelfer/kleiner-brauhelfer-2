@@ -23,13 +23,12 @@ public:
 public:
     TableView(QWidget *parent = nullptr);
     void build();
-    void setDefaultContextMenu();
+    void setDefaultContextMenu(bool copy = true, bool print = true);
     void buildContextMenu(QMenu& menu) const;
     void clearCols();
     void appendCol(const ColumnDefinition& col);
     void setCols(const QList<ColumnDefinition>& cols);
     void setCol(int idx, bool visible, bool canHide);
-    void setContextMenuFeatures(bool copy, bool print);
 
 public slots:
     void restoreDefaultState();

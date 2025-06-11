@@ -23,7 +23,7 @@ private slots:
     void on_gbModuleGaerverlauf_clicked(bool checked);
     void on_cbSchnellgaerprobe_clicked(bool checked);
     void on_gbModuleZusammenfassung_clicked(bool checked);
-    void on_gbModuleEtikette_clicked(bool checked);
+    void on_gbModuleEtikett_clicked(bool checked);
     void on_gbModuleBewertung_clicked(bool checked);
     void on_gbModuleBrauuebersicht_clicked(bool checked);
     void on_gbModuleAusruestung_clicked(bool checked);

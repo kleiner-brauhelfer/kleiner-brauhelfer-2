@@ -45,8 +45,7 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     table->appendCol({ModelAusruestung::ColAnzahlSude, true, true, 100, new SpinBoxDelegate(table)});
     table->appendCol({ModelAusruestung::ColAnzahlGebrauteSude, true, true, 100, new SpinBoxDelegate(table)});
     table->build();
-    table->setDefaultContextMenu();
-    table->setContextMenuFeatures(false, false);
+    table->setDefaultContextMenu(false, false);
 
     table = ui->tableViewGeraete;
     proxyModel = new ProxyModel(this);
@@ -65,14 +64,15 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     table->appendCol({ModelSud::ColSudname, true, false, 200, new SudNameDelegate(true, Qt::AlignLeft | Qt::AlignVCenter, table)});
     table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
     table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
-    table->appendCol({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, true, table)});
+    table->appendCol({ModelSud::ColBraudatum, true, true, 100, new DateDelegate(false, true, table)});
     table->appendCol({ModelSud::Colerg_EffektiveAusbeute, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
     table->appendCol({ModelSud::ColVerdampfungsrateIst, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
     table->appendCol({ModelSud::ColAusbeuteIgnorieren, true, false, 150, new CheckBoxDelegate(table)});
     table->build();
-    table->setDefaultContextMenu();
+    table->setDefaultContextMenu(false, false);
 
-    ui->splitter->setSizes({200, 200});
+    ui->splitter->setSizes({100, 100});
+    ui->splitterSude->setSizes({200, 100});
 
     modulesChanged(Settings::ModuleAlle);
     connect(gSettings, &Settings::modulesChanged, this, &DlgAusruestung::modulesChanged);
@@ -97,6 +97,7 @@ void DlgAusruestung::saveSettings()
     gSettings->setValue("tableStateGeraete", ui->tableViewGeraete->horizontalHeader()->saveState());
     gSettings->setValue("tableStateSude", ui->tableViewSude->horizontalHeader()->saveState());
     gSettings->setValue("splitterState", ui->splitter->saveState());
+    gSettings->setValue("splitterStateSude", ui->splitterSude->saveState());
     gSettings->setValue("AnzahlDurchschnitt", ui->sliderAusbeuteSude->value());
     gSettings->endGroup();
 }
@@ -108,6 +109,7 @@ void DlgAusruestung::loadSettings()
     ui->tableViewGeraete->restoreState(gSettings->value("tableStateGeraete").toByteArray());
     ui->tableViewSude->restoreState(gSettings->value("tableStateSude").toByteArray());
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
+    ui->splitterSude->restoreState(gSettings->value("splitterStateSude").toByteArray());
     ui->sliderAusbeuteSude->setValue(gSettings->value("AnzahlDurchschnitt").toInt());
     gSettings->endGroup();
 }
@@ -120,6 +122,7 @@ void DlgAusruestung::restoreView()
     gSettings->remove("tableStateGeraete");
     gSettings->remove("tableStateSude");
     gSettings->remove("splitterState");
+    gSettings->remove("splitterStateSude");
     gSettings->endGroup();
 }
 

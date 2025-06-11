@@ -1,28 +1,36 @@
-#ifndef TABETIKETTE_H
-#define TABETIKETTE_H
+#ifndef DLGETIKETT_H
+#define DLGETIKETT_H
 
-#include "tababstract.h"
+#include <QItemSelection>
+#include "dlgabstract.h"
 #include "helper/htmlhighlighter.h"
 
 namespace Ui {
-class TabEtikette;
+class DlgEtikett;
 }
 
 #ifdef QT_PRINTSUPPORT_LIB
 class QPrinter;
 #endif
 
-class TabEtikette : public TabAbstract
+class SudObject;
+
+class DlgEtikett : public DlgAbstract
 {
     Q_OBJECT
 
 public:
-    explicit TabEtikette(QWidget *parent = nullptr);
-    virtual ~TabEtikette() Q_DECL_OVERRIDE;
+    static DlgEtikett *Dialog;
+
+public:
+    explicit DlgEtikett(QWidget *parent = nullptr);
+    virtual ~DlgEtikett() Q_DECL_OVERRIDE;
     void saveSettings() Q_DECL_OVERRIDE;
-    bool isPrintable() const Q_DECL_OVERRIDE;
-    void printPreview() Q_DECL_OVERRIDE;
-    void toPdf() Q_DECL_OVERRIDE;
+    void loadSettings() Q_DECL_OVERRIDE;
+    static void restoreView();
+    void selectSud(int id);
+    void printPreview();
+    void toPdf();
 
 private slots:
     void updateAll();
@@ -32,6 +40,7 @@ private slots:
     void updateTags();
     void updateTemplateTags();
     void updateAuswahlListe();
+    void onTableSelectionChanged(const QItemSelection &selected);
   #ifdef QT_PRINTSUPPORT_LIB
     void onPrinterPaintRequested(QPrinter *printer);
   #endif
@@ -55,9 +64,10 @@ private slots:
     void on_btnToPdf_clicked();
     void on_btnTagNeu_clicked();
     void on_btnTagLoeschen_clicked();
+    void onFilterChanged();
+    void on_tbFilter_textChanged(const QString &pattern);
 
 private:
-    void onTabActivated() Q_DECL_OVERRIDE;
     bool checkSave();
     QString generateSvg(const QString &svg);
     QVariant data(int col) const;
@@ -68,10 +78,11 @@ private:
   #endif
 
 private:
-    Ui::TabEtikette *ui;
+    Ui::DlgEtikett *ui;
+    SudObject* mSud;
     QString mTemplateFilePath;
     HtmlHighLighter* mHtmlHightLighter;
     QVariantMap mTemplateTags;
 };
 
-#endif // TABETIKETTE_H
+#endif // DLGETIKETT_H

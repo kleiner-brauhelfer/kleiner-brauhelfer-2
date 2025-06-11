@@ -26,16 +26,11 @@ TableView::TableView(QWidget *parent) :
     mContextMenuCopy(true),
     mContextMenuPrint(true)
 {
+    horizontalHeader()->setMinimumSectionSize(40);
     setEditTriggers(QAbstractItemView::DoubleClicked |
                     QAbstractItemView::SelectedClicked |
                     QAbstractItemView::EditKeyPressed |
                     QAbstractItemView::AnyKeyPressed);
-}
-
-void TableView::setContextMenuFeatures(bool copy, bool print)
-{
-    mContextMenuCopy = copy;
-    mContextMenuPrint = print;
 }
 
 void TableView::build()
@@ -105,24 +100,21 @@ bool TableView::restoreState(const QByteArray &state)
     return true;
 }
 
-void TableView::setDefaultContextMenu()
+void TableView::setDefaultContextMenu(bool copy, bool print)
 {
-    bool addMenu = false;
+    mContextMenuCopy = copy;
+    mContextMenuPrint = print;
     for (const auto& col : qAsConst(mCols))
     {
         if (col.canHide)
         {
-            addMenu = true;
+            QHeaderView *header = horizontalHeader();
+            setContextMenuPolicy(Qt::CustomContextMenu);
+            header->setContextMenuPolicy(Qt::CustomContextMenu);
+            connect(this, &QWidget::customContextMenuRequested, this, &TableView::onCustomContextMenuRequested);
+            connect(header, &QWidget::customContextMenuRequested, this, &TableView::onCustomContextMenuRequested);
             break;
         }
-    }
-    if (addMenu)
-    {
-        QHeaderView *header = horizontalHeader();
-        setContextMenuPolicy(Qt::CustomContextMenu);
-        header->setContextMenuPolicy(Qt::CustomContextMenu);
-        connect(this, &QWidget::customContextMenuRequested, this, &TableView::onCustomContextMenuRequested);
-        connect(header, &QWidget::customContextMenuRequested, this, &TableView::onCustomContextMenuRequested);
     }
 }
 

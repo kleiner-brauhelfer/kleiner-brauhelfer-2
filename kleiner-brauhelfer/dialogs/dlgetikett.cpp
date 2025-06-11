@@ -1,5 +1,5 @@
-#include "tabetikette.h"
-#include "ui_tabetikette.h"
+#include "dlgetikett.h"
+#include "ui_dlgetikett.h"
 #include <QMessageBox>
 #include <QDirIterator>
 #include <QFile>
@@ -17,8 +17,11 @@
 #include "settings.h"
 #include "templatetags.h"
 #include "helper/mustache.h"
-#include "model/checkboxdelegate.h"
 #include "model/textdelegate.h"
+#include "model/datedelegate.h"
+#include "model/sudnamedelegate.h"
+#include "model/spinboxdelegate.h"
+#include "model/checkboxdelegate.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
@@ -27,12 +30,29 @@
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-TabEtikette::TabEtikette(QWidget *parent) :
-    TabAbstract(parent),
-    ui(new Ui::TabEtikette),
+DlgEtikett* DlgEtikett::Dialog = nullptr;
+
+DlgEtikett::DlgEtikett(QWidget *parent) :
+    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
+    ui(new Ui::DlgEtikett),
+    mSud(new SudObject(bh)),
     mTemplateFilePath(QStringLiteral(""))
 {
+    mSud->init();
+
     ui->setupUi(this);
+
+    TableView *table = ui->table;
+    ProxyModel *proxyModel = new ProxyModelSud(this);
+    proxyModel->setSourceModel(bh->modelSud());
+    table->setModel(proxyModel);
+    table->appendCol({ModelSud::ColSudname, true, false, -1, new SudNameDelegate(table)});
+    table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
+    table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->appendCol({ModelSud::ColAnlage, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
+    table->appendCol({ModelSud::ColBraudatum, false, true, 100, new DateDelegate(false, true, table)});
+    table->build();
+    table->setDefaultContextMenu(false, false);
 
     ui->tbTemplate->setFont(QFontDatabase::systemFont(QFontDatabase::FixedFont));
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 10, 0))
@@ -54,65 +74,118 @@ TabEtikette::TabEtikette(QWidget *parent) :
 
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
 
-    gSettings->beginGroup("TabEtikette");
+    gSettings->beginGroup(staticMetaObject.className());
     ui->cbSeitenverhaeltnis->setChecked(gSettings->value("Seitenverhaeltnis", true).toBool());
     ui->cbDividingLine->setChecked(gSettings->value("Trennlinie", true).toBool());
     gSettings->endGroup();
 
-    TableView *table = ui->tableTags;
-    table->setModel(bh->sud()->modelTags());
+    table = ui->tableTags;
+    table->setModel(mSud->modelTags());
     table->appendCol({ModelTags::ColKey, true, false, 0, new TextDelegate(table)});
     table->appendCol({ModelTags::ColValue, true, false, -1, new TextDelegate(table)});
     table->appendCol({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
     table->build();
 
-    connect(bh, &Brauhelfer::discarded, this, &TabEtikette::updateAll);
-    connect(bh->sud(), &SudObject::loadedChanged, this, &TabEtikette::updateAll);
-    connect(bh->sud(), &SudObject::modified, this, &TabEtikette::updateTemplateTags);
-    connect(bh->sud()->modelTags(), &ProxyModel::modified, this, &TabEtikette::updateTemplateTags);
-    connect(bh->sud()->modelEtiketten(), &ProxyModel::modified, this, &TabEtikette::updateValues);
-    connect(bh->sud()->modelAnhang(), &ProxyModel::layoutChanged, this, &TabEtikette::updateAuswahlListe);
-    connect(bh->sud()->modelAnhang(), &ProxyModel::rowsInserted, this, &TabEtikette::updateAuswahlListe);
-    connect(bh->sud()->modelAnhang(), &ProxyModel::rowsRemoved, this, &TabEtikette::updateAuswahlListe);
+    ui->splitter->setStretchFactor(0, 0);
+    ui->splitter->setStretchFactor(1, 1);
+    ui->splitter->setSizes({100, 200});
+
+    connect(ui->table->selectionModel(), &QItemSelectionModel::selectionChanged, this, &DlgEtikett::onTableSelectionChanged);
+    connect(bh, &Brauhelfer::modified, this, &DlgEtikett::updateAll);
+    connect(bh, &Brauhelfer::discarded, this, &DlgEtikett::updateAll);
+    connect(gSettings, &Settings::modulesChanged, this, &DlgEtikett::updateAll);
+
+    connect(proxyModel, &ProxyModel::layoutChanged, this, &DlgEtikett::onFilterChanged);
+    connect(proxyModel, &ProxyModel::rowsInserted, this, &DlgEtikett::onFilterChanged);
+    connect(proxyModel, &ProxyModel::rowsRemoved, this, &DlgEtikett::onFilterChanged);
 
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
     updateAll();
+
+    if (bh->sud()->isLoaded())
+        selectSud(bh->sud()->id());
+    else
+        ui->table->selectRow(0);
 }
 
-TabEtikette::~TabEtikette()
+DlgEtikett::~DlgEtikett()
 {
     delete ui;
+    delete mSud;
 }
 
-void TabEtikette::saveSettings()
+void DlgEtikett::saveSettings()
 {
-    gSettings->beginGroup("TabEtikette");
+    ProxyModelSud *proxyModel = static_cast<ProxyModelSud*>(ui->table->model());
+    gSettings->beginGroup(staticMetaObject.className());
+    proxyModel->saveSetting(gSettings);
+    gSettings->setValue("splitterState", ui->splitter->saveState());
+    gSettings->setValue("tableState", ui->table->horizontalHeader()->saveState());
     gSettings->setValue("Seitenverhaeltnis", ui->cbSeitenverhaeltnis->isChecked());
     gSettings->setValue("Trennlinie", ui->cbDividingLine->isChecked());
     gSettings->endGroup();
 }
 
-void TabEtikette::onTabActivated()
+void DlgEtikett::loadSettings()
 {
+    ProxyModelSud *proxyModel = static_cast<ProxyModelSud*>(ui->table->model());
+    gSettings->beginGroup(staticMetaObject.className());
+    proxyModel->loadSettings(gSettings);
+    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
+    ui->table->restoreState(gSettings->value("tableState").toByteArray());
+    gSettings->endGroup();
+    ui->btnFilter->setModel(proxyModel);
+    ui->table->scrollTo(ui->table->currentIndex());
+}
+
+void DlgEtikett::restoreView()
+{
+    DlgAbstract::restoreView(staticMetaObject.className(), Dialog);
+    gSettings->beginGroup(staticMetaObject.className());
+    gSettings->remove("splitterState");
+    gSettings->endGroup();
+}
+
+void DlgEtikett::selectSud(int id)
+{
+    ProxyModelSud *proxyModel = static_cast<ProxyModelSud*>(ui->table->model());
+    int row = proxyModel->getRowWithValue(ModelSud::ColID, id);
+    if (row)
+        ui->table->selectRow(row);
+}
+
+void DlgEtikett::onTableSelectionChanged(const QItemSelection &selected)
+{
+    if (selected.indexes().count())
+    {
+        const ProxyModel *proxyModel = static_cast<ProxyModel*>(ui->table->model());
+        int sudRow = proxyModel->mapRowToSource(selected.indexes()[0].row());
+        int sudId = bh->modelSud()->data(sudRow, ModelSud::ColID).toInt();
+        mSud->load(sudId);
+    }
+    else
+    {
+        mSud->unload();
+    }
+    updateAuswahlListe();
     updateAll();
 }
 
-void TabEtikette::updateAll()
+
+void DlgEtikett::updateAll()
 {
-    updateAuswahlListe();
-    ui->cbAuswahl->setCurrentIndex(0);
     updateValues();
     updateTemplateFilePath();
     updateTemplateTags();
 }
 
-void TabEtikette::updateAuswahlListe()
+void DlgEtikett::updateAuswahlListe()
 {
     ui->cbAuswahl->clear();
     ui->cbAuswahl->addItem(QStringLiteral(""));
-    for (int row = 0; row < bh->sud()->modelAnhang()->rowCount(); ++row)
+    for (int row = 0; row < mSud->modelAnhang()->rowCount(); ++row)
     {
-        QString pfad = bh->sud()->modelAnhang()->index(row, ModelAnhang::ColPfad).data().toString();
+        QString pfad = mSud->modelAnhang()->index(row, ModelAnhang::ColPfad).data().toString();
         if (pfad.endsWith(QStringLiteral(".svg"), Qt::CaseInsensitive))
         {
             QFileInfo fi(pfad);
@@ -128,7 +201,7 @@ void TabEtikette::updateAuswahlListe()
     }
 }
 
-QString TabEtikette::generateSvg(const QString &svg)
+QString DlgEtikett::generateSvg(const QString &svg)
 {
     Mustache::Renderer renderer;
     Mustache::QtVariantContext context(mTemplateTags);
@@ -138,7 +211,7 @@ QString TabEtikette::generateSvg(const QString &svg)
     return output;
 }
 
-void TabEtikette::updateTemplateFilePath()
+void DlgEtikett::updateTemplateFilePath()
 {
     QDir baseDir(gSettings->databaseDir());
     QFileInfo fi(data(ModelEtiketten::ColPfad).toString());
@@ -150,7 +223,7 @@ void TabEtikette::updateTemplateFilePath()
         mTemplateFilePath = fi.filePath();
 }
 
-void TabEtikette::updateSvg()
+void DlgEtikett::updateSvg()
 {
     QColor bgColor = data(ModelEtiketten::ColHintergrundfarbe).toUInt();
     QPalette pal = ui->frameBackgroundColor->palette();
@@ -199,7 +272,7 @@ void TabEtikette::updateSvg()
     QDir::setCurrent(currentPath);
 }
 
-void TabEtikette::updateTags()
+void DlgEtikett::updateTags()
 {
     if (ui->tbTags->isVisible())
     {
@@ -208,19 +281,17 @@ void TabEtikette::updateTags()
     }
 }
 
-void TabEtikette::updateTemplateTags()
+void DlgEtikett::updateTemplateTags()
 {
-    if (!isTabActive())
-        return;
     mTemplateTags.clear();
-    TemplateTags::erstelleTagListe(mTemplateTags, bh->sud()->row());
+    TemplateTags::erstelleTagListe(mTemplateTags, mSud->row());
     mTemplateTags[QStringLiteral("N")] = "N";
     mTemplateTags[QStringLiteral("n")] = "n";
     updateTags();
     updateSvg();
 }
 
-bool TabEtikette::checkSave()
+bool DlgEtikett::checkSave()
 {
     if (ui->btnSaveTemplate->isVisible())
     {
@@ -235,17 +306,17 @@ bool TabEtikette::checkSave()
     return false;
 }
 
-QVariant TabEtikette::data(int col) const
+QVariant DlgEtikett::data(int col) const
 {
-    return bh->sud()->modelEtiketten()->data(0, col);
+    return mSud->modelEtiketten()->data(0, col);
 }
 
-bool TabEtikette::setData(int col, const QVariant &value)
+bool DlgEtikett::setData(int col, const QVariant &value)
 {
-    return bh->sud()->modelEtiketten()->setData(0, col, value);
+    return mSud->modelEtiketten()->setData(0, col, value);
 }
 
-void TabEtikette::on_cbAuswahl_activated(int index)
+void DlgEtikett::on_cbAuswahl_activated(int index)
 {
     if (checkSave())
         return;
@@ -253,28 +324,28 @@ void TabEtikette::on_cbAuswahl_activated(int index)
 
     if (index == 0)
     {
-        if (bh->sud()->modelEtiketten()->rowCount() > 0)
+        if (mSud->modelEtiketten()->rowCount() > 0)
         {
             QString pfad = data(ModelEtiketten::ColPfad).toString();
-            bh->sud()->modelEtiketten()->removeRow(0);
-            int row = bh->sud()->modelAnhang()->getRowWithValue(ModelAnhang::ColPfad, pfad);
+            mSud->modelEtiketten()->removeRow(0);
+            int row = mSud->modelAnhang()->getRowWithValue(ModelAnhang::ColPfad, pfad);
             if (row >= 0)
-                bh->sud()->modelAnhang()->removeRow(row);
+                mSud->modelAnhang()->removeRow(row);
         }
     }
     else
     {
         QString pfad = ui->cbAuswahl->itemData(index).toString();
-        if (bh->sud()->modelEtiketten()->rowCount() == 0)
+        if (mSud->modelEtiketten()->rowCount() == 0)
         {
-            QMap<int, QVariant> values({{ModelEtiketten::ColSudID, bh->sud()->id()},
+            QMap<int, QVariant> values({{ModelEtiketten::ColSudID, mSud->id()},
                                         {ModelEtiketten::ColPfad, pfad}});
-            bh->sud()->modelEtiketten()->append(values);
+            mSud->modelEtiketten()->append(values);
         }
         else
         {
             setData(ModelEtiketten::ColPfad, pfad);
-            if (!bh->modelEtiketten()->setValuesFrom(bh->sud()->modelEtiketten()->mapRowToSource(0), pfad))
+            if (!bh->modelEtiketten()->setValuesFrom(mSud->modelEtiketten()->mapRowToSource(0), pfad))
             {
                 setData(ModelEtiketten::ColBreite, 0);
                 setData(ModelEtiketten::ColHoehe, 0);
@@ -294,30 +365,31 @@ void TabEtikette::on_cbAuswahl_activated(int index)
         setData(ModelEtiketten::ColHoehe, rect.height());
 }
 
-void TabEtikette::on_btnOeffnen_clicked()
+void DlgEtikett::on_btnOeffnen_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("SVG auswählen"), QStringLiteral(""), tr("SVG (*.svg)"));
     if (!fileName.isEmpty())
     {
-        QMap<int, QVariant> values({{ModelAnhang::ColSudID, bh->sud()->id()},
+        QMap<int, QVariant> values({{ModelAnhang::ColSudID, mSud->id()},
                                     {ModelAnhang::ColPfad, fileName}});
-        bh->sud()->modelAnhang()->append(values);
+        mSud->modelAnhang()->append(values);
+        updateAuswahlListe();
         updateAll();
         on_cbAuswahl_activated(ui->cbAuswahl->findText(QFileInfo(fileName).fileName()));
     }
 }
 
-void TabEtikette::on_btnAktualisieren_clicked()
+void DlgEtikett::on_btnAktualisieren_clicked()
 {
     updateSvg();
 }
 
-void TabEtikette::on_cbTagsErsetzen_stateChanged()
+void DlgEtikett::on_cbTagsErsetzen_stateChanged()
 {
     updateSvg();
 }
 
-void TabEtikette::on_cbEditMode_clicked(bool checked)
+void DlgEtikett::on_cbEditMode_clicked(bool checked)
 {
     if (checkSave())
     {
@@ -329,6 +401,10 @@ void TabEtikette::on_cbEditMode_clicked(bool checked)
     ui->tbTags->setVisible(checked);
     ui->lblFilePath->setVisible(checked);
     ui->splitter_1->setHandleWidth(checked ? 5 : 0);
+    if (checked)
+        ui->splitter_1->setSizes({300,100});
+    else
+        ui->splitter_1->setSizes({100,0});
 
     if (checked)
     {
@@ -353,7 +429,7 @@ void TabEtikette::on_cbEditMode_clicked(bool checked)
     updateSvg();
 }
 
-void TabEtikette::on_tbTemplate_textChanged()
+void DlgEtikett::on_tbTemplate_textChanged()
 {
     if (ui->tbTemplate->hasFocus())
     {
@@ -362,7 +438,7 @@ void TabEtikette::on_tbTemplate_textChanged()
     }
 }
 
-void TabEtikette::on_btnSaveTemplate_clicked()
+void DlgEtikett::on_btnSaveTemplate_clicked()
 {
     QFile file(mTemplateFilePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
@@ -372,12 +448,12 @@ void TabEtikette::on_btnSaveTemplate_clicked()
     ui->btnSaveTemplate->setVisible(false);
 }
 
-void TabEtikette::on_btnExport_clicked()
+void DlgEtikett::on_btnExport_clicked()
 {
     gSettings->beginGroup("General");
     QString path = gSettings->value("exportPath", QDir::homePath()).toString();
     QString filePath = QFileDialog::getSaveFileName(this, tr("SVG exportieren"),
-                                                    path + "/" + bh->sud()->getSudname() + "_" + tr("Etikett") + ".svg", QStringLiteral("SVG (*.svg)"));
+                                                    path + "/" + mSud->getSudname() + "_" + tr("Etikett") + ".svg", QStringLiteral("SVG (*.svg)"));
     if (!filePath.isEmpty())
     {
         gSettings->setValue("exportPath", QFileInfo(filePath).absolutePath());
@@ -404,7 +480,7 @@ void TabEtikette::on_btnExport_clicked()
 
 #ifdef QT_PRINTSUPPORT_LIB
 
-void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
+void DlgEtikett::onPrinterPaintRequested(QPrinter *printer)
 {
     QWidget* parent = qobject_cast<QWidget*>(sender());
     if(parent)
@@ -511,7 +587,7 @@ void TabEtikette::onPrinterPaintRequested(QPrinter *printer)
         parent->setEnabled(true);
 }
 
-void TabEtikette::loadPageLayout(QPrinter* printer)
+void DlgEtikett::loadPageLayout(QPrinter* printer)
 {
     QPageLayout layout;
     QMarginsF margins(data(ModelEtiketten::ColRandLinks).toDouble(),
@@ -524,7 +600,7 @@ void TabEtikette::loadPageLayout(QPrinter* printer)
     printer->setPageLayout(layout);
 }
 
-void TabEtikette::savePageLayout(const QPrinter *printer)
+void DlgEtikett::savePageLayout(const QPrinter *printer)
 {
     QPageLayout layout = printer->pageLayout();
     QPageSize pageSize = layout.pageSize();
@@ -543,12 +619,7 @@ void TabEtikette::savePageLayout(const QPrinter *printer)
 
 #endif
 
-bool TabEtikette::isPrintable() const
-{
-    return true;
-}
-
-void TabEtikette::printPreview()
+void DlgEtikett::printPreview()
 {
   #ifdef QT_PRINTSUPPORT_LIB
     gSettings->beginGroup("General");
@@ -561,7 +632,7 @@ void TabEtikette::printPreview()
     printer.setOutputFileName(QStringLiteral(""));
     printer.setOutputFormat(QPrinter::NativeFormat);
     QPrintPreviewDialog dlg(&printer, this);
-    connect(&dlg, &QPrintPreviewDialog::paintRequested, this, &TabEtikette::onPrinterPaintRequested);
+    connect(&dlg, &QPrintPreviewDialog::paintRequested, this, &DlgEtikett::onPrinterPaintRequested);
     dlg.exec();
     savePageLayout(&printer);
     gSettings->beginGroup("General");
@@ -570,7 +641,7 @@ void TabEtikette::printPreview()
   #endif
 }
 
-void TabEtikette::toPdf()
+void DlgEtikett::toPdf()
 {
   #ifdef QT_PRINTSUPPORT_LIB
     gSettings->beginGroup("General");
@@ -582,7 +653,7 @@ void TabEtikette::toPdf()
     gSettings->beginGroup("General");
     QString path = gSettings->value("exportPath", QDir::homePath()).toString();
     QString fileName = QFileDialog::getSaveFileName(this, tr("PDF speichern unter"),
-                                                    path + "/" + bh->sud()->getSudname() + "_" + tr("Etikett") + ".pdf", QStringLiteral("PDF (*.pdf)"));
+                                                    path + "/" + mSud->getSudname() + "_" + tr("Etikett") + ".pdf", QStringLiteral("PDF (*.pdf)"));
     if (!fileName.isEmpty())
     {
         loadPageLayout(&printer);
@@ -600,21 +671,22 @@ void TabEtikette::toPdf()
   #endif
 }
 
-void TabEtikette::on_btnPrint_clicked()
+void DlgEtikett::on_btnPrint_clicked()
 {
     printPreview();
 }
 
-void TabEtikette::on_btnToPdf_clicked()
+void DlgEtikett::on_btnToPdf_clicked()
 {
     toPdf();
 }
 
-void TabEtikette::updateValues()
+void DlgEtikett::updateValues()
 {
-    if (!ui->cbAuswahl->hasFocus())
+    QVariant auswahl = data(ModelEtiketten::ColPfad);
+    if (ui->cbAuswahl->currentData() != auswahl)
     {
-        QVariant auswahl = data(ModelEtiketten::ColPfad);
+        ui->cbAuswahl->setCurrentIndex(0);
         for (int i = 0; i < ui->cbAuswahl->count(); ++i)
         {
             if (ui->cbAuswahl->itemData(i) == auswahl)
@@ -637,13 +709,13 @@ void TabEtikette::updateValues()
         ui->tbAbstandVert->setValue(data(ModelEtiketten::ColAbstandVert).toDouble());
 }
 
-void TabEtikette::on_tbAnzahl_valueChanged(int value)
+void DlgEtikett::on_tbAnzahl_valueChanged(int value)
 {
     if (ui->tbAnzahl->hasFocus())
         setData(ModelEtiketten::ColAnzahl, value);
 }
 
-void TabEtikette::on_tbLabelBreite_valueChanged(double value)
+void DlgEtikett::on_tbLabelBreite_valueChanged(double value)
 {
     if (ui->tbLabelBreite->hasFocus())
     {
@@ -656,7 +728,7 @@ void TabEtikette::on_tbLabelBreite_valueChanged(double value)
     }
 }
 
-void TabEtikette::on_tbLabelHoehe_valueChanged(double value)
+void DlgEtikett::on_tbLabelHoehe_valueChanged(double value)
 {
     if (ui->tbLabelHoehe->hasFocus())
     {
@@ -669,7 +741,7 @@ void TabEtikette::on_tbLabelHoehe_valueChanged(double value)
     }
 }
 
-void TabEtikette::on_cbSeitenverhaeltnis_clicked(bool checked)
+void DlgEtikett::on_cbSeitenverhaeltnis_clicked(bool checked)
 {
     if (checked)
     {
@@ -678,14 +750,14 @@ void TabEtikette::on_cbSeitenverhaeltnis_clicked(bool checked)
     }
 }
 
-void TabEtikette::on_btnGroesseAusSvg_clicked()
+void DlgEtikett::on_btnGroesseAusSvg_clicked()
 {
     QRectF rect = ui->viewSvg->viewBoxF();
     setData(ModelEtiketten::ColBreite, rect.width());
     setData(ModelEtiketten::ColHoehe, rect.height());
 }
 
-void TabEtikette::on_btnBackgroundColor_clicked()
+void DlgEtikett::on_btnBackgroundColor_clicked()
 {
     QColorDialog dlg(data(ModelEtiketten::ColHintergrundfarbe).toUInt(), this);
     if (dlg.exec() == QDialog::Accepted) {
@@ -694,23 +766,23 @@ void TabEtikette::on_btnBackgroundColor_clicked()
     }
 }
 
-void TabEtikette::on_tbAbstandHor_valueChanged(double value)
+void DlgEtikett::on_tbAbstandHor_valueChanged(double value)
 {
     if (ui->tbAbstandHor->hasFocus())
         setData(ModelEtiketten::ColAbstandHor, value);
 }
 
-void TabEtikette::on_tbAbstandVert_valueChanged(double value)
+void DlgEtikett::on_tbAbstandVert_valueChanged(double value)
 {
     if (ui->tbAbstandVert->hasFocus())
         setData(ModelEtiketten::ColAbstandVert, value);
 }
 
-void TabEtikette::on_btnTagNeu_clicked()
+void DlgEtikett::on_btnTagNeu_clicked()
 {
-    QMap<int, QVariant> values({{ModelTags::ColSudID, bh->sud()->id()},
+    QMap<int, QVariant> values({{ModelTags::ColSudID, mSud->id()},
                                 {ModelTags::ColKey, tr("Neuer Tag")}});
-    ProxyModel *model = bh->sud()->modelTags();
+    ProxyModel *model = mSud->modelTags();
     int row = model->append(values);
     if (row >= 0)
     {
@@ -721,11 +793,24 @@ void TabEtikette::on_btnTagNeu_clicked()
     }
 }
 
-void TabEtikette::on_btnTagLoeschen_clicked()
+void DlgEtikett::on_btnTagLoeschen_clicked()
 {
-    ProxyModel *model = bh->sud()->modelTags();
+    ProxyModel *model = mSud->modelTags();
     QModelIndexList indices = ui->tableTags->selectionModel()->selectedIndexes();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
     for (const QModelIndex& index : qAsConst(indices))
         model->removeRow(index.row());
+}
+
+void DlgEtikett::onFilterChanged()
+{
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
+    ProxyModel proxy;
+    proxy.setSourceModel(bh->modelSud());
+    ui->lblFilter->setText(QString::number(model->rowCount()) + " / " + QString::number(proxy.rowCount()));
+}
+
+void DlgEtikett::on_tbFilter_textChanged(const QString &pattern)
+{
+    static_cast<ProxyModelSud*>(ui->table->model())->setFilterText(pattern);
 }

@@ -41,7 +41,6 @@ SOURCES += \
     tababfuellen.cpp \
     tabbewertung.cpp \
     tabbraudaten.cpp \
-    tabetikette.cpp \
     tabgaerverlauf.cpp \
     tabrezept.cpp \
     tabsudauswahl.cpp \
@@ -67,6 +66,7 @@ SOURCES += \
     dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgdatenbank.cpp \
+    dialogs/dlgetikett.cpp \
     dialogs/dlghilfe.cpp \
     dialogs/dlgimportexport.cpp \
     dialogs/dlgmaischplanmalz.cpp \
@@ -140,7 +140,6 @@ HEADERS += \
     tababfuellen.h \
     tabbewertung.h \
     tabbraudaten.h \
-    tabetikette.h \
     tabgaerverlauf.h \
     tabrezept.h \
     tabsudauswahl.h \
@@ -166,6 +165,7 @@ HEADERS += \
     dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgdatenbank.h \
+    dialogs/dlgetikett.h \
     dialogs/dlghilfe.h \
     dialogs/dlgimportexport.h \
     dialogs/dlgmaischplanmalz.h \
@@ -236,7 +236,6 @@ FORMS += \
     tababfuellen.ui \
     tabbewertung.ui \
     tabbraudaten.ui \
-    tabetikette.ui \
     tabgaerverlauf.ui \
     tabrezept.ui \
     tabsudauswahl.ui \
@@ -247,6 +246,7 @@ FORMS += \
     dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgdatenbank.ui \
+    dialogs/dlgetikett.ui \
     dialogs/dlghilfe.ui \
     dialogs/dlgimportexport.ui \
     dialogs/dlgmaischplanmalz.ui \

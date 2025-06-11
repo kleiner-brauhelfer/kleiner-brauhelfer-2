@@ -14,7 +14,7 @@ DlgModule::DlgModule(QWidget *parent) :
     ui->gbModuleGaerverlauf->setChecked(gSettings->isModuleEnabled(Settings::ModuleGaerverlauf));
     ui->cbSchnellgaerprobe->setChecked(gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
     ui->gbModuleZusammenfassung->setChecked(gSettings->isModuleEnabled(Settings::ModuleAusdruck));
-    ui->gbModuleEtikette->setChecked(gSettings->isModuleEnabled(Settings::ModuleEtikette));
+    ui->gbModuleEtikett->setChecked(gSettings->isModuleEnabled(Settings::ModuleEtikett));
     ui->gbModuleBewertung->setChecked(gSettings->isModuleEnabled(Settings::ModuleBewertung));
     ui->gbModuleBrauuebersicht->setChecked(gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht));
     ui->gbModuleAusruestung->setChecked(gSettings->isModuleEnabled(Settings::ModuleAusruestung));
@@ -51,9 +51,9 @@ void DlgModule::on_gbModuleZusammenfassung_clicked(bool checked)
     gSettings->enableModule(Settings::ModuleAusdruck, checked);
 }
 
-void DlgModule::on_gbModuleEtikette_clicked(bool checked)
+void DlgModule::on_gbModuleEtikett_clicked(bool checked)
 {
-    gSettings->enableModule(Settings::ModuleEtikette, checked);
+    gSettings->enableModule(Settings::ModuleEtikett, checked);
 }
 
 void DlgModule::on_gbModuleBewertung_clicked(bool checked)

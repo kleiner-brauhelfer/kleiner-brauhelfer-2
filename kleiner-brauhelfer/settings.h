@@ -23,7 +23,7 @@ public:
         ModuleAbfuellen             = 0x00000008,
         ModuleGaerverlauf           = 0x00000010,
         ModuleAusdruck              = 0x00000020,
-        ModuleEtikette              = 0x00000040,
+        ModuleEtikett               = 0x00000040,
         ModuleBewertung             = 0x00000080,
         ModuleBrauuebersicht        = 0x00000100,
         ModuleAusruestung           = 0x00000200,

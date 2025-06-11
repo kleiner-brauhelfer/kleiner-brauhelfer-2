@@ -30,8 +30,7 @@ DlgPrintout::DlgPrintout(QWidget *parent) :
     table->appendCol({ModelSud::ColAnlage, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
     table->appendCol({ModelSud::ColBraudatum, false, true, 100, new DateDelegate(false, true, table)});
     table->build();
-    table->setDefaultContextMenu();
-    table->setContextMenuFeatures(false, false);
+    table->setDefaultContextMenu(false, false);
 
     QStringList lst;
     QDirIterator it(gSettings->dataDir(1), QStringList() << QStringLiteral("*.html"));

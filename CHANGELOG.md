@@ -2,6 +2,7 @@
 
 ## Version 2.6.3 (in Entwicklung)
 - Neu: Reiter Ausdruck ersetzt durch Dialog. 
+- Neu: Reiter Etikett ersetzt durch Dialog. 
 - Neu: Hefe- und Zusätzegaben können einzeln zurückgesetzt werden.
 - Neu: Knopf ersetzt die Filteroptionen in der Sudauswahl und Brauübersicht.
 - Neu: Ein zentrales Hilfefeld.

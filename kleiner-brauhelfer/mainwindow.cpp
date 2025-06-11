@@ -17,6 +17,7 @@
 #include "dialogs/dlgconsole.h"
 #include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgdatenbank.h"
+#include "dialogs/dlgetikett.h"
 #include "dialogs/dlghilfe.h"
 #include "dialogs/dlgimportexport.h"
 #include "dialogs/dlgmaischplanmalz.h"
@@ -142,6 +143,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionBrauUebersicht, &QAction::triggered, this, &MainWindow::showDialogBrauUebersicht);
     connect(ui->actionAusruestung, &QAction::triggered, this, &MainWindow::showDialogAusruestung);
     connect(ui->actionPrintout, &QAction::triggered, this, &MainWindow::showDialogPrintout);
+    connect(ui->actionEtikett, &QAction::triggered, this, &MainWindow::showDialogEtikett);
 
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
@@ -304,7 +306,6 @@ void MainWindow::saveSettings()
     ui->tabBraudaten->saveSettings();
     ui->tabAbfuelldaten->saveSettings();
     ui->tabGaerverlauf->saveSettings();
-    ui->tabEtikette->saveSettings();
     ui->tabBewertung->saveSettings();
 }
 
@@ -317,7 +318,6 @@ void MainWindow::restoreView()
     ui->tabBraudaten->restoreView();
     ui->tabAbfuelldaten->restoreView();
     ui->tabGaerverlauf->restoreView();
-    ui->tabEtikette->restoreView();
     ui->tabBewertung->restoreView();
     DlgAbout::restoreView();
     DlgAusruestung::restoreView();
@@ -326,6 +326,7 @@ void MainWindow::restoreView()
     DlgConsole::restoreView();
     DlgDatabaseCleaner::restoreView();
     DlgDatenbank::restoreView();
+    DlgEtikett::restoreView();
     DlgHilfe::restoreView();
     DlgImportExport::restoreView();
     DlgMaischplanMalz::restoreView();
@@ -356,7 +357,6 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabBraudaten->modulesChanged(modules);
     ui->tabAbfuelldaten->modulesChanged(modules);
     ui->tabGaerverlauf->modulesChanged(modules);
-    ui->tabEtikette->modulesChanged(modules);
     ui->tabBewertung->modulesChanged(modules);
     checkLoadedSud();
 }
@@ -377,19 +377,6 @@ void MainWindow::updateTabs(Settings::Modules modules)
     }
     if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
         nextIndex++;
-    if (modules.testFlag(Settings::ModuleEtikette))
-    {
-        int index = ui->tabMain->indexOf(ui->tabEtikette);
-        if (gSettings->isModuleEnabled(Settings::ModuleEtikette))
-        {
-            if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabEtikette, QIcon::fromTheme("tabetikette"), tr("Etikett"));
-        }
-        else
-            ui->tabMain->removeTab(index);
-    }
-    if (gSettings->isModuleEnabled(Settings::ModuleEtikette))
-        nextIndex++;
     if (modules.testFlag(Settings::ModuleBewertung))
     {
         int index = ui->tabMain->indexOf(ui->tabBewertung);
@@ -409,6 +396,8 @@ void MainWindow::updateTabs(Settings::Modules modules)
         ui->actionAusruestung->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusruestung));
     if (modules.testFlag(Settings::ModuleAusdruck))
         ui->actionPrintout->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusdruck));
+    if (modules.testFlag(Settings::ModuleEtikett))
+        ui->actionEtikett->setVisible(gSettings->isModuleEnabled(Settings::ModuleEtikett));
 }
 
 void MainWindow::databaseModified()
@@ -433,7 +422,6 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabGaerverlauf), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabEtikette), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
     ui->menuSud->setEnabled(loaded);
     if (loaded)
@@ -1200,4 +1188,9 @@ DlgAusruestung* MainWindow::showDialogAusruestung()
 DlgPrintout* MainWindow::showDialogPrintout()
 {
     return DlgAbstract::showDialog<DlgPrintout>(this, ui->actionPrintout);
+}
+
+DlgEtikett* MainWindow::showDialogEtikett()
+{
+    return DlgAbstract::showDialog<DlgEtikett>(this, ui->actionEtikett);
 }

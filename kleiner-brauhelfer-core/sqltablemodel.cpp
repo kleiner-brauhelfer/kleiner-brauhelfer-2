@@ -228,9 +228,12 @@ int SqlTableModel::append(const QMap<int, QVariant> &values)
     qInfo(loggingCategory) << "append():" << tableName();
     QMap<int, QVariant> val = values;
     defaultValues(val);
+
+    int row = -1;
+    beginInsertRows(QModelIndex(), rowCount(), rowCount());
     if (insertRow(rowCount()))
     {
-        int row = rowCount() - 1;
+        row = rowCount() - 1;
         QMap<int, QVariant>::const_iterator it = val.constBegin();
         bool wasBlocked = blockSignals(true);
         while (it != val.constEnd())
@@ -246,11 +249,14 @@ int SqlTableModel::append(const QMap<int, QVariant> &values)
         }
         blockSignals(wasBlocked);
         emit modified();
-        return row;
     }
-    if (lastError().isValid())
-        qCritical(loggingCategory) << lastError();
-    return -1;
+    else
+    {
+        if (lastError().isValid())
+            qCritical(loggingCategory) << lastError();
+    }
+    endInsertRows();
+    return row;
 }
 
 int SqlTableModel::append(const QVariantMap &values)
@@ -268,9 +274,12 @@ int SqlTableModel::append(const QVariantMap &values)
 int SqlTableModel::appendDirect(const QMap<int, QVariant> &values)
 {
     qInfo(loggingCategory) << "appendDirect():" << tableName();
+
+    int row = -1;
+    beginInsertRows(QModelIndex(), rowCount(), rowCount());
     if (insertRow(rowCount()))
     {
-        int row = rowCount() - 1;
+        row = rowCount() - 1;
         QMap<int, QVariant>::const_iterator it = values.constBegin();
         bool wasBlocked = blockSignals(true);
         while (it != values.constEnd())
@@ -280,11 +289,14 @@ int SqlTableModel::appendDirect(const QMap<int, QVariant> &values)
         }
         blockSignals(wasBlocked);
         emit modified();
-        return row;
     }
-    if (lastError().isValid())
-        qCritical(loggingCategory) << lastError();
-    return -1;
+    else
+    {
+        if (lastError().isValid())
+            qCritical(loggingCategory) << lastError();
+    }
+    endInsertRows();
+    return row;
 }
 
 int SqlTableModel::appendDirect(const QVariantMap &values)

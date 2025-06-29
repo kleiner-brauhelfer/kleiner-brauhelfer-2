@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version 2.6.3 (in Entwicklung)
+- Neu: Reiter Bewertung ersetzt durch Dialog. 
 - Neu: Reiter Ausdruck ersetzt durch Dialog. 
 - Neu: Reiter Etikett ersetzt durch Dialog. 
 - Neu: Hefe- und Zusätzegaben können einzeln zurückgesetzt werden.

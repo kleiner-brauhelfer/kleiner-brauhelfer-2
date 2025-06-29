@@ -12,6 +12,7 @@
 #include "tababstract.h"
 #include "dialogs/dlgabout.h"
 #include "dialogs/dlgausruestung.h"
+#include "dialogs/dlgbewertungen.h"
 #include "dialogs/dlgbrauuebersicht.h"
 #include "dialogs/dlgcheckupdate.h"
 #include "dialogs/dlgconsole.h"
@@ -144,6 +145,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAusruestung, &QAction::triggered, this, &MainWindow::showDialogAusruestung);
     connect(ui->actionPrintout, &QAction::triggered, this, &MainWindow::showDialogPrintout);
     connect(ui->actionEtikett, &QAction::triggered, this, &MainWindow::showDialogEtikett);
+    connect(ui->actionBewertungen, &QAction::triggered, this, &MainWindow::showDialogBewertungen);
 
     if (ui->actionCheckUpdate->isChecked())
         checkForUpdate(false);
@@ -306,7 +308,6 @@ void MainWindow::saveSettings()
     ui->tabBraudaten->saveSettings();
     ui->tabAbfuelldaten->saveSettings();
     ui->tabGaerverlauf->saveSettings();
-    ui->tabBewertung->saveSettings();
 }
 
 void MainWindow::restoreView()
@@ -318,9 +319,9 @@ void MainWindow::restoreView()
     ui->tabBraudaten->restoreView();
     ui->tabAbfuelldaten->restoreView();
     ui->tabGaerverlauf->restoreView();
-    ui->tabBewertung->restoreView();
     DlgAbout::restoreView();
     DlgAusruestung::restoreView();
+    DlgBewertungen::restoreView();
     DlgBrauUebersicht::restoreView();
     DlgCheckUpdate::restoreView();
     DlgConsole::restoreView();
@@ -357,7 +358,6 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabBraudaten->modulesChanged(modules);
     ui->tabAbfuelldaten->modulesChanged(modules);
     ui->tabGaerverlauf->modulesChanged(modules);
-    ui->tabBewertung->modulesChanged(modules);
     checkLoadedSud();
 }
 
@@ -377,19 +377,6 @@ void MainWindow::updateTabs(Settings::Modules modules)
     }
     if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
         nextIndex++;
-    if (modules.testFlag(Settings::ModuleBewertung))
-    {
-        int index = ui->tabMain->indexOf(ui->tabBewertung);
-        if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
-        {
-            if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabBewertung, QIcon::fromTheme("tabbewertung"), tr("Bewertung"));
-        }
-        else
-            ui->tabMain->removeTab(index);
-    }
-    if (gSettings->isModuleEnabled(Settings::ModuleBewertung))
-        nextIndex++;
     if (modules.testFlag(Settings::ModuleBrauuebersicht))
         ui->actionBrauUebersicht->setVisible(gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht));
     if (modules.testFlag(Settings::ModuleAusruestung))
@@ -398,6 +385,8 @@ void MainWindow::updateTabs(Settings::Modules modules)
         ui->actionPrintout->setVisible(gSettings->isModuleEnabled(Settings::ModuleAusdruck));
     if (modules.testFlag(Settings::ModuleEtikett))
         ui->actionEtikett->setVisible(gSettings->isModuleEnabled(Settings::ModuleEtikett));
+    if (modules.testFlag(Settings::ModuleBewertung))
+        ui->actionBewertungen->setVisible(gSettings->isModuleEnabled(Settings::ModuleBewertung));
 }
 
 void MainWindow::databaseModified()
@@ -422,7 +411,6 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabGaerverlauf), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBewertung), loaded);
     ui->menuSud->setEnabled(loaded);
     if (loaded)
     {
@@ -1193,4 +1181,9 @@ DlgPrintout* MainWindow::showDialogPrintout()
 DlgEtikett* MainWindow::showDialogEtikett()
 {
     return DlgAbstract::showDialog<DlgEtikett>(this, ui->actionEtikett);
+}
+
+DlgBewertungen* MainWindow::showDialogBewertungen()
+{
+    return DlgAbstract::showDialog<DlgBewertungen>(this, ui->actionBewertungen);
 }

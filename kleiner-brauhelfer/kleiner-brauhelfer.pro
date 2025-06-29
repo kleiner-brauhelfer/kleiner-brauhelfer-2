@@ -39,7 +39,6 @@ SOURCES += \
     settings.cpp \
     tababstract.cpp \
     tababfuellen.cpp \
-    tabbewertung.cpp \
     tabbraudaten.cpp \
     tabgaerverlauf.cpp \
     tabrezept.cpp \
@@ -61,6 +60,7 @@ SOURCES += \
     dialogs/dlgabout.cpp \
     dialogs/dlgabstract.cpp \
     dialogs/dlgausruestung.cpp \
+    dialogs/dlgbewertungen.cpp \
     dialogs/dlgbrauuebersicht.cpp \
     dialogs/dlgcheckupdate.cpp \
     dialogs/dlgconsole.cpp \
@@ -120,7 +120,6 @@ SOURCES += \
     widgets/wdgabstractproxy.cpp \
     widgets/wdganhang.cpp \
     widgets/wdgbemerkung.cpp \
-    widgets/wdgbewertung.cpp \
     widgets/wdghefegabe.cpp \
     widgets/wdghopfengabe.cpp \
     widgets/wdgmalzgabe.cpp \
@@ -138,7 +137,6 @@ HEADERS += \
     settings.h \
     tababstract.h \
     tababfuellen.h \
-    tabbewertung.h \
     tabbraudaten.h \
     tabgaerverlauf.h \
     tabrezept.h \
@@ -160,6 +158,7 @@ HEADERS += \
     dialogs/dlgabstract.h \
     dialogs/dlgabstract-inl.h \
     dialogs/dlgausruestung.h \
+    dialogs/dlgbewertungen.h \
     dialogs/dlgbrauuebersicht.h \
     dialogs/dlgcheckupdate.h \
     dialogs/dlgconsole.h \
@@ -219,7 +218,6 @@ HEADERS += \
     widgets/wdgabstractproxy.h \
     widgets/wdganhang.h \
     widgets/wdgbemerkung.h \
-    widgets/wdgbewertung.h \
     widgets/wdghefegabe.h \
     widgets/wdghopfengabe.h \
     widgets/wdgmalzgabe.h \
@@ -234,13 +232,13 @@ HEADERS += \
 FORMS += \
     mainwindow.ui \
     tababfuellen.ui \
-    tabbewertung.ui \
     tabbraudaten.ui \
     tabgaerverlauf.ui \
     tabrezept.ui \
     tabsudauswahl.ui \
     dialogs/dlgabout.ui \
     dialogs/dlgausruestung.ui \
+    dialogs/dlgbewertungen.ui \
     dialogs/dlgbrauuebersicht.ui \
     dialogs/dlgcheckupdate.ui \
     dialogs/dlgconsole.ui \
@@ -268,7 +266,6 @@ FORMS += \
     dialogs/dlgwasserprofile.ui \
     widgets/wdganhang.ui \
     widgets/wdgbemerkung.ui \
-    widgets/wdgbewertung.ui \
     widgets/wdghefegabe.ui \
     widgets/wdghopfengabe.ui \
     widgets/wdgmalzgabe.ui \

@@ -1,27 +1,33 @@
-#ifndef TABBEWERTUNG_H
-#define TABBEWERTUNG_H
+#ifndef DLGBEWERTUNGEN_H
+#define DLGBEWERTUNGEN_H
 
-#include "tababstract.h"
+#include <QItemSelection>
+#include "dlgabstract.h"
 
 namespace Ui {
-class TabBewertung;
+class DlgBewertungen;
 }
 
-class TabBewertung : public TabAbstract
+class DlgBewertungen : public DlgAbstract
 {
     Q_OBJECT
 
 public:
-    explicit TabBewertung(QWidget *parent = nullptr);
-    virtual ~TabBewertung() Q_DECL_OVERRIDE;
+    static DlgBewertungen *Dialog;
+
+public:
+    explicit DlgBewertungen(QWidget *parent = nullptr);
+    virtual ~DlgBewertungen() Q_DECL_OVERRIDE;
+    void saveSettings() Q_DECL_OVERRIDE;
+    void loadSettings() Q_DECL_OVERRIDE;
+    static void restoreView();
 
 private slots:
-    void sudLoaded();
-    void sudDataChanged(const QModelIndex& index);
-    void modelModified();
     void updateValues();
-    void clicked(int index);
-    void on_btnNeueBewertung_clicked();
+    void onTableSelectionChanged(const QItemSelection &selected);
+    void onTableBewertungenSelectionChanged(const QItemSelection &selected);
+    void onFilterChanged();
+    void on_tbFilter_textChanged(const QString &pattern);
     void sterneChanged(int sterne);
     void on_tbDatum_dateChanged(const QDate &date);
     void on_btnDatumHeute_clicked();
@@ -121,6 +127,10 @@ private slots:
     void on_rbGesamteindruck_ka_clicked();
     void on_tbGesamteindruck_textChanged();
 
+    void on_btnAdd_clicked();
+
+    void on_btnRemove_clicked();
+
 private:
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);
@@ -134,8 +144,9 @@ private:
     void setGesamteindruck();
 
 private:
-    Ui::TabBewertung *ui;
-    int mIndex;
+    Ui::DlgBewertungen *ui;
+    int mSudId;
+    int mRowBewertung;
 };
 
-#endif // TABBEWERTUNG_H
+#endif // DLGBEWERTUNGEN_H

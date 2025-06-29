@@ -94,14 +94,6 @@
              <string>Gärverlauf</string>
             </attribute>
            </widget>
-           <widget class="TabBewertung" name="tabBewertung">
-            <attribute name="icon">
-             <iconset theme="tabbewertung"/>
-            </attribute>
-            <attribute name="title">
-             <string>Bewertung</string>
-            </attribute>
-           </widget>
           </widget>
           <widget class="QTextBrowser" name="tbHelp">
            <property name="font">
@@ -261,6 +253,7 @@
    <addaction name="actionBrauUebersicht"/>
    <addaction name="actionPrintout"/>
    <addaction name="actionEtikett"/>
+   <addaction name="actionBewertungen"/>
   </widget>
   <action name="actionSpeichern">
    <property name="icon">
@@ -491,7 +484,7 @@
   </action>
   <action name="actionDeutsch">
    <property name="icon">
-    <iconset>
+    <iconset resource="images.qrc">
      <normaloff>:/images/lang/de.svg</normaloff>:/images/lang/de.svg</iconset>
    </property>
    <property name="text">
@@ -500,7 +493,7 @@
   </action>
   <action name="actionEnglisch">
    <property name="icon">
-    <iconset>
+    <iconset resource="images.qrc">
      <normaloff>:/images/lang/en.svg</normaloff>:/images/lang/en.svg</iconset>
    </property>
    <property name="text">
@@ -509,7 +502,7 @@
   </action>
   <action name="actionSchwedisch">
    <property name="icon">
-    <iconset>
+    <iconset resource="images.qrc">
      <normaloff>:/images/lang/se.svg</normaloff>:/images/lang/se.svg</iconset>
    </property>
    <property name="text">
@@ -518,7 +511,7 @@
   </action>
   <action name="actionNiederlaendisch">
    <property name="icon">
-    <iconset>
+    <iconset resource="images.qrc">
      <normaloff>:/images/lang/nl.svg</normaloff>:/images/lang/nl.svg</iconset>
    </property>
    <property name="text">
@@ -632,6 +625,17 @@
     <string>Etikett</string>
    </property>
   </action>
+  <action name="actionBewertungen">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset theme="tabbewertung"/>
+   </property>
+   <property name="text">
+    <string>Bewertungen</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -657,12 +661,6 @@
    <class>TabGaerverlauf</class>
    <extends>QWidget</extends>
    <header>tabgaerverlauf.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TabBewertung</class>
-   <extends>QWidget</extends>
-   <header>tabbewertung.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>

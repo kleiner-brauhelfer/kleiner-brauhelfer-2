@@ -6,6 +6,7 @@ ModelBewertungen::ModelBewertungen(Brauhelfer* bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
+    mVirtualField.append(QStringLiteral("SudName"));
 }
 
 QVariant ModelBewertungen::dataExt(const QModelIndex &idx) const
@@ -18,10 +19,16 @@ QVariant ModelBewertungen::dataExt(const QModelIndex &idx) const
     }
     case ColWoche:
     {
-        QDateTime dt = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColReifungStart).toDateTime();
+        QVariant sudID = data(idx.row(), ColSudID);
+        QDateTime dt = bh->modelSud()->dataSud(sudID, ModelSud::ColReifungStart).toDateTime();
         if (dt.isValid())
             return dt.daysTo(data(idx.row(), ColDatum).toDateTime()) / 7 + 1;
         return 0;
+    }
+    case ColSudName:
+    {
+        QVariant sudID = data(idx.row(), ColSudID);
+        return bh->modelSud()->dataSud(sudID, ModelSud::ColSudname).toString();
     }
     default:
         return QVariant();
@@ -52,6 +59,8 @@ int ModelBewertungen::max(const QVariant &sudId)
     int max = -1;
     for (int r = 0; r < rowCount(); ++r)
     {
+        if (data(r, ColDeleted).toBool())
+            continue;
         if (data(r, ColSudID) == sudId)
         {
             int sterne = data(r, ColSterne).toInt();
@@ -67,6 +76,8 @@ int ModelBewertungen::mean(const QVariant &sudId)
     int total = 0, n = 0;
     for (int r = 0; r < rowCount(); ++r)
     {
+        if (data(r, ColDeleted).toBool())
+            continue;
         if (data(r, ColSudID) == sudId)
         {
             total += data(r, ColSterne).toInt();
@@ -82,6 +93,8 @@ int ModelBewertungen::mean(const QVariant &sudId)
 
 void ModelBewertungen::defaultValues(QMap<int, QVariant> &values) const
 {
+    if (!values.contains(ColID))
+        values[ColID] = getNextId();
     if (!values.contains(ColDatum))
         values.insert(ColDatum, QDateTime::currentDateTime());
     if (!values.contains(ColSterne))

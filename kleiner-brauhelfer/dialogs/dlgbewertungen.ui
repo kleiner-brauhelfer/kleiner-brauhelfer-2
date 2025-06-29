@@ -1,0 +1,1283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DlgBewertungen</class>
+ <widget class="QDialog" name="DlgBewertungen">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Bewertungen</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="tabbewertung"/>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayoutFilter">
+     <item>
+      <widget class="FilterButtonSud" name="btnFilter">
+       <property name="icon">
+        <iconset theme="filter"/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="tbFilter">
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Textfilter&lt;/span&gt; für die Sudsuche. Gesucht wird in den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Sudname&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Kommentar&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hefe&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="placeholderText">
+        <string>Suche</string>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lblFilter">
+       <property name="text">
+        <string notr="true">n / N</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="TableView" name="table">
+      <property name="contextMenuPolicy">
+       <enum>Qt::CustomContextMenu</enum>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="alternatingRowColors">
+       <bool>true</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+      <property name="sortingEnabled">
+       <bool>true</bool>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>20</number>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="TableView" name="tableBewertungen">
+         <property name="contextMenuPolicy">
+          <enum>Qt::CustomContextMenu</enum>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderDefaultSectionSize">
+          <number>20</number>
+         </attribute>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="PushButton" name="btnAdd">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="icon">
+            <iconset theme="plus"/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="PushButton" name="btnRemove">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="icon">
+            <iconset theme="minus"/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die einzelnen Kapitel des Bewertungsschema orientieren sich an üblichen Verkostungsbögen. Es wird empfohlen eine Verkostung in der vorgeschlagenen Reihenfolge durchzuführen.&lt;/p&gt;&lt;p&gt;Die Unterscheidungsmerkmale sind selbsterklärend. Hingegen benötigt das weite Feld der Geschmacksfehler (Fehlaromen), Brau- und Biefehler etwas Differenzierung:&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#aa7942;&quot;&gt;Bei der Verkostung fällt auf, dass etwas mit dem bier nicht stimmt? Hier ist das kleine Fehlaromenseminar des Kleiner Brauhelfer 2, um dem Fehler auf die Spur zu kommen.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:700;&quot;&gt;1. Braufehler:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Hierunter versteht man prozesstechnische Fehler sowie Verstöße und Mängel beim eigentlichen Brauprozess, wie sie während des Brautages passieren können&lt;/p&gt;&lt;p&gt;a. &lt;span style=&quot; font-weight:700;&quot;&gt;fehlerhafte Temperatursteuerung,&lt;/span&gt; Überhitzung. Abhilfe: Besseres Heizelement, kaltes Wasser, aber: &amp;gt; 80 °C führt zu irreversibler Denaturierung der Enzyme&lt;/p&gt;&lt;p&gt;b. &lt;span style=&quot; font-weight:700;&quot;&gt;ungenügende Durchmischung,&lt;/span&gt; angebrannte Maische durch zu dicke Maische. Abhilfe: Mehr rühren, mehr Hauptguss&lt;/p&gt;&lt;p&gt;c. &lt;span style=&quot; font-weight:700;&quot;&gt;unerwünschter Sauerstoffeintrag. &lt;/span&gt;Abhilfe: grober schroten, zu kaltes Brauwasser erwärmen, Melanoidine können Oxidationsvorgänge einschränken. Rezeptspezifische Erfahrungswerte bei Maische und Sud einhalten. Malz vorsichtig einfüllen, Schaum vermeiden, Anschwänzennur mit abgekochtem Wasser (78 °C), rasch über Anstelltemperatur abkühlen, Behälter möglichst gut füllen, keine Gasblasen&lt;/p&gt;&lt;p&gt;d. &lt;span style=&quot; font-weight:700;&quot;&gt;ungünstige pH-Werte &lt;/span&gt;beim Maischen oder in den Gärphasen (pH-Sturz). Angestrebt ist pH 5,4 -5,6, tolerabel ist pH 5,2 - 5,8&lt;/p&gt;&lt;p&gt;e. &lt;span style=&quot; font-weight:700;&quot;&gt;falscher Temperaturverlauf&lt;/span&gt; während Gärung/Reifung. Abhilfe: Vorgaben einhalten. Merksatz: Hefe mag es immer aufwärts, nie abwärts&lt;/p&gt;&lt;p&gt;f. &lt;span style=&quot; font-weight:700;&quot;&gt;keine Jodnormalität &lt;/span&gt;- zu wenig Amylase-Aktivitäten. Abhilfe: längere Maltoserast (ß-Amylase) oder Veruckerungsrast (α-Amylase)&lt;/p&gt;&lt;p&gt;g. &lt;span style=&quot; font-weight:700;&quot;&gt;DMS, unerwünschte Nebenprodukte&lt;/span&gt; während Maische- und Sudprozess. Abhilfe: Kräftiges Sieden 60 - 90 Minuten bei ffenem Sudkessel eliminiert Fehlaromen, primär geruch von gekochtem Mais und Gemüse&lt;/p&gt;&lt;p&gt;h. &lt;span style=&quot; font-weight:700;&quot;&gt;Läuterkatastrophe &lt;/span&gt;- Treberkuchen zu dicht. Abhilfe: weniger fein schroten (1,2 - 1,4 mm), Rofrucht vorbehandeln&lt;/p&gt;&lt;p&gt;i. &lt;span style=&quot; font-weight:700;&quot;&gt;Extraktgehalt zu gering&lt;/span&gt; in Vorderwürze bedeutet zu geringe Malzumwandlung. Abhilfe: Rastzeiten und -temperaturen beser einstellen, Malz weniger fein schroten = bessere Vorverzuckerung, Volmen von Hauptguss reduzieren, Malzmenge erhöhen&lt;/p&gt;&lt;p&gt;j. &lt;span style=&quot; font-weight:700;&quot;&gt;Abkühlung zu langsam&lt;/span&gt; erhöht Gefahr mikrobakterieller Kontamination, insbesondere im Temperaturbereich 40 - 60 °C. Abhilfe: rasches Abkühle mit Kühlschlangen-Würzekühler, Abdecken des sudkessels während Abkühlung&lt;/p&gt;&lt;p&gt;k. &lt;span style=&quot; font-weight:700;&quot;&gt;Stammwürzegehalt weicht ab&lt;/span&gt;. Abhilfe: zu hoch = mit zusätzlichem Brauwasser verdünnen, zu niedrig = mit zusätzlichem Malzextrakt erhöhen, Pfannenvollwürze länger einkochen&lt;/p&gt;&lt;p&gt;l. &lt;span style=&quot; font-weight:700;&quot;&gt;Hefeanstellung suboptimal&lt;/span&gt;. Zu gering = schleppende Angärung (Gefahr von Kontamination), unerwünschte Aromen wie grüne Äpfel, Ester, höherer Diacetylgehalt. Abhilfe: höhere Temperatur, mehr Gärgeschwindigkeit, aber: zu viel Wärme kann zu ungünstiger Aromenbildung führen. Faustregel: Anstellkonzentrationen von Lagerbieren und Bieren mit hoher Stammwürze sind doppelt so hoch wie Alebiere.&lt;/p&gt;&lt;p&gt;m. &lt;span style=&quot; font-weight:700;&quot;&gt;Verzögertes Ankommen&lt;/span&gt; der Hefe. Abhilfe: Gärtemperatur überprüfen, pH überprüfen (pH 3,6 auf pH 5,5 mit Carbonaten (Backsoda) anheben, Anstellwürze besser belüften&lt;/p&gt;&lt;p&gt;n. &lt;span style=&quot; font-weight:700;&quot;&gt;Gärtemperatur falsch&lt;/span&gt; - richtig messen. Abhilfe: im Fermenter direkt messen. gärung ist ein exothermer Prozess. Die temperatur im Gärgefäß kan bis zu 6°C höher als die Außentemperatur sein&lt;/p&gt;&lt;p&gt;o.&lt;span style=&quot; font-weight:700;&quot;&gt; Temperaturschock für Hefe.&lt;/span&gt; Abhilfe Tempertur von Hefegabe und Jungbier aufeinander abstimmen, auf richtige Anstelltemperatur temperieren&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:700;&quot;&gt;2. Bierfehler:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Unter Biefehlern im engeren Sinne versteht man Fehler im Design eines Rezeptes, die zu unerwünschten Abweichungen vom angestrebten Ergebnis führen. Darunter sind zu zählen (Auszug):&lt;/p&gt;&lt;p&gt;a. Fehler bei Schüttung (Malzauswahl, Malzkombinationen)&lt;/p&gt;&lt;p&gt;b. Fehler bei der Hopfung (Hopfenauswahl, Hopfenkombination, Zugabezeitpunkt)&lt;/p&gt;&lt;p&gt;c. Fehler bei der Karbonisierung (Aufzuckerung CO&lt;span style=&quot; vertical-align:sub;&quot;&gt;2-&lt;/span&gt;Begasung)&lt;/p&gt;&lt;p&gt;d. Fehler bei der Abfüllung und Lagerung (Temperatur, Lichteinwirkung&lt;/p&gt;&lt;p&gt;e. Hygienfehler&lt;/p&gt;&lt;p&gt;f. Gärfehler&lt;/p&gt;&lt;p&gt;g. Fehler, die sich ungünstig auf das Gesamterlebnis Bier auswirken&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;span style=&quot; font-size:18pt; font-weight:700;&quot;&gt;3. Fehlaromen:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;a. &lt;span style=&quot; font-weight:700;&quot;&gt;Diacetyl &lt;/span&gt;- Butteraroma = Fehlaroma überwiegend in Lagerbieren, ranzig. Abhilfe: Diacetylrast&lt;/p&gt;&lt;p&gt;b. &lt;span style=&quot; font-weight:700;&quot;&gt;Dimethylsulfid (DMS)&lt;/span&gt; - gekochtes Gemüse, Kochmais = Fehlaroma durch ungenügendes Würzekochen v.a. heller Malze, zu lange Standzeiten im Whirlpool. Abhilfe: mit ausreichender Kochzeit DMS austreiben, mäßige Whrilpool-Standzeiten 10-20 min, rasches Abkühlen auf Anstelltemperatur&lt;/p&gt;&lt;p&gt;c. &lt;span style=&quot; font-weight:700;&quot;&gt;Acetaldehyd &lt;/span&gt;- grüner Apfel (häufig) = Fehlaroma Jungbukett, mostartig, stechend, faulig. Abhilfe: längere Lagerung, Kontakt mit Sauerstoff vermeiden, bessere Hygiene.&lt;/p&gt;&lt;p&gt;d. &lt;span style=&quot; font-weight:700;&quot;&gt;Oxidation&lt;/span&gt; - nasser Karton, Pappe = Fehlaroma durch Oxidation, muffig, abgestanden, erdig, Katzenurin. Abhilfe: Sauerstofftransfer in heiße Würze, zu viel Kopfraum in Flasche vermeiden, Umfüllvorgänge unter Luftabschluss durchführen. Kein blubberndes Umschütten.&lt;/p&gt;&lt;p&gt;e. &lt;span style=&quot; font-weight:700;&quot;&gt;Lichtgeschmack&lt;/span&gt; - Stinktier = Fehlaroma verbrannter Gummi, intensiv schwefelig, fäkalienartig. Entsteht durch UV-Strahlung von Tageslicht. Abhilfe: keine Lichtexposition, keine grünen oder weißen Flaschen. Nur Braunglasflaschen.&lt;/p&gt;&lt;p&gt;f. &lt;span style=&quot; font-weight:700;&quot;&gt;Käse&lt;/span&gt; - Stinkfuß, ranziger Geschmack = Fehlaroma von altem Käse, alte Socken, Schweißfüßen. Mit zunehmendem Alter des Bieres abnehmend. Abhilfe: frischen Hopfen verwenden, Hopfen korrekt lagern (vakuumiert, Kühl- oder Gefrierschrank), einwandfreie Hygiene beim Brauprozess.&lt;/p&gt;&lt;p&gt;g. &lt;span style=&quot; font-weight:700;&quot;&gt;Seifig&lt;/span&gt; - Waschmittel = Fehlaroma Seife, ölig-fettig. Ursache: zu langer Verbleib des Jungbiers auf Hefesediment. Anfällig sind leichte Biere und Lagerbiere. Abhilfe: Saubere Abtrennung von Heiß- und Kalttrub, spätestens nach 4 Wochen vom Geläger für Nachgärung umfüllen.&lt;/p&gt;&lt;p&gt;h. &lt;span style=&quot; font-weight:700;&quot;&gt;Sauer&lt;/span&gt; - Essigstich = Fehlaroma von Essigsäure, saure Äpfel, scharf. Ursache sind immer Infektionen mit Wildhefen hervorgerufen durch zu hohe Gärtemperatur, nicht geeignete Gefäße, ungenügender Sauerstoff beim Anstellen. Abhilfe: genügend O&lt;span style=&quot; vertical-align:sub;&quot;&gt;2&lt;/span&gt; beim Anstellen, Hefenährstoffe (u.a. Zink, Zinkoxid), vitale Hefe, richtige Hefedosierung, ausreichende Lagerung, nicht lebensmittelechte Kunststoffe vermeiden.&lt;/p&gt;&lt;p&gt;i. Lösungsmittel - Fingernagellack = Fehlaroma von Acteon, Farbverdünner, Klebstoff im Abgang von untergärigen Bieren. In belgischen Witbieren in Ordnung. Abhilfe: genügend FAN beim Anstellen, Hefenahrung Zink, Ankommen der Gärung in 12-24 h, empfohlene Richttemperatur.&lt;/p&gt;&lt;p&gt;j. &lt;span style=&quot; font-weight:700;&quot;&gt;Medizinisch&lt;/span&gt; - Medizingeschmack, Heftpflaster = Fehlaroma von Krankenhaus, Hustensirup, Mundspülung, Hallenbad durch Kombination mit chlorhaltigen Reinigungsmitteln. Abhilfe: Maische- und Läutertechniken genau befolgen, Reinigungs- und Desinfektionsmittel peinlichst auswaschen, Hefemenge für den Bierstil beachten, kein gechlortes Brauwasser verwenden.&lt;/p&gt;&lt;p&gt;k. &lt;span style=&quot; font-weight:700;&quot;&gt;Chlorophenol&lt;/span&gt; - Plastik = Fehlaroma von Spitalgeruch, Leukoplast durch Kunststoffteile in der Braukette (Schläuche, Dichtungen) und Rückstände chlorierter Desinfektionsmittel. Abhilfe: nur lebensmittelechte Kunststoffe in der Braukette, kein chloriertes Brauwasser, mikrobiologisch sauber arbeiten.&lt;/p&gt;&lt;p&gt;l. &lt;span style=&quot; font-weight:700;&quot;&gt;Metallisch&lt;/span&gt; - Eisen, Tintengeschmack = Fehlaroma von Blut und Tinte durch Rückstände von Metallbehältern aus Eisen, Aluminium, Stahl, aber nicht Edelstahl. Abhilfe: Edelstahlausrüstung einsetzen, eisenhaltiges Brauwasser (Fe &amp;gt; 1 mg/l) meiden.&lt;/p&gt;&lt;p&gt;m. &lt;span style=&quot; font-weight:700;&quot;&gt;Muffig&lt;/span&gt; - Schimmel = Fehlaroma von Pilzaroma, moderig, miefig durch Schimmelpilze bei feuchter, nasskalter Gärung oder verpilzte Malzkörner. Abhilfe: Gärfässer immer in trockener, dunkler Umgebung aubewahren, Malz immer trocken lagern, optimale Hygienpraxis.&lt;/p&gt;&lt;p&gt;n. &lt;span style=&quot; font-weight:700;&quot;&gt;Alkoholisch&lt;/span&gt; - Franzbranntwein = Fehlaroma übermäßiger Alkoholkomponenten, Aceton, Farbverdünner. Heiß-brennend im Rachen hervorgerufen durch Fuselalkohole wie Propanol, Butanol als auch Phenolalkohole. Kleine Konzentrationen können bei Bieren mit hohem Alkoholgehalt wie Barley Wine oder Strong Ales erwünscht sein. Abhilfe: Gute Abscheidung von Heiß- und Kalttrub, keine extremen Temperaturwechsel, Gärtemperaturen über 27 °C vermeiden, Hefesediment (Geläger) sauber abtrennen.&lt;/p&gt;&lt;p&gt;o. &lt;span style=&quot; font-weight:700;&quot;&gt;Grasartig&lt;/span&gt; - Rasenmähernote = Fehlaroma von geschnittenem Gras. Bei gewissen hellen Ales erwünscht. Ursache: Meist durch Schimmelpilze und Bakterien befallenes Malz, nicht korrekt gelagerter Hopfen. Abhilfe: trockene Malzlagerung, Malz erst vor dem Einmaischen schroten. Hopfen vakuumieren und einfrieren.&lt;/p&gt;&lt;p&gt;p. &lt;span style=&quot; font-weight:700;&quot;&gt;Schwefler&lt;/span&gt; - faule Eier, Zündholz = Fehlaroma von schwefelhaltigen Quellen, Abwasser, Kanalisation, junger Weißwein gebildet durch Schwefeloxidation beim Würzekochen, Fermentation, Reifung mit Autolyse, Aluminiumkontakt, auch mikrobakterielle Infektionen. Abhilfe: Sekundärgärung, Würze ausreichend belüften, korrekte Hefegabe und Fermentationstemperatur, Hefe-Autolyse durch Entnahme vom Geläger vermeiden.&lt;/p&gt;&lt;p&gt;q. &lt;span style=&quot; font-weight:700;&quot;&gt;Hefearoma &lt;/span&gt;- Hefebrot, schwach-schweflig = Fehlaroma von reiner Hefe, Hefebrot, hervorgerufen durch Bier über längere Zeit auf Hefesediment. Jungbier: Wenn Flokkulierung noch nicht abgeschlossen ist. Abhilfe: Nachgärung in separaten Gärbehälter. Beim Ausschenken nicht aufwirbeln.&lt;/p&gt;&lt;p&gt;r. &lt;span style=&quot; font-weight:700;&quot;&gt;Süßearoma&lt;/span&gt; - aufdringlich süß = Fehlaroma ist zuckerig, sirupig, marmeladig, Bonbon, hervorgerufen durch nicht genügend abgebauten Restextrakt, zu viel Caramalze (&amp;gt; 10 %), unvergärbare Zucker, Hefestamm ohne Alkoholtoleranz, Temperatursturz blockierte Hefe. Abhilfe: Maltoserast verlängern, bei niedriger Temperatur nachgären, mit Zucker versetzen und erneut mit Hefe vergären (Aufkräusen). Hohe Hefequalität mit vitaler Hefe, richtige Anstelldichte (Starter), geeigneter Hefestamm. Für trockene Biere: Hefe mit hohem Vergärungsgrad, Hefenährstoffe, tieferer Temperaturbereich als empfohlen meiden; schlafende Hefen durch sanftes Schwenken aufwirbeln und Temperatur langsam erhöhen.&lt;/p&gt;&lt;p&gt;s. &lt;span style=&quot; font-weight:700;&quot;&gt;Ziegenstall&lt;/span&gt; - bockig = Fehlaroma mit brenndem Geschmack ranzigem Geruch hervorgerufen durch Octansäure. Typisches Anzeichen bakterieller Infektion. Abhilfe: Keine, nur Entsorgen.&lt;/p&gt;&lt;p&gt;t. &lt;span style=&quot; font-weight:700;&quot;&gt;Bittere&lt;/span&gt; - unangenehme Bitterkeit = Fehlaroma ist kratzig, adstringierend durch schlechten oder übermäßig viel Hopfen und fehlender Komplexität und Balance. Abhilfe: Optimale pH-Werte beachten, Hopfenmenge und -sorten variieren, pH, Temperatur Sudkochzeit verringern, mikrobakteriell sauber arbeiten.&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>418</width>
+         <height>1394</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_20">
+        <item>
+         <widget class="QGroupBox" name="groupBox0">
+          <property name="title">
+           <string>Bewertung</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_25">
+             <property name="text">
+              <string>Sterne</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" colspan="7">
+            <widget class="WdgBemerkung" name="wdgBemerkung" native="true">
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zur Bewertungssituation und zum Anlass.&lt;/p&gt;&lt;p&gt;Äußere Bedingungen können das Geschmackserleben und damit die Bewertung beeinflussen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="btnDatumHeute">
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>50</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit Klick auf den Button &lt;span style=&quot; font-weight:600;&quot;&gt;Heute&lt;/span&gt; wird das Bewertungsdatum zum Zeitpunkt übernommen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="text">
+              <string>Heute</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Bewertungsdatum</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="Line" name="line">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="4">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Woche</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="DateEdit" name="tbDatum">
+             <property name="minimumSize">
+              <size>
+               <width>100</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird das &lt;span style=&quot; font-weight:600;&quot;&gt;Bewertungsdatum&lt;/span&gt; eingegeben. Es wird vom Programm mit Klick auf OK automatisch ausgefüllt.&lt;/p&gt;&lt;p&gt;Das Datum einer einmal angelegten Bewertung kann später manuell geändert werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="6">
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="2" column="1" colspan="6">
+            <widget class="WdgRating" name="wdgRating" native="true"/>
+           </item>
+           <item row="0" column="5">
+            <widget class="QLabel" name="lblWocheBewertungen">
+             <property name="text">
+              <string notr="true">[...]</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox1">
+          <property name="title">
+           <string>Gesamteindruck</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_12">
+           <item row="2" column="1">
+            <widget class="QRadioButton" name="rbGesamteindruck_3">
+             <property name="text">
+              <string>überraschend, ungewöhnlich</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QRadioButton" name="rbGesamteindruck_7">
+             <property name="text">
+              <string>nicht trinkbar, problematisch</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QRadioButton" name="rbGesamteindruck_5">
+             <property name="text">
+              <string>unauffällig, gewöhnlich</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="rbGesamteindruck_ka">
+             <property name="text">
+              <string>keine Angabe</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QRadioButton" name="rbGesamteindruck_2">
+             <property name="text">
+              <string>interessant</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="rbGesamteindruck_0">
+             <property name="text">
+              <string>toll, macht Lust auf mehr</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QRadioButton" name="rbGesamteindruck_1">
+             <property name="text">
+              <string>gutes, typisches Bier</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QRadioButton" name="rbGesamteindruck_4">
+             <property name="text">
+              <string>kunstvoll, kreativ, mutig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QRadioButton" name="rbGesamteindruck_6">
+             <property name="text">
+              <string>einmal ist genug, langweilig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" colspan="3">
+            <widget class="QPlainTextEdit" name="tbGesamteindruck">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Gesamteindruck.&lt;/p&gt;&lt;p&gt;Unter Gesamteindruck wird ein Resümee der Bewertung verstanden. Hierbei werden oft herausstechende Eigenschaften betont, das Bier auf Stilvorgaben hin abgeglichen.&lt;/p&gt;&lt;p&gt;Typsiche Fragen sind: Haben sich die Geschmacks-, Geruchs- und taktilen Komponenten gut miteinander vertragen, war das Bier abgerundet? Hat eine Komponente überwogen, das Bild ins Ungleichgewicht gebracht? Waren die sortentypische Rezenz, die Bittere, das Aroma und die Vollmundigkeit richtig? War eine bestimmte Komponente, die wir nicht als sortentypisch einordnen konnten, dennoch angenehm, interessant, also durchaus erfahrenswert?&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="placeholderText">
+              <string>Bemerkung</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox2">
+          <property name="title">
+           <string>Farbe, Klarheit</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_11">
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="groupBox_34">
+             <layout class="QGridLayout" name="gridLayout_15">
+              <item row="2" column="0">
+               <widget class="QRadioButton" name="rbFarbe_5">
+                <property name="text">
+                 <string>gelb</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QRadioButton" name="rbFarbe_8">
+                <property name="text">
+                 <string>kupferrot, bernsteinfarben</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QRadioButton" name="rbFarbe_ka">
+                <property name="text">
+                 <string>keine Angabe</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QRadioButton" name="rbFarbe_9">
+                <property name="text">
+                 <string>braun bis tiefbraun</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QRadioButton" name="rbFarbe_6">
+                <property name="text">
+                 <string>golden</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QRadioButton" name="rbFarbe_7">
+                <property name="text">
+                 <string>bernstein</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QRadioButton" name="rbFarbe_4">
+                <property name="text">
+                 <string>hellgelb, lichthell</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QRadioButton" name="rbFarbe_10">
+                <property name="text">
+                 <string>schwarz, tiefdunkel</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <spacer name="verticalSpacer_8">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QGroupBox" name="groupBox_31">
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <item>
+               <widget class="QRadioButton" name="rbFarbe_ka2">
+                <property name="text">
+                 <string>keine Angabe</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbFarbe_0">
+                <property name="text">
+                 <string>satt, intensiv</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbFarbe_1">
+                <property name="text">
+                 <string>glänzend</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbFarbe_2">
+                <property name="text">
+                 <string>matt, blass</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbFarbe_3">
+                <property name="text">
+                 <string>gräulich, fahl</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_7">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="2">
+            <widget class="QPlainTextEdit" name="tbFarbe">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zu Farbe und Klarheit.&lt;/p&gt;&lt;p&gt;Im Blickpunkt kann die sortentypische Farbe des Bieres stehen.&lt;/p&gt;&lt;p&gt;Beispiele: Ein Altbier wird falsch erscheinen, wenn es strohgelb ist. Ein goldbraunes Pilsbier ist sortenuntypisch. Falsch würde ein Hefeweizen beurteilt, das kristallklar und durchsichtig ist. Neben der Farbe wird also auch die Klarheit des Bieres wahrgenommen.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="placeholderText">
+              <string>Bemerkung</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox3">
+          <property name="title">
+           <string>Schaum</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_10">
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="groupBox_35">
+             <layout class="QVBoxLayout" name="verticalLayout_100">
+              <property name="spacing">
+               <number>4</number>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_ka">
+                <property name="text">
+                 <string>keine Angabe</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_0">
+                <property name="text">
+                 <string>feinporig, fest</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_1">
+                <property name="text">
+                 <string>grobporig, schwach</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QGroupBox" name="groupBox_36">
+             <layout class="QVBoxLayout" name="verticalLayout_101">
+              <property name="spacing">
+               <number>4</number>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_ka2">
+                <property name="text">
+                 <string>keine Angabe</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_2">
+                <property name="text">
+                 <string>gut haftend am Glas</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_3">
+                <property name="text">
+                 <string>schlecht haftend</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QGroupBox" name="groupBox_38">
+             <layout class="QVBoxLayout" name="verticalLayout_103">
+              <property name="spacing">
+               <number>4</number>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_ka3">
+                <property name="text">
+                 <string>keine Angabe</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_4">
+                <property name="text">
+                 <string>gute Haltbarkeit</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_5">
+                <property name="text">
+                 <string>mässige Haltbarkeit</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_6">
+                <property name="text">
+                 <string>keine Haltbarkeit</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_6">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QGroupBox" name="groupBox_37">
+             <layout class="QVBoxLayout" name="verticalLayout_102">
+              <property name="spacing">
+               <number>4</number>
+              </property>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_ka4">
+                <property name="text">
+                 <string>keine Angabe</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_7">
+                <property name="text">
+                 <string>geringes Volumen</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_8">
+                <property name="text">
+                 <string>kräftiges Volumen</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_9">
+                <property name="text">
+                 <string>sehr voluminös, mächtig</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="rbSchaum_10">
+                <property name="text">
+                 <string>überschäumend</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="2">
+            <widget class="QPlainTextEdit" name="tbSchaum">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Schaum.&lt;/p&gt;&lt;p&gt;Die Bewertung von Schaum orientiert sich oft anhand der Biersorte.&lt;/p&gt;&lt;p&gt;Beispielsweise haben Starkbiere in der Regel eine gute Schaumhaltbarkeit. Das eigentliche Trinkvergnügen bei einem Starkbier liegt aber im langsamen Schlürfen des Bieres, nicht im sich Durchtrinken durch den malzsüßen Schaum. Beim Pils wiederum ruft der Schaum besonders angenehme taktile Sensationen an Zunge und Gaumen hervor.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="placeholderText">
+              <string>Bemerkung</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox4">
+          <property name="title">
+           <string>Geruch</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_13">
+           <item row="2" column="2">
+            <widget class="QCheckBox" name="rbGeruch_10">
+             <property name="text">
+              <string>säuerlich</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QCheckBox" name="rbGeruch_8">
+             <property name="text">
+              <string>fruchtig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="rbGeruch_7">
+             <property name="text">
+              <string>hefig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QCheckBox" name="rbGeruch_0">
+             <property name="text">
+              <string>rein, abgerundet</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QCheckBox" name="rbGeruch_3">
+             <property name="text">
+              <string>unangenehm, unausgewogen</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QCheckBox" name="rbGeruch_1">
+             <property name="text">
+              <string>frisch</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="rbGeruch_4">
+             <property name="text">
+              <string>hopfenaromatisch, hopfig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QCheckBox" name="rbGeruch_2">
+             <property name="text">
+              <string>wohlriechend</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="rbGeruch_5">
+             <property name="text">
+              <string>malzaromatisch, malzig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="rbGeruch_6">
+             <property name="text">
+              <string>süsslich, nach Würze</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QCheckBox" name="rbGeruch_9">
+             <property name="text">
+              <string>gewürzig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QCheckBox" name="rbGeruch_11">
+             <property name="text">
+              <string>Geruchsfehler</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" colspan="3">
+            <widget class="QPlainTextEdit" name="tbGeruch">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Geruch.&lt;/p&gt;&lt;p&gt;Beispiele: Der Geruch eines Bieres sollte sortentypisch sein, das heißt bei Weizenbieren ist ein fruchtiger bis esteriger Geruch erlaubt, während dieser bei Pils-bieren rundweg abzulehnen ist.&lt;/p&gt;&lt;p&gt;Zuerst riecht man am Schaum. Riecht er angenehm nach Bier, hefig oder nach Fass? Wenn der Schaum muffig, abgestanden oder nach feuchter Pappe riecht, braucht man das Bier gar nicht zu probieren, es ist nicht in Ordnung.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="placeholderText">
+              <string>Bemerkung</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox5">
+          <property name="title">
+           <string>Geschmack</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_7">
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="rbGeschmack_5">
+             <property name="text">
+              <string>hopfenaromatisch, hopfig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QCheckBox" name="rbGeschmack_0">
+             <property name="text">
+              <string>rein</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QCheckBox" name="rbGeschmack_3">
+             <property name="text">
+              <string>unausgewogen, kantig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QCheckBox" name="rbGeschmack_7">
+             <property name="text">
+              <string>süsslich, klebrig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QCheckBox" name="rbGeschmack_2">
+             <property name="text">
+              <string>gehaltvoll</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QCheckBox" name="rbGeschmack_4">
+             <property name="text">
+              <string>unreif, unrein</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="rbGeschmack_8">
+             <property name="text">
+              <string>säuerlich</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="rbGeschmack_6">
+             <property name="text">
+              <string>malzaromatisch, malzig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QCheckBox" name="rbGeschmack_1">
+             <property name="text">
+              <string>ausgewogen, rund</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="3">
+            <widget class="QPlainTextEdit" name="tbGeschmack">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Geschmack.&lt;/p&gt;&lt;p&gt;Der Biergeschmack umfasst die bei der Aufnahme des Bieres entstehenden sensorischen Eigenschaften. Es gelten dann ähnliche Beschreibungsmöglichkeiten wie beim Geruch. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="placeholderText">
+              <string>Bemerkung</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QCheckBox" name="rbGeschmack_12">
+             <property name="text">
+              <string>Geschmacksfehler</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QCheckBox" name="rbGeschmack_11">
+             <property name="text">
+              <string>hefig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QCheckBox" name="rbGeschmack_10">
+             <property name="text">
+              <string>fruchtig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QCheckBox" name="rbGeschmack_9">
+             <property name="text">
+              <string>gewürzig</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox6">
+          <property name="title">
+           <string>Antrunk (Rezenz, Frischeeindruck)</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_8">
+           <item row="2" column="0">
+            <widget class="QRadioButton" name="rbAntrunk_1">
+             <property name="text">
+              <string>rezent, fein perlend</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="rbAntrunk_ka">
+             <property name="text">
+              <string>keine Angabe</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QRadioButton" name="rbAntrunk_4">
+             <property name="text">
+              <string>stark prickelnd, aufdringlich</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QRadioButton" name="rbAntrunk_3">
+             <property name="text">
+              <string>prickelnd</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="rbAntrunk_0">
+             <property name="text">
+              <string>angenehm rezent</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QRadioButton" name="rbAntrunk_5">
+             <property name="text">
+              <string>wenig rezent</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QRadioButton" name="rbAntrunk_7">
+             <property name="text">
+              <string>sehr schal</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QRadioButton" name="rbAntrunk_2">
+             <property name="text">
+              <string>gut eingebunden</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QRadioButton" name="rbAntrunk_6">
+             <property name="text">
+              <string>schal</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" colspan="3">
+            <widget class="QPlainTextEdit" name="tbAntrunk">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Antrunk.&lt;/p&gt;&lt;p&gt;Die Sinneswahrnehmungen des ersten Schluckes, dem Antrunk, betreffen Vollmundigkeit und Aroma des Bieres. Die Vollmundigkeit entsteht hauptsächlich durch die Eiweißverbindungen, die durch das Malz ins Bier gelangen.&lt;/p&gt;&lt;p&gt;Zum Beispiel ist ein Doppelbock besser, je vollmundiger es ist, demgegenüber sollte ein Pils „schlank“ bleiben. Ein Bier, bei dem man das Gefühl hat man müsste sie vor dem Schlucken erst kauen ist sehr vollmundig – es „füllt“ den Mundraum.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="placeholderText">
+              <string>Bemerkung</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox7">
+          <property name="title">
+           <string>Haupttrunk (Vollmundigkeit)</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_9">
+           <item row="1" column="1">
+            <widget class="QRadioButton" name="rbHaupttrunk_2">
+             <property name="text">
+              <string>schlank</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QRadioButton" name="rbHaupttrunk_1">
+             <property name="text">
+              <string>etwas leer</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="rbHaupttrunk_ka">
+             <property name="text">
+              <string>keine Angabe</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QRadioButton" name="rbHaupttrunk_4">
+             <property name="text">
+              <string>mastig, breit</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QRadioButton" name="rbHaupttrunk_3">
+             <property name="text">
+              <string>vollmundig</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="rbHaupttrunk_0">
+             <property name="text">
+              <string>wässrig, leer, dünn</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="3">
+            <widget class="QPlainTextEdit" name="tbHaupttrunk">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Haupttrunk.&lt;/p&gt;&lt;p&gt;Nach dem ersten Schluck und der Begutachtung der Schaumhaltbarkeit, kommt ein neues sensorisches Merkmal ins Bewusstsein, die sogenannte Rezenz. Das ist die Spritzigkeit des Bieres, sein Kohlensäuregehalt. &lt;/p&gt;&lt;p&gt;Bei manchen Sorten ist die Rezenz von größerer Bedeutung, so bei hellen hopfenreichen Bieren, ob sie nun Pils oder Export heißen. Bei Anderen ist sie weniger bedeutungsvoll, wie zum Beispiel bei den Starkbieren. &lt;/p&gt;&lt;p&gt;Anmerkung: Ein kohlensäurearmes Bier muss keineswegs schal schmecken, wenn es mit der richtigen Hopfengabe, einer sehr feinen Malzsüße und einer gerade noch wahrnehmbaren Säure ausgestattet ist.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="placeholderText">
+              <string>Bemerkung</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox8">
+          <property name="title">
+           <string>Nachtrunk (Bittere, Hopfenaroma)</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_14">
+           <item row="1" column="1">
+            <widget class="QRadioButton" name="rbNachtrunk_4">
+             <property name="text">
+              <string>stark nachhängend</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QRadioButton" name="rbNachtrunk_8">
+             <property name="text">
+              <string>unangenehm</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QRadioButton" name="rbNachtrunk_2">
+             <property name="text">
+              <string>nicht anhängend</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QRadioButton" name="rbNachtrunk_3">
+             <property name="text">
+              <string>nachhängend</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="rbNachtrunk_ka">
+             <property name="text">
+              <string>keine Angabe</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QRadioButton" name="rbNachtrunk_6">
+             <property name="text">
+              <string>sehr herb, kräftig betont</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QRadioButton" name="rbNachtrunk_1">
+             <property name="text">
+              <string>angenehm, ausgewogen</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QRadioButton" name="rbNachtrunk_5">
+             <property name="text">
+              <string>wenig herb, unterentwickelt</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QRadioButton" name="rbNachtrunk_7">
+             <property name="text">
+              <string>nicht oder kaum wahrnehmbar</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="rbNachtrunk_0">
+             <property name="text">
+              <string>sehr fein</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" colspan="3">
+            <widget class="QPlainTextEdit" name="tbNachtrunk">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier ist Platz für frei formulierte &lt;span style=&quot; font-weight:600;&quot;&gt;Ausführungen&lt;/span&gt; zum Nachtrunk.&lt;/p&gt;&lt;p&gt;Unter Nachtrunk wird der sogenannte Abgang und der bleibende Nachgeschmack verstanden.&lt;/p&gt;&lt;p&gt;Den Nachtrunk empfindet man nach dem Absetzen des Glases, wen sich nach dem ersten kritischen Schluck die Bittere bemerkbar macht. Ein mehr oder weniger feiner oder starker bitterer Geschmack breitet sich nun besonders im Hintergaumen aus.&lt;/p&gt;&lt;p&gt;Er ist der Geschmackseindruck, der am längsten bleibt. Er darf auf keinen Fall „nachhängen“, kratzig, gallig oder hefig wirken. Bei allen Bieren sollte die Bittere zumindest kurz auf dem Gaumen spürbar sein, sie darf aber auch nicht zu stark nachhängen, wenn man zwei-, dreimal schlucken muss.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Ein Sud muss im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten &lt;/span&gt;als abgefüllt markiert worden sein, bevor man ihn hier tätig werden kann.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="placeholderText">
+              <string>Bemerkung</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>FilterButtonSud</class>
+   <extends>QToolButton</extends>
+   <header>widgets/filterbuttonsud.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>WdgBemerkung</class>
+   <extends>QWidget</extends>
+   <header>widgets/wdgbemerkung.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>WdgRating</class>
+   <extends>QWidget</extends>
+   <header>widgets/wdgrating.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>DlgBewertungen</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>DlgBewertungen</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -76,7 +76,7 @@
        </size>
       </property>
      </widget>
-     <widget class="TableView" name="tableView">
+     <widget class="TableView" name="table">
       <property name="minimumSize">
        <size>
         <width>0</width>
@@ -91,6 +91,9 @@
       </property>
       <property name="alternatingRowColors">
        <bool>true</bool>
+      </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
       </property>
       <property name="selectionBehavior">
        <enum>QAbstractItemView::SelectRows</enum>
@@ -165,14 +168,12 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>tableView</tabstop>
+  <tabstop>table</tabstop>
   <tabstop>cbAuswahlL1</tabstop>
   <tabstop>cbAuswahlL2</tabstop>
   <tabstop>cbAuswahlL3</tabstop>
  </tabstops>
- <resources>
-  <include location="../images.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>

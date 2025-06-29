@@ -59,8 +59,7 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
     model->setSourceModel(bh->modelSud());
     model->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
     model->sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
-    ui->tableView->setModel(model);
-    ui->btnFilter->setModel(model, FilterButtonSud::Braudatum | FilterButtonSud::Kategorie | FilterButtonSud::Anlage);
+    ui->table->setModel(model);
 
     modulesChanged(Settings::ModuleAlle);
     connect(gSettings, &Settings::modulesChanged, this, &DlgBrauUebersicht::modulesChanged);
@@ -69,7 +68,7 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
     connect(model, &ProxyModel::rowsInserted, this, &DlgBrauUebersicht::onLayoutChanged);
     connect(model, &ProxyModel::rowsRemoved, this, &DlgBrauUebersicht::onLayoutChanged);
     connect(model, &ProxyModel::dataChanged, this, &DlgBrauUebersicht::modelDataChanged);
-    connect(ui->tableView->selectionModel(), &QItemSelectionModel::selectionChanged,this, &DlgBrauUebersicht::table_selectionChanged);
+    connect(ui->table->selectionModel(), &QItemSelectionModel::selectionChanged,this, &DlgBrauUebersicht::table_selectionChanged);
     connect(ui->diagram, &Chart3::selectionChanged, this, &DlgBrauUebersicht::diagram_selectionChanged);
 }
 
@@ -80,9 +79,9 @@ DlgBrauUebersicht::~DlgBrauUebersicht()
 
 void DlgBrauUebersicht::saveSettings()
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
     gSettings->beginGroup(staticMetaObject.className());
-    gSettings->setValue("tableState", ui->tableView->horizontalHeader()->saveState());
+    gSettings->setValue("tableState", ui->table->horizontalHeader()->saveState());
     gSettings->setValue("Auswahl1", ui->cbAuswahlL1->currentIndex());
     gSettings->setValue("Auswahl2", ui->cbAuswahlL2->currentIndex());
     gSettings->setValue("Auswahl3", ui->cbAuswahlL3->currentIndex());
@@ -93,15 +92,17 @@ void DlgBrauUebersicht::saveSettings()
 
 void DlgBrauUebersicht::loadSettings()
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
+    ProxyModelSud *proxyModel = static_cast<ProxyModelSud*>(ui->table->model());
     gSettings->beginGroup(staticMetaObject.className());
-    ui->tableView->restoreState(gSettings->value("tableState").toByteArray());
+    proxyModel->loadSettings(gSettings);
+    proxyModel->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
+    ui->table->restoreState(gSettings->value("tableState").toByteArray());
     ui->cbAuswahlL1->setCurrentIndex(gSettings->value("Auswahl1", 0).toInt());
     ui->cbAuswahlL2->setCurrentIndex(gSettings->value("Auswahl2", 0).toInt());
     ui->cbAuswahlL3->setCurrentIndex(gSettings->value("Auswahl3", 0).toInt());
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
-    model->loadSettings(gSettings);
     gSettings->endGroup();
+    ui->btnFilter->setModel(proxyModel, FilterButtonSud::Braudatum | FilterButtonSud::Kategorie | FilterButtonSud::Anlage);
 }
 
 void DlgBrauUebersicht::restoreView()
@@ -144,12 +145,12 @@ void DlgBrauUebersicht::build()
     if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
         mAuswahlListe.append({ModelSud::Colerg_Preis, 2, tr("Kosten"), QString("%1/L").arg(QLocale().currencySymbol())});
 
-    ui->tableView->clearCols();
-    ui->tableView->appendCol({ModelSud::ColSudname, true, false, 200, new SudNameDelegate(ui->tableView)});
-    ui->tableView->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(ui->tableView)});
-    ui->tableView->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, ui->tableView)});
-    ui->tableView->appendCol({ModelSud::ColAnlage, true, true, 100, new TextDelegate(false, Qt::AlignCenter, ui->tableView)});
-    ui->tableView->appendCol({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, false, ui->tableView)});
+    ui->table->clearCols();
+    ui->table->appendCol({ModelSud::ColSudname, true, false, 200, new SudNameDelegate(ui->table)});
+    ui->table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(ui->table)});
+    ui->table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, ui->table)});
+    ui->table->appendCol({ModelSud::ColAnlage, true, true, 100, new TextDelegate(false, Qt::AlignCenter, ui->table)});
+    ui->table->appendCol({ModelSud::ColBraudatum, true, false, 100, new DateDelegate(false, false, ui->table)});
     ui->cbAuswahlL1->clear();
     ui->cbAuswahlL2->clear();
     ui->cbAuswahlL3->clear();
@@ -157,13 +158,13 @@ void DlgBrauUebersicht::build()
     ui->cbAuswahlL3->addItem(mAuswahlListe[0].label);
     for (int i = 1; i < mAuswahlListe.count(); ++i)
     {
-        ui->tableView->appendCol({mAuswahlListe[i].col, true, true, 80, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, ui->tableView)});
+        ui->table->appendCol({mAuswahlListe[i].col, true, true, 80, new DoubleSpinBoxDelegate(mAuswahlListe[i].precision, ui->table)});
         ui->cbAuswahlL1->addItem(mAuswahlListe[i].label);
         ui->cbAuswahlL2->addItem(mAuswahlListe[i].label);
         ui->cbAuswahlL3->addItem(mAuswahlListe[i].label);
     }
-    ui->tableView->build();
-    ui->tableView->setDefaultContextMenu();
+    ui->table->build();
+    ui->table->setDefaultContextMenu();
 }
 
 void DlgBrauUebersicht::onLayoutChanged()
@@ -177,7 +178,7 @@ void DlgBrauUebersicht::modelDataChanged(const QModelIndex& index)
     switch (index.column())
     {
     case ModelSud::ColStatus:
-        ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
+        ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->table->model());
         model->invalidate();
         break;
     }
@@ -187,7 +188,7 @@ void DlgBrauUebersicht::modelDataChanged(const QModelIndex& index)
 void DlgBrauUebersicht::updateDiagram()
 {
     ui->diagram->clear();
-    ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->tableView->model());
+    ProxyModelBrauuebersicht *model = static_cast<ProxyModelBrauuebersicht*>(ui->table->model());
     if (model->rowCount() > 1)
     {
         int index = ui->cbAuswahlL1->currentIndex() + 1;
@@ -248,7 +249,7 @@ void DlgBrauUebersicht::updateDiagram()
             }
         }
     }
-    table_selectionChanged(ui->tableView->selectionModel()->selection());
+    table_selectionChanged(ui->table->selectionModel()->selection());
     ui->diagram->rescale();
     ui->diagram->replot();
 }
@@ -257,19 +258,19 @@ void DlgBrauUebersicht::table_selectionChanged(const QItemSelection &selected)
 {
     int index = -1;
     if (selected.indexes().count() > 0)
-        index = ui->tableView->model()->rowCount() - 1 - selected.indexes()[0].row();
+        index = ui->table->model()->rowCount() - 1 - selected.indexes()[0].row();
     ui->diagram->select(index);
 }
 
 void DlgBrauUebersicht::diagram_selectionChanged(int index)
 {
-    ui->tableView->selectRow(ui->tableView->model()->rowCount() - 1 - index);
-    ui->tableView->setFocus();
+    ui->table->selectRow(ui->table->model()->rowCount() - 1 - index);
+    ui->table->setFocus();
 }
 
 void DlgBrauUebersicht::updateFilterLabel()
 {
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableView->model());
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
     ProxyModelSud proxy;
     proxy.setSourceModel(bh->modelSud());
     proxy.setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
@@ -278,7 +279,7 @@ void DlgBrauUebersicht::updateFilterLabel()
 
 void DlgBrauUebersicht::on_tbFilter_textChanged(const QString &pattern)
 {
-    static_cast<ProxyModelSud*>(ui->tableView->model())->setFilterText(pattern);
+    static_cast<ProxyModelSud*>(ui->table->model())->setFilterText(pattern);
 }
 
 void DlgBrauUebersicht::on_cbAuswahlL1_currentIndexChanged(int)
@@ -286,7 +287,7 @@ void DlgBrauUebersicht::on_cbAuswahlL1_currentIndexChanged(int)
     if (ui->cbAuswahlL1->hasFocus())
     {
         updateDiagram();
-        ui->tableView->setFocus();
+        ui->table->setFocus();
     }
 }
 
@@ -295,7 +296,7 @@ void DlgBrauUebersicht::on_cbAuswahlL2_currentIndexChanged(int)
     if (ui->cbAuswahlL2->hasFocus())
     {
         updateDiagram();
-        ui->tableView->setFocus();
+        ui->table->setFocus();
     }
 }
 
@@ -304,6 +305,6 @@ void DlgBrauUebersicht::on_cbAuswahlL3_currentIndexChanged(int)
     if (ui->cbAuswahlL3->hasFocus())
     {
         updateDiagram();
-        ui->tableView->setFocus();
+        ui->table->setFocus();
     }
 }

@@ -74,11 +74,6 @@ DlgEtikett::DlgEtikett(QWidget *parent) :
 
     mHtmlHightLighter = new HtmlHighLighter(ui->tbTemplate->document());
 
-    gSettings->beginGroup(staticMetaObject.className());
-    ui->cbSeitenverhaeltnis->setChecked(gSettings->value("Seitenverhaeltnis", true).toBool());
-    ui->cbDividingLine->setChecked(gSettings->value("Trennlinie", true).toBool());
-    gSettings->endGroup();
-
     table = ui->tableTags;
     table->setModel(mSud->modelTags());
     table->appendCol({ModelTags::ColKey, true, false, 0, new TextDelegate(table)});
@@ -93,19 +88,18 @@ DlgEtikett::DlgEtikett(QWidget *parent) :
     connect(ui->table->selectionModel(), &QItemSelectionModel::selectionChanged, this, &DlgEtikett::onTableSelectionChanged);
     connect(bh, &Brauhelfer::modified, this, &DlgEtikett::updateAll);
     connect(bh, &Brauhelfer::discarded, this, &DlgEtikett::updateAll);
-    connect(gSettings, &Settings::modulesChanged, this, &DlgEtikett::updateAll);
 
     connect(proxyModel, &ProxyModel::layoutChanged, this, &DlgEtikett::onFilterChanged);
     connect(proxyModel, &ProxyModel::rowsInserted, this, &DlgEtikett::onFilterChanged);
     connect(proxyModel, &ProxyModel::rowsRemoved, this, &DlgEtikett::onFilterChanged);
 
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
-    updateAll();
 
     if (bh->sud()->isLoaded())
-        selectSud(bh->sud()->id());
+        ui->table->selectRow(proxyModel->getRowWithValue(ModelSud::ColID, bh->sud()->id()));
     else
         ui->table->selectRow(0);
+    updateAll();
 }
 
 DlgEtikett::~DlgEtikett()
@@ -133,6 +127,8 @@ void DlgEtikett::loadSettings()
     proxyModel->loadSettings(gSettings);
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
     ui->table->restoreState(gSettings->value("tableState").toByteArray());
+    ui->cbSeitenverhaeltnis->setChecked(gSettings->value("Seitenverhaeltnis", true).toBool());
+    ui->cbDividingLine->setChecked(gSettings->value("Trennlinie", true).toBool());
     gSettings->endGroup();
     ui->btnFilter->setModel(proxyModel);
     ui->table->scrollTo(ui->table->currentIndex());
@@ -144,14 +140,6 @@ void DlgEtikett::restoreView()
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->remove("splitterState");
     gSettings->endGroup();
-}
-
-void DlgEtikett::selectSud(int id)
-{
-    ProxyModelSud *proxyModel = static_cast<ProxyModelSud*>(ui->table->model());
-    int row = proxyModel->getRowWithValue(ModelSud::ColID, id);
-    if (row)
-        ui->table->selectRow(row);
 }
 
 void DlgEtikett::onTableSelectionChanged(const QItemSelection &selected)

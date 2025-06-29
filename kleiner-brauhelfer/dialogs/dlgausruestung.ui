@@ -159,7 +159,7 @@
          <x>0</x>
          <y>0</y>
          <width>429</width>
-         <height>830</height>
+         <height>806</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -192,6 +192,19 @@
              <string>Bezeichnung</string>
             </property>
            </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_23">
+            <property name="text">
+             <string>Bemerkung</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="WdgBemerkung" name="wdgBemerkung" native="true"/>
           </item>
          </layout>
         </item>
@@ -1171,21 +1184,6 @@
               <enum>Qt::Horizontal</enum>
              </property>
             </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item>
-         <widget class="QGroupBox" name="groupBox">
-          <property name="title">
-           <string>Bemerkung</string>
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <property name="spacing">
-            <number>4</number>
-           </property>
-           <item>
-            <widget class="WdgBemerkung" name="wdgBemerkung" native="true"/>
            </item>
           </layout>
          </widget>

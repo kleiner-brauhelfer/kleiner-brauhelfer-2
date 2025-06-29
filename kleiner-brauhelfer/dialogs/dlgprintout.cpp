@@ -94,7 +94,6 @@ void DlgPrintout::loadSettings()
     ui->cbAuswahl->setCurrentText(gSettings->value("auswahl", "spickzettel").toString());
     gSettings->endGroup();
     ui->btnFilter->setModel(proxyModel);
-    ui->table->scrollTo(ui->table->currentIndex());
 }
 
 void DlgPrintout::restoreView()

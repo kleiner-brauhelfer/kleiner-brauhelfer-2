@@ -27,6 +27,9 @@ public:
     ProxyModelSud* model() const;
     void setModel(ProxyModelSud* model, Items items = Item::Alle);
 
+public slots:
+    void clear();
+
 private slots:
     void setStatusAlle(bool value);
     void setStatus();

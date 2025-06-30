@@ -15,6 +15,16 @@ ProxyModelSud::ProxyModelSud(QObject *parent) :
 {
 }
 
+void ProxyModelSud::clearFilter()
+{
+    setFilterStatus(FilterStatusPart::Alle);
+    setFilterText("");
+    setFilterMerkliste(false);
+    setFilterDate(false);
+    setFilterKategorie("");
+    setFilterAnlage("");
+}
+
 bool ProxyModelSud::filterMerkliste() const
 {
     return mFilterMerkliste;

@@ -248,12 +248,7 @@ void TabSudAuswahl::onVerbraucht_clicked(bool value)
 void TabSudAuswahl::sudAnlegen()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
-    if (!model->filterStatus().testFlag(ProxyModelSud::Rezept))
-        model->setFilterStatus(model->filterStatus().setFlag(ProxyModelSud::Rezept));
-    model->setFilterMerkliste(false);
-    model->setFilterDate(false);
-    model->setFilterKategorie("");
-    model->setFilterAnlage("");
+    model->clearFilter();
     ui->tbFilter->clear();
 
     QMap<int, QVariant> values({{ModelSud::ColSudname, tr("Neuer Sud")}});
@@ -278,12 +273,7 @@ void TabSudAuswahl::sudKopieren(bool loadedSud)
         return;
 
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
-    if (!model->filterStatus().testFlag(ProxyModelSud::Rezept))
-        model->setFilterStatus(model->filterStatus().setFlag(ProxyModelSud::Rezept));
-    model->setFilterMerkliste(false);
-    model->setFilterDate(false);
-    model->setFilterKategorie("");
-    model->setFilterAnlage("");
+    model->clearFilter();
     ui->tbFilter->clear();
 
     int row = -1;
@@ -401,12 +391,7 @@ void TabSudAuswahl::rezeptImportieren(const QString& filePath)
         if (sudRow >= 0)
         {
             ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
-            if (!model->filterStatus().testFlag(ProxyModelSud::Rezept))
-                model->setFilterStatus(model->filterStatus().setFlag(ProxyModelSud::Rezept));
-            model->setFilterMerkliste(false);
-            model->setFilterDate(false);
-            model->setFilterKategorie("");
-            model->setFilterAnlage("");
+            model->clearFilter();
             ui->tbFilter->clear();
             filterChanged();
             sudRow = model->mapRowFromSource(sudRow);

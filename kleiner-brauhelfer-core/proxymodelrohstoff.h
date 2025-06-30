@@ -25,6 +25,7 @@ public:
     Filter filter() const;
 
 public slots:
+    void clearFilter();
     void setFilter(Filter value);
 
 signals:

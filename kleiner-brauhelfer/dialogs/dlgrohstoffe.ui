@@ -65,7 +65,7 @@
         <string>Löschen</string>
        </property>
        <property name="icon">
-         <iconset theme="minus"/>
+        <iconset theme="minus"/>
        </property>
       </widget>
      </item>
@@ -77,40 +77,14 @@
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButtonAlle">
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Rohstoffe&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string>alle</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
+      <widget class="FilterButtonLager" name="btnFilter">
+       <property name="icon">
+        <iconset theme="filter"/>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButtonVorhanden">
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Rohstoffe angezeigt, welche eine &lt;span style=&quot; font-weight:600;&quot;&gt;Mengenangabe größer Null&lt;/span&gt; haben.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string>vorhanden</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="radioButtonInGebrauch">
-       <property name="toolTip">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle Rohstoffe angezeigt, welche in einem &lt;span style=&quot; font-weight:600;&quot;&gt;nicht-gebrauten Rezept&lt;/span&gt; vorkommen.&lt;/p&gt;&lt;p&gt;Diese Rohstoffe werden in den Tabellen kursiv dargestellt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string>nicht-gebraute Rezepte</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="lineEditFilter">
+      <widget class="QLineEdit" name="tbFilter">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Freitextsuche&lt;/span&gt; für die Rohstoffe ermöglicht.&lt;/p&gt;&lt;p&gt;Durchsucht werden alle Spalten mit Ausnahme Datum, Preis und Links.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff9300;&quot;&gt;Tipp:&lt;/span&gt; Für eine schnelle Suche genügen schon die ersten Buchstaben&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -123,7 +97,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="lblNumItems"/>
+      <widget class="QLabel" name="lblFilter">
+       <property name="text">
+        <string notr="true">n/N</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -135,7 +113,7 @@
         <x>0</x>
         <y>0</y>
         <width>788</width>
-        <height>442</height>
+        <height>445</height>
        </rect>
       </property>
       <attribute name="label">
@@ -187,7 +165,7 @@
         <x>0</x>
         <y>0</y>
         <width>788</width>
-        <height>442</height>
+        <height>445</height>
        </rect>
       </property>
       <attribute name="label">
@@ -239,7 +217,7 @@
         <x>0</x>
         <y>0</y>
         <width>788</width>
-        <height>442</height>
+        <height>445</height>
        </rect>
       </property>
       <attribute name="label">
@@ -291,7 +269,7 @@
         <x>0</x>
         <y>0</y>
         <width>788</width>
-        <height>442</height>
+        <height>445</height>
        </rect>
       </property>
       <attribute name="label">
@@ -374,22 +352,22 @@
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
   </customwidget>
+  <customwidget>
+   <class>FilterButtonLager</class>
+   <extends>QToolButton</extends>
+   <header>widgets/filterbuttonlager.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>buttonAdd</tabstop>
   <tabstop>buttonDelete</tabstop>
-  <tabstop>radioButtonAlle</tabstop>
-  <tabstop>radioButtonVorhanden</tabstop>
-  <tabstop>radioButtonInGebrauch</tabstop>
-  <tabstop>lineEditFilter</tabstop>
+  <tabstop>tbFilter</tabstop>
   <tabstop>tableMalz</tabstop>
   <tabstop>tableHopfen</tabstop>
   <tabstop>tableHefe</tabstop>
   <tabstop>tableWeitereZutaten</tabstop>
  </tabstops>
- <resources>
-  <include location="../images.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>

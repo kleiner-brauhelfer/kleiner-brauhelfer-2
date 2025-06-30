@@ -135,7 +135,13 @@ void FilterButtonSud::setModel(ProxyModelSud* model, Items items)
         layout->addWidget(mDateEditMax, layout->rowCount(), 1);
         connect(mDateEditMax, &QDateEdit::dateChanged, this, &FilterButtonSud::setMaxdate);
     }
+
     updateWidgets();
+}
+
+void FilterButtonSud::clear()
+{
+    mModel->clearFilter();
 }
 
 void FilterButtonSud::setStatusAlle(bool value)

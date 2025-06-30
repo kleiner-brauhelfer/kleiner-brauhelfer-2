@@ -36,6 +36,8 @@ public:
 public:
     ProxyModelSud(QObject* parent = nullptr);
 
+    void clearFilter();
+
     bool filterMerkliste() const;
     void setFilterMerkliste(bool value);
 

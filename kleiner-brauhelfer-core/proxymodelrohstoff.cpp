@@ -40,6 +40,11 @@ ProxyModelRohstoff::Filter ProxyModelRohstoff::filter() const
     return mFilter;
 }
 
+void ProxyModelRohstoff::clearFilter()
+{
+    setFilter(Filter::Alle);
+}
+
 void ProxyModelRohstoff::setFilter(Filter value)
 {
     if (mFilter != value)

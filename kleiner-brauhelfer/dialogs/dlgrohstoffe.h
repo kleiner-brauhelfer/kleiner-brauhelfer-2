@@ -30,15 +30,13 @@ private slots:
     void on_tableHopfen_clicked(const QModelIndex &index);
     void on_tableHefe_clicked(const QModelIndex &index);
     void on_tableWeitereZutaten_clicked(const QModelIndex &index);
+    void onFilterChanged();
     void buttonAdd_clicked();
     void buttonNeuVorlage_clicked();
     void buttonNeuVorlageObrama_clicked();
     void on_buttonDelete_clicked();
     void buttonCopy_clicked();
-    void on_radioButtonAlle_clicked();
-    void on_radioButtonVorhanden_clicked();
-    void on_radioButtonInGebrauch_clicked();
-    void on_lineEditFilter_textChanged(const QString &pattern);
+    void on_tbFilter_textChanged(const QString &pattern);
     void on_toolBoxRohstoffe_currentChanged();
 
 private:
@@ -46,6 +44,7 @@ private:
     void build();
     void addEntry(QTableView *table, const QMap<int, QVariant> &values);
     void updateLabelNumItems();
+    QTableView* currentTable() const;
 
 private:
     Ui::DlgRohstoffe *ui;

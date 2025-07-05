@@ -10,6 +10,7 @@ class DlgAusruestung;
 class DlgPrintout;
 class DlgEtikett;
 class DlgBewertungen;
+class DlgEinstellungen;
 
 namespace Ui {
 class MainWindow;
@@ -40,6 +41,7 @@ public slots:
     DlgPrintout* showDialogPrintout();
     DlgEtikett* showDialogEtikett();
     DlgBewertungen* showDialogBewertungen();
+    DlgEinstellungen* showDialogEinstellungen();
 
 private slots:
     void focusChanged(QWidget *old, QWidget *now);
@@ -50,7 +52,6 @@ private slots:
     void sudLoaded();
     void sudDataChanged(const QModelIndex& index);
     void loadSud(int sudId);
-    void changeStyle();
     void checkMessageFinished();
     void modulesChanged(Settings::Modules modules);
     void on_tabMain_currentChanged();
@@ -72,22 +73,6 @@ private slots:
     void on_actionHefeZugabeZuruecksetzen_triggered();
     void on_actionWeitereZutaten_triggered();
     void on_actionEingabefelderEntsperren_changed();
-    void on_actionAnsichtWiederherstellen_triggered();
-    void on_actionThemeHell_triggered();
-    void on_actionThemeDunkel_triggered();
-    void on_actionSchriftart_triggered(bool checked);
-    void on_actionOeffnen_triggered();
-    void on_actionLog_triggered();
-    void on_actionCheckUpdate_triggered(bool checked);
-    void on_actionBestaetigungBeenden_triggered(bool checked);
-    void on_actionTooltips_triggered(bool checked);
-    void on_actionAnimationen_triggered(bool checked);
-    void on_actionDeutsch_triggered();
-    void on_actionEnglisch_triggered();
-    void on_actionSchwedisch_triggered();
-    void on_actionNiederlaendisch_triggered();
-    void on_actionZahlenformat_triggered(bool checked);
-    void on_actionModule_triggered();
     void on_actionHilfe_triggered();
     void on_actionUeber_triggered();
     void on_actionDatenbank_triggered();

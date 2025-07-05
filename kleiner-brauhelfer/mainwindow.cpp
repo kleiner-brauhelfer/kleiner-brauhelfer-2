@@ -15,14 +15,13 @@
 #include "dialogs/dlgbewertungen.h"
 #include "dialogs/dlgbrauuebersicht.h"
 #include "dialogs/dlgcheckupdate.h"
-#include "dialogs/dlgconsole.h"
 #include "dialogs/dlgdatabasecleaner.h"
 #include "dialogs/dlgdatenbank.h"
+#include "dialogs/dlgeinstellungen.h"
 #include "dialogs/dlgetikett.h"
 #include "dialogs/dlghilfe.h"
 #include "dialogs/dlgimportexport.h"
 #include "dialogs/dlgmaischplanmalz.h"
-#include "dialogs/dlgmodule.h"
 #include "dialogs/dlgphmalz.h"
 #include "dialogs/dlgprintout.h"
 #include "dialogs/dlgrestextrakt.h"
@@ -73,8 +72,6 @@ MainWindow::MainWindow(QWidget *parent) :
     qApp->installEventFilter(this);
 
     connect(gSettings, &Settings::themeChanged, this, &MainWindow::themeChanged);
-    ui->actionThemeHell->setEnabled(theme != Qt::ColorScheme::Light);
-    ui->actionThemeDunkel->setEnabled(theme != Qt::ColorScheme::Dark);
 
     gUndoStack = new UndoStack(this);
     gUndoStack->setEnabled(gSettings->valueInGroup("General", "UndoEnabled", true).toBool());
@@ -93,22 +90,6 @@ MainWindow::MainWindow(QWidget *parent) :
     palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
 
-  #if 0
-    QString style = gSettings->style();
-    for(const QString &key : QStyleFactory::keys())
-    {
-        QAction *action = new QAction(key, this);
-        if (key == style)
-            action->setEnabled(false);
-        else
-            connect(action, &QAction::triggered, this, &MainWindow::changeStyle);
-        ui->menuStil->addAction(action);
-    }
-  #endif
-    ui->menuStil->menuAction()->setVisible(!ui->menuStil->isEmpty());
-
-    ui->actionSchriftart->setChecked(gSettings->useSystemFont());
-
     gSettings->beginGroup("MainWindow");
     restoreGeometry(gSettings->value("geometry").toByteArray());
     mDefaultState = saveState();
@@ -121,16 +102,13 @@ MainWindow::MainWindow(QWidget *parent) :
     gSettings->endGroup();
 
     gSettings->beginGroup("General");
-    ui->actionBestaetigungBeenden->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
-    ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
-    ui->actionTooltips->setChecked(gSettings->value("TooltipsEnabled", true).toBool());
-    ui->actionZahlenformat->setChecked(gSettings->value("UseLanguageLocale", false).toBool());
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
     gSettings->endGroup();
-    ui->actionAnimationen->setChecked(gSettings->animationsEnabled());
 
     connect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
 
+    connect(gSettings, &Settings::languageChanged, this, [this](){restart(1001);});
+    connect(gSettings, &Settings::databasePathChanged, this, [this](){restart(1000);});
     connect(gSettings, &Settings::modulesChanged, this, &MainWindow::modulesChanged);
 
     connect(ui->tabSudAuswahl, &TabSudAuswahl::clicked, this, &MainWindow::loadSud);
@@ -146,12 +124,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionPrintout, &QAction::triggered, this, &MainWindow::showDialogPrintout);
     connect(ui->actionEtikett, &QAction::triggered, this, &MainWindow::showDialogEtikett);
     connect(ui->actionBewertungen, &QAction::triggered, this, &MainWindow::showDialogBewertungen);
+    connect(ui->actionSettings, &QAction::triggered, this, &MainWindow::showDialogEinstellungen);
 
-    if (ui->actionCheckUpdate->isChecked())
+    if (gSettings->valueInGroup("General", "CheckUpdate", true).toBool())
         checkForUpdate(false);
 
     if (gSettings->modulesFirstTime)
-        on_actionModule_triggered();
+        showDialogEinstellungen();
 
     modulesChanged(Settings::ModuleAlle);
     sudLoaded();
@@ -186,7 +165,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
     else
     {
         int ret = QMessageBox::Yes;
-        if (ui->actionBestaetigungBeenden->isChecked())
+        if (gSettings->valueInGroup("General", "BeendenAbfrage", true).toBool())
         {
             ret = QMessageBox::question(this, tr("Anwendung schließen?"),
                                         tr("Soll die Anwendung geschlossen werden?"),
@@ -202,7 +181,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-    if (event->type() == QEvent::ToolTip && !ui->actionTooltips->isChecked() )
+    if (event->type() == QEvent::ToolTip && !gSettings->valueInGroup("General", "TooltipsEnabled", true).toBool())
         return true;
     return QMainWindow::eventFilter(obj, event);
 }
@@ -324,14 +303,13 @@ void MainWindow::restoreView()
     DlgBewertungen::restoreView();
     DlgBrauUebersicht::restoreView();
     DlgCheckUpdate::restoreView();
-    DlgConsole::restoreView();
     DlgDatabaseCleaner::restoreView();
     DlgDatenbank::restoreView();
+    DlgEinstellungen::restoreView();
     DlgEtikett::restoreView();
     DlgHilfe::restoreView();
     DlgImportExport::restoreView();
     DlgMaischplanMalz::restoreView();
-    DlgModule::restoreView();
     DlgPhMalz::restoreView();
     DlgPrintout::restoreView();
     DlgRestextrakt::restoreView();
@@ -681,72 +659,6 @@ void MainWindow::on_actionEingabefelderEntsperren_changed()
     }
 }
 
-void MainWindow::on_actionAnsichtWiederherstellen_triggered()
-{
-    restoreView();
-}
-
-void MainWindow::on_actionThemeHell_triggered()
-{
-    gSettings->setTheme(Qt::ColorScheme::Light);
-}
-
-void MainWindow::on_actionThemeDunkel_triggered()
-{
-    gSettings->setTheme(Qt::ColorScheme::Dark);
-}
-
-void MainWindow::changeStyle()
-{
-    QAction *action = qobject_cast<QAction*>(sender());
-    if (action)
-    {
-        gSettings->setStyle(action->text());
-        restart();
-    }
-}
-
-void MainWindow::on_actionSchriftart_triggered(bool checked)
-{
-    if (checked)
-    {
-        gSettings->setUseSystemFont(true);
-        restart();
-    }
-    else
-    {
-        bool ok;
-        QFont font = QFontDialog::getFont(&ok, gSettings->font, this);
-        if (ok)
-        {
-            gSettings->setUseSystemFont(false);
-            gSettings->setFont(font);
-            restart();
-        }
-        else
-        {
-            ui->actionSchriftart->setChecked(true);
-        }
-    }
-}
-
-void MainWindow::on_actionOeffnen_triggered()
-{
-    QString databasePath = QFileDialog::getOpenFileName(this, tr("Datenbank auswählen"),
-                                                    gSettings->databasePath(),
-                                                    tr("Datenbank (*.sqlite);;Alle Dateien (*.*)"));
-    if (!databasePath.isEmpty())
-    {
-        gSettings->setDatabasePath(databasePath);
-        restart();
-    }
-}
-
-void MainWindow::on_actionBestaetigungBeenden_triggered(bool checked)
-{
-    gSettings->setValueInGroup("General", "BeendenAbfrage", checked);
-}
-
 void MainWindow::checkForUpdate(bool force)
 {
   #if QT_NETWORK_LIB
@@ -779,7 +691,6 @@ void MainWindow::checkMessageFinished()
             if (dlg->ignoreUpdate())
                 gSettings->setValue("CheckUpdateLastDate", QDate::currentDate());
             gSettings->setValue("CheckUpdate", dlg->doCheckUpdate());
-            ui->actionCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
             gSettings->endGroup();
         }
         dlg->deleteLater();
@@ -1080,65 +991,9 @@ void MainWindow::checkLoadedSud()
     }
 }
 
-void MainWindow::on_actionCheckUpdate_triggered(bool checked)
-{
-  #if QT_NETWORK_LIB
-    gSettings->setValueInGroup("General", "CheckUpdate", checked);
-    if (checked)
-        checkForUpdate(true);
-  #else
-    Q_UNUSED(checked)
-  #endif
-}
-
-void MainWindow::on_actionTooltips_triggered(bool checked)
-{
-    gSettings->setValueInGroup("General", "TooltipsEnabled", checked);
-}
-
-void MainWindow::on_actionAnimationen_triggered(bool checked)
-{
-    gSettings->setAnimationsEnabled(checked);
-}
-
-void MainWindow::on_actionDeutsch_triggered()
-{
-    gSettings->setLanguage(QStringLiteral("de"));
-    restart(1001);
-}
-
-void MainWindow::on_actionEnglisch_triggered()
-{
-    gSettings->setLanguage(QStringLiteral("en"));
-    restart(1001);
-}
-
-void MainWindow::on_actionSchwedisch_triggered()
-{
-    gSettings->setLanguage(QStringLiteral("sv"));
-    restart(1001);
-}
-
-void MainWindow::on_actionNiederlaendisch_triggered()
-{
-    gSettings->setLanguage(QStringLiteral("nl"));
-    restart(1001);
-}
-
-void MainWindow::on_actionZahlenformat_triggered(bool checked)
-{
-    gSettings->setValueInGroup("General", "UseLanguageLocale", checked);
-    restart(1001);
-}
-
-void MainWindow::on_actionModule_triggered()
-{
-    DlgAbstract::showDialog<DlgModule>(this);
-}
-
 void MainWindow::on_actionHilfe_triggered()
 {
-    DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this);
+    DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this, ui->actionHilfe);
     dlg->setHomeUrl(QStringLiteral(URL_HILFE));
 }
 
@@ -1146,11 +1001,7 @@ void MainWindow::on_actionUeber_triggered()
 {
     DlgAbout dlg(this);
     dlg.exec();
-}
-
-void MainWindow::on_actionLog_triggered()
-{
-    DlgAbstract::showDialog<DlgConsole>(this, ui->actionLog);
+    ui->actionUeber->setChecked(false);
 }
 
 void MainWindow::on_actionDatenbank_triggered()
@@ -1186,4 +1037,12 @@ DlgEtikett* MainWindow::showDialogEtikett()
 DlgBewertungen* MainWindow::showDialogBewertungen()
 {
     return DlgAbstract::showDialog<DlgBewertungen>(this, ui->actionBewertungen);
+}
+
+DlgEinstellungen* MainWindow::showDialogEinstellungen()
+{
+    DlgEinstellungen* dlg = DlgAbstract::showDialog<DlgEinstellungen>(this, ui->actionSettings);
+    connect(dlg, &DlgEinstellungen::restoreViewTriggered, this, &MainWindow::restoreView, Qt::UniqueConnection);
+    connect(dlg, &DlgEinstellungen::checkUpdateTriggered, this, &MainWindow::checkForUpdate, Qt::UniqueConnection);
+    return dlg;
 }

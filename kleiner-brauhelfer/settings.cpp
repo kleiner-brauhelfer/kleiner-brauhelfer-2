@@ -260,7 +260,7 @@ void Settings::initLogLevel(int level)
         rules = QStringLiteral("*.debug=false");
     else if (level == 2)
         rules = QStringLiteral("");
-    else if (level < 99)
+    if (level < 99)
     {
         if (level >= 3)
             rules += QStringLiteral("kleiner-brauhelfer-core.info=true\n");

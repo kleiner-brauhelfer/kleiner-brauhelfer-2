@@ -48,9 +48,6 @@ Einstellungen, welche sich nur über die INI Datei einstellen lassen.
 - **WebViewEnabled** (true oder false, default: true): aktiviert/deaktiviert die Webansichten
 - **UndoEnabled** (true oder false, default: true): aktiviert/deaktiviert die Undo-Funktionalität 
 
-### [Style]
-- **Style** (fusion, windows, windowsvista, macos, default: fusion): GUI look and feel
-
 
 ## Hinweise
 

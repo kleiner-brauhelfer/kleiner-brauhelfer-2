@@ -15,7 +15,6 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "widgets/webview.h"
-#include "dialogs/dlgconsole.h"
 
 // Modus, um Datenbankupdates zu testen.
 // In diesem Modus wird eine Kopie der Datenbank erstellt.
@@ -334,7 +333,7 @@ static void messageHandler(QtMsgType type, const QMessageLogContext &context, co
 {
     defaultMessageHandler(type, context, msg);
     QString entry;
-    if (logFile || DlgConsole::Dialog)
+    if (logFile)
     {
         QTextStream out(&entry);
         switch (type)
@@ -367,10 +366,6 @@ static void messageHandler(QtMsgType type, const QMessageLogContext &context, co
         if (context.file)
             out << " | " << context.file << ":" << context.line << ", " << context.function;
         out << Qt::endl;
-    }
-    if (DlgConsole::Dialog)
-    {
-        DlgConsole::Dialog->append(entry);
     }
 }
 

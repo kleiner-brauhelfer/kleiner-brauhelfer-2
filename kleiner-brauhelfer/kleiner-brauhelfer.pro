@@ -63,14 +63,13 @@ SOURCES += \
     dialogs/dlgbewertungen.cpp \
     dialogs/dlgbrauuebersicht.cpp \
     dialogs/dlgcheckupdate.cpp \
-    dialogs/dlgconsole.cpp \
     dialogs/dlgdatabasecleaner.cpp \
     dialogs/dlgdatenbank.cpp \
+    dialogs/dlgeinstellungen.cpp \
     dialogs/dlgetikett.cpp \
     dialogs/dlghilfe.cpp \
     dialogs/dlgimportexport.cpp \
     dialogs/dlgmaischplanmalz.cpp \
-    dialogs/dlgmodule.cpp \
     dialogs/dlgphmalz.cpp \
     dialogs/dlgprintout.cpp \
     dialogs/dlgrestextrakt.cpp \
@@ -162,14 +161,13 @@ HEADERS += \
     dialogs/dlgbewertungen.h \
     dialogs/dlgbrauuebersicht.h \
     dialogs/dlgcheckupdate.h \
-    dialogs/dlgconsole.h \
     dialogs/dlgdatabasecleaner.h \
     dialogs/dlgdatenbank.h \
+    dialogs/dlgeinstellungen.h \
     dialogs/dlgetikett.h \
     dialogs/dlghilfe.h \
     dialogs/dlgimportexport.h \
     dialogs/dlgmaischplanmalz.h \
-    dialogs/dlgmodule.h \
     dialogs/dlgphmalz.h \
     dialogs/dlgprintout.h \
     dialogs/dlgrestextrakt.h \
@@ -243,14 +241,13 @@ FORMS += \
     dialogs/dlgbewertungen.ui \
     dialogs/dlgbrauuebersicht.ui \
     dialogs/dlgcheckupdate.ui \
-    dialogs/dlgconsole.ui \
     dialogs/dlgdatabasecleaner.ui \
     dialogs/dlgdatenbank.ui \
+    dialogs/dlgeinstellungen.ui \
     dialogs/dlgetikett.ui \
     dialogs/dlghilfe.ui \
     dialogs/dlgimportexport.ui \
     dialogs/dlgmaischplanmalz.ui \
-    dialogs/dlgmodule.ui \
     dialogs/dlgphmalz.ui \
     dialogs/dlgprintout.ui \
     dialogs/dlgrestextrakt.ui \

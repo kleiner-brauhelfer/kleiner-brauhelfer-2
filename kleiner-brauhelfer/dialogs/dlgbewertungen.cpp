@@ -15,7 +15,7 @@ extern Settings* gSettings;
 DlgBewertungen* DlgBewertungen::Dialog = nullptr;
 
 DlgBewertungen::DlgBewertungen(QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgBewertungen),
     mSudId(-1),
     mRowBewertung(-1)

@@ -19,11 +19,11 @@
   <property name="windowTitle">
    <string>Über</string>
   </property>
+  <property name="windowIcon">
+   <iconset theme="about"/>
+  </property>
   <property name="toolTip">
    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier versteckt sich eine Bierspende.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-  </property>
-  <property name="sizeGripEnabled">
-   <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="3" column="4">
@@ -43,13 +43,6 @@
      </property>
      <property name="text">
       <string>Forum</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="4">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Close</set>
      </property>
     </widget>
    </item>
@@ -160,22 +153,5 @@ p, li { white-space: pre-wrap; }
  <resources>
   <include location="../images.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
-   <receiver>DlgAbout</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>225</x>
-     <y>295</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>224</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

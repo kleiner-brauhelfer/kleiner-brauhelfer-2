@@ -15,7 +15,7 @@ extern Settings* gSettings;
 DlgPrintout* DlgPrintout::Dialog = nullptr;
 
 DlgPrintout::DlgPrintout(QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgPrintout)
 {
     ui->setupUi(this);

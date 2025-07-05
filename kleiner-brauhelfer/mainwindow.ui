@@ -122,28 +122,6 @@
      <height>18</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>Datei</string>
-    </property>
-    <addaction name="actionNeuen_Sud_anlegen"/>
-    <addaction name="actionSud_kopieren"/>
-    <addaction name="actionSud_teilen"/>
-    <addaction name="actionSud_l_schen"/>
-    <addaction name="separator"/>
-    <addaction name="actionRezept_importieren"/>
-    <addaction name="actionRezept_exportieren"/>
-    <addaction name="separator"/>
-    <addaction name="actionSpeichern"/>
-    <addaction name="actionVerwerfen"/>
-    <addaction name="separator"/>
-    <addaction name="actionDruckvorschau"/>
-    <addaction name="actionDrucken"/>
-    <addaction name="separator"/>
-    <addaction name="actionBereinigen"/>
-    <addaction name="separator"/>
-    <addaction name="actionBeenden"/>
-   </widget>
    <widget class="QMenu" name="menuSud">
     <property name="title">
      <string>Sud</string>
@@ -152,23 +130,14 @@
     <addaction name="actionSudAbgefuellt"/>
     <addaction name="actionSudVerbraucht"/>
     <addaction name="separator"/>
-    <addaction name="actionHefeZugabeZuruecksetzen"/>
-    <addaction name="actionWeitereZutaten"/>
     <addaction name="separator"/>
     <addaction name="actionEingabefelderEntsperren"/>
    </widget>
-   <widget class="QMenu" name="menuBearbeiten">
-    <property name="title">
-     <string>Bearbeiten</string>
-    </property>
-   </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuBearbeiten"/>
    <addaction name="menuSud"/>
   </widget>
-  <widget class="QToolBar" name="toolBar">
+  <widget class="QToolBar" name="toolBarSave">
    <property name="windowTitle">
-    <string>Haupttoolbar</string>
+    <string>Speichern</string>
    </property>
    <property name="iconSize">
     <size>
@@ -186,7 +155,27 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionSpeichern"/>
-   <addaction name="separator"/>
+   <addaction name="actionVerwerfen"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>Dialoge</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
    <addaction name="actionRohstoffe"/>
    <addaction name="actionAusruestung"/>
    <addaction name="actionBrauUebersicht"/>
@@ -239,7 +228,10 @@
     <iconset theme="restore"/>
    </property>
    <property name="text">
-    <string>Änderungen verwerfen</string>
+    <string>Verwerfen</string>
+   </property>
+   <property name="toolTip">
+    <string>Alle Änderungen verwerfen</string>
    </property>
   </action>
   <action name="actionUeber">
@@ -271,111 +263,12 @@
     <string>&quot;Sud verbraucht&quot; zurücksetzen</string>
    </property>
   </action>
-  <action name="actionWeitereZutaten">
-   <property name="text">
-    <string>&quot;Zusätze Zugabe&quot; zurücksetzen</string>
-   </property>
-  </action>
-  <action name="actionBeenden">
-   <property name="text">
-    <string>Beenden</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Q</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::QuitRole</enum>
-   </property>
-  </action>
-  <action name="actionHefeZugabeZuruecksetzen">
-   <property name="text">
-    <string>&quot;Hefe Zugabe&quot; zurücksetzen</string>
-   </property>
-  </action>
-  <action name="actionBereinigen">
-   <property name="text">
-    <string>Bereinigen</string>
-   </property>
-  </action>
   <action name="actionEingabefelderEntsperren">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
     <string>Eingabefelder entsperren</string>
-   </property>
-  </action>
-  <action name="actionNeuen_Sud_anlegen">
-   <property name="icon">
-    <iconset theme="sud_neu"/>
-   </property>
-   <property name="text">
-    <string>Neuen Sud anlegen</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+N</string>
-   </property>
-  </action>
-  <action name="actionRezept_importieren">
-   <property name="icon">
-    <iconset theme="sud_import"/>
-   </property>
-   <property name="text">
-    <string>Rezept importieren</string>
-   </property>
-  </action>
-  <action name="actionRezept_exportieren">
-   <property name="icon">
-    <iconset theme="sud_export"/>
-   </property>
-   <property name="text">
-    <string>Rezept exportieren</string>
-   </property>
-  </action>
-  <action name="actionSud_kopieren">
-   <property name="icon">
-    <iconset theme="sud_kopie"/>
-   </property>
-   <property name="text">
-    <string>Sud kopieren</string>
-   </property>
-  </action>
-  <action name="actionSud_l_schen">
-   <property name="icon">
-    <iconset theme="sud_loeschen"/>
-   </property>
-   <property name="text">
-    <string>Sud löschen</string>
-   </property>
-  </action>
-  <action name="actionSud_teilen">
-   <property name="icon">
-    <iconset theme="sud_teilen"/>
-   </property>
-   <property name="text">
-    <string>Sud teilen</string>
-   </property>
-  </action>
-  <action name="actionDruckvorschau">
-   <property name="icon">
-    <iconset theme="print"/>
-   </property>
-   <property name="text">
-    <string>Drucken</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+Shift+P</string>
-   </property>
-  </action>
-  <action name="actionDrucken">
-   <property name="icon">
-    <iconset theme="pdf"/>
-   </property>
-   <property name="text">
-    <string>PDF</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+P</string>
    </property>
   </action>
   <action name="actionHilfe">

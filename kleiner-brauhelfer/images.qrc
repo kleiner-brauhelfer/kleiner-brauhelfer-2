@@ -11,11 +11,13 @@
         <file>images/zusatz.svg</file>
         <file>images/icons/dark/index.theme</file>
         <file>images/icons/dark/dark.svg</file>
+        <file>images/icons/dark/svg/about.svg</file>
         <file>images/icons/dark/svg/bier.svg</file>
         <file>images/icons/dark/svg/close_button.svg</file>
         <file>images/icons/dark/svg/edit.svg</file>
         <file>images/icons/dark/svg/export.svg</file>
         <file>images/icons/dark/svg/filter.svg</file>
+        <file>images/icons/dark/svg/help.svg</file>
         <file>images/icons/dark/svg/import.svg</file>
         <file>images/icons/dark/svg/minus.svg</file>
         <file>images/icons/dark/svg/nach_oben.svg</file>
@@ -59,11 +61,13 @@
         <file>images/icons/dark/svg/undo.svg</file>
         <file>images/icons/light/index.theme</file>
         <file>images/icons/light/light.svg</file>
+        <file>images/icons/light/svg/about.svg</file>
         <file>images/icons/light/svg/bier.svg</file>
         <file>images/icons/light/svg/close_button.svg</file>
         <file>images/icons/light/svg/edit.svg</file>
         <file>images/icons/light/svg/export.svg</file>
         <file>images/icons/light/svg/filter.svg</file>
+        <file>images/icons/light/svg/help.svg</file>
         <file>images/icons/light/svg/import.svg</file>
         <file>images/icons/light/svg/minus.svg</file>
         <file>images/icons/light/svg/nach_oben.svg</file>

@@ -13,8 +13,8 @@
   <property name="windowTitle">
    <string>Hilfe</string>
   </property>
-  <property name="sizeGripEnabled">
-   <bool>true</bool>
+  <property name="windowIcon">
+   <iconset theme="help"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">

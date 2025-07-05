@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string>Berechnung Extrakt</string>
   </property>
-  <property name="sizeGripEnabled">
-   <bool>true</bool>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>4</number>

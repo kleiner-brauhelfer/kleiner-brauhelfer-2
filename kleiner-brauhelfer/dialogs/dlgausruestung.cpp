@@ -27,7 +27,7 @@ extern Settings* gSettings;
 DlgAusruestung* DlgAusruestung::Dialog = nullptr;
 
 DlgAusruestung::DlgAusruestung(QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgAusruestung),
     mRow(0)
 {

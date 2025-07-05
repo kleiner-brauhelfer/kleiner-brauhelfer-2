@@ -6,7 +6,7 @@
 #include <QJsonObject>
 
 DlgCheckUpdate::DlgCheckUpdate(const QString &url, const QDate& since, QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent),
+    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowCloseButtonHint),
     ui(new Ui::DlgCheckUpdate),
     url(url),
     mHasUpdate(false),

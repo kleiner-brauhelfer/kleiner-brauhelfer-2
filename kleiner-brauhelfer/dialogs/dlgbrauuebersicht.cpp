@@ -48,7 +48,7 @@ public:
 };
 
 DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgBrauUebersicht)
 {
     ui->setupUi(this);

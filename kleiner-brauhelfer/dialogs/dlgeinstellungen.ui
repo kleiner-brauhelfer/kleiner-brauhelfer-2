@@ -16,9 +16,6 @@
   <property name="windowIcon">
    <iconset theme="settings"/>
   </property>
-  <property name="sizeGripEnabled">
-   <bool>true</bool>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QScrollArea" name="scrollAreaEinstellungen">

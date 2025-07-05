@@ -13,7 +13,7 @@ public:
     template<typename DLG> static void closeDialog();
 
 public:
-    explicit DlgAbstract(const QString& settingsGroup, QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
+    explicit DlgAbstract(const QString& settingsGroup, QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint);
     static void restoreView(const QString& settingsGroup, DlgAbstract* dlg = nullptr);
 
 protected:

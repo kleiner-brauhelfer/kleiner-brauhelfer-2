@@ -33,7 +33,7 @@ extern Settings* gSettings;
 DlgEtikett* DlgEtikett::Dialog = nullptr;
 
 DlgEtikett::DlgEtikett(QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgEtikett),
     mSud(new SudObject(bh)),
     mTemplateFilePath(QStringLiteral(""))

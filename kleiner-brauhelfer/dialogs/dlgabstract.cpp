@@ -7,6 +7,7 @@ DlgAbstract::DlgAbstract(const QString &settingsGroup, QWidget *parent, Qt::Wind
     QDialog(parent,f),
     mSettingsGroup(settingsGroup)
 {
+    setSizeGripEnabled(true);
     connect(parent, &QWidget::destroyed, this, &QDialog::close);
     connect(this, &QDialog::finished, this, &DlgAbstract::on_finished);
 }

@@ -451,18 +451,3 @@ void TabSudAuswahl::on_btnLaden_clicked()
         emit clicked(sudId);
     }
 }
-
-bool TabSudAuswahl::isPrintable() const
-{
-    return true;
-}
-
-void TabSudAuswahl::printPreview()
-{
-    ui->webview->printPreview();
-}
-
-void TabSudAuswahl::toPdf()
-{
-    ui->webview->printToPdf();
-}

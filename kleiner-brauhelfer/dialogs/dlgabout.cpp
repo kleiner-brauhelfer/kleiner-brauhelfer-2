@@ -4,7 +4,7 @@
 #include "definitionen.h"
 
 DlgAbout::DlgAbout(QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent),
+    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowCloseButtonHint),
     ui(new Ui::DlgAbout)
 {
     ui->setupUi(this);

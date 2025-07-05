@@ -77,12 +77,9 @@ MainWindow::MainWindow(QWidget *parent) :
     gUndoStack->setEnabled(gSettings->valueInGroup("General", "UndoEnabled", true).toBool());
     if (gUndoStack->isEnabled())
     {
-        ui->menuBearbeiten->addAction(gUndoStack->createUndoAction(this, tr("Rückgängig")));
-        ui->menuBearbeiten->addAction(gUndoStack->createRedoAction(this, tr("Wiederherstellen")));
-    }
-    else
-    {
-        ui->menuBearbeiten->setEnabled(false);
+        ui->toolBarSave->addSeparator();
+        ui->toolBarSave->addAction(gUndoStack->createRedoAction(this, tr("Redo")));
+        ui->toolBarSave->addAction(gUndoStack->createUndoAction(this, tr("Undo")));
     }
 
     QPalette palette = ui->tbHelp->palette();
@@ -253,6 +250,9 @@ void MainWindow::saveDatabase()
 
 void MainWindow::discardDatabase()
 {
+    int ret = QMessageBox::question(this, tr("Änderungen verwerfen?"), tr("Sollen alle Änderungen verworfen werden?"));
+    if (ret != QMessageBox::Yes)
+        return;
     QGuiApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
     setFocus();
     try
@@ -396,8 +396,6 @@ void MainWindow::updateValues()
         ui->actionSudGebraut->setEnabled(status >= Brauhelfer::SudStatus::Gebraut);
         ui->actionSudAbgefuellt->setEnabled(status >= Brauhelfer::SudStatus::Abgefuellt);
         ui->actionSudVerbraucht->setEnabled(status >= Brauhelfer::SudStatus::Verbraucht);
-        ui->actionHefeZugabeZuruecksetzen->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
-        ui->actionWeitereZutaten->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
     }
     if (!ui->tabMain->currentWidget()->isEnabled())
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
@@ -457,72 +455,8 @@ void MainWindow::on_tabMain_currentChanged()
     if (tab)
     {
         tab->setTabActive(true);
-        ui->actionDrucken->setEnabled(tab->isPrintable());
-        ui->actionDruckvorschau->setEnabled(tab->isPrintable());
     }
     setFocus();
-}
-
-void MainWindow::on_actionNeuen_Sud_anlegen_triggered()
-{
-    ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-    ui->tabSudAuswahl->sudAnlegen();
-}
-
-void MainWindow::on_actionSud_kopieren_triggered()
-{
-    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-    {
-        ui->tabSudAuswahl->sudKopieren();
-    }
-    else
-    {
-        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-        ui->tabSudAuswahl->sudKopieren(true);
-    }
-}
-
-void MainWindow::on_actionSud_teilen_triggered()
-{
-    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-    {
-        ui->tabSudAuswahl->sudTeilen();
-    }
-    else
-    {
-        ui->tabSudAuswahl->sudTeilen(true);
-    }
-}
-
-void MainWindow::on_actionSud_l_schen_triggered()
-{
-    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-    {
-        ui->tabSudAuswahl->sudLoeschen();
-    }
-    else
-    {
-        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-        ui->tabSudAuswahl->sudLoeschen(true);
-    }
-}
-
-void MainWindow::on_actionRezept_importieren_triggered()
-{
-    ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
-    ui->tabSudAuswahl->rezeptImportieren();
-}
-
-void MainWindow::on_actionRezept_exportieren_triggered()
-{
-    if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
-    {
-        ui->tabSudAuswahl->rezeptExportieren();
-    }
-    else
-    {
-        ui->tabSudAuswahl->rezeptExportieren(true);
-    }
 }
 
 void MainWindow::on_actionSpeichern_triggered()
@@ -533,26 +467,6 @@ void MainWindow::on_actionSpeichern_triggered()
 void MainWindow::on_actionVerwerfen_triggered()
 {
     discardDatabase();
-}
-
-void MainWindow::on_actionDruckvorschau_triggered()
-{
-    TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
-    if (tab)
-        tab->printPreview();
-}
-
-void MainWindow::on_actionDrucken_triggered()
-{
-    TabAbstract* tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
-    if (tab)
-        tab->toPdf();
-}
-
-void MainWindow::on_actionBereinigen_triggered()
-{
-    DlgDatabaseCleaner dlg(this);
-    dlg.exec();
 }
 
 void MainWindow::on_actionBeenden_triggered()
@@ -583,49 +497,6 @@ void MainWindow::on_actionSudAbgefuellt_triggered()
 void MainWindow::on_actionSudVerbraucht_triggered()
 {
     bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
-}
-
-void MainWindow::on_actionHefeZugabeZuruecksetzen_triggered()
-{
-    ProxyModel *model = bh->sud()->modelHefegaben();
-    for (int row = 0; row < model->rowCount(); ++row)
-    {
-        bool zugegeben = model->data(row, ModelHefegaben::ColZugegeben).toBool();
-        if (zugegeben)
-        {
-            model->setData(row, ModelHefegaben::ColZugegeben, false);
-            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
-            {
-                DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Hefe,
-                                         model->data(row, ModelHefegaben::ColName).toString(),
-                                         model->data(row, ModelHefegaben::ColMenge).toDouble(),
-                                         this);
-                dlg.exec();
-            }
-        }
-    }
-}
-
-void MainWindow::on_actionWeitereZutaten_triggered()
-{
-    ProxyModel *model = bh->sud()->modelWeitereZutatenGaben();
-    for (int row = 0; row < model->rowCount(); ++row)
-    {
-        Brauhelfer::ZusatzStatus status = static_cast<Brauhelfer::ZusatzStatus>(model->data(row, ModelWeitereZutatenGaben::ColZugabestatus).toInt());
-        bool zugegeben = status != Brauhelfer::ZusatzStatus::NichtZugegeben;
-        if (zugegeben)
-        {
-            model->setData(row, ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben));
-            if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
-            {
-                DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Zusatz,
-                                         model->data(row, ModelWeitereZutatenGaben::ColName).toString(),
-                                         model->data(row, ModelWeitereZutatenGaben::Colerg_Menge).toDouble(),
-                                         this);
-                dlg.exec();
-            }
-        }
-    }
 }
 
 void MainWindow::on_actionEingabefelderEntsperren_changed()

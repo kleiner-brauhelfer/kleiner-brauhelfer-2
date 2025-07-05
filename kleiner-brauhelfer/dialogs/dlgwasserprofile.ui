@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string>Wasserprofile</string>
   </property>
-  <property name="sizeGripEnabled">
-   <bool>true</bool>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QSplitter" name="splitter">

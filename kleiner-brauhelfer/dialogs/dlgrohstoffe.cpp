@@ -32,7 +32,7 @@ extern Settings* gSettings;
 DlgRohstoffe* DlgRohstoffe::Dialog = nullptr;
 
 DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
-    DlgAbstract(staticMetaObject.className(), parent, Qt::WindowMaximizeButtonHint | Qt::WindowCloseButtonHint),
+    DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgRohstoffe)
 {
     QPalette pal;

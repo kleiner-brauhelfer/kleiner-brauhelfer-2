@@ -15,7 +15,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabBraudaten::TabBraudaten(QWidget *parent) :
-    TabAbstract(parent),
+    QWidget(parent),
     ui(new Ui::TabBraudaten)
 {
     ui->setupUi(this);
@@ -93,7 +93,7 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModuleAusruestung))
     {
-        setVisibleModule(Settings::ModuleAusruestung,
+        gSettings->setVisibleModule(Settings::ModuleAusruestung,
                          {ui->cbDurchschnittIgnorieren,
                          ui->lblDurchschnittIgnorieren,
                          ui->lblDurchschnittWarnung,
@@ -105,7 +105,7 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
     }
     if (modules.testFlag(Settings::ModuleSpeise))
     {
-        setVisibleModule(Settings::ModuleSpeise,
+        gSettings->setVisibleModule(Settings::ModuleSpeise,
                          {ui->tbSpeisemenge,
                           ui->lblSpeisemenge,
                           ui->lblSpeisemengeEinheit,
@@ -120,7 +120,7 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
     }
     if (modules.testFlag(Settings::ModulePreiskalkulation))
     {
-        setVisibleModule(Settings::ModulePreiskalkulation,
+        gSettings->setVisibleModule(Settings::ModulePreiskalkulation,
                          {ui->tbKosten,
                           ui->lblKosten,
                           ui->lblKostenEinheit,
@@ -163,8 +163,9 @@ void TabBraudaten::sudDataChanged(const QModelIndex& index)
     }
 }
 
-void TabBraudaten::onTabActivated()
+void TabBraudaten::showEvent(QShowEvent *event)
 {
+    Q_UNUSED(event)
     updateValues();
 }
 
@@ -216,7 +217,7 @@ void TabBraudaten::checkEnabled()
 
 void TabBraudaten::updateValues()
 {
-    if (!isTabActive())
+    if (!isVisible())
         return;
 
     for (auto& wdg : findChildren<DoubleSpinBoxSud*>())

@@ -1,27 +1,28 @@
 #ifndef TABGAERVERLAUF_H
 #define TABGAERVERLAUF_H
 
-#include "tababstract.h"
+#include <QWidget>
 #include <QItemSelection>
+#include "settings.h"
 
 namespace Ui {
 class TabGaerverlauf;
 }
 
-class TabGaerverlauf : public TabAbstract
+class TabGaerverlauf : public QWidget
 {
     Q_OBJECT
 
 public:
     explicit TabGaerverlauf(QWidget *parent = nullptr);
     virtual ~TabGaerverlauf() Q_DECL_OVERRIDE;
-    void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
-    void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
+    void saveSettings();
+    void restoreView();
+    void modulesChanged(Settings::Modules modules);
     void checkEnabled();
 
 private:
-    void onTabActivated() Q_DECL_OVERRIDE;
+    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
     void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
     void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;

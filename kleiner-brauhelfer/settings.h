@@ -92,6 +92,8 @@ public:
     void savePrinter(const QPrinter* printer);
   #endif
 
+    void setVisibleModule(Settings::Module module, const QVector<QWidget*>& widgets);
+
 signals:
     void themeChanged(Qt::ColorScheme theme);
     void languageChanged(const QString &language);

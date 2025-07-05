@@ -6,6 +6,7 @@
 #include <QPrinterInfo>
 #endif
 #include <QLoggingCategory>
+#include <QWidget>
 
 Settings::Settings(QObject *parent) :
     QSettings(QSettings::IniFormat, QSettings::UserScope, QCoreApplication::organizationName(), QCoreApplication::applicationName(), parent)
@@ -488,3 +489,10 @@ void Settings::savePrinter(const QPrinter* printer)
 }
 
 #endif
+
+void Settings::setVisibleModule(Settings::Module module, const QVector<QWidget*>& widgets)
+{
+    bool visible = isModuleEnabled(module);
+    for (const auto& it : widgets)
+        it->setVisible(visible);
+}

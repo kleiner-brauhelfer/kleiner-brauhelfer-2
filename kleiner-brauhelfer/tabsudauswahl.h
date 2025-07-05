@@ -1,24 +1,25 @@
 #ifndef TABSUDAUSWAHL_H
 #define TABSUDAUSWAHL_H
 
-#include "tababstract.h"
+#include <QWidget>
 #include <QAbstractItemModel>
 #include <QAbstractItemDelegate>
+#include "settings.h"
 
 namespace Ui {
 class TabSudAuswahl;
 }
 
-class TabSudAuswahl : public TabAbstract
+class TabSudAuswahl : public QWidget
 {
     Q_OBJECT
 
 public:
     explicit TabSudAuswahl(QWidget *parent = nullptr);
     virtual ~TabSudAuswahl() Q_DECL_OVERRIDE;
-    void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
-    void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
+    void saveSettings();
+    void restoreView();
+    void modulesChanged(Settings::Modules modules);
     void sudAnlegen();
     void sudKopieren(bool loadedSud = false);
     void sudTeilen(bool loadedSud = false);
@@ -49,7 +50,7 @@ private slots:
     void on_btnLaden_clicked();
 
 private:
-    void onTabActivated() Q_DECL_OVERRIDE;
+    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
     void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
     void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;

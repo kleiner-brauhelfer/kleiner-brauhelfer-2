@@ -15,7 +15,6 @@
 #include "model/datedelegate.h"
 #include "model/sudnamedelegate.h"
 #include "dialogs/dlgverdampfung.h"
-#include "tababstract.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
@@ -130,7 +129,7 @@ void DlgAusruestung::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModulePreiskalkulation))
     {
-        TabAbstract::setVisibleModule(Settings::ModulePreiskalkulation,
+        gSettings->setVisibleModule(Settings::ModulePreiskalkulation,
                                       {ui->tbKosten,
                                        ui->lblKosten,
                                        ui->lblCurrency});

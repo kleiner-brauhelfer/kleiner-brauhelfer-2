@@ -1,24 +1,25 @@
 #ifndef TABREZEPT_H
 #define TABREZEPT_H
 
-#include "tababstract.h"
+#include <QWidget>
 #include <QGraphicsItem>
+#include "settings.h"
 #include "brauhelfer.h"
 
 namespace Ui {
 class TabRezept;
 }
 
-class TabRezept : public TabAbstract
+class TabRezept : public QWidget
 {
     Q_OBJECT
 
 public:
     explicit TabRezept(QWidget *parent = nullptr);
     virtual ~TabRezept() Q_DECL_OVERRIDE;
-    void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
-    void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
+    void saveSettings();
+    void restoreView();
+    void modulesChanged(Settings::Modules modules);
     void checkEnabled();
 
 private slots:
@@ -88,7 +89,7 @@ private slots:
     void on_btnTagLoeschen_clicked();
 
 private:
-    void onTabActivated() Q_DECL_OVERRIDE;
+    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     int checkRohstoffeDialog(Brauhelfer::RohstoffTyp typ, const QString &name);
     void checkRohstoffe();
     void updateGlas();

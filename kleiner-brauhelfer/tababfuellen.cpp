@@ -12,7 +12,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabAbfuellen::TabAbfuellen(QWidget *parent) :
-    TabAbstract(parent),
+    QWidget(parent),
     ui(new Ui::TabAbfuellen)
 {
     ui->setupUi(this);
@@ -90,7 +90,7 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModulePreiskalkulation))
     {
-        setVisibleModule(Settings::ModulePreiskalkulation,
+        gSettings->setVisibleModule(Settings::ModulePreiskalkulation,
                          {ui->tbKosten,
                           ui->lblKosten,
                           ui->lblKostenEinheit,
@@ -103,7 +103,7 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
     }
     if (modules.testFlag(Settings::ModuleSpeise))
     {
-        setVisibleModule(Settings::ModuleSpeise,
+        gSettings->setVisibleModule(Settings::ModuleSpeise,
                          {ui->tbSpeisemengeAbgefuellt,
                           ui->lblSpeisemengeAbgefuellt,
                           ui->lblSpeisemengeAbgefuelltEinheit,
@@ -116,7 +116,7 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
     }
     if (modules.testFlag(Settings::ModuleSchnellgaerprobe))
     {
-        setVisibleModule(Settings::ModuleSchnellgaerprobe,
+        gSettings->setVisibleModule(Settings::ModuleSchnellgaerprobe,
                          {ui->cbSchnellgaerprobeAktiv});
     }
     if (bh->sud()->isLoaded())
@@ -150,8 +150,9 @@ void TabAbfuellen::sudDataChanged(const QModelIndex& index)
     }
 }
 
-void TabAbfuellen::onTabActivated()
+void TabAbfuellen::showEvent(QShowEvent *event)
 {
+    Q_UNUSED(event)
     updateValues();
 }
 
@@ -189,7 +190,7 @@ void TabAbfuellen::checkEnabled()
 
 void TabAbfuellen::updateValues()
 {
-    if (!isTabActive())
+    if (!isVisible())
         return;
 
     for (auto& wdg : findChildren<DoubleSpinBoxSud*>())

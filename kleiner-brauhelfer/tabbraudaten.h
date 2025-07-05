@@ -1,23 +1,23 @@
 #ifndef TABBRAUDATEN_H
 #define TABBRAUDATEN_H
 
-#include "tababstract.h"
-#include <QTimer>
+#include <QWidget>
+#include "settings.h"
 
 namespace Ui {
 class TabBraudaten;
 }
 
-class TabBraudaten : public TabAbstract
+class TabBraudaten : public QWidget
 {
     Q_OBJECT
 
 public:
     explicit TabBraudaten(QWidget *parent = nullptr);
     virtual ~TabBraudaten() Q_DECL_OVERRIDE;
-    void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
-    void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
+    void saveSettings();
+    void restoreView();
+    void modulesChanged(Settings::Modules modules);
     void checkEnabled();
 
 private slots:
@@ -49,7 +49,7 @@ private slots:
     void on_btnSudGebraut_clicked();
 
 private:
-    void onTabActivated() Q_DECL_OVERRIDE;
+    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
 
 private:
     Ui::TabBraudaten *ui;

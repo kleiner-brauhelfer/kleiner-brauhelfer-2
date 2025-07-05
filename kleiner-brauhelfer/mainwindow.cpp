@@ -9,7 +9,6 @@
 #include "commands/undostack.h"
 #include "biercalc.h"
 #include "definitionen.h"
-#include "tababstract.h"
 #include "dialogs/dlgabout.h"
 #include "dialogs/dlgausruestung.h"
 #include "dialogs/dlgbewertungen.h"
@@ -131,7 +130,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     modulesChanged(Settings::ModuleAlle);
     sudLoaded();
-    on_tabMain_currentChanged();
 }
 
 MainWindow::~MainWindow()
@@ -440,23 +438,6 @@ void MainWindow::loadSud(int sudId)
             QMessageBox::critical(this, tr("Fehler beim Laden"), tr("Unbekannter Fehler."));
         }
     }
-}
-
-void MainWindow::on_tabMain_currentChanged()
-{
-    TabAbstract* tab;
-    for (int i = 0; i < ui->tabMain->count(); ++i)
-    {
-        tab = dynamic_cast<TabAbstract*>(ui->tabMain->widget(i));
-        if (tab)
-            tab->setTabActive(false);
-    }
-    tab = dynamic_cast<TabAbstract*>(ui->tabMain->currentWidget());
-    if (tab)
-    {
-        tab->setTabActive(true);
-    }
-    setFocus();
 }
 
 void MainWindow::on_actionSpeichern_triggered()

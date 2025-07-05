@@ -34,7 +34,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabRezept::TabRezept(QWidget *parent) :
-    TabAbstract(parent),
+    QWidget(parent),
     ui(new Ui::TabRezept)
 {
     QPalette pal;
@@ -253,7 +253,7 @@ void TabRezept::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModuleAusruestung))
     {
-        setVisibleModule(Settings::ModuleAusruestung,
+        gSettings->setVisibleModule(Settings::ModuleAusruestung,
                          {ui->cbAnlage,
                           ui->lblAnlage,
                           ui->btnAnlage,
@@ -270,7 +270,7 @@ void TabRezept::modulesChanged(Settings::Modules modules)
     }
     if (modules.testFlag(Settings::ModulePreiskalkulation))
     {
-        setVisibleModule(Settings::ModulePreiskalkulation,
+        gSettings->setVisibleModule(Settings::ModulePreiskalkulation,
                          {ui->tbKosten,
                           ui->lblKosten,
                           ui->lblKostenEinheit,
@@ -356,8 +356,9 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
     }
 }
 
-void TabRezept::onTabActivated()
+void TabRezept::showEvent(QShowEvent *event)
 {
+    Q_UNUSED(event)
     updateValues();
 }
 
@@ -586,7 +587,7 @@ void TabRezept::checkRohstoffe()
 void TabRezept::updateValues()
 {
     double fVal, diff;
-    if (!isTabActive())
+    if (!isVisible())
         return;
 
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());

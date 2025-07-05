@@ -54,7 +54,6 @@ private slots:
     void loadSud(int sudId);
     void checkMessageFinished();
     void modulesChanged(Settings::Modules modules);
-    void on_tabMain_currentChanged();
     void on_actionSpeichern_triggered();
     void on_actionVerwerfen_triggered();
     void on_actionBeenden_triggered();

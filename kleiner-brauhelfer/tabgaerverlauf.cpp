@@ -23,7 +23,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
-    TabAbstract(parent),
+    QWidget(parent),
     ui(new Ui::TabGaerverlauf)
 {
     ui->setupUi(this);
@@ -115,8 +115,9 @@ TabGaerverlauf::~TabGaerverlauf()
     delete ui;
 }
 
-void TabGaerverlauf::onTabActivated()
+void TabGaerverlauf::showEvent(QShowEvent *event)
 {
+    Q_UNUSED(event)
     updateDiagramm();
 }
 
@@ -171,7 +172,7 @@ void TabGaerverlauf::modulesChanged(Settings::Modules modules)
 
 void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
 {
-    TabAbstract::keyPressEvent(event);
+    QWidget::keyPressEvent(event);
     if (ui->tableWidget_Schnellgaerverlauf->hasFocus())
     {
         switch (event->key())

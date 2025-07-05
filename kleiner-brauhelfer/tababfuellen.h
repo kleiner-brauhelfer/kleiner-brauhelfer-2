@@ -1,23 +1,23 @@
 #ifndef TABABFUELLEN_H
 #define TABABFUELLEN_H
 
-#include "tababstract.h"
-#include <QTimer>
+#include <QWidget>
+#include "settings.h"
 
 namespace Ui {
 class TabAbfuellen;
 }
 
-class TabAbfuellen : public TabAbstract
+class TabAbfuellen : public QWidget
 {
     Q_OBJECT
 
 public:
     explicit TabAbfuellen(QWidget *parent = nullptr);
     virtual ~TabAbfuellen() Q_DECL_OVERRIDE;
-    void saveSettings() Q_DECL_OVERRIDE;
-    void restoreView() Q_DECL_OVERRIDE;
-    void modulesChanged(Settings::Modules modules) Q_DECL_OVERRIDE;
+    void saveSettings();
+    void restoreView();
+    void modulesChanged(Settings::Modules modules);
     void checkEnabled();
 
 private slots:
@@ -41,7 +41,7 @@ private slots:
     void on_btnSudVerbraucht_clicked();
 
 private:
-    void onTabActivated() Q_DECL_OVERRIDE;
+    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
 
 private:
     Ui::TabAbfuellen *ui;

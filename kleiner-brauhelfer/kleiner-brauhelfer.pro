@@ -37,7 +37,6 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     settings.cpp \
-    tababstract.cpp \
     tababfuellen.cpp \
     tabbraudaten.cpp \
     tabgaerverlauf.cpp \
@@ -135,7 +134,6 @@ HEADERS += \
     definitionen.h \
     mainwindow.h \
     settings.h \
-    tababstract.h \
     tababfuellen.h \
     tabbraudaten.h \
     tabgaerverlauf.h \

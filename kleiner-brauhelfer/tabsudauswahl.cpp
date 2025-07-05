@@ -22,7 +22,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
-    TabAbstract(parent),
+    QWidget(parent),
     ui(new Ui::TabSudAuswahl)
 {
     ui->setupUi(this);
@@ -108,14 +108,15 @@ void TabSudAuswahl::modulesChanged(Settings::Modules modules)
     updateWebView();
 }
 
-void TabSudAuswahl::onTabActivated()
+void TabSudAuswahl::showEvent(QShowEvent *event)
 {
+    Q_UNUSED(event)
     updateWebView();
 }
 
 void TabSudAuswahl::databaseModified()
 {
-    if (!isTabActive())
+    if (!isVisible())
         return;
     updateWebView();
 }
@@ -142,7 +143,7 @@ void TabSudAuswahl::selectionChanged()
 
 void TabSudAuswahl::keyPressEvent(QKeyEvent *event)
 {
-    TabAbstract::keyPressEvent(event);
+    QWidget::keyPressEvent(event);
     if (ui->table->hasFocus())
     {
         switch (event->key())

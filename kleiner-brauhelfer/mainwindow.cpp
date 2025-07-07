@@ -121,19 +121,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(bh->sud(), &SudObject::loadedChanged, this, &MainWindow::sudLoaded);
     connect(bh->sud(), &SudObject::dataChanged, this, &MainWindow::sudDataChanged);
 
-    connect(ui->actionRohstoffe, &QAction::triggered, this, &MainWindow::showDialogRohstoffe);
-    connect(ui->actionBrauUebersicht, &QAction::triggered, this, &MainWindow::showDialogBrauUebersicht);
-    connect(ui->actionAusruestung, &QAction::triggered, this, &MainWindow::showDialogAusruestung);
-    connect(ui->actionPrintout, &QAction::triggered, this, &MainWindow::showDialogPrintout);
-    connect(ui->actionEtikett, &QAction::triggered, this, &MainWindow::showDialogEtikett);
-    connect(ui->actionBewertungen, &QAction::triggered, this, &MainWindow::showDialogBewertungen);
-    connect(ui->actionSettings, &QAction::triggered, this, &MainWindow::showDialogEinstellungen);
+    initActions();
 
     if (gSettings->valueInGroup("General", "CheckUpdate", true).toBool())
         checkForUpdate(false);
 
     if (gSettings->modulesFirstTime)
-        showDialogEinstellungen();
+        ui->actionSettings->trigger();
 
     modulesChanged(Settings::ModuleAlle);
     sudLoaded();
@@ -144,6 +138,44 @@ MainWindow::~MainWindow()
     saveSettings();
     disconnect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
     delete ui;
+}
+
+void MainWindow::initActions()
+{
+    connect(ui->actionSpeichern, &QAction::triggered, this, &MainWindow::saveDatabase);
+    connect(ui->actionVerwerfen, &QAction::triggered, this, &MainWindow::discardDatabase);
+
+    connect(ui->actionRohstoffe, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);});
+    connect(ui->actionAusruestung, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);});
+    connect(ui->actionBrauUebersicht, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);});
+    connect(ui->actionPrintout, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgPrintout>(this, ui->actionPrintout);});
+    connect(ui->actionEtikett, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgEtikett>(this, ui->actionEtikett);});
+    connect(ui->actionBewertungen, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgBewertungen>(this, ui->actionBewertungen);});
+
+    connect(ui->actionEingabefelderEntsperren, &QAction::triggered, this, &MainWindow::eingabefelderEntsperren);
+    connect(ui->actionSettings, &QAction::triggered, this, [this](){
+        DlgEinstellungen* dlg = DlgAbstract::showDialog<DlgEinstellungen>(this, ui->actionSettings);
+        connect(dlg, &DlgEinstellungen::restoreViewTriggered, this, &MainWindow::restoreView, Qt::UniqueConnection);
+        connect(dlg, &DlgEinstellungen::checkUpdateTriggered, this, &MainWindow::checkForUpdate, Qt::UniqueConnection);
+        return dlg;
+    });
+    connect(ui->actionDatenbank, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgDatenbank>(this, ui->actionDatenbank);});
+    connect(ui->actionHilfe, &QAction::triggered, this, [this](){
+        DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this, ui->actionHilfe);
+        dlg->setHomeUrl(QStringLiteral(URL_HILFE));
+    });
+    connect(ui->actionUeber, &QAction::triggered, this, [this](){
+        DlgAbout dlg(this);
+        dlg.exec();
+        ui->actionUeber->setChecked(false);
+    });
+}
+
+QAction* MainWindow::getAction(const QString& name) const
+{
+    if (name == "actionAusruestung")
+        return ui->actionAusruestung;
+    return nullptr;
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -440,17 +472,7 @@ void MainWindow::loadSud(int sudId)
     }
 }
 
-void MainWindow::on_actionSpeichern_triggered()
-{
-    saveDatabase();
-}
-
-void MainWindow::on_actionVerwerfen_triggered()
-{
-    discardDatabase();
-}
-
-void MainWindow::on_actionEingabefelderEntsperren_changed()
+void MainWindow::eingabefelderEntsperren()
 {
     if (ui->actionEingabefelderEntsperren->isChecked())
     {
@@ -461,24 +483,17 @@ void MainWindow::on_actionEingabefelderEntsperren_changed()
         if (ret == QMessageBox::Yes)
         {
             gSettings->ForceEnabled = true;
-            ui->tabRezept->checkEnabled();
-            ui->tabBraudaten->checkEnabled();
-            ui->tabAbfuelldaten->checkEnabled();
-            ui->tabGaerverlauf->checkEnabled();
-        }
-        else
-        {
-            ui->actionEingabefelderEntsperren->setChecked(false);
         }
     }
     else
     {
         gSettings->ForceEnabled = false;
-        ui->tabRezept->checkEnabled();
-        ui->tabBraudaten->checkEnabled();
-        ui->tabAbfuelldaten->checkEnabled();
-        ui->tabGaerverlauf->checkEnabled();
     }
+    ui->tabRezept->checkEnabled();
+    ui->tabBraudaten->checkEnabled();
+    ui->tabAbfuelldaten->checkEnabled();
+    ui->tabGaerverlauf->checkEnabled();
+    ui->actionEingabefelderEntsperren->setChecked(gSettings->ForceEnabled);
 }
 
 void MainWindow::checkForUpdate(bool force)
@@ -811,60 +826,4 @@ void MainWindow::checkLoadedSud()
             }
         }
     }
-}
-
-void MainWindow::on_actionHilfe_triggered()
-{
-    DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this, ui->actionHilfe);
-    dlg->setHomeUrl(QStringLiteral(URL_HILFE));
-}
-
-void MainWindow::on_actionUeber_triggered()
-{
-    DlgAbout dlg(this);
-    dlg.exec();
-    ui->actionUeber->setChecked(false);
-}
-
-void MainWindow::on_actionDatenbank_triggered()
-{
-    DlgAbstract::showDialog<DlgDatenbank>(this, ui->actionDatenbank);
-}
-
-DlgRohstoffe* MainWindow::showDialogRohstoffe()
-{
-    return DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);
-}
-
-DlgBrauUebersicht* MainWindow::showDialogBrauUebersicht()
-{
-    return DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);
-}
-
-DlgAusruestung* MainWindow::showDialogAusruestung()
-{
-    return DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);
-}
-
-DlgPrintout* MainWindow::showDialogPrintout()
-{
-    return DlgAbstract::showDialog<DlgPrintout>(this, ui->actionPrintout);
-}
-
-DlgEtikett* MainWindow::showDialogEtikett()
-{
-    return DlgAbstract::showDialog<DlgEtikett>(this, ui->actionEtikett);
-}
-
-DlgBewertungen* MainWindow::showDialogBewertungen()
-{
-    return DlgAbstract::showDialog<DlgBewertungen>(this, ui->actionBewertungen);
-}
-
-DlgEinstellungen* MainWindow::showDialogEinstellungen()
-{
-    DlgEinstellungen* dlg = DlgAbstract::showDialog<DlgEinstellungen>(this, ui->actionSettings);
-    connect(dlg, &DlgEinstellungen::restoreViewTriggered, this, &MainWindow::restoreView, Qt::UniqueConnection);
-    connect(dlg, &DlgEinstellungen::checkUpdateTriggered, this, &MainWindow::checkForUpdate, Qt::UniqueConnection);
-    return dlg;
 }

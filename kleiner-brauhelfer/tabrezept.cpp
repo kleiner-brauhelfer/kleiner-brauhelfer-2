@@ -211,7 +211,7 @@ TabRezept::TabRezept(QWidget *parent) :
     connect(ui->wdgBemerkungMaischplan, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungMaischplan, html));});
     connect(ui->wdgBemerkungWasseraufbereitung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungWasseraufbereitung, html));});
 
-    connect(ui->btnAnlage, &QAbstractButton::clicked, MainWindow::getInstance(), &MainWindow::showDialogAusruestung);
+    connect(ui->btnAnlage, &QAbstractButton::clicked, MainWindow::getInstance()->getAction("actionAusruestung"), &QAction::triggered);
 
     TableView *table = ui->tableTags;
     table->setModel(bh->sud()->modelTags());

@@ -450,53 +450,60 @@ void TabBraudaten::on_cbDurchschnittIgnorieren_clicked(bool checked)
 
 void TabBraudaten::on_btnSudGebraut_clicked()
 {
-    QDateTime dt(ui->tbBraudatum->date(), ui->tbBraudatumZeit->time());
+    QDateTime dt = bh->sud()->getBraudatum();
+    if (!dt.isValid())
+        dt = QDateTime::currentDateTime();
     QString dtStr = QLocale().toString(dt, QLocale::ShortFormat);
-    if (QMessageBox::question(this, tr("Sud als gebraut markieren?"),
-                                    tr("Soll der Sud als gebraut markiert werden?\n\nBraudatum: %1").arg(dtStr),
-                                    QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
-        return;
-
-    gUndoStack->beginMacro(QStringLiteral("macro"));
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, dt));
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Gebraut)));
-    gUndoStack->endMacro();
-
-    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    if (QMessageBox::question(this, tr("Stadium auf \"gebraut\" setzen?"),
+                              tr("Soll das Stadium auf \"gebraut\" gesetzt werden?\nBraudatum: %1").arg(dtStr),
+                              QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
     {
-        DlgRohstoffeAbziehen dlg(true, this);
-        dlg.exec();
-    }
+        gUndoStack->beginMacro(QStringLiteral("macro"));
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, dt));
+        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Gebraut)));
+        gUndoStack->endMacro();
 
-    if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 0)
-    {
-        QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
-                                    {ModelSchnellgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
-                                    {ModelSchnellgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
-        bh->sud()->modelSchnellgaerverlauf()->append(values);
-    }
+        if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+        {
+            DlgRohstoffeAbziehen dlg(true, this);
+            dlg.exec();
+        }
 
-    if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 0)
-    {
-        QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
-                                    {ModelHauptgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
-                                    {ModelHauptgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
-        bh->sud()->modelHauptgaerverlauf()->append(values);
+        if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 0)
+        {
+            QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
+                                        {ModelSchnellgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
+                                        {ModelSchnellgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
+            bh->sud()->modelSchnellgaerverlauf()->append(values);
+        }
+
+        if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 0)
+        {
+            QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
+                                        {ModelHauptgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
+                                        {ModelHauptgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
+            bh->sud()->modelHauptgaerverlauf()->append(values);
+        }
     }
 }
 
 void TabBraudaten::on_btnSudGebrautReset_clicked()
 {
-    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Rezept));
-    if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 1)
-        bh->sud()->modelSchnellgaerverlauf()->removeRow(0);
-    if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 1)
-        bh->sud()->modelHauptgaerverlauf()->removeRow(0);
-    if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
-        bh->sud()->modelNachgaerverlauf()->removeRow(0);
-    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    if (QMessageBox::question(this, tr("Stadium \"gebraut\" zurücksetzen?"),
+                              tr("Soll das Stadium \"gebraut\" zurückgesetzt werden?"),
+                              QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
     {
-        DlgRohstoffeAbziehen dlg(false, this);
-        dlg.exec();
+        bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Rezept));
+        if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 1)
+            bh->sud()->modelSchnellgaerverlauf()->removeRow(0);
+        if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 1)
+            bh->sud()->modelHauptgaerverlauf()->removeRow(0);
+        if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
+            bh->sud()->modelNachgaerverlauf()->removeRow(0);
+        if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+        {
+            DlgRohstoffeAbziehen dlg(false, this);
+            dlg.exec();
+        }
     }
 }

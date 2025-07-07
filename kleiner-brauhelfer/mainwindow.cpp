@@ -76,9 +76,9 @@ MainWindow::MainWindow(QWidget *parent) :
     gUndoStack->setEnabled(gSettings->valueInGroup("General", "UndoEnabled", true).toBool());
     if (gUndoStack->isEnabled())
     {
-        ui->toolBarSave->addSeparator();
         ui->toolBarSave->addAction(gUndoStack->createRedoAction(this, tr("Redo")));
         ui->toolBarSave->addAction(gUndoStack->createUndoAction(this, tr("Undo")));
+        ui->toolBarSave->addSeparator();
     }
 
     QPalette palette = ui->tbHelp->palette();
@@ -96,6 +96,13 @@ MainWindow::MainWindow(QWidget *parent) :
     mDefaultSplitterHelpState = ui->splitterHelp->saveState();
     ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
     gSettings->endGroup();
+
+    if (ui->toolBarSave->isHidden())
+        ui->toolBarSave->setVisible(true);
+    if (ui->toolBar->isHidden())
+        ui->toolBar->setVisible(true);
+    if (ui->toolBarLeft->isHidden())
+        ui->toolBarLeft->setVisible(true);
 
     gSettings->beginGroup("General");
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
@@ -387,17 +394,10 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabGaerverlauf), loaded);
-    ui->menuSud->setEnabled(loaded);
-    if (loaded)
-    {
-        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
-        ui->actionSudGebraut->setEnabled(status >= Brauhelfer::SudStatus::Gebraut);
-        ui->actionSudAbgefuellt->setEnabled(status >= Brauhelfer::SudStatus::Abgefuellt);
-        ui->actionSudVerbraucht->setEnabled(status >= Brauhelfer::SudStatus::Verbraucht);
-    }
-    if (!ui->tabMain->currentWidget()->isEnabled())
-        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
     ui->actionEingabefelderEntsperren->setChecked(false);
+    ui->actionEingabefelderEntsperren->setEnabled(loaded && static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus()) != Brauhelfer::SudStatus::Rezept);
+    if (!loaded)
+        ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
 }
 
 void MainWindow::sudLoaded()
@@ -450,42 +450,12 @@ void MainWindow::on_actionVerwerfen_triggered()
     discardDatabase();
 }
 
-void MainWindow::on_actionBeenden_triggered()
-{
-    close();
-}
-
-void MainWindow::on_actionSudGebraut_triggered()
-{
-    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Rezept));
-    if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 1)
-        bh->sud()->modelSchnellgaerverlauf()->removeRow(0);
-    if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 1)
-        bh->sud()->modelHauptgaerverlauf()->removeRow(0);
-    if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
-        bh->sud()->modelNachgaerverlauf()->removeRow(0);
-    DlgRohstoffeAbziehen dlg(false, this);
-    dlg.exec();
-}
-
-void MainWindow::on_actionSudAbgefuellt_triggered()
-{
-    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
-    if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
-        bh->sud()->modelNachgaerverlauf()->removeRow(0);
-}
-
-void MainWindow::on_actionSudVerbraucht_triggered()
-{
-    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
-}
-
 void MainWindow::on_actionEingabefelderEntsperren_changed()
 {
     if (ui->actionEingabefelderEntsperren->isChecked())
     {
         int ret = QMessageBox::question(this, tr("Eingabefelder entsperren?"),
-                                  tr("Vorsicht! Eingabefelder entsperren kann zu inkonsistenten Daten führen und sollte mit Bedacht eingesetzt werden."),
+                                  tr("Vorsicht! Die Entsperrung aller Eingabefeldern kann zu inkonsistenten Daten führen und sollte mit Vorsicht verwendet werden."),
                                   QMessageBox::Yes | QMessageBox::No,
                                   QMessageBox::Yes);
         if (ret == QMessageBox::Yes)

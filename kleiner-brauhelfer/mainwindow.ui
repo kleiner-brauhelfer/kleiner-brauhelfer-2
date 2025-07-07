@@ -122,18 +122,6 @@
      <height>18</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuSud">
-    <property name="title">
-     <string>Sud</string>
-    </property>
-    <addaction name="actionSudGebraut"/>
-    <addaction name="actionSudAbgefuellt"/>
-    <addaction name="actionSudVerbraucht"/>
-    <addaction name="separator"/>
-    <addaction name="separator"/>
-    <addaction name="actionEingabefelderEntsperren"/>
-   </widget>
-   <addaction name="menuSud"/>
   </widget>
   <widget class="QToolBar" name="toolBarSave">
    <property name="windowTitle">
@@ -156,6 +144,7 @@
    </attribute>
    <addaction name="actionSpeichern"/>
    <addaction name="actionVerwerfen"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
@@ -182,6 +171,7 @@
    <addaction name="actionPrintout"/>
    <addaction name="actionEtikett"/>
    <addaction name="actionBewertungen"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QToolBar" name="toolBarLeft">
    <property name="windowTitle">
@@ -210,6 +200,7 @@
    <addaction name="separator"/>
    <addaction name="actionDatenbank"/>
    <addaction name="actionSettings"/>
+   <addaction name="actionEingabefelderEntsperren"/>
    <addaction name="separator"/>
   </widget>
   <action name="actionSpeichern">
@@ -248,27 +239,18 @@
     <enum>QAction::AboutRole</enum>
    </property>
   </action>
-  <action name="actionSudGebraut">
-   <property name="text">
-    <string>&quot;Sud gebraut&quot; zurücksetzen</string>
-   </property>
-  </action>
-  <action name="actionSudAbgefuellt">
-   <property name="text">
-    <string>&quot;Sud abgefüllt&quot; zurücksetzen</string>
-   </property>
-  </action>
-  <action name="actionSudVerbraucht">
-   <property name="text">
-    <string>&quot;Sud verbraucht&quot; zurücksetzen</string>
-   </property>
-  </action>
   <action name="actionEingabefelderEntsperren">
    <property name="checkable">
     <bool>true</bool>
    </property>
+   <property name="icon">
+    <iconset theme="unlocked"/>
+   </property>
    <property name="text">
-    <string>Eingabefelder entsperren</string>
+    <string>Entsperren</string>
+   </property>
+   <property name="toolTip">
+    <string>Alle Eingabefelder entsperren</string>
    </property>
   </action>
   <action name="actionHilfe">

@@ -2925,6 +2925,19 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QPushButton" name="btnSudGebrautReset">
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Zurücksetzen</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>
@@ -3060,8 +3073,6 @@
   <tabstop>btnSudGebraut</tabstop>
   <tabstop>splitterCharts</tabstop>
  </tabstops>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

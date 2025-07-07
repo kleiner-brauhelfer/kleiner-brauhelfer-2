@@ -204,6 +204,7 @@ void TabBraudaten::checkEnabled()
     ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
     ui->tbNebenkosten->setReadOnly(gebraut);
     ui->btnSudGebraut->setEnabled(!gebraut);
+    ui->btnSudGebrautReset->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
     ui->tbTempKochbeginn->setReadOnly(gebraut);
     ui->tbTempKochende->setReadOnly(gebraut);
     ui->tbSpeiseSRE->setReadOnly(gebraut);
@@ -481,5 +482,21 @@ void TabBraudaten::on_btnSudGebraut_clicked()
                                     {ModelHauptgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
                                     {ModelHauptgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
         bh->sud()->modelHauptgaerverlauf()->append(values);
+    }
+}
+
+void TabBraudaten::on_btnSudGebrautReset_clicked()
+{
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Rezept));
+    if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 1)
+        bh->sud()->modelSchnellgaerverlauf()->removeRow(0);
+    if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 1)
+        bh->sud()->modelHauptgaerverlauf()->removeRow(0);
+    if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
+        bh->sud()->modelNachgaerverlauf()->removeRow(0);
+    if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
+    {
+        DlgRohstoffeAbziehen dlg(false, this);
+        dlg.exec();
     }
 }

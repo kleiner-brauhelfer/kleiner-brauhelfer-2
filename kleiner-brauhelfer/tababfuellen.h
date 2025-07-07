@@ -36,9 +36,10 @@ private slots:
     void on_cbSpunden_clicked(bool checked);
     void on_tbZuckerFaktor_valueChanged(double);
     void on_tbFlaschengroesse_valueChanged(double);
-
     void on_btnSudAbgefuellt_clicked();
+    void on_btnSudAbgefuelltReset_clicked();
     void on_btnSudVerbraucht_clicked();
+    void on_btnSudVerbrauchtReset_clicked();
 
 private:
     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;

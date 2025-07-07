@@ -59,6 +59,7 @@
         <file>images/icons/dark/svg/uebertrag_links.svg</file>
         <file>images/icons/dark/svg/uebertrag_oben.svg</file>
         <file>images/icons/dark/svg/undo.svg</file>
+        <file>images/icons/dark/svg/unlocked.svg</file>
         <file>images/icons/light/index.theme</file>
         <file>images/icons/light/light.svg</file>
         <file>images/icons/light/svg/about.svg</file>
@@ -109,6 +110,7 @@
         <file>images/icons/light/svg/uebertrag_links.svg</file>
         <file>images/icons/light/svg/uebertrag_oben.svg</file>
         <file>images/icons/light/svg/undo.svg</file>
+        <file>images/icons/light/svg/unlocked.svg</file>
         <file>images/lang/de.svg</file>
         <file>images/lang/en.svg</file>
         <file>images/lang/nl.svg</file>

@@ -185,7 +185,9 @@ void TabAbfuellen::checkEnabled()
     ui->tbFlaschengroesse->setReadOnly(abgefuellt);
     ui->tbNebenkosten->setReadOnly(abgefuellt);
     ui->btnSudAbgefuellt->setEnabled(status == Brauhelfer::SudStatus::Gebraut && !gSettings->ForceEnabled);
+    ui->btnSudAbgefuelltReset->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt);
     ui->btnSudVerbraucht->setEnabled(status == Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled);
+    ui->btnSudVerbrauchtReset->setEnabled(status == Brauhelfer::SudStatus::Verbraucht);
 }
 
 void TabAbfuellen::updateValues()
@@ -394,6 +396,13 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
         bh->sud()->modelNachgaerverlauf()->append(values);
 }
 
+void TabAbfuellen::on_btnSudAbgefuelltReset_clicked()
+{
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
+    if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
+        bh->sud()->modelNachgaerverlauf()->removeRow(0);
+}
+
 void TabAbfuellen::on_btnSudVerbraucht_clicked()
 {
     if (QMessageBox::question(this, tr("Sud als verbraucht markieren?"),
@@ -401,4 +410,9 @@ void TabAbfuellen::on_btnSudVerbraucht_clicked()
                                     QMessageBox::Yes | QMessageBox::Cancel) != QMessageBox::Yes)
         return;
     gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Verbraucht)));
+}
+
+void TabAbfuellen::on_btnSudVerbrauchtReset_clicked()
+{
+    bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
 }

@@ -56,10 +56,6 @@ private slots:
     void modulesChanged(Settings::Modules modules);
     void on_actionSpeichern_triggered();
     void on_actionVerwerfen_triggered();
-    void on_actionBeenden_triggered();
-    void on_actionSudGebraut_triggered();
-    void on_actionSudAbgefuellt_triggered();
-    void on_actionSudVerbraucht_triggered();
     void on_actionEingabefelderEntsperren_changed();
     void on_actionHilfe_triggered();
     void on_actionUeber_triggered();

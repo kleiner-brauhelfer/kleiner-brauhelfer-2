@@ -3,6 +3,8 @@
 
 #include "wdgabstractproxy.h"
 
+class SudObject;
+
 namespace Ui {
 class WdgHefeGabe;
 }
@@ -12,7 +14,7 @@ class WdgHefeGabe : public WdgAbstractProxy
     Q_OBJECT
 
 public:
-    explicit WdgHefeGabe(int row, QLayout *parentLayout, QWidget *parent = nullptr);
+    explicit WdgHefeGabe(SudObject *sud, int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgHefeGabe();
     bool isEnabled() const;
     bool isValid() const;
@@ -38,6 +40,7 @@ private:
 
 private:
     Ui::WdgHefeGabe *ui;
+    SudObject *mSud;
     bool mEnabled;
     bool mValid;
 };

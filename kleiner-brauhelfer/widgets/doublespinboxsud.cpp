@@ -2,17 +2,17 @@
 #include "brauhelfer.h"
 #include "commands/undostack.h"
 
-extern Brauhelfer* bh;
-
 DoubleSpinBoxSud::DoubleSpinBoxSud(QWidget *parent) :
     DoubleSpinBox(parent),
+    mSud(nullptr),
     mCol(-1)
 {
     connect(this, &DoubleSpinBox::valueChanged, this, &DoubleSpinBoxSud::on_valueChanged);
 }
 
-void DoubleSpinBoxSud::setColumn(int col)
+void DoubleSpinBoxSud::setColumn(SudObject *sud, int col)
 {
+    mSud = sud;
     mCol = col;
 }
 
@@ -23,11 +23,11 @@ int DoubleSpinBoxSud::column() const
 
 void DoubleSpinBoxSud::updateValue()
 {
-    setValue(bh->sud()->getValue(mCol).toDouble());
+    setValue(mSud->getValue(mCol).toDouble());
 }
 
 void DoubleSpinBoxSud::on_valueChanged(double val)
 {
     if (hasFocus())
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), mCol, val));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), mCol, val));
 }

@@ -3,6 +3,8 @@
 
 #include "chartbase.h"
 
+class SudObject;
+
 class ChartBraudaten : public ChartBase
 {
     Q_OBJECT
@@ -11,7 +13,7 @@ public:
     explicit ChartBraudaten(QWidget *parent = nullptr);
 
 public slots:
-    void update();
+    void update(const SudObject* sud);
 
 private:
     QCPBars *barsMengeIst;

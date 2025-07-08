@@ -17,7 +17,6 @@ Brauhelfer::Brauhelfer(const QString &databasePath, QObject *parent) :
 {
     mDb = new Database();
     mDb->createTables(this);
-    mSud = new SudObject(this);
 
     connect(mDb->modelSud, &SqlTableModel::modified, this, &Brauhelfer::modified);
     connect(mDb->modelMalz, &SqlTableModel::modified, this, &Brauhelfer::modified);
@@ -48,7 +47,6 @@ Brauhelfer::~Brauhelfer()
     disconnect();
     disconnectDatabase();
     delete mDb;
-    delete mSud;
 }
 
 bool Brauhelfer::connectDatabase()
@@ -56,7 +54,6 @@ bool Brauhelfer::connectDatabase()
     qInfo(loggingCategory) << "Brauhelfer::connectDatabase():" << databasePath();
     if (isConnectedDatabase())
     {
-        mSud->unload();
         mDb->disconnect();
     }
     if (mDb->connect(databasePath(), readonly()))
@@ -66,7 +63,6 @@ bool Brauhelfer::connectDatabase()
         {
             mDb->setTables();
             mDb->select();
-            mSud->init();
         }
     }
     emit connectionChanged(isConnectedDatabase());
@@ -78,7 +74,6 @@ void Brauhelfer::disconnectDatabase()
     if (isConnectedDatabase())
     {
         qInfo(loggingCategory) << "Brauhelfer::disconnectDatabase()";
-        mSud->unload();
         mDb->disconnect();
         emit connectionChanged(isConnectedDatabase());
     }
@@ -174,11 +169,6 @@ bool Brauhelfer::updateDatabase()
     mDb->update();
     connectDatabase();
     return mDb->version() == supportedDatabaseVersion;
-}
-
-SudObject* Brauhelfer::sud() const
-{
-    return mSud;
 }
 
 ModelSud *Brauhelfer::modelSud() const

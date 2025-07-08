@@ -21,6 +21,7 @@ public:
     void saveSettings() Q_DECL_OVERRIDE;
     void loadSettings() Q_DECL_OVERRIDE;
     static void restoreView();
+    void select(const QVariant &sudId);
 
 private slots:
     void updateValues();
@@ -126,9 +127,7 @@ private slots:
     void on_rbGesamteindruck_7_clicked();
     void on_rbGesamteindruck_ka_clicked();
     void on_tbGesamteindruck_textChanged();
-
     void on_btnAdd_clicked();
-
     void on_btnRemove_clicked();
 
 private:

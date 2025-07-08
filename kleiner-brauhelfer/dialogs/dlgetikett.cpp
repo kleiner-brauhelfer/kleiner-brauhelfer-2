@@ -21,7 +21,7 @@
 #include "model/datedelegate.h"
 #include "model/sudnamedelegate.h"
 #include "model/spinboxdelegate.h"
-#include "model/checkboxdelegate.h"
+#include "model/tagglobaldelegate.h"
 
 #if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
 #define qAsConst(x) (x)
@@ -38,8 +38,6 @@ DlgEtikett::DlgEtikett(QWidget *parent) :
     mSud(new SudObject(bh)),
     mTemplateFilePath(QStringLiteral(""))
 {
-    mSud->init();
-
     ui->setupUi(this);
 
     TableView *table = ui->table;
@@ -78,7 +76,7 @@ DlgEtikett::DlgEtikett(QWidget *parent) :
     table->setModel(mSud->modelTags());
     table->appendCol({ModelTags::ColKey, true, false, 0, new TextDelegate(table)});
     table->appendCol({ModelTags::ColValue, true, false, -1, new TextDelegate(table)});
-    table->appendCol({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
+    table->appendCol({ModelTags::ColGlobal, true, false, 0, new TagGlobalDelegate(nullptr, table)});
     table->build();
 
     ui->splitter->setStretchFactor(0, 0);
@@ -95,10 +93,7 @@ DlgEtikett::DlgEtikett(QWidget *parent) :
 
     on_cbEditMode_clicked(ui->cbEditMode->isChecked());
 
-    if (bh->sud()->isLoaded())
-        ui->table->selectRow(proxyModel->getRowWithValue(ModelSud::ColID, bh->sud()->id()));
-    else
-        ui->table->selectRow(0);
+    ui->table->selectRow(0);
     updateAll();
 }
 
@@ -140,6 +135,12 @@ void DlgEtikett::restoreView()
     gSettings->beginGroup(staticMetaObject.className());
     gSettings->remove("splitterState");
     gSettings->endGroup();
+}
+
+void DlgEtikett::select(const QVariant &sudId)
+{
+    ProxyModel *model = static_cast<ProxyModel*>(ui->table->model());
+    ui->table->selectRow(model->getRowWithValue(ModelSud::ColID, sudId));
 }
 
 void DlgEtikett::onTableSelectionChanged(const QItemSelection &selected)

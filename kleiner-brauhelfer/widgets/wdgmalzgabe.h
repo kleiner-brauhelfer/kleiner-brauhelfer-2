@@ -3,6 +3,8 @@
 
 #include "wdgabstractproxy.h"
 
+class SudObject;
+
 namespace Ui {
 class WdgMalzGabe;
 }
@@ -12,7 +14,7 @@ class WdgMalzGabe : public WdgAbstractProxy
     Q_OBJECT
 
 public:
-    explicit WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent = nullptr);
+    explicit WdgMalzGabe(SudObject *sud, int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgMalzGabe();
     bool isEnabled() const;
     bool isValid() const;
@@ -45,6 +47,7 @@ private:
 
 private:
     Ui::WdgMalzGabe *ui;
+    SudObject *mSud;
     bool mEnabled;
     bool mValid;
     double mFehlProzent;

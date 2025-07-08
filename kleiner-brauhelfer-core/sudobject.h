@@ -156,12 +156,17 @@ public:
 
     /**
      * @brief Creates a brew object
-     * @param bh Brauhelfer class
+     * @param bh Brauhelfer object
+     * @param id Optional brew ID to load
      */
-    SudObject(Brauhelfer *bh);
+    SudObject(Brauhelfer *bh, int id = -1);
     ~SudObject();
 
-    void init();
+    /**
+     * @brief Gets the Brauhelfer object
+     * @return Brauhelfer object
+     */
+    Brauhelfer* bh() const;
 
     /**
      * @brief Loads a brew
@@ -170,7 +175,7 @@ public:
     Q_INVOKABLE void load(int id);
 
     /**
-     * @brief Unload any loaded brew
+     * @brief Unloads any loaded brew
      */
     Q_INVOKABLE void unload();
 
@@ -193,16 +198,16 @@ public:
     int row() const;
 
     /**
-     * @brief Gets a value
-     * @param col Column number
+     * @brief Gets a value for a given model column
+     * @param col Model column number
      * @return Value
      */
     QVariant getValue(int col) const;
 
     /**
-     * @brief Sets a value
-     * @param col Column number
-     * @param value Field value
+     * @brief Sets a value of a given model column
+     * @param col Model column number
+     * @param value Value
      * @return True on success
      */
     bool setValue(int col, const QVariant &value);
@@ -283,7 +288,7 @@ private slots:
     void onSudDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QVector<int> &roles = QVector<int>());
 
 private:
-    Brauhelfer *bh;
+    Brauhelfer *mBh;
     int mId;
     int mRowSud;
     ProxyModel* proxyModelMaischplan;

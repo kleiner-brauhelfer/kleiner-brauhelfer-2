@@ -2,7 +2,6 @@
 #include "brauhelfer.h"
 #include "settings.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 ChartHopfen::ChartHopfen(QWidget *parent) :
@@ -13,9 +12,9 @@ ChartHopfen::ChartHopfen(QWidget *parent) :
     xAxis->setTickPen(Qt::NoPen);
 }
 
-void ChartHopfen::update()
+void ChartHopfen::update(const SudObject* sud)
 {
-    Brauhelfer::BerechnungsartHopfen art = (Brauhelfer::BerechnungsartHopfen)bh->sud()->getberechnungsArtHopfen();
+    Brauhelfer::BerechnungsartHopfen art = (Brauhelfer::BerechnungsartHopfen)sud->getberechnungsArtHopfen();
     double yMax = (art == Brauhelfer::BerechnungsartHopfen::Keine) ? 0 : 100;
     double sum = 0;
 
@@ -24,7 +23,7 @@ void ChartHopfen::update()
 
     QSharedPointer<QCPAxisTickerText> textTicker = qSharedPointerDynamicCast<QCPAxisTickerText>(xAxis->ticker());
     textTicker->clear();
-    ProxyModel* model = bh->sud()->modelHopfengaben();
+    ProxyModel* model = sud->modelHopfengaben();
     int nRows = model->rowCount();
     for (int row = 0; row < nRows; ++row)
     {
@@ -43,7 +42,7 @@ void ChartHopfen::update()
             val = model->data(row, ModelHopfengaben::ColProzent).toDouble();
             break;
         }
-        int typ = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, name, ModelHopfen::ColTyp).toInt();
+        int typ = sud->bh()->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, name, ModelHopfen::ColTyp).toInt();
         QCPBars *bars = new QCPBars(xAxis, yAxis);
         bars->setPen(Qt::NoPen);
         if (typ >= 0 && typ < gSettings->HopfenTypBackgrounds.count())
@@ -75,7 +74,7 @@ void ChartHopfen::update()
         yAxis->setLabel(tr("Anteil") + " (%)");
         yAxis->setRange(0, std::ceil(yMax));
         yAxis2->setLabel(tr("Bittere") + " (IBU)");
-        yAxis2->setRange(0, yAxis->range().upper * bh->sud()->getIBU()/100);
+        yAxis2->setRange(0, yAxis->range().upper * sud->getIBU()/100);
         yAxis2->setVisible(true);
         break;
     }

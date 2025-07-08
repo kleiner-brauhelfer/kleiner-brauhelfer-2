@@ -1,7 +1,5 @@
 #include "chartabfuelldaten.h"
-#include "brauhelfer.h"
-
-extern Brauhelfer* bh;
+#include "sudobject.h"
 
 ChartAbfuelldaten::ChartAbfuelldaten(QWidget *parent) :
     ChartBase(parent)
@@ -38,14 +36,14 @@ ChartAbfuelldaten::ChartAbfuelldaten(QWidget *parent) :
     textLabel4->setColor(Qt::white);
 }
 
-void ChartAbfuelldaten::update()
+void ChartAbfuelldaten::update(const SudObject* sud)
 {
     QLocale locale = QLocale();
 
-    double val1 = bh->sud()->getWuerzemengeAnstellen();
-    double val2 = bh->sud()->getJungbiermengeAbfuellen();
-    double val3 = bh->sud()->geterg_AbgefuellteBiermenge();
-    double val4 = bh->sud()->getMenge();
+    double val1 = sud->getWuerzemengeAnstellen();
+    double val2 = sud->getJungbiermengeAbfuellen();
+    double val3 = sud->geterg_AbgefuellteBiermenge();
+    double val4 = sud->getMenge();
 
     bars->setData({1, 2, 3, 4}, {val1, val2, val3, val4}, true);
 

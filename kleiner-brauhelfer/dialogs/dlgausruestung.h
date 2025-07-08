@@ -22,10 +22,10 @@ public:
     void saveSettings() Q_DECL_OVERRIDE;
     void loadSettings() Q_DECL_OVERRIDE;
     static void restoreView();
+    void select(const QString &name);
 
 private slots:
     void modulesChanged(Settings::Modules modules);
-    void sudLoaded();
     void anlage_selectionChanged();
     void on_btnNeueAnlage_clicked();
     void on_btnAnlageLoeschen_clicked();
@@ -53,7 +53,6 @@ private slots:
     void on_tbSudpfanneMaxFuellhoehe_editingFinished();
 
 private:
-    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent* event) Q_DECL_OVERRIDE;
     QVariant data(int col) const;
     bool setData(int col, const QVariant &value);

@@ -3,6 +3,8 @@
 
 #include "wdgabstractproxy.h"
 
+class SudObject;
+
 namespace Ui {
 class WdgWasseraufbereitung;
 }
@@ -12,7 +14,7 @@ class WdgWasseraufbereitung : public WdgAbstractProxy
     Q_OBJECT
 
 public:
-    explicit WdgWasseraufbereitung(int row, QLayout *parentLayout, QWidget *parent = nullptr);
+    explicit WdgWasseraufbereitung(SudObject *sud, int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgWasseraufbereitung();
 
 public slots:
@@ -33,6 +35,7 @@ private:
 
 private:
     Ui::WdgWasseraufbereitung *ui;
+    SudObject *mSud;
     bool mEnabled;
 };
 

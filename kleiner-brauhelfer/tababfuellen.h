@@ -4,6 +4,8 @@
 #include <QWidget>
 #include "settings.h"
 
+class SudObject;
+
 namespace Ui {
 class TabAbfuellen;
 }
@@ -15,6 +17,7 @@ class TabAbfuellen : public QWidget
 public:
     explicit TabAbfuellen(QWidget *parent = nullptr);
     virtual ~TabAbfuellen() Q_DECL_OVERRIDE;
+    void setup(SudObject *sud);
     void saveSettings();
     void restoreView();
     void modulesChanged(Settings::Modules modules);
@@ -46,6 +49,7 @@ private:
 
 private:
     Ui::TabAbfuellen *ui;
+    SudObject *mSud;
     QByteArray mDefaultSplitterState;
     QByteArray mDefaultSplitterChartsState;
 };

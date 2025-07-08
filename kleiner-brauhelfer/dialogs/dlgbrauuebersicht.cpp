@@ -103,6 +103,7 @@ void DlgBrauUebersicht::loadSettings()
     ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
     gSettings->endGroup();
     ui->btnFilter->setModel(proxyModel, FilterButtonSud::Braudatum | FilterButtonSud::Kategorie | FilterButtonSud::Anlage);
+    onLayoutChanged();
 }
 
 void DlgBrauUebersicht::restoreView()
@@ -114,10 +115,10 @@ void DlgBrauUebersicht::restoreView()
     gSettings->endGroup();
 }
 
-void DlgBrauUebersicht::showEvent(QShowEvent *event)
+void DlgBrauUebersicht::select(const QVariant &sudId)
 {
-    DlgAbstract::showEvent(event);
-    onLayoutChanged();
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
+    ui->table->selectRow(model->getRowWithValue(ModelSud::ColID, sudId));
 }
 
 void DlgBrauUebersicht::modulesChanged(Settings::Modules modules)

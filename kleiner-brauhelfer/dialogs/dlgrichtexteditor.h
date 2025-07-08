@@ -5,6 +5,8 @@
 #include <QTextCharFormat>
 #include "helper/htmlhighlighter.h"
 
+class SudObject;
+
 namespace Ui {
 class DlgRichTextEditor;
 }
@@ -14,7 +16,7 @@ class DlgRichTextEditor : public DlgAbstract
     Q_OBJECT
 
 public:
-    explicit DlgRichTextEditor(QWidget *parent = nullptr);
+    explicit DlgRichTextEditor(SudObject *sud = nullptr, QWidget *parent = nullptr);
     ~DlgRichTextEditor();
     static void restoreView();
     void setHtml(const QString& html);
@@ -50,6 +52,7 @@ private slots:
 private:
     Ui::DlgRichTextEditor *ui;
     HtmlHighLighter *mHtmlHightLighter;
+    SudObject *mSud;
 };
 
 #endif // DLGRICHTEXTEDITOR_H

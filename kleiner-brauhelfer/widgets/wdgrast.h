@@ -3,6 +3,8 @@
 
 #include "wdgabstractproxy.h"
 
+class SudObject;
+
 namespace Ui {
 class WdgRast;
 }
@@ -12,7 +14,7 @@ class WdgRast : public WdgAbstractProxy
     Q_OBJECT
 
 public:
-    explicit WdgRast(int row, QLayout *parentLayout, QWidget *parent = nullptr);
+    explicit WdgRast(SudObject *sud, int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgRast();
     bool isEnabled() const;
     QString name() const;
@@ -64,6 +66,7 @@ private:
 
 private:
     Ui::WdgRast *ui;
+    SudObject *mSud;
     bool mEnabled;
     bool mRastNameManuallyEdited;
 };

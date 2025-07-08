@@ -20,7 +20,7 @@ public:
     void saveSettings() Q_DECL_OVERRIDE;
     void loadSettings() Q_DECL_OVERRIDE;
     static void restoreView();
-    void selectSud(int id);
+    void select(const QVariant &sudId);
 
 private slots:
     void updateWebView();

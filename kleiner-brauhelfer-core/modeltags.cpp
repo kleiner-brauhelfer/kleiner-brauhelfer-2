@@ -26,20 +26,19 @@ bool ModelTags::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
     switch(idx.column())
     {
-    case ColKey:
+    case ColSudID:
     {
-        return QSqlTableModel::setData(idx, getUniqueName(idx, value, data(idx.row(), ColSudID)));
-    }
-    case ColGlobal:
-    {
-        QVariant sudId = value.toBool() ? -1 : bh->sud()->id();
-        if (QSqlTableModel::setData(index(idx.row(), ColSudID), sudId))
+        if (QSqlTableModel::setData(idx, value))
         {
             QModelIndex idx2 = index(idx.row(), ColKey);
             setData(idx2, idx2.data());
             return true;
         }
         return false;
+    }
+    case ColKey:
+    {
+        return QSqlTableModel::setData(idx, getUniqueName(idx, value, data(idx.row(), ColSudID)));
     }
     default:
         return false;

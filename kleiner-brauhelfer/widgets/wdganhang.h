@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QDir>
 
+class SudObject;
+
 namespace Ui {
 class WdgAnhang;
 }
@@ -14,7 +16,7 @@ class WdgAnhang : public QWidget
 
 public:
     static bool isImage(const QString &pfad);
-    explicit WdgAnhang(int index, QWidget *parent = nullptr);
+    explicit WdgAnhang(SudObject *sud, int index, QWidget *parent = nullptr);
     ~WdgAnhang();
     void openDialog();
     QString getPfad() const;
@@ -37,6 +39,7 @@ private:
 
 private:
     Ui::WdgAnhang *ui;
+    SudObject *mSud;
     int mIndex;
     QDir mBasis;
 };

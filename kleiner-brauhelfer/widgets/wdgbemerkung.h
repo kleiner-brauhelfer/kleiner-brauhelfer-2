@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QTextBrowser>
 
+class SudObject;
+
 namespace Ui {
 class WdgBemerkung;
 }
@@ -36,6 +38,7 @@ class WdgBemerkung : public QWidget
 public:
     explicit WdgBemerkung(QWidget *parent = nullptr);
     ~WdgBemerkung();
+    void setSudObject(SudObject *sud);
     void setToolTip(const QString &text);
     void setPlaceholderText(const QString &text);
     void setHtml(const QString& html);
@@ -49,6 +52,7 @@ private slots:
 
 private:
     Ui::WdgBemerkung *ui;
+    SudObject *mSud;
 };
 
 #endif // WDGBEMERKUNG_H

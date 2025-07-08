@@ -8,17 +8,17 @@
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgWeitereZutatGabe::WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt zeitpunkt, int row, QLayout* parentLayout, QWidget *parent) :
+WdgWeitereZutatGabe::WdgWeitereZutatGabe(SudObject *sud, Brauhelfer::ZusatzZeitpunkt zeitpunkt, int row, QLayout* parentLayout, QWidget *parent) :
     WdgAbstractProxy(nullptr, row, parentLayout, parent),
     ui(new Ui::WdgWeitereZutatGabe),
+    mSud(sud),
     mEnabled(true),
     mFehlProzentExtrakt(0)
 {
     ProxyModel* proxy = new ProxyModel(this);
-    proxy->setSourceModel(bh->sud()->modelWeitereZutatenGaben());
+    proxy->setSourceModel(mSud->modelWeitereZutatenGaben());
     proxy->setFilterKeyColumn(ModelWeitereZutatenGaben::ColZeitpunkt);
     proxy->setFilterRegularExpression(QString::number(static_cast<int>(zeitpunkt)));
     setModel(proxy);
@@ -30,7 +30,7 @@ WdgWeitereZutatGabe::WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt zeitpunkt, 
     ui->btnKorrekturExtrakt->setError(true);
 
     updateValues();
-    connect(bh, &Brauhelfer::modified, this, &WdgWeitereZutatGabe::updateValues);
+    connect(mSud->bh(), &Brauhelfer::modified, this, &WdgWeitereZutatGabe::updateValues);
 }
 
 WdgWeitereZutatGabe::~WdgWeitereZutatGabe()
@@ -55,7 +55,7 @@ QString WdgWeitereZutatGabe::name() const
 
 void WdgWeitereZutatGabe::checkEnabled()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     mEnabled = status == Brauhelfer::SudStatus::Rezept;
     Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
     if (zeitpunkt == Brauhelfer::ZusatzZeitpunkt::Gaerung)
@@ -67,7 +67,7 @@ void WdgWeitereZutatGabe::checkEnabled()
 void WdgWeitereZutatGabe::updateValues()
 {
     QString zusatzname = name();
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
     Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(data(ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
     Brauhelfer::ZusatzEntnahmeindex entnahmeindex = static_cast<Brauhelfer::ZusatzEntnahmeindex>(data(ModelWeitereZutatenGaben::ColEntnahmeindex).toInt());
@@ -109,9 +109,9 @@ void WdgWeitereZutatGabe::updateValues()
 
     int rowRohstoff;
     if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-        rowRohstoff = bh->modelHopfen()->getRowWithValue(ModelHopfen::ColName, zusatzname);
+        rowRohstoff = mSud->bh()->modelHopfen()->getRowWithValue(ModelHopfen::ColName, zusatzname);
     else
-        rowRohstoff = bh->modelWeitereZutaten()->getRowWithValue(ModelWeitereZutaten::ColName, zusatzname);
+        rowRohstoff = mSud->bh()->modelWeitereZutaten()->getRowWithValue(ModelWeitereZutaten::ColName, zusatzname);
     mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(zusatzname);
     ui->btnZutat->setError(!mValid);
@@ -176,8 +176,8 @@ void WdgWeitereZutatGabe::updateValues()
     }
     if (!ui->tbKochdauer->hasFocus())
     {
-        ui->tbKochdauer->setMinimum(-bh->sud()->getNachisomerisierungszeit());
-        ui->tbKochdauer->setMaximum(bh->sud()->getKochdauer());
+        ui->tbKochdauer->setMinimum(-mSud->getNachisomerisierungszeit());
+        ui->tbKochdauer->setMaximum(mSud->getKochdauer());
         ui->tbKochdauer->setValue(dauer);
     }
 
@@ -200,7 +200,7 @@ void WdgWeitereZutatGabe::updateValues()
     if (!ui->tbDauerTage->hasFocus())
         ui->tbDauerTage->setValue(dauer / 1440);
 
-    QDateTime braudatum = bh->sud()->getBraudatum();
+    QDateTime braudatum = mSud->getBraudatum();
     if (braudatum.isValid())
     {
         ui->tbDatumVon->setMinimumDateTime(braudatum);
@@ -217,7 +217,7 @@ void WdgWeitereZutatGabe::updateValues()
 
     if (typ == Brauhelfer::ZusatzTyp::Hopfen)
     {
-        int idx = bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColTyp).toInt();
+        int idx = mSud->bh()->modelHopfen()->data(rowRohstoff, ModelHopfen::ColTyp).toInt();
         if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
         {
             QPalette pal = ui->frameColor->palette();
@@ -253,9 +253,9 @@ void WdgWeitereZutatGabe::updateValues()
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
             if (typ == Brauhelfer::ZusatzTyp::Hopfen)
-                ui->tbVorhanden->setValue(bh->modelHopfen()->data(rowRohstoff, ModelHopfen::ColMenge).toInt());
+                ui->tbVorhanden->setValue(mSud->bh()->modelHopfen()->data(rowRohstoff, ModelHopfen::ColMenge).toInt());
             else
-                ui->tbVorhanden->setValue(bh->modelWeitereZutaten()->data(rowRohstoff, ModelWeitereZutaten::ColMenge).toDouble());
+                ui->tbVorhanden->setValue(mSud->bh()->modelWeitereZutaten()->data(rowRohstoff, ModelWeitereZutaten::ColMenge).toDouble());
             if (!ui->cbAnstellmenge->isChecked())
             {
                 double benoetigt = 0.0;
@@ -266,7 +266,7 @@ void WdgWeitereZutatGabe::updateValues()
                 }
                 if (typ == Brauhelfer::ZusatzTyp::Hopfen)
                 {
-                    ProxyModel* model = bh->sud()->modelHopfengaben();
+                    ProxyModel* model = mSud->modelHopfengaben();
                     for (int i = 0; i < model->rowCount(); ++i)
                     {
                         if (model->data(i, ModelHopfengaben::ColName).toString() == zusatzname)
@@ -524,7 +524,7 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
             Brauhelfer::ZusatzTyp zusatztyp = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
             Brauhelfer::RohstoffTyp typ = zusatztyp == Brauhelfer::ZusatzTyp::Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz;
             int colMengeTotal = ui->cbAnstellmenge->isChecked() ? ModelWeitereZutatenGaben::Colerg_MengeIst : ModelWeitereZutatenGaben::Colerg_Menge;
-            DlgRohstoffeAbziehen dlg(true, typ,
+            DlgRohstoffeAbziehen dlg(mSud, true, typ,
                                      data(ModelWeitereZutatenGaben::ColName).toString(),
                                      data(colMengeTotal).toDouble(),
                                      this);
@@ -539,7 +539,7 @@ void WdgWeitereZutatGabe::on_btnZugeben_clicked()
             Brauhelfer::ZusatzTyp zusatztyp = static_cast<Brauhelfer::ZusatzTyp>(data(ModelWeitereZutatenGaben::ColTyp).toInt());
             Brauhelfer::RohstoffTyp typ = zusatztyp == Brauhelfer::ZusatzTyp::Hopfen ? Brauhelfer::RohstoffTyp::Hopfen : Brauhelfer::RohstoffTyp::Zusatz;
             int colMengeTotal = ui->cbAnstellmenge->isChecked() ? ModelWeitereZutatenGaben::Colerg_MengeIst : ModelWeitereZutatenGaben::Colerg_Menge;
-            DlgRohstoffeAbziehen dlg(false, typ,
+            DlgRohstoffeAbziehen dlg(mSud, false, typ,
                                      data(ModelWeitereZutatenGaben::ColName).toString(),
                                      data(colMengeTotal).toDouble(),
                                      this);

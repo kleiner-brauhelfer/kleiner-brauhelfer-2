@@ -4,13 +4,7 @@
 #include <QMainWindow>
 #include "settings.h"
 
-class DlgRohstoffe;
-class DlgBrauUebersicht;
-class DlgAusruestung;
-class DlgPrintout;
-class DlgEtikett;
-class DlgBewertungen;
-class DlgEinstellungen;
+class SudObject;
 
 namespace Ui {
 class MainWindow;
@@ -60,10 +54,11 @@ private:
     void initLabels();
     void initTheme(Qt::ColorScheme theme);
     void initActions();
-    void checkLoadedSud();
+    void checkSud(SudObject* sud);
 
 private:
     Ui::MainWindow *ui;
+    SudObject* mSud;
     QByteArray mDefaultState;
     QByteArray mDefaultSplitterHelpState;
 };

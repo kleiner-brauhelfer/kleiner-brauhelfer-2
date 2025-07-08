@@ -204,9 +204,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
         }
         ctx[QStringLiteral("Sud")] = ctxSud;
 
-        SudObject sud(bh);
-        sud.init();
-        sud.load(sudId);
+        SudObject sud(bh, sudId);
 
         int kochDauer = bh->modelSud()->data(sudRow, ModelSud::ColKochdauer).toInt();
         int dauerIsomerisierung = bh->modelSud()->data(sudRow, ModelSud::ColNachisomerisierungszeit).toInt();

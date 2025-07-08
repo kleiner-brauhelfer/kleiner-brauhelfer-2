@@ -3,6 +3,8 @@
 
 #include "wdgabstractproxy.h"
 
+class SudObject;
+
 namespace Ui {
 class WdgHopfenGabe;
 }
@@ -12,7 +14,7 @@ class WdgHopfenGabe : public WdgAbstractProxy
     Q_OBJECT
 
 public:
-    explicit WdgHopfenGabe(int row, QLayout *parentLayout, QWidget *parent = nullptr);
+    explicit WdgHopfenGabe(SudObject *sud, int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgHopfenGabe();
     bool isEnabled() const;
     bool isValid() const;
@@ -43,6 +45,7 @@ private:
 
 private:
     Ui::WdgHopfenGabe *ui;
+    SudObject *mSud;
     bool mEnabled;
     bool mValid;
     double mFehlProzent;

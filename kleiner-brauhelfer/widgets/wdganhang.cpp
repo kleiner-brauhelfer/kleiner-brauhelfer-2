@@ -6,7 +6,6 @@
 #include "settings.h"
 #include "commands/undostack.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 bool WdgAnhang::isImage(const QString& pfad)
@@ -18,9 +17,10 @@ bool WdgAnhang::isImage(const QString& pfad)
             || ext == QStringLiteral("jpeg") || ext == QStringLiteral("bmp"));
 }
 
-WdgAnhang::WdgAnhang(int index, QWidget *parent) :
+WdgAnhang::WdgAnhang(SudObject *sud, int index, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::WdgAnhang),
+    mSud(sud),
     mIndex(index)
 {
     mBasis = QDir(gSettings->databaseDir());
@@ -29,8 +29,8 @@ WdgAnhang::WdgAnhang(int index, QWidget *parent) :
     pal.setColor(QPalette::Window, gSettings->colorAnhang);
     setPalette(pal);
     updateValues();
-    connect(bh, &Brauhelfer::discarded, this, &WdgAnhang::updateValues);
-    connect(bh->sud()->modelAnhang(), &ProxyModel::modified, this, &WdgAnhang::updateValues);
+    connect(mSud->bh(), &Brauhelfer::discarded, this, &WdgAnhang::updateValues);
+    connect(mSud->modelAnhang(), &ProxyModel::modified, this, &WdgAnhang::updateValues);
 }
 
 WdgAnhang::~WdgAnhang()
@@ -40,12 +40,12 @@ WdgAnhang::~WdgAnhang()
 
 QVariant WdgAnhang::data(int col) const
 {
-    return bh->sud()->modelAnhang()->data(mIndex, col);
+    return mSud->modelAnhang()->data(mIndex, col);
 }
 
 bool WdgAnhang::setData(int col, const QVariant &value)
 {
-    gUndoStack->push(new SetModelDataCommand(bh->sud()->modelAnhang(), mIndex, col, value));
+    gUndoStack->push(new SetModelDataCommand(mSud->modelAnhang(), mIndex, col, value));
     return true;
 }
 
@@ -90,7 +90,7 @@ QString WdgAnhang::getFullPfad() const
 
 void WdgAnhang::remove()
 {
-    bh->sud()->modelAnhang()->removeRow(mIndex);
+    mSud->modelAnhang()->removeRow(mIndex);
 }
 
 void WdgAnhang::openDialog()

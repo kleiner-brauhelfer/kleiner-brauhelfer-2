@@ -60,7 +60,8 @@ MainWindow* MainWindow::getInstance()
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    mSud(new SudObject(bh))
 {
     Qt::ColorScheme theme = gSettings->theme();
     QIcon::setThemeSearchPaths({":/images/icons"});
@@ -68,6 +69,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     initLabels();
     ui->setupUi(this);
+    ui->tabRezept->setup(mSud);
+    ui->tabBraudaten->setup(mSud);
+    ui->tabAbfuelldaten->setup(mSud);
+    ui->tabGaerverlauf->setup(mSud);
     qApp->installEventFilter(this);
 
     connect(gSettings, &Settings::themeChanged, this, &MainWindow::themeChanged);
@@ -118,8 +123,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(bh, &Brauhelfer::modified, this, &MainWindow::databaseModified);
     connect(bh, &Brauhelfer::discarded, this, &MainWindow::updateValues);
-    connect(bh->sud(), &SudObject::loadedChanged, this, &MainWindow::sudLoaded);
-    connect(bh->sud(), &SudObject::dataChanged, this, &MainWindow::sudDataChanged);
+    connect(mSud, &SudObject::loadedChanged, this, &MainWindow::sudLoaded);
+    connect(mSud, &SudObject::dataChanged, this, &MainWindow::sudDataChanged);
 
     initActions();
 
@@ -138,6 +143,7 @@ MainWindow::~MainWindow()
     saveSettings();
     disconnect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
     delete ui;
+    delete mSud;
 }
 
 void MainWindow::initActions()
@@ -146,11 +152,26 @@ void MainWindow::initActions()
     connect(ui->actionVerwerfen, &QAction::triggered, this, &MainWindow::discardDatabase);
 
     connect(ui->actionRohstoffe, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgRohstoffe>(this, ui->actionRohstoffe);});
-    connect(ui->actionAusruestung, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);});
-    connect(ui->actionBrauUebersicht, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);});
-    connect(ui->actionPrintout, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgPrintout>(this, ui->actionPrintout);});
-    connect(ui->actionEtikett, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgEtikett>(this, ui->actionEtikett);});
-    connect(ui->actionBewertungen, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgBewertungen>(this, ui->actionBewertungen);});
+    connect(ui->actionAusruestung, &QAction::triggered, this, [this](){
+        DlgAusruestung* dlg = DlgAbstract::showDialog<DlgAusruestung>(this, ui->actionAusruestung);
+        dlg->select(mSud->getAnlage());
+    });
+    connect(ui->actionBrauUebersicht, &QAction::triggered, this, [this](){
+        DlgBrauUebersicht* dlg = DlgAbstract::showDialog<DlgBrauUebersicht>(this, ui->actionBrauUebersicht);
+        dlg->select(mSud->id());
+    });
+    connect(ui->actionPrintout, &QAction::triggered, this, [this](){
+        DlgPrintout* dlg = DlgAbstract::showDialog<DlgPrintout>(this, ui->actionPrintout);
+        dlg->select(mSud->id());
+    });
+    connect(ui->actionEtikett, &QAction::triggered, this, [this](){
+        DlgEtikett* dlg = DlgAbstract::showDialog<DlgEtikett>(this, ui->actionEtikett);
+        dlg->select(mSud->id());
+    });
+    connect(ui->actionBewertungen, &QAction::triggered, this, [this](){
+        DlgBewertungen* dlg = DlgAbstract::showDialog<DlgBewertungen>(this, ui->actionBewertungen);
+        dlg->select(mSud->id());
+    });
 
     connect(ui->actionEingabefelderEntsperren, &QAction::triggered, this, &MainWindow::eingabefelderEntsperren);
     connect(ui->actionSettings, &QAction::triggered, this, [this](){
@@ -373,7 +394,8 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabBraudaten->modulesChanged(modules);
     ui->tabAbfuelldaten->modulesChanged(modules);
     ui->tabGaerverlauf->modulesChanged(modules);
-    checkLoadedSud();
+    if (mSud->isLoaded())
+        checkSud(mSud);
 }
 
 void MainWindow::updateTabs(Settings::Modules modules)
@@ -410,8 +432,8 @@ void MainWindow::databaseModified()
     QString title;
     if (modified)
         title = QStringLiteral("* ");
-    if (bh->sud()->isLoaded())
-        title += bh->sud()->getSudname() + " - ";
+    if (mSud->isLoaded())
+        title += mSud->getSudname() + " - ";
     title += QCoreApplication::applicationName() + " v" + QCoreApplication::applicationVersion();
     setWindowTitle(title);
     ui->actionSpeichern->setEnabled(modified);
@@ -420,14 +442,14 @@ void MainWindow::databaseModified()
 
 void MainWindow::updateValues()
 {
-    bool loaded = bh->sud()->isLoaded();
+    bool loaded = mSud->isLoaded();
     databaseModified();
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabRezept), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabGaerverlauf), loaded);
     ui->actionEingabefelderEntsperren->setChecked(false);
-    ui->actionEingabefelderEntsperren->setEnabled(loaded && static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus()) != Brauhelfer::SudStatus::Rezept);
+    ui->actionEingabefelderEntsperren->setEnabled(loaded && static_cast<Brauhelfer::SudStatus>(mSud->getStatus()) != Brauhelfer::SudStatus::Rezept);
     if (!loaded)
         ui->tabMain->setCurrentWidget(ui->tabSudAuswahl);
 }
@@ -435,9 +457,9 @@ void MainWindow::updateValues()
 void MainWindow::sudLoaded()
 {
     updateValues();
-    if (bh->sud()->isLoaded())
+    if (mSud->isLoaded())
     {
-        checkLoadedSud();
+        checkSud(mSud);
         if (ui->tabMain->currentWidget() == ui->tabSudAuswahl)
             ui->tabMain->setCurrentWidget(ui->tabRezept);
     }
@@ -451,7 +473,7 @@ void MainWindow::sudDataChanged(const QModelIndex& index)
 
 void MainWindow::loadSud(int sudId)
 {
-    if (bh->sud()->id() == sudId)
+    if (mSud->id() == sudId)
     {
         ui->tabMain->setCurrentWidget(ui->tabRezept);
     }
@@ -459,7 +481,7 @@ void MainWindow::loadSud(int sudId)
     {
         try
         {
-            bh->sud()->load(sudId);
+            mSud->load(sudId);
         }
         catch (const std::exception& ex)
         {
@@ -695,14 +717,12 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelTags::ColGlobal, Qt::Horizontal, tr("Global"));
 }
 
-void MainWindow::checkLoadedSud()
+void MainWindow::checkSud(SudObject *sud)
 {
-    if (!bh->sud()->isLoaded())
-        return;
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(sud->getStatus());
     if (!gSettings->isModuleEnabled(Settings::ModuleSpeise))
     {
-        if (bh->sud()->getSpeisemenge() != 0.0)
+        if (sud->getSpeisemenge() != 0.0)
         {
             if (status < Brauhelfer::SudStatus::Abgefuellt)
             {
@@ -712,7 +732,7 @@ void MainWindow::checkLoadedSud()
                                           QMessageBox::Yes | QMessageBox::No,
                                           QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
-                    bh->sud()->setSpeisemenge(0.0);
+                    sud->setSpeisemenge(0.0);
             }
             else
             {
@@ -724,7 +744,7 @@ void MainWindow::checkLoadedSud()
     }
     if (!gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe))
     {
-        if (bh->sud()->getSchnellgaerprobeAktiv())
+        if (sud->getSchnellgaerprobeAktiv())
         {
             if (status < Brauhelfer::SudStatus::Abgefuellt)
             {
@@ -734,7 +754,7 @@ void MainWindow::checkLoadedSud()
                                           QMessageBox::Yes | QMessageBox::No,
                                           QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
-                    bh->sud()->setSchnellgaerprobeAktiv(false);
+                    sud->setSchnellgaerprobeAktiv(false);
             }
             else
             {
@@ -746,7 +766,7 @@ void MainWindow::checkLoadedSud()
     }
     if (!gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
-        if (bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturWasser).toDouble() != 0.0)
+        if (sud->getAnlageData(ModelAusruestung::ColKorrekturWasser).toDouble() != 0.0)
         {
             if (status < Brauhelfer::SudStatus::Abgefuellt)
             {
@@ -756,7 +776,7 @@ void MainWindow::checkLoadedSud()
                                           QMessageBox::Yes | QMessageBox::No,
                                           QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
-                    bh->sud()->setAnlageData(ModelAusruestung::ColKorrekturWasser, 0.0);
+                    sud->setAnlageData(ModelAusruestung::ColKorrekturWasser, 0.0);
             }
             else
             {
@@ -765,7 +785,7 @@ void MainWindow::checkLoadedSud()
                                      tr("Der Sud wird nicht korrekt dargestellt."));
             }
         }
-        if (bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturFarbe).toDouble() != 0.0)
+        if (sud->getAnlageData(ModelAusruestung::ColKorrekturFarbe).toDouble() != 0.0)
         {
             if (status < Brauhelfer::SudStatus::Abgefuellt)
             {
@@ -775,7 +795,7 @@ void MainWindow::checkLoadedSud()
                                           QMessageBox::Yes | QMessageBox::No,
                                           QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
-                    bh->sud()->setAnlageData(ModelAusruestung::ColKorrekturFarbe, 0.0);
+                    sud->setAnlageData(ModelAusruestung::ColKorrekturFarbe, 0.0);
             }
             else
             {
@@ -784,7 +804,7 @@ void MainWindow::checkLoadedSud()
                                      tr("Der Sud wird nicht korrekt dargestellt."));
             }
         }
-        if (bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble() != 0.0)
+        if (sud->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble() != 0.0)
         {
             if (status < Brauhelfer::SudStatus::Abgefuellt)
             {
@@ -794,7 +814,7 @@ void MainWindow::checkLoadedSud()
                                           QMessageBox::Yes | QMessageBox::No,
                                           QMessageBox::Yes);
                 if (ret == QMessageBox::Yes)
-                    bh->sud()->setAnlageData(ModelAusruestung::ColKorrekturMenge, 0.0);
+                    sud->setAnlageData(ModelAusruestung::ColKorrekturMenge, 0.0);
             }
             else
             {
@@ -805,7 +825,7 @@ void MainWindow::checkLoadedSud()
         }
         if (gSettings->isModuleEnabled(Settings::ModulePreiskalkulation))
         {
-            if (bh->sud()->getAnlageData(ModelAusruestung::ColKosten).toDouble() != 0.0)
+            if (sud->getAnlageData(ModelAusruestung::ColKosten).toDouble() != 0.0)
             {
                 if (status < Brauhelfer::SudStatus::Abgefuellt)
                 {
@@ -815,7 +835,7 @@ void MainWindow::checkLoadedSud()
                                               QMessageBox::Yes | QMessageBox::No,
                                               QMessageBox::Yes);
                     if (ret == QMessageBox::Yes)
-                        bh->sud()->setAnlageData(ModelAusruestung::ColKosten, 0.0);
+                        sud->setAnlageData(ModelAusruestung::ColKosten, 0.0);
                 }
                 else
                 {

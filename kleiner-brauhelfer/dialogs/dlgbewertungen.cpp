@@ -65,10 +65,7 @@ DlgBewertungen::DlgBewertungen(QWidget *parent) :
     connect(proxyModel, &ProxyModel::rowsInserted, this, &DlgBewertungen::onFilterChanged);
     connect(proxyModel, &ProxyModel::rowsRemoved, this, &DlgBewertungen::onFilterChanged);
 
-    if (bh->sud()->isLoaded())
-        ui->table->selectRow(proxyModel->getRowWithValue(ModelSud::ColID, bh->sud()->id()));
-    else
-        ui->table->selectRow(0);
+    ui->table->selectRow(0);
     updateValues();
 }
 
@@ -117,6 +114,12 @@ QVariant DlgBewertungen::data(int col) const
 bool DlgBewertungen::setData(int col, const QVariant &value)
 {
     return bh->modelBewertungen()->setData(mRowBewertung, col, value);
+}
+
+void DlgBewertungen::select(const QVariant &sudId)
+{
+    ProxyModel *model = static_cast<ProxyModel*>(ui->table->model());
+    ui->table->selectRow(model->getRowWithValue(ModelSud::ColID, sudId));
 }
 
 void DlgBewertungen::updateValues()

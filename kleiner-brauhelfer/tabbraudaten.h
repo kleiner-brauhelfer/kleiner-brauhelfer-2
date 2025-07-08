@@ -4,6 +4,8 @@
 #include <QWidget>
 #include "settings.h"
 
+class SudObject;
+
 namespace Ui {
 class TabBraudaten;
 }
@@ -15,6 +17,7 @@ class TabBraudaten : public QWidget
 public:
     explicit TabBraudaten(QWidget *parent = nullptr);
     virtual ~TabBraudaten() Q_DECL_OVERRIDE;
+    void setup(SudObject *sud);
     void saveSettings();
     void restoreView();
     void modulesChanged(Settings::Modules modules);
@@ -54,6 +57,7 @@ private:
 
 private:
     Ui::TabBraudaten *ui;
+    SudObject *mSud;
     QByteArray mDefaultSplitterState;
     QByteArray mDefaultSplitterChartsState;
 };

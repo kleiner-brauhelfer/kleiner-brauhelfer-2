@@ -62,10 +62,7 @@ DlgPrintout::DlgPrintout(QWidget *parent) :
     connect(proxyModel, &ProxyModel::rowsInserted, this, &DlgPrintout::onFilterChanged);
     connect(proxyModel, &ProxyModel::rowsRemoved, this, &DlgPrintout::onFilterChanged);
 
-    if (bh->sud()->isLoaded())
-        selectSud(bh->sud()->id());
-    else
-        ui->table->selectRow(0);
+    ui->table->selectRow(0);
 }
 
 DlgPrintout::~DlgPrintout()
@@ -104,12 +101,10 @@ void DlgPrintout::restoreView()
     gSettings->endGroup();
 }
 
-void DlgPrintout::selectSud(int id)
+void DlgPrintout::select(const QVariant &sudId)
 {
-    ProxyModelSud *proxyModel = static_cast<ProxyModelSud*>(ui->table->model());
-    int row = proxyModel->getRowWithValue(ModelSud::ColID, id);
-    if (row)
-        ui->table->selectRow(row);
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
+    ui->table->selectRow(model->getRowWithValue(ModelSud::ColID, sudId));
 }
 
 void DlgPrintout::updateWebView()

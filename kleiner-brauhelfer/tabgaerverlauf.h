@@ -5,6 +5,8 @@
 #include <QItemSelection>
 #include "settings.h"
 
+class SudObject;
+
 namespace Ui {
 class TabGaerverlauf;
 }
@@ -16,6 +18,7 @@ class TabGaerverlauf : public QWidget
 public:
     explicit TabGaerverlauf(QWidget *parent = nullptr);
     virtual ~TabGaerverlauf() Q_DECL_OVERRIDE;
+    void setup(SudObject *sud);
     void saveSettings();
     void restoreView();
     void modulesChanged(Settings::Modules modules);
@@ -57,6 +60,7 @@ private slots:
 
 private:
     Ui::TabGaerverlauf *ui;
+    SudObject *mSud;
     QByteArray mDefaultSplitterStateSchnellgaerung;
     QByteArray mDefaultSplitterStateHauptgaerung;
     QByteArray mDefaultSplitterStateNachgaerung;

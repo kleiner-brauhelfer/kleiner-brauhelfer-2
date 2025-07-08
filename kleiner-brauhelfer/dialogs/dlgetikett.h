@@ -28,6 +28,7 @@ public:
     void saveSettings() Q_DECL_OVERRIDE;
     void loadSettings() Q_DECL_OVERRIDE;
     static void restoreView();
+    void select(const QVariant &sudId);
     void printPreview();
     void toPdf();
 

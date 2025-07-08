@@ -7,7 +7,8 @@ extern Settings* gSettings;
 
 WdgBemerkung::WdgBemerkung(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::WdgBemerkung)
+    ui(new Ui::WdgBemerkung),
+    mSud(nullptr)
 {
     ui->setupUi(this);
     ui->tbRichText->document()->setBaseUrl(QUrl::fromLocalFile(gSettings->databaseDir()));
@@ -17,6 +18,11 @@ WdgBemerkung::WdgBemerkung(QWidget *parent) :
 WdgBemerkung::~WdgBemerkung()
 {
     delete ui;
+}
+
+void WdgBemerkung::setSudObject(SudObject *sud)
+{
+    mSud = sud;
 }
 
 void WdgBemerkung::setToolTip(const QString &text)
@@ -47,7 +53,7 @@ QString WdgBemerkung::toHtml() const
 void WdgBemerkung::on_btnEdit_clicked()
 {
     ui->btnEdit->setChecked(true);
-    DlgRichTextEditor dlg(this);
+    DlgRichTextEditor dlg(mSud, this);
     dlg.setHtml(toHtml());
     if (dlg.exec() == QDialog::Accepted)
     {

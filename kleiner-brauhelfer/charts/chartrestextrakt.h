@@ -3,6 +3,8 @@
 
 #include "chartbase.h"
 
+class SudObject;
+
 class ChartRestextrakt : public ChartBase
 {
     Q_OBJECT
@@ -10,7 +12,7 @@ public:
     explicit ChartRestextrakt(QWidget *parent = nullptr);
 
 public slots:
-    void update();
+    void update(const SudObject* sud);
 
 private:
     QCPBars *bars;

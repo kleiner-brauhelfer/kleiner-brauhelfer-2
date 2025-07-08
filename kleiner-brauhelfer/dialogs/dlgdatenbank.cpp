@@ -17,7 +17,6 @@ DlgDatenbank::DlgDatenbank(QWidget *parent) :
     ui->setupUi(this);
 
     sud = new SudObject(bh);
-    sud->init();
 
     ui->tableViewSud->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 

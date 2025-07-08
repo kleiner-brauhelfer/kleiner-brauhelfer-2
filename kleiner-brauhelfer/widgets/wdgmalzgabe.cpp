@@ -6,12 +6,12 @@
 #include "settings.h"
 #include "dialogs/dlgrohstoffauswahl.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
-    WdgAbstractProxy(bh->sud()->modelMalzschuettung(), row, parentLayout, parent),
+WdgMalzGabe::WdgMalzGabe(SudObject *sud, int row, QLayout *parentLayout, QWidget *parent) :
+    WdgAbstractProxy(sud->modelMalzschuettung(), row, parentLayout, parent),
     ui(new Ui::WdgMalzGabe),
+    mSud(sud),
     mEnabled(true),
     mFehlProzent(0),
     mFehlProzentExtrakt(0)
@@ -27,7 +27,7 @@ WdgMalzGabe::WdgMalzGabe(int row, QLayout *parentLayout, QWidget *parent) :
     ui->lblWarnung->setPalette(gSettings->paletteErrorLabel);
 
     updateValues();
-    connect(bh, &Brauhelfer::modified, this, &WdgMalzGabe::updateValues);
+    connect(mSud->bh(), &Brauhelfer::modified, this, &WdgMalzGabe::updateValues);
 }
 
 WdgMalzGabe::~WdgMalzGabe()
@@ -47,7 +47,7 @@ bool WdgMalzGabe::isValid() const
 
 void WdgMalzGabe::checkEnabled()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     mEnabled = status == Brauhelfer::SudStatus::Rezept;
     if (gSettings->ForceEnabled)
         mEnabled = true;
@@ -75,7 +75,7 @@ void WdgMalzGabe::updateValues()
     ui->btnNachUnten->setVisible(mEnabled);
     ui->lblWarnung->setVisible(false);
 
-    int rowRohstoff = bh->modelMalz()->getRowWithValue(ModelMalz::ColName, malzname);
+    int rowRohstoff = mSud->bh()->modelMalz()->getRowWithValue(ModelMalz::ColName, malzname);
     mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(malzname);
     ui->btnZutat->setError(!mValid);
@@ -87,7 +87,7 @@ void WdgMalzGabe::updateValues()
         ui->tbExtrakt->setValue(data(ModelMalzschuettung::ColExtrakt).toDouble());
     if (!ui->tbExtraktProzent->hasFocus())
         ui->tbExtraktProzent->setValue(data(ModelMalzschuettung::ColExtraktProzent).toDouble());
-    bool visible = bh->sud()->getSWAnteilZutaten() != bh->sud()->getSWAnteilMalz();
+    bool visible = mSud->getSWAnteilZutaten() != mSud->getSWAnteilMalz();
     ui->tbExtraktProzent->setVisible(visible);
     ui->lblExtraktProzent->setVisible(visible);
 
@@ -101,7 +101,7 @@ void WdgMalzGabe::updateValues()
     {
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
-            ui->tbVorhanden->setValue(bh->modelMalz()->data(rowRohstoff, ModelMalz::ColMenge).toDouble());
+            ui->tbVorhanden->setValue(mSud->bh()->modelMalz()->data(rowRohstoff, ModelMalz::ColMenge).toDouble());
             double benoetigt = 0.0;
             for (int i = 0; i < mModel->rowCount(); ++i)
             {
@@ -115,7 +115,7 @@ void WdgMalzGabe::updateValues()
         ui->tbExtraktProzent->setError(ui->tbExtraktProzent->value() == 0.0 || mFehlProzentExtrakt != 0.0);
         ui->btnKorrekturExtrakt->setVisible(mFehlProzentExtrakt != 0.0 && qAbs(mFehlProzentExtrakt - mFehlProzent) > 0.001);
 
-        int max = bh->modelMalz()->data(rowRohstoff, ModelMalz::ColMaxProzent).toInt();
+        int max = mSud->bh()->modelMalz()->data(rowRohstoff, ModelMalz::ColMaxProzent).toInt();
         if (max > 0 && ui->tbMengeProzent->value() > max)
         {
             ui->lblWarnung->setVisible(true);

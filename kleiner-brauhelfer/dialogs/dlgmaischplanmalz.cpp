@@ -5,32 +5,33 @@
 #include "model/doublespinboxdelegate.h"
 #include "model/spinboxdelegate.h"
 #include "widgets/widgetdecorator.h"
-#include "brauhelfer.h"
+#include "sudobject.h"
+#include "modelmalzschuettung.h"
 #include "settings.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-DlgMaischplanMalz::DlgMaischplanMalz(double value, QWidget *parent) :
+DlgMaischplanMalz::DlgMaischplanMalz(SudObject *sud, double value, QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent),
-    ui(new Ui::DlgMaischplanMalz)
+    ui(new Ui::DlgMaischplanMalz),
+    mSud(sud)
 {
     WidgetDecorator::suspendValueChanged = true;
     connect(this, &QDialog::finished, [](){WidgetDecorator::suspendValueChanged = false;});
 
     ui->setupUi(this);
     adjustSize();
-    ui->tbMenge->setMaximum(bh->sud()->geterg_S_Gesamt());
+    ui->tbMenge->setMaximum(mSud->geterg_S_Gesamt());
     ui->tbMenge->setValue(value);
 
-    QStandardItemModel* model = new QStandardItemModel(bh->sud()->modelMalzschuettung()->rowCount(), 3, this);
+    QStandardItemModel* model = new QStandardItemModel(mSud->modelMalzschuettung()->rowCount(), 3, this);
     model->setHeaderData(0, Qt::Orientation::Horizontal, tr("Malz"));
     model->setHeaderData(1, Qt::Orientation::Horizontal, tr("Gesamtmenge") + "\n(kg)");
     model->setHeaderData(2, Qt::Orientation::Horizontal, tr("Anteil") + "\n(%)");
-    for (int row = 0; row < bh->sud()->modelMalzschuettung()->rowCount(); row++)
+    for (int row = 0; row < mSud->modelMalzschuettung()->rowCount(); row++)
     {
-        model->setData(model->index(row, 0), bh->sud()->modelMalzschuettung()->data(row, ModelMalzschuettung::ColName));
-        model->setData(model->index(row, 1), bh->sud()->modelMalzschuettung()->data(row, ModelMalzschuettung::Colerg_Menge));
+        model->setData(model->index(row, 0), mSud->modelMalzschuettung()->data(row, ModelMalzschuettung::ColName));
+        model->setData(model->index(row, 1), mSud->modelMalzschuettung()->data(row, ModelMalzschuettung::Colerg_Menge));
         model->setData(model->index(row, 2), 0);
         model->setData(model->index(row, 2), gSettings->paletteChanged.base(), Qt::BackgroundRole);
     }
@@ -62,9 +63,9 @@ void DlgMaischplanMalz::updateAnteile()
     for (int row = 0; row < model->rowCount(); row++)
     {
         int anteil = 0;
-        if (std::fabs(bh->sud()->geterg_S_Gesamt() - ui->tbMenge->value()) < 0.01)
+        if (std::fabs(mSud->geterg_S_Gesamt() - ui->tbMenge->value()) < 0.01)
             anteil = 100;
-        else if (std::fabs(bh->sud()->modelMalzschuettung()->data(row, ModelMalzschuettung::Colerg_Menge).toDouble() - ui->tbMenge->value()) < 0.01)
+        else if (std::fabs(mSud->modelMalzschuettung()->data(row, ModelMalzschuettung::Colerg_Menge).toDouble() - ui->tbMenge->value()) < 0.01)
             anteil = 100;
         model->setData(model->index(row, 2), anteil);
     }
@@ -77,7 +78,7 @@ void DlgMaischplanMalz::updateValue()
     double sum = 0.0;
     QAbstractItemModel* model = ui->tableView->model();
     for (int row = 0; row < model->rowCount(); row++)
-        sum += bh->sud()->modelMalzschuettung()->data(row, ModelMalzschuettung::Colerg_Menge).toDouble() * model->index(row, 2).data().toDouble()/100;
+        sum += mSud->modelMalzschuettung()->data(row, ModelMalzschuettung::Colerg_Menge).toDouble() * model->index(row, 2).data().toDouble()/100;
     ui->tbMenge->setValue(sum);
 }
 

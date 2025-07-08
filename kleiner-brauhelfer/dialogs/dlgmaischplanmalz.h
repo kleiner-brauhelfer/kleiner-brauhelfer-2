@@ -3,6 +3,8 @@
 
 #include "dlgabstract.h"
 
+class SudObject;
+
 namespace Ui {
 class DlgMaischplanMalz;
 }
@@ -12,7 +14,7 @@ class DlgMaischplanMalz : public DlgAbstract
     Q_OBJECT
 
 public:
-    explicit DlgMaischplanMalz(double value, QWidget *parent = nullptr);
+    explicit DlgMaischplanMalz(SudObject *sud, double value, QWidget *parent = nullptr);
     ~DlgMaischplanMalz();
     static void restoreView();
     double value() const;
@@ -24,6 +26,7 @@ private slots:
 
 private:
     Ui::DlgMaischplanMalz *ui;
+    SudObject *mSud;
 };
 
 #endif // DLGMAISCHPLANMALZ_H

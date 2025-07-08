@@ -1,11 +1,9 @@
 #include "dlgrestextrakt.h"
 #include "ui_dlgrestextrakt.h"
 #include "widgets/widgetdecorator.h"
-#include "brauhelfer.h"
 #include "biercalc.h"
 #include "settings.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 DlgRestextrakt::DlgRestextrakt(double value, double sw, double temp, const QDateTime& dt, QWidget *parent) :

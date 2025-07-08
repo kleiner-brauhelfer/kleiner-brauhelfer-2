@@ -76,12 +76,13 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     modulesChanged(Settings::ModuleAlle);
     connect(gSettings, &Settings::modulesChanged, this, &DlgAusruestung::modulesChanged);
 
-    connect(bh->sud(), &SudObject::loadedChanged, this, &DlgAusruestung::sudLoaded);
     connect(bh->modelSud(), &ModelSud::modified, this, &DlgAusruestung::updateDurchschnitt);
     connect(bh->modelAusruestung(), &ModelAusruestung::modified, this, &DlgAusruestung::updateValues);
     connect(ui->tableViewAnlagen->selectionModel(), &QItemSelectionModel::selectionChanged, this, &DlgAusruestung::anlage_selectionChanged);
 
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){setData(ModelAusruestung::ColBemerkung, html);});
+
+    ui->tableViewAnlagen->selectRow(0);
 }
 
 DlgAusruestung::~DlgAusruestung()
@@ -136,12 +137,6 @@ void DlgAusruestung::modulesChanged(Settings::Modules modules)
     }
 }
 
-void DlgAusruestung::showEvent(QShowEvent *event)
-{
-    DlgAbstract::showEvent(event);
-    sudLoaded();
-}
-
 void DlgAusruestung::keyPressEvent(QKeyEvent* event)
 {
     DlgAbstract::keyPressEvent(event);
@@ -171,17 +166,10 @@ void DlgAusruestung::keyPressEvent(QKeyEvent* event)
     }
 }
 
-void DlgAusruestung::sudLoaded()
+void DlgAusruestung::select(const QString &name)
 {
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableViewAnlagen->model());
-    int row = mRow;
-    if (bh->sud()->isLoaded())
-    {
-        row = model->getRowWithValue(ModelAusruestung::ColName, bh->sud()->getAnlage());
-        if (row < 0)
-            row = mRow;
-    }
-    ui->tableViewAnlagen->setCurrentIndex(model->index(row, ModelAusruestung::ColName));
+    ui->tableViewAnlagen->selectRow(model->getRowWithValue(ModelAusruestung::ColName, name));
 }
 
 void DlgAusruestung::anlage_selectionChanged()
@@ -418,18 +406,9 @@ void DlgAusruestung::on_btnVerdampfungsrate_clicked()
     DlgVerdampfung dlg;
     dlg.setDurchmesser(data(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble());
     dlg.setHoehe(data(ModelAusruestung::ColSudpfanne_Hoehe).toDouble());
-    if (bh->sud()->isLoaded())
-    {
-        dlg.setKochdauer(bh->sud()->getKochdauer());
-        dlg.setMenge1(BierCalc::volumenWasser(20, 100, bh->sud()->getWuerzemengeKochbeginn()));
-        dlg.setMenge2(BierCalc::volumenWasser(20, 100, bh->sud()->getWuerzemengeVorHopfenseihen()));
-    }
-    else
-    {
-        dlg.setKochdauer(90);
-        dlg.setMenge1(20);
-        dlg.setMenge2(18);
-    }
+    dlg.setKochdauer(90);
+    dlg.setMenge1(20);
+    dlg.setMenge2(18);
     if (dlg.exec() == QDialog::Accepted)
     {
         setData(ModelAusruestung::ColVerdampfungsrate, dlg.getVerdampfungsrate());

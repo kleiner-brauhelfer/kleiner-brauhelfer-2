@@ -4,6 +4,8 @@
 #include "wdgabstractproxy.h"
 #include "brauhelfer.h"
 
+class SudObject;
+
 namespace Ui {
 class WdgWeitereZutatGabe;
 }
@@ -13,7 +15,7 @@ class WdgWeitereZutatGabe : public WdgAbstractProxy
     Q_OBJECT
 
 public:
-    explicit WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt zeitpunkt, int row, QLayout *parentLayout, QWidget *parent = nullptr);
+    explicit WdgWeitereZutatGabe(SudObject *sud, Brauhelfer::ZusatzZeitpunkt zeitpunkt, int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgWeitereZutatGabe();
     bool isEnabled() const;
     bool isValid() const;
@@ -52,6 +54,7 @@ private:
 
 private:
     Ui::WdgWeitereZutatGabe *ui;
+    SudObject *mSud;
     bool mEnabled;
     bool mValid;
     double mFehlProzentExtrakt;

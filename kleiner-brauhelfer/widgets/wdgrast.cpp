@@ -5,7 +5,6 @@
 #include "settings.h"
 #include "dialogs/dlgmaischplanmalz.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 const QList<WdgRast::Rast> WdgRast::rasten = {
@@ -20,9 +19,10 @@ const QList<WdgRast::Rast> WdgRast::rasten = {
     {tr("Abmaischen"),78,1}
 };
 
-WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
-    WdgAbstractProxy(bh->sud()->modelMaischplan(), row, parentLayout, parent),
+WdgRast::WdgRast(SudObject *sud, int row, QLayout* parentLayout, QWidget *parent) :
+    WdgAbstractProxy(sud->modelMaischplan(), row, parentLayout, parent),
     ui(new Ui::WdgRast),
+    mSud(sud),
     mEnabled(true),
     mRastNameManuallyEdited(false)
 {
@@ -38,8 +38,8 @@ WdgRast::WdgRast(int row, QLayout* parentLayout, QWidget *parent) :
 
     updateValues();
     updateListe();
-    connect(bh, &Brauhelfer::modified, this, &WdgRast::updateValues);
-    connect(bh->modelMaischplan(), &ModelMaischplan::rowsSwapped, this, &WdgRast::updateListe);
+    connect(mSud->bh(), &Brauhelfer::modified, this, &WdgRast::updateValues);
+    connect(mSud->bh()->modelMaischplan(), &ModelMaischplan::rowsSwapped, this, &WdgRast::updateListe);
 }
 
 WdgRast::~WdgRast()
@@ -82,7 +82,7 @@ void WdgRast::setFehlProzentMalz(double value)
 
 void WdgRast::checkEnabled()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     mEnabled = status == Brauhelfer::SudStatus::Rezept;
     if (gSettings->ForceEnabled)
         mEnabled = true;
@@ -349,7 +349,7 @@ void WdgRast::on_tbAnteilMalz_valueChanged(double value)
 
 void WdgRast::on_btnAnteilMalz_clicked()
 {
-    DlgMaischplanMalz dlg(data(ModelMaischplan::ColMengeMalz).toDouble());
+    DlgMaischplanMalz dlg(mSud, data(ModelMaischplan::ColMengeMalz).toDouble());
     if (dlg.exec() == QDialog::Accepted)
         setData(ModelMaischplan::ColMengeMalz, dlg.value());
 }

@@ -1,7 +1,5 @@
 #include "chartausbeute.h"
-#include "brauhelfer.h"
-
-extern Brauhelfer* bh;
+#include "sudobject.h"
 
 ChartAusbeute::ChartAusbeute(QWidget *parent) :
     ChartBase(parent)
@@ -34,13 +32,13 @@ ChartAusbeute::ChartAusbeute(QWidget *parent) :
     textLabel3->setColor(Qt::white);
 }
 
-void ChartAusbeute::update()
+void ChartAusbeute::update(const SudObject* sud)
 {
     QLocale locale = QLocale();
 
-    double val1 = bh->sud()->geterg_Sudhausausbeute();
-    double val2 = bh->sud()->geterg_EffektiveAusbeute();
-    double val3 = bh->sud()->getSudhausausbeute();
+    double val1 = sud->geterg_Sudhausausbeute();
+    double val2 = sud->geterg_EffektiveAusbeute();
+    double val3 = sud->getSudhausausbeute();
 
     bars->setData({1, 2, 3}, {val1, val2, val3}, true);
 

@@ -9,12 +9,12 @@
 #include "dialogs/dlgrohstoffauswahl.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgHefeGabe::WdgHefeGabe(int row, QLayout* parentLayout, QWidget *parent) :
-    WdgAbstractProxy(bh->sud()->modelHefegaben(), row, parentLayout, parent),
+WdgHefeGabe::WdgHefeGabe(SudObject *sud, int row, QLayout* parentLayout, QWidget *parent) :
+    WdgAbstractProxy(sud->modelHefegaben(), row, parentLayout, parent),
     ui(new Ui::WdgHefeGabe),
+    mSud(sud),
     mEnabled(true)
 {
     ui->setupUi(this);
@@ -26,7 +26,7 @@ WdgHefeGabe::WdgHefeGabe(int row, QLayout* parentLayout, QWidget *parent) :
     ui->tbMenge->setErrorRange(0, ui->tbMenge->maximum());
 
     updateValues();
-    connect(bh, &Brauhelfer::modified, this, &WdgHefeGabe::updateValues);
+    connect(mSud->bh(), &Brauhelfer::modified, this, &WdgHefeGabe::updateValues);
 }
 
 WdgHefeGabe::~WdgHefeGabe()
@@ -56,7 +56,7 @@ int WdgHefeGabe::menge() const
 
 void WdgHefeGabe::checkEnabled()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     mEnabled = status < Brauhelfer::SudStatus::Abgefuellt;
     if (data(ModelHefegaben::ColZugegeben).toBool())
         mEnabled = false;
@@ -83,7 +83,7 @@ void WdgHefeGabe::updateValues()
     ui->btnNachOben->setVisible(mEnabled);
     ui->btnNachUnten->setVisible(mEnabled);
 
-    int rowRohstoff = bh->modelHefe()->getRowWithValue(ModelHefe::ColName, hefename);
+    int rowRohstoff = mSud->bh()->modelHefe()->getRowWithValue(ModelHefe::ColName, hefename);
     mValid = !mEnabled || rowRohstoff >= 0;
     ui->btnZutat->setText(hefename);
     ui->btnZutat->setError(!mValid);
@@ -91,7 +91,7 @@ void WdgHefeGabe::updateValues()
         ui->tbMenge->setValue(menge());
     if (!ui->tbTage->hasFocus())
         ui->tbTage->setValue(data(ModelHefegaben::ColZugabeNach).toInt());
-    QDateTime braudatum = bh->sud()->getBraudatum();
+    QDateTime braudatum = mSud->getBraudatum();
     if (braudatum.isValid())
     {
         ui->tbDatum->setMinimumDateTime(braudatum);
@@ -102,7 +102,7 @@ void WdgHefeGabe::updateValues()
 
     if (rowRohstoff >= 0)
     {
-        int idx = bh->modelHefe()->data(rowRohstoff, ModelHefe::ColTypOGUG).toInt();
+        int idx = mSud->bh()->modelHefe()->data(rowRohstoff, ModelHefe::ColTypOGUG).toInt();
         if (idx >= 0 && idx < gSettings->HefeTypOgUgBackgrounds.count())
         {
             QPalette pal = ui->frameColor->palette();
@@ -115,9 +115,9 @@ void WdgHefeGabe::updateValues()
         }
         ui->frameColor->setToolTip(MainWindow::HefeTypname[idx]);
 
-        double mengeHefe = bh->modelHefe()->data(rowRohstoff, ModelHefe::ColWuerzemenge).toDouble();
+        double mengeHefe = mSud->bh()->modelHefe()->data(rowRohstoff, ModelHefe::ColWuerzemenge).toDouble();
         if (mengeHefe > 0)
-            ui->tbMengeEmpfohlen->setValue(qCeil(bh->sud()->getMengeSollAnstellen() / mengeHefe));
+            ui->tbMengeEmpfohlen->setValue(qCeil(mSud->getMengeSollAnstellen() / mengeHefe));
         else
             ui->tbMengeEmpfohlen->setValue(0);
     }
@@ -128,7 +128,7 @@ void WdgHefeGabe::updateValues()
         ui->tbMengeEmpfohlen->setValue(0);
     }
 
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     ui->btnZugeben->setVisible(status == Brauhelfer::SudStatus::Gebraut);
     if (data(ModelHefegaben::ColZugegeben).toBool())
     {
@@ -147,7 +147,7 @@ void WdgHefeGabe::updateValues()
     {
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
-            ui->tbVorhanden->setValue(bh->modelHefe()->data(rowRohstoff, ModelHefe::ColMenge).toInt());
+            ui->tbVorhanden->setValue(mSud->bh()->modelHefe()->data(rowRohstoff, ModelHefe::ColMenge).toInt());
             int benoetigt = 0;
             for (int i = 0; i < mModel->rowCount(); ++i)
             {
@@ -199,7 +199,7 @@ void WdgHefeGabe::on_btnZugeben_clicked()
         setData(ModelHefegaben::ColZugegeben, true);
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
-            DlgRohstoffeAbziehen dlg(true, Brauhelfer::RohstoffTyp::Hefe, name(), menge(), this);
+            DlgRohstoffeAbziehen dlg(mSud, true, Brauhelfer::RohstoffTyp::Hefe, name(), menge(), this);
             dlg.exec();
         }
     }
@@ -208,7 +208,7 @@ void WdgHefeGabe::on_btnZugeben_clicked()
         setData(ModelHefegaben::ColZugegeben, false);
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
-            DlgRohstoffeAbziehen dlg(false, Brauhelfer::RohstoffTyp::Hefe, name(),  menge(), this);
+            DlgRohstoffeAbziehen dlg(mSud, false, Brauhelfer::RohstoffTyp::Hefe, name(),  menge(), this);
             dlg.exec();
         }
     }

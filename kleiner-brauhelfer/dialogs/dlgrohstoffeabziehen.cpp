@@ -28,12 +28,12 @@ public:
     }
 };
 
-DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(bool abziehen, QWidget *parent) :
-    DlgRohstoffeAbziehen(abziehen, Brauhelfer::RohstoffTyp::Malz, QString(), 0.0, parent)
+DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(SudObject *sud, bool abziehen, QWidget *parent) :
+    DlgRohstoffeAbziehen(sud, abziehen, Brauhelfer::RohstoffTyp::Malz, QString(), 0.0, parent)
 {
 }
 
-DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(bool abziehen, Brauhelfer::RohstoffTyp typ, const QString &name, double menge, QWidget *parent) :
+DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(SudObject *sud, bool abziehen, Brauhelfer::RohstoffTyp typ, const QString &name, double menge, QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgRohstoffeAbziehen),
     mAbziehen(abziehen),
@@ -43,9 +43,9 @@ DlgRohstoffeAbziehen::DlgRohstoffeAbziehen(bool abziehen, Brauhelfer::RohstoffTy
     setWindowTitle(abziehen ? tr("Zutaten vom Lager abziehen") : tr("Zutaten ins Lager zurückgeben"));
     ui->btnAbziehen->setText(abziehen ? tr("Zutaten abziehen") : tr("Zutaten zurückgeben"));
     if (name.isEmpty())
-        setModels(true);
+        setModels(sud, true);
     else
-        setModels(false, typ, name, menge);
+        setModels(sud, false, typ, name, menge);
     adjustSize();
 }
 
@@ -73,7 +73,7 @@ void DlgRohstoffeAbziehen::reject()
     }
 }
 
-void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffTyp typ, const QString& name, double menge)
+void DlgRohstoffeAbziehen::setModels(SudObject *sud, bool alleBrauzutaten, Brauhelfer::RohstoffTyp typ, const QString& name, double menge)
 {
     ProxyModel *modelRohstoff;
     QMap<QString, double> list;
@@ -83,7 +83,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     list.clear();
     if (alleBrauzutaten)
     {
-        modelRohstoff = bh->sud()->modelMalzschuettung();
+        modelRohstoff = sud->modelMalzschuettung();
         for (int r = 0; r < modelRohstoff->rowCount(); ++r)
         {
             QString name = modelRohstoff->data(r, ModelMalzschuettung::ColName).toString();
@@ -118,13 +118,13 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     listAbfuellen.clear();
     if (alleBrauzutaten)
     {
-        modelRohstoff = bh->sud()->modelHopfengaben();
+        modelRohstoff = sud->modelHopfengaben();
         for (int r = 0; r < modelRohstoff->rowCount(); ++r)
         {
             QString name = modelRohstoff->data(r, ModelHopfengaben::ColName).toString();
             list[name] += modelRohstoff->data(r, ModelHopfengaben::Colerg_Menge).toDouble();
         }
-        modelRohstoff = bh->sud()->modelWeitereZutatenGaben();
+        modelRohstoff = sud->modelWeitereZutatenGaben();
         for (int r = 0; r < modelRohstoff->rowCount(); ++r)
         {
             Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelRohstoff->data(r, ModelWeitereZutatenGaben::ColTyp).toInt());
@@ -174,7 +174,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     listAbfuellen.clear();
     if (alleBrauzutaten)
     {
-        modelRohstoff = bh->sud()->modelHefegaben();
+        modelRohstoff = sud->modelHefegaben();
         for (int r = 0; r < modelRohstoff->rowCount(); ++r)
         {
             QString name = modelRohstoff->data(r, ModelHefegaben::ColName).toString();
@@ -219,7 +219,7 @@ void DlgRohstoffeAbziehen::setModels(bool alleBrauzutaten, Brauhelfer::RohstoffT
     listAbfuellen.clear();
     if (alleBrauzutaten)
     {
-        modelRohstoff = bh->sud()->modelWeitereZutatenGaben();
+        modelRohstoff = sud->modelWeitereZutatenGaben();
         for (int r = 0; r < modelRohstoff->rowCount(); ++r)
         {
             Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(modelRohstoff->data(r, ModelWeitereZutatenGaben::ColTyp).toInt());

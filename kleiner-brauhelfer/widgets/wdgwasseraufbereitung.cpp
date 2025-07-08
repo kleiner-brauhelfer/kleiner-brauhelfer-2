@@ -5,12 +5,12 @@
 #include "brauhelfer.h"
 #include "settings.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-WdgWasseraufbereitung::WdgWasseraufbereitung(int row, QLayout *parentLayout, QWidget *parent) :
-    WdgAbstractProxy(bh->sud()->modelWasseraufbereitung(), row, parentLayout, parent),
-    ui(new Ui::WdgWasseraufbereitung)
+WdgWasseraufbereitung::WdgWasseraufbereitung(SudObject *sud, int row, QLayout *parentLayout, QWidget *parent) :
+    WdgAbstractProxy(sud->modelWasseraufbereitung(), row, parentLayout, parent),
+    ui(new Ui::WdgWasseraufbereitung),
+    mSud(sud)
 {
     ui->setupUi(this);
 
@@ -19,7 +19,7 @@ WdgWasseraufbereitung::WdgWasseraufbereitung(int row, QLayout *parentLayout, QWi
     setPalette(pal);
 
     updateValues();
-    connect(bh, &Brauhelfer::modified, this, &WdgWasseraufbereitung::updateValues);
+    connect(mSud->bh(), &Brauhelfer::modified, this, &WdgWasseraufbereitung::updateValues);
 }
 
 WdgWasseraufbereitung::~WdgWasseraufbereitung()
@@ -29,7 +29,7 @@ WdgWasseraufbereitung::~WdgWasseraufbereitung()
 
 void WdgWasseraufbereitung::checkEnabled()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     mEnabled = status == Brauhelfer::SudStatus::Rezept;
     if (gSettings->ForceEnabled)
         mEnabled = true;
@@ -52,10 +52,10 @@ void WdgWasseraufbereitung::updateValues()
         ui->tbName->setText(data(ModelWasseraufbereitung::ColName).toString());
     if (!ui->tbMenge->hasFocus())
         ui->tbMenge->setValue(menge);
-    ui->tbMengeGesamt->setValue(menge * bh->sud()->geterg_W_Gesamt());
-    ui->tbMengeHg->setValue(menge * bh->sud()->geterg_WHauptguss());
-    ui->tbMengeNg->setValue(menge * bh->sud()->geterg_WNachguss());
-    double w = bh->sud()->getMengeSollHgf();
+    ui->tbMengeGesamt->setValue(menge * mSud->geterg_W_Gesamt());
+    ui->tbMengeHg->setValue(menge * mSud->geterg_WHauptguss());
+    ui->tbMengeNg->setValue(menge * mSud->geterg_WNachguss());
+    double w = mSud->getMengeSollHgf();
     ui->tbMengeHgf->setValue(menge * w);
     ui->tbMengeHgf->setVisible(w > 0);
     ui->lblHgf->setVisible(w > 0);
@@ -111,7 +111,7 @@ void WdgWasseraufbereitung::on_tbMenge_valueChanged(double value)
 void WdgWasseraufbereitung::on_tbMengeGesamt_valueChanged(double value)
 {
     if (ui->tbMengeGesamt->hasFocus())
-        setData(ModelWasseraufbereitung::ColMenge, value / bh->sud()->geterg_W_Gesamt());
+        setData(ModelWasseraufbereitung::ColMenge, value / mSud->geterg_W_Gesamt());
 }
 
 void WdgWasseraufbereitung::on_tbRestalkalitaet_valueChanged(double value)

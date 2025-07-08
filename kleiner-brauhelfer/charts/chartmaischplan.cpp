@@ -2,7 +2,6 @@
 #include "brauhelfer.h"
 #include "settings.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 ChartMaischplan::ChartMaischplan(QWidget *parent) :
@@ -47,7 +46,7 @@ ChartMaischplan::ChartMaischplan(QWidget *parent) :
     xAxis2->setRange(0, 1);
 }
 
-void ChartMaischplan::update()
+void ChartMaischplan::update(const SudObject* sud)
 {
     clearPlottables();
 
@@ -61,7 +60,7 @@ void ChartMaischplan::update()
 
     graph->setPen(QPen(QBrush(QColor(32,159,223)), 2, Qt::SolidLine));
 
-    ProxyModel* model = bh->sud()->modelMaischplan();
+    ProxyModel* model = sud->modelMaischplan();
     for (int row = 0; row < model->rowCount(); ++row)
     {
         T = model->data(row, ModelMaischplan::ColTempRast).toInt();

@@ -42,7 +42,6 @@ class LIB_EXPORT Brauhelfer : public QObject
     Q_PROPERTY(int databaseVersion READ databaseVersion CONSTANT)
     Q_PROPERTY(bool modified READ isDirty NOTIFY modified)
 
-    Q_PROPERTY(SudObject* sud READ sud CONSTANT)
     Q_PROPERTY(ModelSud* modelSud READ modelSud CONSTANT)
     Q_PROPERTY(ModelMalz* modelMalz READ modelMalz CONSTANT)
     Q_PROPERTY(ModelHopfen* modelHopfen READ modelHopfen CONSTANT)
@@ -228,8 +227,6 @@ public:
     QString lastError() const;
     bool updateDatabase();
 
-    SudObject* sud() const;
-
     ModelSud* modelSud() const;
     ModelMalz* modelMalz() const;
     ModelHopfen* modelHopfen() const;
@@ -270,7 +267,6 @@ private:
     QString mDatabasePath;
     bool mReadonly;
     Database* mDb;
-    SudObject* mSud;
 };
 
 #endif // BRAUHELFER_H

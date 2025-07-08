@@ -6,15 +6,16 @@
 #include <QColorDialog>
 #include <QInputDialog>
 #include <QFileInfo>
-#include "brauhelfer.h"
+#include "sudobject.h"
+#include "modelanhang.h"
 #include "settings.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
-DlgRichTextEditor::DlgRichTextEditor(QWidget *parent) :
+DlgRichTextEditor::DlgRichTextEditor(SudObject *sud, QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent),
-    ui(new Ui::DlgRichTextEditor)
+    ui(new Ui::DlgRichTextEditor),
+    mSud(sud)
 {
     ui->setupUi(this);
     adjustSize();
@@ -41,6 +42,8 @@ DlgRichTextEditor::DlgRichTextEditor(QWidget *parent) :
     ui->cbFont->setCurrentIndex(gSettings->value("font", ui->cbFont->findText(gSettings->font.family())).toInt());
     ui->cbSize->setCurrentIndex(gSettings->value("fontsize", ui->cbSize->findText(QString::number(gSettings->font.pointSize()))).toInt());
     gSettings->endGroup();
+
+    ui->btnImg->setVisible(sud);
 
     QTextCharFormat format;
     format.setFont(ui->cbFont->currentFont());
@@ -375,17 +378,20 @@ void DlgRichTextEditor::on_btnIndDecr_clicked()
 void DlgRichTextEditor::on_btnImg_clicked()
 {
     QStringList imgs;
-    for (int row = 0; row < bh->sud()->modelAnhang()->rowCount(); ++row)
+    if (mSud)
     {
-        QString pfad = bh->sud()->modelAnhang()->data(row, ModelAnhang::ColPfad).toString();
-        if (pfad.endsWith(QStringLiteral(".png"), Qt::CaseInsensitive)
-            || pfad.endsWith(QStringLiteral(".gif"), Qt::CaseInsensitive)
-            || pfad.endsWith(QStringLiteral(".jpg"), Qt::CaseInsensitive)
-            || pfad.endsWith(QStringLiteral(".jpg"), Qt::CaseInsensitive)
-            || pfad.endsWith(QStringLiteral(".svg"), Qt::CaseInsensitive)
-            || pfad.endsWith(QStringLiteral(".bmp"), Qt::CaseInsensitive))
+        for (int row = 0; row < mSud->modelAnhang()->rowCount(); ++row)
         {
-            imgs.append(pfad);
+            QString pfad = mSud->modelAnhang()->data(row, ModelAnhang::ColPfad).toString();
+            if (pfad.endsWith(QStringLiteral(".png"), Qt::CaseInsensitive)
+                || pfad.endsWith(QStringLiteral(".gif"), Qt::CaseInsensitive)
+                || pfad.endsWith(QStringLiteral(".jpg"), Qt::CaseInsensitive)
+                || pfad.endsWith(QStringLiteral(".jpg"), Qt::CaseInsensitive)
+                || pfad.endsWith(QStringLiteral(".svg"), Qt::CaseInsensitive)
+                || pfad.endsWith(QStringLiteral(".bmp"), Qt::CaseInsensitive))
+            {
+                imgs.append(pfad);
+            }
         }
     }
 

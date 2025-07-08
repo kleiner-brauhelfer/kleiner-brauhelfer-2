@@ -22,6 +22,7 @@ public:
     void saveSettings() Q_DECL_OVERRIDE;
     void loadSettings() Q_DECL_OVERRIDE;
     static void restoreView();
+    void select(const QVariant &sudId);
 
 private slots:
     void modulesChanged(Settings::Modules modules);
@@ -35,7 +36,6 @@ private slots:
     void on_cbAuswahlL3_currentIndexChanged(int);
 
 private:
-    void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     void build();
     void updateDiagram();
     void updateFilterLabel();

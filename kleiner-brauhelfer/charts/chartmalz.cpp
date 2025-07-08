@@ -1,8 +1,7 @@
 #include "chartmalz.h"
 #include "biercalc.h"
-#include "brauhelfer.h"
-
-extern Brauhelfer* bh;
+#include "sudobject.h"
+#include "modelmalzschuettung.h"
 
 ChartMalz::ChartMalz(QWidget *parent) :
     ChartBase(parent)
@@ -15,7 +14,7 @@ ChartMalz::ChartMalz(QWidget *parent) :
     yAxis2->setVisible(true);
 }
 
-void ChartMalz::update()
+void ChartMalz::update(const SudObject* sud)
 {
     double yMax = 100;
 
@@ -24,7 +23,7 @@ void ChartMalz::update()
 
     QSharedPointer<QCPAxisTickerText> textTicker = qSharedPointerDynamicCast<QCPAxisTickerText>(xAxis->ticker());
     textTicker->clear();
-    ProxyModel* model = bh->sud()->modelMalzschuettung();
+    ProxyModel* model = sud->modelMalzschuettung();
     int nRows = model->rowCount();
     for (int row = 0; row < nRows; ++row)
     {
@@ -42,7 +41,7 @@ void ChartMalz::update()
         yMax = qMax(yMax, val);
     }
     yAxis->setRange(0, std::ceil(yMax));
-    yAxis2->setRange(0, yAxis->range().upper * bh->sud()->geterg_S_Gesamt()/100);
+    yAxis2->setRange(0, yAxis->range().upper * sud->geterg_S_Gesamt()/100);
     xAxis->setRange(0, model->rowCount()+1);
     replot();
 }

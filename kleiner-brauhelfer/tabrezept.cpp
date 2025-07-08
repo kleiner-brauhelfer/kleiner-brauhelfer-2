@@ -10,7 +10,7 @@
 #include "settings.h"
 #include "mainwindow.h"
 #include "model/textdelegate.h"
-#include "model/checkboxdelegate.h"
+#include "model/tagglobaldelegate.h"
 #include "widgets/wdgrast.h"
 #include "widgets/wdgmalzgabe.h"
 #include "widgets/wdghopfengabe.h"
@@ -30,51 +30,63 @@
 #define qAsConst(x) (x)
 #endif
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabRezept::TabRezept(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TabRezept)
+    ui(new Ui::TabRezept),
+    mSud(nullptr)
 {
+    ui->setupUi(this);
+}
+
+TabRezept::~TabRezept()
+{
+    delete ui;
+    delete mGlasSvg;
+}
+
+void TabRezept::setup(SudObject *sud)
+{
+    mSud = sud;
+
     QPalette pal;
 
-    ui->setupUi(this);
-    ui->tbCO2->setColumn(ModelSud::ColCO2);
-    ui->tbSW->setColumn(ModelSud::ColSW);
-    ui->tbMenge->setColumn(ModelSud::ColMenge);
-    ui->tbFaktorHauptguss->setColumn(ModelSud::ColFaktorHauptguss);
-    ui->tbGesamtschuettung->setColumn(ModelSud::Colerg_S_Gesamt);
-    ui->tbSWMalz->setColumn(ModelSud::ColSWAnteilMalz);
-    ui->tbSWWZMaischen->setColumn(ModelSud::ColSWAnteilZusatzMaischen);
-    ui->tbSWWZKochen->setColumn(ModelSud::ColSWAnteilZusatzKochen);
-    ui->tbSWWZGaerung->setColumn(ModelSud::ColSWAnteilZusatzGaerung);
-    ui->tbSWAnteilHefestarter->setColumn(ModelSud::ColSWAnteilHefestarter);
-    ui->tbSudnummer->setColumn(ModelSud::ColSudnummer);
-    ui->tbBittere->setColumn(ModelSud::ColIBU);
-    ui->tbFarbe->setColumn(ModelSud::Colerg_Farbe);
-    ui->tbSudhausausbeute->setColumn(ModelSud::ColSudhausausbeute);
-    ui->tbVerdampfungsrate->setColumn(ModelSud::ColVerdampfungsrate);
-    ui->tbVergaerungsgrad->setColumn(ModelSud::ColVergaerungsgrad);
-    ui->tbReifezeit->setColumn(ModelSud::ColReifezeit);
-    ui->tbHGF->setColumn(ModelSud::ColhighGravityFaktor);
-    ui->tbKochzeit->setColumn(ModelSud::ColKochdauer);
-    ui->tbNachisomerisierungszeit->setColumn(ModelSud::ColNachisomerisierungszeit);
-    ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
-    ui->tbWasserGesamt->setColumn(ModelSud::Colerg_W_Gesamt);
-    ui->tbHauptguss->setColumn(ModelSud::Colerg_WHauptguss);
-    ui->tbNachguss->setColumn(ModelSud::Colerg_WNachguss);
-    ui->tbWasserHGF->setColumn(ModelSud::ColMengeSollHgf);
-    ui->tbRestextrakt->setColumn(ModelSud::ColSRESoll);
-    ui->tbAlkohol->setColumn(ModelSud::ColAlkoholSoll);
-    ui->tbRestalkalitaetSoll->setColumn(ModelSud::ColRestalkalitaetSoll);
-    ui->tbRestalkalitaetWasser->setColumn(ModelSud::ColRestalkalitaetWasser);
-    ui->tbRestalkalitaetIst->setColumn(ModelSud::ColRestalkalitaetIst);
-    ui->tbPhMalz->setColumn(ModelSud::ColPhMalz);
-    ui->tbPhMaische->setColumn(ModelSud::ColPhMaische);
-    ui->tbPhMaischeSoll->setColumn(ModelSud::ColPhMaischeSoll);
-    ui->tbMengeHefestarter->setColumn(ModelSud::ColMengeHefestarter);
-    ui->tbSWHefestarter->setColumn(ModelSud::ColSWHefestarter);
+    ui->tbCO2->setColumn(mSud, ModelSud::ColCO2);
+    ui->tbSW->setColumn(mSud, ModelSud::ColSW);
+    ui->tbMenge->setColumn(mSud, ModelSud::ColMenge);
+    ui->tbFaktorHauptguss->setColumn(mSud, ModelSud::ColFaktorHauptguss);
+    ui->tbGesamtschuettung->setColumn(mSud, ModelSud::Colerg_S_Gesamt);
+    ui->tbSWMalz->setColumn(mSud, ModelSud::ColSWAnteilMalz);
+    ui->tbSWWZMaischen->setColumn(mSud, ModelSud::ColSWAnteilZusatzMaischen);
+    ui->tbSWWZKochen->setColumn(mSud, ModelSud::ColSWAnteilZusatzKochen);
+    ui->tbSWWZGaerung->setColumn(mSud, ModelSud::ColSWAnteilZusatzGaerung);
+    ui->tbSWAnteilHefestarter->setColumn(mSud, ModelSud::ColSWAnteilHefestarter);
+    ui->tbSudnummer->setColumn(mSud, ModelSud::ColSudnummer);
+    ui->tbBittere->setColumn(mSud, ModelSud::ColIBU);
+    ui->tbFarbe->setColumn(mSud, ModelSud::Colerg_Farbe);
+    ui->tbSudhausausbeute->setColumn(mSud, ModelSud::ColSudhausausbeute);
+    ui->tbVerdampfungsrate->setColumn(mSud, ModelSud::ColVerdampfungsrate);
+    ui->tbVergaerungsgrad->setColumn(mSud, ModelSud::ColVergaerungsgrad);
+    ui->tbReifezeit->setColumn(mSud, ModelSud::ColReifezeit);
+    ui->tbHGF->setColumn(mSud, ModelSud::ColhighGravityFaktor);
+    ui->tbKochzeit->setColumn(mSud, ModelSud::ColKochdauer);
+    ui->tbNachisomerisierungszeit->setColumn(mSud, ModelSud::ColNachisomerisierungszeit);
+    ui->tbKosten->setColumn(mSud, ModelSud::Colerg_Preis);
+    ui->tbWasserGesamt->setColumn(mSud, ModelSud::Colerg_W_Gesamt);
+    ui->tbHauptguss->setColumn(mSud, ModelSud::Colerg_WHauptguss);
+    ui->tbNachguss->setColumn(mSud, ModelSud::Colerg_WNachguss);
+    ui->tbWasserHGF->setColumn(mSud, ModelSud::ColMengeSollHgf);
+    ui->tbRestextrakt->setColumn(mSud, ModelSud::ColSRESoll);
+    ui->tbAlkohol->setColumn(mSud, ModelSud::ColAlkoholSoll);
+    ui->tbRestalkalitaetSoll->setColumn(mSud, ModelSud::ColRestalkalitaetSoll);
+    ui->tbRestalkalitaetWasser->setColumn(mSud, ModelSud::ColRestalkalitaetWasser);
+    ui->tbRestalkalitaetIst->setColumn(mSud, ModelSud::ColRestalkalitaetIst);
+    ui->tbPhMalz->setColumn(mSud, ModelSud::ColPhMalz);
+    ui->tbPhMaische->setColumn(mSud, ModelSud::ColPhMaische);
+    ui->tbPhMaischeSoll->setColumn(mSud, ModelSud::ColPhMaischeSoll);
+    ui->tbMengeHefestarter->setColumn(mSud, ModelSud::ColMengeHefestarter);
+    ui->tbSWHefestarter->setColumn(mSud, ModelSud::ColSWHefestarter);
 
     ui->lblWarnungMalz->setPalette(gSettings->paletteErrorLabel);
     ui->btnMalzAusgleichen->setError(true);
@@ -132,15 +144,21 @@ TabRezept::TabRezept(QWidget *parent) :
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
 
     ProxyModel* proxy = new ProxyModel(this);
-    proxy->setSourceModel(bh->modelKategorien());
+    proxy->setSourceModel(mSud->bh()->modelKategorien());
     ui->cbKategorie->setModel(proxy);
     ui->cbKategorie->setModelColumn(ModelKategorien::ColName);
-	
+
+    ui->wdgBemerkung->setSudObject(mSud);
     ui->wdgBemerkung->setPlaceholderText(tr("Bemerkung Rezept"));
+    ui->wdgBemerkungMaischen->setSudObject(mSud);
     ui->wdgBemerkungMaischen->setPlaceholderText(tr("Bemerkung Maischen"));
+    ui->wdgBemerkungKochen->setSudObject(mSud);
     ui->wdgBemerkungKochen->setPlaceholderText(tr("Bemerkung Kochen"));
+    ui->wdgBemerkungGaerung->setSudObject(mSud);
     ui->wdgBemerkungGaerung->setPlaceholderText(tr("Bemerkung Gärung"));
+    ui->wdgBemerkungMaischplan->setSudObject(mSud);
     ui->wdgBemerkungMaischplan->setPlaceholderText(tr("Bemerkung Maischplan"));
+    ui->wdgBemerkungWasseraufbereitung->setSudObject(mSud);
     ui->wdgBemerkungWasseraufbereitung->setPlaceholderText(tr("Bemerkung Wasseraufbereitung"));
 
     gSettings->beginGroup("TabRezept");
@@ -167,64 +185,58 @@ TabRezept::TabRezept(QWidget *parent) :
 
     gSettings->endGroup();
 
-    connect(bh, &Brauhelfer::modified, this, &TabRezept::updateValues);
-    connect(bh, &Brauhelfer::discarded, this, &TabRezept::sudLoaded);
-    connect(bh->sud(), &SudObject::loadedChanged, this, &TabRezept::sudLoaded);
-    connect(bh->sud(), &SudObject::dataChanged, this, &TabRezept::sudDataChanged);
+    connect(mSud->bh(), &Brauhelfer::modified, this, &TabRezept::updateValues);
+    connect(mSud->bh(), &Brauhelfer::discarded, this, &TabRezept::sudLoaded);
+    connect(mSud, &SudObject::loadedChanged, this, &TabRezept::sudLoaded);
+    connect(mSud, &SudObject::dataChanged, this, &TabRezept::sudDataChanged);
 
-    connect(bh->sud()->modelMaischplan(), &ProxyModel::layoutChanged,this, &TabRezept::rasten_modified);
-    connect(bh->sud()->modelMaischplan(), &ProxyModel::rowsInserted, this, &TabRezept::rasten_modified);
-    connect(bh->sud()->modelMaischplan(), &ProxyModel::rowsRemoved, this, &TabRezept::rasten_modified);
-    connect(bh->sud()->modelMaischplan(), &ProxyModel::dataChanged, this, &TabRezept::updateMaischplan);
+    connect(mSud->modelMaischplan(), &ProxyModel::layoutChanged,this, &TabRezept::rasten_modified);
+    connect(mSud->modelMaischplan(), &ProxyModel::rowsInserted, this, &TabRezept::rasten_modified);
+    connect(mSud->modelMaischplan(), &ProxyModel::rowsRemoved, this, &TabRezept::rasten_modified);
+    connect(mSud->modelMaischplan(), &ProxyModel::dataChanged, this, &TabRezept::updateMaischplan);
 
-    connect(bh->sud()->modelMalzschuettung(), &ProxyModel::layoutChanged, this, &TabRezept::malzGaben_modified);
-    connect(bh->sud()->modelMalzschuettung(), &ProxyModel::rowsInserted, this, &TabRezept::malzGaben_modified);
-    connect(bh->sud()->modelMalzschuettung(), &ProxyModel::rowsRemoved, this, &TabRezept::malzGaben_modified);
-    connect(bh->sud()->modelMalzschuettung(), &ProxyModel::dataChanged, this, &TabRezept::updateMalzGaben);
+    connect(mSud->modelMalzschuettung(), &ProxyModel::layoutChanged, this, &TabRezept::malzGaben_modified);
+    connect(mSud->modelMalzschuettung(), &ProxyModel::rowsInserted, this, &TabRezept::malzGaben_modified);
+    connect(mSud->modelMalzschuettung(), &ProxyModel::rowsRemoved, this, &TabRezept::malzGaben_modified);
+    connect(mSud->modelMalzschuettung(), &ProxyModel::dataChanged, this, &TabRezept::updateMalzGaben);
 
-    connect(bh->sud()->modelHopfengaben(), &ProxyModel::layoutChanged, this, &TabRezept::hopfenGaben_modified);
-    connect(bh->sud()->modelHopfengaben(), &ProxyModel::rowsInserted, this, &TabRezept::hopfenGaben_modified);
-    connect(bh->sud()->modelHopfengaben(), &ProxyModel::rowsRemoved, this, &TabRezept::hopfenGaben_modified);
-    connect(bh->sud()->modelHopfengaben(), &ProxyModel::dataChanged, this, &TabRezept::updateHopfenGaben);
+    connect(mSud->modelHopfengaben(), &ProxyModel::layoutChanged, this, &TabRezept::hopfenGaben_modified);
+    connect(mSud->modelHopfengaben(), &ProxyModel::rowsInserted, this, &TabRezept::hopfenGaben_modified);
+    connect(mSud->modelHopfengaben(), &ProxyModel::rowsRemoved, this, &TabRezept::hopfenGaben_modified);
+    connect(mSud->modelHopfengaben(), &ProxyModel::dataChanged, this, &TabRezept::updateHopfenGaben);
 
-    connect(bh->sud()->modelHefegaben(), &ProxyModel::layoutChanged, this, &TabRezept::hefeGaben_modified);
-    connect(bh->sud()->modelHefegaben(), &ProxyModel::rowsInserted, this, &TabRezept::hefeGaben_modified);
-    connect(bh->sud()->modelHefegaben(), &ProxyModel::rowsRemoved, this, &TabRezept::hefeGaben_modified);
+    connect(mSud->modelHefegaben(), &ProxyModel::layoutChanged, this, &TabRezept::hefeGaben_modified);
+    connect(mSud->modelHefegaben(), &ProxyModel::rowsInserted, this, &TabRezept::hefeGaben_modified);
+    connect(mSud->modelHefegaben(), &ProxyModel::rowsRemoved, this, &TabRezept::hefeGaben_modified);
 
-    connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::layoutChanged, this, &TabRezept::weitereZutatenGaben_modified);
-    connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::rowsInserted, this, &TabRezept::weitereZutatenGaben_modified);
-    connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::rowsRemoved, this, &TabRezept::weitereZutatenGaben_modified);
-    connect(bh->sud()->modelWeitereZutatenGaben(), &ProxyModel::dataChanged, this, &TabRezept::updateExtrakt);
+    connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::layoutChanged, this, &TabRezept::weitereZutatenGaben_modified);
+    connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::rowsInserted, this, &TabRezept::weitereZutatenGaben_modified);
+    connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::rowsRemoved, this, &TabRezept::weitereZutatenGaben_modified);
+    connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::dataChanged, this, &TabRezept::updateExtrakt);
 
-    connect(bh->sud()->modelWasseraufbereitung(), &ProxyModel::layoutChanged, this, &TabRezept::wasseraufbereitung_modified);
-    connect(bh->sud()->modelWasseraufbereitung(), &ProxyModel::rowsInserted, this, &TabRezept::wasseraufbereitung_modified);
-    connect(bh->sud()->modelWasseraufbereitung(), &ProxyModel::rowsRemoved, this, &TabRezept::wasseraufbereitung_modified);
+    connect(mSud->modelWasseraufbereitung(), &ProxyModel::layoutChanged, this, &TabRezept::wasseraufbereitung_modified);
+    connect(mSud->modelWasseraufbereitung(), &ProxyModel::rowsInserted, this, &TabRezept::wasseraufbereitung_modified);
+    connect(mSud->modelWasseraufbereitung(), &ProxyModel::rowsRemoved, this, &TabRezept::wasseraufbereitung_modified);
 
-    connect(bh->sud()->modelAnhang(), &ProxyModel::layoutChanged, this, &TabRezept::anhaenge_modified);
-    connect(bh->sud()->modelAnhang(), &ProxyModel::rowsInserted, this, &TabRezept::anhaenge_modified);
-    connect(bh->sud()->modelAnhang(), &ProxyModel::rowsRemoved, this, &TabRezept::anhaenge_modified);
+    connect(mSud->modelAnhang(), &ProxyModel::layoutChanged, this, &TabRezept::anhaenge_modified);
+    connect(mSud->modelAnhang(), &ProxyModel::rowsInserted, this, &TabRezept::anhaenge_modified);
+    connect(mSud->modelAnhang(), &ProxyModel::rowsRemoved, this, &TabRezept::anhaenge_modified);
 
-    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColKommentar, html));});
-    connect(ui->wdgBemerkungMaischen, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungZutatenMaischen, html));});
-    connect(ui->wdgBemerkungKochen, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungZutatenKochen, html));});
-    connect(ui->wdgBemerkungGaerung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungZutatenGaerung, html));});
-    connect(ui->wdgBemerkungMaischplan, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungMaischplan, html));});
-    connect(ui->wdgBemerkungWasseraufbereitung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungWasseraufbereitung, html));});
+    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColKommentar, html));});
+    connect(ui->wdgBemerkungMaischen, &WdgBemerkung::changed, this, [this](const QString& html){gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBemerkungZutatenMaischen, html));});
+    connect(ui->wdgBemerkungKochen, &WdgBemerkung::changed, this, [this](const QString& html){gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBemerkungZutatenKochen, html));});
+    connect(ui->wdgBemerkungGaerung, &WdgBemerkung::changed, this, [this](const QString& html){gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBemerkungZutatenGaerung, html));});
+    connect(ui->wdgBemerkungMaischplan, &WdgBemerkung::changed, this, [this](const QString& html){gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBemerkungMaischplan, html));});
+    connect(ui->wdgBemerkungWasseraufbereitung, &WdgBemerkung::changed, this, [this](const QString& html){gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBemerkungWasseraufbereitung, html));});
 
     connect(ui->btnAnlage, &QAbstractButton::clicked, MainWindow::getInstance()->getAction("actionAusruestung"), &QAction::triggered);
 
     TableView *table = ui->tableTags;
-    table->setModel(bh->sud()->modelTags());
+    table->setModel(mSud->modelTags());
     table->appendCol({ModelTags::ColKey, true, false, 0, new TextDelegate(table)});
     table->appendCol({ModelTags::ColValue, true, false, -1, new TextDelegate(table)});
-    table->appendCol({ModelTags::ColGlobal, true, false, 0, new CheckBoxDelegate(table)});
+    table->appendCol({ModelTags::ColGlobal, true, false, 0, new TagGlobalDelegate(mSud, table)});
     table->build();
-}
-
-TabRezept::~TabRezept()
-{
-    delete ui;
-    delete mGlasSvg;
 }
 
 void TabRezept::saveSettings()
@@ -278,7 +290,7 @@ void TabRezept::modulesChanged(Settings::Modules modules)
     }
     if (modules.testFlag(Settings::ModuleLagerverwaltung))
     {
-        if (bh->sud()->isLoaded())
+        if (mSud->isLoaded())
         {
             malzGaben_modified();
             hopfenGaben_modified();
@@ -286,7 +298,7 @@ void TabRezept::modulesChanged(Settings::Modules modules)
             weitereZutatenGaben_modified();
         }
     }
-    if (bh->sud()->isLoaded())
+    if (mSud->isLoaded())
     {
         checkEnabled();
         updateValues();
@@ -298,13 +310,13 @@ void TabRezept::sudLoaded()
     checkEnabled();
     ui->cbAnlage->setCurrentIndex(-1);
     ui->cbWasserProfil->setCurrentIndex(-1);
-    ui->wdgBemerkung->setHtml(bh->sud()->getKommentar());
-    ui->wdgBemerkungMaischen->setHtml(bh->sud()->getBemerkungZutatenMaischen());
-    ui->wdgBemerkungKochen->setHtml(bh->sud()->getBemerkungZutatenKochen());
-    ui->wdgBemerkungGaerung->setHtml(bh->sud()->getBemerkungZutatenGaerung());
-    ui->wdgBemerkungMaischplan->setHtml(bh->sud()->getBemerkungMaischplan());
-    ui->wdgBemerkungWasseraufbereitung->setHtml(bh->sud()->getBemerkungWasseraufbereitung());
-    if (bh->sud()->isLoaded())
+    ui->wdgBemerkung->setHtml(mSud->getKommentar());
+    ui->wdgBemerkungMaischen->setHtml(mSud->getBemerkungZutatenMaischen());
+    ui->wdgBemerkungKochen->setHtml(mSud->getBemerkungZutatenKochen());
+    ui->wdgBemerkungGaerung->setHtml(mSud->getBemerkungZutatenGaerung());
+    ui->wdgBemerkungMaischplan->setHtml(mSud->getBemerkungMaischplan());
+    ui->wdgBemerkungWasseraufbereitung->setHtml(mSud->getBemerkungWasseraufbereitung());
+    if (mSud->isLoaded())
     {
         updateAnlageModel();
         updateWasserModel();
@@ -336,22 +348,22 @@ void TabRezept::sudDataChanged(const QModelIndex& index)
         checkRohstoffe();
         break;
     case ModelSud::ColKommentar:
-        ui->wdgBemerkung->setHtml(bh->sud()->getKommentar());
+        ui->wdgBemerkung->setHtml(mSud->getKommentar());
         break;
     case ModelSud::ColBemerkungZutatenMaischen:
-        ui->wdgBemerkungMaischen->setHtml(bh->sud()->getBemerkungZutatenMaischen());
+        ui->wdgBemerkungMaischen->setHtml(mSud->getBemerkungZutatenMaischen());
         break;
     case ModelSud::ColBemerkungZutatenKochen:
-        ui->wdgBemerkungKochen->setHtml(bh->sud()->getBemerkungZutatenKochen());
+        ui->wdgBemerkungKochen->setHtml(mSud->getBemerkungZutatenKochen());
         break;
     case ModelSud::ColBemerkungZutatenGaerung:
-        ui->wdgBemerkungGaerung->setHtml(bh->sud()->getBemerkungZutatenGaerung());
+        ui->wdgBemerkungGaerung->setHtml(mSud->getBemerkungZutatenGaerung());
         break;
     case ModelSud::ColBemerkungMaischplan:
-        ui->wdgBemerkungMaischplan->setHtml(bh->sud()->getBemerkungMaischplan());
+        ui->wdgBemerkungMaischplan->setHtml(mSud->getBemerkungMaischplan());
         break;
     case ModelSud::ColBemerkungWasseraufbereitung:
-        ui->wdgBemerkungWasseraufbereitung->setHtml(bh->sud()->getBemerkungWasseraufbereitung());
+        ui->wdgBemerkungWasseraufbereitung->setHtml(mSud->getBemerkungWasseraufbereitung());
         break;
     }
 }
@@ -364,7 +376,7 @@ void TabRezept::showEvent(QShowEvent *event)
 
 void TabRezept::checkEnabled()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     bool gebraut = status != Brauhelfer::SudStatus::Rezept && !gSettings->ForceEnabled;
     bool abgefuellt = status > Brauhelfer::SudStatus::Gebraut  && !gSettings->ForceEnabled;
     ui->cbAnlage->setEnabled(!gebraut);
@@ -448,7 +460,7 @@ void TabRezept::checkRohstoffe()
             {
                 if (ret == QMessageBox::YesAll)
                     yesAll = true;
-                bh->modelMalzschuettung()->import(bh->sud()->modelMalzschuettung()->mapRowToSource(wdg->row()));
+                mSud->bh()->modelMalzschuettung()->import(mSud->modelMalzschuettung()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
             }
             else if (ret == QMessageBox::NoAll)
@@ -457,7 +469,7 @@ void TabRezept::checkRohstoffe()
             }
             else if (ret == QMessageBox::Cancel)
             {
-                bh->sud()->unload();
+                mSud->unload();
                 return;
             }
         }
@@ -472,7 +484,7 @@ void TabRezept::checkRohstoffe()
             {
                 if (ret == QMessageBox::YesAll)
                     yesAll = true;
-                bh->modelWeitereZutatenGaben()->import(bh->sud()->modelWeitereZutatenGaben()->mapRowToSource(wdg->row()));
+                mSud->bh()->modelWeitereZutatenGaben()->import(mSud->modelWeitereZutatenGaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
             }
             else if (ret == QMessageBox::NoAll)
@@ -481,7 +493,7 @@ void TabRezept::checkRohstoffe()
             }
             else if (ret == QMessageBox::Cancel)
             {
-                bh->sud()->unload();
+                mSud->unload();
                 return;
             }
         }
@@ -496,7 +508,7 @@ void TabRezept::checkRohstoffe()
             {
                 if (ret == QMessageBox::YesAll)
                     yesAll = true;
-                bh->modelHopfengaben()->import(bh->sud()->modelHopfengaben()->mapRowToSource(wdg->row()));
+                mSud->bh()->modelHopfengaben()->import(mSud->modelHopfengaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
             }
             else if (ret == QMessageBox::NoAll)
@@ -505,7 +517,7 @@ void TabRezept::checkRohstoffe()
             }
             else if (ret == QMessageBox::Cancel)
             {
-                bh->sud()->unload();
+                mSud->unload();
                 return;
             }
         }
@@ -520,7 +532,7 @@ void TabRezept::checkRohstoffe()
             {
                 if (ret == QMessageBox::YesAll)
                     yesAll = true;
-                bh->modelWeitereZutatenGaben()->import(bh->sud()->modelWeitereZutatenGaben()->mapRowToSource(wdg->row()));
+                mSud->bh()->modelWeitereZutatenGaben()->import(mSud->modelWeitereZutatenGaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
             }
             else if (ret == QMessageBox::NoAll)
@@ -529,7 +541,7 @@ void TabRezept::checkRohstoffe()
             }
             else if (ret == QMessageBox::Cancel)
             {
-                bh->sud()->unload();
+                mSud->unload();
                 return;
             }
         }
@@ -544,7 +556,7 @@ void TabRezept::checkRohstoffe()
             {
                 if (ret == QMessageBox::YesAll)
                     yesAll = true;
-                bh->modelHefegaben()->import(bh->sud()->modelHefegaben()->mapRowToSource(wdg->row()));
+                mSud->bh()->modelHefegaben()->import(mSud->modelHefegaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
             }
             else if (ret == QMessageBox::NoAll)
@@ -553,7 +565,7 @@ void TabRezept::checkRohstoffe()
             }
             else if (ret == QMessageBox::Cancel)
             {
-                bh->sud()->unload();
+                mSud->unload();
                 return;
             }
         }
@@ -568,7 +580,7 @@ void TabRezept::checkRohstoffe()
             {
                 if (ret == QMessageBox::YesAll)
                     yesAll = true;
-                bh->modelWeitereZutatenGaben()->import(bh->sud()->modelWeitereZutatenGaben()->mapRowToSource(wdg->row()));
+                mSud->bh()->modelWeitereZutatenGaben()->import(mSud->modelWeitereZutatenGaben()->mapRowToSource(wdg->row()));
                 wdg->updateValues();
             }
             else if (ret == QMessageBox::NoAll)
@@ -577,7 +589,7 @@ void TabRezept::checkRohstoffe()
             }
             else if (ret == QMessageBox::Cancel)
             {
-                bh->sud()->unload();
+                mSud->unload();
                 return;
             }
         }
@@ -590,7 +602,7 @@ void TabRezept::updateValues()
     if (!isVisible())
         return;
 
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     bool enabled = status == Brauhelfer::SudStatus::Rezept || gSettings->ForceEnabled;
 
     for (auto& wdg : findChildren<DoubleSpinBoxSud*>())
@@ -600,15 +612,15 @@ void TabRezept::updateValues()
 
     if (!ui->tbSudname->hasFocus())
     {
-        ui->tbSudname->setText(bh->sud()->getSudname());
+        ui->tbSudname->setText(mSud->getSudname());
         ui->tbSudname->setCursorPosition(0);
     }
     if (!ui->cbKategorie->hasFocus())
-        ui->cbKategorie->setCurrentIndex(ui->cbKategorie->findText(bh->sud()->getKategorie()));
+        ui->cbKategorie->setCurrentIndex(ui->cbKategorie->findText(mSud->getKategorie()));
 
     // ModuleAusruestung
     if (!ui->cbAnlage->hasFocus())
-        ui->cbAnlage->setCurrentIndex(ui->cbAnlage->findText(bh->sud()->getAnlage()));
+        ui->cbAnlage->setCurrentIndex(ui->cbAnlage->findText(mSud->getAnlage()));
     if (ui->cbAnlage->currentIndex() == -1 || !gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
         ui->cbAnlage->setError(ui->cbAnlage->currentIndex() == -1);
@@ -620,26 +632,26 @@ void TabRezept::updateValues()
     {
         ui->cbAnlage->setError(false);
         ui->groupAnlage->setVisible(true);
-        diff = bh->sud()->getSudhausausbeute() - bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
+        diff = mSud->getSudhausausbeute() - mSud->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble();
         ui->btnSudhausausbeute->setVisible(enabled && qAbs(diff) > 0.05);
-        diff = bh->sud()->getVerdampfungsrate() - bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble();
+        diff = mSud->getVerdampfungsrate() - mSud->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble();
         ui->btnVerdampfungsrate->setVisible(enabled && qAbs(diff) > 0.05);
-        ui->lblAnlageName->setText(bh->sud()->getAnlage());
-        ui->tbAnlageKorrekturSollmenge->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
+        ui->lblAnlageName->setText(mSud->getAnlage());
+        ui->tbAnlageKorrekturSollmenge->setValue(mSud->getAnlageData(ModelAusruestung::ColKorrekturMenge).toDouble());
         ui->wdgAnlageKorrekturSollmenge->setVisible(ui->tbAnlageKorrekturSollmenge->value() > 0);
-        ui->tbAnlageSudhausausbeute->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
-        ui->tbAnlageVerdampfung->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble());
-        ui->tbAnlageVolumenMaische->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());
-        ui->tbVolumenMaische->setValue(bh->sud()->geterg_WHauptguss() + BierCalc::MalzVerdraengung * bh->sud()->geterg_S_Gesamt());
+        ui->tbAnlageSudhausausbeute->setValue(mSud->getAnlageData(ModelAusruestung::ColSudhausausbeute).toDouble());
+        ui->tbAnlageVerdampfung->setValue(mSud->getAnlageData(ModelAusruestung::ColVerdampfungsrate).toDouble());
+        ui->tbAnlageVolumenMaische->setValue(mSud->getAnlageData(ModelAusruestung::ColMaischebottich_MaxFuellvolumen).toDouble());
+        ui->tbVolumenMaische->setValue(mSud->geterg_WHauptguss() + BierCalc::MalzVerdraengung * mSud->geterg_S_Gesamt());
         ui->tbVolumenMaische->setError(ui->tbVolumenMaische->value() > ui->tbAnlageVolumenMaische->value());
-        ui->tbAnlageVolumenKochen->setValue(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_MaxFuellvolumen).toDouble());
-        ui->tbVolumenKochen->setValue(BierCalc::volumenWasser(20.0, 100.0, bh->sud()->getMengeSollKochbeginn()));
+        ui->tbAnlageVolumenKochen->setValue(mSud->getAnlageData(ModelAusruestung::ColSudpfanne_MaxFuellvolumen).toDouble());
+        ui->tbVolumenKochen->setValue(BierCalc::volumenWasser(20.0, 100.0, mSud->getMengeSollKochbeginn()));
         ui->tbVolumenKochen->setError(ui->tbVolumenKochen->value() > ui->tbAnlageVolumenKochen->value());
     }
 
     // ModuleWasseraufbereitung
     if (!ui->cbWasserProfil->hasFocus())
-        ui->cbWasserProfil->setCurrentIndex(ui->cbWasserProfil->findText(bh->sud()->getWasserprofil()));
+        ui->cbWasserProfil->setCurrentIndex(ui->cbWasserProfil->findText(mSud->getWasserprofil()));
     ui->cbWasserProfil->setError(ui->cbWasserProfil->currentIndex() == -1);
     diff = ui->tbRestalkalitaetSoll->value() - ui->tbRestalkalitaetIst->value();
     ui->tbRestalkalitaetIst->setError(enabled && qAbs(diff) > 0.05);
@@ -660,7 +672,7 @@ void TabRezept::updateValues()
     ui->wdgSWWZKochen->setVisible(ui->tbSWWZKochen->value() > 0.0);
     ui->wdgSWWZGaerung->setVisible(ui->tbSWWZGaerung->value() > 0.0);
     ui->wdgSWAnteilHefestarter->setVisible(ui->tbSWAnteilHefestarter->value() > 0.0);
-    fVal = bh->sud()->getIBU() / bh->sud()->getSW();
+    fVal = mSud->getIBU() / mSud->getSW();
     if (fVal <= 1)
         ui->lblBittere->setText(tr("sehr mild"));
     else if (fVal <= 1.5)
@@ -672,13 +684,13 @@ void TabRezept::updateValues()
     else
         ui->lblBittere->setText(tr("sehr herb"));
 
-    Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(bh->sud()->getAnlageData(ModelAusruestung::ColTyp).toInt());
-    ui->tbFaktorHauptgussEmpfehlung->setValue(BierCalc::hauptgussFaktor(bh->sud()->geterg_Farbe()));
+    Brauhelfer::AnlageTyp anlageTyp = static_cast<Brauhelfer::AnlageTyp>(mSud->getAnlageData(ModelAusruestung::ColTyp).toInt());
+    ui->tbFaktorHauptgussEmpfehlung->setValue(BierCalc::hauptgussFaktor(mSud->geterg_Farbe()));
     ui->wdgFaktorHauptguss->setVisible(anlageTyp != Brauhelfer::AnlageTyp::GrainfatherG30 && anlageTyp != Brauhelfer::AnlageTyp::BrauheldPro30);
-    ui->wdgWasserHGF->setVisible(bh->sud()->gethighGravityFaktor() != 0.0);
+    ui->wdgWasserHGF->setVisible(mSud->gethighGravityFaktor() != 0.0);
 
     ui->tbKochzeit->setError(ui->tbKochzeit->value() == 0.0);
-    Brauhelfer::BerechnungsartHopfen berechnungsArtHopfen = static_cast<Brauhelfer::BerechnungsartHopfen>(bh->sud()->getberechnungsArtHopfen());
+    Brauhelfer::BerechnungsartHopfen berechnungsArtHopfen = static_cast<Brauhelfer::BerechnungsartHopfen>(mSud->getberechnungsArtHopfen());
     if (!ui->cbBerechnungsartHopfen->hasFocus())
         ui->cbBerechnungsartHopfen->setCurrentIndex(static_cast<int>(berechnungsArtHopfen) + 1);
     switch (berechnungsArtHopfen)
@@ -704,7 +716,7 @@ void TabRezept::updateGlas()
 {
     QGraphicsScene* scene = new QGraphicsScene();
     QPen pen(Qt::white);
-    QBrush brush(BierCalc::ebcToColor(bh->sud()->geterg_Farbe()));
+    QBrush brush(BierCalc::ebcToColor(mSud->geterg_Farbe()));
     scene->addRect(10, 10, 980, 980, pen, brush);
     scene->addItem(mGlasSvg);
     ui->gvGlas->setScene(scene);
@@ -713,18 +725,18 @@ void TabRezept::updateGlas()
 
 void TabRezept::updateAnlageModel()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     if (status == Brauhelfer::SudStatus::Rezept)
     {
         ProxyModel *model = new ProxyModel(ui->cbAnlage);
-        model->setSourceModel(bh->modelAusruestung());
+        model->setSourceModel(mSud->bh()->modelAusruestung());
         ui->cbAnlage->setModel(model);
         ui->cbAnlage->setModelColumn(ModelAusruestung::ColName);
     }
     else
     {
         QStandardItemModel *model = new QStandardItemModel(ui->cbAnlage);
-        model->setItem(0, 0, new QStandardItem(bh->sud()->getAnlage()));
+        model->setItem(0, 0, new QStandardItem(mSud->getAnlage()));
         ui->cbAnlage->setModel(model);
         ui->cbAnlage->setModelColumn(0);
     }
@@ -733,18 +745,18 @@ void TabRezept::updateAnlageModel()
 
 void TabRezept::updateWasserModel()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     if (status == Brauhelfer::SudStatus::Rezept)
     {
         ProxyModel *model = new ProxyModel(ui->cbWasserProfil);
-        model->setSourceModel(bh->modelWasser());
+        model->setSourceModel(mSud->bh()->modelWasser());
         ui->cbWasserProfil->setModel(model);
         ui->cbWasserProfil->setModelColumn(ModelWasser::ColName);
     }
     else
     {
         QStandardItemModel *model = new QStandardItemModel(ui->cbWasserProfil);
-        model->setItem(0, 0, new QStandardItem(bh->sud()->getWasserprofil()));
+        model->setItem(0, 0, new QStandardItem(mSud->getWasserprofil()));
         ui->cbWasserProfil->setModel(model);
         ui->cbWasserProfil->setModelColumn(0);
     }
@@ -753,10 +765,10 @@ void TabRezept::updateWasserModel()
 
 void TabRezept::rasten_modified()
 {    
-    const int nModel = bh->sud()->modelMaischplan()->rowCount();
+    const int nModel = mSud->modelMaischplan()->rowCount();
     int nLayout = ui->layoutRasten->count();
     while (nLayout < nModel)
-        ui->layoutRasten->addWidget(new WdgRast(nLayout++, ui->layoutRasten, this));
+        ui->layoutRasten->addWidget(new WdgRast(mSud, nLayout++, ui->layoutRasten, this));
     while (ui->layoutRasten->count() != nModel)
         delete ui->layoutRasten->itemAt(ui->layoutRasten->count() - 1)->widget();
     for (int i = 0; i < ui->layoutRasten->count(); ++i)
@@ -766,7 +778,7 @@ void TabRezept::rasten_modified()
 
 void TabRezept::updateMaischplan()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     if (status == Brauhelfer::SudStatus::Rezept)
     {
         double pWasser = 100.0, pMalz = 100.0;
@@ -800,26 +812,26 @@ void TabRezept::updateMaischplan()
 
 void TabRezept::updateRastenDiagram()
 {
-    ui->diagramRasten->update();
-    ui->diagramRasten->setVisible(bh->sud()->modelMaischplan()->rowCount() > 0);
+    ui->diagramRasten->update(mSud);
+    ui->diagramRasten->setVisible(mSud->modelMaischplan()->rowCount() > 0);
 }
 
 void TabRezept::on_btnNeueRast_clicked()
 {
     QMap<int, QVariant> values;
-    if (bh->sud()->modelMaischplan()->rowCount() == 0)
+    if (mSud->modelMaischplan()->rowCount() == 0)
     {
-        values = {{ModelMaischplan::ColSudID, bh->sud()->id()},
+        values = {{ModelMaischplan::ColSudID, mSud->id()},
                   {ModelMaischplan::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Einmaischen)},
                   {ModelMaischplan::ColName, tr("Einmaischen")}};
     }
     else
     {
-        values = {{ModelMaischplan::ColSudID, bh->sud()->id()},
+        values = {{ModelMaischplan::ColSudID, mSud->id()},
                   {ModelMaischplan::ColTyp, static_cast<int>(Brauhelfer::RastTyp::Aufheizen)},
                   {ModelMaischplan::ColName, tr("Aufheizen")}};
     }
-    bh->sud()->modelMaischplan()->append(values);
+    mSud->modelMaischplan()->append(values);
     ui->scrollAreaRasten->verticalScrollBar()->setValue(ui->scrollAreaRasten->verticalScrollBar()->maximum());
 }
 
@@ -828,16 +840,16 @@ void TabRezept::on_btnRastenUebernehmen_clicked()
     DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Maischplan);
     if (dlg.exec() == QDialog::Accepted)
     {
-        bh->sudKopierenModel(bh->modelMaischplan(),
+        mSud->bh()->sudKopierenModel(mSud->bh()->modelMaischplan(),
                              ModelMaischplan::ColSudID, dlg.sudId(),
-                             {{ModelMaischplan::ColSudID, bh->sud()->id()}});
-        bh->sud()->modelMaischplan()->invalidate();
+                             {{ModelMaischplan::ColSudID, mSud->id()}});
+        mSud->modelMaischplan()->invalidate();
     }
 }
 
 void TabRezept::on_btnMaischplanAusgleichen_clicked()
 {
-    ProxyModel *model = bh->sud()->modelMaischplan();
+    ProxyModel *model = mSud->modelMaischplan();
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
         totalProzent += model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
@@ -853,14 +865,14 @@ void TabRezept::on_btnMaischplanAusgleichen_clicked()
 
 void TabRezept::on_btnMaischplanFaktorAnpassen_clicked()
 {
-    ProxyModel *model = bh->sud()->modelMaischplan();
+    ProxyModel *model = mSud->modelMaischplan();
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
         totalProzent += model->data(i, ModelMaischplan::ColAnteilWasser).toDouble();
     if (totalProzent > 0)
     {
         WidgetDecorator::suspendValueChangedClear = true;
-        bh->sud()->setFaktorHauptguss(totalProzent / 100.0 * bh->sud()->geterg_WHauptguss() / bh->sud()->geterg_S_Gesamt());
+        mSud->setFaktorHauptguss(totalProzent / 100.0 * mSud->geterg_WHauptguss() / mSud->geterg_S_Gesamt());
         double factor = 100.0 / totalProzent;
         for (int i = 0; i < model->rowCount(); ++i)
             model->setData(i, ModelMaischplan::ColAnteilWasser, model->data(i, ModelMaischplan::ColAnteilWasser).toDouble() * factor);
@@ -870,7 +882,7 @@ void TabRezept::on_btnMaischplanFaktorAnpassen_clicked()
 
 void TabRezept::on_btnMaischplanAusgleichenMalz_clicked()
 {
-    ProxyModel *model = bh->sud()->modelMaischplan();
+    ProxyModel *model = mSud->modelMaischplan();
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
         totalProzent += model->data(i, ModelMaischplan::ColAnteilMalz).toDouble();
@@ -933,10 +945,10 @@ void TabRezept::updateExtrakt()
 
 void TabRezept::malzGaben_modified()
 {
-    const int nModel = bh->sud()->modelMalzschuettung()->rowCount();
+    const int nModel = mSud->modelMalzschuettung()->rowCount();
     int nLayout = ui->layoutMalzGaben->count();
     while (nLayout < nModel)
-        ui->layoutMalzGaben->addWidget(new WdgMalzGabe(nLayout++, ui->layoutMalzGaben, this));
+        ui->layoutMalzGaben->addWidget(new WdgMalzGabe(mSud, nLayout++, ui->layoutMalzGaben, this));
     while (ui->layoutMalzGaben->count() != nModel)
         delete ui->layoutMalzGaben->itemAt(ui->layoutMalzGaben->count() - 1)->widget();
     for (int i = 0; i < ui->layoutMalzGaben->count(); ++i)
@@ -946,7 +958,7 @@ void TabRezept::malzGaben_modified()
 
 void TabRezept::updateMalzGaben()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     if (status == Brauhelfer::SudStatus::Rezept)
     {
         double p = 100.0;
@@ -975,8 +987,8 @@ void TabRezept::updateMalzGaben()
 
 void TabRezept::updateMalzDiagram()
 {
-    ui->diagramMalz->update();
-    ui->diagramMalz->setVisible(bh->sud()->modelMalzschuettung()->rowCount() > 0);
+    ui->diagramMalz->update(mSud);
+    ui->diagramMalz->setVisible(mSud->modelMalzschuettung()->rowCount() > 0);
 }
 
 void TabRezept::on_btnNeueMalzGabe_clicked()
@@ -992,10 +1004,10 @@ void TabRezept::on_btnNeueMalzGabe_clicked()
         }
         if (std::fabs(p) < 0.01)
             p = 0.0;
-        QMap<int, QVariant> values({{ModelMalzschuettung::ColSudID, bh->sud()->id()},
+        QMap<int, QVariant> values({{ModelMalzschuettung::ColSudID, mSud->id()},
                                     {ModelMalzschuettung::ColName, dlg.name()},
                                     {ModelMalzschuettung::ColProzent, p}});
-        bh->sud()->modelMalzschuettung()->append(values);
+        mSud->modelMalzschuettung()->append(values);
         ui->scrollAreaMalzGaben->verticalScrollBar()->setValue(ui->scrollAreaMalzGaben->verticalScrollBar()->maximum());
     }
 }
@@ -1005,10 +1017,10 @@ void TabRezept::on_btnMalzGabenUebernehmen_clicked()
     DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Malz);
     if (dlg.exec() == QDialog::Accepted)
     {
-        bh->sudKopierenModel(bh->modelMalzschuettung(),
+        mSud->bh()->sudKopierenModel(mSud->bh()->modelMalzschuettung(),
                              ModelMalzschuettung::ColSudID, dlg.sudId(),
-                             {{ModelMalzschuettung::ColSudID, bh->sud()->id()}});
-        bh->sud()->modelMalzschuettung()->invalidate();
+                             {{ModelMalzschuettung::ColSudID, mSud->id()}});
+        mSud->modelMalzschuettung()->invalidate();
     }
 }
 
@@ -1017,10 +1029,10 @@ void TabRezept::on_btnNeueZusatzGabeMaischen_clicked()
     DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Zusatz, this);
     if (dlg.exec() == QDialog::Accepted)
     {
-        QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+        QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, mSud->id()},
                                     {ModelWeitereZutatenGaben::ColName, dlg.name()},
                                     {ModelWeitereZutatenGaben::ColZeitpunkt, static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Maischen)}});
-        bh->sud()->modelWeitereZutatenGaben()->append(values);
+        mSud->modelWeitereZutatenGaben()->append(values);
         ui->scrollAreaMalzGaben->verticalScrollBar()->setValue(ui->scrollAreaMalzGaben->verticalScrollBar()->maximum());
     }
 }
@@ -1031,9 +1043,9 @@ void TabRezept::on_btnZusazGabenUebernehmenMaischen_clicked()
     if (dlg.exec() == QDialog::Accepted)
     {
         int sudId = dlg.sudId();
-        QMap<int, QVariant> overrideValues = {{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+        QMap<int, QVariant> overrideValues = {{ModelWeitereZutatenGaben::ColSudID, mSud->id()},
                                               {ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben)}};
-        SqlTableModel* model = bh->modelWeitereZutatenGaben();
+        SqlTableModel* model = mSud->bh()->modelWeitereZutatenGaben();
         int N = model->rowCount();
         for (int r = 0; r < N; ++r)
         {
@@ -1050,13 +1062,13 @@ void TabRezept::on_btnZusazGabenUebernehmenMaischen_clicked()
                 model->appendDirect(values);
             }
         }
-        bh->sud()->modelWeitereZutatenGaben()->invalidate();
+        mSud->modelWeitereZutatenGaben()->invalidate();
     }
 }
 
 void TabRezept::on_btnMalzAusgleichen_clicked()
 {
-    ProxyModel *model = bh->sud()->modelMalzschuettung();
+    ProxyModel *model = mSud->modelMalzschuettung();
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
         totalProzent += model->data(i, ModelMalzschuettung::ColProzent).toDouble();
@@ -1081,7 +1093,7 @@ void TabRezept::on_btnMalzAusgleichen_clicked()
 
 void TabRezept::on_btnShaAnpassen_clicked()
 {
-    ProxyModel *model = bh->sud()->modelMalzschuettung();
+    ProxyModel *model = mSud->modelMalzschuettung();
     double schuettung = 0;
     for (int i = 0; i < model->rowCount(); ++i)
         schuettung += model->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
@@ -1093,20 +1105,20 @@ void TabRezept::on_btnShaAnpassen_clicked()
             double menge = model->data(i, ModelMalzschuettung::Colerg_Menge).toDouble();
             model->setData(i, ModelMalzschuettung::ColProzent, menge / schuettung * 100);
         }
-        double sw = bh->sud()->getSWAnteilMalz();
-        double sw_dichte = sw + bh->sud()->getSWAnteilZusatzMaischen() + bh->sud()->getSWAnteilZusatzKochen();
-        double menge = bh->sud()->getMengeSollAnstellen();
-        bh->sud()->setSudhausausbeute(BierCalc::sudhausausbeute(sw, sw_dichte, menge, schuettung));
+        double sw = mSud->getSWAnteilMalz();
+        double sw_dichte = sw + mSud->getSWAnteilZusatzMaischen() + mSud->getSWAnteilZusatzKochen();
+        double menge = mSud->getMengeSollAnstellen();
+        mSud->setSudhausausbeute(BierCalc::sudhausausbeute(sw, sw_dichte, menge, schuettung));
         WidgetDecorator::suspendValueChangedClear = false;
     }
 }
 
 void TabRezept::hopfenGaben_modified()
 {
-    const int nModel = bh->sud()->modelHopfengaben()->rowCount();
+    const int nModel = mSud->modelHopfengaben()->rowCount();
     int nLayout = ui->layoutHopfenGaben->count();
     while (nLayout < nModel)
-        ui->layoutHopfenGaben->addWidget(new WdgHopfenGabe(nLayout++, ui->layoutHopfenGaben, this));
+        ui->layoutHopfenGaben->addWidget(new WdgHopfenGabe(mSud, nLayout++, ui->layoutHopfenGaben, this));
     while (ui->layoutHopfenGaben->count() != nModel)
         delete ui->layoutHopfenGaben->itemAt(ui->layoutHopfenGaben->count() - 1)->widget();
     for (int i = 0; i < ui->layoutHopfenGaben->count(); ++i)
@@ -1116,13 +1128,13 @@ void TabRezept::hopfenGaben_modified()
 
 void TabRezept::updateHopfenDiagram()
 {
-    ui->diagramHopfen->update();
-    ui->diagramHopfen->setVisible(bh->sud()->modelHopfengaben()->rowCount() > 0);
+    ui->diagramHopfen->update(mSud);
+    ui->diagramHopfen->setVisible(mSud->modelHopfengaben()->rowCount() > 0);
 }
 
 void TabRezept::updateHopfenGaben()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     if (status == Brauhelfer::SudStatus::Rezept)
     {
         double p = 100.0;
@@ -1161,11 +1173,11 @@ void TabRezept::on_btnNeueHopfenGabe_clicked()
         }
         if (std::fabs(p) < 0.01)
             p = 0.0;
-        QMap<int, QVariant> values({{ModelHopfengaben::ColSudID, bh->sud()->id()},
+        QMap<int, QVariant> values({{ModelHopfengaben::ColSudID, mSud->id()},
                                     {ModelHopfengaben::ColName, dlg.name()},
-                                    {ModelHopfengaben::ColZeit, bh->sud()->getKochdauer()},
+                                    {ModelHopfengaben::ColZeit, mSud->getKochdauer()},
                                     {ModelHopfengaben::ColProzent, p}});
-        bh->sud()->modelHopfengaben()->append(values);
+        mSud->modelHopfengaben()->append(values);
         ui->scrollAreaHopfenGaben->verticalScrollBar()->setValue(ui->scrollAreaHopfenGaben->verticalScrollBar()->maximum());
     }
 }
@@ -1175,10 +1187,10 @@ void TabRezept::on_btnHopfenGabenUebernehmen_clicked()
     DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Hopfen);
     if (dlg.exec() == QDialog::Accepted)
     {
-        bh->sudKopierenModel(bh->modelHopfengaben(),
+        mSud->bh()->sudKopierenModel(mSud->bh()->modelHopfengaben(),
                              ModelHopfengaben::ColSudID, dlg.sudId(),
-                             {{ModelHopfengaben::ColSudID, bh->sud()->id()}});
-        bh->sud()->modelHopfengaben()->invalidate();
+                             {{ModelHopfengaben::ColSudID, mSud->id()}});
+        mSud->modelHopfengaben()->invalidate();
     }
 }
 
@@ -1187,10 +1199,10 @@ void TabRezept::on_btnNeueZusatzGabeKochen_clicked()
     DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Zusatz, this);
     if (dlg.exec() == QDialog::Accepted)
     {
-        QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+        QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, mSud->id()},
                                     {ModelWeitereZutatenGaben::ColName, dlg.name()},
                                     {ModelWeitereZutatenGaben::ColZeitpunkt, static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Kochen)}});
-        bh->sud()->modelWeitereZutatenGaben()->append(values);
+        mSud->modelWeitereZutatenGaben()->append(values);
         ui->scrollAreaHopfenGaben->verticalScrollBar()->setValue(ui->scrollAreaHopfenGaben->verticalScrollBar()->maximum());
     }
 }
@@ -1201,9 +1213,9 @@ void TabRezept::on_btnZusazGabenUebernehmenKochen_clicked()
     if (dlg.exec() == QDialog::Accepted)
     {
         int sudId = dlg.sudId();
-        QMap<int, QVariant> overrideValues = {{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+        QMap<int, QVariant> overrideValues = {{ModelWeitereZutatenGaben::ColSudID, mSud->id()},
                                               {ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben)}};
-        SqlTableModel* model = bh->modelWeitereZutatenGaben();
+        SqlTableModel* model = mSud->bh()->modelWeitereZutatenGaben();
         int N = model->rowCount();
         for (int r = 0; r < N; ++r)
         {
@@ -1220,7 +1232,7 @@ void TabRezept::on_btnZusazGabenUebernehmenKochen_clicked()
                 model->appendDirect(values);
             }
         }
-        bh->sud()->modelWeitereZutatenGaben()->invalidate();
+        mSud->modelWeitereZutatenGaben()->invalidate();
     }
 }
 
@@ -1228,14 +1240,14 @@ void TabRezept::on_cbBerechnungsartHopfen_currentIndexChanged(int index)
 {
     if (ui->cbBerechnungsartHopfen->hasFocus())
     {
-        bh->sud()->setberechnungsArtHopfen(index - 1);
+        mSud->setberechnungsArtHopfen(index - 1);
         updateHopfenGaben();
     }
 }
 
 void TabRezept::on_btnHopfenAusgleichen_clicked()
 {
-    ProxyModel *model = bh->sud()->modelHopfengaben();
+    ProxyModel *model = mSud->modelHopfengaben();
     double totalProzent = 0;
     for (int i = 0; i < model->rowCount(); ++i)
         totalProzent += model->data(i, ModelHopfengaben::ColProzent).toDouble();
@@ -1260,10 +1272,10 @@ void TabRezept::on_btnHopfenAusgleichen_clicked()
 
 void TabRezept::hefeGaben_modified()
 {
-    const int nModel = bh->sud()->modelHefegaben()->rowCount();
+    const int nModel = mSud->modelHefegaben()->rowCount();
     int nLayout = ui->layoutHefeGaben->count();
     while (nLayout < nModel)
-        ui->layoutHefeGaben->addWidget(new WdgHefeGabe(nLayout++, ui->layoutHefeGaben, this));
+        ui->layoutHefeGaben->addWidget(new WdgHefeGabe(mSud, nLayout++, ui->layoutHefeGaben, this));
     while (ui->layoutHefeGaben->count() != nModel)
         delete ui->layoutHefeGaben->itemAt(ui->layoutHefeGaben->count() - 1)->widget();
     for (int i = 0; i < ui->layoutHefeGaben->count(); ++i)
@@ -1275,9 +1287,9 @@ void TabRezept::on_btnNeueHefeGabe_clicked()
     DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Hefe, this);
     if (dlg.exec() == QDialog::Accepted)
     {
-        QMap<int, QVariant> values({{ModelHefegaben::ColSudID, bh->sud()->id()},
+        QMap<int, QVariant> values({{ModelHefegaben::ColSudID, mSud->id()},
                                     {ModelHefegaben::ColName, dlg.name()}});
-        bh->sud()->modelHefegaben()->append(values);
+        mSud->modelHefegaben()->append(values);
         ui->scrollAreaHefeGaben->verticalScrollBar()->setValue(ui->scrollAreaHefeGaben->verticalScrollBar()->maximum());
         vergaerungsgradUebernehmen(dlg.name());
     }
@@ -1285,7 +1297,7 @@ void TabRezept::on_btnNeueHefeGabe_clicked()
 
 void TabRezept::vergaerungsgradUebernehmen(const QString& hefe)
 {
-    QString str = bh->modelHefe()->getValueFromSameRow(ModelHefe::ColName, hefe, ModelHefe::ColEVG).toString();
+    QString str = mSud->bh()->modelHefe()->getValueFromSameRow(ModelHefe::ColName, hefe, ModelHefe::ColEVG).toString();
     static QRegularExpression regxExp(QStringLiteral("[-+]?[0-9]*[.,]?[0-9]+"));
     QRegularExpressionMatchIterator i = regxExp.globalMatch(str);
     double mean = 0;
@@ -1304,7 +1316,7 @@ void TabRezept::vergaerungsgradUebernehmen(const QString& hefe)
         if (QMessageBox::question(this, tr("Vergärungsgrad übernehmen?"),
                                   tr("Soll der Vergärungsgrad der Hefe (%1%) übernommen werden?").arg(evg),
                                   QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes)
-            gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColVergaerungsgrad, evg));
+            gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColVergaerungsgrad, evg));
     }
 }
 
@@ -1313,11 +1325,11 @@ void TabRezept::on_btnHefeGabenUebernehmen_clicked()
     DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Hefe);
     if (dlg.exec() == QDialog::Accepted)
     {
-        bh->sudKopierenModel(bh->modelHefegaben(),
+        mSud->bh()->sudKopierenModel(mSud->bh()->modelHefegaben(),
                              ModelHefegaben::ColSudID, dlg.sudId(),
-                             {{ModelHefegaben::ColSudID, bh->sud()->id()},
+                             {{ModelHefegaben::ColSudID, mSud->id()},
                               {ModelHefegaben::ColZugegeben, false}});
-        bh->sud()->modelHefegaben()->invalidate();
+        mSud->modelHefegaben()->invalidate();
     }
 }
 
@@ -1326,11 +1338,11 @@ void TabRezept::on_btnNeueHopfenGabeGaerung_clicked()
     DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Hopfen, this);
     if (dlg.exec() == QDialog::Accepted)
     {
-        QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+        QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, mSud->id()},
                                     {ModelWeitereZutatenGaben::ColName, dlg.name()},
                                     {ModelWeitereZutatenGaben::ColTyp, static_cast<int>(Brauhelfer::ZusatzTyp::Hopfen)},
                                     {ModelWeitereZutatenGaben::ColZeitpunkt, static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung)}});
-        bh->sud()->modelWeitereZutatenGaben()->append(values);
+        mSud->modelWeitereZutatenGaben()->append(values);
         ui->scrollAreaHefeGaben->verticalScrollBar()->setValue(ui->scrollAreaHefeGaben->verticalScrollBar()->maximum());
     }
 }
@@ -1341,9 +1353,9 @@ void TabRezept::on_btnHopfenGabenUebernehmenGaerung_clicked()
     if (dlg.exec() == QDialog::Accepted)
     {
         int sudId = dlg.sudId();
-        QMap<int, QVariant> overrideValues = {{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+        QMap<int, QVariant> overrideValues = {{ModelWeitereZutatenGaben::ColSudID, mSud->id()},
                                               {ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben)}};
-        SqlTableModel* model = bh->modelWeitereZutatenGaben();
+        SqlTableModel* model = mSud->bh()->modelWeitereZutatenGaben();
         int N = model->rowCount();
         for (int r = 0; r < N; ++r)
         {
@@ -1361,7 +1373,7 @@ void TabRezept::on_btnHopfenGabenUebernehmenGaerung_clicked()
                 model->appendDirect(values);
             }
         }
-        bh->sud()->modelWeitereZutatenGaben()->invalidate();
+        mSud->modelWeitereZutatenGaben()->invalidate();
     }
 }
 
@@ -1370,10 +1382,10 @@ void TabRezept::on_btnNeueZusatzGabeGaerung_clicked()
     DlgRohstoffAuswahl dlg(Brauhelfer::RohstoffTyp::Zusatz, this);
     if (dlg.exec() == QDialog::Accepted)
     {
-        QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+        QMap<int, QVariant> values({{ModelWeitereZutatenGaben::ColSudID, mSud->id()},
                                     {ModelWeitereZutatenGaben::ColName, dlg.name()},
                                     {ModelWeitereZutatenGaben::ColZeitpunkt, static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung)}});
-        bh->sud()->modelWeitereZutatenGaben()->append(values);
+        mSud->modelWeitereZutatenGaben()->append(values);
         ui->scrollAreaHefeGaben->verticalScrollBar()->setValue(ui->scrollAreaHefeGaben->verticalScrollBar()->maximum());
     }
 }
@@ -1384,9 +1396,9 @@ void TabRezept::on_btnZusazGabenUebernehmenGaerung_clicked()
     if (dlg.exec() == QDialog::Accepted)
     {
         int sudId = dlg.sudId();
-        QMap<int, QVariant> overrideValues = {{ModelWeitereZutatenGaben::ColSudID, bh->sud()->id()},
+        QMap<int, QVariant> overrideValues = {{ModelWeitereZutatenGaben::ColSudID, mSud->id()},
                                               {ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben)}};
-        SqlTableModel* model = bh->modelWeitereZutatenGaben();
+        SqlTableModel* model = mSud->bh()->modelWeitereZutatenGaben();
         int N = model->rowCount();
         for (int r = 0; r < N; ++r)
         {
@@ -1404,7 +1416,7 @@ void TabRezept::on_btnZusazGabenUebernehmenGaerung_clicked()
                 model->appendDirect(values);
             }
         }
-        bh->sud()->modelWeitereZutatenGaben()->invalidate();
+        mSud->modelWeitereZutatenGaben()->invalidate();
     }
 }
 
@@ -1414,7 +1426,7 @@ void TabRezept::weitereZutatenGaben_modified()
     int nMaischen = 0;
     int nKochen = 0;
     int nGaerung = 0;
-    ProxyModel* model = bh->sud()->modelWeitereZutatenGaben();
+    ProxyModel* model = mSud->modelWeitereZutatenGaben();
     for (int row = 0; row < model->rowCount(); row++)
     {
         Brauhelfer::ZusatzZeitpunkt zeitpunkt = static_cast<Brauhelfer::ZusatzZeitpunkt>(model->data(row, ModelWeitereZutatenGaben::ColZeitpunkt).toInt());
@@ -1434,7 +1446,7 @@ void TabRezept::weitereZutatenGaben_modified()
 
     nLayout = ui->layoutZusaetzeMaischen->count();
     while (nLayout < nMaischen)
-        ui->layoutZusaetzeMaischen->addWidget(new WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt::Maischen, nLayout++, ui->layoutZusaetzeMaischen, this));
+        ui->layoutZusaetzeMaischen->addWidget(new WdgWeitereZutatGabe(mSud, Brauhelfer::ZusatzZeitpunkt::Maischen, nLayout++, ui->layoutZusaetzeMaischen, this));
     while (ui->layoutZusaetzeMaischen->count() != nMaischen)
         delete ui->layoutZusaetzeMaischen->itemAt(ui->layoutZusaetzeMaischen->count() - 1)->widget();
     for (int i = 0; i < ui->layoutZusaetzeMaischen->count(); ++i)
@@ -1442,7 +1454,7 @@ void TabRezept::weitereZutatenGaben_modified()
 
     nLayout = ui->layoutZusaetzeKochen->count();
     while (nLayout < nKochen)
-        ui->layoutZusaetzeKochen->addWidget(new WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt::Kochen, nLayout++, ui->layoutZusaetzeKochen, this));
+        ui->layoutZusaetzeKochen->addWidget(new WdgWeitereZutatGabe(mSud, Brauhelfer::ZusatzZeitpunkt::Kochen, nLayout++, ui->layoutZusaetzeKochen, this));
     while (ui->layoutZusaetzeKochen->count() != nKochen)
         delete ui->layoutZusaetzeKochen->itemAt(ui->layoutZusaetzeKochen->count() - 1)->widget();
     for (int i = 0; i < ui->layoutZusaetzeKochen->count(); ++i)
@@ -1450,13 +1462,13 @@ void TabRezept::weitereZutatenGaben_modified()
 
     nLayout = ui->layoutZusaetzeGaerung->count();
     while (nLayout < nGaerung)
-        ui->layoutZusaetzeGaerung->addWidget(new WdgWeitereZutatGabe(Brauhelfer::ZusatzZeitpunkt::Gaerung, nLayout++, ui->layoutZusaetzeGaerung, this));
+        ui->layoutZusaetzeGaerung->addWidget(new WdgWeitereZutatGabe(mSud, Brauhelfer::ZusatzZeitpunkt::Gaerung, nLayout++, ui->layoutZusaetzeGaerung, this));
     while (ui->layoutZusaetzeGaerung->count() != nGaerung)
         delete ui->layoutZusaetzeGaerung->itemAt(ui->layoutZusaetzeGaerung->count() - 1)->widget();
     for (int i = 0; i < ui->layoutZusaetzeGaerung->count(); ++i)
         static_cast<WdgWeitereZutatGabe*>(ui->layoutZusaetzeGaerung->itemAt(i)->widget())->updateValues();
 
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     if (status == Brauhelfer::SudStatus::Rezept)
     {
         updateExtrakt();
@@ -1465,10 +1477,10 @@ void TabRezept::weitereZutatenGaben_modified()
 
 void TabRezept::wasseraufbereitung_modified()
 {
-    const int nModel = bh->sud()->modelWasseraufbereitung()->rowCount();
+    const int nModel = mSud->modelWasseraufbereitung()->rowCount();
     int nLayout = ui->layoutWasseraufbereitung->count();
     while (nLayout < nModel)
-        ui->layoutWasseraufbereitung->addWidget(new WdgWasseraufbereitung(nLayout++, ui->layoutWasseraufbereitung, this));
+        ui->layoutWasseraufbereitung->addWidget(new WdgWasseraufbereitung(mSud, nLayout++, ui->layoutWasseraufbereitung, this));
     while (ui->layoutWasseraufbereitung->count() != nModel)
         delete ui->layoutWasseraufbereitung->itemAt(ui->layoutWasseraufbereitung->count() - 1)->widget();
     for (int i = 0; i < ui->layoutWasseraufbereitung->count(); ++i)
@@ -1480,13 +1492,13 @@ void TabRezept::on_btnNeueWasseraufbereitung_clicked()
     DlgWasseraufbereitung dlg(this);
     if (dlg.exec() == QDialog::Accepted)
     {
-        double ra = bh->sud()->getRestalkalitaetSoll() - bh->sud()->getRestalkalitaetIst();
-        QMap<int, QVariant> values({{ModelWasseraufbereitung::ColSudID, bh->sud()->id()},
+        double ra = mSud->getRestalkalitaetSoll() - mSud->getRestalkalitaetIst();
+        QMap<int, QVariant> values({{ModelWasseraufbereitung::ColSudID, mSud->id()},
                                     {ModelWasseraufbereitung::ColName, dlg.name()},
                                     {ModelWasseraufbereitung::ColEinheit, dlg.einheit()},
                                     {ModelWasseraufbereitung::ColFaktor, dlg.faktor()},
                                     {ModelWasseraufbereitung::ColRestalkalitaet, ra}});
-        bh->sud()->modelWasseraufbereitung()->append(values);
+        mSud->modelWasseraufbereitung()->append(values);
         ui->scrollAreaWasseraufbereitung->verticalScrollBar()->setValue(ui->scrollAreaWasseraufbereitung->verticalScrollBar()->maximum());
     }
 }
@@ -1496,19 +1508,19 @@ void TabRezept::on_btnWasseraufbereitungUebernehmen_clicked()
     DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Wasseraufbereitung);
     if (dlg.exec() == QDialog::Accepted)
     {
-        bh->sudKopierenModel(bh->modelWasseraufbereitung(),
+        mSud->bh()->sudKopierenModel(mSud->bh()->modelWasseraufbereitung(),
                              ModelWasseraufbereitung::ColSudID, dlg.sudId(),
-                             {{ModelWasseraufbereitung::ColSudID, bh->sud()->id()}});
-        bh->sud()->modelWasseraufbereitung()->invalidate();
+                             {{ModelWasseraufbereitung::ColSudID, mSud->id()}});
+        mSud->modelWasseraufbereitung()->invalidate();
     }
 }
 
 void TabRezept::anhaenge_modified()
 {
-    const int nModel = bh->sud()->modelAnhang()->rowCount();
+    const int nModel = mSud->modelAnhang()->rowCount();
     int nLayout = ui->layoutAnhang->count();
     while (nLayout < nModel)
-        ui->layoutAnhang->addWidget(new WdgAnhang(nLayout++));
+        ui->layoutAnhang->addWidget(new WdgAnhang(mSud, nLayout++));
     while (ui->layoutAnhang->count() != nModel)
         delete ui->layoutAnhang->itemAt(ui->layoutAnhang->count() - 1)->widget();
     for (int i = 0; i < ui->layoutAnhang->count(); ++i)
@@ -1517,8 +1529,8 @@ void TabRezept::anhaenge_modified()
 
 void TabRezept::on_btnNeuerAnhang_clicked()
 {
-    QMap<int, QVariant> values({{ModelAnhang::ColSudID, bh->sud()->id()}});
-    int index = bh->sud()->modelAnhang()->append(values);
+    QMap<int, QVariant> values({{ModelAnhang::ColSudID, mSud->id()}});
+    int index = mSud->modelAnhang()->append(values);
     static_cast<WdgAnhang*>(ui->layoutAnhang->itemAt(index)->widget())->openDialog();
     ui->scrollAreaAnhang->verticalScrollBar()->setValue(ui->scrollAreaAnhang->verticalScrollBar()->maximum());
 }
@@ -1526,20 +1538,20 @@ void TabRezept::on_btnNeuerAnhang_clicked()
 void TabRezept::on_tbSudname_textChanged(const QString &value)
 {
     if (ui->tbSudname->hasFocus())
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSudname, value));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColSudname, value));
 }
 
 void TabRezept::on_cbKategorie_currentTextChanged(const QString &value)
 {
     if (ui->cbKategorie->hasFocus())
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColKategorie, value));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColKategorie, value));
 }
 
 void TabRezept::on_btnKategorienVerwalten_clicked()
 {
     QList<TableView::ColumnDefinition> colums = {{ModelKategorien::ColName, true, false, 100, new TextDelegate(false, Qt::AlignCenter, this)},
                                                  {ModelKategorien::ColBemerkung, true, false, -1, nullptr}};
-    DlgTableView dlg(bh->modelKategorien(), colums, {{ModelKategorien::ColName, tr("Kategorie")}}, ModelKategorien::ColName, this);
+    DlgTableView dlg(mSud->bh()->modelKategorien(), colums, {{ModelKategorien::ColName, tr("Kategorie")}}, ModelKategorien::ColName, this);
     dlg.setWindowTitle(tr("Sudkategorien verwalten"));
     dlg.exec();
 }
@@ -1547,43 +1559,43 @@ void TabRezept::on_btnKategorienVerwalten_clicked()
 void TabRezept::on_cbAnlage_currentTextChanged(const QString &value)
 {
     if (ui->cbAnlage->hasFocus())
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAnlage, value));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColAnlage, value));
 }
 
 void TabRezept::on_btnSudhausausbeute_clicked()
 {
     WidgetDecorator::suspendValueChangedClear = true;
-    QVariant value = bh->sud()->getAnlageData(ModelAusruestung::ColSudhausausbeute);
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSudhausausbeute, value));
+    QVariant value = mSud->getAnlageData(ModelAusruestung::ColSudhausausbeute);
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColSudhausausbeute, value));
     WidgetDecorator::suspendValueChangedClear = false;
 }
 
 void TabRezept::on_btnVerdampfungsrate_clicked()
 {
     WidgetDecorator::suspendValueChangedClear = true;
-    QVariant value = bh->sud()->getAnlageData(ModelAusruestung::ColVerdampfungsrate);
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColVerdampfungsrate, value));
+    QVariant value = mSud->getAnlageData(ModelAusruestung::ColVerdampfungsrate);
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColVerdampfungsrate, value));
     WidgetDecorator::suspendValueChangedClear = false;
 }
 
 void TabRezept::on_cbWasserProfil_currentTextChanged(const QString &value)
 {
     if (ui->cbWasserProfil->hasFocus())
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColWasserprofil, value));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColWasserprofil, value));
 }
 
 void TabRezept::on_btnWasserProfil_clicked()
 {
     DlgWasserprofile dlg(this);
-    dlg.select(bh->sud()->getWasserprofil());
+    dlg.select(mSud->getWasserprofil());
     dlg.exec();
 }
 
 void TabRezept::on_btnTagNeu_clicked()
 {
-    QMap<int, QVariant> values({{ModelTags::ColSudID, bh->sud()->id()},
+    QMap<int, QVariant> values({{ModelTags::ColSudID, mSud->id()},
                                 {ModelTags::ColKey, tr("Neuer Tag")}});
-    ProxyModel *model = bh->sud()->modelTags();
+    ProxyModel *model = mSud->modelTags();
     int row = model->append(values);
     if (row >= 0)
     {
@@ -1599,16 +1611,16 @@ void TabRezept::on_btnTagUebernehmen_clicked()
     DlgUebernahmeRezept dlg(DlgUebernahmeRezept::Tags);
     if (dlg.exec() == QDialog::Accepted)
     {
-        bh->sudKopierenModel(bh->modelTags(),
+        mSud->bh()->sudKopierenModel(mSud->bh()->modelTags(),
                              ModelTags::ColSudID, dlg.sudId(),
-                             {{ModelTags::ColSudID, bh->sud()->id()}});
-        bh->sud()->modelTags()->invalidate();
+                             {{ModelTags::ColSudID, mSud->id()}});
+        mSud->modelTags()->invalidate();
     }
 }
 
 void TabRezept::on_btnTagLoeschen_clicked()
 {
-    ProxyModel *model = bh->sud()->modelTags();
+    ProxyModel *model = mSud->modelTags();
     QModelIndexList indices = ui->tableTags->selectionModel()->selectedIndexes();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
     for (const QModelIndex& index : qAsConst(indices))

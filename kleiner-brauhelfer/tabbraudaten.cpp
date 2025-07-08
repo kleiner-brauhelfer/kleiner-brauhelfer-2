@@ -11,43 +11,55 @@
 #include "widgets/widgetdecorator.h"
 #include "commands/undostack.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabBraudaten::TabBraudaten(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TabBraudaten)
+    ui(new Ui::TabBraudaten),
+    mSud(nullptr)
 {
     ui->setupUi(this);
-    ui->tbSWKochbeginn->setColumn(ModelSud::ColSWKochbeginn);
-    ui->tbWuerzemengeKochbeginn->setColumn(ModelSud::ColWuerzemengeKochbeginn);
-    ui->tbWuerzemengeVorHopfenseihen->setColumn(ModelSud::ColWuerzemengeVorHopfenseihen);
-    ui->tbWuerzemengeKochende->setColumn(ModelSud::ColWuerzemengeKochende);
-    ui->tbSWKochende->setColumn(ModelSud::ColSWKochende);
-    ui->tbSWAnstellen->setColumn(ModelSud::ColSWAnstellen);
-    ui->tbVerduennung->setColumn(ModelSud::ColVerduennungAnstellen);
-    ui->tbWuerzemengeAnstellen->setColumn(ModelSud::ColWuerzemengeAnstellen);
-    ui->tbSpeisemenge->setColumn(ModelSud::ColSpeisemenge);
-    ui->tbWuerzemengeAnstellenTotal->setColumn(ModelSud::ColWuerzemengeAnstellenTotal);
-    ui->tbMengeSollKochbeginn20->setColumn(ModelSud::ColMengeSollKochbeginn);
-    ui->tbSWSollKochbeginn->setColumn(ModelSud::ColSWSollKochbeginn);
-    ui->tbSWSollKochbeginnMitWz->setColumn(ModelSud::ColSWSollKochbeginnMitWz);
-    ui->tbMengeSollKochende20->setColumn(ModelSud::ColMengeSollKochende);
-    ui->tbSWSollKochende->setColumn(ModelSud::ColSWSollKochende);
-    ui->tbVerdampfung->setColumn(ModelSud::ColVerdampfungsrateIst);
-    ui->tbAusbeute->setColumn(ModelSud::Colerg_Sudhausausbeute);
-    ui->tbAusbeuteEffektiv->setColumn(ModelSud::Colerg_EffektiveAusbeute);
-    ui->tbVerdampfungRezept->setColumn(ModelSud::ColVerdampfungsrate);
-    ui->tbAusbeuteRezept->setColumn(ModelSud::ColSudhausausbeute);
-    ui->tbSWAnstellenSoll->setColumn(ModelSud::ColSWSollAnstellen);
-    ui->tbMengeHefestarter->setColumn(ModelSud::ColMengeHefestarter);
-    ui->tbSWHefestarter->setColumn(ModelSud::ColSWHefestarter);
-    ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
-    ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
+}
+
+TabBraudaten::~TabBraudaten()
+{
+    delete ui;
+}
+
+void TabBraudaten::setup(SudObject *sud)
+{
+    mSud = sud;
+
+    ui->tbSWKochbeginn->setColumn(mSud, ModelSud::ColSWKochbeginn);
+    ui->tbWuerzemengeKochbeginn->setColumn(mSud, ModelSud::ColWuerzemengeKochbeginn);
+    ui->tbWuerzemengeVorHopfenseihen->setColumn(mSud, ModelSud::ColWuerzemengeVorHopfenseihen);
+    ui->tbWuerzemengeKochende->setColumn(mSud, ModelSud::ColWuerzemengeKochende);
+    ui->tbSWKochende->setColumn(mSud, ModelSud::ColSWKochende);
+    ui->tbSWAnstellen->setColumn(mSud, ModelSud::ColSWAnstellen);
+    ui->tbVerduennung->setColumn(mSud, ModelSud::ColVerduennungAnstellen);
+    ui->tbWuerzemengeAnstellen->setColumn(mSud, ModelSud::ColWuerzemengeAnstellen);
+    ui->tbSpeisemenge->setColumn(mSud, ModelSud::ColSpeisemenge);
+    ui->tbWuerzemengeAnstellenTotal->setColumn(mSud, ModelSud::ColWuerzemengeAnstellenTotal);
+    ui->tbMengeSollKochbeginn20->setColumn(mSud, ModelSud::ColMengeSollKochbeginn);
+    ui->tbSWSollKochbeginn->setColumn(mSud, ModelSud::ColSWSollKochbeginn);
+    ui->tbSWSollKochbeginnMitWz->setColumn(mSud, ModelSud::ColSWSollKochbeginnMitWz);
+    ui->tbMengeSollKochende20->setColumn(mSud, ModelSud::ColMengeSollKochende);
+    ui->tbSWSollKochende->setColumn(mSud, ModelSud::ColSWSollKochende);
+    ui->tbVerdampfung->setColumn(mSud, ModelSud::ColVerdampfungsrateIst);
+    ui->tbAusbeute->setColumn(mSud, ModelSud::Colerg_Sudhausausbeute);
+    ui->tbAusbeuteEffektiv->setColumn(mSud, ModelSud::Colerg_EffektiveAusbeute);
+    ui->tbVerdampfungRezept->setColumn(mSud, ModelSud::ColVerdampfungsrate);
+    ui->tbAusbeuteRezept->setColumn(mSud, ModelSud::ColSudhausausbeute);
+    ui->tbSWAnstellenSoll->setColumn(mSud, ModelSud::ColSWSollAnstellen);
+    ui->tbMengeHefestarter->setColumn(mSud, ModelSud::ColMengeHefestarter);
+    ui->tbSWHefestarter->setColumn(mSud, ModelSud::ColSWHefestarter);
+    ui->tbKosten->setColumn(mSud, ModelSud::Colerg_Preis);
+    ui->tbNebenkosten->setColumn(mSud, ModelSud::ColKostenWasserStrom);
     ui->lblNebenkostenEinheit->setText(QLocale().currencySymbol());
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
     ui->lblDurchschnittWarnung->setPalette(gSettings->paletteErrorLabel);
 
+    ui->wdgBemerkung->setSudObject(mSud);
     ui->wdgBemerkung->setPlaceholderText(tr("Bemerkung Braudaten"));
 
     gSettings->beginGroup("TabBraudaten");
@@ -62,17 +74,12 @@ TabBraudaten::TabBraudaten(QWidget *parent) :
 
     gSettings->endGroup();
 
-    connect(bh, &Brauhelfer::modified, this, &TabBraudaten::updateValues);
-    connect(bh, &Brauhelfer::discarded, this, &TabBraudaten::sudLoaded);
-    connect(bh->sud(), &SudObject::loadedChanged, this, &TabBraudaten::sudLoaded);
-    connect(bh->sud(), &SudObject::dataChanged, this, &TabBraudaten::sudDataChanged);
+    connect(mSud->bh(), &Brauhelfer::modified, this, &TabBraudaten::updateValues);
+    connect(mSud->bh(), &Brauhelfer::discarded, this, &TabBraudaten::sudLoaded);
+    connect(mSud, &SudObject::loadedChanged, this, &TabBraudaten::sudLoaded);
+    connect(mSud, &SudObject::dataChanged, this, &TabBraudaten::sudDataChanged);
 
-    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungBrauen, html));});
-}
-
-TabBraudaten::~TabBraudaten()
-{
-    delete ui;
+    connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBemerkungBrauen, html));});
 }
 
 void TabBraudaten::saveSettings()
@@ -131,7 +138,7 @@ void TabBraudaten::modulesChanged(Settings::Modules modules)
                           ui->lineKosten,
                           ui->lineKosten2});
     }
-    if (bh->sud()->isLoaded())
+    if (mSud->isLoaded())
     {
         checkEnabled();
         updateValues();
@@ -142,8 +149,8 @@ void TabBraudaten::sudLoaded()
 {
     checkEnabled();
     updateValues();
-    ui->tbSpeiseSRE->setValue(bh->sud()->getSRESoll());
-    ui->wdgBemerkung->setHtml(bh->sud()->getBemerkungBrauen());
+    ui->tbSpeiseSRE->setValue(mSud->getSRESoll());
+    ui->wdgBemerkung->setHtml(mSud->getBemerkungBrauen());
 }
 
 void TabBraudaten::sudDataChanged(const QModelIndex& index)
@@ -155,10 +162,10 @@ void TabBraudaten::sudDataChanged(const QModelIndex& index)
         break;
     case ModelSud::ColSW:
     case ModelSud::ColVergaerungsgrad:
-        ui->tbSpeiseSRE->setValue(bh->sud()->getSRESoll());
+        ui->tbSpeiseSRE->setValue(mSud->getSRESoll());
         break;
     case ModelSud::ColBemerkungBrauen:
-        ui->wdgBemerkung->setHtml(bh->sud()->getBemerkungBrauen());
+        ui->wdgBemerkung->setHtml(mSud->getBemerkungBrauen());
         break;
     }
 }
@@ -171,7 +178,7 @@ void TabBraudaten::showEvent(QShowEvent *event)
 
 void TabBraudaten::checkEnabled()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     bool gebraut = status != Brauhelfer::SudStatus::Rezept && !gSettings->ForceEnabled;
     ui->tbBraudatum->setReadOnly(gebraut);
     ui->tbBraudatumZeit->setReadOnly(gebraut);
@@ -226,44 +233,44 @@ void TabBraudaten::updateValues()
 
     double value;
 
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
 
-    QDateTime dt = bh->sud()->getBraudatum();
+    QDateTime dt = mSud->getBraudatum();
     ui->tbBraudatum->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
     ui->tbBraudatumZeit->setTime(dt.isValid() ? dt.time() : QDateTime::currentDateTime().time());
 
-    ui->tbHopfenseihenVerlust->setValue(bh->sud()->getWuerzemengeVorHopfenseihen() - bh->sud()->getWuerzemengeKochende());
+    ui->tbHopfenseihenVerlust->setValue(mSud->getWuerzemengeVorHopfenseihen() - mSud->getWuerzemengeKochende());
 
     if (!ui->tbSWHefestarterBrix->hasFocus())
-        ui->tbSWHefestarterBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWHefestarter()));
+        ui->tbSWHefestarterBrix->setValue(BierCalc::platoToBrix(mSud->getSWHefestarter()));
     if (!ui->tbWasserVerschneidungBrix->hasFocus())
         ui->tbWasserVerschneidungBrix->setValue(BierCalc::platoToBrix(ui->tbWasserVerschneidungSW->value()));
-    value = BierCalc::verschneidung(bh->sud()->getSWAnstellen(),
-                                    bh->sud()->getSWSollAnstellen(),
+    value = BierCalc::verschneidung(mSud->getSWAnstellen(),
+                                    mSud->getSWSollAnstellen(),
                                     ui->tbWasserVerschneidungSW->value(),
-                                    bh->sud()->getWuerzemengeAnstellenTotal());
+                                    mSud->getWuerzemengeAnstellenTotal());
     ui->tbWasserVerschneidung->setValue(value);
     ui->btnVerduennung->setVisible(status == Brauhelfer::SudStatus::Rezept && value > 0);
 
     // ModuleSpeise
     if (gSettings->isModuleEnabled(Settings::ModuleSpeise))
     {
-        value = BierCalc::speise(bh->sud()->getCO2(),
-                                 bh->sud()->getSWAnstellen(),
+        value = BierCalc::speise(mSud->getCO2(),
+                                 mSud->getSWAnstellen(),
                                  ui->tbSpeiseSRE->value(),
                                  ui->tbSpeiseSRE->value(),
                                  ui->tbSpeiseT->value());
-        ui->tbSpeisemengeNoetig->setValue(value * bh->sud()->getWuerzemengeAnstellenTotal()/(1+value));
+        ui->tbSpeisemengeNoetig->setValue(value * mSud->getWuerzemengeAnstellenTotal()/(1+value));
         ui->btnSpeisemengeNoetig->setVisible(status == Brauhelfer::SudStatus::Rezept && qAbs(ui->tbSpeisemenge->value() - ui->tbSpeisemengeNoetig->value()) > 0.25);
     }
 
-    double mengeSollKochbeginn100 = BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), bh->sud()->getMengeSollKochbeginn());
+    double mengeSollKochbeginn100 = BierCalc::volumenWasser(20.0, ui->tbTempKochbeginn->value(), mSud->getMengeSollKochbeginn());
     ui->tbMengeSollKochbeginn100->setValue(mengeSollKochbeginn100);
-    double mengeSollKochende100 = BierCalc::volumenWasser(20.0, ui->tbTempKochende->value(), bh->sud()->getMengeSollKochende());
+    double mengeSollKochende100 = BierCalc::volumenWasser(20.0, ui->tbTempKochende->value(), mSud->getMengeSollKochende());
     ui->tbMengeSollKochende100->setValue(mengeSollKochende100);
 
     // ModuleAusruestung
-    ui->cbDurchschnittIgnorieren->setChecked(bh->sud()->getAusbeuteIgnorieren());
+    ui->cbDurchschnittIgnorieren->setChecked(mSud->getAusbeuteIgnorieren());
     if (ui->cbDurchschnittIgnorieren->isChecked() || !gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
         ui->lblDurchschnittWarnung->setVisible(false);
@@ -271,48 +278,48 @@ void TabBraudaten::updateValues()
     else
     {
         double h;
-        double d = pow(bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
+        double d = pow(mSud->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble() / 2, 2) * M_PI / 1000;
         ui->tbMengeSollcmVomBoden->setValue(mengeSollKochbeginn100 / d);
-        h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+        h = mSud->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
         ui->tbMengeSollcmVonOben->setValue(h - mengeSollKochbeginn100 / d);
         ui->tbMengeSollEndecmVomBoden->setValue(mengeSollKochende100 / d);
-        h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+        h = mSud->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
         ui->tbMengeSollEndecmVonOben->setValue(h - mengeSollKochende100 / d);
-        ui->lblDurchschnittWarnung->setVisible(bh->sud()->getSWAnteilZusatzMaischen() > 0 || bh->sud()->getSWAnteilZusatzKochen() > 0);
+        ui->lblDurchschnittWarnung->setVisible(mSud->getSWAnteilZusatzMaischen() > 0 || mSud->getSWAnteilZusatzKochen() > 0);
     }
 
-    ui->wdgSWSollKochbeginnMitWz->setVisible(bh->sud()->getSWAnteilZusatzKochen() > 0.0);
-    ui->tbSWSollKochbeginnBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginn()));
-    ui->tbSWSollKochbeginnMitWzBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochbeginnMitWz()));
-    ui->tbSWSollKochendeBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollKochende()));
-    ui->tbSWAnstellenSollBrix->setValue(BierCalc::platoToBrix(bh->sud()->getSWSollAnstellen()));
+    ui->wdgSWSollKochbeginnMitWz->setVisible(mSud->getSWAnteilZusatzKochen() > 0.0);
+    ui->tbSWSollKochbeginnBrix->setValue(BierCalc::platoToBrix(mSud->getSWSollKochbeginn()));
+    ui->tbSWSollKochbeginnMitWzBrix->setValue(BierCalc::platoToBrix(mSud->getSWSollKochbeginnMitWz()));
+    ui->tbSWSollKochendeBrix->setValue(BierCalc::platoToBrix(mSud->getSWSollKochende()));
+    ui->tbSWAnstellenSollBrix->setValue(BierCalc::platoToBrix(mSud->getSWSollAnstellen()));
 
-    ui->chartBraudaten->update();
-    ui->chartAusbeute->update();
+    ui->chartBraudaten->update(mSud);
+    ui->chartAusbeute->update(mSud);
 }
 
 void TabBraudaten::on_tbBraudatum_dateChanged(const QDate &date)
 {
     if (ui->tbBraudatum->hasFocus())
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, QDateTime(date, ui->tbBraudatumZeit->time())));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBraudatum, QDateTime(date, ui->tbBraudatumZeit->time())));
 }
 
 void TabBraudaten::on_tbBraudatumZeit_timeChanged(const QTime &time)
 {
     if (ui->tbBraudatumZeit->hasFocus())
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, QDateTime(ui->tbBraudatum->date(), time)));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBraudatum, QDateTime(ui->tbBraudatum->date(), time)));
 }
 
 void TabBraudaten::on_btnBraudatumHeute_clicked()
 {
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, QDateTime()));
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBraudatum, QDateTime()));
 }
 
 void TabBraudaten::on_btnSWKochbeginn_clicked()
 {
-    DlgRestextrakt dlg(bh->sud()->getSWKochbeginn());
+    DlgRestextrakt dlg(mSud->getSWKochbeginn());
     if (dlg.exec() == QDialog::Accepted)
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWKochbeginn, dlg.value()));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColSWKochbeginn, dlg.value()));
 }
 
 void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
@@ -320,13 +327,13 @@ void TabBraudaten::on_btnWuerzemengeKochbeginn_clicked()
     double d = 0, h = 0;
     if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
-        d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
-        h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+        d = mSud->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
+        h = mSud->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
     }
     DlgVolumen dlg(d, h, this);
     dlg.setValue(ui->tbWuerzemengeKochbeginn->value());
     if (dlg.exec() == QDialog::Accepted)
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColWuerzemengeKochbeginn, dlg.value()));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColWuerzemengeKochbeginn, dlg.value()));
 }
 
 void TabBraudaten::on_tbTempKochbeginn_valueChanged(double)
@@ -340,13 +347,13 @@ void TabBraudaten::on_btnWuerzemengeVorHopfenseihen_clicked()
     double d = 0, h = 0;
     if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
-        d = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
-        h = bh->sud()->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
+        d = mSud->getAnlageData(ModelAusruestung::ColSudpfanne_Durchmesser).toDouble();
+        h = mSud->getAnlageData(ModelAusruestung::ColSudpfanne_Hoehe).toDouble();
     }
     DlgVolumen dlg(d, h, this);
     dlg.setValue(ui->tbWuerzemengeVorHopfenseihen->value());
     if (dlg.exec() == QDialog::Accepted)
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColWuerzemengeVorHopfenseihen, dlg.value()));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColWuerzemengeVorHopfenseihen, dlg.value()));
 }
 
 void TabBraudaten::on_btnWuerzemengeKochende_clicked()
@@ -354,7 +361,7 @@ void TabBraudaten::on_btnWuerzemengeKochende_clicked()
     DlgVolumen dlg(this);
     dlg.setValue(ui->tbWuerzemengeKochende->value());
     if (dlg.exec() == QDialog::Accepted)
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColWuerzemengeKochende, dlg.value()));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColWuerzemengeKochende, dlg.value()));
 }
 
 void TabBraudaten::on_tbTempKochende_valueChanged(double)
@@ -365,32 +372,32 @@ void TabBraudaten::on_tbTempKochende_valueChanged(double)
 
 void TabBraudaten::on_btnSWKochende_clicked()
 {
-    DlgRestextrakt dlg(bh->sud()->getSWKochende());
+    DlgRestextrakt dlg(mSud->getSWKochende());
     if (dlg.exec() == QDialog::Accepted)
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWKochende, dlg.value()));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColSWKochende, dlg.value()));
 }
 
 void TabBraudaten::on_btnSWAnstellen_clicked()
 {
-    DlgRestextrakt dlg(bh->sud()->getSWAnstellen());
+    DlgRestextrakt dlg(mSud->getSWAnstellen());
     if (dlg.exec() == QDialog::Accepted)
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWAnstellen, dlg.value()));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColSWAnstellen, dlg.value()));
 }
 
 void TabBraudaten::on_btnWuerzemengeAnstellenTotal_clicked()
 {
     DlgVolumen dlg(this);
-    dlg.setValue(bh->sud()->getWuerzemengeAnstellenTotal());
+    dlg.setValue(mSud->getWuerzemengeAnstellenTotal());
     if (dlg.exec() == QDialog::Accepted)
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColWuerzemengeAnstellenTotal, dlg.value()));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColWuerzemengeAnstellenTotal, dlg.value()));
 }
 
 void TabBraudaten::on_btnWuerzemengeAnstellen_clicked()
 {
     DlgVolumen dlg(this);
-    dlg.setValue(bh->sud()->getWuerzemengeAnstellen());
+    dlg.setValue(mSud->getWuerzemengeAnstellen());
     if (dlg.exec() == QDialog::Accepted)
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColWuerzemengeAnstellen, dlg.value()));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColWuerzemengeAnstellen, dlg.value()));
 }
 
 void TabBraudaten::on_tbSpeiseSRE_valueChanged(double)
@@ -414,7 +421,7 @@ void TabBraudaten::on_tbWasserVerschneidungSW_valueChanged(double)
 void TabBraudaten::on_tbSWHefestarterBrix_valueChanged(double value)
 {
     if (ui->tbSWHefestarterBrix->hasFocus())
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWHefestarter, BierCalc::brixToPlato(value)));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColSWHefestarter, BierCalc::brixToPlato(value)));
 }
 
 void TabBraudaten::on_tbWasserVerschneidungBrix_valueChanged(double value)
@@ -430,8 +437,8 @@ void TabBraudaten::on_btnVerduennung_clicked()
 {
     WidgetDecorator::suspendValueChangedClear = true;
     gUndoStack->beginMacro(QStringLiteral("macro"));
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColVerduennungAnstellen, ui->tbWasserVerschneidung->value()));
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWAnstellen, ui->tbSWAnstellenSoll->value()));
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColVerduennungAnstellen, ui->tbWasserVerschneidung->value()));
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColSWAnstellen, ui->tbSWAnstellenSoll->value()));
     gUndoStack->endMacro();
     WidgetDecorator::suspendValueChangedClear = false;
 }
@@ -439,18 +446,18 @@ void TabBraudaten::on_btnVerduennung_clicked()
 void TabBraudaten::on_btnSpeisemengeNoetig_clicked()
 {
     WidgetDecorator::suspendValueChangedClear = true;
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSpeisemenge, ui->tbSpeisemengeNoetig->value()));
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColSpeisemenge, ui->tbSpeisemengeNoetig->value()));
     WidgetDecorator::suspendValueChangedClear = false;
 }
 
 void TabBraudaten::on_cbDurchschnittIgnorieren_clicked(bool checked)
 {
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAusbeuteIgnorieren, checked));
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColAusbeuteIgnorieren, checked));
 }
 
 void TabBraudaten::on_btnSudGebraut_clicked()
 {
-    QDateTime dt = bh->sud()->getBraudatum();
+    QDateTime dt = mSud->getBraudatum();
     if (!dt.isValid())
         dt = QDateTime::currentDateTime();
     QString dtStr = QLocale().toString(dt, QLocale::ShortFormat);
@@ -459,30 +466,30 @@ void TabBraudaten::on_btnSudGebraut_clicked()
                               QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
     {
         gUndoStack->beginMacro(QStringLiteral("macro"));
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBraudatum, dt));
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Gebraut)));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBraudatum, dt));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Gebraut)));
         gUndoStack->endMacro();
 
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
-            DlgRohstoffeAbziehen dlg(true, this);
+            DlgRohstoffeAbziehen dlg(mSud, true, this);
             dlg.exec();
         }
 
-        if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 0)
+        if (mSud->modelSchnellgaerverlauf()->rowCount() == 0)
         {
-            QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, bh->sud()->id()},
-                                        {ModelSchnellgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
-                                        {ModelSchnellgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
-            bh->sud()->modelSchnellgaerverlauf()->append(values);
+            QMap<int, QVariant> values({{ModelSchnellgaerverlauf::ColSudID, mSud->id()},
+                                        {ModelSchnellgaerverlauf::ColZeitstempel, mSud->getBraudatum()},
+                                        {ModelSchnellgaerverlauf::ColRestextrakt, mSud->getSWIst()}});
+            mSud->modelSchnellgaerverlauf()->append(values);
         }
 
-        if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 0)
+        if (mSud->modelHauptgaerverlauf()->rowCount() == 0)
         {
-            QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, bh->sud()->id()},
-                                        {ModelHauptgaerverlauf::ColZeitstempel, bh->sud()->getBraudatum()},
-                                        {ModelHauptgaerverlauf::ColRestextrakt, bh->sud()->getSWIst()}});
-            bh->sud()->modelHauptgaerverlauf()->append(values);
+            QMap<int, QVariant> values({{ModelHauptgaerverlauf::ColSudID, mSud->id()},
+                                        {ModelHauptgaerverlauf::ColZeitstempel, mSud->getBraudatum()},
+                                        {ModelHauptgaerverlauf::ColRestextrakt, mSud->getSWIst()}});
+            mSud->modelHauptgaerverlauf()->append(values);
         }
     }
 }
@@ -493,16 +500,16 @@ void TabBraudaten::on_btnSudGebrautReset_clicked()
                               tr("Soll das Stadium \"gebraut\" zurückgesetzt werden?"),
                               QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
     {
-        bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Rezept));
-        if (bh->sud()->modelSchnellgaerverlauf()->rowCount() == 1)
-            bh->sud()->modelSchnellgaerverlauf()->removeRow(0);
-        if (bh->sud()->modelHauptgaerverlauf()->rowCount() == 1)
-            bh->sud()->modelHauptgaerverlauf()->removeRow(0);
-        if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
-            bh->sud()->modelNachgaerverlauf()->removeRow(0);
+        mSud->setStatus(static_cast<int>(Brauhelfer::SudStatus::Rezept));
+        if (mSud->modelSchnellgaerverlauf()->rowCount() == 1)
+            mSud->modelSchnellgaerverlauf()->removeRow(0);
+        if (mSud->modelHauptgaerverlauf()->rowCount() == 1)
+            mSud->modelHauptgaerverlauf()->removeRow(0);
+        if (mSud->modelNachgaerverlauf()->rowCount() == 1)
+            mSud->modelNachgaerverlauf()->removeRow(0);
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
         {
-            DlgRohstoffeAbziehen dlg(false, this);
+            DlgRohstoffeAbziehen dlg(mSud, false, this);
             dlg.exec();
         }
     }

@@ -18,20 +18,23 @@ QWidget* RestextraktDelegate::createEditor(QWidget *parent, const QStyleOptionVi
     Q_UNUSED(option)
     if (mReadonly)
         return nullptr;
+    QVariant sudId;
     QDateTime dt;
     double T;
-    double re = index.data().toDouble();
-    double sw = bh->sud()->getSWIst();
     if (mHauptgaerung)
     {
+        sudId = index.sibling(index.row(), ModelHauptgaerverlauf::ColSudID).data();
         dt = index.sibling(index.row(), ModelHauptgaerverlauf::ColZeitstempel).data().toDateTime();
         T = index.sibling(index.row(), ModelHauptgaerverlauf::ColTemp).data().toDouble();
     }
     else
     {
+        sudId = index.sibling(index.row(), ModelSchnellgaerverlauf::ColSudID).data();
         dt = index.sibling(index.row(), ModelSchnellgaerverlauf::ColZeitstempel).data().toDateTime();
         T = index.sibling(index.row(), ModelSchnellgaerverlauf::ColTemp).data().toDouble();
     }
+    double re = index.data().toDouble();
+    double sw = bh->modelSud()->dataSud(sudId, ModelSud::ColSWIst).toDouble();
     DlgRestextrakt* w = new DlgRestextrakt(re, sw, T, dt, parent);
     return w;
 }

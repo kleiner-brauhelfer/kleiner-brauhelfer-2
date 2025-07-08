@@ -8,37 +8,50 @@
 #include "dialogs/dlgrestextrakt.h"
 #include "commands/undostack.h"
 
-extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 TabAbfuellen::TabAbfuellen(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TabAbfuellen)
+    ui(new Ui::TabAbfuellen),
+    mSud(nullptr)
 {
     ui->setupUi(this);
-    ui->tbReifezeit->setColumn(ModelSud::ColWoche);
-    ui->tbSWSchnellgaerprobe->setColumn(ModelSud::ColSWSchnellgaerprobe);
-    ui->tbSWJungbier->setColumn(ModelSud::ColSWJungbier);
-    ui->tbSWJungbierSoll->setColumn(ModelSud::ColSREErwartet);
-    ui->tbBiermengeAbfuellen->setColumn(ModelSud::Colerg_AbgefuellteBiermenge);
-    ui->tbJungbiermengeAbfuellen->setColumn(ModelSud::ColJungbiermengeAbfuellen);
-    ui->tbSpeisemengeAbgefuellt->setColumn(ModelSud::ColSpeisemenge);
-    ui->tbTemperaturJungbier->setColumn(ModelSud::ColTemperaturJungbier);
-    ui->tbNebenkosten->setColumn(ModelSud::ColKostenWasserStrom);
-    ui->tbSw->setColumn(ModelSud::ColSWIst);
-    ui->tbEVG->setColumn(ModelSud::ColsEVG);
-    ui->tbEVGRezept->setColumn(ModelSud::ColVergaerungsgrad);
-    ui->tbGruenschlauchzeitpunkt->setColumn(ModelSud::ColGruenschlauchzeitpunkt);
-    ui->tbAlkohol->setColumn(ModelSud::Colerg_Alkohol);
-    ui->tbAlkoholRezept->setColumn(ModelSud::ColAlkoholSoll);
-    ui->tbSpundungsdruck->setColumn(ModelSud::ColSpundungsdruck);
-    ui->tbTemperaturKarbonisierung->setColumn(ModelSud::ColTemperaturKarbonisierung);
-    ui->tbWassserZuckerloesung->setColumn(ModelSud::ColVerschneidungAbfuellen);
-    ui->tbKosten->setColumn(ModelSud::Colerg_Preis);
+}
+
+TabAbfuellen::~TabAbfuellen()
+{
+    delete ui;
+}
+
+void TabAbfuellen::setup(SudObject *sud)
+{
+    mSud = sud;
+
+    ui->tbReifezeit->setColumn(mSud, ModelSud::ColWoche);
+    ui->tbSWSchnellgaerprobe->setColumn(mSud, ModelSud::ColSWSchnellgaerprobe);
+    ui->tbSWJungbier->setColumn(mSud, ModelSud::ColSWJungbier);
+    ui->tbSWJungbierSoll->setColumn(mSud, ModelSud::ColSREErwartet);
+    ui->tbBiermengeAbfuellen->setColumn(mSud, ModelSud::Colerg_AbgefuellteBiermenge);
+    ui->tbJungbiermengeAbfuellen->setColumn(mSud, ModelSud::ColJungbiermengeAbfuellen);
+    ui->tbSpeisemengeAbgefuellt->setColumn(mSud, ModelSud::ColSpeisemenge);
+    ui->tbTemperaturJungbier->setColumn(mSud, ModelSud::ColTemperaturJungbier);
+    ui->tbNebenkosten->setColumn(mSud, ModelSud::ColKostenWasserStrom);
+    ui->tbSw->setColumn(mSud, ModelSud::ColSWIst);
+    ui->tbEVG->setColumn(mSud, ModelSud::ColsEVG);
+    ui->tbEVGRezept->setColumn(mSud, ModelSud::ColVergaerungsgrad);
+    ui->tbGruenschlauchzeitpunkt->setColumn(mSud, ModelSud::ColGruenschlauchzeitpunkt);
+    ui->tbAlkohol->setColumn(mSud, ModelSud::Colerg_Alkohol);
+    ui->tbAlkoholRezept->setColumn(mSud, ModelSud::ColAlkoholSoll);
+    ui->tbSpundungsdruck->setColumn(mSud, ModelSud::ColSpundungsdruck);
+    ui->tbTemperaturKarbonisierung->setColumn(mSud, ModelSud::ColTemperaturKarbonisierung);
+    ui->tbWassserZuckerloesung->setColumn(mSud, ModelSud::ColVerschneidungAbfuellen);
+    ui->tbKosten->setColumn(mSud, ModelSud::Colerg_Preis);
     ui->lblNebenkostenEinheit->setText(QLocale().currencySymbol());
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
 
+    ui->wdgBemerkungAbfuellen->setSudObject(mSud);
     ui->wdgBemerkungAbfuellen->setPlaceholderText(tr("Bemerkung Abfüllen"));
+    ui->wdgBemerkungGaerung->setSudObject(mSud);
     ui->wdgBemerkungGaerung->setPlaceholderText(tr("Bemerkung Gärung & Reifung"));
 
     gSettings->beginGroup("TabAbfuellen");
@@ -56,18 +69,13 @@ TabAbfuellen::TabAbfuellen(QWidget *parent) :
 
     gSettings->endGroup();
 
-    connect(bh, &Brauhelfer::modified, this, &TabAbfuellen::updateValues);
-    connect(bh, &Brauhelfer::discarded, this, &TabAbfuellen::sudLoaded);
-    connect(bh->sud(), &SudObject::loadedChanged, this, &TabAbfuellen::sudLoaded);
-    connect(bh->sud(), &SudObject::dataChanged, this, &TabAbfuellen::sudDataChanged);
+    connect(mSud->bh(), &Brauhelfer::modified, this, &TabAbfuellen::updateValues);
+    connect(mSud->bh(), &Brauhelfer::discarded, this, &TabAbfuellen::sudLoaded);
+    connect(mSud, &SudObject::loadedChanged, this, &TabAbfuellen::sudLoaded);
+    connect(mSud, &SudObject::dataChanged, this, &TabAbfuellen::sudDataChanged);
 
-    connect(ui->wdgBemerkungAbfuellen, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungAbfuellen, html));});
-    connect(ui->wdgBemerkungGaerung, &WdgBemerkung::changed, this, [](const QString& html){gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColBemerkungGaerung, html));});
-}
-
-TabAbfuellen::~TabAbfuellen()
-{
-    delete ui;
+    connect(ui->wdgBemerkungAbfuellen, &WdgBemerkung::changed, this, [this](const QString& html){gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBemerkungAbfuellen, html));});
+    connect(ui->wdgBemerkungGaerung, &WdgBemerkung::changed, this, [this](const QString& html){gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBemerkungGaerung, html));});
 }
 
 void TabAbfuellen::saveSettings()
@@ -119,7 +127,7 @@ void TabAbfuellen::modulesChanged(Settings::Modules modules)
         gSettings->setVisibleModule(Settings::ModuleSchnellgaerprobe,
                          {ui->cbSchnellgaerprobeAktiv});
     }
-    if (bh->sud()->isLoaded())
+    if (mSud->isLoaded())
     {
         checkEnabled();
         updateValues();
@@ -130,8 +138,8 @@ void TabAbfuellen::sudLoaded()
 {
     checkEnabled();
     updateValues();
-    ui->wdgBemerkungAbfuellen->setHtml(bh->sud()->getBemerkungAbfuellen());
-    ui->wdgBemerkungGaerung->setHtml(bh->sud()->getBemerkungGaerung());
+    ui->wdgBemerkungAbfuellen->setHtml(mSud->getBemerkungAbfuellen());
+    ui->wdgBemerkungGaerung->setHtml(mSud->getBemerkungGaerung());
 }
 
 void TabAbfuellen::sudDataChanged(const QModelIndex& index)
@@ -142,10 +150,10 @@ void TabAbfuellen::sudDataChanged(const QModelIndex& index)
         checkEnabled();
         break;
     case ModelSud::ColBemerkungAbfuellen:
-        ui->wdgBemerkungAbfuellen->setHtml(bh->sud()->getBemerkungAbfuellen());
+        ui->wdgBemerkungAbfuellen->setHtml(mSud->getBemerkungAbfuellen());
         break;
     case ModelSud::ColBemerkungGaerung:
-        ui->wdgBemerkungGaerung->setHtml(bh->sud()->getBemerkungGaerung());
+        ui->wdgBemerkungGaerung->setHtml(mSud->getBemerkungGaerung());
         break;
     }
 }
@@ -158,7 +166,7 @@ void TabAbfuellen::showEvent(QShowEvent *event)
 
 void TabAbfuellen::checkEnabled()
 {
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(bh->sud()->getStatus());
+    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     bool abgefuellt = status >= Brauhelfer::SudStatus::Abgefuellt && !gSettings->ForceEnabled;
     bool verbraucht = status >= Brauhelfer::SudStatus::Verbraucht && !gSettings->ForceEnabled;
     ui->tbAbfuelldatum->setReadOnly(abgefuellt);
@@ -200,34 +208,34 @@ void TabAbfuellen::updateValues()
     for (auto& wdg : findChildren<SpinBoxSud*>())
         wdg->updateValue();
 
-    QDateTime dt = bh->sud()->getAbfuelldatum();
-    ui->tbAbfuelldatum->setMinimumDate(bh->sud()->getBraudatum().date());
+    QDateTime dt = mSud->getAbfuelldatum();
+    ui->tbAbfuelldatum->setMinimumDate(mSud->getBraudatum().date());
     ui->tbAbfuelldatum->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
     ui->tbAbfuelldatumZeit->setTime(dt.isValid() ? dt.time() : QDateTime::currentDateTime().time());
-    ui->tbDauerHauptgaerung->setValue((int)bh->sud()->getBraudatum().daysTo(ui->tbAbfuelldatum->dateTime()));
-    dt = bh->sud()->getReifungStart();
+    ui->tbDauerHauptgaerung->setValue((int)mSud->getBraudatum().daysTo(ui->tbAbfuelldatum->dateTime()));
+    dt = mSud->getReifungStart();
     ui->tbReifung->setMinimumDate(ui->tbAbfuelldatum->date());
     ui->tbReifung->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
 
-    ui->cbSchnellgaerprobeAktiv->setChecked(bh->sud()->getSchnellgaerprobeAktiv() && gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
+    ui->cbSchnellgaerprobeAktiv->setChecked(mSud->getSchnellgaerprobeAktiv() && gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
     ui->tbSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblSWSchnellgaerprobeEinheit->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->btnSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->tbGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblGruenschlauchzeitpunkt->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
     ui->lblGruenschlauchzeitpunktEinheit->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
-    ui->tbAlkoholGaerung->setValue(BierCalc::alkohol(bh->sud()->getSWIst(), bh->sud()->getSREIst()));
+    ui->tbAlkoholGaerung->setValue(BierCalc::alkohol(mSud->getSWIst(), mSud->getSREIst()));
 
-    ui->cbSpunden->setChecked(bh->sud()->getSpunden());
-    ui->tbJungbierVerlust->setValue(bh->sud()->getWuerzemengeAnstellen() - bh->sud()->getJungbiermengeAbfuellen());
+    ui->cbSpunden->setChecked(mSud->getSpunden());
+    ui->tbJungbierVerlust->setValue(mSud->getWuerzemengeAnstellen() - mSud->getJungbiermengeAbfuellen());
 
     ui->groupKarbonisierung->setVisible(!ui->cbSpunden->isChecked());
-    double flascheFaktor = ui->tbFlaschengroesse->value() / bh->sud()->getJungbiermengeAbfuellen();
+    double flascheFaktor = ui->tbFlaschengroesse->value() / mSud->getJungbiermengeAbfuellen();
 
     // ModuleSpeise
     if (gSettings->isModuleEnabled(Settings::ModuleSpeise))
     {
-        ui->tbSpeisemengeGesamt->setValue((int)bh->sud()->getSpeiseAnteil());
+        ui->tbSpeisemengeGesamt->setValue((int)mSud->getSpeiseAnteil());
         ui->tbSpeisemengeGesamt->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
         ui->lblSpeisemengeGesamt->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
         ui->lblSpeisemengeGesamtEinheit->setVisible(ui->tbSpeisemengeGesamt->value() > 0.0);
@@ -237,9 +245,9 @@ void TabAbfuellen::updateValues()
         ui->lblSpeisemengeFlascheEinheit->setVisible(ui->tbSpeisemengeFlasche->value() > 0.0);
     }
 
-    ui->tbZuckerGesamt->setValue((int)(bh->sud()->getZuckerAnteil() / ui->tbZuckerFaktor->value()));
+    ui->tbZuckerGesamt->setValue((int)(mSud->getZuckerAnteil() / ui->tbZuckerFaktor->value()));
     ui->tbZuckerFlasche->setValue(ui->tbZuckerGesamt->value() * flascheFaktor);
-    ui->tbFlaschen->setValue(bh->sud()->geterg_AbgefuellteBiermenge() / ui->tbFlaschengroesse->value());
+    ui->tbFlaschen->setValue(mSud->geterg_AbgefuellteBiermenge() / ui->tbFlaschengroesse->value());
     ui->tbKonzentrationZuckerloesung->setValue(ui->tbZuckerGesamt->value() / ui->tbWassserZuckerloesung->value());
     bool hasZucker = ui->tbZuckerGesamt->value() > 0.0;
     ui->tbZuckerGesamt->setVisible(hasZucker);
@@ -258,55 +266,55 @@ void TabAbfuellen::updateValues()
     ui->tbKonzentrationZuckerloesung->setVisible(hasZuckerLoesung);
     ui->tbKonzentrationZuckerloesungEinheit->setVisible(hasZuckerLoesung);
 
-    ui->chartAbfuelldaten->update();
-    ui->chartRestextrakt->update();
+    ui->chartAbfuelldaten->update(mSud);
+    ui->chartRestextrakt->update(mSud);
 }
 
 void TabAbfuellen::on_tbAbfuelldatum_dateChanged(const QDate &date)
 {
     if (ui->tbAbfuelldatum->hasFocus())
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAbfuelldatum, QDateTime(date, ui->tbAbfuelldatumZeit->time())));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColAbfuelldatum, QDateTime(date, ui->tbAbfuelldatumZeit->time())));
 }
 
 void TabAbfuellen::on_tbAbfuelldatumZeit_timeChanged(const QTime &time)
 {
     if (ui->tbAbfuelldatumZeit->hasFocus())
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAbfuelldatum, QDateTime(ui->tbAbfuelldatum->date(), time)));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColAbfuelldatum, QDateTime(ui->tbAbfuelldatum->date(), time)));
 }
 
 void TabAbfuellen::on_btnAbfuelldatumHeute_clicked()
 {
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAbfuelldatum, QDateTime()));
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColAbfuelldatum, QDateTime()));
 }
 
 void TabAbfuellen::on_tbReifung_dateChanged(const QDate &date)
 {
     if (ui->tbReifung->hasFocus())
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColReifungStart, QDateTime(date, QTime())));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColReifungStart, QDateTime(date, QTime())));
 }
 
 void TabAbfuellen::on_btnReifungHeute_clicked()
 {
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColReifungStart, QDateTime()));
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColReifungStart, QDateTime()));
 }
 
 void TabAbfuellen::on_cbSchnellgaerprobeAktiv_clicked(bool checked)
 {
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSchnellgaerprobeAktiv, checked));
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColSchnellgaerprobeAktiv, checked));
 }
 
 void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
 {
     DlgRestextrakt dlg(ui->tbSWSchnellgaerprobe->value(),
-                       bh->sud()->getSWIst(),
+                       mSud->getSWIst(),
                        ui->tbTemperaturJungbier->value(),
                        QDateTime(),
                        this);
     if (dlg.exec() == QDialog::Accepted)
     {
         gUndoStack->beginMacro(QStringLiteral("macro"));
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColTemperaturJungbier, dlg.temperatur()));
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWSchnellgaerprobe, dlg.value()));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColTemperaturJungbier, dlg.temperatur()));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColSWSchnellgaerprobe, dlg.value()));
         gUndoStack->endMacro();
     }
 }
@@ -314,22 +322,22 @@ void TabAbfuellen::on_btnSWSchnellgaerprobe_clicked()
 void TabAbfuellen::on_btnSWJungbier_clicked()
 {
     DlgRestextrakt dlg(ui->tbSWJungbier->value(),
-                       bh->sud()->getSWIst(),
+                       mSud->getSWIst(),
                        ui->tbTemperaturJungbier->value(),
                        QDateTime(),
                        this);
     if (dlg.exec() == QDialog::Accepted)
     {
         gUndoStack->beginMacro(QStringLiteral("macro"));
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColTemperaturJungbier, dlg.temperatur()));
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSWJungbier, dlg.value()));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColTemperaturJungbier, dlg.temperatur()));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColSWJungbier, dlg.value()));
         gUndoStack->endMacro();
     }
 }
 
 void TabAbfuellen::on_cbSpunden_clicked(bool checked)
 {
-    gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColSpunden, checked));
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColSpunden, checked));
 }
 
 void TabAbfuellen::on_tbZuckerFaktor_valueChanged(double)
@@ -346,7 +354,7 @@ void TabAbfuellen::on_tbFlaschengroesse_valueChanged(double)
 
 void TabAbfuellen::on_btnSudAbgefuellt_clicked()
 {
-    if (!bh->sud()->getAbfuellenBereitZutaten())
+    if (!mSud->getAbfuellenBereitZutaten())
     {
         if (QMessageBox::warning(this, tr("Zutaten Gärung"),
                                  tr("Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.")
@@ -355,9 +363,9 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
             return;
     }
 
-    if (bh->sud()->getSchnellgaerprobeAktiv())
+    if (mSud->getSchnellgaerprobeAktiv())
     {
-        if (bh->sud()->getSWJungbier() > bh->sud()->getGruenschlauchzeitpunkt())
+        if (mSud->getSWJungbier() > mSud->getGruenschlauchzeitpunkt())
         {
             if (QMessageBox::warning(this, tr("Grünschlauchzeitpunkt nicht erreicht"),
                                      tr("Der Grünschlauchzeitpunkt wurde noch nicht erreicht.")
@@ -365,7 +373,7 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
                                      QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Cancel)
                 return;
         }
-        else if (bh->sud()->getSWJungbier() < bh->sud()->getSWSchnellgaerprobe())
+        else if (mSud->getSWJungbier() < mSud->getSWSchnellgaerprobe())
         {
             if (QMessageBox::warning(this, tr("Schnellgärprobe"),
                                      tr("Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe.")
@@ -375,7 +383,7 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
         }
     }
 
-    QDateTime dt = bh->sud()->getAbfuelldatum();
+    QDateTime dt = mSud->getAbfuelldatum();
     if (!dt.isValid())
         dt = QDateTime::currentDateTime();
     QString dtStr = QLocale().toString(dt, QLocale::ShortFormat);
@@ -384,20 +392,20 @@ void TabAbfuellen::on_btnSudAbgefuellt_clicked()
                               QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
     {
         gUndoStack->beginMacro(QStringLiteral("macro"));
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColAbfuelldatum, dt));
-        QDateTime dtReifung = bh->sud()->getReifungStart();
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColAbfuelldatum, dt));
+        QDateTime dtReifung = mSud->getReifungStart();
         if (!dtReifung.isValid())
             dtReifung = QDateTime::currentDateTime();
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColReifungStart, dtReifung));
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Abgefuellt)));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColReifungStart, dtReifung));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Abgefuellt)));
         gUndoStack->endMacro();
 
-        QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, bh->sud()->id()},
-                                    {ModelNachgaerverlauf::ColZeitstempel, bh->sud()->getAbfuelldatum()},
+        QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, mSud->id()},
+                                    {ModelNachgaerverlauf::ColZeitstempel, mSud->getAbfuelldatum()},
                                     {ModelNachgaerverlauf::ColDruck, 0.0},
-                                    {ModelNachgaerverlauf::ColTemp, bh->sud()->getTemperaturJungbier()}});
-        if (bh->sud()->modelNachgaerverlauf()->rowCount() == 0)
-            bh->sud()->modelNachgaerverlauf()->append(values);
+                                    {ModelNachgaerverlauf::ColTemp, mSud->getTemperaturJungbier()}});
+        if (mSud->modelNachgaerverlauf()->rowCount() == 0)
+            mSud->modelNachgaerverlauf()->append(values);
     }
 }
 
@@ -407,9 +415,9 @@ void TabAbfuellen::on_btnSudAbgefuelltReset_clicked()
                               tr("Soll das Stadium \"abgefüllt\" zurückgesetzt werden?"),
                               QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
     {
-        bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
-        if (bh->sud()->modelNachgaerverlauf()->rowCount() == 1)
-            bh->sud()->modelNachgaerverlauf()->removeRow(0);
+        mSud->setStatus(static_cast<int>(Brauhelfer::SudStatus::Gebraut));
+        if (mSud->modelNachgaerverlauf()->rowCount() == 1)
+            mSud->modelNachgaerverlauf()->removeRow(0);
     }
 }
 
@@ -419,7 +427,7 @@ void TabAbfuellen::on_btnSudVerbraucht_clicked()
                               tr("Soll das Stadium auf \"ausgetrunken\" gesetzt werden?"),
                               QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
     {
-        gUndoStack->push(new SetModelDataCommand(bh->modelSud(), bh->sud()->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Verbraucht)));
+        gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColStatus, static_cast<int>(Brauhelfer::SudStatus::Verbraucht)));
     }
 }
 
@@ -429,6 +437,6 @@ void TabAbfuellen::on_btnSudVerbrauchtReset_clicked()
                               tr("Soll das Stadium \"ausgetrunken\" zurückgesetzt werden?"),
                               QMessageBox::Yes | QMessageBox::Cancel) == QMessageBox::Yes)
     {
-        bh->sud()->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
+        mSud->setStatus(static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
     }
 }

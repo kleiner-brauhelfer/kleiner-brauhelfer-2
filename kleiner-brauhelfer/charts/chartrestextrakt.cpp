@@ -1,7 +1,5 @@
 #include "chartrestextrakt.h"
-#include "brauhelfer.h"
-
-extern Brauhelfer* bh;
+#include "sudobject.h"
 
 ChartRestextrakt::ChartRestextrakt(QWidget *parent) :
     ChartBase(parent)
@@ -38,19 +36,19 @@ ChartRestextrakt::ChartRestextrakt(QWidget *parent) :
     textLabel4->setColor(Qt::white);
 }
 
-void ChartRestextrakt::update()
+void ChartRestextrakt::update(const SudObject* sud)
 {
     QLocale locale = QLocale();
 
     double val1 = 0;
-    double val2 = bh->sud()->getSWJungbier();
-    double val3 = bh->sud()->getSREErwartet();
-    double val4 = bh->sud()->getSRESoll();
+    double val2 = sud->getSWJungbier();
+    double val3 = sud->getSREErwartet();
+    double val4 = sud->getSRESoll();
 
-    if (bh->sud()->getSchnellgaerprobeAktiv())
+    if (sud->getSchnellgaerprobeAktiv())
     {
         xAxis->setRange(0, 5);
-        val1 = bh->sud()->getSWSchnellgaerprobe();
+        val1 = sud->getSWSchnellgaerprobe();
         textLabel1->position->setCoords(1, val1/2);
         textLabel1->setText(locale.toString(val1, 'f', 1) + " °P");
         textLabel1->setVisible(true);

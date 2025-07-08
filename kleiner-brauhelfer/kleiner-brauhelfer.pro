@@ -102,6 +102,7 @@ SOURCES += \
     model/sudnamedelegate.cpp \
     model/sudwochedelegate.cpp \
     model/spinboxdelegate.cpp \
+    model/tagglobaldelegate.cpp \
     model/textdelegate.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
@@ -199,6 +200,7 @@ HEADERS += \
     model/sudnamedelegate.h \
     model/sudwochedelegate.h \
     model/spinboxdelegate.h \
+    model/tagglobaldelegate.h \
     model/textdelegate.h \
     widgets/combobox.h \
     widgets/dateedit.h \

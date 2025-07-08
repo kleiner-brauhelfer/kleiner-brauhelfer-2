@@ -6,6 +6,8 @@
 #include "settings.h"
 #include "brauhelfer.h"
 
+class SudObject;
+
 namespace Ui {
 class TabRezept;
 }
@@ -17,6 +19,7 @@ class TabRezept : public QWidget
 public:
     explicit TabRezept(QWidget *parent = nullptr);
     virtual ~TabRezept() Q_DECL_OVERRIDE;
+    void setup(SudObject *sud);
     void saveSettings();
     void restoreView();
     void modulesChanged(Settings::Modules modules);
@@ -99,6 +102,7 @@ private:
 
 private:
     Ui::TabRezept *ui;
+    SudObject *mSud;
     QGraphicsItem *mGlasSvg;
     QByteArray mDefaultSplitterState;
     QByteArray mDefaultSplitterMaischenState;

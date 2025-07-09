@@ -22,6 +22,9 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
+     <property name="childrenCollapsible">
+      <bool>false</bool>
+     </property>
      <widget class="QSplitter" name="splitterSude">
       <property name="orientation">
        <enum>Qt::Vertical</enum>

@@ -46,6 +46,9 @@
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
+         <property name="childrenCollapsible">
+          <bool>false</bool>
+         </property>
          <widget class="Chart3" name="widget_DiaSchnellgaerverlauf" native="true">
           <property name="minimumSize">
            <size>
@@ -180,6 +183,9 @@
         <widget class="QSplitter" name="splitterHauptgaerung">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
+         </property>
+         <property name="childrenCollapsible">
+          <bool>false</bool>
          </property>
          <widget class="Chart3" name="widget_DiaHauptgaerverlauf" native="true">
           <property name="minimumSize">
@@ -417,6 +423,9 @@
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
+         <property name="childrenCollapsible">
+          <bool>false</bool>
+         </property>
          <widget class="Chart3" name="widget_DiaNachgaerverlauf" native="true">
           <property name="minimumSize">
            <size>
@@ -573,8 +582,6 @@
   <tabstop>btnDelNachgaerMessung</tabstop>
   <tabstop>btnImportNachgaerMessung</tabstop>
  </tabstops>
- <resources>
-  <include location="images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

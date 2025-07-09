@@ -39,6 +39,7 @@ private:
     void build();
     void updateDiagram();
     void updateFilterLabel();
+    void updateStatistics();
 
 private:
     struct AuswahlType

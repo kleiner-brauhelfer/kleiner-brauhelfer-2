@@ -81,7 +81,8 @@ DlgEtikett::DlgEtikett(QWidget *parent) :
 
     ui->splitter->setStretchFactor(0, 0);
     ui->splitter->setStretchFactor(1, 1);
-    ui->splitter->setSizes({100, 200});
+    ui->splitter->setStretchFactor(2, 0);
+    ui->splitter->setSizes({400, 600, 400});
 
     connect(ui->table->selectionModel(), &QItemSelectionModel::selectionChanged, this, &DlgEtikett::onTableSelectionChanged);
     connect(bh, &Brauhelfer::modified, this, &DlgEtikett::updateAll);

@@ -45,6 +45,11 @@ public:
 
     void setFilterKeyColumns(const QList<int> &columns);
 
+    QVariant min(int col) const;
+    QVariant max(int col) const;
+    double sum(int col) const;
+    double mean(int col) const;
+
 signals:
     void modified();
 

@@ -59,6 +59,9 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
+     <property name="childrenCollapsible">
+      <bool>false</bool>
+     </property>
      <widget class="TableView" name="table">
       <property name="contextMenuPolicy">
        <enum>Qt::CustomContextMenu</enum>
@@ -170,7 +173,7 @@
       <widget class="QWidget" name="scrollAreaWidgetContents">
        <property name="geometry">
         <rect>
-         <x>-85</x>
+         <x>0</x>
          <y>0</y>
          <width>418</width>
          <height>1394</height>

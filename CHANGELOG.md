@@ -1,6 +1,7 @@
 # Changelog
 
 ## Version 2.6.3 (in Entwicklung)
+- Neu: Statistik in der Brauübersicht.
 - Neu: Menüleiste ersetzt durch Toolbar.
 - Neu: Einstellungen neu in einem Dialog. 
 - Neu: Reiter Bewertung ersetzt durch Dialog. 

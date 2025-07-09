@@ -55,6 +55,9 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
 
     ui->splitter->setSizes({INT_MAX, INT_MAX});
 
+    ui->lblKostenEinheit->setText(QLocale().currencySymbol());
+    ui->lblGesamtkostenEinheit->setText(QLocale().currencySymbol());
+
     ProxyModelBrauuebersicht *model = new ProxyModelBrauuebersicht(this);
     model->setSourceModel(bh->modelSud());
     model->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
@@ -125,6 +128,13 @@ void DlgBrauUebersicht::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModulePreiskalkulation))
     {
+        gSettings->setVisibleModule(Settings::ModulePreiskalkulation,
+                                    {ui->tbKosten,
+                                     ui->lblKosten,
+                                     ui->lblKostenEinheit,
+                                     ui->tbGesamtkosten,
+                                     ui->lblGesamtkosten,
+                                     ui->lblGesamtkostenEinheit});
         build();
     }
 }
@@ -139,7 +149,7 @@ void DlgBrauUebersicht::build()
     mAuswahlListe.append({ModelSud::Colerg_Sudhausausbeute, 0, tr("Sudhausausbeute"), "%"});
     mAuswahlListe.append({ModelSud::Colerg_EffektiveAusbeute, 0, tr("Effektive Sudhausausbeute"), "%"});
     mAuswahlListe.append({ModelSud::ColVerdampfungsrateIst, 1, tr("Verdampfungsrate"), "L/h"});
-    mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol"), "%"});
+    mAuswahlListe.append({ModelSud::Colerg_Alkohol, 1, tr("Alkohol"), "%vol"});
     mAuswahlListe.append({ModelSud::ColSREIst, 1, tr("Scheinbarer Restextrakt"), "°P"});
     mAuswahlListe.append({ModelSud::ColsEVG, 0, tr("Scheinbarer Endvergärungsgrad"), "%"});
     mAuswahlListe.append({ModelSud::ColtEVG, 0, tr("Tatsächlicher Endvergärungsgrad"), "%"});
@@ -172,6 +182,7 @@ void DlgBrauUebersicht::onLayoutChanged()
 {
     updateDiagram();
     updateFilterLabel();
+    updateStatistics();
 }
 
 void DlgBrauUebersicht::modelDataChanged(const QModelIndex& index)
@@ -308,4 +319,25 @@ void DlgBrauUebersicht::on_cbAuswahlL3_currentIndexChanged(int)
         updateDiagram();
         ui->table->setFocus();
     }
+}
+
+void DlgBrauUebersicht::updateStatistics()
+{
+    ProxyModel* model = static_cast<ProxyModel*>(ui->table->model());
+    ui->tbAnzahl->setValue(model->rowCount());
+    ui->tbDatumVon->setDate(model->min(ModelSud::ColBraudatum).toDate());
+    ui->tbDatumBis->setDate(model->max(ModelSud::ColBraudatum).toDate());
+    ui->tbMenge->setValue(model->mean(ModelSud::Colerg_AbgefuellteBiermenge));
+    ui->tbGesamtmenge->setValue(model->sum(ModelSud::Colerg_AbgefuellteBiermenge));
+    ui->tbSchuettung->setValue(model->mean(ModelSud::Colerg_S_Gesamt));
+    ui->tbGesamtschuettung->setValue(model->sum(ModelSud::Colerg_S_Gesamt));
+    ui->tbStammwuerze->setValue(model->mean(ModelSud::ColSWIst));
+    ui->tbRestextrakt->setValue(model->mean(ModelSud::ColSREIst));
+    ui->tbVerdampfungsrate->setValue(model->mean(ModelSud::ColVerdampfungsrateIst));
+    ui->tbSudhausaubeute->setValue(model->mean(ModelSud::Colerg_Sudhausausbeute));
+    ui->tbEffSudhausausbeute->setValue(model->mean(ModelSud::Colerg_EffektiveAusbeute));
+    ui->tbEndvergaerungsgrad->setValue(model->mean(ModelSud::ColsEVG));
+    ui->tbAlkoholgehalt->setValue(model->mean(ModelSud::Colerg_Alkohol));
+    ui->tbKosten->setValue(model->mean(ModelSud::Colerg_Preis));
+    ui->tbGesamtkosten->setValue(model->sum(ModelSud::Colerg_Preis));
 }

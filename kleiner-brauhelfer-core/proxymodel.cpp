@@ -1,4 +1,5 @@
 #include "proxymodel.h"
+#include <QDateTime>
 #include "sqltablemodel.h"
 
 ProxyModel::ProxyModel(QObject *parent) :
@@ -206,4 +207,87 @@ bool ProxyModel::filterAcceptsRow(int source_row, const QModelIndex &source_pare
             accept = !sourceModel()->data(index).toBool();
     }
     return accept;
+}
+
+QVariant ProxyModel::min(int col) const
+{
+    switch (data(0, col).typeId())
+    {
+    case QMetaType::Int:
+    case QMetaType::Double:
+    {
+        double ret = data(0, col).toDouble();
+        for (int row = 1; row < rowCount(); ++row)
+        {
+            double val = data(row, col).toDouble();
+            if (val < ret)
+                ret = val;
+        }
+        return ret;
+    }
+    case QMetaType::QDateTime:
+    case QMetaType::QDate:
+    case QMetaType::QTime:
+    {
+        QDateTime ret = data(0, col).toDateTime();
+        for (int row = 1; row < rowCount(); ++row)
+        {
+            QDateTime val = data(row, col).toDateTime();
+            if (val < ret)
+                ret = val;
+        }
+        return ret;
+    }
+    default:
+        return QVariant();
+    }
+}
+
+QVariant ProxyModel::max(int col) const
+{
+    switch (data(0, col).typeId())
+    {
+    case QMetaType::Int:
+    case QMetaType::Double:
+    {
+        double ret = data(0, col).toDouble();
+        for (int row = 1; row < rowCount(); ++row)
+        {
+            double val = data(row, col).toDouble();
+            if (val > ret)
+                ret = val;
+        }
+        return ret;
+    }
+    case QMetaType::QDateTime:
+    case QMetaType::QDate:
+    case QMetaType::QTime:
+    {
+        QDateTime ret = data(0, col).toDateTime();
+        for (int row = 1; row < rowCount(); ++row)
+        {
+            QDateTime val = data(row, col).toDateTime();
+            if (val > ret)
+                ret = val;
+        }
+        return ret;
+    }
+    default:
+        return QVariant();
+    }
+}
+
+double ProxyModel::sum(int col) const
+{
+    double ret = 0;
+    for (int row = 0; row < rowCount(); ++row)
+        ret += data(row, col).toDouble();
+    return ret;
+}
+
+double ProxyModel::mean(int col) const
+{
+    if (rowCount() > 0)
+        return sum(col) / rowCount();
+    return 0.0;
 }

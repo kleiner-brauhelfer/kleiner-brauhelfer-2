@@ -12,6 +12,8 @@ SpinBox::SpinBox(QWidget *parent) :
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
+    setMinimum(std::numeric_limits<int>::lowest());
+    setMaximum(std::numeric_limits<int>::max());
     connect(this, &QSpinBox::valueChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 

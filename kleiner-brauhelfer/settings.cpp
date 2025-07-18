@@ -292,16 +292,6 @@ void Settings::setTheme(Qt::ColorScheme theme)
     }
 }
 
-QString Settings::style()
-{
-    return valueInGroup("Style", "Style", QStringLiteral("Fusion")).toString();
-}
-
-void Settings::setStyle(const QString &style)
-{
-    setValueInGroup("Style", "Style", style);
-}
-
 bool Settings::useSystemFont()
 {
     return valueInGroup("Style", "UseSystemFont", true).toBool();

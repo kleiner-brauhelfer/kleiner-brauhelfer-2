@@ -697,6 +697,7 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
 
     model = bh->modelBewertungen();
+    model->setHeaderData(ModelBewertungen::ColSudName, Qt::Horizontal, tr("Sud"));
     model->setHeaderData(ModelBewertungen::ColDatum, Qt::Horizontal, tr("Datum"));
     model->setHeaderData(ModelBewertungen::ColWoche, Qt::Horizontal, tr("Woche"));
     model->setHeaderData(ModelBewertungen::ColSterne, Qt::Horizontal, tr("Bewertung"));

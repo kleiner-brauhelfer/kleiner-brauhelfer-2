@@ -58,9 +58,6 @@ public:
     Qt::ColorScheme theme() const;
     void setTheme(Qt::ColorScheme theme);
 
-    QString style();
-    void setStyle(const QString &style);
-
     bool useSystemFont();
     void setUseSystemFont(bool system);
     void setFont(const QFont &font);

@@ -33,27 +33,18 @@ private slots:
     void on_table_doubleClicked(const QModelIndex &index);
     void on_table_customContextMenuRequested(const QPoint &pos);
     void on_tbFilter_textChanged(const QString &pattern);
-    void on_btnMerken_clicked();
-    void on_btnVergessen_clicked();
-    void onMerkliste_clicked(bool value);
-    void onVerbraucht_clicked(bool value);
-    void on_btnAnlegen_clicked();
-    void on_btnKopieren_clicked();
-    void on_btnLoeschen_clicked();
-    void on_btnImportieren_clicked();
-    void on_btnExportieren_clicked();
-    void on_btnTeilen_clicked();
-    void on_btnLaden_clicked();
+    void sudAnlegen();
+    void sudKopieren();
+    void sudLoeschen();
+    void sudImportieren();
+    void sudExportieren();
+    void sudTeilen();
+    void sudMerken(bool value);
+    void sudLaden();
 
 private:
     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
     void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
-    void sudAnlegen();
-    void sudKopieren();
-    void sudTeilen();
-    void sudLoeschen();
-    void rezeptImportieren();
-    void rezeptExportieren();
 
 private:
     Ui::TabSudAuswahl *ui;

@@ -72,6 +72,23 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     connect(proxyModel, &ProxyModel::rowsInserted, this, &TabSudAuswahl::filterChanged);
     connect(proxyModel, &ProxyModel::rowsRemoved, this, &TabSudAuswahl::filterChanged);
 
+    ui->btnAnlegen->setAction(ui->actionAnlegen);
+    ui->btnKopieren->setAction(ui->actionKopieren);
+    ui->btnLoeschen->setAction(ui->actionLoeschen);
+    ui->btnImportieren->setAction(ui->actionImportieren);
+    ui->btnExportieren->setAction(ui->actionExportieren);
+    ui->btnTeilen->setAction(ui->actionTeilen);
+    ui->btnMerken->setAction(ui->actionMerken);
+    ui->btnLaden->setAction(ui->actionLaden);
+    connect(ui->actionAnlegen, &QAction::triggered, this, &TabSudAuswahl::sudAnlegen);
+    connect(ui->actionKopieren, &QAction::triggered, this, &TabSudAuswahl::sudKopieren);
+    connect(ui->actionLoeschen, &QAction::triggered, this, &TabSudAuswahl::sudLoeschen);
+    connect(ui->actionImportieren, &QAction::triggered, this, &TabSudAuswahl::sudImportieren);
+    connect(ui->actionExportieren, &QAction::triggered, this, &TabSudAuswahl::sudExportieren);
+    connect(ui->actionTeilen, &QAction::triggered, this, &TabSudAuswahl::sudTeilen);
+    connect(ui->actionMerken, &QAction::toggled, this, &TabSudAuswahl::sudMerken);
+    connect(ui->actionLaden, &QAction::triggered, this, &TabSudAuswahl::sudLaden);
+
     ui->table->selectRow(0);
     filterChanged();
 }
@@ -133,11 +150,16 @@ void TabSudAuswahl::selectionChanged()
     bool selected = ui->table->selectionModel()->selectedRows().count() > 0;
     updateWebView();
     ui->btnMerken->setEnabled(selected);
-    ui->btnVergessen->setEnabled(selected);
     ui->btnKopieren->setEnabled(selected);
     ui->btnLoeschen->setEnabled(selected);
     ui->btnExportieren->setEnabled(selected);
     ui->btnLaden->setEnabled(selected);
+    if (selected)
+    {
+        ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
+        QModelIndex index = ui->table->selectionModel()->selectedRows()[0];
+        ui->actionMerken->setChecked(model->data(index.row(), ModelSud::ColMerklistenID).toBool());
+    }
 }
 
 void TabSudAuswahl::keyPressEvent(QKeyEvent *event)
@@ -148,13 +170,13 @@ void TabSudAuswahl::keyPressEvent(QKeyEvent *event)
         switch (event->key())
         {
         case Qt::Key::Key_Delete:
-            on_btnLoeschen_clicked();
+            sudLoeschen();
             break;
         case Qt::Key::Key_Insert:
-            on_btnAnlegen_clicked();
+            sudAnlegen();
             break;
         case Qt::Key::Key_Return:
-            on_btnLaden_clicked();
+            sudLaden();
             break;
         }
     }
@@ -169,74 +191,26 @@ void TabSudAuswahl::on_table_doubleClicked(const QModelIndex &index)
 
 void TabSudAuswahl::on_table_customContextMenuRequested(const QPoint &pos)
 {
-    QAction *action;
     QMenu menu(this);
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
-
-    QModelIndex index = ui->table->indexAt(pos);
-
-    action = new QAction(tr("Sud merken"), &menu);
-    action->setCheckable(true);
-    action->setChecked(model->data(index.row(), ModelSud::ColMerklistenID).toBool());
-    connect(action, &QAction::triggered, this, &TabSudAuswahl::onMerkliste_clicked);
-    menu.addAction(action);
-
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(model->data(index.row(), ModelSud::ColStatus).toInt());
-    if (status >= Brauhelfer::SudStatus::Abgefuellt)
-    {
-        action = new QAction(tr("Sud ausgetrunken"), &menu);
-        action->setCheckable(true);
-        action->setChecked(status == Brauhelfer::SudStatus::Verbraucht);
-        connect(action, &QAction::triggered, this, &TabSudAuswahl::onVerbraucht_clicked);
-        menu.addAction(action);
-    }
-
+    menu.addAction(ui->actionAnlegen);
+    menu.addAction(ui->actionLoeschen);
+    menu.addAction(ui->actionKopieren);
+    menu.addAction(ui->actionTeilen);
+    menu.addSeparator();
+    menu.addAction(ui->actionImportieren);
+    menu.addAction(ui->actionExportieren);
+    menu.addSeparator();
+    menu.addAction(ui->actionMerken);
+    menu.addSeparator();
+    menu.addAction(ui->actionLaden);
     menu.addSeparator();
     ui->table->buildContextMenu(menu);
-
     menu.exec(ui->table->viewport()->mapToGlobal(pos));
 }
 
 void TabSudAuswahl::on_tbFilter_textChanged(const QString &pattern)
 {
     static_cast<ProxyModelSud*>(ui->table->model())->setFilterText(pattern);
-}
-
-void TabSudAuswahl::on_btnMerken_clicked()
-{
-    onMerkliste_clicked(true);
-}
-
-void TabSudAuswahl::on_btnVergessen_clicked()
-{
-    onMerkliste_clicked(false);
-}
-
-void TabSudAuswahl::onMerkliste_clicked(bool value)
-{
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
-    for (const QModelIndex &index : ui->table->selectionModel()->selectedRows())
-    {
-        QModelIndex indexMerkliste = index.sibling(index.row(), ModelSud::ColMerklistenID);
-        if (model->data(indexMerkliste).toBool() != value)
-            model->setData(indexMerkliste, value);
-    }
-    ui->table->setFocus();
-}
-
-void TabSudAuswahl::onVerbraucht_clicked(bool value)
-{
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
-    for (const QModelIndex &index : ui->table->selectionModel()->selectedRows())
-    {
-        QModelIndex indexStatus = index.sibling(index.row(), ModelSud::ColStatus);
-        Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(model->data(indexStatus).toInt());
-        if (status == Brauhelfer::SudStatus::Abgefuellt && value)
-            model->setData(indexStatus, static_cast<int>(Brauhelfer::SudStatus::Verbraucht));
-        else if (status == Brauhelfer::SudStatus::Verbraucht  && !value)
-            model->setData(indexStatus, static_cast<int>(Brauhelfer::SudStatus::Abgefuellt));
-    }
-    ui->table->setFocus();
 }
 
 void TabSudAuswahl::sudAnlegen()
@@ -254,11 +228,6 @@ void TabSudAuswahl::sudAnlegen()
         ui->table->scrollTo(ui->table->currentIndex());
         ui->table->edit(ui->table->currentIndex());
     }
-}
-
-void TabSudAuswahl::on_btnAnlegen_clicked()
-{
-    sudAnlegen();
 }
 
 void TabSudAuswahl::sudKopieren()
@@ -281,25 +250,6 @@ void TabSudAuswahl::sudKopieren()
         ui->table->setCurrentIndex(model->index(row, ModelSud::ColSudname));
         ui->table->scrollTo(ui->table->currentIndex());
         ui->table->edit(ui->table->currentIndex());
-    }
-}
-
-void TabSudAuswahl::on_btnKopieren_clicked()
-{
-    sudKopieren();
-}
-
-void TabSudAuswahl::sudTeilen()
-{
-    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
-    for (const QModelIndex &index : ui->table->selectionModel()->selectedRows())
-    {
-        int sudId = model->data(index.row(), ModelSud::ColID).toInt();
-        QString name = model->data(index.row(), ModelSud::ColSudname).toString();
-        double menge = model->data(index.row(), ModelSud::ColMengeIst).toDouble();
-        DlgSudTeilen dlg(name, menge, this);
-        if (dlg.exec() == QDialog::Accepted)
-            bh->sudTeilen(sudId, dlg.nameTeil1(), dlg.nameTeil2(), dlg.prozent());
     }
 }
 
@@ -327,12 +277,7 @@ void TabSudAuswahl::sudLoeschen()
     }
 }
 
-void TabSudAuswahl::on_btnLoeschen_clicked()
-{
-    sudLoeschen();
-}
-
-void TabSudAuswahl::rezeptImportieren()
+void TabSudAuswahl::sudImportieren()
 {
     DlgImportExport dlg(true, -1, this);
     if (dlg.exec() == QDialog::Accepted)
@@ -351,12 +296,7 @@ void TabSudAuswahl::rezeptImportieren()
     }
 }
 
-void TabSudAuswahl::on_btnImportieren_clicked()
-{
-    rezeptImportieren();
-}
-
-void TabSudAuswahl::rezeptExportieren()
+void TabSudAuswahl::sudExportieren()
 {
     QList<int> list;
     list.reserve(ui->table->selectionModel()->selectedRows().count());
@@ -370,17 +310,33 @@ void TabSudAuswahl::rezeptExportieren()
     }
 }
 
-void TabSudAuswahl::on_btnExportieren_clicked()
+void TabSudAuswahl::sudTeilen()
 {
-    rezeptExportieren();
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
+    for (const QModelIndex &index : ui->table->selectionModel()->selectedRows())
+    {
+        int sudId = model->data(index.row(), ModelSud::ColID).toInt();
+        QString name = model->data(index.row(), ModelSud::ColSudname).toString();
+        double menge = model->data(index.row(), ModelSud::ColMengeIst).toDouble();
+        DlgSudTeilen dlg(name, menge, this);
+        if (dlg.exec() == QDialog::Accepted)
+            bh->sudTeilen(sudId, dlg.nameTeil1(), dlg.nameTeil2(), dlg.prozent());
+    }
 }
 
-void TabSudAuswahl::on_btnTeilen_clicked()
+void TabSudAuswahl::sudMerken(bool value)
 {
-    sudTeilen();
+    ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
+    for (const QModelIndex &index : ui->table->selectionModel()->selectedRows())
+    {
+        QModelIndex indexMerkliste = index.sibling(index.row(), ModelSud::ColMerklistenID);
+        if (model->data(indexMerkliste).toBool() != value)
+            model->setData(indexMerkliste, value);
+    }
+    ui->table->setFocus();
 }
 
-void TabSudAuswahl::on_btnLaden_clicked()
+void TabSudAuswahl::sudLaden()
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
     QModelIndexList selection = ui->table->selectionModel()->selectedRows();

@@ -2,7 +2,6 @@
 #include <QApplication>
 #include <QTranslator>
 #include <QLibraryInfo>
-#include <QStyleFactory>
 #include <QDirIterator>
 #include <QFile>
 #include <QTextStream>
@@ -437,7 +436,7 @@ int main(int argc, char *argv[])
             if (connectDatabase())
             {
                 MainWindow w(nullptr);
-                a.setStyle(QStyleFactory::create(gSettings->style()));
+                a.setStyle(QStringLiteral("Fusion"));
                 a.setPalette(gSettings->palette);
                 a.setFont(gSettings->font);
                 w.show();

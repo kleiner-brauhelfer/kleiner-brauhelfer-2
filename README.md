@@ -74,3 +74,13 @@ export QT_PLUGIN_PATH=${QT_PATH}/${VERSION}/clang_64/plugins/
 export QML_IMPORT_PATH=${QT_PATH}/${VERSION}/clang_64/qml/
 export QML2_IMPORT_PATH=${QT_PATH}/${VERSION}/clang_64/qml/
 ```
+
+### Installation unter OpenBSD
+
+Die Qt-Abhängigkeiten sind einfach über `pkg_add` zu installieren:
+
+```shell
+doas pkg_add qt6-qtwebengine qt6-qtwebchannel qt6-qtpositioning
+```
+
+Bitte beachten: Das Script `build_openbsd.sh` nimmt zurzeit **kein** Deployment vor, das Programm liegt dann insofern im Unterordner `/build-openbsd64`. Wer es unbedingt woanders haben möchte, der könnte einen Hardlink nutzen oder das Ergebnis direkt verschieben.

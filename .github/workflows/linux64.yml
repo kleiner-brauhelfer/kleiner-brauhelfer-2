@@ -26,7 +26,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: 6.5.*
+          version: 6.10.*
           modules: qtwebengine qtwebchannel qtpositioning qtserialport
 
       - name: Build kleiner-brauhelfer-2

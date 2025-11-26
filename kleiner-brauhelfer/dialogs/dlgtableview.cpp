@@ -4,10 +4,6 @@
 #include "proxymodel.h"
 #include "settings.h"
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
-#define qAsConst(x) (x)
-#endif
-
 extern Settings* gSettings;
 
 void DlgTableView::restoreView()
@@ -74,7 +70,7 @@ void DlgTableView::on_btnDelete_clicked()
 {
     QModelIndexList indices = ui->tableView->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : qAsConst(indices))
+    for (const QModelIndex& index : std::as_const(indices))
         ui->tableView->model()->removeRow(index.row());
 }
 

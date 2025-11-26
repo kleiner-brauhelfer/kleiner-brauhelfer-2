@@ -87,8 +87,8 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     QPalette palette = ui->tbHelp->palette();
-    palette.setBrush(QPalette::Base, palette.brush(QPalette::ToolTipBase));
-    palette.setBrush(QPalette::Text, palette.brush(QPalette::ToolTipText));
+    palette.setBrush(QPalette::Base, gSettings->palette.brush(QPalette::ToolTipBase));
+    palette.setBrush(QPalette::Text, gSettings->palette.brush(QPalette::ToolTipText));
     ui->tbHelp->setPalette(palette);
 
     gSettings->beginGroup("MainWindow");

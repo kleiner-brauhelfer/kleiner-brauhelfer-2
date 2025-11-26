@@ -34,8 +34,9 @@ void ProxyModelSud::setFilterMerkliste(bool value)
 {
     if (mFilterMerkliste != value)
     {
+        beginFilterChange();
         mFilterMerkliste = value;
-        invalidateRowsFilter();
+        endFilterChange(Direction::Rows);
     }
 }
 
@@ -48,8 +49,9 @@ void ProxyModelSud::setFilterStatus(FilterStatus status)
 {
     if (mFilterStatus != status)
     {
+        beginFilterChange();
         mFilterStatus = status;
-        invalidateRowsFilter();
+        endFilterChange(Direction::Rows);
     }
 }
 
@@ -62,8 +64,9 @@ void ProxyModelSud::setFilterDate(bool value)
 {
     if (mFilterDate != value)
     {
+        beginFilterChange();
         mFilterDate = value;
-        invalidateRowsFilter();
+        endFilterChange(Direction::Rows);
     }
 }
 
@@ -76,8 +79,9 @@ void ProxyModelSud::setFilterMinimumDate(const QDateTime &dt)
 {
     if (mMinDate != dt)
     {
+        beginFilterChange();
         mMinDate = dt;
-        invalidateRowsFilter();
+        endFilterChange(Direction::Rows);
     }
 }
 
@@ -90,8 +94,9 @@ void ProxyModelSud::setFilterMaximumDate(const QDateTime &dt)
 {
     if (mMaxDate != dt)
     {
+        beginFilterChange();
         mMaxDate = dt;
-        invalidateRowsFilter();
+        endFilterChange(Direction::Rows);
     }
 }
 
@@ -104,8 +109,9 @@ void ProxyModelSud::setFilterText(const QString& text)
 {
     if (mFilterText != text)
     {
+        beginFilterChange();
         mFilterText = text;
-        invalidateRowsFilter();
+        endFilterChange(Direction::Rows);
     }
 }
 
@@ -118,8 +124,9 @@ void ProxyModelSud::setFilterKategorie(const QString& kategorie)
 {
     if (mFilterKategorie != kategorie)
     {
+        beginFilterChange();
         mFilterKategorie = kategorie;
-        invalidateRowsFilter();
+        endFilterChange(Direction::Rows);
     }
 }
 
@@ -132,8 +139,9 @@ void ProxyModelSud::setFilterAnlage(const QString& anlage)
 {
     if (mFilterAnlage != anlage)
     {
+        beginFilterChange();
         mFilterAnlage = anlage;
-        invalidateRowsFilter();
+        endFilterChange(Direction::Rows);
     }
 }
 

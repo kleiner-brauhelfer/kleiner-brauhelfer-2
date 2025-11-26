@@ -49,9 +49,10 @@ void ProxyModelRohstoff::setFilter(Filter value)
 {
     if (mFilter != value)
     {
+        beginFilterChange();
         mFilter = value;
         emit filterChanged(mFilter);
-        invalidateRowsFilter();
+        endFilterChange(Direction::Rows);
     }
 }
 

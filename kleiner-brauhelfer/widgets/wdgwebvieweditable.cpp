@@ -265,11 +265,13 @@ void WdgWebViewEditable::updateWebView()
         }
         else
         {
-            mTempCssFile.open();
-            mTempCssFile.write(ui->tbTemplate->toPlainText().toUtf8());
-            mTempCssFile.flush();
-            mTemplateTags[QStringLiteral("Style")] = mTempCssFile.fileName();
-            ui->webview->renderTemplate(mTemplateTags);
+            if (mTempCssFile.open())
+            {
+                mTempCssFile.write(ui->tbTemplate->toPlainText().toUtf8());
+                mTempCssFile.flush();
+                mTemplateTags[QStringLiteral("Style")] = mTempCssFile.fileName();
+                ui->webview->renderTemplate(mTemplateTags);
+            }
         }
     }
     else

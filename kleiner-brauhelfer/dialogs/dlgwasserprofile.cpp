@@ -9,10 +9,6 @@
 #include "dialogs/dlgrohstoffvorlage.h"
 #include "widgets/widgetdecorator.h"
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
-#define qAsConst(x) (x)
-#endif
-
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
@@ -135,7 +131,7 @@ void DlgWasserprofile::on_btnLoeschen_clicked()
     ProxyModel *model = static_cast<ProxyModel*>(ui->tableWasser->model());
     QModelIndexList indices = ui->tableWasser->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : qAsConst(indices))
+    for (const QModelIndex& index : std::as_const(indices))
     {
         QString name = model->data(index.row(), ModelWasser::ColName).toString();
         int ret = QMessageBox::question(this, tr("Wasserprofil löschen?"),

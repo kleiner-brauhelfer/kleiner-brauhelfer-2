@@ -22,10 +22,6 @@
 #include "model/phmalzdelegate.h"
 #include "dialogs/dlgrohstoffvorlage.h"
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
-#define qAsConst(x) (x)
-#endif
-
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
@@ -438,7 +434,7 @@ void DlgRohstoffe::on_buttonDelete_clicked()
     ProxyModel *model = static_cast<ProxyModel*>(table->model());
     QModelIndexList indices = table->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : qAsConst(indices))
+    for (const QModelIndex& index : std::as_const(indices))
     {
         bool del = true;
         if (model->data(index.row(), model->fieldIndex(QStringLiteral("InGebrauch"))).toBool())

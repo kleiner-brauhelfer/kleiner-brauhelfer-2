@@ -16,10 +16,6 @@
 #include "model/sudnamedelegate.h"
 #include "dialogs/dlgverdampfung.h"
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
-#define qAsConst(x) (x)
-#endif
-
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
@@ -31,7 +27,7 @@ DlgAusruestung::DlgAusruestung(QWidget *parent) :
     mRow(0)
 {
     ui->setupUi(this);
-    for (const auto& type : qAsConst(MainWindow::AnlageTypname))
+    for (const auto& type : std::as_const(MainWindow::AnlageTypname))
         ui->cbTyp->addItem(type.first, type.second);
     ui->lblCurrency->setText(QLocale().currencySymbol());
 
@@ -222,7 +218,7 @@ void DlgAusruestung::on_btnAnlageLoeschen_clicked()
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableViewAnlagen->model());
     QModelIndexList indices = ui->tableViewAnlagen->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : qAsConst(indices))
+    for (const QModelIndex& index : std::as_const(indices))
     {
         QString name = model->data(index.row(), ModelAusruestung::ColName).toString();
         int ret = QMessageBox::question(this, tr("Brauanlage löschen?"),
@@ -260,7 +256,7 @@ void DlgAusruestung::on_btnGeraetLoeschen_clicked()
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->tableViewGeraete->model());
     QModelIndexList indices = ui->tableViewGeraete->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : qAsConst(indices))
+    for (const QModelIndex& index : std::as_const(indices))
     {
         QString name = model->data(index.row(), ModelGeraete::ColBezeichnung).toString();
         int ret = QMessageBox::question(this, tr("Gerät löschen?"),

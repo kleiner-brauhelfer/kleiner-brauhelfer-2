@@ -6,10 +6,6 @@
 #include "mainwindow.h"
 #include "model/comboboxdelegate.h"
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
-#define qAsConst(x) (x)
-#endif
-
 extern Settings* gSettings;
 extern Brauhelfer* bh;
 
@@ -516,7 +512,7 @@ void DlgDatabaseCleaner::on_btnDelete_clicked()
     SqlTableModel *model = static_cast<SqlTableModel*>(ui->tableView->model());
     QModelIndexList indices = ui->tableView->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : qAsConst(indices))
+    for (const QModelIndex& index : std::as_const(indices))
         model->removeRow(index.row());
     selectionChanged();
 }

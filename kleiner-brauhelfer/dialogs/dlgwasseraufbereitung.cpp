@@ -3,10 +3,6 @@
 #include "brauhelfer.h"
 #include "widgets/widgetdecorator.h"
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
-#define qAsConst(x) (x)
-#endif
-
 DlgWasseraufbereitung::DlgWasseraufbereitung(QWidget *parent) :
     DlgAbstract(staticMetaObject.className(), parent),
     ui(new Ui::DlgWasseraufbereitung)
@@ -27,7 +23,7 @@ DlgWasseraufbereitung::DlgWasseraufbereitung(QWidget *parent) :
     mList.append({tr("Magnesiumchlorid-Hexahydrat (MgCl2)"), static_cast<int>(Brauhelfer::Einheit::g), -0.251, 100});
     mList.append({tr("Magnesiumsulfat-Heptahydrat (MgSO4)"), static_cast<int>(Brauhelfer::Einheit::g), -0.3077, 100});
     mList.append({tr("<manuell>"), static_cast<int>(Brauhelfer::Einheit::ml), 0, 100});
-    for (const auto& it : qAsConst(mList))
+    for (const auto& it : std::as_const(mList))
         ui->cbAuswahl->addItem(it.name);
     adjustSize();
 }

@@ -26,10 +26,6 @@
 #include "widgets/widgetdecorator.h"
 #include "commands/undostack.h"
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
-#define qAsConst(x) (x)
-#endif
-
 extern Settings* gSettings;
 
 TabRezept::TabRezept(QWidget *parent) :
@@ -1623,6 +1619,6 @@ void TabRezept::on_btnTagLoeschen_clicked()
     ProxyModel *model = mSud->modelTags();
     QModelIndexList indices = ui->tableTags->selectionModel()->selectedIndexes();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : qAsConst(indices))
+    for (const QModelIndex& index : std::as_const(indices))
         model->removeRow(index.row());
 }

@@ -15,10 +15,6 @@
 #endif
 #include "settings.h"
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
-#define qAsConst(x) (x)
-#endif
-
 extern Settings* gSettings;
 
 TableView::TableView(QWidget *parent) :
@@ -39,7 +35,7 @@ void TableView::build()
     int visualIndex = 0;
     for (int c = 0; c < model()->columnCount(); ++c)
         setColumnHidden(c, true);
-    for (const auto& col : qAsConst(mCols))
+    for (const auto& col : std::as_const(mCols))
     {
         setColumnHidden(col.col, !col.visible);
         if (col.itemDelegate)
@@ -69,7 +65,7 @@ bool TableView::restoreState(const QByteArray &state)
         QList<int> canHave;
         mustHave.reserve(mCols.size());
         canHave.reserve(mCols.size());
-        for (const ColumnDefinition& col : qAsConst(mCols))
+        for (const ColumnDefinition& col : std::as_const(mCols))
         {
             canHave.append(col.col);
             if (!col.canHide)
@@ -104,7 +100,7 @@ void TableView::setDefaultContextMenu(bool copy, bool print)
 {
     mContextMenuCopy = copy;
     mContextMenuPrint = print;
-    for (const auto& col : qAsConst(mCols))
+    for (const auto& col : std::as_const(mCols))
     {
         if (col.canHide)
         {
@@ -232,7 +228,7 @@ void TableView::copyToClipboard(bool selectionOnly) const
     }
 
     // header
-    for (int col : qAsConst(cols))
+    for (int col : std::as_const(cols))
     {
         QString value = model()->headerData(col, Qt::Horizontal).toString();
         out << value;
@@ -249,7 +245,7 @@ void TableView::copyToClipboard(bool selectionOnly) const
         {
             for (QModelIndex& row : rows)
             {
-                for (int col : qAsConst(cols))
+                for (int col : std::as_const(cols))
                 {
                     QString value = indexValue(row.sibling(row.row(), col));
                     out << value;
@@ -267,7 +263,7 @@ void TableView::copyToClipboard(bool selectionOnly) const
                 if (prevRow == row.row())
                     continue;
                 prevRow = row.row();
-                for (int col : qAsConst(cols))
+                for (int col : std::as_const(cols))
                 {
                     QString value = indexValue(row.sibling(row.row(), col));
                     out << value;
@@ -282,7 +278,7 @@ void TableView::copyToClipboard(bool selectionOnly) const
     {
         for (int row = 0; row < model()->rowCount(); ++row)
         {
-            for (int col : qAsConst(cols))
+            for (int col : std::as_const(cols))
             {
                 QString value = indexValue(model()->index(row, col));
                 out << value;
@@ -328,7 +324,7 @@ void TableView::printerPaintRequested(QPrinter *printer, bool selectionOnly, con
 
     // header
     out << "<thead><tr bgcolor=#f0f0f0>";
-    for (int col : qAsConst(cols))
+    for (int col : std::as_const(cols))
     {
         QString value = model()->headerData(col, Qt::Horizontal).toString();
         out << "<th>" << value << "</th>";
@@ -344,7 +340,7 @@ void TableView::printerPaintRequested(QPrinter *printer, bool selectionOnly, con
             for (QModelIndex& row : rows)
             {
                 out << "<tr>";
-                for (int col : qAsConst(cols))
+                for (int col : std::as_const(cols))
                 {
                     QString value = indexValue(row.sibling(row.row(), col));
                     out << "<td>" << value << "</td>";
@@ -361,7 +357,7 @@ void TableView::printerPaintRequested(QPrinter *printer, bool selectionOnly, con
                     continue;
                 prevRow = row.row();
                 out << "<tr>";
-                for (int col : qAsConst(cols))
+                for (int col : std::as_const(cols))
                 {
                     QString value = indexValue(row.sibling(row.row(), col));
                     out << "<td>" << value << "</td>";
@@ -375,7 +371,7 @@ void TableView::printerPaintRequested(QPrinter *printer, bool selectionOnly, con
         for (int row = 0; row < model()->rowCount(); row++)
         {
             out << "<tr>";
-            for (int col : qAsConst(cols))
+            for (int col : std::as_const(cols))
             {
                 QString value = indexValue(model()->index(row, col));
                 out << "<td>" << value << "</td>";

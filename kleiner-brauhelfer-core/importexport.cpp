@@ -669,12 +669,11 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
     int sudRow = -1;
     const QString BeerXmlVersion = QStringLiteral("1");
 
-    QString xmlError;
-    QDomDocument doc(QStringLiteral(""));
-    doc.setContent(content, &xmlError);
-    if (!xmlError.isEmpty())
+    QDomDocument doc(QString(""));
+    QDomDocument::ParseResult res = doc.setContent(content);
+    if (!res)
     {
-        qWarning(Brauhelfer::loggingCategory) << "Failed to parse XML:" << xmlError;
+        qWarning(Brauhelfer::loggingCategory) << "Failed to parse XML:" << res.errorMessage;
         return -1;
     }
 
@@ -1516,17 +1515,17 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
     style.appendChild(element);
 
     element = doc.createElement(QStringLiteral("STYLE_LETTER"));
-    text = doc.createTextNode(QStringLiteral(""));
+    text = doc.createTextNode(QString(""));
     element.appendChild(text);
     style.appendChild(element);
 
     element = doc.createElement(QStringLiteral("STYLE_GUIDE"));
-    text = doc.createTextNode(QStringLiteral(""));
+    text = doc.createTextNode(QString(""));
     element.appendChild(text);
     style.appendChild(element);
 
     element = doc.createElement(QStringLiteral("TYPE"));
-    text = doc.createTextNode(QStringLiteral(""));
+    text = doc.createTextNode(QString(""));
     element.appendChild(text);
     style.appendChild(element);
 

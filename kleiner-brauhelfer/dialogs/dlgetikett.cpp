@@ -23,10 +23,6 @@
 #include "model/spinboxdelegate.h"
 #include "model/tagglobaldelegate.h"
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
-#define qAsConst(x) (x)
-#endif
-
 extern Brauhelfer* bh;
 extern Settings* gSettings;
 
@@ -247,11 +243,13 @@ void DlgEtikett::updateSvg()
         if (ui->cbTagsErsetzen->isChecked())
         {
             QFile file(mTemplateFilePath);
-            file.open(QIODevice::ReadOnly | QIODevice::Text);
-            QString svg_template = file.readAll();
-            file.close();
-            QString svg = generateSvg(svg_template);
-            ui->viewSvg->load(svg.toUtf8());
+            if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+            {
+                QString svg_template = file.readAll();
+                file.close();
+                QString svg = generateSvg(svg_template);
+                ui->viewSvg->load(svg.toUtf8());
+            }
         }
         else
         {
@@ -451,14 +449,16 @@ void DlgEtikett::on_btnExport_clicked()
         if (file.open(QFile::WriteOnly | QFile::Text))
         {
             QFile fileRead(mTemplateFilePath);
-            fileRead.open(QIODevice::ReadOnly | QIODevice::Text);
-            QString svg_template = fileRead.readAll();
-            fileRead.close();
-            if (ui->cbTagsErsetzen->isChecked())
-                file.write(generateSvg(svg_template).toUtf8());
-            else
-                file.write(svg_template.toUtf8());
-            file.close();
+            if (fileRead.open(QIODevice::ReadOnly | QIODevice::Text))
+            {
+                QString svg_template = fileRead.readAll();
+                fileRead.close();
+                if (ui->cbTagsErsetzen->isChecked())
+                    file.write(generateSvg(svg_template).toUtf8());
+                else
+                    file.write(svg_template.toUtf8());
+                file.close();
+            }
         }
         else
         {
@@ -485,7 +485,8 @@ void DlgEtikett::onPrinterPaintRequested(QPrinter *printer)
     QFile file(mTemplateFilePath);
     if (!file.exists())
         return;
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
     QString svg_template = file.readAll();
     file.close();
 
@@ -788,7 +789,7 @@ void DlgEtikett::on_btnTagLoeschen_clicked()
     ProxyModel *model = mSud->modelTags();
     QModelIndexList indices = ui->tableTags->selectionModel()->selectedIndexes();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : qAsConst(indices))
+    for (const QModelIndex& index : std::as_const(indices))
         model->removeRow(index.row());
 }
 

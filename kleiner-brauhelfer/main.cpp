@@ -205,8 +205,8 @@ static QByteArray getHash(const QString &fileName)
 {
     QCryptographicHash hash(QCryptographicHash::Sha1);
     QFile file(fileName);
-    file.open(QIODevice::ReadOnly);
-    hash.addData(file.readAll());
+    if (file.open(QIODevice::ReadOnly))
+        hash.addData(file.readAll());
     return hash.result();
 }
 
@@ -359,12 +359,16 @@ static void messageHandler(QtMsgType type, const QMessageLogContext &context, co
     if (logFile)
     {
         if (!logFile->isOpen())
-            logFile->open(QIODevice::WriteOnly | QIODevice::Append);
-        QTextStream out(logFile);
-        out << entry;
-        if (context.file)
-            out << " | " << context.file << ":" << context.line << ", " << context.function;
-        out << Qt::endl;
+        {
+            if (logFile->open(QIODevice::WriteOnly | QIODevice::Append))
+            {
+                QTextStream out(logFile);
+                out << entry;
+                if (context.file)
+                    out << " | " << context.file << ":" << context.line << ", " << context.function;
+                out << Qt::endl;
+            }
+        }
     }
 }
 

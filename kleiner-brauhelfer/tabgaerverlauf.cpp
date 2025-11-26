@@ -15,10 +15,6 @@
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
 
-#if (QT_VERSION < QT_VERSION_CHECK(5, 7, 0))
-#define qAsConst(x) (x)
-#endif
-
 extern Settings* gSettings;
 
 TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
@@ -461,7 +457,7 @@ void TabGaerverlauf::on_btnDelSchnellgaerMessung_clicked()
 {
     QModelIndexList indices = ui->tableWidget_Schnellgaerverlauf->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : qAsConst(indices))
+    for (const QModelIndex& index : std::as_const(indices))
         mSud->modelSchnellgaerverlauf()->removeRow(index.row());
 }
 
@@ -592,7 +588,7 @@ void TabGaerverlauf::on_btnDelHauptgaerMessung_clicked()
 {
     QModelIndexList indices = ui->tableWidget_Hauptgaerverlauf->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : qAsConst(indices))
+    for (const QModelIndex& index : std::as_const(indices))
         mSud->modelHauptgaerverlauf()->removeRow(index.row());
 }
 
@@ -627,7 +623,7 @@ void TabGaerverlauf::on_btnDelNachgaerMessung_clicked()
 {
     QModelIndexList indices = ui->tableWidget_Nachgaerverlauf->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : qAsConst(indices))
+    for (const QModelIndex& index : std::as_const(indices))
         mSud->modelNachgaerverlauf()->removeRow(index.row());
 }
 
@@ -708,7 +704,7 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf(const QString &str)
     bool error = false;
     bool firstRow = true;
     bool wasBlocked = mSud->bh()->modelSchnellgaerverlauf()->blockSignals(true);
-    for (const QString& row : qAsConst(rows))
+    for (const QString& row : std::as_const(rows))
     {
         QStringList cols = row.split(QStringLiteral("\t"));
         if (cols.size() == 1)
@@ -783,7 +779,7 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf(const QString& str)
     bool error = false;
     bool firstRow = true;
     bool wasBlocked = mSud->bh()->modelHauptgaerverlauf()->blockSignals(true);
-    for (const QString& row : qAsConst(rows))
+    for (const QString& row : std::as_const(rows))
     {
         QStringList cols = row.split(QStringLiteral("\t"));
         if (cols.size() == 1)
@@ -858,7 +854,7 @@ void TabGaerverlauf::pasteFromClipboardNachgaerverlauf(const QString& str)
     bool error = false;
     bool firstRow = true;
     bool wasBlocked = mSud->bh()->modelNachgaerverlauf()->blockSignals(true);
-    for (const QString& row : qAsConst(rows))
+    for (const QString& row : std::as_const(rows))
     {
         QStringList cols = row.split(QStringLiteral("\t"));
         if (cols.size() == 1)

@@ -94,14 +94,16 @@ bool ProxyModel::swap(int row1, int row2)
     if (model)
     {
         bool ret = model->swap(mapRowToSource(row1), mapRowToSource(row2));
-        invalidateRowsFilter();
+        beginFilterChange();
+        endFilterChange(Direction::Rows);
         return ret;
     }
     ProxyModel* proxyModel = qobject_cast<ProxyModel*>(sourceModel());
     if (proxyModel)
     {
         bool ret = proxyModel->swap(mapRowToSource(row1), mapRowToSource(row2));
-        invalidateRowsFilter();
+        beginFilterChange();
+        endFilterChange(Direction::Rows);
         return ret;
     }
     return false;

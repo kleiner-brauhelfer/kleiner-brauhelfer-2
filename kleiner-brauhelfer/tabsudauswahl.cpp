@@ -72,14 +72,6 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     connect(proxyModel, &ProxyModel::rowsInserted, this, &TabSudAuswahl::filterChanged);
     connect(proxyModel, &ProxyModel::rowsRemoved, this, &TabSudAuswahl::filterChanged);
 
-    ui->btnAnlegen->setAction(ui->actionAnlegen);
-    ui->btnKopieren->setAction(ui->actionKopieren);
-    ui->btnLoeschen->setAction(ui->actionLoeschen);
-    ui->btnImportieren->setAction(ui->actionImportieren);
-    ui->btnExportieren->setAction(ui->actionExportieren);
-    ui->btnTeilen->setAction(ui->actionTeilen);
-    ui->btnMerken->setAction(ui->actionMerken);
-    ui->btnLaden->setAction(ui->actionLaden);
     connect(ui->actionAnlegen, &QAction::triggered, this, &TabSudAuswahl::sudAnlegen);
     connect(ui->actionKopieren, &QAction::triggered, this, &TabSudAuswahl::sudKopieren);
     connect(ui->actionLoeschen, &QAction::triggered, this, &TabSudAuswahl::sudLoeschen);
@@ -124,6 +116,27 @@ void TabSudAuswahl::modulesChanged(Settings::Modules modules)
     updateWebView();
 }
 
+void TabSudAuswahl::setupToolbar(QToolBar* toolbar)
+{
+    QToolButton* toolButton = new QToolButton(this);
+    toolButton->setIcon(QIcon::fromTheme(QStringLiteral("sud_neu")));
+    toolButton->setText(tr("Anlegen"));
+    toolButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    toolButton->setPopupMode(QToolButton::InstantPopup);
+    QMenu* menu = new QMenu(this);
+    menu->addAction(ui->actionAnlegen);
+    menu->addAction(ui->actionKopieren);
+    menu->addAction(ui->actionImportieren);
+    toolButton->setMenu(menu);
+    toolbar->addWidget(toolButton);
+    toolbar->addAction(ui->actionLoeschen);
+    toolbar->addAction(ui->actionLaden);
+    toolbar->addAction(ui->actionMerken);
+    toolbar->addAction(ui->actionTeilen);
+    toolbar->addAction(ui->actionExportieren);
+    toolbar->addSeparator();
+}
+
 void TabSudAuswahl::showEvent(QShowEvent *event)
 {
     Q_UNUSED(event)
@@ -149,11 +162,11 @@ void TabSudAuswahl::selectionChanged()
 {
     bool selected = ui->table->selectionModel()->selectedRows().count() > 0;
     updateWebView();
-    ui->btnMerken->setEnabled(selected);
-    ui->btnKopieren->setEnabled(selected);
-    ui->btnLoeschen->setEnabled(selected);
-    ui->btnExportieren->setEnabled(selected);
-    ui->btnLaden->setEnabled(selected);
+    ui->actionMerken->setEnabled(selected);
+    ui->actionKopieren->setEnabled(selected);
+    ui->actionLoeschen->setEnabled(selected);
+    ui->actionExportieren->setEnabled(selected);
+    ui->actionLaden->setEnabled(selected);
     if (selected)
     {
         ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());

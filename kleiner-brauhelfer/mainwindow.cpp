@@ -128,6 +128,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     initActions();
 
+    ui->tabSudAuswahl->setupToolbar(ui->toolBarSudauswahl);
+    connect(ui->tabMain, &QTabWidget::currentChanged, this, [this](){ui->toolBarSudauswahl->setVisible(ui->tabMain->currentWidget() == ui->tabSudAuswahl);});
+
     if (gSettings->valueInGroup("General", "CheckUpdate", true).toBool())
         checkForUpdate(false);
 

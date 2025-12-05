@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QAbstractItemModel>
 #include <QAbstractItemDelegate>
+#include <QToolBar>
 #include "settings.h"
 
 namespace Ui {
@@ -20,6 +21,7 @@ public:
     void saveSettings();
     void restoreView();
     void modulesChanged(Settings::Modules modules);
+    void setupToolbar(QToolBar* toolbar);
 
 signals:
     void clicked(int sudId);

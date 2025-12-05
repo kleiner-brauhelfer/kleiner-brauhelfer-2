@@ -60,7 +60,6 @@ DlgBrauUebersicht::DlgBrauUebersicht(QWidget *parent) :
 
     ProxyModelBrauuebersicht *model = new ProxyModelBrauuebersicht(this);
     model->setSourceModel(bh->modelSud());
-    model->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
     model->sort(ModelSud::ColBraudatum, Qt::DescendingOrder);
     ui->table->setModel(model);
 
@@ -97,8 +96,7 @@ void DlgBrauUebersicht::loadSettings()
 {
     ProxyModelSud *proxyModel = static_cast<ProxyModelSud*>(ui->table->model());
     gSettings->beginGroup(staticMetaObject.className());
-    proxyModel->loadSettings(gSettings);
-    proxyModel->setFilterStatus(ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht);
+    proxyModel->loadSettings(gSettings, {{"filterSudStatus", (ProxyModelSud::Abgefuellt | ProxyModelSud::Verbraucht).toInt()}});
     ui->table->restoreState(gSettings->value("tableState").toByteArray());
     ui->cbAuswahlL1->setCurrentIndex(gSettings->value("Auswahl1", 0).toInt());
     ui->cbAuswahlL2->setCurrentIndex(gSettings->value("Auswahl2", 0).toInt());

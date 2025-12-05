@@ -63,7 +63,7 @@ public:
     void setFilterAnlage(const QString& anlage);
 
     void saveSetting(QSettings* settings);
-    void loadSettings(QSettings* settings);
+    void loadSettings(QSettings* settings, const QVariantMap& default_values = QVariantMap());
 
 protected:
     bool filterAcceptsRow(int source_row, const QModelIndex &source_parent) const Q_DECL_OVERRIDE;

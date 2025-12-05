@@ -253,13 +253,6 @@
             </property>
            </widget>
           </item>
-          <item row="10" column="0">
-           <widget class="QLabel" name="label_6">
-            <property name="text">
-             <string>Log Level</string>
-            </property>
-           </widget>
-          </item>
           <item row="5" column="0">
            <widget class="QCheckBox" name="cbShowAnimations">
             <property name="text">
@@ -299,20 +292,6 @@
            <widget class="QCheckBox" name="cbFont">
             <property name="text">
              <string>Systemschriftart</string>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="0" colspan="3">
-           <widget class="Line" name="line">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="1">
-           <widget class="QSpinBox" name="tbLogLevel">
-            <property name="maximum">
-             <number>999</number>
             </property>
            </widget>
           </item>

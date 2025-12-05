@@ -33,7 +33,6 @@ private slots:
     void on_cbShowAnimations_clicked(bool checked);
     void on_cbConfirmClose_clicked(bool checked);
     void on_cbCheckUpdate_toggled(bool checked);
-    void on_tbLogLevel_valueChanged(int level);
     void on_cbModuleGaerverlauf_clicked(bool checked);
     void on_cbModuleSchnellgaerprobe_clicked(bool checked);
     void on_cbModuleAusdruck_clicked(bool checked);

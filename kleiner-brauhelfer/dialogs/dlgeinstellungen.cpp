@@ -66,8 +66,6 @@ void DlgEinstellungen::updateValues()
     ui->cbCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
     gSettings->endGroup();
 
-    ui->tbLogLevel->setValue(gSettings->logLevel());
-
     ui->cbModuleGaerverlauf->setChecked(gSettings->isModuleEnabled(Settings::ModuleGaerverlauf));
     ui->cbModuleSchnellgaerprobe->setChecked(gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
     ui->cbModuleSchnellgaerprobe->setEnabled(gSettings->isModuleEnabled(Settings::ModuleGaerverlauf));
@@ -172,11 +170,6 @@ void DlgEinstellungen::on_cbConfirmClose_clicked(bool checked)
 void DlgEinstellungen::on_cbCheckUpdate_toggled(bool checked)
 {
     gSettings->setValueInGroup("General", "CheckUpdate", checked);
-}
-
-void DlgEinstellungen::on_tbLogLevel_valueChanged(int level)
-{
-    gSettings->setLogLevel(level);
 }
 
 void DlgEinstellungen::on_cbModuleGaerverlauf_clicked(bool checked)

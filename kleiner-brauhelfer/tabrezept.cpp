@@ -370,6 +370,19 @@ void TabRezept::showEvent(QShowEvent *event)
     updateValues();
 }
 
+void TabRezept::changeEvent(QEvent* event)
+{
+    switch(event->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+    QWidget::changeEvent(event);
+}
+
 void TabRezept::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());

@@ -93,6 +93,7 @@ private slots:
 
 private:
     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
+    void changeEvent(QEvent *event) Q_DECL_OVERRIDE;
     int checkRohstoffeDialog(Brauhelfer::RohstoffTyp typ, const QString &name);
     void checkRohstoffe();
     void updateGlas();

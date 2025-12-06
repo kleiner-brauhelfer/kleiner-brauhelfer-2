@@ -143,6 +143,19 @@ void TabSudAuswahl::showEvent(QShowEvent *event)
     updateWebView();
 }
 
+void TabSudAuswahl::changeEvent(QEvent* event)
+{
+    switch(event->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+    QWidget::changeEvent(event);
+}
+
 void TabSudAuswahl::databaseModified()
 {
     if (!isVisible())

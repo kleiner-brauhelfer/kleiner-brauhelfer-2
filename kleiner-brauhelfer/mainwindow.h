@@ -15,14 +15,14 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    static MainWindow* getInstance();
+    static void installTranslators();
     static QStringList HopfenTypname;
     static QStringList HefeTypname;
     static QStringList HefeTypFlTrName;
     static QStringList ZusatzTypname;
     static QStringList Einheiten;
     static QList<QPair<QString, int> > AnlageTypname;
-
-    static MainWindow* getInstance();
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
@@ -46,6 +46,7 @@ private slots:
     
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
+    void changeEvent(QEvent *event) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *obj, QEvent *event) Q_DECL_OVERRIDE;
     void restart(int retCode = 1000);
     void saveSettings();

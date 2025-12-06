@@ -164,6 +164,19 @@ void TabAbfuellen::showEvent(QShowEvent *event)
     updateValues();
 }
 
+void TabAbfuellen::changeEvent(QEvent* event)
+{
+    switch(event->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+    QWidget::changeEvent(event);
+}
+
 void TabAbfuellen::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());

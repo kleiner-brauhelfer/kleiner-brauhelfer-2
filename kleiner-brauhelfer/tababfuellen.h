@@ -46,6 +46,7 @@ private slots:
 
 private:
     void showEvent(QShowEvent *event) Q_DECL_OVERRIDE;
+    void changeEvent(QEvent *event) Q_DECL_OVERRIDE;
 
 private:
     Ui::TabAbfuellen *ui;

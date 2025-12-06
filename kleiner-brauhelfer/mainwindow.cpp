@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QTranslator>
+#include <QLibraryInfo>
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QFontDialog>
@@ -56,6 +58,27 @@ MainWindow* MainWindow::getInstance()
         if (MainWindow* mainWin = qobject_cast<MainWindow*>(wdg))
             return mainWin;
     return nullptr;
+}
+
+static void installTranslator(QTranslator &translator, const QString &filename)
+{
+    QApplication* app = qApp;
+    QLocale locale(gSettings->language());
+    app->removeTranslator(&translator);
+    if (translator.load(locale, filename, QStringLiteral("_"), app->applicationDirPath() + "/translations"))
+        app->installTranslator(&translator);
+    else if (translator.load(locale, filename, QStringLiteral("_"), QStringLiteral(":/translations")))
+        app->installTranslator(&translator);
+    else if (translator.load(locale, filename, QStringLiteral("_"), QLibraryInfo::path(QLibraryInfo::TranslationsPath)))
+        app->installTranslator(&translator);
+}
+
+void MainWindow::installTranslators()
+{
+    static QTranslator translator;
+    static QTranslator translatorQt;
+    installTranslator(translator, QStringLiteral("kbh"));
+    installTranslator(translatorQt, QStringLiteral("qtbase"));
 }
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -115,7 +138,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
 
-    connect(gSettings, &Settings::languageChanged, this, [this](){restart(1001);});
+    connect(gSettings, &Settings::languageChanged, this, [](){installTranslators();});
     connect(gSettings, &Settings::databasePathChanged, this, [this](){restart(1000);});
     connect(gSettings, &Settings::modulesChanged, this, &MainWindow::modulesChanged);
 
@@ -200,6 +223,20 @@ QAction* MainWindow::getAction(const QString& name) const
     if (name == "actionAusruestung")
         return ui->actionAusruestung;
     return nullptr;
+}
+
+void MainWindow::changeEvent(QEvent* event)
+{
+    switch(event->type())
+    {
+    case QEvent::LanguageChange:
+        initLabels();
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+    QMainWindow::changeEvent(event);
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)

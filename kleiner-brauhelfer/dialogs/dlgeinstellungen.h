@@ -11,6 +11,7 @@ class DlgEinstellungen;
 class DlgEinstellungen : public DlgAbstract
 {
     Q_OBJECT
+    MAKE_TRANSLATABLE_DLG
 
 public:
     static DlgEinstellungen *Dialog;

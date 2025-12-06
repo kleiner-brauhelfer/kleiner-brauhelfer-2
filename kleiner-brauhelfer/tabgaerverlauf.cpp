@@ -122,6 +122,19 @@ void TabGaerverlauf::showEvent(QShowEvent *event)
     updateDiagramm();
 }
 
+void TabGaerverlauf::changeEvent(QEvent* event)
+{
+    switch(event->type())
+    {
+    case QEvent::LanguageChange:
+        ui->retranslateUi(this);
+        break;
+    default:
+        break;
+    }
+    QWidget::changeEvent(event);
+}
+
 void TabGaerverlauf::saveSettings()
 {
     gSettings->beginGroup("TabGaerverlauf");

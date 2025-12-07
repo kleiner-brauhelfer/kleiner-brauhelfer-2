@@ -51,8 +51,17 @@
            <enum>Qt::Vertical</enum>
           </property>
           <widget class="QTabWidget" name="tabMain">
+           <property name="contextMenuPolicy">
+            <enum>Qt::ContextMenuPolicy::ActionsContextMenu</enum>
+           </property>
            <property name="currentIndex">
             <number>0</number>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
            </property>
            <widget class="TabSudAuswahl" name="tabSudAuswahl">
             <attribute name="icon">
@@ -386,8 +395,30 @@
    <property name="text">
     <string>Einstellungen</string>
    </property>
-   <property name="menuRole">
-    <enum>QAction::NoRole</enum>
+  </action>
+  <action name="actionTabBarLabels">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Überschriften</string>
+   </property>
+  </action>
+  <action name="actionTabBarLocation">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Oben / Rechts</string>
+   </property>
+   <property name="toolTip">
+    <string>Oben / Rechts</string>
    </property>
   </action>
  </widget>

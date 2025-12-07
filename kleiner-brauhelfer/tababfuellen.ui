@@ -10,6 +10,12 @@
     <height>781</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>Abfülldaten</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="tababfuellen"/>
+  </property>
   <property name="toolTip">
    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier werden Anmerkungen, Besonderheiten eingetragen, die für die Gärung und die Reifung wichtig sind. Dies kann z.B. doppeltes Hopfenstopen sein, das mehrere Gebinde bis zum endgültigen Reifefass nötig macht.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Der Kleine Brauhelfer hält aber nur einmal Abfüllen fest und berechnet ab diesem Zeitpunkt die Reifung, egal wie unterteilt und feinjustiert diese ist.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
   </property>

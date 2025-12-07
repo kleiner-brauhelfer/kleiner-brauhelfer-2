@@ -13,6 +13,12 @@
   <property name="acceptDrops">
    <bool>true</bool>
   </property>
+  <property name="windowTitle">
+   <string>Gärverlauf</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="tabgaerverlauf"/>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>4</number>

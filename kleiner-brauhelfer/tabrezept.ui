@@ -10,6 +10,12 @@
     <height>714</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>Rezept</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="tabrezept"/>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>4</number>

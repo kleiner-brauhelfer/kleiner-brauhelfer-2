@@ -10,6 +10,12 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>Sudauswahl</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="tabsudauswahl"/>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QHBoxLayout" name="horizontalLayoutFilter">

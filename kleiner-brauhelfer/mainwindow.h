@@ -43,7 +43,9 @@ private slots:
     void discardDatabase();
     void modulesChanged(Settings::Modules modules);
     void eingabefelderEntsperren();
-    
+    void tabBarLabelsToggled(bool visible);
+    void tabBarLocationToggled(bool top);
+
 private:
     void closeEvent(QCloseEvent* event) Q_DECL_OVERRIDE;
     void changeEvent(QEvent *event) Q_DECL_OVERRIDE;

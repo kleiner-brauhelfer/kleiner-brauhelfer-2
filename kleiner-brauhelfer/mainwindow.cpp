@@ -98,6 +98,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabGaerverlauf->setup(mSud);
     qApp->installEventFilter(this);
 
+    initActions();
+
     connect(gSettings, &Settings::themeChanged, this, &MainWindow::themeChanged);
 
     gUndoStack = new UndoStack(this);
@@ -116,6 +118,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     gSettings->beginGroup("MainWindow");
     restoreGeometry(gSettings->value("geometry").toByteArray());
+    ui->actionTabBarLabels->setChecked(gSettings->value("tabBarLabels", true).toBool());
+    ui->actionTabBarLocation->setChecked(gSettings->value("tabBarLocation", true).toBool());
     mDefaultState = saveState();
     restoreState(gSettings->value("state").toByteArray());
     ui->splitterHelp->setSizes({900, 100});
@@ -127,10 +131,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
     if (ui->toolBarSave->isHidden())
         ui->toolBarSave->setVisible(true);
+    if (ui->toolBarSudauswahl->isHidden())
+        ui->toolBarSudauswahl->setVisible(true);
     if (ui->toolBar->isHidden())
         ui->toolBar->setVisible(true);
     if (ui->toolBarLeft->isHidden())
         ui->toolBarLeft->setVisible(true);
+
+    ui->tabMain->addAction(ui->actionTabBarLabels);
+    ui->tabMain->addAction(ui->actionTabBarLocation);
 
     gSettings->beginGroup("General");
     BierCalc::faktorPlatoToBrix = gSettings->value("RefraktometerKorrekturfaktor", 1.03).toDouble();
@@ -149,7 +158,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mSud, &SudObject::loadedChanged, this, &MainWindow::sudLoaded);
     connect(mSud, &SudObject::dataChanged, this, &MainWindow::sudDataChanged);
 
-    initActions();
 
     ui->tabSudAuswahl->setupToolbar(ui->toolBarSudauswahl);
     connect(ui->tabMain, &QTabWidget::currentChanged, this, [this](){ui->toolBarSudauswahl->setVisible(ui->tabMain->currentWidget() == ui->tabSudAuswahl);});
@@ -216,6 +224,9 @@ void MainWindow::initActions()
         dlg.exec();
         ui->actionUeber->setChecked(false);
     });
+
+    connect(ui->actionTabBarLabels, &QAction::toggled, this, &MainWindow::tabBarLabelsToggled);
+    connect(ui->actionTabBarLocation, &QAction::toggled, this, &MainWindow::tabBarLocationToggled);
 }
 
 QAction* MainWindow::getAction(const QString& name) const
@@ -377,6 +388,8 @@ void MainWindow::saveSettings()
 {
     gSettings->beginGroup("MainWindow");
     gSettings->setValue("geometry", saveGeometry());
+    gSettings->setValue("tabBarLabels", ui->actionTabBarLabels->isChecked());
+    gSettings->setValue("tabBarLocation", ui->actionTabBarLocation->isChecked());
     gSettings->setValue("state", saveState());
     gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
     gSettings->endGroup();
@@ -390,6 +403,8 @@ void MainWindow::saveSettings()
 void MainWindow::restoreView()
 {
     restoreState(mDefaultState);
+    ui->actionTabBarLabels->setChecked(true);
+    ui->actionTabBarLocation->setChecked(true);
     ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     ui->tabSudAuswahl->restoreView();
     ui->tabRezept->restoreView();
@@ -556,6 +571,31 @@ void MainWindow::eingabefelderEntsperren()
     ui->tabAbfuelldaten->checkEnabled();
     ui->tabGaerverlauf->checkEnabled();
     ui->actionEingabefelderEntsperren->setChecked(gSettings->ForceEnabled);
+}
+
+void MainWindow::tabBarLabelsToggled(bool visible)
+{
+    if (visible)
+    {
+        ui->tabMain->setTabText(0, ui->tabSudAuswahl->windowTitle());
+        ui->tabMain->setTabText(1, ui->tabRezept->windowTitle());
+        ui->tabMain->setTabText(2, ui->tabBraudaten->windowTitle());
+        ui->tabMain->setTabText(3, ui->tabAbfuelldaten->windowTitle());
+        ui->tabMain->setTabText(4, ui->tabGaerverlauf->windowTitle());
+    }
+    else
+    {
+        ui->tabMain->setTabText(0, QString());
+        ui->tabMain->setTabText(1, QString());
+        ui->tabMain->setTabText(2, QString());
+        ui->tabMain->setTabText(3, QString());
+        ui->tabMain->setTabText(4, QString());
+    }
+}
+
+void MainWindow::tabBarLocationToggled(bool top)
+{
+    ui->tabMain->setTabPosition(top ? QTabWidget::TabPosition::North : QTabWidget::TabPosition::West);
 }
 
 void MainWindow::checkForUpdate(bool force)

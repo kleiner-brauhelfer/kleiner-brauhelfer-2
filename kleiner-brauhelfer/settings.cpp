@@ -50,9 +50,9 @@ void Settings::initTheme()
 
     // font
     if (value("UseSystemFont", true).toBool())
-        font = defaultFont;
+        QGuiApplication::setFont(defaultFont);
     else
-        font = value("Font", QFont()).value<QFont>();
+        QGuiApplication::setFont(value("Font", QFont()).value<QFont>());
 
     // theme
     mTheme = static_cast<Qt::ColorScheme>(value("Theme", (int)Qt::ColorScheme::Unknown).toInt());
@@ -294,21 +294,22 @@ void Settings::setTheme(Qt::ColorScheme theme)
     }
 }
 
-bool Settings::useSystemFont()
+bool Settings::useDefaultFont()
 {
     return valueInGroup("Style", "UseSystemFont", true).toBool();
 }
 
-void Settings::setUseSystemFont(bool system)
-{
-    setValueInGroup("Style", "UseSystemFont", system);
-    font = defaultFont;
-}
-
 void Settings::setFont(const QFont &font)
 {
+    setValueInGroup("Style", "UseSystemFont", false);
     setValueInGroup("Style", "Font", font);
-    this->font = font;
+    QGuiApplication::setFont(font);
+}
+
+void Settings::setDefaultFont()
+{
+    setValueInGroup("Style", "UseSystemFont", true);
+    QGuiApplication::setFont(defaultFont);
 }
 
 bool Settings::animationsEnabled()

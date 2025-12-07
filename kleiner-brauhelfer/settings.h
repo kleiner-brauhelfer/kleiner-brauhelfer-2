@@ -59,9 +59,9 @@ public:
     Qt::ColorScheme theme_set() const;
     void setTheme(Qt::ColorScheme theme);
 
-    bool useSystemFont();
-    void setUseSystemFont(bool system);
+    bool useDefaultFont();
     void setFont(const QFont &font);
+    void setDefaultFont();
 
     bool animationsEnabled();
     void setAnimationsEnabled(bool enabled);
@@ -102,8 +102,6 @@ private:
     void initTheme();
 
 public:
-    QFont font;
-
     QPalette palette;
     QPalette paletteInput;
     QPalette paletteError;

@@ -39,8 +39,8 @@ DlgRichTextEditor::DlgRichTextEditor(SudObject *sud, QWidget *parent) :
         ui->cbSize->addItem(QString::number(size));
 
     gSettings->beginGroup(staticMetaObject.className());
-    ui->cbFont->setCurrentIndex(gSettings->value("font", ui->cbFont->findText(gSettings->font.family())).toInt());
-    ui->cbSize->setCurrentIndex(gSettings->value("fontsize", ui->cbSize->findText(QString::number(gSettings->font.pointSize()))).toInt());
+    ui->cbFont->setCurrentIndex(gSettings->value("font", ui->cbFont->findText(QGuiApplication::font().family())).toInt());
+    ui->cbSize->setCurrentIndex(gSettings->value("fontsize", ui->cbSize->findText(QString::number(QGuiApplication::font().pointSize()))).toInt());
     gSettings->endGroup();
 
     ui->btnImg->setVisible(sud);

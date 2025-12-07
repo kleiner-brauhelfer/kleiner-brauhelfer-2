@@ -46,7 +46,7 @@ void DlgEinstellungen::updateValues()
     if (language == QStringLiteral("nl"))
         ui->cbLanguage->setCurrentIndex(3);
 
-    ui->cbFont->setChecked(gSettings->useSystemFont());
+    ui->cbFont->setChecked(gSettings->useDefaultFont());
 
     gSettings->beginGroup("General");
     ui->cbNumberFormat->setChecked(gSettings->value("UseLanguageLocale", true).toBool());
@@ -109,18 +109,15 @@ void DlgEinstellungen::on_cbFont_clicked(bool checked)
 {
     if (checked)
     {
-        gSettings->setUseSystemFont(true);
-        qApp->setFont(gSettings->font);
+        gSettings->setDefaultFont();
     }
     else
     {
         bool ok;
-        QFont font = QFontDialog::getFont(&ok, gSettings->font, this);
+        QFont font = QFontDialog::getFont(&ok, QGuiApplication::font(), this);
         if (ok)
         {
-            gSettings->setUseSystemFont(false);
             gSettings->setFont(font);
-            qApp->setFont(gSettings->font);
         }
         else
         {

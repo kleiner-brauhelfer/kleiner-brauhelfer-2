@@ -56,6 +56,7 @@ public:
     void initLogLevel(int level);
 
     Qt::ColorScheme theme() const;
+    Qt::ColorScheme theme_set() const;
     void setTheme(Qt::ColorScheme theme);
 
     bool useSystemFont();
@@ -148,7 +149,6 @@ private:
     Qt::ColorScheme mTheme;
     Modules mModules;
     QFont defaultFont;
-    QPalette defaultPalette;
 };
 
 #endif // SETTINGS_H

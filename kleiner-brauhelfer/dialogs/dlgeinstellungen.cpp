@@ -34,17 +34,7 @@ void DlgEinstellungen::updateValues()
 {
     ui->tbDatabase->setText(gSettings->databasePath());
 
-    switch (gSettings->theme())
-    {
-    case Qt::ColorScheme::Light:
-        ui->cbTheme->setCurrentIndex(0);
-        break;
-    case Qt::ColorScheme::Dark:
-        ui->cbTheme->setCurrentIndex(1);
-        break;
-    default:
-        break;
-    }
+    ui->cbTheme->setCurrentIndex(static_cast<int>(gSettings->theme_set()));
 
     QString language = gSettings->language();
     if (language == QStringLiteral("de"))
@@ -93,15 +83,7 @@ void DlgEinstellungen::on_btnDatabase_clicked()
 
 void DlgEinstellungen::on_cbTheme_currentIndexChanged(int index)
 {
-    switch (index)
-    {
-    case 0:
-        gSettings->setTheme(Qt::ColorScheme::Light);
-        break;
-    case 1:
-        gSettings->setTheme(Qt::ColorScheme::Dark);
-        break;
-    }
+    gSettings->setTheme(static_cast<Qt::ColorScheme>(index));
 }
 
 void DlgEinstellungen::on_cbLanguage_currentIndexChanged(int index)

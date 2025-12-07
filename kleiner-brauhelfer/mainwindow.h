@@ -55,7 +55,6 @@ private:
     void restoreView();
     void checkForUpdate(bool force);
     void initLabels();
-    void initTheme(Qt::ColorScheme theme);
     void initActions();
     void checkSud(SudObject* sud);
 

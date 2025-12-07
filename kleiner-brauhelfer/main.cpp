@@ -425,7 +425,6 @@ int main(int argc, char *argv[])
             {
                 MainWindow w(nullptr);
                 a.setStyle(QStringLiteral("Fusion"));
-                a.setPalette(gSettings->palette);
                 a.setFont(gSettings->font);
                 w.show();
                 try

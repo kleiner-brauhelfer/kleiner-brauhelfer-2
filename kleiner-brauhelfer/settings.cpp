@@ -7,12 +7,12 @@
 #endif
 #include <QLoggingCategory>
 #include <QWidget>
+#include <QStyleHints>
 
 Settings::Settings(QObject *parent) :
     QSettings(QSettings::IniFormat, QSettings::UserScope, QCoreApplication::organizationName(), QCoreApplication::applicationName(), parent)
 {
     defaultFont = QGuiApplication::font();
-    defaultPalette = QGuiApplication::palette();
     initTheme();
 }
 
@@ -20,7 +20,6 @@ Settings::Settings(const QString& dir, QObject *parent) :
     QSettings(dir + "/" + QCoreApplication::applicationName() + ".ini", QSettings::IniFormat, parent)
 {
     defaultFont = QGuiApplication::font();
-    defaultPalette = QGuiApplication::palette();
     initTheme();
 }
 
@@ -56,13 +55,11 @@ void Settings::initTheme()
         font = value("Font", QFont()).value<QFont>();
 
     // theme
-    mTheme = static_cast<Qt::ColorScheme>(value("Theme", (int)Qt::ColorScheme::Light).toInt());
-    if (mTheme == Qt::ColorScheme::Unknown)
-        mTheme = Qt::ColorScheme::Light;
+    mTheme = static_cast<Qt::ColorScheme>(value("Theme", (int)Qt::ColorScheme::Unknown).toInt());
 
     // colors
     QColor colorChanged;
-    switch (mTheme)
+    switch (theme())
     {
     default:
     case Qt::ColorScheme::Light:
@@ -147,7 +144,8 @@ void Settings::initTheme()
     }
 
     // palette
-    switch (mTheme)
+    /*
+    switch (theme())
     {
     default:
     case Qt::ColorScheme::Light:
@@ -224,7 +222,9 @@ void Settings::initTheme()
         palette.setColor(QPalette::LinkVisited, QColor(42,130,218));
         break;
     }
+    */
 
+    palette = QGuiApplication::palette();
     paletteInput = palette;
     paletteChanged = palette;
     paletteChanged.setColor(QPalette::Base, colorChanged);
@@ -255,29 +255,31 @@ void Settings::initLogLevel(int level)
     QString rules;
     while (level > 100)
         level -= 100;
-    if (level <= 0)
+    if (level < 0)
         rules = QStringLiteral("*.info=false\n*.debug=false");
-    else if (level == 1)
+    else if (level == 0)
         rules = QStringLiteral("*.debug=false");
-    else if (level == 2)
+    else if (level == 1)
         rules = QStringLiteral("");
-    if (level < 99)
-    {
-        if (level >= 3)
-            rules += QStringLiteral("kleiner-brauhelfer-core.info=true\n");
-        if (level >= 4)
-            rules += QStringLiteral("kleiner-brauhelfer-core.debug=true\n");
-        if (level >= 5)
-            rules += QStringLiteral("SqlTableModel.info=true\n");
-        if (level >= 6)
-            rules += QStringLiteral("SqlTableModel.debug=true\n");
-    }
-    else
-        rules = QStringLiteral("*.info=true\n*.debug=true");
+    if (level >= 2)
+        rules += QStringLiteral("kleiner-brauhelfer-core.info=true\n");
+    if (level >= 3)
+        rules += QStringLiteral("kleiner-brauhelfer-core.debug=true\n");
+    if (level >= 4)
+        rules += QStringLiteral("SqlTableModel.info=true\n");
+    if (level >= 5)
+        rules += QStringLiteral("SqlTableModel.debug=true\n");
     QLoggingCategory::setFilterRules(rules);
 }
 
 Qt::ColorScheme Settings::theme() const
+{
+    if (mTheme == Qt::ColorScheme::Unknown)
+        return qApp->styleHints()->colorScheme();
+    return mTheme;
+}
+
+Qt::ColorScheme Settings::theme_set() const
 {
     return mTheme;
 }

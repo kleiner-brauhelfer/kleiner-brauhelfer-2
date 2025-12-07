@@ -7,6 +7,7 @@
 #include <QFontDialog>
 #include <QStyleFactory>
 #include <QDesktopServices>
+#include <QStyleHints>
 #include "brauhelfer.h"
 #include "commands/undostack.h"
 #include "biercalc.h"
@@ -88,7 +89,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     Qt::ColorScheme theme = gSettings->theme();
     QIcon::setThemeSearchPaths({":/images/icons"});
-    initTheme(theme);
+    themeChanged(theme);
 
     initLabels();
     ui->setupUi(this);
@@ -110,11 +111,6 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->toolBarSave->addAction(gUndoStack->createUndoAction(this, tr("Undo")));
         ui->toolBarSave->addSeparator();
     }
-
-    QPalette palette = ui->tbHelp->palette();
-    palette.setBrush(QPalette::Base, gSettings->palette.brush(QPalette::ToolTipBase));
-    palette.setBrush(QPalette::Text, gSettings->palette.brush(QPalette::ToolTipText));
-    ui->tbHelp->setPalette(palette);
 
     gSettings->beginGroup("MainWindow");
     restoreGeometry(gSettings->value("geometry").toByteArray());
@@ -240,6 +236,14 @@ void MainWindow::changeEvent(QEvent* event)
 {
     switch(event->type())
     {
+    case QEvent::PaletteChange:
+        {
+            QPalette palette = QGuiApplication::palette();
+            palette.setBrush(QPalette::Base, QGuiApplication::palette().toolTipBase());
+            palette.setBrush(QPalette::Text, QGuiApplication::palette().toolTipText());
+            ui->tbHelp->setPalette(palette);
+        }
+        break;
     case QEvent::LanguageChange:
         initLabels();
         ui->retranslateUi(this);
@@ -296,20 +300,15 @@ void MainWindow::focusChanged(QWidget *old, QWidget *now)
 {
     if (old && now && strcmp(old->metaObject()->className(),"QtPrivate::QCalendarView") != 0)
         WidgetDecorator::clearValueChanged();
-    if (now && now != ui->tbHelp && !qobject_cast<QSplitter*>(now))
+    if (now && now != ui->tbHelp && !qobject_cast<QSplitter*>(now) && !qobject_cast<QScrollArea*>(now))
         ui->tbHelp->setHtml(now->toolTip());
-}
-
-void MainWindow::initTheme(Qt::ColorScheme theme)
-{
-    QString themeName = theme == Qt::ColorScheme::Dark ? "dark" : "light";
-    QIcon::setThemeName(themeName);
 }
 
 void MainWindow::themeChanged(Qt::ColorScheme theme)
 {
-    initTheme(theme);
-    restart();
+    QString themeName = theme == Qt::ColorScheme::Dark ? "dark" : "light";
+    QIcon::setThemeName(themeName);
+    QGuiApplication::styleHints()->setColorScheme(theme);
 }
 
 void MainWindow::restart(int retCode)

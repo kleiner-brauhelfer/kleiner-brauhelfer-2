@@ -1,100 +1,100 @@
 <!DOCTYPE QPH>
-<QPH language="en_US">
+<QPH language="sv_SE">
 <phrase>
     <source>Anstellen</source>
-    <target>Pitching</target>
+    <target>Jästgiva</target>
 </phrase>
 <phrase>
     <source>Jungbier</source>
-    <target>Young beer</target>
+    <target>Ungt öl</target>
 </phrase>
 <phrase>
     <source>Abgefüllt</source>
-    <target>Bottled</target>
+    <target>Tappat på flaska/fat</target>
 </phrase>
 <phrase>
     <source>Rezept</source>
-    <target>Recipe</target>
+    <target>Recept</target>
 </phrase>
 <phrase>
     <source>Würzemenge</source>
-    <target>Wort amount</target>
+    <target>Vörtmängd</target>
 </phrase>
 <phrase>
     <source>SHA</source>
-    <target>Mash efficiency</target>
+    <target>Utbyte</target>
 </phrase>
 <phrase>
     <source>Eff. SHA</source>
-    <target>Brewhouse efficiency</target>
+    <target>Effektivt utbyte</target>
 </phrase>
 <phrase>
     <source>Rezept</source>
-    <target>Recipe</target>
+    <target>Recept</target>
 </phrase>
 <phrase>
     <source>Ausbeute</source>
-    <target>Efficiency</target>
+    <target>Utbye</target>
 </phrase>
 <phrase>
     <source>Kochbeginn</source>
-    <target>Begin of boil</target>
+    <target>Kokstart</target>
 </phrase>
 <phrase>
     <source>Kochende</source>
-    <target>End of boil</target>
+    <target>Kokslut</target>
 </phrase>
 <phrase>
     <source>Nach Hopfenseihen</source>
-    <target>After hop straining</target>
+    <target>Efter humlefiltrering</target>
 </phrase>
 <phrase>
     <source>Anstellen</source>
-    <target>Pitching</target>
+    <target>Jästgiva</target>
 </phrase>
 <phrase>
     <source>Würzemenge</source>
-    <target>Wort amount</target>
+    <target>Vörtmängd</target>
 </phrase>
 <phrase>
     <source>Stammwürze</source>
-    <target>Original gravity</target>
+    <target>Stamvört</target>
 </phrase>
 <phrase>
     <source>Menge</source>
-    <target>Amount</target>
+    <target>Mängd</target>
 </phrase>
 <phrase>
     <source>Menge Rezept</source>
-    <target>Amount recipe</target>
+    <target>Mängd enligt plan</target>
 </phrase>
 <phrase>
     <source>SW Rezept</source>
-    <target>OG recipe</target>
+    <target>Stamvört enligt plan</target>
 </phrase>
 <phrase>
     <source>SW</source>
-    <target>OG</target>
+    <target>Stamvört</target>
 </phrase>
 <phrase>
     <source>Menge</source>
-    <target>Amount</target>
+    <target>Mängd</target>
 </phrase>
 <phrase>
     <source>Anteil</source>
-    <target>Share</target>
+    <target>Andel</target>
 </phrase>
 <phrase>
     <source>Bittere</source>
-    <target>Bitterness</target>
+    <target>Beska</target>
 </phrase>
 <phrase>
     <source>Zeit</source>
-    <target>Time</target>
+    <target>Tid</target>
 </phrase>
 <phrase>
     <source>Temperatur</source>
-    <target>Temperature</target>
+    <target>Temperatur</target>
 </phrase>
 <phrase>
     <source>α-Amylase</source>
@@ -106,119 +106,119 @@
 </phrase>
 <phrase>
     <source>Anteil</source>
-    <target>Share</target>
+    <target>Andel</target>
 </phrase>
 <phrase>
     <source>Menge</source>
-    <target>Amount</target>
+    <target>Mängd</target>
 </phrase>
 <phrase>
     <source>Schnellgärprobe</source>
-    <target>Fast fermentation sample</target>
+    <target>Snabbjäsningsprov</target>
 </phrase>
 <phrase>
     <source>Gemessen</source>
-    <target>Measured</target>
+    <target>Uppmätt</target>
 </phrase>
 <phrase>
     <source>Erwartet</source>
-    <target>Expected</target>
+    <target>Förväntat</target>
 </phrase>
 <phrase>
     <source>Rezept</source>
-    <target>Recipe</target>
+    <target>Recept</target>
 </phrase>
 <phrase>
     <source>Restextrakt</source>
-    <target>Residual extract</target>
+    <target>Restsötma</target>
 </phrase>
 <phrase>
     <source>Über</source>
-    <target>About</target>
+    <target>Om</target>
 </phrase>
 <phrase>
     <source>Forum</source>
     <target>Forum</target>
 </phrase>
 <phrase>
+    <source>Entwickler</source>
+    <target>Utvecklare</target>
+</phrase>
+<phrase>
     <source>Homepage</source>
-    <target>Website</target>
+    <target>Hemsida</target>
 </phrase>
 <phrase>
     <source>Kompiliert mit</source>
-    <target>Compiled with</target>
-</phrase>
-<phrase>
-    <source>Entwickler</source>
-    <target>Developers</target>
+    <target>Kompilerat med</target>
 </phrase>
 <phrase>
     <source>Ausrüstung</source>
-    <target>Equipment</target>
+    <target>Utrustning</target>
 </phrase>
 <phrase>
     <source>Geräte</source>
-    <target>Gear</target>
+    <target>Utrustning</target>
 </phrase>
 <phrase>
     <source>Neues Gerät</source>
-    <target>New gear</target>
+    <target>Ny utrustning</target>
 </phrase>
 <phrase>
     <source>Sude</source>
-    <target>Batches</target>
+    <target>Satser</target>
 </phrase>
 <phrase>
     <source>Kernwerte der Anlage</source>
-    <target>Setup parameters</target>
+    <target>Anläggningens parametrar</target>
 </phrase>
 <phrase>
     <source>Durchschnitt</source>
-    <target>Average</target>
+    <target>Genomsnitt</target>
 </phrase>
 <phrase>
     <source>Durchschnitt über die letzten</source>
-    <target>Average over the last</target>
+    <target>Genomsnitt av senaste</target>
 </phrase>
 <phrase>
     <source>Verdampfungsrate</source>
-    <target>Evaporation rate</target>
+    <target>Förångningshastighet</target>
 </phrase>
 <phrase>
     <source>Sonstiges</source>
-    <target>Miscellaneous</target>
+    <target></target>
 </phrase>
 <phrase>
     <source>Korrektur des Farbwertes</source>
-    <target>Color correction</target>
+    <target>Färgförändring</target>
 </phrase>
 <phrase>
     <source>Bezeichnung</source>
-    <target>Designation</target>
+    <target>Beteckning</target>
 </phrase>
 <phrase>
     <source>Anlagetyp</source>
-    <target>Type</target>
+    <target>Typ</target>
 </phrase>
 <phrase>
     <source>Sudhausausbeute</source>
-    <target>Mash efficiency</target>
+    <target>Mäskutbyte</target>
 </phrase>
 <phrase>
     <source>Betriebskosten</source>
-    <target>Costs</target>
+    <target>Kostnader</target>
 </phrase>
 <phrase>
     <source>Korrektur der Nachgussmenge</source>
-    <target>Correction of sparging water amount</target>
+    <target>Korrektion av mängden lakvatten</target>
 </phrase>
 <phrase>
     <source>Korrektur der Sollmenge</source>
-    <target>Correction of target quantity</target>
+    <target>Korrektion av målängden</target>
 </phrase>
 <phrase>
     <source>Maischekessel</source>
-    <target>Mash kettle</target>
+    <target>Mäskkärl</target>
 </phrase>
 <phrase>
     <source>Durchmesser</source>
@@ -226,623 +226,627 @@
 </phrase>
 <phrase>
     <source>Volumen</source>
-    <target>Volume</target>
+    <target>Volym</target>
 </phrase>
 <phrase>
     <source>Nutzbares Volumen</source>
-    <target>Useable volume</target>
+    <target>Användbar volym</target>
 </phrase>
 <phrase>
     <source>Höhe</source>
-    <target>Height</target>
+    <target>Höjd</target>
 </phrase>
 <phrase>
     <source>Maximal nutzbare Füllhöhe</source>
-    <target>Maximum usable fill height</target>
+    <target>Max användbar fyllnadshöjd</target>
 </phrase>
 <phrase>
     <source>Sudpfanne</source>
-    <target>Brew kettle</target>
+    <target>Kokkärl</target>
 </phrase>
 <phrase>
     <source>Bemerkung</source>
-    <target>Remarks</target>
+    <target>Anmärkningar</target>
 </phrase>
 <phrase>
     <source>Neue Brauanlage</source>
-    <target>New brew equipment</target>
+    <target>Ny anläggning</target>
 </phrase>
 <phrase>
     <source>Brauanlage löschen?</source>
-    <target>Delete setup?</target>
+    <target>Ta bort anläggningen?</target>
 </phrase>
 <phrase>
     <source>Soll die Brauanlage &quot;%1&quot; gelöscht werden?</source>
-    <target>Delete setup &quot;%1&quot;?</target>
+    <target>Ta bort anläggningen &quot;%1&quot;?</target>
 </phrase>
 <phrase>
     <source>Gerät löschen?</source>
-    <target>Delete gear?</target>
+    <target>Ta bort utrustning?</target>
 </phrase>
 <phrase>
     <source>Soll das Gerät &quot;%1&quot; gelöscht werden?</source>
-    <target>Delete gear &quot;%1&quot;?</target>
+    <target>Ta bort utrustning &quot;%1&quot;?</target>
 </phrase>
 <phrase>
     <source>Bewertungen</source>
-    <target>Ratings</target>
+    <target>Betyg</target>
 </phrase>
 <phrase>
     <source>Suche</source>
-    <target>Search</target>
+    <target>Sök</target>
 </phrase>
 <phrase>
     <source>Bewertung</source>
-    <target>Rating</target>
+    <target>Betyg</target>
 </phrase>
 <phrase>
     <source>Sterne</source>
-    <target>Stars</target>
+    <target>Stjärnor</target>
 </phrase>
 <phrase>
     <source>Heute</source>
-    <target>Today</target>
+    <target>Idag</target>
 </phrase>
 <phrase>
     <source>Bewertungsdatum</source>
-    <target>Evaluation date</target>
+    <target>Tidpunkt</target>
 </phrase>
 <phrase>
     <source>Woche</source>
-    <target>Week</target>
+    <target>Vecka</target>
 </phrase>
 <phrase>
     <source>Gesamteindruck</source>
-    <target>Overall impression</target>
+    <target>Helhetsintryck</target>
 </phrase>
 <phrase>
     <source>überraschend, ungewöhnlich</source>
-    <target>surprising, unusual</target>
+    <target>överraskande, ovanligt</target>
 </phrase>
 <phrase>
     <source>nicht trinkbar, problematisch</source>
-    <target>problematic, unpleasant</target>
+    <target>inte drickbart, problematisk</target>
 </phrase>
 <phrase>
     <source>unauffällig, gewöhnlich</source>
-    <target>nothing exciting</target>
+    <target>valnligt, sticker inte ut</target>
 </phrase>
 <phrase>
     <source>keine Angabe</source>
-    <target>not specified</target>
+    <target>anges inte</target>
 </phrase>
 <phrase>
     <source>interessant</source>
-    <target>interesting</target>
+    <target>intressant</target>
 </phrase>
 <phrase>
     <source>toll, macht Lust auf mehr</source>
-    <target>great, want more</target>
+    <target>mycket bra, man vill dricka mer av det</target>
 </phrase>
 <phrase>
     <source>gutes, typisches Bier</source>
-    <target>good and typical for that style</target>
+    <target>bra, typisk öl</target>
 </phrase>
 <phrase>
     <source>kunstvoll, kreativ, mutig</source>
-    <target>creative</target>
+    <target>konstnärlig , kreativ, modig</target>
 </phrase>
 <phrase>
     <source>einmal ist genug, langweilig</source>
-    <target>once is enough, boring</target>
+    <target>en gång räcker, tråkigt</target>
 </phrase>
 <phrase>
     <source>Bemerkung</source>
-    <target>Remarks</target>
+    <target>Anmärkningar</target>
 </phrase>
 <phrase>
     <source>Farbe, Klarheit</source>
-    <target>Color, clarity</target>
+    <target>Färg, klarhet</target>
 </phrase>
 <phrase>
     <source>gelb</source>
-    <target>pale</target>
+    <target>gul</target>
 </phrase>
 <phrase>
     <source>kupferrot, bernsteinfarben</source>
-    <target>copper red, amber</target>
+    <target>kopparröd</target>
 </phrase>
 <phrase>
     <source>braun bis tiefbraun</source>
-    <target>brown to dark brown</target>
+    <target>brun till mörkbrun</target>
 </phrase>
 <phrase>
     <source>golden</source>
-    <target>golden</target>
+    <target>gyllen</target>
 </phrase>
 <phrase>
     <source>bernstein</source>
-    <target>amber</target>
+    <target>bernsten</target>
 </phrase>
 <phrase>
     <source>hellgelb, lichthell</source>
-    <target>bright</target>
+    <target>ljusgul</target>
 </phrase>
 <phrase>
     <source>schwarz, tiefdunkel</source>
-    <target>black, deep dark</target>
+    <target>svart</target>
 </phrase>
 <phrase>
     <source>satt, intensiv</source>
-    <target>saturated, intense</target>
+    <target>mättad, intensiv</target>
 </phrase>
 <phrase>
     <source>glänzend</source>
-    <target>bright</target>
+    <target>glänsande</target>
 </phrase>
 <phrase>
     <source>matt, blass</source>
-    <target>pale</target>
+    <target>matt, blek</target>
 </phrase>
 <phrase>
     <source>gräulich, fahl</source>
-    <target>greyish, wan</target>
+    <target>gråaktig, blek</target>
 </phrase>
 <phrase>
     <source>Schaum</source>
-    <target>Foam</target>
+    <target>Skum</target>
 </phrase>
 <phrase>
     <source>feinporig, fest</source>
-    <target>fine, tight</target>
+    <target>fint, fast</target>
 </phrase>
 <phrase>
     <source>grobporig, schwach</source>
-    <target>coarse, weak</target>
+    <target>grovt, svag</target>
 </phrase>
 <phrase>
     <source>gut haftend am Glas</source>
-    <target>well adhering to glass</target>
+    <target>bra vidhäftning vid glaset</target>
 </phrase>
 <phrase>
     <source>schlecht haftend</source>
-    <target>poor adherence</target>
+    <target>dålig vidhäftning</target>
 </phrase>
 <phrase>
     <source>gute Haltbarkeit</source>
-    <target>good stability</target>
+    <target>bra stabilitet</target>
 </phrase>
 <phrase>
     <source>mässige Haltbarkeit</source>
-    <target>mediocre stability</target>
+    <target>medelmåttig stabilitet</target>
 </phrase>
 <phrase>
     <source>keine Haltbarkeit</source>
-    <target>poor stability</target>
+    <target>dålig stabilitet</target>
 </phrase>
 <phrase>
     <source>geringes Volumen</source>
-    <target>small volume</target>
+    <target>liten volym</target>
 </phrase>
 <phrase>
     <source>kräftiges Volumen</source>
-    <target>large volume</target>
+    <target>stor volym</target>
 </phrase>
 <phrase>
     <source>sehr voluminös, mächtig</source>
-    <target>voluminous</target>
+    <target>mycket volym, mäktig</target>
 </phrase>
 <phrase>
     <source>überschäumend</source>
-    <target>exuberant</target>
+    <target>skummar över</target>
 </phrase>
 <phrase>
     <source>Geruch</source>
-    <target>Smell</target>
+    <target>Lukt</target>
 </phrase>
 <phrase>
     <source>säuerlich</source>
-    <target>sour</target>
+    <target>syrlig</target>
 </phrase>
 <phrase>
     <source>fruchtig</source>
-    <target>fruity</target>
+    <target>fruktig</target>
 </phrase>
 <phrase>
     <source>hefig</source>
-    <target>yeasty</target>
+    <target>jäst</target>
 </phrase>
 <phrase>
     <source>rein, abgerundet</source>
-    <target>clear, harmonic</target>
+    <target>ren, avrundat</target>
 </phrase>
 <phrase>
     <source>unangenehm, unausgewogen</source>
-    <target>unround, unharmonic</target>
+    <target>oangenämt, obalanserad</target>
 </phrase>
 <phrase>
     <source>frisch</source>
-    <target>fresh</target>
+    <target>färsk</target>
 </phrase>
 <phrase>
     <source>hopfenaromatisch, hopfig</source>
-    <target>hoppy</target>
+    <target>humlearoma</target>
 </phrase>
 <phrase>
     <source>wohlriechend</source>
-    <target>well smelling</target>
+    <target>angenämt</target>
 </phrase>
 <phrase>
     <source>malzaromatisch, malzig</source>
-    <target>malty</target>
+    <target>maltaroma</target>
 </phrase>
 <phrase>
     <source>süsslich, nach Würze</source>
-    <target>sweet</target>
+    <target>sött</target>
 </phrase>
 <phrase>
     <source>gewürzig</source>
-    <target>spicy</target>
+    <target>kryddig</target>
 </phrase>
 <phrase>
     <source>Geruchsfehler</source>
-    <target>wrong, faulty</target>
+    <target>Luktfel</target>
 </phrase>
 <phrase>
     <source>Geschmack</source>
-    <target>Taste</target>
+    <target>Smak</target>
 </phrase>
 <phrase>
     <source>rein</source>
-    <target>clear</target>
+    <target>ren</target>
 </phrase>
 <phrase>
     <source>unausgewogen, kantig</source>
-    <target>unbalanced, edgy</target>
+    <target>obalanserad</target>
 </phrase>
 <phrase>
     <source>süsslich, klebrig</source>
-    <target>sweety, sticky</target>
+    <target>söt, klibbig</target>
 </phrase>
 <phrase>
     <source>gehaltvoll</source>
-    <target>rich</target>
+    <target>rik</target>
 </phrase>
 <phrase>
     <source>unreif, unrein</source>
-    <target>unclean, not yet ready</target>
+    <target>oren, oklart</target>
 </phrase>
 <phrase>
     <source>ausgewogen, rund</source>
-    <target>round, balanced</target>
+    <target>balanserad, rund</target>
 </phrase>
 <phrase>
     <source>Geschmacksfehler</source>
-    <target>wrong/faulty</target>
+    <target>Felsmaker</target>
 </phrase>
 <phrase>
     <source>Antrunk (Rezenz, Frischeeindruck)</source>
-    <target>First/Initial Impression</target>
+    <target>Första intrycket</target>
 </phrase>
 <phrase>
     <source>rezent, fein perlend</source>
-    <target>mildly sparkling</target>
+    <target>milt mousserande</target>
 </phrase>
 <phrase>
     <source>stark prickelnd, aufdringlich</source>
-    <target>over-carbonated</target>
+    <target>överkolsyrat</target>
 </phrase>
 <phrase>
     <source>prickelnd</source>
-    <target>sparkling</target>
+    <target>gnistrande</target>
 </phrase>
 <phrase>
     <source>angenehm rezent</source>
-    <target>balanced, pleasant</target>
+    <target>balanserad, behaglig</target>
 </phrase>
 <phrase>
     <source>wenig rezent</source>
-    <target>under-carbonated</target>
+    <target>under koldioxidhalt</target>
 </phrase>
 <phrase>
     <source>sehr schal</source>
-    <target>very flat</target>
+    <target>mycket platt</target>
 </phrase>
 <phrase>
     <source>gut eingebunden</source>
-    <target>well incorporated</target>
+    <target>väl införlivad</target>
 </phrase>
 <phrase>
     <source>schal</source>
-    <target>flat</target>
+    <target>platt</target>
 </phrase>
 <phrase>
     <source>Haupttrunk (Vollmundigkeit)</source>
-    <target>Palate/Mouthfeel</target>
+    <target>Smak/Munkänsla</target>
 </phrase>
 <phrase>
     <source>schlank</source>
-    <target>light</target>
+    <target>ljus</target>
 </phrase>
 <phrase>
     <source>etwas leer</source>
-    <target>somewhat thin</target>
+    <target>något tunn</target>
 </phrase>
 <phrase>
     <source>mastig, breit</source>
-    <target>full-bodied</target>
+    <target>fyllig</target>
 </phrase>
 <phrase>
     <source>vollmundig</source>
-    <target>full-bodied</target>
+    <target>fyllig</target>
 </phrase>
 <phrase>
     <source>wässrig, leer, dünn</source>
-    <target>watery</target>
+    <target>vattnig</target>
 </phrase>
 <phrase>
     <source>Nachtrunk (Bittere, Hopfenaroma)</source>
-    <target>Finish</target>
+    <target>Avsluta</target>
 </phrase>
 <phrase>
     <source>stark nachhängend</source>
-    <target>very long finish, lasting</target>
+    <target>mycket lång finish, bestående</target>
 </phrase>
 <phrase>
     <source>unangenehm</source>
-    <target>unpleasent, unround</target>
+    <target>obehaglig, orund</target>
 </phrase>
 <phrase>
     <source>nicht anhängend</source>
-    <target>short finish</target>
+    <target>kort avslutning</target>
 </phrase>
 <phrase>
     <source>nachhängend</source>
-    <target>long finish</target>
+    <target>Lång finish</target>
 </phrase>
 <phrase>
     <source>sehr herb, kräftig betont</source>
-    <target>very bitter, strongly emphasized</target>
+    <target>mycket bitter, starkt betonad</target>
 </phrase>
 <phrase>
     <source>angenehm, ausgewogen</source>
-    <target>balanced, round</target>
+    <target>balanserad, rund</target>
 </phrase>
 <phrase>
     <source>wenig herb, unterentwickelt</source>
-    <target>little bitterness, underdeveloped</target>
+    <target>liten bitterhet, underutvecklad</target>
 </phrase>
 <phrase>
     <source>nicht oder kaum wahrnehmbar</source>
-    <target>not or hardly noticeable</target>
+    <target>inte eller knappt märkbar</target>
 </phrase>
 <phrase>
     <source>sehr fein</source>
-    <target>very fine</target>
+    <target>mycket fin</target>
 </phrase>
 <phrase>
     <source>Brauübersicht</source>
-    <target>History</target>
+    <target>Satsöversikt</target>
 </phrase>
 <phrase>
     <source>Gebraut zwischen</source>
-    <target>Brewed between</target>
+    <target>Bryggdatum mellan</target>
 </phrase>
 <phrase>
     <source>und</source>
-    <target>and</target>
+    <target>och</target>
 </phrase>
 <phrase>
     <source>Suche</source>
-    <target>Search</target>
+    <target>Sök</target>
 </phrase>
 <phrase>
     <source>Statistik</source>
-    <target>Statistics</target>
+    <target>Statistik</target>
 </phrase>
 <phrase>
     <source>Kosten (⌀)</source>
-    <target>Costs (⌀)</target>
+    <target>Kostnader (⌀)</target>
 </phrase>
 <phrase>
     <source>Effektive Sudhausausbeute (⌀)</source>
-    <target>Brewhouse efficiency (⌀)</target>
+    <target>Effektiv mäskutbyte (⌀)</target>
 </phrase>
 <phrase>
     <source>Restextrakt (⌀)</source>
-    <target>Residual extract (⌀)</target>
+    <target>Restsötma (⌀)</target>
 </phrase>
 <phrase>
     <source>Sudhausausbeute (⌀)</source>
-    <target>Mash efficiency (⌀)</target>
+    <target>Mäskutbyte (⌀)</target>
 </phrase>
 <phrase>
     <source>Gesamtschüttung</source>
-    <target>Grist amount</target>
+    <target>Total mängd malt o dyl</target>
 </phrase>
 <phrase>
     <source>Endvergärungsgrad (⌀)</source>
-    <target>Attenuation (⌀)</target>
+    <target>Förjäsningsgrad (⌀)</target>
+</phrase>
+<phrase>
+    <source>%vol</source>
+    <target>%vol</target>
 </phrase>
 <phrase>
     <source>Stammwürze (⌀)</source>
-    <target>Original gravity (⌀)</target>
+    <target>Stamvört (⌀)</target>
 </phrase>
 <phrase>
     <source>Gesamtbiermenge</source>
-    <target>Total beer volume</target>
+    <target>Total ölvolym</target>
 </phrase>
 <phrase>
     <source>Alkoholgehalt (⌀)</source>
-    <target>Alcohol (⌀)</target>
+    <target>Alkoholhalt (⌀)</target>
 </phrase>
 <phrase>
     <source>Schüttung (⌀)</source>
-    <target>Grist (⌀)</target>
+    <target>Malt o dyl (⌀)</target>
 </phrase>
 <phrase>
     <source>Biermenge (⌀)</source>
-    <target>Beer amount (⌀)</target>
+    <target>Ölvolym (⌀)</target>
 </phrase>
 <phrase>
     <source>Gesamtkosten</source>
-    <target>Total cost</target>
+    <target>Totalkostnad</target>
 </phrase>
 <phrase>
     <source>Verdampfungsrate (⌀)</source>
-    <target>Evaporation rate (⌀)</target>
+    <target>Förångningshastighet (⌀)</target>
 </phrase>
 <phrase>
     <source>Anzahl</source>
-    <target>Number</target>
+    <target>Antal</target>
 </phrase>
 <phrase>
     <source>&lt;keine&gt;</source>
-    <target>&lt;none&gt;</target>
+    <target>&lt;inga&gt;</target>
 </phrase>
 <phrase>
     <source>Abgefüllte Biermenge</source>
-    <target>Quantity packaged</target>
+    <target>Mängden flask-/fattappad</target>
 </phrase>
 <phrase>
     <source>Schüttung</source>
-    <target>Grist</target>
+    <target>Malt o dyl</target>
 </phrase>
 <phrase>
     <source>Stammwürze</source>
-    <target>Original gravity</target>
+    <target>Stamvört</target>
 </phrase>
 <phrase>
     <source>Sudhausausbeute</source>
-    <target>Mash efficiency</target>
+    <target>Mäskutbyte</target>
 </phrase>
 <phrase>
     <source>Effektive Sudhausausbeute</source>
-    <target>Effective brewhouse efficiency</target>
+    <target>Effektiv mäskutbyte</target>
 </phrase>
 <phrase>
     <source>Verdampfungsrate</source>
-    <target>Evaporation rate</target>
+    <target>Förångningshastighet</target>
 </phrase>
 <phrase>
     <source>Alkohol</source>
-    <target>Alcohol</target>
+    <target>Alkoholhalt</target>
 </phrase>
 <phrase>
     <source>Scheinbarer Restextrakt</source>
-    <target>Apparent residual extract</target>
+    <target>Skenbar slutlig extrakthalt</target>
 </phrase>
 <phrase>
     <source>Scheinbarer Endvergärungsgrad</source>
-    <target>Apparent attenuation</target>
+    <target>Skenbar förjäsningsgrad</target>
 </phrase>
 <phrase>
     <source>Tatsächlicher Endvergärungsgrad</source>
-    <target>Real attenuation</target>
+    <target>Verklig förjäsningsgrad</target>
 </phrase>
 <phrase>
     <source>Kosten</source>
-    <target>Costs</target>
+    <target>Kostnader</target>
 </phrase>
 <phrase>
     <source>Neue Version verfügbar</source>
-    <target>New version available</target>
+    <target>Ny version tillgänglig</target>
 </phrase>
 <phrase>
     <source>Diese Version ignorieren</source>
-    <target>Ignore this version</target>
+    <target>Ignorera denna version</target>
 </phrase>
 <phrase>
     <source>Auf Updates prüfen</source>
-    <target>Check for updates</target>
+    <target>Sök uppdateringar</target>
 </phrase>
 <phrase>
     <source>Datenbank bereinigen</source>
-    <target>Clean database</target>
+    <target>Rensa databasen</target>
 </phrase>
 <phrase>
     <source>Ungültige Felder können mit einem Doppelklick editiert werden. Alternativ kann der ganze Eintrag gelöscht werden.</source>
-    <target>Invalid fields can be edited with a double click. Alternatively, the whole entry can be deleted.</target>
+    <target>Ogiltiga värden kan redigeras med dubbelklick. Alternativt kan det tas bort helt.</target>
 </phrase>
 <phrase>
     <source>Ausgewählte Einträge löschen</source>
-    <target>Delete selected entries</target>
+    <target>Ta bort utvalda</target>
 </phrase>
 <phrase>
     <source>Weiter</source>
-    <target>Continue</target>
+    <target>Fortsätt</target>
 </phrase>
 <phrase>
     <source>Keine (weitere) Probleme gefunden.</source>
-    <target>No (further) problems found.</target>
+    <target>Inga (fler) problem hittas.</target>
 </phrase>
 <phrase>
     <source>Schließen</source>
-    <target>Close</target>
+    <target>Stäng</target>
 </phrase>
 <phrase>
     <source>Sud ID</source>
-    <target>Batch ID</target>
+    <target>Sats-ID</target>
 </phrase>
 <phrase>
     <source>Sudname</source>
-    <target>Batch name</target>
+    <target>Satsnamn</target>
 </phrase>
 <phrase>
     <source>Anlage ID</source>
-    <target>Setup ID</target>
+    <target>AnläggningsID</target>
 </phrase>
 <phrase>
     <source>Anlage</source>
-    <target>Brewing equipment</target>
+    <target>Anläggning</target>
 </phrase>
 <phrase>
     <source>Ungültige Felder in Tabelle:</source>
-    <target>Invalid Fields in table:</target>
+    <target>Ogiltiga fält i tabell:</target>
 </phrase>
 <phrase>
     <source>Ungültige Sud ID in Tabelle:</source>
-    <target>Invalid Batch ID in table:</target>
+    <target>Ogiltig sats-ID i tabell:</target>
 </phrase>
 <phrase>
     <source>Ungültige Anlage ID in Tabelle:</source>
-    <target>Invalid Setup ID in table:</target>
+    <target>Ogiltig anläggningsID i tabell:</target>
 </phrase>
 <phrase>
     <source>Ungültiger Wert in Tabelle:</source>
-    <target>Invalid value in table:</target>
+    <target>Ogiltigt värde i tabell:</target>
 </phrase>
 <phrase>
     <source>Rezept</source>
-    <target>Recipe</target>
+    <target>Recept</target>
 </phrase>
 <phrase>
     <source>Gebraut</source>
-    <target>Brewed</target>
+    <target>Bryggt</target>
 </phrase>
 <phrase>
     <source>Abgefüllt</source>
-    <target>bottled</target>
+    <target>Tappat på flaska/fat</target>
 </phrase>
 <phrase>
     <source>Ausgetrunken</source>
-    <target>Drank out</target>
+    <target>Drack upp</target>
 </phrase>
 <phrase>
     <source>Keine</source>
-    <target>None</target>
+    <target>Inget</target>
 </phrase>
 <phrase>
     <source>Gewicht</source>
-    <target>Weight</target>
+    <target>Vikt</target>
 </phrase>
 <phrase>
     <source>Bittere</source>
-    <target>Bitterness</target>
+    <target>Beska</target>
 </phrase>
 <phrase>
     <source>Datenbank</source>
-    <target>Database</target>
+    <target>Databas</target>
 </phrase>
 <phrase>
     <source>Version</source>
@@ -850,7 +854,7 @@
 </phrase>
 <phrase>
     <source>Bereinigen</source>
-    <target>Clean</target>
+    <target>Rensa</target>
 </phrase>
 <phrase>
     <source>Global</source>
@@ -858,27 +862,27 @@
 </phrase>
 <phrase>
     <source>Sud</source>
-    <target>Batch</target>
+    <target>Sats</target>
 </phrase>
 <phrase>
     <source>Einstellungen</source>
-    <target>Settings</target>
+    <target>Inställningar</target>
 </phrase>
 <phrase>
     <source>Datenbank</source>
-    <target>Database</target>
+    <target>Databas</target>
 </phrase>
 <phrase>
     <source>Pfad</source>
-    <target>Path</target>
+    <target>Sökväg</target>
 </phrase>
 <phrase>
     <source>Ansicht</source>
-    <target>View</target>
+    <target>Vy</target>
 </phrase>
 <phrase>
     <source>Farbschema</source>
-    <target>Color scheme</target>
+    <target>Färgschema</target>
 </phrase>
 <phrase>
     <source>System</source>
@@ -886,39 +890,39 @@
 </phrase>
 <phrase>
     <source>Hell</source>
-    <target>Light</target>
+    <target>Ljus</target>
 </phrase>
 <phrase>
     <source>Dunkel</source>
-    <target>Dark</target>
+    <target>Mörk</target>
 </phrase>
 <phrase>
     <source>Zurücksetzen</source>
-    <target>Reset</target>
+    <target>Återställ</target>
 </phrase>
 <phrase>
     <source>Sonstige</source>
-    <target>Others</target>
+    <target>Annat</target>
 </phrase>
 <phrase>
     <source>Sprache</source>
-    <target>Language</target>
+    <target>Språk</target>
 </phrase>
 <phrase>
     <source>Neustart für vollständige Übersetzung erforderlich.</source>
-    <target>Restart required for complete translation.</target>
+    <target>Omstart krävs för fullständig översättning.</target>
 </phrase>
 <phrase>
     <source>Auf Updates beim Start prüfen</source>
-    <target>Check for updates at start</target>
+    <target>Sök uppdateringar vid start</target>
 </phrase>
 <phrase>
     <source>Animationen</source>
-    <target>Animations</target>
+    <target>Animeringar</target>
 </phrase>
 <phrase>
     <source>Jetzt prüfen</source>
-    <target>Check now</target>
+    <target>Kontrollera nu</target>
 </phrase>
 <phrase>
     <source>Tooltips</source>
@@ -926,199 +930,198 @@
 </phrase>
 <phrase>
     <source>Bestätigung beim Beenden</source>
-    <target>Confirm quitting</target>
+    <target>Bekräfta avstängning</target>
 </phrase>
 <phrase>
     <source>Zahlen- und Datumsformat aus Spracheinstellung (Neustart erforderlich)</source>
-    <target>Number und date format from language setting</target>
+    <target>Tal- och datumformat från språkinställningen</target>
 </phrase>
 <phrase>
     <source>Systemschriftart</source>
-    <target>System font</target>
+    <target>Systemtypsnitt</target>
 </phrase>
 <phrase>
     <source>Module</source>
-    <target>Modules</target>
+    <target>Moduler</target>
 </phrase>
 <phrase>
     <source>Module bieten erweiterte Funktionalitäten. Diese lassen sich hier jederzeit ein- oder ausschalten.</source>
-    <target>Modules offer extended functionalities. These can be switched on or off here at any time.</target>
+    <target>Moduler erbjuder utökade funktioner. Dessa kan när som helst kopplas till eller från här.</target>
 </phrase>
 <phrase>
     <source>Schnellgärprobe</source>
-    <target>Fast fermentation sample</target>
+    <target>Snabbjäsningsprov</target>
 </phrase>
 <phrase>
     <source>Dieses Modul aktiviert die Speiseberechnung für die Karbonisierung (Nachgärung).</source>
-    <target>This module activates the unfermented worth calculation for carbonation.</target>
+    <target>Slå på/av beräkningar för att kolsyresätta med sparad/ojäst vört.</target>
 </phrase>
 <phrase>
     <source>Etikett</source>
-    <target>Labels</target>
+    <target>Etiketter</target>
 </phrase>
 <phrase>
     <source>Lagerverwaltung</source>
-    <target>Stock administration</target>
+    <target>Lager</target>
 </phrase>
 <phrase>
     <source>Preiskalkulation</source>
-    <target>Costs</target>
+    <target>Kostnadsberäkning</target>
 </phrase>
 <phrase>
     <source>Damit lassen sich zeitliche Gärverläufe protokollieren (Hauptgärung, Nachgärung und Schnellgärprobe).</source>
-    <target>This allows logging of fermentation progressions over time (fermentation, priming/conditioning and fast fermentation sample).</target>
+    <target>Protokollera jäsningen över tid.</target>
 </phrase>
 <phrase>
     <source>Dieses Modul verwaltet anlagespezifische Kennzahlen. Die wichtigsten sind dabei Sudhausausbeute und Verdampfungsrate. Für eine genauere Berechnung sollte dieses Modul aktiviert werden.</source>
-    <target>This module manages equipment-specific key figures. The most important of these are mash efficiency and evaporation rate. For a more precise calculation, this module should be activated.</target>
+    <target>Slå på för att ange bryggutrustningens egenskaper, såsom mäskutbyte och förångningshastighet, vilket förbättrar beräkningar.</target>
 </phrase>
 <phrase>
     <source>Speiseberechnung</source>
-    <target>Carbonation with wort</target>
+    <target>Kolsyresättning med vört</target>
 </phrase>
 <phrase>
     <source>Dieses Modul berechnet den Preis pro Liter Bier. Voraussetzung ist die Eingabe alle Rohstoffpreise.</source>
-    <target>This module calculates the price per liter of beer. Prerequisite is the input of all raw material prices.</target>
+    <target>Räkna ut priset per liter, förutsatt alla råvarutpriser har matats in.</target>
 </phrase>
 <phrase>
     <source>Dieses Modul ermöglicht das Erstellen von Etiketten (Label) mit automatischer Einbindung der wichtigsten Kennzahlen (Stammwürze, IBU, Farbe, ...).</source>
-    <target>This module enables the creation of labels with automatic integration of the most important key figures (original wort, IBU, color, ...).</target>
+    <target>Etiketter enligt en mall där värden (som stamvört, IBU, ...) läggs i automatiskt.</target>
 </phrase>
 <phrase>
     <source>Der Gärverlauf gehört zu den wichtigsten Schritten nach dem Anstellen. Das Programm trennt in Schnellgärprobe, Hauptgärung und Nachgärung.
 Die graphische Auswertung lässt gute Rückschlüsse über die Gärbedingungen zu. Störungen oder Eigenarten bestimmter Hefen, die sich schon einmal &quot;schlafen legen&quot;, lassen sich so auf einen Blick identifizieren.</source>
-    <target>The fermentation process is one of the most important steps after pitching. The program distinguishes between rapid fermentation, main fermentation, and secondary fermentation.
-The graphical evaluation allows for reliable conclusions about the fermentation conditions. Disturbances or peculiarities of certain yeasts that tend to “go to sleep” can thus be identified at a glance.</target>
+    <target>Jäsningsprocessen är ett av de viktigaste stegen efter jäsningsstart. Programmet skiljer mellan snabbjäsning, huvudjäsning och efterjäsning.
+Den grafiska utvärderingen möjliggör tillförlitliga slutsatser om jäsningsförhållandena. Störningar eller särdrag hos vissa jästarter som tenderar att ”somna” kan därmed identifieras med ett ögonkast.</target>
 </phrase>
 <phrase>
     <source>Dieses Modul aktiviert die Lagerverwaltung der Rohstoffe.</source>
-    <target>This module activates the stock management of raw materials.</target>
+    <target>Förvalta råvaror och deras egenskaper.</target>
 </phrase>
 <phrase>
     <source>Wasseraufbereitung</source>
-    <target>Water adjustment</target>
+    <target>Vattenanpassning</target>
 </phrase>
 <phrase>
     <source>Gärverlauf</source>
-    <target>Fermentation</target>
+    <target>Jäsningsförlopp</target>
 </phrase>
 <phrase>
     <source>Hiermit wird der Anteil an Speise verrechnet, der später in Reifeprozess für die Nachägrung – entweder in Flasche oder Fass – verwendet wird.
 Unter Speise versteht man einen zurückgehaltenen Teil der Würze, der vor dem Anstellen entnommen wird. Aus seinem Volumen und Zuckergehalt lässt sich die Karbonisierung berechnen.</source>
-    <target>This is used to calculate the proportion of wort that will later be used in the maturation process for secondary fermentation, either in bottles or barrels.
-Wort refers to a portion of the wort that is retained before fermentation. Its volume and sugar content can be used to calculate carbonation.</target>
+    <target>Detta används för att beräkna andelen vört som senare kommer att användas i mognadsprocessen för sekundär jäsning, antingen i flaskor eller fat.
+Vört avser en del av vörten som behålls före jäsning. Dess volym och sockerhalt kan användas för att beräkna kolsyrahalten.</target>
 </phrase>
 <phrase>
     <source>Dieses Modul ermöglicht das Bewerten von Suden.</source>
-    <target>This module enables rating of brews.</target>
+    <target>Antecka och betysätt ölens egenskaper.</target>
 </phrase>
 <phrase>
     <source>Brauübersicht</source>
-    <target>History</target>
+    <target>Satsöversikt</target>
 </phrase>
 <phrase>
     <source>Ausdruck</source>
-    <target>Print-out</target>
+    <target>Utskrift</target>
 </phrase>
 <phrase>
     <source>Dieses Modul aktiviert die Schnellgärprobe für die Vorhersage des richtigen Zeitpunktes beim Grünschlauchen.</source>
-    <target>This module activates the rapid fermentation test for predicting the right time for green harvesting.</target>
+    <target>Denna modul aktiverar det snabba jäsningstestet för att förutsäga rätt tidpunkt för grönskörd.</target>
 </phrase>
 <phrase>
     <source>Die Schnellgärprobe ist wichtig, wenn es etwa um die Vorhersage des richtigen Zeitpunktes beim Grünschlauchen geht. Auch lässt sich damit das Verhalten unbekannter Hefen beurteilen.</source>
-    <target>The rapid fermentation test is important when it comes to predicting the right time for green hosing, for example. It can also be used to assess the behavior of unknown yeasts.</target>
+    <target>Det snabba jäsningstestet är viktigt när det gäller att förutsäga rätt tidpunkt för exempelvis grönsköljning. Det kan också användas för att bedöma beteendet hos okända jästarter.</target>
 </phrase>
 <phrase>
     <source>Dieses Modul ist unverzichtbar, um eine möglichst exakte Vorhersage zu Sudhausausbeute, Farbe und anderer Parameter bis Brauende zu bekommen.
 Gut gepflegt, entscheidet sich hiermit wie genau das Programm arbeitet. Zu Beginn sind Standardwerte eingetragen. Sie sollten aber zeitnah mit den Daten der eigenen Brauanlage ersetzt werden.</source>
-    <target>This module is essential for obtaining the most accurate possible prediction of brewhouse yield, color, and other parameters until the end of brewing.
-When well maintained, this determines how accurately the program works. Standard values are entered at the beginning. However, they should be replaced promptly with the data from your own brewing system.</target>
+    <target>Denna modul är nödvändig för att få en så exakt förutsägelse som möjligt av bryggeriets avkastning, färg och andra parametrar fram till bryggningens slut.
+När den underhålls väl avgör detta hur exakt programmet fungerar. Standardvärden anges i början. De bör dock omedelbart ersättas med data från ditt eget bryggsystem.</target>
 </phrase>
 <phrase>
     <source>In der Brauübersicht lassen sich die wichtigsten Kennzahlen in einem zeitlichen Verlauf darstellen.</source>
-    <target>In the history, the most important key figures can be displayed over time.</target>
+    <target>Grafik och tabell som visar de viktigaste siffrorna för alla satser.</target>
 </phrase>
 <phrase>
     <source>Dieses Modul hilft bei der Wasseraufbereitung und kalkuliert die Wasserprofile.</source>
-    <target>This module helps with water treatment and calculates the water profiles.</target>
+    <target>Vattenprofiler och anpassninar.</target>
 </phrase>
 <phrase>
     <source>Ausrüstung</source>
-    <target>Equipment</target>
+    <target>Utrustning</target>
 </phrase>
 <phrase>
     <source>Bewertungen</source>
-    <target>Rating</target>
+    <target>Betyg</target>
 </phrase>
 <phrase>
     <source>Bei ungebrauten Suden fasst der Spickzettel alle Informationen zum einem Brauprotokoll zusammen. Dies ist ausgedruckt am Brautag eine wertvolle Hilfe.
 Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusammen.</source>
-    <target>For unbrewed batches, the cheat sheet summarizes all the information in a brewing log. This is a valuable aid when printed out on the brewing day.
-For brewed brews, the summary summarizes all relevant information.</target>
+    <target>Visar en fusklapp/checklista för obryggda satser. För bryggda satser visas en sammanfattning.</target>
 </phrase>
 <phrase>
     <source>Dieses Modul ermöglicht das Ausdrucken von Brauprotokolle oder andere Zusammenfassungen.</source>
-    <target>This module enables the printing of brewing logs or other summaries.</target>
+    <target>Denna modul möjliggör utskrift av bryggningsloggar eller andra sammanfattningar.</target>
 </phrase>
 <phrase>
     <source>Datenbank auswählen</source>
-    <target>Select database</target>
+    <target>Välj databas</target>
 </phrase>
 <phrase>
     <source>Datenbank (*.sqlite);;Alle Dateien (*.*)</source>
-    <target>Database (*.sqlite);;All files (*.*)</target>
+    <target>Databas (*.sqlite);;Alla filer (*.*)</target>
 </phrase>
 <phrase>
     <source>Etikett</source>
-    <target>Labels</target>
+    <target>Etiketter</target>
 </phrase>
 <phrase>
     <source>Suche</source>
-    <target>Search</target>
+    <target>Sök</target>
 </phrase>
 <phrase>
     <source>Tags ersetzen</source>
-    <target>Replace tags</target>
+    <target>Ersätt nyckelord</target>
 </phrase>
 <phrase>
     <source>Anzahl Etiketten</source>
-    <target>Number of labels</target>
+    <target>Antal etiketter</target>
 </phrase>
 <phrase>
     <source>Anzahl</source>
-    <target>Number</target>
+    <target>Antal</target>
 </phrase>
 <phrase>
     <source>Etikettgröße</source>
-    <target>Label size</target>
+    <target>Etikettstorlek</target>
 </phrase>
 <phrase>
     <source>Höhe</source>
-    <target>Height</target>
+    <target>Höjd</target>
 </phrase>
 <phrase>
     <source>Breite</source>
-    <target>Width</target>
+    <target>Bredd</target>
 </phrase>
 <phrase>
     <source>Seitenverhältnis beibehalten</source>
-    <target>Keep aspect ratio</target>
+    <target>Bevara sidoförållandet</target>
 </phrase>
 <phrase>
     <source>Aus SVG übernehmen</source>
-    <target>Take from SVG</target>
+    <target>Ta från SVG</target>
 </phrase>
 <phrase>
     <source>Farben</source>
-    <target>Colors</target>
+    <target>Färger</target>
 </phrase>
 <phrase>
     <source>Hintergrundfarbe</source>
-    <target>Background</target>
+    <target>Bakgrundsfärg</target>
 </phrase>
 <phrase>
     <source>Abstände zwischen Etiketten</source>
-    <target>Margin between labels</target>
+    <target>Avstånd mellan etiketter</target>
 </phrase>
 <phrase>
     <source>Horizontal</source>
@@ -1126,35 +1129,35 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Vertikal</source>
-    <target>Vertical</target>
+    <target>Vertikal</target>
 </phrase>
 <phrase>
     <source>Trennlinie darstellen</source>
-    <target>Show dividing line</target>
+    <target>Visa skiljelinje</target>
 </phrase>
 <phrase>
     <source>Tags</source>
-    <target>Tags</target>
+    <target>Nyckelord</target>
 </phrase>
 <phrase>
     <source>Etikettnummer</source>
-    <target>Label number</target>
+    <target>Etikettnummer</target>
 </phrase>
 <phrase>
     <source>Alternativer SVG Renderer</source>
-    <target>Alternative SVG renderer</target>
+    <target>Alternativ SVG visare</target>
 </phrase>
 <phrase>
     <source>Änderungen speichern?</source>
-    <target>Save changes?</target>
+    <target>Spara ändringarna?</target>
 </phrase>
 <phrase>
     <source>Sollen die Änderungen gespeichert werden?</source>
-    <target>Should the changes be saved?</target>
+    <target>Spara ändringarna?</target>
 </phrase>
 <phrase>
     <source>SVG auswählen</source>
-    <target>Select SVG</target>
+    <target>Välj SVG</target>
 </phrase>
 <phrase>
     <source>SVG (*.svg)</source>
@@ -1162,31 +1165,31 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>SVG exportieren</source>
-    <target>Export SVG</target>
+    <target>Exportera SVG</target>
 </phrase>
 <phrase>
     <source>SVG Export</source>
-    <target>SVG Export</target>
+    <target>SVG-export</target>
 </phrase>
 <phrase>
     <source>Die Datei konnte nicht geschrieben werden.</source>
-    <target>File could not be written.</target>
+    <target>Filen kunde inte skrivas.</target>
 </phrase>
 <phrase>
     <source>PDF speichern unter</source>
-    <target>Save PDF as</target>
+    <target>Spara PDF som</target>
 </phrase>
 <phrase>
     <source>Neuer Tag</source>
-    <target>New tag</target>
+    <target>Nytt nyckelord</target>
 </phrase>
 <phrase>
     <source>Hilfe</source>
-    <target>Help</target>
+    <target>Hjälp</target>
 </phrase>
 <phrase>
     <source>Nicht unterstützt.</source>
-    <target>Not supported.</target>
+    <target>Inte stöds.</target>
 </phrase>
 <phrase>
     <source>Format</source>
@@ -1206,15 +1209,15 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Quelle</source>
-    <target>Source</target>
+    <target>Källa</target>
 </phrase>
 <phrase>
     <source>Tabellen</source>
-    <target>Tables</target>
+    <target>Tabeller</target>
 </phrase>
 <phrase>
     <source>Download</source>
-    <target>Download</target>
+    <target>Ladda ner</target>
 </phrase>
 <phrase>
     <source>Brautomat (json)</source>
@@ -1222,11 +1225,11 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Öffnen</source>
-    <target>Open</target>
+    <target>Öppna</target>
 </phrase>
 <phrase>
     <source>Datei</source>
-    <target>File</target>
+    <target>Fil</target>
 </phrase>
 <phrase>
     <source>URL</source>
@@ -1234,51 +1237,51 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Rezept importieren</source>
-    <target>Import recipe</target>
+    <target>Importera recept</target>
 </phrase>
 <phrase>
     <source>&quot;%1&quot; exportieren</source>
-    <target>Export &quot;%1&quot;</target>
+    <target>Exportera &quot;%1&quot;</target>
 </phrase>
 <phrase>
     <source>Rezept Import</source>
-    <target>Import Recipe</target>
+    <target>Importera recept</target>
 </phrase>
 <phrase>
     <source>Rezept (*.json *xml);;Alle Dateien (*.*)</source>
-    <target>Recipe (*.json *xml);;All files (*.*)</target>
+    <target>Recept (*.json *xml);;Alla filer (*.*)</target>
 </phrase>
 <phrase>
     <source>Die Datei konnte nicht geöffnet werden.</source>
-    <target>File could not be opened.</target>
+    <target>Filen kunde inte öppnas.</target>
 </phrase>
 <phrase>
     <source>Das Rezept konnte nicht heruntergeladen werden.</source>
-    <target>The recipe could not be downloaded.</target>
+    <target>Receptet kunde inte laddas ner.</target>
 </phrase>
 <phrase>
     <source>Das Rezept wurde erfolgreich importiert.</source>
-    <target>Recipe successfully imported.</target>
+    <target>Receptimport klar.</target>
 </phrase>
 <phrase>
     <source>Das Rezept konnte nicht importiert werden.</source>
-    <target>Recipe import failed.</target>
+    <target>Receptimport misslyckades.</target>
 </phrase>
 <phrase>
     <source>Sud Export</source>
-    <target>Export batch</target>
+    <target>Exportera satsen</target>
 </phrase>
 <phrase>
     <source>Der Sud wurde erfolgreich exportiert.</source>
-    <target>Recipe successfully exported.</target>
+    <target>Receptexport klar.</target>
 </phrase>
 <phrase>
     <source>Die Datei konnte nicht geschrieben werden.</source>
-    <target>File could not be written.</target>
+    <target>Filen kunde inte skrivas.</target>
 </phrase>
 <phrase>
     <source>Schüttung</source>
-    <target>Grist</target>
+    <target>Malt o dyl</target>
 </phrase>
 <phrase>
     <source>Malz</source>
@@ -1286,23 +1289,23 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Gesamtmenge</source>
-    <target>Total amount</target>
+    <target>Totala mängd</target>
 </phrase>
 <phrase>
     <source>Anteil</source>
-    <target>Share</target>
+    <target>Andel</target>
 </phrase>
 <phrase>
     <source>Malz pH-Wert</source>
-    <target>Malt pH</target>
+    <target>Malt-pH</target>
 </phrase>
 <phrase>
     <source>Malztyp in der Auswahliste wählen, sonst den Malz-pH-Wert (in destilliertem Wasser) manuell eintragen. Carafa und hoch gedarrte Malze gelten als Röstmalz.</source>
-    <target>Choose malt type from the list, otherwise enter pH (in distilled water). Carafa and highly kilned malts count as roasted malts.</target>
+    <target>Välj typ av malt från listan, annars ange pH-värdet (i destillerad vatten). Carafa och malt torkat på höga temperaturer gills som rostad malt.</target>
 </phrase>
 <phrase>
     <source>Manuell</source>
-    <target>Manual</target>
+    <target>Manuellt</target>
 </phrase>
 <phrase>
     <source>Malz EBC &lt; 200</source>
@@ -1310,47 +1313,43 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Caramalz</source>
-    <target>Caramalt</target>
+    <target>Karamellmalt</target>
 </phrase>
 <phrase>
     <source>Röstmalz</source>
-    <target>Roasted malt</target>
+    <target>Rostad malt</target>
 </phrase>
 <phrase>
     <source>pH-Wert</source>
-    <target>pH</target>
+    <target>pH-värde</target>
 </phrase>
 <phrase>
     <source>Ausdruck</source>
-    <target>Print-out</target>
+    <target>Utskrift</target>
 </phrase>
 <phrase>
     <source>Suche</source>
-    <target>Search</target>
+    <target>Sök</target>
 </phrase>
 <phrase>
     <source>Berechnung Extrakt</source>
-    <target>Calculate extract</target>
+    <target>Extraktberäkning</target>
 </phrase>
 <phrase>
     <source>Dichte</source>
-    <target>Density</target>
+    <target>Densitet</target>
 </phrase>
 <phrase>
     <source>Temperatur</source>
-    <target>Temperature</target>
+    <target>Temperatur</target>
 </phrase>
 <phrase>
     <source>Messwert</source>
-    <target>Measured value</target>
-</phrase>
-<phrase>
-    <source>Novotny</source>
-    <target></target>
+    <target>Värde</target>
 </phrase>
 <phrase>
     <source>Korrekturfaktor </source>
-    <target>Correction factor </target>
+    <target>Korrigeringsfaktor </target>
 </phrase>
 <phrase>
     <source>Terrill</source>
@@ -1362,47 +1361,51 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Standardformel</source>
-    <target>Standard formula</target>
+    <target>Standard</target>
 </phrase>
 <phrase>
     <source>Umrechnungsformel</source>
-    <target>Formula</target>
+    <target>Formel</target>
 </phrase>
 <phrase>
     <source>Datum</source>
-    <target>Date</target>
+    <target>Datum</target>
 </phrase>
 <phrase>
     <source>Messung mit</source>
-    <target>Measured with</target>
+    <target>Mätning med</target>
 </phrase>
 <phrase>
     <source>Spindel</source>
-    <target>Spindle</target>
+    <target>Hydrometer</target>
 </phrase>
 <phrase>
     <source>Refraktometer</source>
-    <target>Refractometer</target>
+    <target>Refraktometer</target>
 </phrase>
 <phrase>
     <source>Anderes</source>
-    <target>Other</target>
+    <target>Annat</target>
 </phrase>
 <phrase>
     <source>Eichtemperatur</source>
-    <target>Calibration temperature</target>
+    <target>Kalibreringstemperatur</target>
+</phrase>
+<phrase>
+    <source>Novotny</source>
+    <target></target>
 </phrase>
 <phrase>
     <source>Stammwürze</source>
-    <target>Original gravity</target>
+    <target>Stamvört (OG)</target>
 </phrase>
 <phrase>
     <source>Restextrakt</source>
-    <target>Residual extract</target>
+    <target>Restsötma (FG)</target>
 </phrase>
 <phrase>
     <source>Bemerkung</source>
-    <target>Remarks</target>
+    <target>Anmärkningar</target>
 </phrase>
 <phrase>
     <source>Standard</source>
@@ -1410,31 +1413,31 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Überschrift 1</source>
-    <target>Headline 1</target>
+    <target>Rubrik 1</target>
 </phrase>
 <phrase>
     <source>Überschrift 2</source>
-    <target>Headline 2</target>
+    <target>Rubrik 2</target>
 </phrase>
 <phrase>
     <source>Überschrift 3</source>
-    <target>Headline 3</target>
+    <target>Rubrik 3</target>
 </phrase>
 <phrase>
     <source>Überschrift 4</source>
-    <target>Headline 4</target>
+    <target>Rubrik 4</target>
 </phrase>
 <phrase>
     <source>Textfarbe</source>
-    <target>Text color</target>
+    <target>Textfärg</target>
 </phrase>
 <phrase>
     <source>F</source>
-    <target>Bold</target>
+    <target>Fet</target>
 </phrase>
 <phrase>
     <source>K</source>
-    <target>Italics</target>
+    <target>Kursiv</target>
 </phrase>
 <phrase>
     <source>U</source>
@@ -1442,15 +1445,15 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Link</source>
-    <target>Link</target>
+    <target>Länk</target>
 </phrase>
 <phrase>
     <source>Bild</source>
-    <target>Picture</target>
+    <target>Bild</target>
 </phrase>
 <phrase>
     <source>Link erstellen</source>
-    <target>Create link</target>
+    <target>Skapa Länk</target>
 </phrase>
 <phrase>
     <source>URL:</source>
@@ -1458,59 +1461,59 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Bild einfügen</source>
-    <target>Insert picture</target>
+    <target>Infoga bild</target>
 </phrase>
 <phrase>
     <source>Bild aus Anhang</source>
-    <target>Picture from attachment</target>
+    <target>Bild från bilaga</target>
 </phrase>
 <phrase>
     <source>Bilder müssen zuerst als Anhang eingefügt werden.</source>
-    <target>Pictures must be attached first.</target>
+    <target>Bilder måste först bifogas.</target>
 </phrase>
 <phrase>
     <source>Zutatauswahl</source>
-    <target>Ingredient selection</target>
+    <target>Val av ingredienser</target>
 </phrase>
 <phrase>
     <source>alle</source>
-    <target>all</target>
+    <target>alla</target>
 </phrase>
 <phrase>
     <source>vorhanden</source>
-    <target>in stock</target>
+    <target>tillgänglig</target>
 </phrase>
 <phrase>
     <source>Suche</source>
-    <target>Search</target>
+    <target>Sök</target>
 </phrase>
 <phrase>
     <source>Die Zutaten müssen zuvor unter &quot;Rohstoffe&quot; eingetragen werden.</source>
-    <target>The ingredients must first be entered in &quot;Ingredients&quot;.</target>
+    <target>Ingredienserna måste först läggas till i fliken &quot;Ingredienser&quot;.</target>
 </phrase>
 <phrase>
     <source>Stk.</source>
-    <target>pcs.</target>
+    <target>st.</target>
 </phrase>
 <phrase>
     <source>Auswahl Rohstoffvorlage</source>
-    <target>Ingredient templates</target>
+    <target>Ingrediensmallar</target>
 </phrase>
 <phrase>
     <source>Suche</source>
-    <target>Search</target>
+    <target>Sök</target>
 </phrase>
 <phrase>
     <source>Quelle: obrama.mueggelland.de</source>
-    <target>Source: obrama.mueggelland.de</target>
+    <target>Källa: obrama.mueggelland.de</target>
 </phrase>
 <phrase>
     <source>Quellen: www.mueggelland.de | www.brewferm.be | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | ww.weyermann.de</source>
-    <target>Sources: www.mueggelland.de | www.brewferm.be | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | ww.weyermann.de</target>
+    <target>Källor: www.mueggelland.de | www.brewferm.be | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | ww.weyermann.de</target>
 </phrase>
 <phrase>
     <source>Name</source>
-    <target>Name</target>
+    <target>Namn</target>
 </phrase>
 <phrase>
     <source>Aliasname</source>
@@ -1518,19 +1521,19 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Eigenschaften</source>
-    <target>Characteristics</target>
+    <target>Egenskaper</target>
 </phrase>
 <phrase>
     <source>Typ</source>
-    <target>Type</target>
+    <target>Typ</target>
 </phrase>
 <phrase>
     <source>Farbe</source>
-    <target>Color</target>
+    <target>Färg</target>
 </phrase>
 <phrase>
     <source>Max. Anteil</source>
-    <target>Max. share</target>
+    <target>Max. andel</target>
 </phrase>
 <phrase>
     <source>Alpha</source>
@@ -1538,99 +1541,31 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Alternativen</source>
-    <target>Alternatives</target>
+    <target>Alternativ</target>
 </phrase>
 <phrase>
     <source>Kategorie</source>
-    <target>Category</target>
+    <target>Kategori</target>
 </phrase>
 <phrase>
     <source>Trocken/Flüssig</source>
-    <target>Dry/Liquid</target>
+    <target>Torr/Flytande</target>
 </phrase>
 <phrase>
     <source>Bierstil</source>
-    <target>Beer style</target>
+    <target>Ölstil</target>
 </phrase>
 <phrase>
     <source>Verwendung</source>
-    <target>Usage</target>
+    <target>Användning</target>
 </phrase>
 <phrase>
     <source>Rohstoffe</source>
-    <target>Ingredients</target>
+    <target>Ingredienser</target>
 </phrase>
 <phrase>
     <source>Suche</source>
-    <target>Search</target>
-</phrase>
-<phrase>
-    <source>Malz</source>
-    <target>Malts</target>
-</phrase>
-<phrase>
-    <source>Hopfen</source>
-    <target>Hops</target>
-</phrase>
-<phrase>
-    <source>Hefe</source>
-    <target>Yeast</target>
-</phrase>
-<phrase>
-    <source>Neu</source>
-    <target>New</target>
-</phrase>
-<phrase>
-    <source>Vorlage</source>
-    <target>Template</target>
-</phrase>
-<phrase>
-    <source>oBraMa</source>
-    <target>oBraMa</target>
-</phrase>
-<phrase>
-    <source>Zusätze</source>
-    <target>Adjunct</target>
-</phrase>
-<phrase>
-    <source>Neuer Eintrag</source>
-    <target>Add entry</target>
-</phrase>
-<phrase>
-    <source>Kopie</source>
-    <target>Copy</target>
-</phrase>
-<phrase>
-    <source>Rohstoff wird verwendet</source>
-    <target>Raw material is being used</target>
-</phrase>
-<phrase>
-    <source>Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?</source>
-    <target>This ingredient is being used in a batch not yet brewed. Should it be deleted anyway?</target>
-</phrase>
-<phrase>
-    <source>Zutaten vom Lager abziehen</source>
-    <target>Subtract ingredients from inventory</target>
-</phrase>
-<phrase>
-    <source>Hinweis: die Mengenangaben lassen sich editieren.</source>
-    <target>Note: the quantities can be edited.</target>
-</phrase>
-<phrase>
-    <source>Zutaten abziehen</source>
-    <target>Subtract ingredients</target>
-</phrase>
-<phrase>
-    <source>Zutaten ins Lager zurückgeben</source>
-    <target>Return ingredients to the inventory</target>
-</phrase>
-<phrase>
-    <source>Zutaten zurückgeben</source>
-    <target>Return ingredients</target>
-</phrase>
-<phrase>
-    <source>Die Zutaten wurden noch nicht abgezogen. Trotzdem schließen?</source>
-    <target>Ingredients not yet subtracted; close anyway?</target>
+    <target>Sök</target>
 </phrase>
 <phrase>
     <source>Malz</source>
@@ -1638,31 +1573,99 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Hopfen</source>
-    <target>Hops</target>
+    <target>Humle</target>
 </phrase>
 <phrase>
     <source>Hefe</source>
-    <target>Yeast</target>
+    <target>Jäst</target>
+</phrase>
+<phrase>
+    <source>Neu</source>
+    <target>Ny</target>
+</phrase>
+<phrase>
+    <source>Vorlage</source>
+    <target>Mall</target>
+</phrase>
+<phrase>
+    <source>oBraMa</source>
+    <target>oBraMa</target>
+</phrase>
+<phrase>
+    <source>Zusätze</source>
+    <target>Tillsatser</target>
+</phrase>
+<phrase>
+    <source>Neuer Eintrag</source>
+    <target>Lägg till</target>
+</phrase>
+<phrase>
+    <source>Kopie</source>
+    <target>Kopia</target>
+</phrase>
+<phrase>
+    <source>Rohstoff wird verwendet</source>
+    <target>Råvara används</target>
+</phrase>
+<phrase>
+    <source>Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?</source>
+    <target>Denna råvara används i en stas som inte är bryggd ännu. Ska den tas bort ändå?</target>
+</phrase>
+<phrase>
+    <source>Zutaten vom Lager abziehen</source>
+    <target>Subtrahera ingredienserna från lagret</target>
+</phrase>
+<phrase>
+    <source>Hinweis: die Mengenangaben lassen sich editieren.</source>
+    <target>OBS: Mängderna kan redigeras.</target>
+</phrase>
+<phrase>
+    <source>Zutaten abziehen</source>
+    <target>Subtrahera ingredienserna</target>
+</phrase>
+<phrase>
+    <source>Zutaten ins Lager zurückgeben</source>
+    <target>Lägg tillbaka ingredienserna i lagret</target>
+</phrase>
+<phrase>
+    <source>Zutaten zurückgeben</source>
+    <target>Lägg tillbaka ingredienserna</target>
+</phrase>
+<phrase>
+    <source>Die Zutaten wurden noch nicht abgezogen. Trotzdem schließen?</source>
+    <target>Ingredienserna har inte subtraherats än; stäng andå?</target>
+</phrase>
+<phrase>
+    <source>Malz</source>
+    <target>Malt</target>
+</phrase>
+<phrase>
+    <source>Hopfen</source>
+    <target>Humle</target>
+</phrase>
+<phrase>
+    <source>Hefe</source>
+    <target>Jäst</target>
 </phrase>
 <phrase>
     <source>Menge</source>
-    <target>Amount</target>
+    <target>Mängd</target>
 </phrase>
 <phrase>
     <source>Vorhanden</source>
-    <target>In stock</target>
+    <target>I lagret</target>
 </phrase>
 <phrase>
     <source>Zusatz</source>
-    <target>Adjunct</target>
+    <target>Tillsats</target>
 </phrase>
 <phrase>
     <source>Sud teilen</source>
-    <target>Split batch</target>
+    <target>Dela sats</target>
 </phrase>
 <phrase>
     <source>Suche</source>
-    <target>Search</target>
+    <target>Sök</target>
 </phrase>
 <phrase>
     <source>Hiermit wird eine neue Kategorie angelegt. Dazu erscheint ein eigenes Pop-up-Fenster.</source>
@@ -1682,139 +1685,139 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Aus Rezept übernehmen</source>
-    <target>Copy from recipe</target>
+    <target>Ta över från recept</target>
 </phrase>
 <phrase>
     <source>Stk.</source>
-    <target>pcs.</target>
+    <target>st.</target>
 </phrase>
 <phrase>
     <source>Berechnung der Verdampfung</source>
-    <target>Calculate Evaporation</target>
+    <target>Beräkna förångning</target>
 </phrase>
 <phrase>
     <source>Menge bei Kochbeginn (100°C)</source>
-    <target>Amount at boil start (100°C)</target>
+    <target>Mängd vid kokningens början (100°C)</target>
 </phrase>
 <phrase>
     <source>Füllhöhe vom Boden aus gemessen</source>
-    <target>Fill level measured from bottom</target>
+    <target>Fyllnadshöjd från botten</target>
 </phrase>
 <phrase>
     <source>Menge bei 100°C</source>
-    <target>Amount at 100°C</target>
+    <target>Mängd vid 100°C</target>
 </phrase>
 <phrase>
     <source>Füllhöhe von Oberkante aus gemessen</source>
-    <target>Fill level measured from top</target>
+    <target>Fyllnadshöjd från överkant</target>
 </phrase>
 <phrase>
     <source>Menge bei Kochende (100°C)</source>
-    <target>Amount at boil end (100°C)</target>
+    <target>Mängd vid kokningens slut (100°C)</target>
 </phrase>
 <phrase>
     <source>Verdampfungsziffer</source>
-    <target>Evaporation figure</target>
+    <target>Förångning</target>
 </phrase>
 <phrase>
     <source>Kochdauer</source>
-    <target>Boil time</target>
+    <target>Koktid</target>
 </phrase>
 <phrase>
     <source>Verdampfungsrate</source>
-    <target>Evaporation rate</target>
+    <target>Förångningshastighet</target>
 </phrase>
 <phrase>
     <source>Eingabehilfe für Volumen</source>
-    <target>Input assistance for volume</target>
+    <target>Inmatningshjälp för volumen</target>
 </phrase>
 <phrase>
     <source>Würzemenge bei 20°C</source>
-    <target>Amount of wort at 20°C</target>
+    <target>Vörtmängd vid 20°C</target>
 </phrase>
 <phrase>
     <source>Temperatur der Würze</source>
-    <target>Wort temperature</target>
+    <target>Vörttemperatur</target>
 </phrase>
 <phrase>
     <source>Füllhöhe von Oberkante aus gemessen</source>
-    <target>Fill level measured from top</target>
+    <target>Fyllnadshöjd från överkant</target>
 </phrase>
 <phrase>
     <source>Füllhöhe vom Boden aus gemessen</source>
-    <target>Fill level measured from bottom</target>
+    <target>Fyllnadshöjd från botten</target>
 </phrase>
 <phrase>
     <source>Würzemenge bei aktueller Temperatur</source>
-    <target>Amount of wort at current temperature</target>
+    <target>Vörtmängd vid aktuell temperatur</target>
 </phrase>
 <phrase>
     <source>Wasseraufbereitung</source>
-    <target>Water adjustment</target>
+    <target>Vattenanpassning</target>
 </phrase>
 <phrase>
     <source>Stk.</source>
-    <target>pcs.</target>
+    <target>st.</target>
 </phrase>
 <phrase>
     <source>Menge für +1°dH</source>
-    <target>Amount for +1°dH</target>
+    <target>Mängd för +1°dH</target>
 </phrase>
 <phrase>
     <source>Milchsäure</source>
-    <target>Lactic acid</target>
+    <target>Mjölksyra</target>
 </phrase>
 <phrase>
     <source>Phosphorsäure</source>
-    <target>Phosphoric acid</target>
+    <target>Fosforsyra</target>
 </phrase>
 <phrase>
     <source>Salzsäure</source>
-    <target>Hydrochloric acid</target>
+    <target>Saltsyra</target>
 </phrase>
 <phrase>
     <source>Schwefelsäure</source>
-    <target>Sulfuric acid</target>
+    <target>Svavelsyra</target>
 </phrase>
 <phrase>
     <source>Sauermalz</source>
-    <target>Acid malt</target>
+    <target>Syramalt</target>
 </phrase>
 <phrase>
     <source>Natriumhydrogenkarbonat (NaHCO3)</source>
-    <target>Sodium bicarbonate (NaHCO3)</target>
+    <target>Natriumvätekarbonat (NaHCO3)</target>
 </phrase>
 <phrase>
     <source>Natriumchlorid (NaCl)</source>
-    <target>Table salt (NaCl)</target>
+    <target>Koksalt (NaCl)</target>
 </phrase>
 <phrase>
     <source>Calciumsulfat-Dihydrat (CaSO4)</source>
-    <target>Calcium sulfate dihydrate (CaSO4)</target>
+    <target>Calciumsulfat dihydrat (CaSO4)</target>
 </phrase>
 <phrase>
     <source>Calciumchlorid-Dihydrat (CaCl2)</source>
-    <target>Calcium chloride dihydrate (CaCl2)</target>
+    <target>Calciumchlorid dihydrat (CaCl2)</target>
 </phrase>
 <phrase>
     <source>Magnesiumchlorid-Hexahydrat (MgCl2)</source>
-    <target>Magnesium chloride hexahydrate (MgCl2)</target>
+    <target>Magnesiumchlorid hexahydrat (MgCl2)</target>
 </phrase>
 <phrase>
     <source>Magnesiumsulfat-Heptahydrat (MgSO4)</source>
-    <target>Magnesium sulfate heptahydrate (MgSO4)</target>
+    <target>Magnesiumsulfat heptahydrat (MgSO4)</target>
 </phrase>
 <phrase>
     <source>&lt;manuell&gt;</source>
-    <target>&lt;manual&gt;</target>
+    <target>&lt;manuell&gt;</target>
 </phrase>
 <phrase>
     <source>Wasserprofile</source>
-    <target>Water profiles</target>
+    <target>Vattenprofiler</target>
 </phrase>
 <phrase>
     <source>Hydrogencarbonat (0 - 500 mg/l)</source>
-    <target>Hydrogen carbonate (0 - 500 mg/l)</target>
+    <target>Hydrogencarbonat (0 - 500 mg/l)</target>
 </phrase>
 <phrase>
     <source>Calcium (50 - 150 mg/l)</source>
@@ -1826,139 +1829,139 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Sulfat (0 - 250 mg/l)</source>
-    <target>Sulfate (0 - 250 mg/l)</target>
+    <target>Sulfat (0 - 250 mg/l)</target>
 </phrase>
 <phrase>
     <source>Chlorid (0 - 150 mg/l)</source>
-    <target>Chloride (0 - 150 mg/l)</target>
+    <target>Chlorid (0 - 150 mg/l)</target>
 </phrase>
 <phrase>
     <source>Restalkalität</source>
-    <target>Residual alkalinity</target>
+    <target>Restalkalinitet</target>
 </phrase>
 <phrase>
     <source>Restalkalität Korrektur</source>
-    <target>Residual alkalinity correction</target>
+    <target>Anpassning av värdet (differens från beräknat)</target>
 </phrase>
 <phrase>
     <source>Natrium (0 - 50 mg/l)</source>
-    <target>Sodium (0 - 50 mg/l)</target>
+    <target>Natrium (0 - 50 mg/l)</target>
 </phrase>
 <phrase>
     <source>Neues Profil</source>
-    <target>New profile</target>
+    <target>Nytt profil</target>
 </phrase>
 <phrase>
     <source>Wasserprofil löschen?</source>
-    <target>Delete water profile?</target>
+    <target>Ta bort vattenprofil?</target>
 </phrase>
 <phrase>
     <source>Soll das Wasserprofil &quot;%1&quot; gelöscht werden?</source>
-    <target>Delete water profile &quot;%1&quot;?</target>
+    <target>Ta bort vattenprofilen &quot;%1&quot;?</target>
 </phrase>
 <phrase>
     <source>Alle</source>
-    <target>All</target>
+    <target>Alla</target>
 </phrase>
 <phrase>
     <source>Vorhanden</source>
-    <target>In stock</target>
+    <target>Tillgänglig</target>
 </phrase>
 <phrase>
     <source>Nicht vorhanden</source>
-    <target></target>
+    <target>Ej i lager</target>
 </phrase>
 <phrase>
     <source>Nicht gebraute Rezepte</source>
-    <target>Not brewed</target>
+    <target>Inte bryggt</target>
 </phrase>
 <phrase>
     <source>Stadium</source>
-    <target>State</target>
+    <target>Stat</target>
 </phrase>
 <phrase>
     <source>Alle</source>
-    <target>All</target>
+    <target>Alla</target>
 </phrase>
 <phrase>
     <source>Rezept</source>
-    <target>Recipe</target>
+    <target>Recept</target>
 </phrase>
 <phrase>
     <source>Gebraut</source>
-    <target>Brewed</target>
+    <target>Bryggt</target>
 </phrase>
 <phrase>
     <source>Abgefüllt</source>
-    <target>Bottled</target>
+    <target>Tappat på flaska/fat</target>
 </phrase>
 <phrase>
     <source>Ausgetrunken</source>
-    <target>Drank out</target>
+    <target>Drack upp</target>
 </phrase>
 <phrase>
     <source>Merkliste</source>
-    <target>pinned</target>
+    <target>märklista</target>
 </phrase>
 <phrase>
     <source>Kategorie</source>
-    <target>Category</target>
+    <target>Kategori</target>
 </phrase>
 <phrase>
     <source>Anlage</source>
-    <target>Brewing equipment</target>
+    <target>Anläggning</target>
 </phrase>
 <phrase>
     <source>zwischen</source>
-    <target>between</target>
+    <target>mellan</target>
 </phrase>
 <phrase>
     <source>und</source>
-    <target>and</target>
+    <target>och</target>
 </phrase>
 <phrase>
     <source>Sudauswahl</source>
-    <target>Batch Selection</target>
+    <target>Satsurval</target>
 </phrase>
 <phrase>
     <source>Rezept</source>
-    <target>Recipe</target>
+    <target>Recept</target>
 </phrase>
 <phrase>
     <source>Braudaten</source>
-    <target>Brewing</target>
+    <target>Bryggning</target>
 </phrase>
 <phrase>
     <source>Abfülldaten</source>
-    <target>Bottling</target>
+    <target>Flask-/Fattappning</target>
 </phrase>
 <phrase>
     <source>Gärverlauf</source>
-    <target>Fermentation</target>
+    <target>Jäsning</target>
 </phrase>
 <phrase>
     <source>Dialoge</source>
-    <target>Dialogs</target>
+    <target>Dialogrutor</target>
 </phrase>
 <phrase>
     <source>Erweiterte Toolbar</source>
-    <target>Advanced toolbar</target>
+    <target>Avancerad verktygsfält</target>
 </phrase>
 <phrase>
     <source>Verwerfen</source>
-    <target>Discard</target>
+    <target>Kasta bort</target>
 </phrase>
 <phrase>
     <source>Alle Änderungen verwerfen</source>
-    <target>Discard all changes</target>
+    <target>Kasta alla ändringar</target>
 </phrase>
 <phrase>
     <source>Entsperren</source>
-    <target>Unlock</target>
+    <target>Lås upp</target>
 </phrase>
 <phrase>
     <source>Alle Eingabefelder entsperren</source>
-    <target>Unlock all input fields</target>
+    <target>Lås upp alla inmatningsfält</target>
 </phrase>
 <phrase>
     <source>F1</source>
@@ -1966,59 +1969,59 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Etikett</source>
-    <target>Labels</target>
+    <target>Etiketter</target>
 </phrase>
 <phrase>
     <source>Bewertungen</source>
-    <target>Rating</target>
+    <target>Betyg</target>
 </phrase>
 <phrase>
     <source>Überschriften</source>
-    <target>Headline</target>
+    <target>Rubrik</target>
 </phrase>
 <phrase>
     <source>Oben / Rechts</source>
-    <target>Top / Right</target>
+    <target>Övre högra hörnet</target>
 </phrase>
 <phrase>
     <source>Bewertung</source>
-    <target>Rating</target>
+    <target>Betyg</target>
 </phrase>
 <phrase>
     <source>Brauübersicht</source>
-    <target>History</target>
+    <target>Satsöversikt</target>
 </phrase>
 <phrase>
     <source>Ausrüstung</source>
-    <target>Equipment</target>
+    <target>Utrustning</target>
 </phrase>
 <phrase>
     <source>Rohstoffe</source>
-    <target>Ingredients</target>
+    <target>Ingredienser</target>
 </phrase>
 <phrase>
     <source>Datenbank</source>
-    <target>Database</target>
+    <target>Databas</target>
 </phrase>
 <phrase>
     <source>Ausdruck</source>
-    <target>Print-out</target>
+    <target>Utskrift</target>
 </phrase>
 <phrase>
     <source>Hilfe</source>
-    <target>Help</target>
+    <target>Hjälp</target>
 </phrase>
 <phrase>
     <source>Sud</source>
-    <target>Batch</target>
+    <target>Sats</target>
 </phrase>
 <phrase>
     <source>Einstellungen</source>
-    <target>Settings</target>
+    <target>Inställningar</target>
 </phrase>
 <phrase>
     <source>Speichern</source>
-    <target>Save</target>
+    <target>Spara</target>
 </phrase>
 <phrase>
     <source>Ctrl+S</source>
@@ -2026,7 +2029,7 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Über</source>
-    <target>About</target>
+    <target>Om</target>
 </phrase>
 <phrase>
     <source>aroma</source>
@@ -2034,7 +2037,7 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>bitter</source>
-    <target>bitter</target>
+    <target>beskning</target>
 </phrase>
 <phrase>
     <source>universal</source>
@@ -2042,139 +2045,139 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>obergärig</source>
-    <target>top-fermenting</target>
+    <target>överjäst</target>
 </phrase>
 <phrase>
     <source>untergärig</source>
-    <target>bottom-fermenting</target>
+    <target>underjäst</target>
 </phrase>
 <phrase>
     <source>trocken</source>
-    <target>dry</target>
+    <target>torr</target>
 </phrase>
 <phrase>
     <source>flüssig</source>
-    <target>liquid</target>
+    <target>flytande</target>
 </phrase>
 <phrase>
     <source>Honig</source>
-    <target>Honey</target>
+    <target>Honung</target>
 </phrase>
 <phrase>
     <source>Zucker</source>
-    <target>Sugar</target>
+    <target>Socker</target>
 </phrase>
 <phrase>
     <source>Gewürz</source>
-    <target>Spice</target>
+    <target>Krydda</target>
 </phrase>
 <phrase>
     <source>Frucht</source>
-    <target>Fruit</target>
+    <target>Frukt</target>
 </phrase>
 <phrase>
     <source>Sonstiges</source>
-    <target>Miscellaneous</target>
+    <target>Annat</target>
 </phrase>
 <phrase>
     <source>Kraut</source>
-    <target>Herbs</target>
+    <target>Örter</target>
 </phrase>
 <phrase>
     <source>Wasseraufbereitung</source>
-    <target>Water adjustment</target>
+    <target>Vattenanpassning</target>
 </phrase>
 <phrase>
     <source>Klärmittel</source>
-    <target>Clearing agents</target>
-</phrase>
-<phrase>
-    <source>Anwendung schließen?</source>
-    <target>Quit application?</target>
-</phrase>
-<phrase>
-    <source>Sollen die Änderungen vor dem Schließen gespeichert werden?</source>
-    <target>Save changes before quitting?</target>
-</phrase>
-<phrase>
-    <source>Soll die Anwendung geschlossen werden?</source>
-    <target>Quit application?</target>
-</phrase>
-<phrase>
-    <source>Änderungen speichern?</source>
-    <target>Save changes?</target>
-</phrase>
-<phrase>
-    <source>Sollen die Änderungen gespeichert werden?</source>
-    <target>Should the changes be saved?</target>
-</phrase>
-<phrase>
-    <source>Fehler beim Speichern</source>
-    <target>Error when saving</target>
-</phrase>
-<phrase>
-    <source>Unbekannter Fehler.</source>
-    <target>Unknown error.</target>
-</phrase>
-<phrase>
-    <source>Fehler beim Laden</source>
-    <target>Error when loading</target>
-</phrase>
-<phrase>
-    <source>Fehler beim Verwerfen</source>
-    <target>Error when undoing</target>
-</phrase>
-<phrase>
-    <source>Eingabefelder entsperren?</source>
-    <target>Unlock input fields?</target>
+    <target>Klarningsmedel</target>
 </phrase>
 <phrase>
     <source>Stk.</source>
-    <target>pcs.</target>
+    <target>st.</target>
+</phrase>
+<phrase>
+    <source>Anwendung schließen?</source>
+    <target>Stäng av programmet?</target>
+</phrase>
+<phrase>
+    <source>Sollen die Änderungen vor dem Schließen gespeichert werden?</source>
+    <target>Spara ändringarna innan avstängning?</target>
+</phrase>
+<phrase>
+    <source>Soll die Anwendung geschlossen werden?</source>
+    <target>Stäng av programmet?</target>
+</phrase>
+<phrase>
+    <source>Änderungen speichern?</source>
+    <target>Spara ändringarna?</target>
+</phrase>
+<phrase>
+    <source>Sollen die Änderungen gespeichert werden?</source>
+    <target>Spara ändringarna?</target>
+</phrase>
+<phrase>
+    <source>Fehler beim Speichern</source>
+    <target>Fel under sparandet</target>
+</phrase>
+<phrase>
+    <source>Unbekannter Fehler.</source>
+    <target>Okänt fel.</target>
+</phrase>
+<phrase>
+    <source>Fehler beim Laden</source>
+    <target>Fel under öppnandet</target>
+</phrase>
+<phrase>
+    <source>Fehler beim Verwerfen</source>
+    <target>Fel under återställandet</target>
+</phrase>
+<phrase>
+    <source>Eingabefelder entsperren?</source>
+    <target>Lås upp inmatningsfält?</target>
 </phrase>
 <phrase>
     <source>Sud ID</source>
-    <target>Batch ID</target>
+    <target>Sats-ID</target>
 </phrase>
 <phrase>
     <source>Sudname</source>
-    <target>Batch name</target>
+    <target>Satsnamn</target>
 </phrase>
 <phrase>
     <source>Sudnummer</source>
-    <target>Batch number</target>
+    <target>Satsnummer</target>
 </phrase>
 <phrase>
     <source>Kategorie</source>
-    <target>Category</target>
+    <target>Kategori</target>
 </phrase>
 <phrase>
     <source>Braudatum</source>
-    <target>Brew date</target>
+    <target>Bryggdatum</target>
 </phrase>
 <phrase>
     <source>Abfülldatum</source>
-    <target>Bottling date</target>
+    <target>Datum för flasktappning</target>
 </phrase>
 <phrase>
     <source>Erstellt</source>
-    <target>Created</target>
+    <target>Skapad</target>
 </phrase>
 <phrase>
     <source>Gespeichert</source>
-    <target>Saved</target>
+    <target>Sparad</target>
 </phrase>
 <phrase>
     <source>Woche</source>
-    <target>Week</target>
+    <target>Vecka</target>
 </phrase>
 <phrase>
     <source>Für Durchschnitt Ignorieren</source>
-    <target>Ignore for average</target>
+    <target>Ignorera för medelvärdet</target>
 </phrase>
 <phrase>
     <source>Name</source>
-    <target>Name</target>
+    <target>Namn</target>
 </phrase>
 <phrase>
     <source>pH</source>
@@ -2182,27 +2185,27 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Bemerkung</source>
-    <target>Remarks</target>
+    <target>Anmärkningar</target>
 </phrase>
 <phrase>
     <source>Eigenschaften</source>
-    <target>Characteristics</target>
+    <target>Egenskaper</target>
 </phrase>
 <phrase>
     <source>Alternativen</source>
-    <target>Alternatives</target>
+    <target>Alternativ</target>
 </phrase>
 <phrase>
     <source>Einlagerung</source>
-    <target>Storage</target>
+    <target>Kom in i lagret</target>
 </phrase>
 <phrase>
     <source>Haltbarkeit</source>
-    <target>Best before</target>
+    <target>Bäst före</target>
 </phrase>
 <phrase>
     <source>Link</source>
-    <target>Link</target>
+    <target>Länk</target>
 </phrase>
 <phrase>
     <source>Pellets</source>
@@ -2210,31 +2213,173 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Typ</source>
-    <target>Type</target>
+    <target>Typ</target>
 </phrase>
 <phrase>
     <source>Menge</source>
-    <target>Amount</target>
+    <target>Mängd</target>
+</phrase>
+<phrase>
+    <source>SW</source>
+    <target>Stamvört</target>
+</phrase>
+<phrase>
+    <source>Bittere</source>
+    <target>Beska</target>
+</phrase>
+<phrase>
+    <source>SHA</source>
+    <target>Utbyte</target>
+</phrase>
+<phrase>
+    <source>Restextrakt</source>
+    <target>Restsötma (FG)</target>
+</phrase>
+<phrase>
+    <source>Schüttung</source>
+    <target>Malt o dyl</target>
+</phrase>
+<phrase>
+    <source>Kosten</source>
+    <target>Kostnader</target>
+</phrase>
+<phrase>
+    <source>sEVG</source>
+    <target>Förjäsn</target>
+</phrase>
+<phrase>
+    <source>tEVG</source>
+    <target>Förjäsn. (verkl.)</target>
+</phrase>
+<phrase>
+    <source>Eff. SHA</source>
+    <target>Effektivt utbyte</target>
+</phrase>
+<phrase>
+    <source>Verdampfungsrate</source>
+    <target>Förångningshastighet</target>
+</phrase>
+<phrase>
+    <source>Farbe</source>
+    <target>Färg</target>
+</phrase>
+<phrase>
+    <source>Max. Anteil</source>
+    <target>Max. andel</target>
+</phrase>
+<phrase>
+    <source>Preis</source>
+    <target>Pris</target>
+</phrase>
+<phrase>
+    <source>Alpha</source>
+    <target>Alpha</target>
+</phrase>
+<phrase>
+    <source>OG/UG</source>
+    <target>Över/underjäst</target>
+</phrase>
+<phrase>
+    <source>Trocken/Flüssig</source>
+    <target>Torr/Flytande</target>
+</phrase>
+<phrase>
+    <source>Sedimentation</source>
+    <target>Sedimentering</target>
+</phrase>
+<phrase>
+    <source>Vergärungsgrad</source>
+    <target>Förjäsningsgrad</target>
+</phrase>
+<phrase>
+    <source>Temperatur</source>
+    <target>Temperatur</target>
+</phrase>
+<phrase>
+    <source>Einheit</source>
+    <target>Enhet</target>
+</phrase>
+<phrase>
+    <source>Unvergärbar</source>
+    <target>Ojäsbar</target>
+</phrase>
+<phrase>
+    <source>Wasserprofil</source>
+    <target>Vattenprofil</target>
+</phrase>
+<phrase>
+    <source>Datum</source>
+    <target>Datum</target>
+</phrase>
+<phrase>
+    <source>Würzemenge</source>
+    <target>Vörtmängd</target>
+</phrase>
+<phrase>
+    <source>Ausbeute</source>
+    <target>Utbye</target>
+</phrase>
+<phrase>
+    <source>Restalkalität</source>
+    <target>Restalkalinitet</target>
+</phrase>
+<phrase>
+    <source>SRE</source>
+    <target>FG</target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alkohol</target>
+</phrase>
+<phrase>
+    <source>
+(%1/[kg/L/Stk.])</source>
+    <target>
+(%1/[kg/L/st.])</target>
+</phrase>
+<phrase>
+    <source>Druck</source>
+    <target>Tryck</target>
+</phrase>
+<phrase>
+    <source>CO2</source>
+    <target>CO2</target>
+</phrase>
+<phrase>
+    <source>Vermögen</source>
+    <target>Förmåga</target>
+</phrase>
+<phrase>
+    <source>Anzahl Sude</source>
+    <target>Antal satser</target>
+</phrase>
+<phrase>
+    <source>Anzahl gebraute Sude</source>
+    <target>Antal bryggda satser</target>
+</phrase>
+<phrase>
+    <source>Bezeichnung</source>
+    <target>Beteckning</target>
 </phrase>
 <phrase>
     <source>Redo</source>
-    <target>Redo</target>
+    <target>Göra om</target>
 </phrase>
 <phrase>
     <source>Undo</source>
-    <target>Undo</target>
+    <target>Ångra</target>
 </phrase>
 <phrase>
     <source>Änderungen verwerfen?</source>
-    <target>Discard changes?</target>
+    <target>Avbryta ändringarna?</target>
 </phrase>
 <phrase>
     <source>Sollen alle Änderungen verworfen werden?</source>
-    <target>Should all changes be discarded?</target>
+    <target>Ska alla ändringar kasseras?</target>
 </phrase>
 <phrase>
     <source>Vorsicht! Die Entsperrung aller Eingabefeldern kann zu inkonsistenten Daten führen und sollte mit Vorsicht verwendet werden.</source>
-    <target>Attention! Unlocking fields for entry can lead to inconsistent data and should be used sparingly and with care.</target>
+    <target>Obs! Att låsa upp fälten för inmatning kan leda till inkonsistent data och bör göras varsamt.</target>
 </phrase>
 <phrase>
     <source>Standard</source>
@@ -2277,154 +2422,12 @@ For brewed brews, the summary summarizes all relevant information.</target>
     <target>Brauheld Pro 30L</target>
 </phrase>
 <phrase>
-    <source>SW</source>
-    <target>OG</target>
-</phrase>
-<phrase>
-    <source>Bittere</source>
-    <target>Bitterness</target>
-</phrase>
-<phrase>
-    <source>SHA</source>
-    <target>Mash efficiency</target>
-</phrase>
-<phrase>
-    <source>Restextrakt</source>
-    <target>Residual extract</target>
-</phrase>
-<phrase>
-    <source>Schüttung</source>
-    <target>Grist</target>
-</phrase>
-<phrase>
-    <source>Kosten</source>
-    <target>Costs</target>
-</phrase>
-<phrase>
-    <source>sEVG</source>
-    <target>Attenuation</target>
-</phrase>
-<phrase>
-    <source>tEVG</source>
-    <target>Attenuation (real)</target>
-</phrase>
-<phrase>
-    <source>Eff. SHA</source>
-    <target>Brewhouse efficiency</target>
-</phrase>
-<phrase>
-    <source>Verdampfungsrate</source>
-    <target>Evaporation rate</target>
-</phrase>
-<phrase>
-    <source>Farbe</source>
-    <target>Color</target>
-</phrase>
-<phrase>
-    <source>Max. Anteil</source>
-    <target>Max. share</target>
-</phrase>
-<phrase>
-    <source>Preis</source>
-    <target>Price</target>
-</phrase>
-<phrase>
-    <source>Alpha</source>
-    <target>Alpha</target>
-</phrase>
-<phrase>
-    <source>OG/UG</source>
-    <target>Top/Bottom</target>
-</phrase>
-<phrase>
-    <source>Trocken/Flüssig</source>
-    <target>Dry/Liquid</target>
-</phrase>
-<phrase>
-    <source>Sedimentation</source>
-    <target>Flocculation</target>
-</phrase>
-<phrase>
-    <source>Vergärungsgrad</source>
-    <target>Attenuation</target>
-</phrase>
-<phrase>
-    <source>Temperatur</source>
-    <target>Temperature</target>
-</phrase>
-<phrase>
-    <source>Einheit</source>
-    <target>Unit</target>
-</phrase>
-<phrase>
-    <source>Unvergärbar</source>
-    <target>Non fermentable</target>
-</phrase>
-<phrase>
-    <source>Wasserprofil</source>
-    <target>Water profile</target>
-</phrase>
-<phrase>
-    <source>Datum</source>
-    <target>Date</target>
-</phrase>
-<phrase>
-    <source>Würzemenge</source>
-    <target>Wort quantity</target>
-</phrase>
-<phrase>
-    <source>Ausbeute</source>
-    <target>Efficiency</target>
-</phrase>
-<phrase>
-    <source>Restalkalität</source>
-    <target>Residual alkalinity</target>
-</phrase>
-<phrase>
-    <source>SRE</source>
-    <target>FG</target>
-</phrase>
-<phrase>
-    <source>Alkohol</source>
-    <target>Alcohol</target>
-</phrase>
-<phrase>
-    <source>
-(%1/[kg/L/Stk.])</source>
-    <target>
-(%1/[kg/L/pcs.])</target>
-</phrase>
-<phrase>
-    <source>Druck</source>
-    <target>Pressure</target>
-</phrase>
-<phrase>
-    <source>CO2</source>
-    <target>CO2</target>
-</phrase>
-<phrase>
-    <source>Vermögen</source>
-    <target>Capacity</target>
-</phrase>
-<phrase>
-    <source>Anzahl Sude</source>
-    <target>Number of batches</target>
-</phrase>
-<phrase>
-    <source>Anzahl gebraute Sude</source>
-    <target>Number of brewed batches</target>
-</phrase>
-<phrase>
-    <source>Bezeichnung</source>
-    <target>Designation</target>
-</phrase>
-<phrase>
     <source>Tag</source>
-    <target>Day</target>
+    <target>Nyckelord</target>
 </phrase>
 <phrase>
     <source>Wert</source>
-    <target>Value</target>
+    <target>Värde</target>
 </phrase>
 <phrase>
     <source>Global</source>
@@ -2432,547 +2435,547 @@ For brewed brews, the summary summarizes all relevant information.</target>
 </phrase>
 <phrase>
     <source>Speisemenge zurücksetzen?</source>
-    <target>Reset unfermented wort?</target>
+    <target>Återställa ojäst vört?</target>
 </phrase>
 <phrase>
     <source>Das Modul &quot;Speiseberechnung&quot; ist deaktiviert, aber es wurde für diesen Sud eine Speisemenge angegeben.</source>
-    <target>The &quot;Carbonation with wort&quot; module is disabled, but unfermented wort has been specified for this batch.</target>
+    <target>Modulen &quot;Kolsyresättning med vört&quot; är inaktiverad, men en fodermängd har angetts för denna bryggning.</target>
 </phrase>
 <phrase>
     <source>Soll diese zurückgesetzt werden (empfohlen)?</source>
-    <target>Should this be reset (recommended)?</target>
+    <target>Bör detta återställas (rekommenderas)?</target>
 </phrase>
 <phrase>
     <source>Speisemenge</source>
-    <target>Unfermented wort</target>
+    <target>Mängd ojäst vört</target>
 </phrase>
 <phrase>
     <source>Der Sud wird nicht korrekt dargestellt.</source>
-    <target>The batch is not displayed correctly.</target>
+    <target>Partiet visas inte på rätt sätt.</target>
 </phrase>
 <phrase>
     <source>Schnellgärprobe deaktivieren?</source>
-    <target>Deactivate fast fermentation sample?</target>
+    <target>Deaktivera snabbjäsningsprov?</target>
 </phrase>
 <phrase>
     <source>Das Modul &quot;Schnellgärprobe&quot; ist deaktiviert, aber es wurde für diesen Sud die Schnellgärprobe aktiviert.</source>
-    <target>The &quot;Fast fermentation sample&quot; module is disabled, but &quot;Fast fermentation sample&quot; has been enabled for this batch.</target>
+    <target>Modulen &quot;Snabbjäsningsprov&quot; är inaktiverad, men &quot;Snelle vergistingsmonster&quot; har aktiverats för den här bryggningen.</target>
 </phrase>
 <phrase>
     <source>Soll diese deaktiviert werden (empfohlen)?</source>
-    <target>Should this be deactivated (recommended)?</target>
+    <target>Bör detta avaktiveras (rekommenderas)?</target>
 </phrase>
 <phrase>
     <source>Schnellgärprobe</source>
-    <target>Fast fermentation sample</target>
+    <target>Snabbjäsningsprov</target>
 </phrase>
 <phrase>
     <source>Korrekturwert zurücksetzen?</source>
-    <target>Reset correction value?</target>
+    <target>Återställa korrigeringsvärdet?</target>
 </phrase>
 <phrase>
     <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Nachgussmenge) angegeben.</source>
-    <target>The &quot;Equipment&quot; module is disabled, but a correction value (post-casting quantity) has been specified for this equipment.</target>
+    <target>Modulen &quot;Utrustning&quot; är inaktiverad, men ett korrigeringsvärde (kvantitet efter gjutning) har angetts för denna utrustning.</target>
 </phrase>
 <phrase>
     <source>Soll dieser zurückgesetzt werden?</source>
-    <target>Should this be reset?</target>
+    <target>Bör detta återställas?</target>
 </phrase>
 <phrase>
     <source>Korrekturwert</source>
-    <target>Correction factor</target>
+    <target>Korrigeringsfaktor</target>
 </phrase>
 <phrase>
     <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Farbwert) angegeben.</source>
-    <target>The &quot;Equipment&quot; module is disabled, but a correction value (color value) has been specified for this equipment.</target>
+    <target>Modulen &quot;Utrustning&quot; är inaktiverad, men ett korrigeringsvärde (färgvärde) har angetts för denna utrustning.</target>
 </phrase>
 <phrase>
     <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Sollmenge) angegeben.</source>
-    <target>The &quot;Equipment&quot; module is deactivated, but a correction value (target quantity) has been specified for this equipment.</target>
+    <target>Modulen &quot;Utrustning&quot; är inaktiverad, men ett korrigeringsvärde (målkvantitet) har angetts för denna anläggning.</target>
 </phrase>
 <phrase>
     <source>Betriebskosten zurücksetzen?</source>
-    <target>Reset cotst?</target>
+    <target>Återställning av kostnader?</target>
 </phrase>
 <phrase>
     <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage Betriebskosten angegeben.</source>
-    <target>The &quot;Equipment&quot; module is disabled, but operating costs have been specified for this equipment.</target>
+    <target>Modulen &quot;Utrustning&quot; är inaktiverad, men driftskostnader har angetts för denna anläggning.</target>
 </phrase>
 <phrase>
     <source>Soll diese zurückgesetzt werden?</source>
-    <target>Should this be reset?</target>
+    <target>Bör detta återställas?</target>
 </phrase>
 <phrase>
     <source>Betriebskosten</source>
-    <target>Costs</target>
+    <target>Kostnader</target>
 </phrase>
 <phrase>
     <source>Der Preis wird nicht korrekt berechnet.</source>
-    <target>The price is not calculated correctly.</target>
+    <target>Priset har inte beräknats korrekt.</target>
 </phrase>
 <phrase>
     <source>oBraMa Datenbank</source>
-    <target>oBraMa Database</target>
+    <target>oBraMa Databas</target>
 </phrase>
 <phrase>
     <source>Die Tabelle &quot;%1&quot; konnte nicht heruntergeladen werden.</source>
-    <target>Table &quot;%1&quot; could not be downloaded.</target>
+    <target>Tabell &quot;%1&quot; kunde inte laddas ner.</target>
 </phrase>
 <phrase>
     <source>Die Tabelle &quot;%1&quot; wurde aktualisiert.</source>
-    <target>Table &quot;%1&quot; updated.</target>
+    <target>Tabellen &quot;%1&quot; aktualiserad.</target>
 </phrase>
 <phrase>
     <source>Es wurde noch keine Datenbank ausgewählt. Soll eine neue angelegt werden oder soll eine bereits vorhandene geöffnet werden?</source>
-    <target>No database selected yet. Do you want to create a new database or open an existing one?</target>
+    <target>Ingen databas har valts. Vill du skapa en ny databas eller öppna en befintlig?</target>
 </phrase>
 <phrase>
     <source>Soll eine neue Datenbank angelegt werden oder soll eine bereits vorhandene geöffnet werden?</source>
-    <target>Do you want to create a new database or open an existing one?</target>
+    <target>Vill du skapa en ny databas eller öppna en befintlig?</target>
 </phrase>
 <phrase>
     <source>Datenbank auswählen</source>
-    <target>Select database</target>
+    <target>Välj databas</target>
 </phrase>
 <phrase>
     <source>Datenbank (*.sqlite);;Alle Dateien (*.*)</source>
-    <target>Database (*.sqlite);;All files (*.*)</target>
+    <target>Databas (*.sqlite);;Alla filer (*.*)</target>
 </phrase>
 <phrase>
     <source>Datenbank anlegen</source>
-    <target>Create database</target>
+    <target>Skapa databas</target>
 </phrase>
 <phrase>
     <source>Die Datenbank ist ungultig.</source>
-    <target>Invalid database.</target>
+    <target>Ogiltig databas.</target>
 </phrase>
 <phrase>
     <source>Die Datenbankversion (%1) ist zu neu für das Programm. Das Programm muss aktualisiert werden.</source>
-    <target>Database version (%1) is too new for the application. It needs to be updated.</target>
+    <target>Databasens version (%1) är för ny för programmet. Det behöver uppdateras.</target>
 </phrase>
 <phrase>
     <source>Die Datenbankversion (%1) ist zu alt für das Programm. Die Datenbank muss zuerst mit dem kleinen-brauhelfer v1.4.4.6 aktualisiert werden.</source>
-    <target>Database version (%1) is too old for the application. The database needs to be updated with kleiner-brauhelfer v1.4.4.6 first.</target>
+    <target>Databasens version (%1) är för gammal för programmet. Den behöver uppdateras först med kleiner-brauhelfer v1.4.4.6.</target>
 </phrase>
 <phrase>
     <source>Die Datenbank muss aktualisiert werden (Version %1 -&gt; %2).</source>
-    <target>The database needs updating (version %1 -&gt; %2).</target>
+    <target>Databasen behöver uppdateras (version %1 -&gt; %2).</target>
 </phrase>
 <phrase>
     <source>Soll die Datenbank jetzt aktualisiert werden?</source>
-    <target>Should the database be updated now?</target>
+    <target>Ska databasen uppdateras nu?</target>
 </phrase>
 <phrase>
     <source>ACHTUNG, die Änderungen können nicht rückgängig gemacht werden!</source>
-    <target>ATTENTION, these changes cannot be undone!</target>
+    <target>OBS, dessa ändringar kan inte ångras senare!</target>
 </phrase>
 <phrase>
     <source>Soll eine Sicherheitskopie der Datenbank angelegt werden?</source>
-    <target>Should a backup copy of the database be created?</target>
+    <target>Ska en säkerhetskopia av databasen skapas?</target>
 </phrase>
 <phrase>
     <source>Sicherheitskopie anlegen</source>
-    <target>Create backup copy</target>
+    <target>Skapa säkerhetskopia</target>
 </phrase>
 <phrase>
     <source>Datenbank konnte nicht wiederhergestellt werden.</source>
-    <target>Database could not be recovered.</target>
+    <target>Databasen kunde inte återställas.</target>
 </phrase>
 <phrase>
     <source>Aktualisierung fehlgeschlagen.
 
 </source>
-    <target>Update failed.
+    <target>Uppdatering misslyckades.
 
 </target>
 </phrase>
 <phrase>
     <source>Sicherheitskopie konnte nicht erstellt werden.</source>
-    <target>Backup could not be made.</target>
+    <target>Säkerhetskopian kunde inte skapas.</target>
 </phrase>
 <phrase>
     <source>Die Datenbank &quot;%1&quot; konnte nicht geöffnet werden.</source>
-    <target>Database &quot;%1&quot; could not be opened.</target>
+    <target>Databasen &quot;%1&quot; kunde inte öppnas.</target>
 </phrase>
 <phrase>
     <source>Der Ordner &quot;%1&quot; konnte nicht erstellt werden.</source>
-    <target>Directory &quot;%1&quot; could not be created.</target>
+    <target>Mappen &quot;%1&quot; kunde inte skapas.</target>
 </phrase>
 <phrase>
     <source>Der Datei &quot;%1&quot; konnte nicht erstellt werden.</source>
-    <target>File &quot;%1&quot; could not be created.</target>
+    <target>Filen &quot;%1&quot; kunde inte skapas.</target>
 </phrase>
 <phrase>
     <source>Die Ressourcendatei &quot;%1&quot; ist verschieden von der lokalen Datei.
 Die Datei wurde entweder manuell editiert oder durch ein Update verändert.
 
 Soll die lokale Datei ersetzt werden?</source>
-    <target>Resource file &quot;%1&quot; is different from the local file.
-The file was either edited manually or changed by an update.
+    <target>Resursfilen &quot;%1&quot; skiljer sig från lokala filen.
+Filen har antingen ändrats manuellt eller av en uppdatering.
 
-Should the local file be replaced?</target>
+Ska lokala filen ersättas?</target>
 </phrase>
 <phrase>
     <source>SSL wird nicht unterstüzt.
 Version benötigt: %1
 Version installiert: %2</source>
-    <target>SSL ist not supported.
-Version required: %1
-Version installed: %2</target>
+    <target>SSL stöds inte.
+Version som behövs: %1
+Installerad version: %2</target>
 </phrase>
 <phrase>
     <source>Programmfehler</source>
-    <target>Program error</target>
+    <target>Programfel</target>
 </phrase>
 <phrase>
     <source>Unbekannter Fehler.</source>
-    <target>Unknown error.</target>
+    <target>Okänt fel.</target>
 </phrase>
 <phrase>
     <source>zugegeben</source>
-    <target>added</target>
+    <target>tillagd</target>
 </phrase>
 <phrase>
     <source>nicht zugegeben</source>
-    <target>not added</target>
+    <target>inte tillagd</target>
 </phrase>
 <phrase>
     <source>nicht entnommen</source>
-    <target>not removed</target>
+    <target>inte tagits ur</target>
 </phrase>
 <phrase>
     <source>entnommen</source>
-    <target>removed</target>
+    <target>tagits ur</target>
 </phrase>
 <phrase>
     <source>%1. Woche, reif in %2 Tagen</source>
-    <target>%1. week, ready in %2 days</target>
+    <target>%1:e vecka, mogen om %2 dagar</target>
 </phrase>
 <phrase>
     <source>%1. Woche</source>
-    <target>%1. week</target>
+    <target>%1:e vecka</target>
 </phrase>
 <phrase>
     <source>Abfülldatum</source>
-    <target>Bottling date</target>
+    <target>Tid för flasktappning</target>
 </phrase>
 <phrase>
     <source>Tage</source>
-    <target>Days</target>
+    <target>Dagar</target>
 </phrase>
 <phrase>
     <source>Dauer der Hauptgärung</source>
-    <target>Duration of fermentation</target>
+    <target>Jästid</target>
 </phrase>
 <phrase>
     <source>Jetzt</source>
-    <target>Now</target>
+    <target>Nu</target>
 </phrase>
 <phrase>
     <source>Vergärung</source>
-    <target>Fermentation</target>
+    <target>Förjäsning</target>
 </phrase>
 <phrase>
     <source>Restextrakt Jungbier</source>
-    <target>Residual extract green beer</target>
+    <target>Extrakthalten i unga ölet</target>
 </phrase>
 <phrase>
     <source>Alkoholgehalt</source>
-    <target>ABV</target>
+    <target>Alkoholhalt</target>
 </phrase>
 <phrase>
     <source>Grünschlauchzeitpunkt</source>
-    <target>Green bottling time</target>
+    <target>Tidpunkt för &quot;grön&quot; tappning</target>
 </phrase>
 <phrase>
     <source>Restextrakt der Schnellgärprobe</source>
-    <target>Residual extract of fast fermentation sample</target>
+    <target>Extrakthalten i snabbjäsningsprovet</target>
 </phrase>
 <phrase>
     <source>Erwarteter Restextrakt</source>
-    <target>Expected residual extract</target>
+    <target>Förväntat extrakthalt</target>
 </phrase>
 <phrase>
     <source>Beginn der Reifung</source>
-    <target>Beginnig of aging</target>
+    <target>Mognadstidens början</target>
 </phrase>
 <phrase>
     <source>Abfülldaten</source>
-    <target>Bottling</target>
+    <target>Flask-/Fattappning</target>
 </phrase>
 <phrase>
     <source>Aktuelle Reifezeit</source>
-    <target>Current aging time</target>
+    <target>Aktuell mognadstid</target>
 </phrase>
 <phrase>
     <source>Wochen</source>
-    <target>weeks</target>
+    <target>veckor</target>
 </phrase>
 <phrase>
     <source>Aus Rezept</source>
-    <target>From recipe</target>
+    <target>Från receptet</target>
 </phrase>
 <phrase>
     <source>Stammwürze</source>
-    <target>Original gravity</target>
+    <target>Stamvört (OG)</target>
 </phrase>
 <phrase>
     <source>Spundungsdruck</source>
-    <target>Bung pressure</target>
-</phrase>
-<phrase>
-    <source>Temperatur Jungbier</source>
-    <target>Temperature green beer</target>
-</phrase>
-<phrase>
-    <source>Jungbiermenge</source>
-    <target>Amount green beer</target>
-</phrase>
-<phrase>
-    <source>Verlust seit Anstellen</source>
-    <target>Losses since time of pitching</target>
-</phrase>
-<phrase>
-    <source>Spunden</source>
-    <target>Force carbonation</target>
-</phrase>
-<phrase>
-    <source>pro Flasche</source>
-    <target>per bottle</target>
-</phrase>
-<phrase>
-    <source>Abfüllen</source>
-    <target>Bottling</target>
-</phrase>
-<phrase>
-    <source>Abgefüllte Menge</source>
-    <target>Bottled amount</target>
+    <target>Jämviktstryck</target>
 </phrase>
 <phrase>
     <source>Sud ausgetrunken</source>
-    <target>Batch drank out</target>
+    <target>Batch drack upp</target>
+</phrase>
+<phrase>
+    <source>Temperatur Jungbier</source>
+    <target>Temperatur i unga ölet</target>
+</phrase>
+<phrase>
+    <source>Jungbiermenge</source>
+    <target>Mängden unga ölet</target>
+</phrase>
+<phrase>
+    <source>Verlust seit Anstellen</source>
+    <target>Förlust sedan jäsningens början</target>
+</phrase>
+<phrase>
+    <source>Spunden</source>
+    <target>Tvångskarbonering</target>
+</phrase>
+<phrase>
+    <source>pro Flasche</source>
+    <target>per Flaska</target>
+</phrase>
+<phrase>
+    <source>Abfüllen</source>
+    <target>Tappning</target>
+</phrase>
+<phrase>
+    <source>Abgefüllte Menge</source>
+    <target>Paketerad mängd</target>
 </phrase>
 <phrase>
     <source>Karbonisierung</source>
-    <target>Carbonation</target>
+    <target>Kolsyresättning</target>
 </phrase>
 <phrase>
     <source>Flaschengröße</source>
-    <target>Bottle size</target>
+    <target>Flaskstorlek</target>
 </phrase>
 <phrase>
     <source>Verfügbare Speisemenge</source>
-    <target>Available unfermented wort</target>
+    <target>Tillgänglig mängd ojäst vört</target>
 </phrase>
 <phrase>
     <source>Benötigte Speisemenge</source>
-    <target>Needed amount of unfermented wort</target>
+    <target>Mängd ojäst vört som behövs</target>
 </phrase>
 <phrase>
     <source>Anzahl Flaschen</source>
-    <target>Amount of bottles</target>
+    <target>Antal flaskor</target>
 </phrase>
 <phrase>
     <source>Zusätzlich benötigter Zucker</source>
-    <target>Additional sugar</target>
+    <target>Extra socker</target>
 </phrase>
 <phrase>
     <source>Konzentration der Zuckerlösung</source>
-    <target>Strength of sugar solution</target>
+    <target>Sockerlösningens styrka</target>
 </phrase>
 <phrase>
     <source>Endvergärungsgrad</source>
-    <target>Attenuation</target>
+    <target>Förjäsningsgrad</target>
 </phrase>
 <phrase>
     <source>Temperatur für Karbonisierung</source>
-    <target>Temperature for carbonisation</target>
+    <target>Temperatur för kolsyrejäsning</target>
 </phrase>
 <phrase>
     <source>Sonstiges</source>
-    <target>Miscellaneous</target>
+    <target>Annat</target>
 </phrase>
 <phrase>
     <source>Gesamtkosten</source>
-    <target>Total cost</target>
+    <target>Totalkostnad</target>
 </phrase>
 <phrase>
     <source>Zusätzliche Kosten</source>
-    <target>Additional costs</target>
+    <target>Ytterligare kostnader</target>
 </phrase>
 <phrase>
     <source>Bemerkung Gärung &amp; Reifung</source>
-    <target>Remarks fermentation &amp; aging</target>
+    <target>Anteckningar om jäsning &amp; mognadstidens</target>
 </phrase>
 <phrase>
     <source>Bemerkung Abfüllen</source>
-    <target>Remarks bottling</target>
+    <target>Anteckningar om flasktappning</target>
 </phrase>
 <phrase>
     <source>Sud abgefüllt</source>
-    <target>Batch bottled</target>
+    <target>Satsen flask-/fattappat</target>
 </phrase>
 <phrase>
     <source>Zurücksetzen</source>
-    <target>Reset</target>
+    <target>Återställ</target>
 </phrase>
 <phrase>
     <source>Zutaten Gärung</source>
-    <target>Ingredients during fermentation</target>
+    <target>Ingredienser under jäsning</target>
 </phrase>
 <phrase>
     <source>Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.</source>
-    <target>Not all ingredients for fermentation have been added or removed yet.</target>
+    <target>Inte alla ingredienser för jäsningen har tillagts eller tagits ur ännu.</target>
 </phrase>
 <phrase>
     <source>Soll der Sud trotzdem als abgefüllt markiert werden?</source>
-    <target>Mark the batch as bottled?</target>
+    <target>Markera satsen som flaska?</target>
 </phrase>
 <phrase>
     <source>Grünschlauchzeitpunkt nicht erreicht</source>
-    <target>Time for green bottling not reached yet</target>
+    <target>Tidpunkten för &quot;grön&quot; tappning har inte kommit ännu</target>
 </phrase>
 <phrase>
     <source>Der Grünschlauchzeitpunkt wurde noch nicht erreicht.</source>
-    <target>Time for green bottling not reached yet.</target>
+    <target>Tidpunkten för &quot;grön&quot; tappning har inte kommit ännu.</target>
 </phrase>
 <phrase>
     <source>Schnellgärprobe</source>
-    <target>Fast fermentation sample</target>
+    <target>Snabbjäsningsprovet</target>
 </phrase>
 <phrase>
     <source>Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe.</source>
-    <target>FG of the beer is lower than FG of the fast fermentation sample.</target>
+    <target>Extrakthalten i ölet är lägre än i snabbjäsningsprovet.</target>
 </phrase>
 <phrase>
     <source>Stadium auf &quot;abgefüllt&quot; setzen?</source>
-    <target>Set stage to “bottled”?</target>
+    <target>Förbereda scenen för ”bottled”?</target>
 </phrase>
 <phrase>
     <source>Soll das Stadium auf &quot;abgefüllt&quot; gesetzt werden?
 Abfülldatum: %1</source>
-    <target>Should the stage be set to “bottled”?
-Bottling date: %1</target>
+    <target>Ska scenen ställas in på ”bottled”?
+Buteljeringsdatum: %1</target>
 </phrase>
 <phrase>
     <source>Stadium &quot;abgefüllt&quot; zurücksetzen?</source>
-    <target>Reset “bottled” stage?</target>
+    <target>Återställa ”flaskstadiet”?</target>
 </phrase>
 <phrase>
     <source>Soll das Stadium &quot;abgefüllt&quot; zurückgesetzt werden?</source>
-    <target>Should the “bottled” stage be reset?</target>
+    <target>Bör den ”flaskförpackade” fasen återställas?</target>
 </phrase>
 <phrase>
     <source>Stadium auf &quot;ausgetrunken&quot; setzen?</source>
-    <target>Set stage to “drunk”?</target>
+    <target>Ställ in scenen på ”berusad”?</target>
 </phrase>
 <phrase>
     <source>Soll das Stadium auf &quot;ausgetrunken&quot; gesetzt werden?</source>
-    <target>Should the stage be set to “drunk”?</target>
+    <target>Ska scenen ställas in på ”berusad”?</target>
 </phrase>
 <phrase>
     <source>Stadium &quot;ausgetrunken&quot; zurücksetzen?</source>
-    <target>Reset “drunk” stage?</target>
+    <target>Återställa ”berusad” fas?</target>
 </phrase>
 <phrase>
     <source>Soll das Stadium &quot;ausgetrunken&quot; zurückgesetzt werden?</source>
-    <target>Should the “drank” stage be reset?</target>
+    <target>Bör ”drank”-stadiet återställas?</target>
 </phrase>
 <phrase>
     <source>Braudatum</source>
-    <target>Brew date</target>
+    <target>Bryggdatum</target>
 </phrase>
 <phrase>
     <source>Jetzt</source>
-    <target>Now</target>
+    <target>Nu</target>
 </phrase>
 <phrase>
     <source>Kochbeginn</source>
-    <target>Begin of boil</target>
+    <target>Kokstart</target>
 </phrase>
 <phrase>
     <source>Würzemenge bei Kochbeginn (20°C)</source>
-    <target>Amount at boil start (20°C)</target>
+    <target>Mängd vid kokstart (20°C)</target>
 </phrase>
 <phrase>
     <source>Zielwürzemenge bei</source>
-    <target>Target wort quantity at</target>
+    <target>Mål för vörtmängden vid</target>
 </phrase>
 <phrase>
     <source>Füllhöhe von Oberkante aus gemessen</source>
-    <target>Fill level measured from top</target>
+    <target>Fyllnadshöjd från överkant</target>
 </phrase>
 <phrase>
     <source>Mit weiteren Zutaten &quot;Kochen&quot;</source>
-    <target>including added ingredients for boil</target>
+    <target>inklusive ingredienserna för koket</target>
 </phrase>
 <phrase>
     <source>Füllhöhe vom Boden aus gemessen</source>
-    <target>Fill level measured from bottom</target>
+    <target>Fyllnadshöjd från botten</target>
 </phrase>
 <phrase>
     <source>Stammwürze bei Kochbeginn</source>
-    <target>Original gravity at boil start</target>
+    <target>Stamvört (OG) vid kokstart</target>
 </phrase>
 <phrase>
     <source>Bemerkung</source>
-    <target>Remarks</target>
+    <target>Anmärkningar</target>
 </phrase>
 <phrase>
     <source>Dieser Sud enthält Zusätze, welche die Stammwürze verändern. Dies kann die Durchschnittsberechnung verfälschen.</source>
-    <target>This batch contains additional ingredients that change the OG. This can distort mean values.</target>
+    <target>Denna sats innehåller tillsatser som förändrar stamvörten. Detta kan förfalska genomsnitsbildningen.</target>
 </phrase>
 <phrase>
     <source>Zielstammwürze</source>
-    <target>Target original gravity</target>
+    <target>Målvärde för stamvörten (OG)</target>
 </phrase>
 <phrase>
     <source>Kochende</source>
-    <target>End of boil</target>
+    <target>Kokslut</target>
 </phrase>
 <phrase>
     <source>Verlust durch Hopfenseihen</source>
-    <target>Losses during hop straining</target>
+    <target>Förlust från humlefiltrering</target>
 </phrase>
 <phrase>
     <source>Würzemenge vor Hopfenseihen (20°C)</source>
-    <target>Amount of wort before hop straining (20°C)</target>
+    <target>Vörtmängd innan humlefiltrering (20°C)</target>
 </phrase>
 <phrase>
     <source>Aus Rezept</source>
-    <target>From recipe</target>
+    <target>Från receptet</target>
 </phrase>
 <phrase>
     <source>Verdampfungsrate</source>
-    <target>Evaporation rate</target>
+    <target>Förångningshastighet</target>
 </phrase>
 <phrase>
     <source>Stammwürze bei Kochende</source>
-    <target>Original gravity at boil end</target>
+    <target>Stamvört (OG) vid kokslut</target>
 </phrase>
 <phrase>
     <source>Sudhausausbeute</source>
-    <target>Mash efficiency</target>
+    <target>Mäskutbyte</target>
 </phrase>
 <phrase>
     <source>Anstellen</source>
-    <target>Pitch</target>
+    <target>Jästtillsättning</target>
 </phrase>
 <phrase>
     <source>Abgefüllte Speisemenge</source>
-    <target>Saved unfermented wort</target>
+    <target>Mängden sprarad ojäst vört</target>
 </phrase>
 <phrase>
     <source>Stammwürze beim Anstellen</source>
-    <target>Original gravity when pitching yeast</target>
+    <target>Stamvört (OG) vid jästtillsättning</target>
 </phrase>
 <phrase>
     <source>Benötigte Speisemenge</source>
-    <target>Required quantity of unfermented wort</target>
+    <target>Mängd ojäst vört som behövs</target>
 </phrase>
 <phrase>
     <source>Zielwürzemenge bei 20°C</source>
-    <target>Amount of wort at 20°C</target>
+    <target>Mål för vörtmängden (20°C)</target>
 </phrase>
 <phrase>
     <source>Temp</source>
@@ -2980,15 +2983,15 @@ Bottling date: %1</target>
 </phrase>
 <phrase>
     <source>Würzemenge nach Hopfenseihen</source>
-    <target>Amount of wort after hop straining</target>
+    <target>Vörtmängd efter humlefiltrering</target>
 </phrase>
 <phrase>
     <source>Anstellmenge</source>
-    <target>Pitching amount</target>
+    <target>Vörtmängd vid jästtillsättning</target>
 </phrase>
 <phrase>
     <source>Gesamtwürzemenge</source>
-    <target>Total wort quantity</target>
+    <target>Totala vörtmängden</target>
 </phrase>
 <phrase>
     <source>SRE</source>
@@ -2996,105 +2999,105 @@ Bottling date: %1</target>
 </phrase>
 <phrase>
     <source>Braudaten</source>
-    <target>Brewing</target>
+    <target>Bryggning</target>
 </phrase>
 <phrase>
     <source>Verschnittwasser, um Zielstammwürze zu erreichen</source>
-    <target>Blending water to add for target OG</target>
+    <target>Mängd vatten för att spä ut till mål-stamvört</target>
 </phrase>
 <phrase>
     <source>Verschnittwasser</source>
-    <target>Blending water</target>
+    <target>Blandning av vatten</target>
 </phrase>
 <phrase>
     <source>Hefestarter</source>
-    <target>Yeast starter</target>
+    <target>Jäststartare</target>
 </phrase>
 <phrase>
     <source>Zurücksetzen</source>
-    <target>Reset</target>
+    <target>Återställ</target>
 </phrase>
 <phrase>
     <source>Effektive Sudhausausbeute</source>
-    <target>Effective brewhouse efficiency</target>
+    <target>Effektiv mäskutbyte</target>
 </phrase>
 <phrase>
     <source>Sonstiges</source>
-    <target>Miscellaneous</target>
+    <target>Annat</target>
 </phrase>
 <phrase>
     <source>Sud für Durchschnittsberechnung ignorieren</source>
-    <target>Ignore this batch for calculating average</target>
+    <target>Ignorera denna sats när medelvärdet beräknas</target>
 </phrase>
 <phrase>
     <source>Zusätzliche Kosten</source>
-    <target>Additional costs</target>
+    <target>Ytterligare kostnader</target>
 </phrase>
 <phrase>
     <source>Gesamtkosten</source>
-    <target>Total cost</target>
+    <target>Totalkostnad</target>
 </phrase>
 <phrase>
     <source>Sud gebraut</source>
-    <target>Batch brewed</target>
+    <target>Satsen bryggd</target>
 </phrase>
 <phrase>
     <source>Bemerkung Braudaten</source>
-    <target>Comment brewing</target>
+    <target>Kommentar bryggning</target>
 </phrase>
 <phrase>
     <source>Stadium auf &quot;gebraut&quot; setzen?</source>
-    <target>Set stage to “brewed”?</target>
+    <target>Ställ in scenen på ”bryggt”?</target>
 </phrase>
 <phrase>
     <source>Soll das Stadium auf &quot;gebraut&quot; gesetzt werden?
 Braudatum: %1</source>
-    <target>Should the stage be set to “brewed”?
-Brewing date: %1</target>
+    <target>Ska scenen ställas in på ”bryggd”?
+Bryggdatum: %1</target>
 </phrase>
 <phrase>
     <source>Stadium &quot;gebraut&quot; zurücksetzen?</source>
-    <target>Reset “brewed” stage?</target>
+    <target>Återställa ”bryggt”-stadiet?</target>
 </phrase>
 <phrase>
     <source>Soll das Stadium &quot;gebraut&quot; zurückgesetzt werden?</source>
-    <target>Should the “brewed” stage be reset?</target>
+    <target>Bör det ”bryggda” stadiet återställas?</target>
 </phrase>
 <phrase>
     <source>Schnellgärprobe</source>
-    <target>Fast fermentation sample</target>
+    <target>Snabbjäsningsprov</target>
 </phrase>
 <phrase>
     <source>Hauptgärung</source>
-    <target>Fermentation</target>
+    <target>Jäsning</target>
 </phrase>
 <phrase>
     <source>Zutat:</source>
-    <target>Ingredient:</target>
+    <target>Ingrediens:</target>
 </phrase>
 <phrase>
     <source>zugeben</source>
-    <target>Add</target>
+    <target>lägg till</target>
 </phrase>
 <phrase>
     <source>entnehmen</source>
-    <target>Remove</target>
+    <target>ta ur</target>
 </phrase>
 <phrase>
     <source>Nachgärung</source>
-    <target>Priming/Conditioning</target>
+    <target>Kolsyrejäsning</target>
 </phrase>
 <phrase>
     <source>Restextrakt</source>
-    <target>Residual extract</target>
+    <target>Restsötma (FG)</target>
 </phrase>
 <phrase>
     <source>Alkohol</source>
-    <target>Alcohol</target>
+    <target>Alkohol</target>
 </phrase>
 <phrase>
     <source>Temperatur</source>
-    <target>Temperature</target>
+    <target>Temperatur</target>
 </phrase>
 <phrase>
     <source>CO₂</source>
@@ -3102,207 +3105,203 @@ Brewing date: %1</target>
 </phrase>
 <phrase>
     <source>Druck</source>
-    <target>Pressure</target>
+    <target>Tryck</target>
 </phrase>
 <phrase>
     <source>CSV Datei auswählen</source>
-    <target>Select CSV file</target>
+    <target>Välj CSV-fil</target>
 </phrase>
 <phrase>
     <source>CSV Datei (*.csv);;Alle Dateien (*.*)</source>
-    <target>CSV File (*.csv);;All files (*.*)</target>
+    <target>CSV-fil (*.csv);;Alla filer (*.*)</target>
 </phrase>
 <phrase>
     <source>Gärverlauf</source>
-    <target>Fermentation</target>
+    <target>Jäsning</target>
 </phrase>
 <phrase>
     <source>Nicht alle Einträge konnten importiert werden.
 Unterstütztes Format:
 Datum1;Restextrakt1;Temperatur1[;Bemerkung1]
 Datum2;Restextrakt2;Temperatur2[;Bemerkung2]</source>
-    <target>Not all entries could be imported.
-Supported format:
-Date1;Extract1;Temperature1[;Comment1]
-Date2;Extract2;Temperature2[;Comment2]</target>
+    <target>Inte allt kunde impoerteras.
+Formatet som fungerar:
+Datum1;Restextrakt1;Temperatur1[;Kommentar1]
+Datum2;Restextrakt2;Temperatur2[;Kommentar2]</target>
 </phrase>
 <phrase>
     <source>Nicht alle Einträge konnten importiert werden.
 Unterstütztes Format:
 Datum1;Druck1;Temperatur1[;Bemerkung1]
 Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
-    <target>Not all entries could be imported.
-Supported format:
-Date1;Pressure1;Temperature1[;Comment1]
-Date2;Pressure2;Temperature2[;Comment2]</target>
+    <target>Inte allt kunde impoerteras.
+Formatet som fungerar:
+Datum1;Tryck1;Temperatur1[;Kommentar1]
+Datum2;Tryck2;Temperatur2[;Kommentar2]</target>
 </phrase>
 <phrase>
     <source>Rezept</source>
-    <target>Recipe</target>
+    <target>Recept</target>
 </phrase>
 <phrase>
     <source>Stammwürze</source>
-    <target>Original gravity</target>
+    <target>Stamvört (OG)</target>
 </phrase>
 <phrase>
     <source>Sudhausausbeute</source>
-    <target>Mash efficiency</target>
+    <target>Mäskutbyte</target>
 </phrase>
 <phrase>
     <source>Bittere</source>
-    <target>Bitterness</target>
+    <target>Beska</target>
 </phrase>
 <phrase>
     <source>Sudname</source>
-    <target>Batch name</target>
+    <target>Satsnamn</target>
 </phrase>
 <phrase>
     <source>Vergärungsgrad</source>
-    <target>Attenuation</target>
+    <target>Förjäsningsgrad</target>
 </phrase>
 <phrase>
     <source>Verdampfungsrate</source>
-    <target>Evaporation rate</target>
+    <target>Förångningshastighet</target>
 </phrase>
 <phrase>
     <source>Hauptgussfaktor</source>
-    <target>Water/grist ratio</target>
+    <target>Vatten/malt-förhållande</target>
 </phrase>
 <phrase>
     <source>Empf.</source>
-    <target>recomm.</target>
+    <target>Rekomm.</target>
 </phrase>
 <phrase>
     <source>Wochen</source>
-    <target>weeks</target>
+    <target>veckor</target>
 </phrase>
 <phrase>
     <source>High-Gravity Faktor</source>
-    <target>High gravity factor</target>
+    <target>High gravity faktor</target>
 </phrase>
 <phrase>
     <source>Kochdauer</source>
-    <target>Boil time</target>
+    <target>Koktid</target>
 </phrase>
 <phrase>
     <source>Reifezeit</source>
-    <target>Aging time</target>
+    <target>Mognadstid</target>
 </phrase>
 <phrase>
     <source>Anlage</source>
-    <target>Brewing setup</target>
+    <target>Brygganläggning</target>
 </phrase>
 <phrase>
     <source>Nachisomerisierungszeit</source>
-    <target>Hop stand</target>
+    <target>Efterisomeriseringstid</target>
 </phrase>
 <phrase>
     <source>Anlagewert</source>
-    <target>Setup value</target>
+    <target>Anläggningens värde</target>
 </phrase>
 <phrase>
     <source>Menge</source>
-    <target>Amount</target>
+    <target>Mängd</target>
 </phrase>
 <phrase>
     <source>Kategorie</source>
-    <target>Category</target>
+    <target>Kategori</target>
 </phrase>
 <phrase>
     <source>Nr. </source>
-    <target>No. </target>
+    <target>Nr. </target>
 </phrase>
 <phrase>
     <source>Bemerkung</source>
-    <target>Remarks</target>
+    <target>Anmärkningar</target>
 </phrase>
 <phrase>
     <source>Tags</source>
-    <target>Tags</target>
-</phrase>
-<phrase>
-    <source>SHA anpassen</source>
-    <target>Adapt mash efficiency</target>
+    <target>Nyckelord</target>
 </phrase>
 <phrase>
     <source>Zusätze &quot;Maischen&quot;</source>
-    <target>Adjunct &quot;mashing&quot;</target>
+    <target>Tillsatser &quot;Mäskning&quot;</target>
 </phrase>
 <phrase>
     <source>Anhänge</source>
-    <target>Attachments</target>
+    <target>Bilagor</target>
 </phrase>
 <phrase>
     <source>Malz</source>
-    <target>Malts</target>
+    <target>Malt</target>
 </phrase>
 <phrase>
     <source>Hopfen</source>
-    <target>Hops</target>
+    <target>Humle</target>
 </phrase>
 <phrase>
     <source>Maischen</source>
-    <target>Mashing</target>
+    <target>Mäskning</target>
 </phrase>
 <phrase>
     <source>Zusatz</source>
-    <target>Adjunct</target>
+    <target>Tillsats</target>
 </phrase>
 <phrase>
     <source>Kochen</source>
-    <target>Boiling</target>
+    <target>Kokning</target>
 </phrase>
 <phrase>
     <source>ignorieren</source>
-    <target>ignore</target>
+    <target>ignorera</target>
 </phrase>
 <phrase>
     <source>Gewicht</source>
-    <target>Weight</target>
+    <target>Vikt</target>
 </phrase>
 <phrase>
     <source>Prozentanteil entspricht</source>
-    <target>Share corresponds to</target>
+    <target>Andelen avser</target>
 </phrase>
 <phrase>
     <source>Die Berechnung der Hopfengaben ist deaktiviert.</source>
-    <target>Hop calculations are deactivated.</target>
+    <target>Humleberäkningen är avaktiverat.</target>
 </phrase>
 <phrase>
     <source>Hefe</source>
-    <target>Yeast</target>
+    <target>Jäst</target>
 </phrase>
 <phrase>
     <source>Maischplan</source>
-    <target>Mashing scheme</target>
+    <target>Mäskschema</target>
 </phrase>
 <phrase>
     <source>Wasseraufbereitung</source>
-    <target>Water adjustment</target>
+    <target>Vattenanpassning</target>
 </phrase>
 <phrase>
     <source>Wasser</source>
-    <target>Water</target>
+    <target>Vatten</target>
 </phrase>
 <phrase>
     <source>Maische aufbereitet</source>
-    <target>Mash adjusted</target>
+    <target>Mäsk anpassad</target>
 </phrase>
 <phrase>
     <source>Zusätze &quot;Gärung&quot;</source>
-    <target>Adjunct &quot;fermentation&quot;</target>
+    <target>Tillsatser &quot;Jäsning&quot;</target>
 </phrase>
 <phrase>
     <source>Zusätze &quot;Kochen&quot;</source>
-    <target>Adjunct &quot;boiling&quot;</target>
+    <target>Tillsatser &quot;Kokning&quot;</target>
 </phrase>
 <phrase>
     <source>Restalkalität</source>
-    <target>Residual alkalinity</target>
+    <target>Restalkalinitet</target>
 </phrase>
 <phrase>
     <source>Gewünscht</source>
-    <target>Target</target>
+    <target>Målvärde</target>
 </phrase>
 <phrase>
     <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -3345,159 +3344,163 @@ p, li { white-space: pre-wrap; }
 </phrase>
 <phrase>
     <source>Die Summe der angegebenen Malzmengen entspricht nicht der Gesamtschüttung.</source>
-    <target>The sum of malts is not the same as total grist.</target>
+    <target>Summan av maltmängderna är olikt totalmängden.</target>
+</phrase>
+<phrase>
+    <source>SHA anpassen</source>
+    <target>Mäskutbyte anpassa</target>
 </phrase>
 <phrase>
     <source>Die Summe der angegebenen Wassermengen entspricht nicht der Hautpgussmenge.</source>
-    <target>The sum of the water quantities is not the same as the total strike water.</target>
+    <target>Summan av de angivna vattenmängderna är olikt totalmäskvatten.</target>
 </phrase>
 <phrase>
     <source>Hauptgussfaktor anpassen</source>
-    <target>Adapt water/grist ratio</target>
+    <target>Vatten/malt-förhållande anpassa</target>
 </phrase>
 <phrase>
     <source>Die Summe der angegebenen Schüttungsmengen entspricht nicht der Gesamtschüttung.</source>
-    <target>The sum of malts is not the same as total grist.</target>
+    <target>Summan av maltmängderna är olikt totalmängden.</target>
 </phrase>
 <phrase>
     <source>Karbonisierung (CO₂)</source>
-    <target>Carbonation (CO₂)</target>
+    <target>Kolsyresättning (CO₂)</target>
 </phrase>
 <phrase>
     <source>Ausgleichen</source>
-    <target>Level out</target>
+    <target>Jämn ut</target>
 </phrase>
 <phrase>
     <source>Hefestarter</source>
-    <target>Yeast starter</target>
+    <target>Jäststartare</target>
 </phrase>
 <phrase>
     <source>Aufbereit</source>
-    <target>Adjusted</target>
+    <target>Anpassad</target>
 </phrase>
 <phrase>
     <source>Wasserprofil</source>
-    <target>Water profile</target>
+    <target>Vattenprofil</target>
 </phrase>
 <phrase>
     <source>pH-Wert</source>
-    <target>pH</target>
+    <target>pH-värde</target>
 </phrase>
 <phrase>
     <source>Gärung</source>
-    <target>Fermentation</target>
+    <target>Jäsning</target>
 </phrase>
 <phrase>
     <source>Maische gewünscht</source>
-    <target>Mash targeted</target>
+    <target>Mäsk önskad</target>
 </phrase>
 <phrase>
     <source>Sud</source>
-    <target>Batch</target>
+    <target>Sats</target>
 </phrase>
 <phrase>
     <source>Alkoholgehalt</source>
-    <target>ABV</target>
+    <target>Alkoholhalt</target>
 </phrase>
 <phrase>
     <source>Farbe</source>
-    <target>Color</target>
+    <target>Färg</target>
 </phrase>
 <phrase>
     <source>Restextrakt</source>
-    <target>Residual extract</target>
+    <target>Restsötma (FG)</target>
 </phrase>
 <phrase>
     <source>Gesamtschüttung</source>
-    <target>Total grist</target>
+    <target>Total mängd malt o dyl</target>
 </phrase>
 <phrase>
     <source>Anteile Stammwürze</source>
-    <target>OG fraction</target>
+    <target>Andel av stamvört (OG)</target>
 </phrase>
 <phrase>
     <source>Gesamtkosten</source>
-    <target>Total costs</target>
+    <target>Totalkostnad</target>
 </phrase>
 <phrase>
     <source>Hauptguss</source>
-    <target>Strike water</target>
+    <target>Mäskvatten</target>
 </phrase>
 <phrase>
     <source>High-Gravity Verdünnung</source>
-    <target>High gravity dilution</target>
+    <target>High gravity utspädning</target>
 </phrase>
 <phrase>
     <source>Nachguss</source>
-    <target>Sparge water</target>
+    <target>Lakvatten</target>
 </phrase>
 <phrase>
     <source>Gesamt</source>
-    <target>Total</target>
+    <target>Totalt</target>
 </phrase>
 <phrase>
     <source>Maischekessel nutzbares Volumen</source>
-    <target>Mash tun, usable volume</target>
+    <target>Mäskkärl, användbar volym</target>
 </phrase>
 <phrase>
     <source>Sudpfanne nutzbares Volumen</source>
-    <target>Kettle, usable volume</target>
+    <target>Kokkärl, användbar volym</target>
 </phrase>
 <phrase>
     <source>Benötigtes Volumen ca.</source>
-    <target>Required volume approx.</target>
+    <target>Ungefärlig volym som behövs.</target>
 </phrase>
 <phrase>
     <source>Korrektur der Sollmenge</source>
-    <target>Correction of target quantity</target>
+    <target>Korrektion av målängden</target>
 </phrase>
 <phrase>
     <source>Rohstoff importieren?</source>
-    <target>Import ingredient?</target>
+    <target>Importera ingrediens?</target>
 </phrase>
 <phrase>
     <source>Das Malz &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
-    <target>Malt &quot;%1&quot; is not in stock. Should it be added?</target>
+    <target>Malt &quot;%1&quot; finns inte i lagret. Ska det läggas till?</target>
 </phrase>
 <phrase>
     <source>Bemerkung Rezept</source>
-    <target>Comment recipe</target>
+    <target>Kommentar recept</target>
 </phrase>
 <phrase>
     <source>Bemerkung Maischen</source>
-    <target>Comment mashing</target>
+    <target>Kommentar mäskning</target>
 </phrase>
 <phrase>
     <source>Bemerkung Kochen</source>
-    <target>Comment boil</target>
+    <target>Kommentar kokning</target>
 </phrase>
 <phrase>
     <source>Bemerkung Gärung</source>
-    <target>Comment fermentation</target>
+    <target>Kommentar jäsning</target>
 </phrase>
 <phrase>
     <source>Bemerkung Maischplan</source>
-    <target>Comment mash steps</target>
+    <target>Kommentar mäskschema</target>
 </phrase>
 <phrase>
     <source>Bemerkung Wasseraufbereitung</source>
-    <target>Comment water adjustment</target>
+    <target>Kommentar vattenanpassning</target>
 </phrase>
 <phrase>
     <source>Der Hopfen &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
-    <target>Hop variant &quot;%1&quot; is not in stock. Should it be added?</target>
+    <target>Humlen &quot;%1&quot; finns inte i lagret. Ska den läggas till?</target>
 </phrase>
 <phrase>
     <source>Die Hefe &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
-    <target>Yeast &quot;%1&quot; is not in stock. Should it be added?</target>
+    <target>Jäst &quot;%1&quot; finns inte i lagret. Ska den läggas till?</target>
 </phrase>
 <phrase>
     <source>Die Zutat &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?</source>
-    <target>Ingredient &quot;%1&quot; is not in stock. Should it be added?</target>
+    <target>Ingrediensen &quot;%1&quot; finns inte i lagret. Ska den läggas till?</target>
 </phrase>
 <phrase>
     <source>sehr mild</source>
-    <target>very mild</target>
+    <target>mycket mild</target>
 </phrase>
 <phrase>
     <source>mild</source>
@@ -3505,187 +3508,187 @@ p, li { white-space: pre-wrap; }
 </phrase>
 <phrase>
     <source>ausgewogen</source>
-    <target>balanced</target>
+    <target>balanserad</target>
 </phrase>
 <phrase>
     <source>moderat herb</source>
-    <target>moderately bitter</target>
+    <target>något besk</target>
 </phrase>
 <phrase>
     <source>sehr herb</source>
-    <target>very bitter</target>
+    <target>mycket besk</target>
 </phrase>
 <phrase>
     <source>Die Summe der angegebenen Hopfenmengen entspricht nicht der Gesamtmenge.</source>
-    <target>The sum of the hops does not correspond to the required amount.</target>
+    <target>Summan av angiva maltmängder motsvarar inte totalmängden.</target>
 </phrase>
 <phrase>
     <source>Die Summe der angegebenen Anteile an Bittere entspricht nicht der Gesamtbittere.</source>
-    <target>The sum of the bitterness values does not match the total bitterness.</target>
+    <target>Summan av beska-värdena matchar inte totala beskan.</target>
 </phrase>
 <phrase>
     <source>Einmaischen</source>
-    <target>Dough in</target>
+    <target>Mäska in</target>
 </phrase>
 <phrase>
     <source>Aufheizen</source>
-    <target>Heat up</target>
+    <target>Uppvärmning</target>
 </phrase>
 <phrase>
     <source>Vergärungsgrad übernehmen?</source>
-    <target>Take over fermentation level?</target>
+    <target>Ta över förjäsningsgrad?</target>
 </phrase>
 <phrase>
     <source>Soll der Vergärungsgrad der Hefe (%1%) übernommen werden?</source>
-    <target>Take over fermentation level (%1%)?</target>
+    <target>Ska jästens förjäsningsgrad (%1%) tas över?</target>
 </phrase>
 <phrase>
     <source>Sudkategorien verwalten</source>
-    <target>Manage batch categories</target>
+    <target>Förvalta satskategorierna</target>
 </phrase>
 <phrase>
     <source>Neuer Tag</source>
-    <target>New tag</target>
+    <target>Nytt nyckelord</target>
 </phrase>
 <phrase>
     <source>Suche</source>
-    <target>Search</target>
+    <target>Sök</target>
 </phrase>
 <phrase>
     <source>Anlegen</source>
-    <target>Create</target>
+    <target>Skapa</target>
 </phrase>
 <phrase>
     <source>Kopieren</source>
-    <target>Copy</target>
+    <target>Kopia</target>
 </phrase>
 <phrase>
     <source>Löschen</source>
-    <target>Delete</target>
+    <target>Ta bort</target>
 </phrase>
 <phrase>
     <source>Sudauswahl</source>
-    <target>Batch Selection</target>
+    <target>Satsurval</target>
 </phrase>
 <phrase>
     <source>Importieren</source>
-    <target>Import</target>
+    <target>Importera</target>
 </phrase>
 <phrase>
     <source>Exportieren</source>
-    <target>Export</target>
+    <target>Exportera</target>
 </phrase>
 <phrase>
     <source>Teilen</source>
-    <target>Split</target>
+    <target>Dela</target>
 </phrase>
 <phrase>
     <source>Merken</source>
-    <target>Pin</target>
+    <target>Märk</target>
 </phrase>
 <phrase>
     <source>Laden</source>
-    <target>Load</target>
+    <target>Läs en</target>
 </phrase>
 <phrase>
     <source>Neuer Sud</source>
-    <target>New batch</target>
+    <target>Ny sats</target>
 </phrase>
 <phrase>
     <source>Kopie</source>
-    <target>Copy</target>
+    <target>Kopia</target>
 </phrase>
 <phrase>
     <source>Sud löschen?</source>
-    <target>Delete batch?</target>
+    <target>Ta bort satsen?</target>
 </phrase>
 <phrase>
     <source>Soll der Sud &quot;%1&quot; gelöscht werden?</source>
-    <target>Delete batch &quot;%1&quot;?</target>
+    <target>Ta bort satsen &quot;%1&quot;?</target>
 </phrase>
 <phrase>
     <source>Zurücksetzen</source>
-    <target>Reset</target>
+    <target>Återställ</target>
 </phrase>
 <phrase>
     <source>Alles kopieren</source>
-    <target>Copy all</target>
+    <target>Kopiera allt</target>
 </phrase>
 <phrase>
     <source>Auswahl kopieren</source>
-    <target>Copy selection</target>
+    <target>Kopiera valda</target>
 </phrase>
 <phrase>
     <source>Alles drucken</source>
-    <target>Print all</target>
+    <target>Skriv ut allt</target>
 </phrase>
 <phrase>
     <source>Auswahl drucken</source>
-    <target>Print selection</target>
+    <target>Skriv ut valda</target>
 </phrase>
 <phrase>
     <source>Drucken</source>
-    <target>Print</target>
+    <target>Skriv ut</target>
 </phrase>
 <phrase>
     <source>Überschrift:</source>
-    <target>Title:</target>
+    <target>Rubrik:</target>
 </phrase>
 <phrase>
     <source>relativ zur Datenbank</source>
-    <target>relative to database</target>
+    <target>relativt databasens plats</target>
 </phrase>
 <phrase>
     <source>Öffnen</source>
-    <target>Open</target>
+    <target>Öppna</target>
 </phrase>
 <phrase>
     <source>Anhang auswählen</source>
-    <target>Select attachment</target>
+    <target>Välj bilaga</target>
 </phrase>
 <phrase>
     <source>Bemerkung</source>
-    <target>Remarks</target>
+    <target>Anmärkning</target>
 </phrase>
 <phrase>
     <source>Menge</source>
-    <target>Amount</target>
+    <target>Mängd</target>
 </phrase>
 <phrase>
     <source>Zugeben</source>
-    <target>Add</target>
+    <target>Lägg till</target>
 </phrase>
 <phrase>
     <source>Vorhanden</source>
-    <target>In stock</target>
+    <target>befintlig</target>
 </phrase>
 <phrase>
     <source>Zugabe nach</source>
-    <target>Add after</target>
+    <target>Lägg till efter</target>
 </phrase>
 <phrase>
     <source>Tage</source>
-    <target>days</target>
+    <target>Dagar</target>
 </phrase>
 <phrase>
     <source>Empfohlen</source>
-    <target>Recommended</target>
+    <target>Rekommenderad</target>
 </phrase>
 <phrase>
     <source>Zurückgeben</source>
-    <target>Put back</target>
+    <target>Lägg tillbaka</target>
 </phrase>
 <phrase>
     <source>Vorhanden</source>
-    <target>In stock</target>
+    <target>befintlig</target>
 </phrase>
 <phrase>
     <source>Menge</source>
-    <target>Amount</target>
+    <target>Mängd</target>
 </phrase>
 <phrase>
     <source>Kochdauer</source>
-    <target>Boil time</target>
+    <target>Koktid</target>
 </phrase>
 <phrase>
     <source>Alpha</source>
@@ -3693,246 +3696,246 @@ p, li { white-space: pre-wrap; }
 </phrase>
 <phrase>
     <source>Bittere</source>
-    <target>Bitterness</target>
+    <target>Beska</target>
 </phrase>
 <phrase>
     <source>Vorderwürze</source>
-    <target>First wort</target>
+    <target>Första vörten</target>
 </phrase>
 <phrase>
     <source>Kochbeginn</source>
-    <target>Begin of boil</target>
+    <target>Kokstart</target>
 </phrase>
 <phrase>
     <source>Kochen</source>
-    <target>Boiling</target>
+    <target>Kokning</target>
 </phrase>
 <phrase>
     <source>Kochende</source>
-    <target>End of boil</target>
+    <target>Kokslut</target>
 </phrase>
 <phrase>
     <source>Ausschlagen</source>
-    <target>Racking</target>
+    <target>Överföring till jäskärl</target>
 </phrase>
 <phrase>
     <source>Ausbeute</source>
-    <target>Yield</target>
+    <target>Utbye</target>
 </phrase>
 <phrase>
     <source>Menge</source>
-    <target>Amount</target>
+    <target>Mängd</target>
 </phrase>
 <phrase>
     <source>Extrakt</source>
-    <target>SG</target>
+    <target>Extrakt</target>
 </phrase>
 <phrase>
     <source>Vorhanden</source>
-    <target>In stock</target>
+    <target>befintlig</target>
 </phrase>
 <phrase>
     <source>Der maximal empfohlener Schüttungsanteil (%1%) wurde überschritten.</source>
-    <target>Maximum recommend share (%1%) exceeded.</target>
+    <target>Rekommenderade maximala andelen (%1%) överskrids.</target>
 </phrase>
 <phrase>
     <source>Einmaischen</source>
-    <target>Dough in</target>
+    <target>Mäska in</target>
 </phrase>
 <phrase>
     <source>Dekoktion</source>
-    <target>Decoction</target>
+    <target>Dekoktion</target>
 </phrase>
 <phrase>
     <source>Aufheizen</source>
-    <target>Heat up</target>
+    <target>Uppvärmning</target>
 </phrase>
 <phrase>
     <source>Zubrühen</source>
-    <target>Add water</target>
+    <target>Ge vatten</target>
 </phrase>
 <phrase>
     <source>Zuschütten</source>
-    <target>Add grist</target>
+    <target>Lägg till grist</target>
 </phrase>
 <phrase>
     <source>Teilmaische</source>
-    <target>Partial mash</target>
+    <target>Delmäskens storlek</target>
 </phrase>
 <phrase>
     <source>Hauptguss</source>
-    <target>Strike water</target>
+    <target>Mäskvatten</target>
 </phrase>
 <phrase>
     <source>Kochen</source>
-    <target>Boiling</target>
+    <target>Kokning</target>
 </phrase>
 <phrase>
     <source>Rast</source>
-    <target>Rest</target>
+    <target>Rast</target>
 </phrase>
 <phrase>
     <source>Schüttung</source>
-    <target>Grist</target>
+    <target>Malt o dyl</target>
 </phrase>
 <phrase>
     <source>Gummirast (Glukanaserast)</source>
-    <target>Acid rest</target>
+    <target>Gummirast (Glukanasrast)</target>
 </phrase>
 <phrase>
     <source>Maltaserast</source>
-    <target>Maltase rest</target>
+    <target>Maltasrast</target>
 </phrase>
 <phrase>
     <source>Weizenrast (Ferulsäurerast)</source>
-    <target>Glucans rest</target>
+    <target>Veterast (Ferulasyra)</target>
 </phrase>
 <phrase>
     <source>Eiweissrast (Proteaserast)</source>
-    <target>Protein rest</target>
+    <target>Proteinrast</target>
 </phrase>
 <phrase>
     <source>Maltoserast (1. Verzuckerung)</source>
-    <target>Maltose rest</target>
+    <target>Maltosrast</target>
 </phrase>
 <phrase>
     <source>Teilschüttung</source>
-    <target>Partial mash</target>
+    <target>Delmäskens storlek</target>
 </phrase>
 <phrase>
     <source>Absetzen</source>
-    <target>Settling</target>
+    <target>Sjunker ner</target>
 </phrase>
 <phrase>
     <source>Zwischenrast</source>
-    <target>Intermediate rest</target>
+    <target>Mellanrast</target>
 </phrase>
 <phrase>
     <source>Verzuckerungsrast (2. Verzuckerung)</source>
-    <target>Saccharification rest</target>
+    <target>Försockringsrast</target>
 </phrase>
 <phrase>
     <source>Kombirast</source>
-    <target>Combination rest</target>
+    <target>Kombirast</target>
 </phrase>
 <phrase>
     <source>Abmaischen</source>
-    <target>Dough out</target>
+    <target>Mäska ut</target>
 </phrase>
 <phrase>
     <source>1/2 Dickmaische</source>
-    <target>1/2 thick mash</target>
+    <target>1/2 tjock mäsk</target>
 </phrase>
 <phrase>
     <source>1/3 Dickmaische</source>
-    <target>1/3 thick mash</target>
+    <target>1/3 tjock mäsk</target>
 </phrase>
 <phrase>
     <source>1/3 Dünnmaische</source>
-    <target>1/3 thin mash</target>
+    <target>1/3 tunn mäsk</target>
 </phrase>
 <phrase>
     <source>1/3 Läutermaische</source>
-    <target>1/3 lauter mash</target>
+    <target>1/3 lakmäsk</target>
 </phrase>
 <phrase>
     <source>Gesamt</source>
-    <target>Total</target>
+    <target>Totalt</target>
 </phrase>
 <phrase>
     <source>Nachguss</source>
-    <target>Sparging water</target>
+    <target>Lakvatten</target>
 </phrase>
 <phrase>
     <source>Menge</source>
-    <target>Amount</target>
+    <target>Mängd</target>
 </phrase>
 <phrase>
     <source>Restalkalität</source>
-    <target>Residual alkalinity</target>
+    <target>Restalkalinitet</target>
 </phrase>
 <phrase>
     <source>Verdünnung</source>
-    <target>Dilution</target>
+    <target>Spädning</target>
 </phrase>
 <phrase>
     <source>Hauptguss</source>
-    <target>Strike water</target>
+    <target>Mäskvatten</target>
 </phrase>
 <phrase>
     <source>PDF speichern unter</source>
-    <target>Save PDF as</target>
+    <target>Spara PDF som</target>
 </phrase>
 <phrase>
     <source>Änderungen speichern?</source>
-    <target>Save changes?</target>
+    <target>Spara ändringarna?</target>
 </phrase>
 <phrase>
     <source>Sollen die Änderungen gespeichert werden?</source>
-    <target>Should the changes be saved?</target>
+    <target>Spara ändringarna?</target>
 </phrase>
 <phrase>
     <source>Template wiederherstellen?</source>
-    <target>Restore template?</target>
+    <target>Återställ mallen?</target>
 </phrase>
 <phrase>
     <source>Soll das Standardtemplate wiederhergestellt werden?</source>
-    <target>Restore standard template?</target>
+    <target>Äterställ standardmallen?</target>
 </phrase>
 <phrase>
     <source>Menge</source>
-    <target>Amount</target>
+    <target>Mängd</target>
 </phrase>
 <phrase>
     <source>Vorhanden</source>
-    <target>In stock</target>
+    <target>befintlig</target>
 </phrase>
 <phrase>
     <source>Kochdauer</source>
-    <target>Boil time</target>
+    <target>Koktid</target>
 </phrase>
 <phrase>
     <source>Extrakt</source>
-    <target>Extract</target>
+    <target>Extrakt</target>
 </phrase>
 <phrase>
     <source>Bezogen auf Anstellmenge</source>
-    <target>Relative to amount at pitch</target>
+    <target>Relativt till mängden vid jästgivan</target>
 </phrase>
 <phrase>
     <source>Zugabe nach</source>
-    <target>Add after</target>
+    <target>Lägg till efter</target>
 </phrase>
 <phrase>
     <source>Zugeben</source>
-    <target>Add</target>
+    <target>Lägg till</target>
 </phrase>
 <phrase>
     <source>Tage</source>
-    <target>days</target>
+    <target>Dagar</target>
 </phrase>
 <phrase>
     <source>Entnehmen</source>
-    <target>Remove</target>
+    <target>Ta ur</target>
 </phrase>
 <phrase>
     <source>keine Entnahme</source>
-    <target>No removal</target>
+    <target>Tas inte ur</target>
 </phrase>
 <phrase>
     <source>Entnahme nach</source>
-    <target>Remove after</target>
+    <target>Tas ur efter</target>
 </phrase>
 <phrase>
     <source>Stk./L</source>
-    <target>pcs./L</target>
+    <target>st./L</target>
 </phrase>
 <phrase>
     <source>Hopfen</source>
-    <target>Hops</target>
+    <target>Humle</target>
 </phrase>
 <phrase>
     <source>Zurückgeben</source>
-    <target>Put back</target>
+    <target>Lägg tillbaka</target>
 </phrase>
 </QPH>

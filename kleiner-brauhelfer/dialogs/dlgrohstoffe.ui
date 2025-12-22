@@ -33,9 +33,6 @@
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;neuer Rohstoffeintrag &lt;/span&gt;angelegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
-       <property name="text">
-        <string>Neu</string>
-       </property>
        <property name="icon">
         <iconset theme="plus"/>
        </property>
@@ -57,9 +54,6 @@
        </property>
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird ein &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoffeintrag&lt;/span&gt; aus einer Rohstoffliste &lt;span style=&quot; font-weight:600;&quot;&gt;gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;/&gt;Soll hier ein Rohstoff gelöscht werden, der in einem &lt;span style=&quot; font-weight:600;&quot;&gt;Rezept, ungebraut&lt;/span&gt;, verwendet wird, erscheint eine Warnmeldung. Wird der Rohstoff dann wirklich gelöscht, werden entsprechende Einträge in allen ungebrauten Rezepten im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept rot&lt;/span&gt; hinterlegt, deren Werte auf 0 gesetzt. Damit kann die erforderliche Stammwürze oder der nötige IBU-Wert nicht mehr gegeben sein. &lt;/p&gt;&lt;p&gt;In jedem Fall sind nach dem Löschen eines Rohstoffes &lt;span style=&quot; font-weight:600;&quot;&gt;alle Rezepte mit&lt;/span&gt; dem &lt;span style=&quot; font-weight:600;&quot;&gt;Rohstoff&lt;/span&gt; zu &lt;span style=&quot; font-weight:600;&quot;&gt;überprüfen&lt;/span&gt;!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-       <property name="text">
-        <string>Löschen</string>
        </property>
        <property name="icon">
         <iconset theme="minus"/>

@@ -1,0 +1,3899 @@
+<!DOCTYPE QPH>
+<QPH language="nl_NL">
+<phrase>
+    <source>F</source>
+    <target>V</target>
+</phrase>
+<phrase>
+    <source>K</source>
+    <target>C</target>
+</phrase>
+<phrase>
+    <source>U</source>
+    <target>O</target>
+</phrase>
+<phrase>
+    <source>Bild</source>
+    <target>Afbeelding</target>
+</phrase>
+<phrase>
+    <source>Link</source>
+    <target>Link</target>
+</phrase>
+<phrase>
+    <source>URL:</source>
+    <target>URL:</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Opmerking</target>
+</phrase>
+<phrase>
+    <source>Bild einfügen</source>
+    <target>Afbeelding invoegen</target>
+</phrase>
+<phrase>
+    <source>Bild aus Anhang</source>
+    <target>Afbeelding uit bijlage</target>
+</phrase>
+<phrase>
+    <source>Standard</source>
+    <target>Standaard</target>
+</phrase>
+<phrase>
+    <source>Link erstellen</source>
+    <target>Link maken</target>
+</phrase>
+<phrase>
+    <source>Überschrift 1</source>
+    <target>Kop 1</target>
+</phrase>
+<phrase>
+    <source>Überschrift 2</source>
+    <target>Kop 2</target>
+</phrase>
+<phrase>
+    <source>Überschrift 3</source>
+    <target>Kop 3</target>
+</phrase>
+<phrase>
+    <source>Überschrift 4</source>
+    <target>Kop 4</target>
+</phrase>
+<phrase>
+    <source>Bilder müssen zuerst als Anhang eingefügt werden.</source>
+    <target>Afbeeldingen moeten eerst als bijlage worden toegevoegd.</target>
+</phrase>
+<phrase>
+    <source>Textfarbe</source>
+    <target>Tekstkleur</target>
+</phrase>
+<phrase>
+    <source>F1</source>
+    <target>F1</target>
+</phrase>
+<phrase>
+    <source>SW</source>
+    <target>Stamwort</target>
+</phrase>
+<phrase>
+    <source>pH</source>
+    <target>pH</target>
+</phrase>
+<phrase>
+    <source>CO2</source>
+    <target>CO2</target>
+</phrase>
+<phrase>
+    <source>SHA</source>
+    <target>Maisch efficiëntie</target>
+</phrase>
+<phrase>
+    <source>SRE</source>
+    <target>SRE</target>
+</phrase>
+<phrase>
+    <source>Tag</source>
+    <target>Dag</target>
+</phrase>
+<phrase>
+    <source>Sud</source>
+    <target>Brouwsel</target>
+</phrase>
+<phrase>
+    <source>Typ</source>
+    <target>Type</target>
+</phrase>
+<phrase>
+    <source>Braumeister 500L</source>
+    <target>Braumeister 500L</target>
+</phrase>
+<phrase>
+    <source>Braumeister 200L</source>
+    <target>Braumeister 200L</target>
+</phrase>
+<phrase>
+    <source>Link</source>
+    <target>Link</target>
+</phrase>
+<phrase>
+    <source>Name</source>
+    <target>Naam</target>
+</phrase>
+<phrase>
+    <source>Redo</source>
+    <target>Opnieuw doen</target>
+</phrase>
+<phrase>
+    <source>Stk.</source>
+    <target>Stk.</target>
+</phrase>
+<phrase>
+    <source>Undo</source>
+    <target>Ongedaan maken</target>
+</phrase>
+<phrase>
+    <source>Wert</source>
+    <target>Waarde</target>
+</phrase>
+<phrase>
+    <source>sEVG</source>
+    <target>sEVG</target>
+</phrase>
+<phrase>
+    <source>tEVG</source>
+    <target>wEVG</target>
+</phrase>
+<phrase>
+    <source>Oben / Rechts</source>
+    <target>Boven / Rechts</target>
+</phrase>
+<phrase>
+    <source>Alternativen</source>
+    <target>Alternatieven</target>
+</phrase>
+<phrase>
+    <source>Korrekturwert zurücksetzen?</source>
+    <target>Correctie waarde resetten?</target>
+</phrase>
+<phrase>
+    <source>Braumeister 1000L</source>
+    <target>Braumeister 1000L</target>
+</phrase>
+<phrase>
+    <source>Alpha</source>
+    <target>Alpha</target>
+</phrase>
+<phrase>
+    <source>Datum</source>
+    <target>Datum</target>
+</phrase>
+<phrase>
+    <source>Druck</source>
+    <target>Druk</target>
+</phrase>
+<phrase>
+    <source>Farbe</source>
+    <target>Kleur</target>
+</phrase>
+<phrase>
+    <source>Hilfe</source>
+    <target>Help</target>
+</phrase>
+<phrase>
+    <source>Honig</source>
+    <target>Honing</target>
+</phrase>
+<phrase>
+    <source>Kraut</source>
+    <target>Kruiden</target>
+</phrase>
+<phrase>
+    <source>OG/UG</source>
+    <target>OG/BG</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Preis</source>
+    <target>Prijs</target>
+</phrase>
+<phrase>
+    <source>Woche</source>
+    <target>Week</target>
+</phrase>
+<phrase>
+    <source>aroma</source>
+    <target>aroma</target>
+</phrase>
+<phrase>
+    <source>Betriebskosten zurücksetzen?</source>
+    <target>Bedrijfskosten Resetten?</target>
+</phrase>
+<phrase>
+    <source>universal</source>
+    <target>universeel</target>
+</phrase>
+<phrase>
+    <source>Über</source>
+    <target>Over</target>
+</phrase>
+<phrase>
+    <source>Würzemenge</source>
+    <target>Wortvolume</target>
+</phrase>
+<phrase>
+    <source>
+(%1/[kg/L/Stk.])</source>
+    <target>
+(%1/[kg/L/Stk.])</target>
+</phrase>
+<phrase>
+    <source>Anzahl gebraute Sude</source>
+    <target>Aantal gebrouwen Brouwsels</target>
+</phrase>
+<phrase>
+    <source>Braumeister 50L</source>
+    <target>Braumeister 50L</target>
+</phrase>
+<phrase>
+    <source>Braumeister 20L</source>
+    <target>Braumeister 20L</target>
+</phrase>
+<phrase>
+    <source>Braumeister 10L</source>
+    <target>Braumeister 10L</target>
+</phrase>
+<phrase>
+    <source>Eigenschaften</source>
+    <target>Eigenschappen</target>
+</phrase>
+<phrase>
+    <source>Soll diese zurückgesetzt werden?</source>
+    <target>Moet dit gereset worden?</target>
+</phrase>
+<phrase>
+    <source>Trocken/Flüssig</source>
+    <target>Droog/Vloeibaar</target>
+</phrase>
+<phrase>
+    <source>Fehler beim Laden</source>
+    <target>Fout bij het laden</target>
+</phrase>
+<phrase>
+    <source>Soll die Anwendung geschlossen werden?</source>
+    <target>Weet u zeker dat u de applicatie wilt sluiten?</target>
+</phrase>
+<phrase>
+    <source>Alle Änderungen verwerfen</source>
+    <target>Alle wijzigingen negeren</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Opmerking</target>
+</phrase>
+<phrase>
+    <source>Soll diese deaktiviert werden (empfohlen)?</source>
+    <target>Moet dit gedeactiveerd worden (aanbevolen)?</target>
+</phrase>
+<phrase>
+    <source>Brauübersicht</source>
+    <target>Brouwoverzicht</target>
+</phrase>
+<phrase>
+    <source>Max. Anteil</source>
+    <target>Max Aandeel</target>
+</phrase>
+<phrase>
+    <source>Ctrl+S</source>
+    <target>Ctrl+S</target>
+</phrase>
+<phrase>
+    <source>Frucht</source>
+    <target>Fruit</target>
+</phrase>
+<phrase>
+    <source>Global</source>
+    <target>Globaal</target>
+</phrase>
+<phrase>
+    <source>Kosten</source>
+    <target>Kosten</target>
+</phrase>
+<phrase>
+    <source>Erweiterte Toolbar</source>
+    <target>Geavanceerde werkbalk</target>
+</phrase>
+<phrase>
+    <source>Eingabefelder entsperren?</source>
+    <target>Invoervelden ontgrendelen?</target>
+</phrase>
+<phrase>
+    <source>Rezept</source>
+    <target>Recept</target>
+</phrase>
+<phrase>
+    <source>Sonstiges</source>
+    <target>Diversen</target>
+</phrase>
+<phrase>
+    <source>Sud ID</source>
+    <target>Brouwsel ID</target>
+</phrase>
+<phrase>
+    <source>Unbekannter Fehler.</source>
+    <target>Onbekende fout.</target>
+</phrase>
+<phrase>
+    <source>Soll diese zurückgesetzt werden (empfohlen)?</source>
+    <target>Moet dit gereset worden (aanbevolen)?</target>
+</phrase>
+<phrase>
+    <source>Wasseraufbereitung</source>
+    <target>Waterbehandeling</target>
+</phrase>
+<phrase>
+    <source>Zucker</source>
+    <target>Suiker</target>
+</phrase>
+<phrase>
+    <source>Unvergärbar</source>
+    <target>Niet-gistbaar</target>
+</phrase>
+<phrase>
+    <source>Für Durchschnitt Ignorieren</source>
+    <target>Voor Gemiddelde Negeren</target>
+</phrase>
+<phrase>
+    <source>Der Preis wird nicht korrekt berechnet.</source>
+    <target>De prijs is niet juist berekend.</target>
+</phrase>
+<phrase>
+    <source>bitter</source>
+    <target>bitter</target>
+</phrase>
+<phrase>
+    <source>Betriebskosten</source>
+    <target>Bedrijfskosten</target>
+</phrase>
+<phrase>
+    <source>Grainfather G30</source>
+    <target>Grainfather G30</target>
+</phrase>
+<phrase>
+    <source>Grainfather G70</source>
+    <target>Grainfather G70</target>
+</phrase>
+<phrase>
+    <source>Pellets</source>
+    <target>Pellets</target>
+</phrase>
+<phrase>
+    <source>Temperatur</source>
+    <target>Temperatuur</target>
+</phrase>
+<phrase>
+    <source>Abfülldatum</source>
+    <target>Afvuldatum</target>
+</phrase>
+<phrase>
+    <source>Abfülldaten</source>
+    <target>Afvulinformatie</target>
+</phrase>
+<phrase>
+    <source>Das Modul &quot;Speiseberechnung&quot; ist deaktiviert, aber es wurde für diesen Sud eine Speisemenge angegeben.</source>
+    <target>De module &quot;Berekening Overgist Wort&quot; is uitgeschakeld, maar er is een Onvergist Wort gespecificeerd voor dit Brouwsel.</target>
+</phrase>
+<phrase>
+    <source>Einlagerung</source>
+    <target>Opslag</target>
+</phrase>
+<phrase>
+    <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Nachgussmenge) angegeben.</source>
+    <target>De module &quot;Installatie&quot; is uitgeschakeld, maar voor deze Installatie is een Correctiewaarde (Spoelwatervolume) opgegeven.</target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alcohol</target>
+</phrase>
+<phrase>
+    <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Sollmenge) angegeben.</source>
+    <target>De module &quot;Installatie&quot; is gedeactiveerd, maar voor deze Installatie is een Correctiewaarde (Streefwaarde) opgegeven.</target>
+</phrase>
+<phrase>
+    <source>Sollen die Änderungen vor dem Schließen gespeichert werden?</source>
+    <target>Wijzigingen voor het sluiten opslaan?</target>
+</phrase>
+<phrase>
+    <source>Braudatum</source>
+    <target>Brouwdatum</target>
+</phrase>
+<phrase>
+    <source>Braudaten</source>
+    <target>Brouwgegevens</target>
+</phrase>
+<phrase>
+    <source>Haltbarkeit</source>
+    <target>Houdbaarheid</target>
+</phrase>
+<phrase>
+    <source>Sudauswahl</source>
+    <target>Brouwsel</target>
+</phrase>
+<phrase>
+    <source>flüssig</source>
+    <target>vloeibaar</target>
+</phrase>
+<phrase>
+    <source>Soll dieser zurückgesetzt werden?</source>
+    <target>Moet dit gereset worden?</target>
+</phrase>
+<phrase>
+    <source>Bittere</source>
+    <target>Bitterheid</target>
+</phrase>
+<phrase>
+    <source>Schnellgärprobe deaktivieren?</source>
+    <target>Snelle Vergistingsmonster deactiveren?</target>
+</phrase>
+<phrase>
+    <source>obergärig</source>
+    <target>bovengistend</target>
+</phrase>
+<phrase>
+    <source>untergärig</source>
+    <target>ondergistend</target>
+</phrase>
+<phrase>
+    <source>Klärmittel</source>
+    <target>Klaringsmiddel</target>
+</phrase>
+<phrase>
+    <source>Vermögen</source>
+    <target>Capaciteit</target>
+</phrase>
+<phrase>
+    <source>Korrekturwert</source>
+    <target>Correctiefactor</target>
+</phrase>
+<phrase>
+    <source>Erstellt</source>
+    <target>Aangemaakt</target>
+</phrase>
+<phrase>
+    <source>Verwerfen</source>
+    <target>Weggooien</target>
+</phrase>
+<phrase>
+    <source>Bewertungen</source>
+    <target>Evaluatie</target>
+</phrase>
+<phrase>
+    <source>Speisemenge</source>
+    <target>Onvergist Wort</target>
+</phrase>
+<phrase>
+    <source>Entsperren</source>
+    <target>Ontgrendelen</target>
+</phrase>
+<phrase>
+    <source>Alle Eingabefelder entsperren</source>
+    <target>Alle invoervelden ontgrendelen</target>
+</phrase>
+<phrase>
+    <source>Standard</source>
+    <target>Standaard</target>
+</phrase>
+<phrase>
+    <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage Betriebskosten angegeben.</source>
+    <target>De module &quot;Installatie&quot; is uitgeschakeld, maar er zijn Bedrijfskosten gespecificeerd voor deze Installatie.</target>
+</phrase>
+<phrase>
+    <source>Sudname</source>
+    <target>Brouwselnaam</target>
+</phrase>
+<phrase>
+    <source>Kategorie</source>
+    <target>Categorie</target>
+</phrase>
+<phrase>
+    <source>Datenbank</source>
+    <target>Database</target>
+</phrase>
+<phrase>
+    <source>Dialoge</source>
+    <target>Dialogen</target>
+</phrase>
+<phrase>
+    <source>Sudnummer</source>
+    <target>Brouwselnummer</target>
+</phrase>
+<phrase>
+    <source>trocken</source>
+    <target>droog</target>
+</phrase>
+<phrase>
+    <source>Speisemenge zurücksetzen?</source>
+    <target>Onvergist Wort terugzetten?</target>
+</phrase>
+<phrase>
+    <source>Gespeichert</source>
+    <target>Opgeslagen</target>
+</phrase>
+<phrase>
+    <source>Speichern</source>
+    <target>Opslaan</target>
+</phrase>
+<phrase>
+    <source>Einheit</source>
+    <target>Eenheid</target>
+</phrase>
+<phrase>
+    <source>Sedimentation</source>
+    <target>Vlokvorming</target>
+</phrase>
+<phrase>
+    <source>Sollen alle Änderungen verworfen werden?</source>
+    <target>Moeten alle wijzigingen worden verwijderd?</target>
+</phrase>
+<phrase>
+    <source>Brauheld Pro 30L</source>
+    <target>Brauheld Pro 30L</target>
+</phrase>
+<phrase>
+    <source>Eff. SHA</source>
+    <target>Efficiëntie brouwerij</target>
+</phrase>
+<phrase>
+    <source>Ausbeute</source>
+    <target>Rendement</target>
+</phrase>
+<phrase>
+    <source>Restalkalität</source>
+    <target>Restalkaliteit</target>
+</phrase>
+<phrase>
+    <source>Ausdruck</source>
+    <target>Afdrukken</target>
+</phrase>
+<phrase>
+    <source>Gärverlauf</source>
+    <target>Gistverloop</target>
+</phrase>
+<phrase>
+    <source>Wasserprofil</source>
+    <target>Waterprofiel</target>
+</phrase>
+<phrase>
+    <source>Anwendung schließen?</source>
+    <target>Applicatie sluiten?</target>
+</phrase>
+<phrase>
+    <source>Restextrakt</source>
+    <target>Restextract</target>
+</phrase>
+<phrase>
+    <source>Etikett</source>
+    <target>Labels</target>
+</phrase>
+<phrase>
+    <source>Überschriften</source>
+    <target>Kop</target>
+</phrase>
+<phrase>
+    <source>Fehler beim Verwerfen</source>
+    <target>Fout bij ongedaan maken</target>
+</phrase>
+<phrase>
+    <source>Änderungen speichern?</source>
+    <target>Wijzigingen opslaan?</target>
+</phrase>
+<phrase>
+    <source>Das Modul &quot;Schnellgärprobe&quot; ist deaktiviert, aber es wurde für diesen Sud die Schnellgärprobe aktiviert.</source>
+    <target>De module &quot;Snelle Vergistingsmonster&quot; is gedeactiveerd, maar de snelle Vergistingsmonster is wel geactiveerd voor dit Brouwsel.</target>
+</phrase>
+<phrase>
+    <source>Bewertung</source>
+    <target>Evaluatie</target>
+</phrase>
+<phrase>
+    <source>Gewürz</source>
+    <target>Specerij</target>
+</phrase>
+<phrase>
+    <source>Vergärungsgrad</source>
+    <target>Vergistingsgraad</target>
+</phrase>
+<phrase>
+    <source>Das Modul &quot;Ausrüstung&quot; ist deaktiviert, aber es wurde für diese Anlage ein Korrekturwert (Farbwert) angegeben.</source>
+    <target>De module &quot;Installatie&quot; is uitgeschakeld, maar voor deze Installatie is een Correctiewaarde (Kleurwaarde) opgegeven.</target>
+</phrase>
+<phrase>
+    <source>Verdampfungsrate</source>
+    <target>Verdampingsgraad</target>
+</phrase>
+<phrase>
+    <source>Vorsicht! Die Entsperrung aller Eingabefeldern kann zu inkonsistenten Daten führen und sollte mit Vorsicht verwendet werden.</source>
+    <target>Pas op! Het ontgrendelen van invoervelden kan leiden tot inconsistente gegevens en moet met voorzichtigheid worden gebruikt.</target>
+</phrase>
+<phrase>
+    <source>Anzahl Sude</source>
+    <target>Aantal brouwsels</target>
+</phrase>
+<phrase>
+    <source>Änderungen verwerfen?</source>
+    <target>Wijzigingen negeren?</target>
+</phrase>
+<phrase>
+    <source>Fehler beim Speichern</source>
+    <target>Fout bij het Opslaan</target>
+</phrase>
+<phrase>
+    <source>Schüttung</source>
+    <target>Moutstort</target>
+</phrase>
+<phrase>
+    <source>Einstellungen</source>
+    <target>Instellingen</target>
+</phrase>
+<phrase>
+    <source>Der Sud wird nicht korrekt dargestellt.</source>
+    <target>Het Brouwsel wordt niet correct weergegeven.</target>
+</phrase>
+<phrase>
+    <source>Schnellgärprobe</source>
+    <target>Snelle Vergistingsmonster</target>
+</phrase>
+<phrase>
+    <source>Ausrüstung</source>
+    <target>Installatie</target>
+</phrase>
+<phrase>
+    <source>Rohstoffe</source>
+    <target>Grondstoffen</target>
+</phrase>
+<phrase>
+    <source>Bezeichnung</source>
+    <target>Benaming</target>
+</phrase>
+<phrase>
+    <source>Sollen die Änderungen gespeichert werden?</source>
+    <target>Moeten de Wijzigingen opgeslagen worden?</target>
+</phrase>
+<phrase>
+    <source>SW</source>
+    <target>Stamwort</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Menge Rezept</source>
+    <target>Hoeveelheid Recept</target>
+</phrase>
+<phrase>
+    <source>Würzemenge</source>
+    <target>Wortvolume</target>
+</phrase>
+<phrase>
+    <source>Nach Hopfenseihen</source>
+    <target>Na hop zeven</target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Stamwort</target>
+</phrase>
+<phrase>
+    <source>SW Rezept</source>
+    <target>Stamwort Recept</target>
+</phrase>
+<phrase>
+    <source>Kochende</source>
+    <target>Kookeinde</target>
+</phrase>
+<phrase>
+    <source>Anstellen</source>
+    <target>Enten</target>
+</phrase>
+<phrase>
+    <source>Kochbeginn</source>
+    <target>Kookbegin</target>
+</phrase>
+<phrase>
+    <source>Neu</source>
+    <target>Nieuw</target>
+</phrase>
+<phrase>
+    <source>Hefe</source>
+    <target>Gist</target>
+</phrase>
+<phrase>
+    <source>Malz</source>
+    <target>Mout</target>
+</phrase>
+<phrase>
+    <source>Kopie</source>
+    <target>Kopie</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Zoeken</target>
+</phrase>
+<phrase>
+    <source>Rohstoff wird verwendet</source>
+    <target>Grondstof wordt gebruikt</target>
+</phrase>
+<phrase>
+    <source>Hopfen</source>
+    <target>Hop</target>
+</phrase>
+<phrase>
+    <source>oBraMa</source>
+    <target>oBraMa</target>
+</phrase>
+<phrase>
+    <source>Zusätze</source>
+    <target>Toevoegingen</target>
+</phrase>
+<phrase>
+    <source>Vorlage</source>
+    <target>Sjabloon</target>
+</phrase>
+<phrase>
+    <source>Dieser Rohstoff wird in einem noch nicht gebrauten Sud verwendet. Soll er trotzdem gelöscht werden?</source>
+    <target>Deze Grondstof wordt gebruikt in een nog niet gebrouwen Brouwsel. Moet deze nog steeds worden verwijderd?</target>
+</phrase>
+<phrase>
+    <source>Neuer Eintrag</source>
+    <target>Nieuw Item</target>
+</phrase>
+<phrase>
+    <source>Rohstoffe</source>
+    <target>Grondstoffen</target>
+</phrase>
+<phrase>
+    <source>SHA</source>
+    <target>Maisch efficiëntie</target>
+</phrase>
+<phrase>
+    <source>Rezept</source>
+    <target>Recept</target>
+</phrase>
+<phrase>
+    <source>Eff. SHA</source>
+    <target>Efficiëntie brouwerij</target>
+</phrase>
+<phrase>
+    <source>Ausbeute</source>
+    <target>Rendement</target>
+</phrase>
+<phrase>
+    <source>SRE</source>
+    <target>SRE</target>
+</phrase>
+<phrase>
+    <source>Temp</source>
+    <target>Temp</target>
+</phrase>
+<phrase>
+    <source>Benötigte Speisemenge</source>
+    <target>Benodigde Onvergist Wort</target>
+</phrase>
+<phrase>
+    <source>Jetzt</source>
+    <target>Nu</target>
+</phrase>
+<phrase>
+    <source>Verschnittwasser</source>
+    <target>Water mengen</target>
+</phrase>
+<phrase>
+    <source>Zurücksetzen</source>
+    <target>Reset</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Opmerking</target>
+</phrase>
+<phrase>
+    <source>Würzemenge bei Kochbeginn (20°C)</source>
+    <target>Wortvolume bij kookbegin (20°C)</target>
+</phrase>
+<phrase>
+    <source>Stadium &quot;gebraut&quot; zurücksetzen?</source>
+    <target>De fase ‘gebrouwen’ resetten?</target>
+</phrase>
+<phrase>
+    <source>Stammwürze bei Kochende</source>
+    <target>Stamwort bij het kookeinde</target>
+</phrase>
+<phrase>
+    <source>Füllhöhe vom Boden aus gemessen</source>
+    <target>Vulhoogte gemeten vanaf de bodem</target>
+</phrase>
+<phrase>
+    <source>Aus Rezept</source>
+    <target>Uit Recept</target>
+</phrase>
+<phrase>
+    <source>Kochende</source>
+    <target>Kookeinde</target>
+</phrase>
+<phrase>
+    <source>Sonstiges</source>
+    <target>Diversen</target>
+</phrase>
+<phrase>
+    <source>Gesamtwürzemenge</source>
+    <target>Totale Wortvolume</target>
+</phrase>
+<phrase>
+    <source>Würzemenge nach Hopfenseihen</source>
+    <target>Wortvolume na het uitlekken/zefen van de Hop</target>
+</phrase>
+<phrase>
+    <source>Sudhausausbeute</source>
+    <target>Brouwzaalrendement</target>
+</phrase>
+<phrase>
+    <source>Dieser Sud enthält Zusätze, welche die Stammwürze verändern. Dies kann die Durchschnittsberechnung verfälschen.</source>
+    <target>Dit brouwsel bevat toevoegingen die het stamwort kunnen veranderen. Dit kan de berekening vertekenen.</target>
+</phrase>
+<phrase>
+    <source>Zielwürzemenge bei</source>
+    <target>Streef Wortvolume</target>
+</phrase>
+<phrase>
+    <source>Anstellmenge</source>
+    <target>Wortvolume na Enten (Pitching)</target>
+</phrase>
+<phrase>
+    <source>Zusätzliche Kosten</source>
+    <target>Extra kosten</target>
+</phrase>
+<phrase>
+    <source>Verschnittwasser, um Zielstammwürze zu erreichen</source>
+    <target>Waterhoeveelheid om te verdunnen to streef Stamwort</target>
+</phrase>
+<phrase>
+    <source>Stammwürze beim Anstellen</source>
+    <target>Stamwort tijdens Enten (Pitching)</target>
+</phrase>
+<phrase>
+    <source>Braudatum</source>
+    <target>Brouwdatum</target>
+</phrase>
+<phrase>
+    <source>Braudaten</source>
+    <target>Brouwgegevens</target>
+</phrase>
+<phrase>
+    <source>Zielstammwürze</source>
+    <target>Streef Stamwort</target>
+</phrase>
+<phrase>
+    <source>Stadium auf &quot;gebraut&quot; setzen?</source>
+    <target>Zet het podium klaar voor &quot;gebrouwen&quot;?</target>
+</phrase>
+<phrase>
+    <source>Soll das Stadium &quot;gebraut&quot; zurückgesetzt werden?</source>
+    <target>Moet de fase &quot;gebrouwen&quot; worden gereset?</target>
+</phrase>
+<phrase>
+    <source>Sud für Durchschnittsberechnung ignorieren</source>
+    <target>Negeer dit brouwsel voor de berekening van het gemiddelde</target>
+</phrase>
+<phrase>
+    <source>Anstellen</source>
+    <target>Enten (Pitching)</target>
+</phrase>
+<phrase>
+    <source>Hefestarter</source>
+    <target>Giststarter</target>
+</phrase>
+<phrase>
+    <source>Verlust durch Hopfenseihen</source>
+    <target>Verlies als gevolg van het uitlekken/zefen van de hop</target>
+</phrase>
+<phrase>
+    <source>Stammwürze bei Kochbeginn</source>
+    <target>Stamwort bij kookbegin</target>
+</phrase>
+<phrase>
+    <source>Bemerkung Braudaten</source>
+    <target>Commentaar brouwgegevens</target>
+</phrase>
+<phrase>
+    <source>Abgefüllte Speisemenge</source>
+    <target>Afgevulde hoeveelheid Onvergist Wort</target>
+</phrase>
+<phrase>
+    <source>Zielwürzemenge bei 20°C</source>
+    <target>Streef Wortvolume bij 20°C</target>
+</phrase>
+<phrase>
+    <source>Effektive Sudhausausbeute</source>
+    <target>Effectieve Brouwzaalrendement</target>
+</phrase>
+<phrase>
+    <source>Sud gebraut</source>
+    <target>Gebrouwen</target>
+</phrase>
+<phrase>
+    <source>Verdampfungsrate</source>
+    <target>Verdampingsgraad</target>
+</phrase>
+<phrase>
+    <source>Kochbeginn</source>
+    <target>Kookbegin</target>
+</phrase>
+<phrase>
+    <source>Mit weiteren Zutaten &quot;Kochen&quot;</source>
+    <target>&quot;Koken&quot; met meer ingrediënten</target>
+</phrase>
+<phrase>
+    <source>Würzemenge vor Hopfenseihen (20°C)</source>
+    <target>Wortvolume vóór het uitlekken/zefen van de hop (20°C)</target>
+</phrase>
+<phrase>
+    <source>Soll das Stadium auf &quot;gebraut&quot; gesetzt werden?
+Braudatum: %1</source>
+    <target>Moet het podium worden ingesteld op &quot;gebrouwen&quot;?
+Brouwdatum: %1</target>
+</phrase>
+<phrase>
+    <source>Füllhöhe von Oberkante aus gemessen</source>
+    <target>Vulhoogte gemeten vanaf de bovenrand</target>
+</phrase>
+<phrase>
+    <source>Gesamtkosten</source>
+    <target>Totale kosten</target>
+</phrase>
+<phrase>
+    <source>URL</source>
+    <target>URL</target>
+</phrase>
+<phrase>
+    <source>Datei</source>
+    <target>Bestand</target>
+</phrase>
+<phrase>
+    <source>Die Datei konnte nicht geschrieben werden.</source>
+    <target>Gegevens konden niet opgeslagen worden.</target>
+</phrase>
+<phrase>
+    <source>Die Datei konnte nicht geöffnet werden.</source>
+    <target>Bestand kon niet geopend worden.</target>
+</phrase>
+<phrase>
+    <source>Das Rezept konnte nicht heruntergeladen werden.</source>
+    <target>Het recept kon niet worden gedownload.</target>
+</phrase>
+<phrase>
+    <source>Sud Export</source>
+    <target>Exporteer Brouwsel</target>
+</phrase>
+<phrase>
+    <source>Format</source>
+    <target>Formaat</target>
+</phrase>
+<phrase>
+    <source>Quelle</source>
+    <target>Bron</target>
+</phrase>
+<phrase>
+    <source>Das Rezept wurde erfolgreich importiert.</source>
+    <target>Recept succesvol geïmporteerd.</target>
+</phrase>
+<phrase>
+    <source>BeerXML (xml)</source>
+    <target>BeerXML (xml)</target>
+</phrase>
+<phrase>
+    <source>Download</source>
+    <target>Download</target>
+</phrase>
+<phrase>
+    <source>Tabellen</source>
+    <target>Tabellen</target>
+</phrase>
+<phrase>
+    <source>Rezept importieren</source>
+    <target>Recept importeren</target>
+</phrase>
+<phrase>
+    <source>Der Sud wurde erfolgreich exportiert.</source>
+    <target>Brouwsel succesvol geëxporteerd.</target>
+</phrase>
+<phrase>
+    <source>kleiner-brauhelfer (json)</source>
+    <target>kleiner-brauhelfer (json)</target>
+</phrase>
+<phrase>
+    <source>Rezept Import</source>
+    <target>Recept Import</target>
+</phrase>
+<phrase>
+    <source>Öffnen</source>
+    <target>Openen</target>
+</phrase>
+<phrase>
+    <source>Das Rezept konnte nicht importiert werden.</source>
+    <target>Recept importeren mislukt.</target>
+</phrase>
+<phrase>
+    <source>Rezept (*.json *xml);;Alle Dateien (*.*)</source>
+    <target>Recept (*.json *xml);;Alle documenten (*.*)</target>
+</phrase>
+<phrase>
+    <source>MaischeMalzundMehr (json)</source>
+    <target>MaischeMalzundMehr.de (json)</target>
+</phrase>
+<phrase>
+    <source>&quot;%1&quot; exportieren</source>
+    <target>&quot;%1&quot; exporteren</target>
+</phrase>
+<phrase>
+    <source>Brautomat (json)</source>
+    <target>Brautomat (json)</target>
+</phrase>
+<phrase>
+    <source>Sud</source>
+    <target>Brouwsel</target>
+</phrase>
+<phrase>
+    <source>Global</source>
+    <target>Globaal</target>
+</phrase>
+<phrase>
+    <source>Datenbank</source>
+    <target>Database</target>
+</phrase>
+<phrase>
+    <source>Bereinigen</source>
+    <target>Opschonen</target>
+</phrase>
+<phrase>
+    <source>Version</source>
+    <target>Versie</target>
+</phrase>
+<phrase>
+    <source>Sud</source>
+    <target>Brouwsel</target>
+</phrase>
+<phrase>
+    <source>Hefe</source>
+    <target>Gist</target>
+</phrase>
+<phrase>
+    <source>Malz</source>
+    <target>Mouten</target>
+</phrase>
+<phrase>
+    <source>Nr. </source>
+    <target>Nr. </target>
+</phrase>
+<phrase>
+    <source>Tags</source>
+    <target>Tags</target>
+</phrase>
+<phrase>
+    <source>mild</source>
+    <target>Mild</target>
+</phrase>
+<phrase>
+    <source>SHA anpassen</source>
+    <target>Brouwzaalrendement aanpassen</target>
+</phrase>
+<phrase>
+    <source>High-Gravity Verdünnung</source>
+    <target>High Gravity Verdunning</target>
+</phrase>
+<phrase>
+    <source>Empf.</source>
+    <target>Aanbev.</target>
+</phrase>
+<phrase>
+    <source>Farbe</source>
+    <target>Kleur</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Zusätze &quot;Maischen&quot;</source>
+    <target>Ingrediënten &quot;Maischen&quot;</target>
+</phrase>
+<phrase>
+    <source>Bemerkung Maischplan</source>
+    <target>Commentaar beslag stappen</target>
+</phrase>
+<phrase>
+    <source>Die Summe der angegebenen Malzmengen entspricht nicht der Gesamtschüttung.</source>
+    <target>De Som van de aangegeven Moutvolume komt niet overeen met de totale Moutstorting.</target>
+</phrase>
+<phrase>
+    <source>Die Berechnung der Hopfengaben ist deaktiviert.</source>
+    <target>De berekening van de Hopdosering is gedeactiveerd.</target>
+</phrase>
+<phrase>
+    <source>Bemerkung Maischen</source>
+    <target>Commentaar stampen</target>
+</phrase>
+<phrase>
+    <source>High-Gravity Faktor</source>
+    <target>High-Gravity Factor</target>
+</phrase>
+<phrase>
+    <source>Ausgleichen</source>
+    <target>Compenseren</target>
+</phrase>
+<phrase>
+    <source>Rohstoff importieren?</source>
+    <target>Grondstoffen importeren?</target>
+</phrase>
+<phrase>
+    <source>Zusätze &quot;Gärung&quot;</source>
+    <target>Ingrediënten &quot;Gisting&quot;</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Opmerking</target>
+</phrase>
+<phrase>
+    <source>Gärung</source>
+    <target>Gisting</target>
+</phrase>
+<phrase>
+    <source>Die Hefe &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
+    <target>Gist &quot;%1&quot; is niet opgenomen in de grondstoffenlijst. Moet deze nu worden toegevoegd?</target>
+</phrase>
+<phrase>
+    <source>Anlage</source>
+    <target>Installatie</target>
+</phrase>
+<phrase>
+    <source>Nachisomerisierungszeit</source>
+    <target>Na-isomerisatietijd</target>
+</phrase>
+<phrase>
+    <source>pH-Wert</source>
+    <target>pH-Waarde</target>
+</phrase>
+<phrase>
+    <source>Gesamt</source>
+    <target>Totaal</target>
+</phrase>
+<phrase>
+    <source>Hopfen</source>
+    <target>Hoppen</target>
+</phrase>
+<phrase>
+    <source>Vergärungsgrad übernehmen?</source>
+    <target>Vergistingsgraad overnemen?</target>
+</phrase>
+<phrase>
+    <source>Kochen</source>
+    <target>Koken</target>
+</phrase>
+<phrase>
+    <source>Prozentanteil entspricht</source>
+    <target>Percentage komt overeen met</target>
+</phrase>
+<phrase>
+    <source>Anhänge</source>
+    <target>Bijlagen</target>
+</phrase>
+<phrase>
+    <source>Die Zutat &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll jetzt es hinzugefügt werden?</source>
+    <target>Ingrediënt &quot;%1&quot; is niet opgenomen in de grondstoffenlijst. Moet het nu worden toegevoegd?</target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Stamwort</target>
+</phrase>
+<phrase>
+    <source>Rezept</source>
+    <target>Recept</target>
+</phrase>
+<phrase>
+    <source>Korrektur der Sollmenge</source>
+    <target>Correctie van de Streefvolume</target>
+</phrase>
+<phrase>
+    <source>Hauptgussfaktor</source>
+    <target>Maischwater Verhouding</target>
+</phrase>
+<phrase>
+    <source>Wasser</source>
+    <target>Water</target>
+</phrase>
+<phrase>
+    <source>Wochen</source>
+    <target>Weken</target>
+</phrase>
+<phrase>
+    <source>Wasseraufbereitung</source>
+    <target>Waterbehandeling</target>
+</phrase>
+<phrase>
+    <source>Zusatz</source>
+    <target>Ingrediënt</target>
+</phrase>
+<phrase>
+    <source>Der Hopfen &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
+    <target>Hop &quot;%1&quot; is niet opgenomen in de grondstoffenlijst.  Moet deze nu worden toegevoegd?</target>
+</phrase>
+<phrase>
+    <source>Sudhausausbeute</source>
+    <target>Brouwzaalrendement</target>
+</phrase>
+<phrase>
+    <source>Maische gewünscht</source>
+    <target>Maisch doel</target>
+</phrase>
+<phrase>
+    <source>ignorieren</source>
+    <target>Negeren</target>
+</phrase>
+<phrase>
+    <source>Gesamtschüttung</source>
+    <target>Totale Moutstort</target>
+</phrase>
+<phrase>
+    <source>Nachguss</source>
+    <target>Spoelwater</target>
+</phrase>
+<phrase>
+    <source>Das Malz &quot;%1&quot; ist nicht in der Rohstoffliste vorhanden. Soll es jetzt hinzugefügt werden?</source>
+    <target>Mout &quot;%1&quot; is niet opgenomen in de grondstoffenlijst. Moet deze nu worden toegevoegd?</target>
+</phrase>
+<phrase>
+    <source>Anlagewert</source>
+    <target>Installatiewaarde</target>
+</phrase>
+<phrase>
+    <source>Maischen</source>
+    <target>Maischen</target>
+</phrase>
+<phrase>
+    <source>Einmaischen</source>
+    <target>Inmaischen</target>
+</phrase>
+<phrase>
+    <source>Maische aufbereitet</source>
+    <target>Maisch aangepast</target>
+</phrase>
+<phrase>
+    <source>Bittere</source>
+    <target>Bitterheid</target>
+</phrase>
+<phrase>
+    <source>Bemerkung Rezept</source>
+    <target>Commentaar recept</target>
+</phrase>
+<phrase>
+    <source>Soll der Vergärungsgrad der Hefe (%1%) übernommen werden?</source>
+    <target>Moet de vergistingsgraad van de gist (%1%) overgenomen worden?</target>
+</phrase>
+<phrase>
+    <source>Bemerkung Wasseraufbereitung</source>
+    <target>Opmerking wateraanpassing</target>
+</phrase>
+<phrase>
+    <source>Bemerkung Kochen</source>
+    <target>Commentaar koken</target>
+</phrase>
+<phrase>
+    <source>Karbonisierung (CO₂)</source>
+    <target>Carbonisatie (CO₂)</target>
+</phrase>
+<phrase>
+    <source>Maischplan</source>
+    <target>Maisschema</target>
+</phrase>
+<phrase>
+    <source>Sudpfanne nutzbares Volumen</source>
+    <target>Bruikbare volume Kookketel</target>
+</phrase>
+<phrase>
+    <source>Kochdauer</source>
+    <target>Kooktijd</target>
+</phrase>
+<phrase>
+    <source>Die Summe der angegebenen Hopfenmengen entspricht nicht der Gesamtmenge.</source>
+    <target>De som van de aangegeven hoeveelheden hop komt niet overeen met de totale hoeveelheid.</target>
+</phrase>
+<phrase>
+    <source>Sudname</source>
+    <target>Brouwselnaam</target>
+</phrase>
+<phrase>
+    <source>Kategorie</source>
+    <target>Categorie</target>
+</phrase>
+<phrase>
+    <source>Bemerkung Gärung</source>
+    <target>Commentaar gisting</target>
+</phrase>
+<phrase>
+    <source>Hefestarter</source>
+    <target>Giststarter</target>
+</phrase>
+<phrase>
+    <source>Alkoholgehalt</source>
+    <target>Alcoholgehalte</target>
+</phrase>
+<phrase>
+    <source>Benötigtes Volumen ca.</source>
+    <target>Vereist volume ca.</target>
+</phrase>
+<phrase>
+    <source>Zusätze &quot;Kochen&quot;</source>
+    <target>Ingrediënten &quot;Koken&quot;</target>
+</phrase>
+<phrase>
+    <source>Neuer Tag</source>
+    <target>Nieuwe Tag</target>
+</phrase>
+<phrase>
+    <source>Die Summe der angegebenen Wassermengen entspricht nicht der Hautpgussmenge.</source>
+    <target>De Som van de aangegeven Waterhoeveelheden komt niet overeen met de totale Maischwater.</target>
+</phrase>
+<phrase>
+    <source>Anteile Stammwürze</source>
+    <target>Aandeel Stamwort</target>
+</phrase>
+<phrase>
+    <source>Hauptguss</source>
+    <target>Maischwater</target>
+</phrase>
+<phrase>
+    <source>Aufbereit</source>
+    <target>Aangepast</target>
+</phrase>
+<phrase>
+    <source>Restalkalität</source>
+    <target>Restalkaliteit</target>
+</phrase>
+<phrase>
+    <source>Wasserprofil</source>
+    <target>Waterprofiel</target>
+</phrase>
+<phrase>
+    <source>Restextrakt</source>
+    <target>Restextract</target>
+</phrase>
+<phrase>
+    <source>Aufheizen</source>
+    <target>Infusie</target>
+</phrase>
+<phrase>
+    <source>Die Summe der angegebenen Schüttungsmengen entspricht nicht der Gesamtschüttung.</source>
+    <target>De Som van de aangegeven Moutvolume komt niet overeen met de totale Moutstorting.</target>
+</phrase>
+<phrase>
+    <source>ausgewogen</source>
+    <target>Gebalanceerd</target>
+</phrase>
+<phrase>
+    <source>Gewicht</source>
+    <target>Gewicht</target>
+</phrase>
+<phrase>
+    <source>Vergärungsgrad</source>
+    <target>Vergistingsgraad</target>
+</phrase>
+<phrase>
+    <source>Die Summe der angegebenen Anteile an Bittere entspricht nicht der Gesamtbittere.</source>
+    <target>De som van de aangegeven bitterheidsverhoudingen komt niet overeen met de totale bitterheid.</target>
+</phrase>
+<phrase>
+    <source>Maischekessel nutzbares Volumen</source>
+    <target>Bruikbare volume Maischketel</target>
+</phrase>
+<phrase>
+    <source>Hauptgussfaktor anpassen</source>
+    <target>Maischwater Verhouding aanpassen</target>
+</phrase>
+<phrase>
+    <source>Verdampfungsrate</source>
+    <target>Verdampingsgraad</target>
+</phrase>
+<phrase>
+    <source>Sudkategorien verwalten</source>
+    <target>Beheer brouwsel categorieën</target>
+</phrase>
+<phrase>
+    <source>moderat herb</source>
+    <target>Matig bitter</target>
+</phrase>
+<phrase>
+    <source>Gewünscht</source>
+    <target>Gewenste</target>
+</phrase>
+<phrase>
+    <source>sehr herb</source>
+    <target>Zeer bitter</target>
+</phrase>
+<phrase>
+    <source>sehr mild</source>
+    <target>Zeer mild</target>
+</phrase>
+<phrase>
+    <source>Reifezeit</source>
+    <target>Rijpingstijd</target>
+</phrase>
+<phrase>
+    <source>Gesamtkosten</source>
+    <target>Totale kosten</target>
+</phrase>
+<phrase>
+    <source>Typ</source>
+    <target>Type</target>
+</phrase>
+<phrase>
+    <source>Name</source>
+    <target>Naam</target>
+</phrase>
+<phrase>
+    <source>Alternativen</source>
+    <target>Alternatieven</target>
+</phrase>
+<phrase>
+    <source>Alpha</source>
+    <target>Alpha</target>
+</phrase>
+<phrase>
+    <source>Farbe</source>
+    <target>Kleur</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Zoeken</target>
+</phrase>
+<phrase>
+    <source>Eigenschaften</source>
+    <target>Eigenschappen</target>
+</phrase>
+<phrase>
+    <source>Trocken/Flüssig</source>
+    <target>Droog/Vloeibaar</target>
+</phrase>
+<phrase>
+    <source>Quelle: obrama.mueggelland.de</source>
+    <target>Bron: obrama.mueggelland.de</target>
+</phrase>
+<phrase>
+    <source>Max. Anteil</source>
+    <target>Max Aandeel</target>
+</phrase>
+<phrase>
+    <source>Auswahl Rohstoffvorlage</source>
+    <target>Selectie van grondstofsjabloon</target>
+</phrase>
+<phrase>
+    <source>Quellen: www.mueggelland.de | www.brewferm.be | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | ww.weyermann.de</source>
+    <target>Bron: www.mueggelland.de | www.brewferm.be | www.wyeastlab.com | www.fermentis.com | www.danstaryeast.com | www.weyermann.de</target>
+</phrase>
+<phrase>
+    <source>Kategorie</source>
+    <target>Categorie</target>
+</phrase>
+<phrase>
+    <source>Verwendung</source>
+    <target>Gebruik</target>
+</phrase>
+<phrase>
+    <source>Aliasname</source>
+    <target>Alias</target>
+</phrase>
+<phrase>
+    <source>Bierstil</source>
+    <target>Bierstijl</target>
+</phrase>
+<phrase>
+    <source>und</source>
+    <target>en</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Zoeken</target>
+</phrase>
+<phrase>
+    <source>Sudhausausbeute (⌀)</source>
+    <target>Brouwzaalrendement (⌀)</target>
+</phrase>
+<phrase>
+    <source>Tatsächlicher Endvergärungsgrad</source>
+    <target>Werkelijke Eindvergistingsgraad</target>
+</phrase>
+<phrase>
+    <source>Stammwürze (⌀)</source>
+    <target>Stamwort (⌀)</target>
+</phrase>
+<phrase>
+    <source>Abgefüllte Biermenge</source>
+    <target>Afgevulde Bierhoeveelheid</target>
+</phrase>
+<phrase>
+    <source>&lt;keine&gt;</source>
+    <target>&lt;geen&gt;</target>
+</phrase>
+<phrase>
+    <source>Brauübersicht</source>
+    <target>Brouwoverzicht</target>
+</phrase>
+<phrase>
+    <source>Anzahl</source>
+    <target>Aantal</target>
+</phrase>
+<phrase>
+    <source>Kosten (⌀)</source>
+    <target>Kosten (⌀)</target>
+</phrase>
+<phrase>
+    <source>Gesamtbiermenge</source>
+    <target>Totaal biervolume</target>
+</phrase>
+<phrase>
+    <source>Kosten</source>
+    <target>Kosten</target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Stamwort</target>
+</phrase>
+<phrase>
+    <source>Schüttung (⌀)</source>
+    <target>Moutstort (⌀)</target>
+</phrase>
+<phrase>
+    <source>Sudhausausbeute</source>
+    <target>Brouwzaalrendement</target>
+</phrase>
+<phrase>
+    <source>Gebraut zwischen</source>
+    <target>Gebrouwd tussen</target>
+</phrase>
+<phrase>
+    <source>Gesamtschüttung</source>
+    <target>Totale Moutstort</target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alcohol</target>
+</phrase>
+<phrase>
+    <source>Statistik</source>
+    <target>Statistieken</target>
+</phrase>
+<phrase>
+    <source>Scheinbarer Restextrakt</source>
+    <target>Schijnbaar Restextract</target>
+</phrase>
+<phrase>
+    <source>Verdampfungsrate (⌀)</source>
+    <target>Verdampingsgraad (⌀)</target>
+</phrase>
+<phrase>
+    <source>Scheinbarer Endvergärungsgrad</source>
+    <target>Schijnbare Eindvergistingsgraad</target>
+</phrase>
+<phrase>
+    <source>Effektive Sudhausausbeute (⌀)</source>
+    <target>Effectieve Brouwzaalrendement (⌀)</target>
+</phrase>
+<phrase>
+    <source>Restextrakt (⌀)</source>
+    <target>Restextract (⌀)</target>
+</phrase>
+<phrase>
+    <source>Biermenge (⌀)</source>
+    <target>Biervolume (⌀)</target>
+</phrase>
+<phrase>
+    <source>Alkoholgehalt (⌀)</source>
+    <target>Alcoholgehalte (⌀)</target>
+</phrase>
+<phrase>
+    <source>Effektive Sudhausausbeute</source>
+    <target>Effectieve Brouwzaalrendement</target>
+</phrase>
+<phrase>
+    <source>Verdampfungsrate</source>
+    <target>Verdampingsgraad</target>
+</phrase>
+<phrase>
+    <source>Schüttung</source>
+    <target>Moutstort</target>
+</phrase>
+<phrase>
+    <source>Endvergärungsgrad (⌀)</source>
+    <target>Eindvergistingsgraad (⌀)</target>
+</phrase>
+<phrase>
+    <source>Gesamtkosten</source>
+    <target>Totale kosten</target>
+</phrase>
+<phrase>
+    <source>und</source>
+    <target>en</target>
+</phrase>
+<phrase>
+    <source>Alle</source>
+    <target>Alles</target>
+</phrase>
+<phrase>
+    <source>Anlage</source>
+    <target>Installatie</target>
+</phrase>
+<phrase>
+    <source>Rezept</source>
+    <target>Recept</target>
+</phrase>
+<phrase>
+    <source>Merkliste</source>
+    <target>Keuzelijst</target>
+</phrase>
+<phrase>
+    <source>Stadium</source>
+    <target>Staat</target>
+</phrase>
+<phrase>
+    <source>Kategorie</source>
+    <target>Categorie</target>
+</phrase>
+<phrase>
+    <source>Abgefüllt</source>
+    <target>Afgevuld</target>
+</phrase>
+<phrase>
+    <source>Gebraut</source>
+    <target>Gebrouwen</target>
+</phrase>
+<phrase>
+    <source>zwischen</source>
+    <target>tussen</target>
+</phrase>
+<phrase>
+    <source>Ausgetrunken</source>
+    <target>leeggedronken</target>
+</phrase>
+<phrase>
+    <source>Sicherheitskopie konnte nicht erstellt werden.</source>
+    <target>Er kon geen reservekopie worden gemaakt.</target>
+</phrase>
+<phrase>
+    <source>Es wurde noch keine Datenbank ausgewählt. Soll eine neue angelegt werden oder soll eine bereits vorhandene geöffnet werden?</source>
+    <target>Er is nog geen Databank geselecteerd. Moet er een nieuwe worden gecreëerd of een bestaande worden geopend?</target>
+</phrase>
+<phrase>
+    <source>Der Datei &quot;%1&quot; konnte nicht erstellt werden.</source>
+    <target>Het bestand &quot;%1&quot; kon niet worden aangemaakt.</target>
+</phrase>
+<phrase>
+    <source>SSL wird nicht unterstüzt.
+Version benötigt: %1
+Version installiert: %2</source>
+    <target>SSL wordt niet ondersteund.
+Vereiste versie: %1
+Versie geïnstalleerd: %2</target>
+</phrase>
+<phrase>
+    <source>Die Datenbank muss aktualisiert werden (Version %1 -&gt; %2).</source>
+    <target>De database moet worden bijgewerkt (versie %1 -&gt; %2).</target>
+</phrase>
+<phrase>
+    <source>Die Ressourcendatei &quot;%1&quot; ist verschieden von der lokalen Datei.
+Die Datei wurde entweder manuell editiert oder durch ein Update verändert.
+
+Soll die lokale Datei ersetzt werden?</source>
+    <target>Het bronbestand &quot;%1&quot; is anders dan het lokale bestand.
+Het bestand werd ofwel handmatig bewerkt ofwel gewijzigd door een update.
+
+Moet het lokale bestand worden vervangen?</target>
+</phrase>
+<phrase>
+    <source>nicht zugegeben</source>
+    <target>niet toegelaten</target>
+</phrase>
+<phrase>
+    <source>Datenbank anlegen</source>
+    <target>Database aanmaken</target>
+</phrase>
+<phrase>
+    <source>nicht entnommen</source>
+    <target>niet verwijderd</target>
+</phrase>
+<phrase>
+    <source>Soll eine neue Datenbank angelegt werden oder soll eine bereits vorhandene geöffnet werden?</source>
+    <target>Moet er een nieuwe Database worden aangemaakt of moet een bestaande worden geopend?</target>
+</phrase>
+<phrase>
+    <source>Soll die Datenbank jetzt aktualisiert werden?</source>
+    <target>Moet de database nu worden bijgewerkt?</target>
+</phrase>
+<phrase>
+    <source>Unbekannter Fehler.</source>
+    <target>Onbekende Fout.</target>
+</phrase>
+<phrase>
+    <source>Die Datenbankversion (%1) ist zu neu für das Programm. Das Programm muss aktualisiert werden.</source>
+    <target>De databaseversie (%1) is te nieuw voor het programma. Het programma moet worden bijgewerkt.</target>
+</phrase>
+<phrase>
+    <source>Datenbank (*.sqlite);;Alle Dateien (*.*)</source>
+    <target>Database (*.sqlite);;Alle bestanden (*.*)</target>
+</phrase>
+<phrase>
+    <source>Aktualisierung fehlgeschlagen.
+
+</source>
+    <target>Update mislukt.
+
+</target>
+</phrase>
+<phrase>
+    <source>ACHTUNG, die Änderungen können nicht rückgängig gemacht werden!</source>
+    <target>LET OP, de veranderingen kunnen niet ongedaan worden gemaakt!</target>
+</phrase>
+<phrase>
+    <source>Datenbank konnte nicht wiederhergestellt werden.</source>
+    <target>De database kon niet worden hersteld.</target>
+</phrase>
+<phrase>
+    <source>Die Datenbankversion (%1) ist zu alt für das Programm. Die Datenbank muss zuerst mit dem kleinen-brauhelfer v1.4.4.6 aktualisiert werden.</source>
+    <target>De databaseversie (%1) is te oud voor het programma De database moet eerst worden bijgewerkt met de  kleinen-brauhelfer v1.4.4.6.</target>
+</phrase>
+<phrase>
+    <source>Programmfehler</source>
+    <target>Programmafout</target>
+</phrase>
+<phrase>
+    <source>entnommen</source>
+    <target>verwijderd</target>
+</phrase>
+<phrase>
+    <source>Sicherheitskopie anlegen</source>
+    <target>Maak een reservekopie</target>
+</phrase>
+<phrase>
+    <source>Soll eine Sicherheitskopie der Datenbank angelegt werden?</source>
+    <target>Wilt u een back-up van de database maken?</target>
+</phrase>
+<phrase>
+    <source>Die Datenbank &quot;%1&quot; konnte nicht geöffnet werden.</source>
+    <target>De database &quot;%1&quot; kon niet worden geopend.</target>
+</phrase>
+<phrase>
+    <source>zugegeben</source>
+    <target>toegelaten</target>
+</phrase>
+<phrase>
+    <source>Die Datenbank ist ungultig.</source>
+    <target>De database is ongeldig.</target>
+</phrase>
+<phrase>
+    <source>Der Ordner &quot;%1&quot; konnte nicht erstellt werden.</source>
+    <target>De map &quot;%1&quot; kon niet worden aangemaakt.</target>
+</phrase>
+<phrase>
+    <source>Datenbank auswählen</source>
+    <target>Database selecteren</target>
+</phrase>
+<phrase>
+    <source>Zurückgeben</source>
+    <target>Terugzetten</target>
+</phrase>
+<phrase>
+    <source>Tage</source>
+    <target>Dagen</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Zugeben</source>
+    <target>Toevoegen</target>
+</phrase>
+<phrase>
+    <source>Empfohlen</source>
+    <target>Aanbevolen</target>
+</phrase>
+<phrase>
+    <source>Zugabe nach</source>
+    <target>Toevoegen na</target>
+</phrase>
+<phrase>
+    <source>Vorhanden</source>
+    <target>In voorraad</target>
+</phrase>
+<phrase>
+    <source>Zurückgeben</source>
+    <target>Terugzetten</target>
+</phrase>
+<phrase>
+    <source>Tage</source>
+    <target>Dagen</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Zugeben</source>
+    <target>Toevoegen</target>
+</phrase>
+<phrase>
+    <source>Hopfen</source>
+    <target>Hoppen</target>
+</phrase>
+<phrase>
+    <source>Stk./L</source>
+    <target>Stk./L</target>
+</phrase>
+<phrase>
+    <source>Zugabe nach</source>
+    <target>Toevoegen na</target>
+</phrase>
+<phrase>
+    <source>Bezogen auf Anstellmenge</source>
+    <target>In verband met de Wortvolume na Enten</target>
+</phrase>
+<phrase>
+    <source>Vorhanden</source>
+    <target>In voorraad</target>
+</phrase>
+<phrase>
+    <source>keine Entnahme</source>
+    <target>geen extractie</target>
+</phrase>
+<phrase>
+    <source>Kochdauer</source>
+    <target>Kooktijd</target>
+</phrase>
+<phrase>
+    <source>Entnehmen</source>
+    <target>verwijderen</target>
+</phrase>
+<phrase>
+    <source>Extrakt</source>
+    <target>Extract</target>
+</phrase>
+<phrase>
+    <source>Entnahme nach</source>
+    <target>Verwijderen na</target>
+</phrase>
+<phrase>
+    <source>Alle</source>
+    <target>Alles</target>
+</phrase>
+<phrase>
+    <source>Nicht vorhanden</source>
+    <target>Niet op voorraad</target>
+</phrase>
+<phrase>
+    <source>Vorhanden</source>
+    <target>In voorraad</target>
+</phrase>
+<phrase>
+    <source>Nicht gebraute Rezepte</source>
+    <target>Niet gebrouwen</target>
+</phrase>
+<phrase>
+    <source>Hefe</source>
+    <target>Gist</target>
+</phrase>
+<phrase>
+    <source>Malz</source>
+    <target>Mout</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Zutaten abziehen</source>
+    <target>Ingrediënten afboeken</target>
+</phrase>
+<phrase>
+    <source>Hopfen</source>
+    <target>Hoppen</target>
+</phrase>
+<phrase>
+    <source>Zutaten ins Lager zurückgeben</source>
+    <target>Ingrediënten terugzetten naar de voorraad</target>
+</phrase>
+<phrase>
+    <source>Zusatz</source>
+    <target>Ingrediënt</target>
+</phrase>
+<phrase>
+    <source>Zutaten zurückgeben</source>
+    <target>Ingrediënten terugzetten</target>
+</phrase>
+<phrase>
+    <source>Zutaten vom Lager abziehen</source>
+    <target>Ingrediënten uit voorraad nemen</target>
+</phrase>
+<phrase>
+    <source>Hinweis: die Mengenangaben lassen sich editieren.</source>
+    <target>Let op: de Hoeveelheden kunnen worden aangepast.</target>
+</phrase>
+<phrase>
+    <source>Vorhanden</source>
+    <target>In voorraad</target>
+</phrase>
+<phrase>
+    <source>Die Zutaten wurden noch nicht abgezogen. Trotzdem schließen?</source>
+    <target>De Ingrediënten zijn nog niet in mindering gebracht. Toch sluiten?</target>
+</phrase>
+<phrase>
+    <source>Hell</source>
+    <target>Licht</target>
+</phrase>
+<phrase>
+    <source>Pfad</source>
+    <target>Pad</target>
+</phrase>
+<phrase>
+    <source>Lagerverwaltung</source>
+    <target>Voorraadbeheer</target>
+</phrase>
+<phrase>
+    <source>Dieses Modul ermöglicht das Ausdrucken von Brauprotokolle oder andere Zusammenfassungen.</source>
+    <target>Met deze module kunnen brouwlogboeken of andere overzichten worden afgedrukt.</target>
+</phrase>
+<phrase>
+    <source>Dieses Modul aktiviert die Schnellgärprobe für die Vorhersage des richtigen Zeitpunktes beim Grünschlauchen.</source>
+    <target>Deze module activeert de snelle fermentatietest om het juiste moment voor groene oogst te voorspellen.</target>
+</phrase>
+<phrase>
+    <source>Systemschriftart</source>
+    <target>Systeem Lettertype</target>
+</phrase>
+<phrase>
+    <source>Dieses Modul ist unverzichtbar, um eine möglichst exakte Vorhersage zu Sudhausausbeute, Farbe und anderer Parameter bis Brauende zu bekommen.
+Gut gepflegt, entscheidet sich hiermit wie genau das Programm arbeitet. Zu Beginn sind Standardwerte eingetragen. Sie sollten aber zeitnah mit den Daten der eigenen Brauanlage ersetzt werden.</source>
+    <target>Deze module is essentieel voor het verkrijgen van een zo nauwkeurig mogelijke voorspelling van de opbrengst, kleur en andere parameters van het brouwhuis tot het einde van het brouwproces.
+Als deze module goed wordt onderhouden, bepaalt dit hoe nauwkeurig het programma werkt. Aan het begin worden standaardwaarden ingevoerd. Deze moeten echter onmiddellijk worden vervangen door de gegevens van uw eigen brouwsysteem.</target>
+</phrase>
+<phrase>
+    <source>Dieses Modul ermöglicht das Bewerten von Suden.</source>
+    <target>Deze module maakt de Evaluatie van Brouwsels mogelijk.</target>
+</phrase>
+<phrase>
+    <source>Dieses Modul berechnet den Preis pro Liter Bier. Voraussetzung ist die Eingabe alle Rohstoffpreise.</source>
+    <target>Deze module berekent de Prijs per liter bier. Voorwaarde is de invoer van alle Grondstofprijzen.</target>
+</phrase>
+<phrase>
+    <source>Module bieten erweiterte Funktionalitäten. Diese lassen sich hier jederzeit ein- oder ausschalten.</source>
+    <target>Modules bieden uitgebreide functionaliteiten. Deze kunnen hier op elk moment worden in- of uitgeschakeld.</target>
+</phrase>
+<phrase>
+    <source>Hiermit wird der Anteil an Speise verrechnet, der später in Reifeprozess für die Nachägrung – entweder in Flasche oder Fass – verwendet wird.
+Unter Speise versteht man einen zurückgehaltenen Teil der Würze, der vor dem Anstellen entnommen wird. Aus seinem Volumen und Zuckergehalt lässt sich die Karbonisierung berechnen.</source>
+    <target>Dit wordt gebruikt om het aandeel wort te berekenen dat later zal worden gebruikt in het rijpingsproces voor secundaire gisting, hetzij in flessen, hetzij in vaten.
+Wort verwijst naar een deel van het wort dat vóór de gisting wordt bewaard. Het volume en het suikergehalte ervan kunnen worden gebruikt om de carbonatatie te berekenen.</target>
+</phrase>
+<phrase>
+    <source>Zurücksetzen</source>
+    <target>Reset</target>
+</phrase>
+<phrase>
+    <source>Brauübersicht</source>
+    <target>Brouwoverzicht</target>
+</phrase>
+<phrase>
+    <source>Dunkel</source>
+    <target>Donker</target>
+</phrase>
+<phrase>
+    <source>In der Brauübersicht lassen sich die wichtigsten Kennzahlen in einem zeitlichen Verlauf darstellen.</source>
+    <target>In het brouwoverzicht kunnen de belangrijkste kengetallen in chronologische volgorde worden weergegeven.</target>
+</phrase>
+<phrase>
+    <source>Module</source>
+    <target>Module</target>
+</phrase>
+<phrase>
+    <source>System</source>
+    <target>Systeem</target>
+</phrase>
+<phrase>
+    <source>Wasseraufbereitung</source>
+    <target>Waterbehandeling</target>
+</phrase>
+<phrase>
+    <source>Sonstige</source>
+    <target>Diversen</target>
+</phrase>
+<phrase>
+    <source>Tooltips</source>
+    <target>Tooltips</target>
+</phrase>
+<phrase>
+    <source>Dieses Modul aktiviert die Lagerverwaltung der Rohstoffe.</source>
+    <target>Deze module activeert het Voorraadbeheer van de Grondstoffen.</target>
+</phrase>
+<phrase>
+    <source>Jetzt prüfen</source>
+    <target>Nu controleren</target>
+</phrase>
+<phrase>
+    <source>Datenbank (*.sqlite);;Alle Dateien (*.*)</source>
+    <target>Database (*.sqlite);;Alle Bestanden (*.*)</target>
+</phrase>
+<phrase>
+    <source>Ansicht</source>
+    <target>Uiterlijk</target>
+</phrase>
+<phrase>
+    <source>Damit lassen sich zeitliche Gärverläufe protokollieren (Hauptgärung, Nachgärung und Schnellgärprobe).</source>
+    <target>Dit maakt het mogelijk de Gistverloop bij te houden (Hoofdgisting, Nagisting en Snelle vergistingsmonster).</target>
+</phrase>
+<phrase>
+    <source>Animationen</source>
+    <target>Animaties</target>
+</phrase>
+<phrase>
+    <source>Zahlen- und Datumsformat aus Spracheinstellung (Neustart erforderlich)</source>
+    <target>Getal- en datumnotatie uit taalinstelling</target>
+</phrase>
+<phrase>
+    <source>Die Schnellgärprobe ist wichtig, wenn es etwa um die Vorhersage des richtigen Zeitpunktes beim Grünschlauchen geht. Auch lässt sich damit das Verhalten unbekannter Hefen beurteilen.</source>
+    <target>De snelle fermentatietest is belangrijk om bijvoorbeeld het juiste moment voor het besproeien met water te voorspellen. Hij kan ook worden gebruikt om het gedrag van onbekende gisten te beoordelen.</target>
+</phrase>
+<phrase>
+    <source>Farbschema</source>
+    <target>Kleurenschema</target>
+</phrase>
+<phrase>
+    <source>Auf Updates beim Start prüfen</source>
+    <target>Controleer bij het opstarten op Updates</target>
+</phrase>
+<phrase>
+    <source>Bewertungen</source>
+    <target>Evaluatie</target>
+</phrase>
+<phrase>
+    <source>Sprache</source>
+    <target>Taal</target>
+</phrase>
+<phrase>
+    <source>Datenbank</source>
+    <target>Database</target>
+</phrase>
+<phrase>
+    <source>Speiseberechnung</source>
+    <target>Onvergiste Wort berekeningen</target>
+</phrase>
+<phrase>
+    <source>Bei ungebrauten Suden fasst der Spickzettel alle Informationen zum einem Brauprotokoll zusammen. Dies ist ausgedruckt am Brautag eine wertvolle Hilfe.
+Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusammen.</source>
+    <target>Voor ongebrouwen brouwsels geeft het spiekbriefje een samenvatting van alle informatie in een brouwlogboek. Dit is een waardevol hulpmiddel wanneer het op de brouwdag wordt uitgeprint.
+Voor gebrouwen brouwsels geeft de Samenvatting een overzicht van alle relevante informatie.</target>
+</phrase>
+<phrase>
+    <source>Bestätigung beim Beenden</source>
+    <target>Bevestig Beëindigen</target>
+</phrase>
+<phrase>
+    <source>Preiskalkulation</source>
+    <target>Prijsberekening</target>
+</phrase>
+<phrase>
+    <source>Ausdruck</source>
+    <target>Afdrukken</target>
+</phrase>
+<phrase>
+    <source>Gärverlauf</source>
+    <target>Gistverloop</target>
+</phrase>
+<phrase>
+    <source>Etikett</source>
+    <target>Labels</target>
+</phrase>
+<phrase>
+    <source>Dieses Modul verwaltet anlagespezifische Kennzahlen. Die wichtigsten sind dabei Sudhausausbeute und Verdampfungsrate. Für eine genauere Berechnung sollte dieses Modul aktiviert werden.</source>
+    <target>Deze module beheert Installatiespecifieke kengetallen. De belangrijkste zijn het Brouwzaalrendement en de Verdampingsgraad. Voor een nauwkeurigere berekening moet deze module worden geactiveerd.</target>
+</phrase>
+<phrase>
+    <source>Dieses Modul ermöglicht das Erstellen von Etiketten (Label) mit automatischer Einbindung der wichtigsten Kennzahlen (Stammwürze, IBU, Farbe, ...).</source>
+    <target>Met deze module kunnen Labels worden aangemaakt met automatische integratie van de belangrijkste gegevens (Stamwort, IBU, Kleur, ...).</target>
+</phrase>
+<phrase>
+    <source>Neustart für vollständige Übersetzung erforderlich.</source>
+    <target>Herstart vereist voor volledige vertaling.</target>
+</phrase>
+<phrase>
+    <source>Einstellungen</source>
+    <target>Instellingen</target>
+</phrase>
+<phrase>
+    <source>Schnellgärprobe</source>
+    <target>Snelle vergistingsmonster</target>
+</phrase>
+<phrase>
+    <source>Ausrüstung</source>
+    <target>Apparatuur</target>
+</phrase>
+<phrase>
+    <source>Dieses Modul hilft bei der Wasseraufbereitung und kalkuliert die Wasserprofile.</source>
+    <target>Deze module helpt bij de Waterbehandeling en berekent de Waterprofielen.</target>
+</phrase>
+<phrase>
+    <source>Datenbank auswählen</source>
+    <target>Database selecteren</target>
+</phrase>
+<phrase>
+    <source>Der Gärverlauf gehört zu den wichtigsten Schritten nach dem Anstellen. Das Programm trennt in Schnellgärprobe, Hauptgärung und Nachgärung.
+Die graphische Auswertung lässt gute Rückschlüsse über die Gärbedingungen zu. Störungen oder Eigenarten bestimmter Hefen, die sich schon einmal &quot;schlafen legen&quot;, lassen sich so auf einen Blick identifizieren.</source>
+    <target>Het fermentatieproces is een van de belangrijkste stappen na het inzetten van de gist. Het programma maakt onderscheid tussen snelle fermentatie, hoofdfermentatie en secundaire fermentatie.
+De grafische evaluatie maakt betrouwbare conclusies over de fermentatieomstandigheden mogelijk. Verstoringen of eigenaardigheden van bepaalde gisten die de neiging hebben om ‘in slaap te vallen’ kunnen zo in één oogopslag worden geïdentificeerd.</target>
+</phrase>
+<phrase>
+    <source>Dieses Modul aktiviert die Speiseberechnung für die Karbonisierung (Nachgärung).</source>
+    <target>Deze module activeert de Onvergiste Wortberekening voor de Carbonatatie (nagisting).</target>
+</phrase>
+<phrase>
+    <source>Malz</source>
+    <target>Mout</target>
+</phrase>
+<phrase>
+    <source>Anteil</source>
+    <target>Aandeel</target>
+</phrase>
+<phrase>
+    <source>Gesamtmenge</source>
+    <target>Totale hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Schüttung</source>
+    <target>Moutstort</target>
+</phrase>
+<phrase>
+    <source>Rast</source>
+    <target>Rust</target>
+</phrase>
+<phrase>
+    <source>Dekoktion</source>
+    <target>Decoctie</target>
+</phrase>
+<phrase>
+    <source>Teilschüttung</source>
+    <target>Deelmaisch</target>
+</phrase>
+<phrase>
+    <source>Teilmaische</source>
+    <target>Deelmaisch</target>
+</phrase>
+<phrase>
+    <source>Kombirast</source>
+    <target>Diastase rust</target>
+</phrase>
+<phrase>
+    <source>Verzuckerungsrast (2. Verzuckerung)</source>
+    <target>Verzuikeringsrust (2. Versuikering)</target>
+</phrase>
+<phrase>
+    <source>Zuschütten</source>
+    <target>Maisch methoden</target>
+</phrase>
+<phrase>
+    <source>Kochen</source>
+    <target>Koken</target>
+</phrase>
+<phrase>
+    <source>Weizenrast (Ferulsäurerast)</source>
+    <target>Tarwenrust (Ferulazuur-rust)</target>
+</phrase>
+<phrase>
+    <source>Eiweissrast (Proteaserast)</source>
+    <target>Eiwitrust (Proteasen rust)</target>
+</phrase>
+<phrase>
+    <source>1/3 Dickmaische</source>
+    <target>1/3 Dikke maisch</target>
+</phrase>
+<phrase>
+    <source>1/3 Dünnmaische</source>
+    <target>1/3 Dunne maisch</target>
+</phrase>
+<phrase>
+    <source>1/2 Dickmaische</source>
+    <target>1/2 Dikke maisch</target>
+</phrase>
+<phrase>
+    <source>Abmaischen</source>
+    <target>Uitmaischen</target>
+</phrase>
+<phrase>
+    <source>Einmaischen</source>
+    <target>Inmaischen</target>
+</phrase>
+<phrase>
+    <source>Zwischenrast</source>
+    <target>Tussenrust</target>
+</phrase>
+<phrase>
+    <source>Maltaserast</source>
+    <target>Maltaserust</target>
+</phrase>
+<phrase>
+    <source>Absetzen</source>
+    <target>Bezinking</target>
+</phrase>
+<phrase>
+    <source>Zubrühen</source>
+    <target>Water Toevoegen</target>
+</phrase>
+<phrase>
+    <source>Gummirast (Glukanaserast)</source>
+    <target>β Glucanase (Glucanase rust)</target>
+</phrase>
+<phrase>
+    <source>Hauptguss</source>
+    <target>Maischwater</target>
+</phrase>
+<phrase>
+    <source>Aufheizen</source>
+    <target>Infusie</target>
+</phrase>
+<phrase>
+    <source>1/3 Läutermaische</source>
+    <target>1/3 Filter maisch</target>
+</phrase>
+<phrase>
+    <source>Maltoserast (1. Verzuckerung)</source>
+    <target>Maltoserust (1. Verzuikering)</target>
+</phrase>
+<phrase>
+    <source>Schüttung</source>
+    <target>Moutstort</target>
+</phrase>
+<phrase>
+    <source>Tage</source>
+    <target>Dagen</target>
+</phrase>
+<phrase>
+    <source>Erwarteter Restextrakt</source>
+    <target>Verwacht Restextract</target>
+</phrase>
+<phrase>
+    <source>Benötigte Speisemenge</source>
+    <target>Benodigde Onvergist Wort</target>
+</phrase>
+<phrase>
+    <source>Jetzt</source>
+    <target>Nu</target>
+</phrase>
+<phrase>
+    <source>Restextrakt Jungbier</source>
+    <target>Restextract Jongbier</target>
+</phrase>
+<phrase>
+    <source>Konzentration der Zuckerlösung</source>
+    <target>Concentratie van de Suikeroplossing</target>
+</phrase>
+<phrase>
+    <source>Sud abgefüllt</source>
+    <target>Brouwsel Afgevuld</target>
+</phrase>
+<phrase>
+    <source>Karbonisierung</source>
+    <target>Carbonisatie</target>
+</phrase>
+<phrase>
+    <source>Verfügbare Speisemenge</source>
+    <target>Beschikbare hoeveelheid wort</target>
+</phrase>
+<phrase>
+    <source>Soll das Stadium &quot;ausgetrunken&quot; zurückgesetzt werden?</source>
+    <target>Moet de fase &quot;dronken&quot; worden gereset?</target>
+</phrase>
+<phrase>
+    <source>Abfüllen</source>
+    <target>Abvullen</target>
+</phrase>
+<phrase>
+    <source>Anzahl Flaschen</source>
+    <target>Aantal Flessen</target>
+</phrase>
+<phrase>
+    <source>Zurücksetzen</source>
+    <target>Reset</target>
+</phrase>
+<phrase>
+    <source>Verlust seit Anstellen</source>
+    <target>Verlies tijdens Enten (Pitching)</target>
+</phrase>
+<phrase>
+    <source>Soll der Sud trotzdem als abgefüllt markiert werden?</source>
+    <target>Moet het brouwsel nog als afgevuld worden gemarkeerd?</target>
+</phrase>
+<phrase>
+    <source>Stadium auf &quot;abgefüllt&quot; setzen?</source>
+    <target>Het toneel klaar voor &quot;gebotteld&quot;?</target>
+</phrase>
+<phrase>
+    <source>Vergärung</source>
+    <target>Vergisting</target>
+</phrase>
+<phrase>
+    <source>Es wurden noch nicht alle Zutaten für die Gärung zugegeben oder entnommen.</source>
+    <target>Niet alle ingrediënten voor de vergisting zijn toegevoegd of verwijderd.</target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Stamwort</target>
+</phrase>
+<phrase>
+    <source>Grünschlauchzeitpunkt nicht erreicht</source>
+    <target>Vergistingsgraad niet bereikt</target>
+</phrase>
+<phrase>
+    <source>Aus Rezept</source>
+    <target>Uit Recept</target>
+</phrase>
+<phrase>
+    <source>Sonstiges</source>
+    <target>Diversen</target>
+</phrase>
+<phrase>
+    <source>Wochen</source>
+    <target>Weken</target>
+</phrase>
+<phrase>
+    <source>Abgefüllte Menge</source>
+    <target>Afgevulde hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Flaschengröße</source>
+    <target>Flesformaat</target>
+</phrase>
+<phrase>
+    <source>Bemerkung Abfüllen</source>
+    <target>Opmerking Afvullen</target>
+</phrase>
+<phrase>
+    <source>Die Stammwürze des Jungbiers liegt tiefer als die der Schnellgärprobe.</source>
+    <target>Het Stamwort van het jongbier is lager dan dat van het Snelgistingsmonster.</target>
+</phrase>
+<phrase>
+    <source>Abfülldatum</source>
+    <target>Afvuldatum</target>
+</phrase>
+<phrase>
+    <source>Abfülldaten</source>
+    <target>Afvulinformatie</target>
+</phrase>
+<phrase>
+    <source>Stadium auf &quot;ausgetrunken&quot; setzen?</source>
+    <target>De toon zetten voor &quot;dronken&quot;?</target>
+</phrase>
+<phrase>
+    <source>Restextrakt der Schnellgärprobe</source>
+    <target>Restextrakt Snelle Vergistingsmonster</target>
+</phrase>
+<phrase>
+    <source>Zusätzliche Kosten</source>
+    <target>Extra kosten</target>
+</phrase>
+<phrase>
+    <source>Zusätzlich benötigter Zucker</source>
+    <target>Extra suiker vereist</target>
+</phrase>
+<phrase>
+    <source>Aktuelle Reifezeit</source>
+    <target>Huidige Rijpingsperiode</target>
+</phrase>
+<phrase>
+    <source>Endvergärungsgrad</source>
+    <target>Eindvergistingsgraad</target>
+</phrase>
+<phrase>
+    <source>Zutaten Gärung</source>
+    <target>Ingrediënten Gisting</target>
+</phrase>
+<phrase>
+    <source>Spundungsdruck</source>
+    <target>Vulstopdruk</target>
+</phrase>
+<phrase>
+    <source>Temperatur Jungbier</source>
+    <target>Temperatuur Jongbier</target>
+</phrase>
+<phrase>
+    <source>Bemerkung Gärung &amp; Reifung</source>
+    <target>Opmerking Gisting &amp; Rijping</target>
+</phrase>
+<phrase>
+    <source>Spunden</source>
+    <target>Geforceerde Carbonisatie</target>
+</phrase>
+<phrase>
+    <source>Alkoholgehalt</source>
+    <target>Alcoholgehalte</target>
+</phrase>
+<phrase>
+    <source>Grünschlauchzeitpunkt</source>
+    <target>Tijdstip Hergisting op de Fles</target>
+</phrase>
+<phrase>
+    <source>Dauer der Hauptgärung</source>
+    <target>Duur van de Hoofdgisting</target>
+</phrase>
+<phrase>
+    <source>Der Grünschlauchzeitpunkt wurde noch nicht erreicht.</source>
+    <target>De vergistingsgraad is nog niet bereikt.</target>
+</phrase>
+<phrase>
+    <source>Soll das Stadium auf &quot;abgefüllt&quot; gesetzt werden?
+Abfülldatum: %1</source>
+    <target>Moet het podium worden ingesteld op &quot;gebotteld&quot;?
+Botteldatum: %1</target>
+</phrase>
+<phrase>
+    <source>Beginn der Reifung</source>
+    <target>Begin van de Rijping</target>
+</phrase>
+<phrase>
+    <source>Sud ausgetrunken</source>
+    <target>Batch opgedronken</target>
+</phrase>
+<phrase>
+    <source>Jungbiermenge</source>
+    <target>Jongbiervolume</target>
+</phrase>
+<phrase>
+    <source>pro Flasche</source>
+    <target>per Fles</target>
+</phrase>
+<phrase>
+    <source>Stadium &quot;abgefüllt&quot; zurücksetzen?</source>
+    <target>De &quot;bottled&quot;-fase resetten?</target>
+</phrase>
+<phrase>
+    <source>Soll das Stadium auf &quot;ausgetrunken&quot; gesetzt werden?</source>
+    <target>Moet het podium worden ingesteld op &quot;dronken&quot;?</target>
+</phrase>
+<phrase>
+    <source>Temperatur für Karbonisierung</source>
+    <target>Temperatuur Carbonisatie</target>
+</phrase>
+<phrase>
+    <source>Soll das Stadium &quot;abgefüllt&quot; zurückgesetzt werden?</source>
+    <target>Moet de &quot;bottled&quot;-fase opnieuw worden ingesteld?</target>
+</phrase>
+<phrase>
+    <source>Stadium &quot;ausgetrunken&quot; zurücksetzen?</source>
+    <target>De &quot;dronken&quot; fase resetten?</target>
+</phrase>
+<phrase>
+    <source>Schnellgärprobe</source>
+    <target>Snelle vergistingsmonster</target>
+</phrase>
+<phrase>
+    <source>Gesamtkosten</source>
+    <target>Totale kosten</target>
+</phrase>
+<phrase>
+    <source>Tags</source>
+    <target>Tags</target>
+</phrase>
+<phrase>
+    <source>Höhe</source>
+    <target>Hoogte</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Zoeken</target>
+</phrase>
+<phrase>
+    <source>SVG exportieren</source>
+    <target>SVG exporteren</target>
+</phrase>
+<phrase>
+    <source>Die Datei konnte nicht geschrieben werden.</source>
+    <target>Gegevens konden niet opgeslagen worden.</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Horizontaal</target>
+</phrase>
+<phrase>
+    <source>Tags ersetzen</source>
+    <target>Tags vervangen</target>
+</phrase>
+<phrase>
+    <source>Anzahl</source>
+    <target>Aantal</target>
+</phrase>
+<phrase>
+    <source>Breite</source>
+    <target>Breedte</target>
+</phrase>
+<phrase>
+    <source>Farben</source>
+    <target>Kleuren</target>
+</phrase>
+<phrase>
+    <source>SVG Export</source>
+    <target>SVG Export</target>
+</phrase>
+<phrase>
+    <source>Etikettgröße</source>
+    <target>Labelformaat</target>
+</phrase>
+<phrase>
+    <source>Etikettnummer</source>
+    <target>Labelnummer</target>
+</phrase>
+<phrase>
+    <source>SVG auswählen</source>
+    <target>SVG selecteren</target>
+</phrase>
+<phrase>
+    <source>Trennlinie darstellen</source>
+    <target>Scheidslijn tonen</target>
+</phrase>
+<phrase>
+    <source>Anzahl Etiketten</source>
+    <target>Aantal Labels</target>
+</phrase>
+<phrase>
+    <source>Aus SVG übernehmen</source>
+    <target>Uit SVG overnemen</target>
+</phrase>
+<phrase>
+    <source>Abstände zwischen Etiketten</source>
+    <target>Afstand tussen de Labels</target>
+</phrase>
+<phrase>
+    <source>SVG (*.svg)</source>
+    <target>SVG (*.svg)</target>
+</phrase>
+<phrase>
+    <source>Neuer Tag</source>
+    <target>Nieuwe Tag</target>
+</phrase>
+<phrase>
+    <source>Vertikal</source>
+    <target>Vertikaal</target>
+</phrase>
+<phrase>
+    <source>Etikett</source>
+    <target>Labels</target>
+</phrase>
+<phrase>
+    <source>Änderungen speichern?</source>
+    <target>Wijzigingen opslaan?</target>
+</phrase>
+<phrase>
+    <source>Hintergrundfarbe</source>
+    <target>Achtergrondkleur</target>
+</phrase>
+<phrase>
+    <source>PDF speichern unter</source>
+    <target>PDF opslaan als</target>
+</phrase>
+<phrase>
+    <source>Seitenverhältnis beibehalten</source>
+    <target>Behoud de beeldverhouding</target>
+</phrase>
+<phrase>
+    <source>Alternativer SVG Renderer</source>
+    <target>Alternatieve SVG Renderer</target>
+</phrase>
+<phrase>
+    <source>Sollen die Änderungen gespeichert werden?</source>
+    <target>Moeten de Wijzigingen opgeslagen worden?</target>
+</phrase>
+<phrase>
+    <source>Stk.</source>
+    <target>Stk.</target>
+</phrase>
+<phrase>
+    <source>alle</source>
+    <target>alles</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Zoeken</target>
+</phrase>
+<phrase>
+    <source>vorhanden</source>
+    <target>In voorraad</target>
+</phrase>
+<phrase>
+    <source>Die Zutaten müssen zuvor unter &quot;Rohstoffe&quot; eingetragen werden.</source>
+    <target>De Ingrediënten moeten eerst in het tabblad &quot;Grondstoffen&quot; worden ingevuld.</target>
+</phrase>
+<phrase>
+    <source>Zutatauswahl</source>
+    <target>Ingrediëntenselectie</target>
+</phrase>
+<phrase>
+    <source>Stk.</source>
+    <target>Stk.</target>
+</phrase>
+<phrase>
+    <source>Aus Rezept übernehmen</source>
+    <target>Uit Recept overnemen</target>
+</phrase>
+<phrase>
+    <source>Stk.</source>
+    <target>Stk.</target>
+</phrase>
+<phrase>
+    <source>Salzsäure</source>
+    <target>Zoutzuur</target>
+</phrase>
+<phrase>
+    <source>Natriumchlorid (NaCl)</source>
+    <target>Natriumchloride (NaCl) (Zout)</target>
+</phrase>
+<phrase>
+    <source>Menge für +1°dH</source>
+    <target>Hoeveelheid voor +1°dH</target>
+</phrase>
+<phrase>
+    <source>Wasseraufbereitung</source>
+    <target>Waterbehandeling</target>
+</phrase>
+<phrase>
+    <source>Phosphorsäure</source>
+    <target>Fosforzuur</target>
+</phrase>
+<phrase>
+    <source>Calciumchlorid-Dihydrat (CaCl2)</source>
+    <target>Calciumchloride (CaCl2)</target>
+</phrase>
+<phrase>
+    <source>Magnesiumsulfat-Heptahydrat (MgSO4)</source>
+    <target>Magnesiumsulfaat (MgSO4) (Epsom)</target>
+</phrase>
+<phrase>
+    <source>Magnesiumchlorid-Hexahydrat (MgCl2)</source>
+    <target>Magnesiumchloride (MgCl2)</target>
+</phrase>
+<phrase>
+    <source>&lt;manuell&gt;</source>
+    <target>&lt;handmatig&gt;</target>
+</phrase>
+<phrase>
+    <source>Schwefelsäure</source>
+    <target>Zwavelzuur</target>
+</phrase>
+<phrase>
+    <source>Sauermalz</source>
+    <target>Zuurmout</target>
+</phrase>
+<phrase>
+    <source>Calciumsulfat-Dihydrat (CaSO4)</source>
+    <target>Calciumsulfaat (CaSO4) (Gips) (Gypsum)</target>
+</phrase>
+<phrase>
+    <source>Natriumhydrogenkarbonat (NaHCO3)</source>
+    <target>Natriumwaterstofcarbonaat (NaHCO3) (Baksoda)</target>
+</phrase>
+<phrase>
+    <source>Milchsäure</source>
+    <target>Melkzuur</target>
+</phrase>
+<phrase>
+    <source>Sude</source>
+    <target>Brouwsel</target>
+</phrase>
+<phrase>
+    <source>Neue Brauanlage</source>
+    <target>Nieuwe Brouwinstallatie</target>
+</phrase>
+<phrase>
+    <source>Gerät löschen?</source>
+    <target>Uitrusting verwijderen?</target>
+</phrase>
+<phrase>
+    <source>Höhe</source>
+    <target>Hoogte</target>
+</phrase>
+<phrase>
+    <source>Neues Gerät</source>
+    <target>Nieuw Apparaat</target>
+</phrase>
+<phrase>
+    <source>Maximal nutzbare Füllhöhe</source>
+    <target>Maximale bruikbare Vulhoogte</target>
+</phrase>
+<phrase>
+    <source>Korrektur des Farbwertes</source>
+    <target>Correctie van de kleurwaarde</target>
+</phrase>
+<phrase>
+    <source>Anlagetyp</source>
+    <target>Type</target>
+</phrase>
+<phrase>
+    <source>Kernwerte der Anlage</source>
+    <target>Basiswaarden van de Installatie</target>
+</phrase>
+<phrase>
+    <source>Brauanlage löschen?</source>
+    <target>Brouwinstallatie Verwijderen?</target>
+</phrase>
+<phrase>
+    <source>Korrektur der Nachgussmenge</source>
+    <target>Correctie van de Spoelwatervolume</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Opmerking</target>
+</phrase>
+<phrase>
+    <source>Nutzbares Volumen</source>
+    <target>Bruikbaar Volume</target>
+</phrase>
+<phrase>
+    <source>Sonstiges</source>
+    <target>Diversen</target>
+</phrase>
+<phrase>
+    <source>Korrektur der Sollmenge</source>
+    <target>Correctie van de Streefwaarde</target>
+</phrase>
+<phrase>
+    <source>Sudhausausbeute</source>
+    <target>Brouwzaalrendement</target>
+</phrase>
+<phrase>
+    <source>Betriebskosten</source>
+    <target>Bedrijfskosten</target>
+</phrase>
+<phrase>
+    <source>Maischekessel</source>
+    <target>Maischketel</target>
+</phrase>
+<phrase>
+    <source>Sudpfanne</source>
+    <target>Kookketel</target>
+</phrase>
+<phrase>
+    <source>Soll das Gerät &quot;%1&quot; gelöscht werden?</source>
+    <target>Moet apparaat &quot;%1&quot; worden verwijderd?</target>
+</phrase>
+<phrase>
+    <source>Durchschnitt</source>
+    <target>Gemiddeld</target>
+</phrase>
+<phrase>
+    <source>Durchschnitt über die letzten</source>
+    <target>Gemiddelde over de laatste</target>
+</phrase>
+<phrase>
+    <source>Volumen</source>
+    <target>Volume</target>
+</phrase>
+<phrase>
+    <source>Geräte</source>
+    <target>Apparaten</target>
+</phrase>
+<phrase>
+    <source>Verdampfungsrate</source>
+    <target>Verdampingsgraad</target>
+</phrase>
+<phrase>
+    <source>Soll die Brauanlage &quot;%1&quot; gelöscht werden?</source>
+    <target>Moet brouwinstallatie &quot;%1&quot; worden verwijderd?</target>
+</phrase>
+<phrase>
+    <source>Ausrüstung</source>
+    <target>Installatie</target>
+</phrase>
+<phrase>
+    <source>Durchmesser</source>
+    <target>Diameter</target>
+</phrase>
+<phrase>
+    <source>Bezeichnung</source>
+    <target>Benaming</target>
+</phrase>
+<phrase>
+    <source>Zeit</source>
+    <target>Tijd</target>
+</phrase>
+<phrase>
+    <source>Temperatur</source>
+    <target>Temperatuur</target>
+</phrase>
+<phrase>
+    <source>α-Amylase</source>
+    <target>α-amylase</target>
+</phrase>
+<phrase>
+    <source>β-Amylase</source>
+    <target>β-amylase</target>
+</phrase>
+<phrase>
+    <source>gelb</source>
+    <target>Geel</target>
+</phrase>
+<phrase>
+    <source>rein</source>
+    <target>Zuiver</target>
+</phrase>
+<phrase>
+    <source>Geschmacksfehler</source>
+    <target>Smaak gebreken</target>
+</phrase>
+<phrase>
+    <source>Heute</source>
+    <target>Vandaag</target>
+</phrase>
+<phrase>
+    <source>wenig rezent</source>
+    <target>Weinig tintelend</target>
+</phrase>
+<phrase>
+    <source>toll, macht Lust auf mehr</source>
+    <target>geweldig, blijf drinken, maakt dat je meer wilt</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Zoeken</target>
+</phrase>
+<phrase>
+    <source>Woche</source>
+    <target>Week</target>
+</phrase>
+<phrase>
+    <source>hefig</source>
+    <target>Gistig</target>
+</phrase>
+<phrase>
+    <source>schal</source>
+    <target>Plat</target>
+</phrase>
+<phrase>
+    <source>einmal ist genug, langweilig</source>
+    <target>eenmaal is genoeg, saai</target>
+</phrase>
+<phrase>
+    <source>unreif, unrein</source>
+    <target>Onrijp, niet zuiver</target>
+</phrase>
+<phrase>
+    <source>mässige Haltbarkeit</source>
+    <target>Matige stabiliteit</target>
+</phrase>
+<phrase>
+    <source>kräftiges Volumen</source>
+    <target>Krachtige volume</target>
+</phrase>
+<phrase>
+    <source>nicht anhängend</source>
+    <target>geen nasmaak</target>
+</phrase>
+<phrase>
+    <source>süsslich, nach Würze</source>
+    <target>Zoet, naar kruiden</target>
+</phrase>
+<phrase>
+    <source>vollmundig</source>
+    <target>Volmondig</target>
+</phrase>
+<phrase>
+    <source>Bewertungsdatum</source>
+    <target>Beoordelingsdatum</target>
+</phrase>
+<phrase>
+    <source>keine Angabe</source>
+    <target>Niet vermeld</target>
+</phrase>
+<phrase>
+    <source>unauffällig, gewöhnlich</source>
+    <target>onopvallend, gewoon</target>
+</phrase>
+<phrase>
+    <source>nicht trinkbar, problematisch</source>
+    <target>niet drinkbaar, onplezierig</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Opmerking</target>
+</phrase>
+<phrase>
+    <source>gewürzig</source>
+    <target>Kruidig</target>
+</phrase>
+<phrase>
+    <source>Geruchsfehler</source>
+    <target>Geurfouten</target>
+</phrase>
+<phrase>
+    <source>Haupttrunk (Vollmundigkeit)</source>
+    <target>Smaak/Mondgevoel</target>
+</phrase>
+<phrase>
+    <source>sehr schal</source>
+    <target>Zeer plat</target>
+</phrase>
+<phrase>
+    <source>gut haftend am Glas</source>
+    <target>Hecht goed aan het glas</target>
+</phrase>
+<phrase>
+    <source>Gesamteindruck</source>
+    <target>Algehele indruk</target>
+</phrase>
+<phrase>
+    <source>Geruch</source>
+    <target>Geur</target>
+</phrase>
+<phrase>
+    <source>unangenehm</source>
+    <target>onaangenaam</target>
+</phrase>
+<phrase>
+    <source>süsslich, klebrig</source>
+    <target>Zoet, kleverig</target>
+</phrase>
+<phrase>
+    <source>überschäumend</source>
+    <target>Uitbundig schuimend</target>
+</phrase>
+<phrase>
+    <source>hellgelb, lichthell</source>
+    <target>Lichtgeel, helder</target>
+</phrase>
+<phrase>
+    <source>Schaum</source>
+    <target>Schuim</target>
+</phrase>
+<phrase>
+    <source>Sterne</source>
+    <target>Sterren</target>
+</phrase>
+<phrase>
+    <source>stark prickelnd, aufdringlich</source>
+    <target>Sterk tintelend, opdringerig</target>
+</phrase>
+<phrase>
+    <source>überraschend, ungewöhnlich</source>
+    <target>verrassend, ongewoon</target>
+</phrase>
+<phrase>
+    <source>frisch</source>
+    <target>Fris</target>
+</phrase>
+<phrase>
+    <source>gutes, typisches Bier</source>
+    <target>goed, typisch bier</target>
+</phrase>
+<phrase>
+    <source>golden</source>
+    <target>Goud</target>
+</phrase>
+<phrase>
+    <source>angenehm, ausgewogen</source>
+    <target>aangenaam, evenwichtig</target>
+</phrase>
+<phrase>
+    <source>gräulich, fahl</source>
+    <target>Grauw, bleek</target>
+</phrase>
+<phrase>
+    <source>unangenehm, unausgewogen</source>
+    <target>Onaangenaam, onevenwichtig</target>
+</phrase>
+<phrase>
+    <source>kupferrot, bernsteinfarben</source>
+    <target>Koperrood, Amberkleurig</target>
+</phrase>
+<phrase>
+    <source>Antrunk (Rezenz, Frischeeindruck)</source>
+    <target>Eerste indruk</target>
+</phrase>
+<phrase>
+    <source>gehaltvoll</source>
+    <target>Rijk</target>
+</phrase>
+<phrase>
+    <source>etwas leer</source>
+    <target>Enigszins dun</target>
+</phrase>
+<phrase>
+    <source>wohlriechend</source>
+    <target>Geurig</target>
+</phrase>
+<phrase>
+    <source>sehr herb, kräftig betont</source>
+    <target>zeer bittrer, sterk benadrukt</target>
+</phrase>
+<phrase>
+    <source>Nachtrunk (Bittere, Hopfenaroma)</source>
+    <target>Afwerking</target>
+</phrase>
+<phrase>
+    <source>interessant</source>
+    <target>interessante</target>
+</phrase>
+<phrase>
+    <source>braun bis tiefbraun</source>
+    <target>Bruin tot Diepbruin</target>
+</phrase>
+<phrase>
+    <source>bernstein</source>
+    <target>Amberkleurig</target>
+</phrase>
+<phrase>
+    <source>schlank</source>
+    <target>Mager</target>
+</phrase>
+<phrase>
+    <source>Geschmack</source>
+    <target>Smaak</target>
+</phrase>
+<phrase>
+    <source>feinporig, fest</source>
+    <target>Fijne poriëen, stevig</target>
+</phrase>
+<phrase>
+    <source>fruchtig</source>
+    <target>Fruitig</target>
+</phrase>
+<phrase>
+    <source>schwarz, tiefdunkel</source>
+    <target>Zwart, diep donker</target>
+</phrase>
+<phrase>
+    <source>Bewertungen</source>
+    <target>Evaluatie</target>
+</phrase>
+<phrase>
+    <source>grobporig, schwach</source>
+    <target>Grove poriën, zwak</target>
+</phrase>
+<phrase>
+    <source>Farbe, Klarheit</source>
+    <target>Kleur, Helderheid</target>
+</phrase>
+<phrase>
+    <source>angenehm rezent</source>
+    <target>Aangenaamd gebalanceerd</target>
+</phrase>
+<phrase>
+    <source>nachhängend</source>
+    <target>Nasmaak</target>
+</phrase>
+<phrase>
+    <source>wenig herb, unterentwickelt</source>
+    <target>weinig bitter onderontwikkeld</target>
+</phrase>
+<phrase>
+    <source>wässrig, leer, dünn</source>
+    <target>Waterig, leeg, dun</target>
+</phrase>
+<phrase>
+    <source>säuerlich</source>
+    <target>Zuur</target>
+</phrase>
+<phrase>
+    <source>rein, abgerundet</source>
+    <target>Zuiver, afgerond</target>
+</phrase>
+<phrase>
+    <source>schlecht haftend</source>
+    <target>Hecht slecht aan het glas</target>
+</phrase>
+<phrase>
+    <source>rezent, fein perlend</source>
+    <target>Wrang, fijn sprankelend</target>
+</phrase>
+<phrase>
+    <source>satt, intensiv</source>
+    <target>Rijk, intens</target>
+</phrase>
+<phrase>
+    <source>geringes Volumen</source>
+    <target>Kleine volume</target>
+</phrase>
+<phrase>
+    <source>ausgewogen, rund</source>
+    <target>Evenwichtig, rond</target>
+</phrase>
+<phrase>
+    <source>glänzend</source>
+    <target>Glanzend</target>
+</phrase>
+<phrase>
+    <source>unausgewogen, kantig</source>
+    <target>Onevenwichtig, scherp</target>
+</phrase>
+<phrase>
+    <source>Bewertung</source>
+    <target>Evaluatie</target>
+</phrase>
+<phrase>
+    <source>mastig, breit</source>
+    <target>Zwaar</target>
+</phrase>
+<phrase>
+    <source>gut eingebunden</source>
+    <target>Goed geïntegreerd</target>
+</phrase>
+<phrase>
+    <source>matt, blass</source>
+    <target>Saai, bleek</target>
+</phrase>
+<phrase>
+    <source>kunstvoll, kreativ, mutig</source>
+    <target>artistiek, creatief, dapper</target>
+</phrase>
+<phrase>
+    <source>nicht oder kaum wahrnehmbar</source>
+    <target>niet of nauwelijks waarneembaar</target>
+</phrase>
+<phrase>
+    <source>malzaromatisch, malzig</source>
+    <target>Mout aromatisch, moutig</target>
+</phrase>
+<phrase>
+    <source>sehr voluminös, mächtig</source>
+    <target>Zeer volumineus, krachtig</target>
+</phrase>
+<phrase>
+    <source>sehr fein</source>
+    <target>uitermate fijn</target>
+</phrase>
+<phrase>
+    <source>stark nachhängend</source>
+    <target>sterke nasmaak</target>
+</phrase>
+<phrase>
+    <source>hopfenaromatisch, hopfig</source>
+    <target>Hop aromatisch, hoppig</target>
+</phrase>
+<phrase>
+    <source>prickelnd</source>
+    <target>Tintelend</target>
+</phrase>
+<phrase>
+    <source>keine Haltbarkeit</source>
+    <target>Geen stabiliteit</target>
+</phrase>
+<phrase>
+    <source>gute Haltbarkeit</source>
+    <target>Goede stabiliteit</target>
+</phrase>
+<phrase>
+    <source>CO₂</source>
+    <target></target>
+</phrase>
+<phrase>
+    <source>Druck</source>
+    <target>Druk</target>
+</phrase>
+<phrase>
+    <source>CSV Datei auswählen</source>
+    <target>CVS Bestand selecteren</target>
+</phrase>
+<phrase>
+    <source>zugeben</source>
+    <target>Toevoegen</target>
+</phrase>
+<phrase>
+    <source>CSV Datei (*.csv);;Alle Dateien (*.*)</source>
+    <target>CSV Bestanden (*.csv);;Alle Bestanden (*.*)</target>
+</phrase>
+<phrase>
+    <source>Nachgärung</source>
+    <target>Nagisting</target>
+</phrase>
+<phrase>
+    <source>Zutat:</source>
+    <target>Ingrediënt:</target>
+</phrase>
+<phrase>
+    <source>Temperatur</source>
+    <target>Temperatuur</target>
+</phrase>
+<phrase>
+    <source>Hauptgärung</source>
+    <target>Hoofdgisting</target>
+</phrase>
+<phrase>
+    <source>Alkohol</source>
+    <target>Alcohol</target>
+</phrase>
+<phrase>
+    <source>Nicht alle Einträge konnten importiert werden.
+Unterstütztes Format:
+Datum1;Druck1;Temperatur1[;Bemerkung1]
+Datum2;Druck2;Temperatur2[;Bemerkung2]</source>
+    <target>Niet alle items konden worden geïmporteerd.
+Ondersteund formaat:
+Datum1;Druk1;Temperatuur1[;Comment1]
+Datum2;Druk2;Temperatuur2[;Comment2]</target>
+</phrase>
+<phrase>
+    <source>entnehmen</source>
+    <target>verwijderen</target>
+</phrase>
+<phrase>
+    <source>Gärverlauf</source>
+    <target>Gistingsproces</target>
+</phrase>
+<phrase>
+    <source>Restextrakt</source>
+    <target>Restextract</target>
+</phrase>
+<phrase>
+    <source>Nicht alle Einträge konnten importiert werden.
+Unterstütztes Format:
+Datum1;Restextrakt1;Temperatur1[;Bemerkung1]
+Datum2;Restextrakt2;Temperatur2[;Bemerkung2]</source>
+    <target>Niet alle items konden worden geïmporteerd.
+Ondersteund formaat:
+Datum1;Extract1;Temperatuur1[;Comment1]
+Datum2;Extract2;Temperatuur2[;Comment2]</target>
+</phrase>
+<phrase>
+    <source>Schnellgärprobe</source>
+    <target>Snelle vergistingsmonster</target>
+</phrase>
+<phrase>
+    <source>Umrechnungsformel</source>
+    <target>Omrekenformule</target>
+</phrase>
+<phrase>
+    <source>Datum</source>
+    <target>Datum</target>
+</phrase>
+<phrase>
+    <source>Standardformel</source>
+    <target>Standaardformule</target>
+</phrase>
+<phrase>
+    <source>Refraktometer</source>
+    <target>Refractometer</target>
+</phrase>
+<phrase>
+    <source>Dichte</source>
+    <target>Dichtheid</target>
+</phrase>
+<phrase>
+    <source>Korrekturfaktor </source>
+    <target>Correctiefactor </target>
+</phrase>
+<phrase>
+    <source>Stammwürze</source>
+    <target>Stamwort</target>
+</phrase>
+<phrase>
+    <source>Novotny</source>
+    <target>Novotný</target>
+</phrase>
+<phrase>
+    <source>Temperatur</source>
+    <target>Temperatuur</target>
+</phrase>
+<phrase>
+    <source>Berechnung Extrakt</source>
+    <target>Bereken Extrakt</target>
+</phrase>
+<phrase>
+    <source>Anderes</source>
+    <target>Anders</target>
+</phrase>
+<phrase>
+    <source>Eichtemperatur</source>
+    <target>Kalibratietemperatuur</target>
+</phrase>
+<phrase>
+    <source>Spindel</source>
+    <target>Hydrometer</target>
+</phrase>
+<phrase>
+    <source>Terrill</source>
+    <target>Terrill</target>
+</phrase>
+<phrase>
+    <source>Terrill linear</source>
+    <target>Terrill linear</target>
+</phrase>
+<phrase>
+    <source>Messung mit</source>
+    <target>Gemeten met</target>
+</phrase>
+<phrase>
+    <source>Restextrakt</source>
+    <target>Restextrakt</target>
+</phrase>
+<phrase>
+    <source>Messwert</source>
+    <target>Gemeten Waarde</target>
+</phrase>
+<phrase>
+    <source>Neues Profil</source>
+    <target>Nieuw Profiel</target>
+</phrase>
+<phrase>
+    <source>Calcium (50 - 150 mg/l)</source>
+    <target>Calcium (Ca) (50 - 150 mg/l)</target>
+</phrase>
+<phrase>
+    <source>Hydrogencarbonat (0 - 500 mg/l)</source>
+    <target>Waterstofcarbonaat (HC03) (0 - 500 mg/l)</target>
+</phrase>
+<phrase>
+    <source>Sulfat (0 - 250 mg/l)</source>
+    <target>Sulfaat (SO4) (0 - 250 mg/l)</target>
+</phrase>
+<phrase>
+    <source>Natrium (0 - 50 mg/l)</source>
+    <target>Natrium (Na) (0 - 50 mg/l)</target>
+</phrase>
+<phrase>
+    <source>Soll das Wasserprofil &quot;%1&quot; gelöscht werden?</source>
+    <target>Waterprofiel &quot;%1&quot; verwijderen?</target>
+</phrase>
+<phrase>
+    <source>Magnesium (0 - 20 mg/l)</source>
+    <target>Magnesium (Mg) (0 - 20 mg/l)</target>
+</phrase>
+<phrase>
+    <source>Chlorid (0 - 150 mg/l)</source>
+    <target>Chloride (Cl) (0 - 150 mg/l)</target>
+</phrase>
+<phrase>
+    <source>Wasserprofil löschen?</source>
+    <target>Waterprofiel verwijderen?</target>
+</phrase>
+<phrase>
+    <source>Wasserprofile</source>
+    <target>Waterprofielen</target>
+</phrase>
+<phrase>
+    <source>Restalkalität</source>
+    <target>Restalkaliteit</target>
+</phrase>
+<phrase>
+    <source>Restalkalität Korrektur</source>
+    <target>Correctie Restalkaliteit</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Gesamt</source>
+    <target>Totaal</target>
+</phrase>
+<phrase>
+    <source>Nachguss</source>
+    <target>Spoelwater</target>
+</phrase>
+<phrase>
+    <source>Hauptguss</source>
+    <target>Maischwater</target>
+</phrase>
+<phrase>
+    <source>Restalkalität</source>
+    <target>Restalkaliteit</target>
+</phrase>
+<phrase>
+    <source>Verdünnung</source>
+    <target>Verdunning</target>
+</phrase>
+<phrase>
+    <source>Sud teilen</source>
+    <target>Brouwsel splitsen</target>
+</phrase>
+<phrase>
+    <source>Alpha</source>
+    <target>Alpha</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Kochen</source>
+    <target>Koken</target>
+</phrase>
+<phrase>
+    <source>Kochende</source>
+    <target>Kookeinde</target>
+</phrase>
+<phrase>
+    <source>Vorhanden</source>
+    <target>In voorraad</target>
+</phrase>
+<phrase>
+    <source>Bittere</source>
+    <target>Bitterheid</target>
+</phrase>
+<phrase>
+    <source>Ausschlagen</source>
+    <target>Overhevelen</target>
+</phrase>
+<phrase>
+    <source>Kochdauer</source>
+    <target>Kooktijd</target>
+</phrase>
+<phrase>
+    <source>Ausbeute</source>
+    <target>Rendement</target>
+</phrase>
+<phrase>
+    <source>Vorderwürze</source>
+    <target>First Wort Hopping</target>
+</phrase>
+<phrase>
+    <source>Kochbeginn</source>
+    <target>Kookbegin</target>
+</phrase>
+<phrase>
+    <source>Forum</source>
+    <target>Forum</target>
+</phrase>
+<phrase>
+    <source>Über</source>
+    <target>Over</target>
+</phrase>
+<phrase>
+    <source>Homepage</source>
+    <target>Website</target>
+</phrase>
+<phrase>
+    <source>Kompiliert mit</source>
+    <target>Gecompileerd met</target>
+</phrase>
+<phrase>
+    <source>Entwickler</source>
+    <target>Ontwikkelaars</target>
+</phrase>
+<phrase>
+    <source>Hilfe</source>
+    <target>Help</target>
+</phrase>
+<phrase>
+    <source>Nicht unterstützt.</source>
+    <target>Niet ondersteund.</target>
+</phrase>
+<phrase>
+    <source>Keine</source>
+    <target>Geen</target>
+</phrase>
+<phrase>
+    <source>Anlage ID</source>
+    <target>Installatie-ID</target>
+</phrase>
+<phrase>
+    <source>Ungültiger Wert in Tabelle:</source>
+    <target>Ongeldige waarde in Tabel:</target>
+</phrase>
+<phrase>
+    <source>Ausgewählte Einträge löschen</source>
+    <target>Geselecteerde Velden Verwijderen</target>
+</phrase>
+<phrase>
+    <source>Schließen</source>
+    <target>Sluiten</target>
+</phrase>
+<phrase>
+    <source>Ungültige Felder in Tabelle:</source>
+    <target>Ongeldige velden in Tabel:</target>
+</phrase>
+<phrase>
+    <source>Anlage</source>
+    <target>Installatie</target>
+</phrase>
+<phrase>
+    <source>Ungültige Felder können mit einem Doppelklick editiert werden. Alternativ kann der ganze Eintrag gelöscht werden.</source>
+    <target>Ongeldige velden kunnen worden bewerkt met een dubbelklik. Als alternatief kan de hele invoer worden verwijderd.</target>
+</phrase>
+<phrase>
+    <source>Rezept</source>
+    <target>Recept</target>
+</phrase>
+<phrase>
+    <source>Sud ID</source>
+    <target>Brouwsel ID</target>
+</phrase>
+<phrase>
+    <source>Weiter</source>
+    <target>Verder</target>
+</phrase>
+<phrase>
+    <source>Keine (weitere) Probleme gefunden.</source>
+    <target>Geen (verdere) Problemen gevonden.</target>
+</phrase>
+<phrase>
+    <source>Ungültige Sud ID in Tabelle:</source>
+    <target>Ongeldige brouwsel ID in Tabel:</target>
+</phrase>
+<phrase>
+    <source>Datenbank bereinigen</source>
+    <target>Database opschonen</target>
+</phrase>
+<phrase>
+    <source>Bittere</source>
+    <target>Bitterheid</target>
+</phrase>
+<phrase>
+    <source>Ungültige Anlage ID in Tabelle:</source>
+    <target>Ongeldige installatie ID in Tabel:</target>
+</phrase>
+<phrase>
+    <source>Sudname</source>
+    <target>Brouwselnaam</target>
+</phrase>
+<phrase>
+    <source>Abgefüllt</source>
+    <target>Afgevuld</target>
+</phrase>
+<phrase>
+    <source>Gebraut</source>
+    <target>Gebrouwen</target>
+</phrase>
+<phrase>
+    <source>Gewicht</source>
+    <target>Gewicht</target>
+</phrase>
+<phrase>
+    <source>Ausgetrunken</source>
+    <target>leeggedronken</target>
+</phrase>
+<phrase>
+    <source>Kopie</source>
+    <target>Kopie</target>
+</phrase>
+<phrase>
+    <source>Laden</source>
+    <target>Laden</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Zoeken</target>
+</phrase>
+<phrase>
+    <source>Merken</source>
+    <target>Markeren</target>
+</phrase>
+<phrase>
+    <source>Teilen</source>
+    <target>Splitsen</target>
+</phrase>
+<phrase>
+    <source>Kopieren</source>
+    <target>kopiëren</target>
+</phrase>
+<phrase>
+    <source>Sud löschen?</source>
+    <target>Brouwsel Verwijderen?</target>
+</phrase>
+<phrase>
+    <source>Anlegen</source>
+    <target>Aanmaken</target>
+</phrase>
+<phrase>
+    <source>Sudauswahl</source>
+    <target>Brouwsel</target>
+</phrase>
+<phrase>
+    <source>Soll der Sud &quot;%1&quot; gelöscht werden?</source>
+    <target>Moet brouwsel &quot;%1&quot; verwijderd worden?</target>
+</phrase>
+<phrase>
+    <source>Exportieren</source>
+    <target>Exporteren</target>
+</phrase>
+<phrase>
+    <source>Importieren</source>
+    <target>Importeren</target>
+</phrase>
+<phrase>
+    <source>Neuer Sud</source>
+    <target>Nieuw Brouwsel</target>
+</phrase>
+<phrase>
+    <source>Löschen</source>
+    <target>Verwijderen</target>
+</phrase>
+<phrase>
+    <source>Würzemenge bei aktueller Temperatur</source>
+    <target>Wortvolume bij huidige Temperatuur</target>
+</phrase>
+<phrase>
+    <source>Füllhöhe vom Boden aus gemessen</source>
+    <target>Vulhoogte vanaf de Bodem gemeten</target>
+</phrase>
+<phrase>
+    <source>Würzemenge bei 20°C</source>
+    <target>Wortvolume bij 20°C</target>
+</phrase>
+<phrase>
+    <source>Temperatur der Würze</source>
+    <target>Temperatuur van het Wort</target>
+</phrase>
+<phrase>
+    <source>Füllhöhe von Oberkante aus gemessen</source>
+    <target>Vulhoogte vanaf de Bovenkant gemeten</target>
+</phrase>
+<phrase>
+    <source>Eingabehilfe für Volumen</source>
+    <target>Invoerhulp voor Volume</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Anteil</source>
+    <target>Aandeel</target>
+</phrase>
+<phrase>
+    <source>Bittere</source>
+    <target>Bitterheid</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Anteil</source>
+    <target>Aandeel</target>
+</phrase>
+<phrase>
+    <source>Menge</source>
+    <target>Hoeveelheid</target>
+</phrase>
+<phrase>
+    <source>Der maximal empfohlener Schüttungsanteil (%1%) wurde überschritten.</source>
+    <target>Maximaal aanbevolen aandeel Moutstort (%1%) overschreden.</target>
+</phrase>
+<phrase>
+    <source>Vorhanden</source>
+    <target>In voorraad</target>
+</phrase>
+<phrase>
+    <source>Extrakt</source>
+    <target>Extract</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Zoeken</target>
+</phrase>
+<phrase>
+    <source>Ausdruck</source>
+    <target>Afdrukken</target>
+</phrase>
+<phrase>
+    <source>Suche</source>
+    <target>Zoeken</target>
+</phrase>
+<phrase>
+    <source>Hiermit wird eine neue Kategorie angelegt. Dazu erscheint ein eigenes Pop-up-Fenster.</source>
+    <target>Dit creëert een nieuwe categorie. Hiervoor verschijnt een apart Pop-up venster.</target>
+</phrase>
+<phrase>
+    <source>Hiermit wird eine Kategorie nach oben verschoben.</source>
+    <target>Dit verschuift een Categorie naar boven.</target>
+</phrase>
+<phrase>
+    <source>Hiermit wird eine Kategorie nach unten verschoben.</source>
+    <target>Dit verschuift een categorie naar beneden.</target>
+</phrase>
+<phrase>
+    <source>Hiermit wird eine neue Kategorie entfernt. Eine oder mehrere Kategorien müssen dazu markiert sein.</source>
+    <target>Dit verwijdert een nieuwe Categorie. Hiervoor moeten één of meer Categorieën worden geselecteerd.</target>
+</phrase>
+<phrase>
+    <source>%1. Woche</source>
+    <target>%1. Week</target>
+</phrase>
+<phrase>
+    <source>%1. Woche, reif in %2 Tagen</source>
+    <target>%1 Week, rijp in %2 Dagen</target>
+</phrase>
+<phrase>
+    <source>Template wiederherstellen?</source>
+    <target>Sjabloon herstellen?</target>
+</phrase>
+<phrase>
+    <source>Änderungen speichern?</source>
+    <target>Veranderingen opslaan?</target>
+</phrase>
+<phrase>
+    <source>Soll das Standardtemplate wiederhergestellt werden?</source>
+    <target>Orginele sjabloon terug zetten?</target>
+</phrase>
+<phrase>
+    <source>PDF speichern unter</source>
+    <target>PDF opslaan als</target>
+</phrase>
+<phrase>
+    <source>Sollen die Änderungen gespeichert werden?</source>
+    <target>Moeten de veranderingen opgeslagen worden?</target>
+</phrase>
+<phrase>
+    <source>Menge bei Kochende (100°C)</source>
+    <target>Hoeveelheid bij kookeinde (100°C)</target>
+</phrase>
+<phrase>
+    <source>Füllhöhe vom Boden aus gemessen</source>
+    <target>Vulhoogte vanaf de Bodem gemeten</target>
+</phrase>
+<phrase>
+    <source>Kochdauer</source>
+    <target>Kooktijd</target>
+</phrase>
+<phrase>
+    <source>Verdampfungsziffer</source>
+    <target>Verdampingsgraad</target>
+</phrase>
+<phrase>
+    <source>Berechnung der Verdampfung</source>
+    <target>Verdampingsberekening</target>
+</phrase>
+<phrase>
+    <source>Menge bei 100°C</source>
+    <target>Hoeveelheid bij 100°C</target>
+</phrase>
+<phrase>
+    <source>Verdampfungsrate</source>
+    <target>Verdampingssnelheid</target>
+</phrase>
+<phrase>
+    <source>Menge bei Kochbeginn (100°C)</source>
+    <target>Hoeveelheid bij kookbegin (100°C)</target>
+</phrase>
+<phrase>
+    <source>Füllhöhe von Oberkante aus gemessen</source>
+    <target>Vulhoogte vanaf de Bovenrand gemeten</target>
+</phrase>
+<phrase>
+    <source>Würzemenge</source>
+    <target>Wortvolume</target>
+</phrase>
+<phrase>
+    <source>Rezept</source>
+    <target>Recept</target>
+</phrase>
+<phrase>
+    <source>Anstellen</source>
+    <target>Enten</target>
+</phrase>
+<phrase>
+    <source>Abgefüllt</source>
+    <target>Afgevuld</target>
+</phrase>
+<phrase>
+    <source>Jungbier</source>
+    <target>Jongbier</target>
+</phrase>
+<phrase>
+    <source>Anhang auswählen</source>
+    <target>Bijlagen selecteren</target>
+</phrase>
+<phrase>
+    <source>relativ zur Datenbank</source>
+    <target>relatief tot Database</target>
+</phrase>
+<phrase>
+    <source>Öffnen</source>
+    <target>Open</target>
+</phrase>
+<phrase>
+    <source>Auswahl drucken</source>
+    <target>Print selectie</target>
+</phrase>
+<phrase>
+    <source>Zurücksetzen</source>
+    <target>Reset</target>
+</phrase>
+<phrase>
+    <source>Alles drucken</source>
+    <target>Alles afdrukken</target>
+</phrase>
+<phrase>
+    <source>Überschrift:</source>
+    <target>Titel:</target>
+</phrase>
+<phrase>
+    <source>Alles kopieren</source>
+    <target>Kopieer alles</target>
+</phrase>
+<phrase>
+    <source>Auswahl kopieren</source>
+    <target>Kopieer selectie</target>
+</phrase>
+<phrase>
+    <source>Drucken</source>
+    <target>Afdrukken</target>
+</phrase>
+<phrase>
+    <source>Malz pH-Wert</source>
+    <target>Mout pH-waarde</target>
+</phrase>
+<phrase>
+    <source>Manuell</source>
+    <target>Handmatig</target>
+</phrase>
+<phrase>
+    <source>pH-Wert</source>
+    <target>pH-Waarde</target>
+</phrase>
+<phrase>
+    <source>Caramalz</source>
+    <target>Karamelmout</target>
+</phrase>
+<phrase>
+    <source>Malztyp in der Auswahliste wählen, sonst den Malz-pH-Wert (in destilliertem Wasser) manuell eintragen. Carafa und hoch gedarrte Malze gelten als Röstmalz.</source>
+    <target>Kies een moutsoort uit de lijst, anders de Mout pH-waarde (in gedestilleerd water) invoeren. Carafa en sterk gebrande Mouten gelden als Roostmouten.</target>
+</phrase>
+<phrase>
+    <source>Malz EBC &lt; 200</source>
+    <target>Mout EBC &lt; 200</target>
+</phrase>
+<phrase>
+    <source>Röstmalz</source>
+    <target>Roostmout</target>
+</phrase>
+<phrase>
+    <source>Neue Version verfügbar</source>
+    <target>Nieuwe Versie beschikbaar</target>
+</phrase>
+<phrase>
+    <source>Diese Version ignorieren</source>
+    <target>Deze Versie Negeren</target>
+</phrase>
+<phrase>
+    <source>Auf Updates prüfen</source>
+    <target>Controleer op Updates</target>
+</phrase>
+<phrase>
+    <source>Bemerkung</source>
+    <target>Opmerking</target>
+</phrase>
+<phrase>
+    <source>Rezept</source>
+    <target>Recept</target>
+</phrase>
+<phrase>
+    <source>Erwartet</source>
+    <target>Verwacht</target>
+</phrase>
+<phrase>
+    <source>Gemessen</source>
+    <target>Gemeten</target>
+</phrase>
+<phrase>
+    <source>Restextrakt</source>
+    <target>Restextract</target>
+</phrase>
+<phrase>
+    <source>Schnellgärprobe</source>
+    <target>Snelle vergistingsmonster</target>
+</phrase>
+<phrase>
+    <source>Die Tabelle &quot;%1&quot; konnte nicht heruntergeladen werden.</source>
+    <target>Tabel &quot;%1&quot; kon niet worden gedownload.</target>
+</phrase>
+<phrase>
+    <source>Die Tabelle &quot;%1&quot; wurde aktualisiert.</source>
+    <target>Tabel &quot;%1&quot; wordt bijgewerkt.</target>
+</phrase>
+<phrase>
+    <source>oBraMa Datenbank</source>
+    <target>oBraMa Database</target>
+</phrase>
+</QPH>

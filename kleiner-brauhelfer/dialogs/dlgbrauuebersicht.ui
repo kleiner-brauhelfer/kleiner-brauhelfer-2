@@ -168,7 +168,7 @@
       <item row="9" column="2">
        <widget class="QLabel" name="lblKostenEinheit">
         <property name="text">
-         <string>$</string>
+         <string notr="true">$</string>
         </property>
        </widget>
       </item>
@@ -214,7 +214,7 @@
       <item row="8" column="2">
        <widget class="QLabel" name="label_25">
         <property name="text">
-         <string>%</string>
+         <string notr="true">%</string>
         </property>
        </widget>
       </item>
@@ -286,14 +286,14 @@
          </size>
         </property>
         <property name="text">
-         <string>kg</string>
+         <string notr="true">kg</string>
         </property>
        </widget>
       </item>
       <item row="4" column="2">
        <widget class="QLabel" name="label_20">
         <property name="text">
-         <string>°P</string>
+         <string notr="true">°P</string>
         </property>
        </widget>
       </item>
@@ -320,7 +320,7 @@
       <item row="8" column="5">
        <widget class="QLabel" name="label_26">
         <property name="text">
-         <string>%vol</string>
+         <string notr="true">%vol</string>
         </property>
        </widget>
       </item>
@@ -334,7 +334,7 @@
       <item row="4" column="5">
        <widget class="QLabel" name="label_24">
         <property name="text">
-         <string>°P</string>
+         <string notr="true">°P</string>
         </property>
        </widget>
       </item>
@@ -377,7 +377,7 @@
       <item row="6" column="2">
        <widget class="QLabel" name="label_21">
         <property name="text">
-         <string>%</string>
+         <string notr="true">%</string>
         </property>
        </widget>
       </item>
@@ -429,7 +429,7 @@
          </size>
         </property>
         <property name="text">
-         <string>kg</string>
+         <string notr="true">kg</string>
         </property>
        </widget>
       </item>
@@ -502,7 +502,7 @@
       <item row="9" column="5">
        <widget class="QLabel" name="lblGesamtkostenEinheit">
         <property name="text">
-         <string>$</string>
+         <string notr="true">$</string>
         </property>
        </widget>
       </item>
@@ -515,14 +515,14 @@
          </size>
         </property>
         <property name="text">
-         <string>L</string>
+         <string notr="true">L</string>
         </property>
        </widget>
       </item>
       <item row="6" column="5">
        <widget class="QLabel" name="label_22">
         <property name="text">
-         <string>%</string>
+         <string notr="true">%</string>
         </property>
        </widget>
       </item>
@@ -535,7 +535,7 @@
          </size>
         </property>
         <property name="text">
-         <string>L</string>
+         <string notr="true">L</string>
         </property>
        </widget>
       </item>
@@ -565,7 +565,7 @@
       <item row="5" column="2">
        <widget class="QLabel" name="label_23">
         <property name="text">
-         <string>l/h</string>
+         <string notr="true">l/h</string>
         </property>
        </widget>
       </item>

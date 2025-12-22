@@ -66,6 +66,7 @@ bool Brauhelfer::connectDatabase()
         }
     }
     emit connectionChanged(isConnectedDatabase());
+    emit modified();
     return isConnectedDatabase();
 }
 
@@ -76,6 +77,7 @@ void Brauhelfer::disconnectDatabase()
         qInfo(loggingCategory) << "Brauhelfer::disconnectDatabase()";
         mDb->disconnect();
         emit connectionChanged(isConnectedDatabase());
+        emit modified();
     }
 }
 

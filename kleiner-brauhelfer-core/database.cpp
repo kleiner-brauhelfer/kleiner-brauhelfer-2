@@ -202,6 +202,9 @@ void Database::disconnect()
         modelKategorien->clear();
         modelWasseraufbereitung->clear();
         mVersion = -1;
+
+        QSqlDatabase db = QSqlDatabase::database(QStringLiteral("kbh"), false);
+        db.close();
     }
 }
 
@@ -212,6 +215,8 @@ bool Database::isConnected() const
 
 bool Database::isDirty() const
 {
+    if (!isConnected())
+        return false;
     return modelSud->isDirty() ||
            modelMaischplan->isDirty() ||
            modelMalzschuettung->isDirty() ||

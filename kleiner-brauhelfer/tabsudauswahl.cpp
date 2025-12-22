@@ -81,6 +81,8 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     connect(ui->actionMerken, &QAction::toggled, this, &TabSudAuswahl::sudMerken);
     connect(ui->actionLaden, &QAction::triggered, this, &TabSudAuswahl::sudLaden);
 
+    connect(gSettings, &Settings::themeChanged, this, &TabSudAuswahl::updateWebView);
+
     ui->table->selectRow(0);
     filterChanged();
 }

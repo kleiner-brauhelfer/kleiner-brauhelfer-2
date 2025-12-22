@@ -28,7 +28,7 @@ void ChartHopfen::update(const SudObject* sud)
     for (int row = 0; row < nRows; ++row)
     {
         QString name = model->data(row, ModelHopfengaben::ColName).toString();
-        double val;
+        double val = 0;
         switch (art)
         {
         case Brauhelfer::BerechnungsartHopfen::Keine:

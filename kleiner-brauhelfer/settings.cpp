@@ -56,6 +56,8 @@ void Settings::initTheme()
 
     // theme
     mTheme = static_cast<Qt::ColorScheme>(value("Theme", (int)Qt::ColorScheme::Unknown).toInt());
+    if (mTheme == Qt::ColorScheme::Unknown)
+        qApp->styleHints()->unsetColorScheme();
 
     // colors
     QColor colorChanged;

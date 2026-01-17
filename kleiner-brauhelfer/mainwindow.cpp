@@ -87,9 +87,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     mSud(new SudObject(bh))
 {
-    Qt::ColorScheme theme = gSettings->theme();
-    QIcon::setThemeSearchPaths({":/images/icons"});
-    themeChanged(theme);
+    QStringList iconSearchPaths = QIcon::themeSearchPaths();
+    iconSearchPaths.append(":/images/icons");
+    QIcon::setThemeSearchPaths(iconSearchPaths);
+    themeChanged(gSettings->theme());
 
     initLabels();
     ui->setupUi(this);

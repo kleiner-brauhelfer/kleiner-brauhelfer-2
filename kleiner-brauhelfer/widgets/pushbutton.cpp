@@ -62,7 +62,7 @@ void PushButton::paintEvent(QPaintEvent *event)
     if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
     else if (mError)
-        setPalette(gSettings->paletteErrorButton);
+        setPalette(gSettings->paletteError);
     else
         setPalette(mDefaultPalette);
     QPushButton::paintEvent(event);

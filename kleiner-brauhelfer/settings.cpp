@@ -233,8 +233,7 @@ void Settings::initTheme()
     paletteChanged.setColor(QPalette::Button, colorChanged);
     paletteError = palette;
     paletteError.setColor(QPalette::Base, ErrorBase);
-    paletteErrorButton = palette;
-    paletteErrorButton.setColor(QPalette::Button, ErrorBase);
+    paletteError.setColor(QPalette::Button, ErrorBase);
     paletteErrorLabel = palette;
     paletteErrorLabel.setColor(QPalette::WindowText, ErrorText);
 

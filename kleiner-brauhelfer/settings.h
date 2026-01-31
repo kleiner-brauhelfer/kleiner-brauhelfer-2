@@ -104,7 +104,6 @@ private:
 public:
     QPalette palette;
     QPalette paletteError;
-    QPalette paletteErrorButton;
     QPalette paletteErrorLabel;
     QPalette paletteChanged;
 

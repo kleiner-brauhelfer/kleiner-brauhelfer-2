@@ -25,7 +25,7 @@ void ComboBox::paintEvent(QPaintEvent *event)
     if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
     else if (mError)
-        setPalette(gSettings->paletteErrorButton);
+        setPalette(gSettings->paletteError);
     else
         setPalette(gSettings->palette);
     QComboBox::paintEvent(event);

@@ -103,7 +103,6 @@ private:
 
 public:
     QPalette palette;
-    QPalette paletteInput;
     QPalette paletteError;
     QPalette paletteErrorButton;
     QPalette paletteErrorLabel;

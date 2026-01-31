@@ -42,8 +42,8 @@ void WdgWasseraufbereitung::updateValues()
     ui->tbName->setEnabled(mEnabled);
     ui->btnAuswahl->setVisible(mEnabled);
     ui->btnLoeschen->setVisible(mEnabled);
-    ui->tbMenge->setReadOnly(!mEnabled);
-    ui->tbRestalkalitaet->setReadOnly(!mEnabled);
+    ui->tbMenge->setEnabled(mEnabled);
+    ui->tbRestalkalitaet->setEnabled(mEnabled);
     ui->btnNachOben->setVisible(mEnabled);
     ui->btnNachUnten->setVisible(mEnabled);
 

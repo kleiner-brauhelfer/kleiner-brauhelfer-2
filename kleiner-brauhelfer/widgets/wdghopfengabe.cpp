@@ -67,11 +67,11 @@ void WdgHopfenGabe::updateValues()
     ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
     if (!mEnabled)
         ui->btnAufbrauchen->setVisible(false);
-    ui->tbMenge->setReadOnly(!mEnabled);
-    ui->tbMengeProLiter->setReadOnly(!mEnabled);
-    ui->tbMengeProzent->setReadOnly(!mEnabled);
-    ui->tbAnteilProzent->setReadOnly(!mEnabled);
-    ui->tbKochdauer->setReadOnly(!mEnabled);
+    ui->tbMenge->setEnabled(mEnabled);
+    ui->tbMengeProLiter->setEnabled(mEnabled);
+    ui->tbMengeProzent->setEnabled(mEnabled);
+    ui->tbAnteilProzent->setEnabled(mEnabled);
+    ui->tbKochdauer->setEnabled(mEnabled);
     ui->cbZeitpunkt->setEnabled(mEnabled);
     if (!mEnabled)
     {

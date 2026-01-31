@@ -27,16 +27,12 @@ void SpinBox::paintEvent(QPaintEvent *event)
 {
     if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
-    else if (!isEnabled())
-        setPalette(gSettings->palette);
     else if (mError)
         setPalette(gSettings->paletteError);
     else if (value() >= mErrorLimitMax || value() <= mErrorLimitMin)
         setPalette(gSettings->paletteError);
-    else if (isReadOnly())
-        setPalette(gSettings->palette);
     else
-        setPalette(gSettings->paletteInput);
+        setPalette(gSettings->palette);
     QSpinBox::paintEvent(event);
 }
 
@@ -44,6 +40,17 @@ void SpinBox::setValue(int val)
 {
     if (value() != val)
         QSpinBox::setValue(val);
+}
+
+void SpinBox::setEnabled(bool e)
+{
+    QSpinBox::setEnabled(e);
+    setButtonSymbols(e ? UpDownArrows : NoButtons);
+}
+
+void SpinBox::setDisabled(bool d)
+{
+    setEnabled(!d);
 }
 
 void SpinBox::setReadOnly(bool r)

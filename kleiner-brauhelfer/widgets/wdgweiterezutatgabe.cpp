@@ -89,16 +89,16 @@ void WdgWeitereZutatGabe::updateValues()
     ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
     ui->btnAufbrauchen->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
     ui->cbEntnahme->setEnabled(mEnabled);
-    ui->tbMenge->setReadOnly(!mEnabled);
-    ui->tbMengeTotal->setReadOnly(!mEnabled || ui->cbAnstellmenge->isChecked());
-    ui->tbExtrakt->setReadOnly(!mEnabled);
-    ui->tbExtraktProzent->setReadOnly(!mEnabled);
+    ui->tbMenge->setEnabled(mEnabled);
+    ui->tbMengeTotal->setEnabled(mEnabled && !ui->cbAnstellmenge->isChecked());
+    ui->tbExtrakt->setEnabled(mEnabled);
+    ui->tbExtraktProzent->setEnabled(mEnabled);
     ui->btnKorrekturExtrakt->setVisible(mEnabled);
-    ui->tbKochdauer->setReadOnly(!mEnabled);
-    ui->tbZugabeNach->setReadOnly(!mEnabled);
-    ui->tbDatumVon->setReadOnly(!mEnabled);
-    ui->tbDauerTage->setReadOnly(!mEnabled);
-    ui->tbDatumBis->setReadOnly(!mEnabled);
+    ui->tbKochdauer->setEnabled(mEnabled);
+    ui->tbZugabeNach->setEnabled(mEnabled);
+    ui->tbDatumVon->setEnabled(mEnabled);
+    ui->tbDauerTage->setEnabled(mEnabled);
+    ui->tbDatumBis->setEnabled(mEnabled);
     ui->btnNachOben->setVisible(mEnabled);
     ui->btnNachUnten->setVisible(mEnabled);
 

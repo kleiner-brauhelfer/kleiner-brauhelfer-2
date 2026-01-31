@@ -65,10 +65,10 @@ void WdgMalzGabe::updateValues()
     ui->lblVorhanden->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
     ui->lblVorhandenEinheit->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
     ui->btnAufbrauchen->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
-    ui->tbMengeProzent->setReadOnly(!mEnabled);
-    ui->tbMenge->setReadOnly(!mEnabled);
-    ui->tbExtraktProzent->setReadOnly(!mEnabled);
-    ui->tbExtrakt->setReadOnly(!mEnabled);
+    ui->tbMengeProzent->setEnabled(mEnabled);
+    ui->tbMenge->setEnabled(mEnabled);
+    ui->tbExtraktProzent->setEnabled(mEnabled);
+    ui->tbExtrakt->setEnabled(mEnabled);
     ui->btnKorrektur->setVisible(mEnabled);
     ui->btnKorrekturExtrakt->setVisible(mEnabled);
     ui->btnNachOben->setVisible(mEnabled);

@@ -27,16 +27,12 @@ void DoubleSpinBox::paintEvent(QPaintEvent *event)
 {
     if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
-    else if (!isEnabled())
-        setPalette(gSettings->palette);
     else if (mError)
         setPalette(gSettings->paletteError);
     else if (value() >= mErrorLimitMax || value() <= mErrorLimitMin)
         setPalette(gSettings->paletteError);
-    else if (isReadOnly())
-        setPalette(gSettings->palette);
     else
-        setPalette(gSettings->paletteInput);
+        setPalette(gSettings->palette);
     QDoubleSpinBox::paintEvent(event);
 }
 
@@ -44,6 +40,17 @@ void DoubleSpinBox::setValue(double val)
 {
     if (std::fabs(value()-val) >= std::pow(10,-decimals())/2)
         QDoubleSpinBox::setValue(val);
+}
+
+void DoubleSpinBox::setEnabled(bool e)
+{
+    QDoubleSpinBox::setEnabled(e);
+    setButtonSymbols(e ? UpDownArrows : NoButtons);
+}
+
+void DoubleSpinBox::setDisabled(bool d)
+{
+    setEnabled(!d);
 }
 
 void DoubleSpinBox::setReadOnly(bool r)

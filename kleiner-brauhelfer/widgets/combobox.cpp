@@ -24,12 +24,10 @@ void ComboBox::paintEvent(QPaintEvent *event)
 {
     if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
-    else if (!isEnabled())
-        setPalette(gSettings->palette);
     else if (mError)
         setPalette(gSettings->paletteErrorButton);
     else
-        setPalette(gSettings->paletteInput);
+        setPalette(gSettings->palette);
     QComboBox::paintEvent(event);
 }
 

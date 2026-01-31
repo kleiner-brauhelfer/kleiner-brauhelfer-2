@@ -10,6 +10,7 @@ TimeEdit::TimeEdit(QWidget *parent) :
 {
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
+    setCalendarPopup(false);
     connect(this, &QDateTimeEdit::timeChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
@@ -23,15 +24,22 @@ void TimeEdit::paintEvent(QPaintEvent *event)
 {
     if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
-    else if (!isEnabled())
-        setPalette(gSettings->palette);
     else if (mError)
         setPalette(gSettings->paletteError);
-    else if (isReadOnly())
-        setPalette(gSettings->palette);
     else
-        setPalette(gSettings->paletteInput);
+        setPalette(gSettings->palette);
     QDateTimeEdit::paintEvent(event);
+}
+
+void TimeEdit::setEnabled(bool e)
+{
+    QTimeEdit::setEnabled(e);
+    setButtonSymbols(e ? UpDownArrows : NoButtons);
+}
+
+void TimeEdit::setDisabled(bool d)
+{
+    setEnabled(!d);
 }
 
 void TimeEdit::setReadOnly(bool r)

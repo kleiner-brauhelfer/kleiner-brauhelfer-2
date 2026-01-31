@@ -9,6 +9,8 @@ class DateEdit : public QDateEdit
 
 public:
     DateEdit(QWidget *parent = nullptr);
+    void setEnabled(bool e);
+    void setDisabled(bool d);
     void setReadOnly(bool r);
     bool hasFocus() const;
     void setError(bool e);

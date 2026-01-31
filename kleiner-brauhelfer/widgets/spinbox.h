@@ -9,6 +9,8 @@ class SpinBox : public QSpinBox
 
 public:
     SpinBox(QWidget *parent = nullptr);
+    void setEnabled(bool e);
+    void setDisabled(bool d);
     void setReadOnly(bool r);
     void setError(bool e);
     void setErrorRange(int min, int max);

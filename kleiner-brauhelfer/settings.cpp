@@ -227,7 +227,7 @@ void Settings::initTheme()
     */
 
     palette = QGuiApplication::palette();
-    paletteInput = palette;
+    palette.setColor(QPalette::Disabled, QPalette::Base, palette.color(QPalette::Active, QPalette::Base));
     paletteChanged = palette;
     paletteChanged.setColor(QPalette::Base, colorChanged);
     paletteChanged.setColor(QPalette::Button, colorChanged);

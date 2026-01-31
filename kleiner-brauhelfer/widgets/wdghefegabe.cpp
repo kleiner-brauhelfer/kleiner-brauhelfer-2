@@ -75,11 +75,11 @@ void WdgHefeGabe::updateValues()
     ui->tbVorhanden->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
     ui->lblVorhanden->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
     ui->btnAufbrauchen->setVisible(mEnabled && gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung));
-    ui->tbMenge->setReadOnly(!mEnabled);
+    ui->tbMenge->setEnabled(mEnabled);
     ui->tbMengeEmpfohlen->setVisible(mEnabled);
     ui->lblEmpfohlen->setVisible(mEnabled);
-    ui->tbTage->setReadOnly(!mEnabled);
-    ui->tbDatum->setReadOnly(!mEnabled);
+    ui->tbTage->setEnabled(mEnabled);
+    ui->tbDatum->setEnabled(mEnabled);
     ui->btnNachOben->setVisible(mEnabled);
     ui->btnNachUnten->setVisible(mEnabled);
 

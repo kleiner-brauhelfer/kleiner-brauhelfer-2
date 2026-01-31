@@ -9,6 +9,8 @@ class DoubleSpinBox : public QDoubleSpinBox
 
 public:
     DoubleSpinBox(QWidget *parent = nullptr);
+    void setEnabled(bool e);
+    void setDisabled(bool d);
     void setReadOnly(bool r);
     void setError(bool e);
     void setErrorRange(double min, double max);

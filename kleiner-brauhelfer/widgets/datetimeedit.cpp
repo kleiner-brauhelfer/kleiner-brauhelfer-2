@@ -25,15 +25,23 @@ void DateTimeEdit::paintEvent(QPaintEvent *event)
 {
     if (WidgetDecorator::contains(this))
         setPalette(gSettings->paletteChanged);
-    else if (!isEnabled())
-        setPalette(gSettings->palette);
     else if (mError)
         setPalette(gSettings->paletteError);
-    else if (isReadOnly())
-        setPalette(gSettings->palette);
     else
-        setPalette(gSettings->paletteInput);
+        setPalette(gSettings->palette);
     QDateTimeEdit::paintEvent(event);
+}
+
+void DateTimeEdit::setEnabled(bool e)
+{
+    QDateTimeEdit::setEnabled(e);
+    setButtonSymbols(e ? UpDownArrows : NoButtons);
+    setCalendarPopup(e);
+}
+
+void DateTimeEdit::setDisabled(bool d)
+{
+    setEnabled(!d);
 }
 
 void DateTimeEdit::setReadOnly(bool r)

@@ -193,24 +193,24 @@ void TabBraudaten::checkEnabled()
 {
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
     bool gebraut = status != Brauhelfer::SudStatus::Rezept && !gSettings->ForceEnabled;
-    ui->tbBraudatum->setReadOnly(gebraut);
-    ui->tbBraudatumZeit->setReadOnly(gebraut);
+    ui->tbBraudatum->setDisabled(gebraut);
+    ui->tbBraudatumZeit->setDisabled(gebraut);
     ui->btnBraudatumHeute->setVisible(!gebraut);
-    ui->tbSWKochbeginn->setReadOnly(gebraut);
+    ui->tbSWKochbeginn->setDisabled(gebraut);
     ui->btnSWKochbeginn->setVisible(!gebraut);
-    ui->tbWuerzemengeKochbeginn->setReadOnly(gebraut);
+    ui->tbWuerzemengeKochbeginn->setDisabled(gebraut);
     ui->btnWuerzemengeKochbeginn->setVisible(!gebraut);
-    ui->tbWuerzemengeVorHopfenseihen->setReadOnly(gebraut);
+    ui->tbWuerzemengeVorHopfenseihen->setDisabled(gebraut);
     ui->btnWuerzemengeVorHopfenseihen->setVisible(!gebraut);
-    ui->tbWuerzemengeKochende->setReadOnly(gebraut);
+    ui->tbWuerzemengeKochende->setDisabled(gebraut);
     ui->btnWuerzemengeKochende->setVisible(!gebraut);
-    ui->tbSWKochende->setReadOnly(gebraut);
+    ui->tbSWKochende->setDisabled(gebraut);
     ui->btnSWKochende->setVisible(!gebraut);
-    ui->tbSWAnstellen->setReadOnly(gebraut);
+    ui->tbSWAnstellen->setDisabled(gebraut);
     ui->btnSWAnstellen->setVisible(!gebraut);
     ui->btnWuerzemengeAnstellen->setVisible(!gebraut);
     ui->btnWuerzemengeAnstellenTotal->setVisible(!gebraut && gSettings->isModuleEnabled(Settings::ModuleSpeise));
-    ui->tbWuerzemengeAnstellenTotal->setReadOnly(gebraut);
+    ui->tbWuerzemengeAnstellenTotal->setDisabled(gebraut);
     ui->btnSpeisemengeNoetig->setVisible(!gebraut && gSettings->isModuleEnabled(Settings::ModuleSpeise));
     if (gSettings->isModuleEnabled(Settings::ModuleAusruestung))
     {
@@ -219,21 +219,21 @@ void TabBraudaten::checkEnabled()
         ui->wdgMengeSollEndecmVonOben->setVisible(!gebraut);
         ui->wdgMengeSollEndecmVomBoden->setVisible(!gebraut);
     }
-    ui->tbSpeisemenge->setReadOnly(gebraut);
-    ui->tbVerduennung->setReadOnly(gebraut);
-    ui->tbWuerzemengeAnstellen->setReadOnly(gebraut);
-    ui->tbNebenkosten->setReadOnly(gebraut);
+    ui->tbSpeisemenge->setDisabled(gebraut);
+    ui->tbVerduennung->setDisabled(gebraut);
+    ui->tbWuerzemengeAnstellen->setDisabled(gebraut);
+    ui->tbNebenkosten->setDisabled(gebraut);
     ui->btnSudGebraut->setEnabled(!gebraut);
     ui->btnSudGebrautReset->setEnabled(status == Brauhelfer::SudStatus::Gebraut);
-    ui->tbTempKochbeginn->setReadOnly(gebraut);
-    ui->tbTempKochende->setReadOnly(gebraut);
-    ui->tbSpeiseSRE->setReadOnly(gebraut);
-    ui->tbSpeiseT->setReadOnly(gebraut);
-    ui->tbMengeHefestarter->setReadOnly(gebraut);
-    ui->tbSWHefestarter->setReadOnly(gebraut);
-    ui->tbSWHefestarterBrix->setReadOnly(gebraut);
-    ui->tbWasserVerschneidung->setReadOnly(gebraut);
-    ui->tbWasserVerschneidungBrix->setReadOnly(gebraut);
+    ui->tbTempKochbeginn->setDisabled(gebraut);
+    ui->tbTempKochende->setDisabled(gebraut);
+    ui->tbSpeiseSRE->setDisabled(gebraut);
+    ui->tbSpeiseT->setDisabled(gebraut);
+    ui->tbMengeHefestarter->setDisabled(gebraut);
+    ui->tbSWHefestarter->setDisabled(gebraut);
+    ui->tbSWHefestarterBrix->setDisabled(gebraut);
+    ui->tbWasserVerschneidung->setDisabled(gebraut);
+    ui->tbWasserVerschneidungBrix->setDisabled(gebraut);
 }
 
 void TabBraudaten::updateValues()

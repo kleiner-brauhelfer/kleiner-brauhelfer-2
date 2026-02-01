@@ -63,7 +63,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QCheckBox" name="checkBox_ignor">
+      <widget class="CheckBox" name="checkBox_ignor">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird diese Version &lt;span style=&quot; font-weight:600;&quot;&gt;ignoriert&lt;/span&gt;. Die Meldung erscheint erneut beim nächten Versionssprung.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -76,7 +76,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="cbCheckForUpdates">
+      <widget class="CheckBox" name="cbCheckForUpdates">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird gerpüft, ob ein Update vorliegt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -105,6 +105,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>widgets/checkbox.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

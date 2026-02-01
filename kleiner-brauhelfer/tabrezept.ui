@@ -80,7 +80,7 @@
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QLineEdit" name="tbSudname">
+            <widget class="LineEdit" name="tbSudname">
              <property name="toolTip">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird der &lt;span style=&quot; font-weight:600;&quot;&gt;Sudname&lt;/span&gt; benannt.&lt;/p&gt;&lt;p&gt;Namensbestandteile sind bei Bieren von Hobbybrauern oft eine kreative Bezeichnung und der Bierstil. Der kreative Name wird oft als Gegenentwurf zu kommerziellen Bieren gewählt.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -3763,6 +3763,11 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>widgets/lineedit.h</header>
+  </customwidget>
   <customwidget>
    <class>DoubleSpinBox</class>
    <extends>QDoubleSpinBox</extends>

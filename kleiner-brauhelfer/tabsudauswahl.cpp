@@ -120,7 +120,7 @@ void TabSudAuswahl::modulesChanged(Settings::Modules modules)
 
 void TabSudAuswahl::setupToolbar(QToolBar* toolbar)
 {
-    QToolButton* toolButton = new QToolButton(this);
+    ToolButton* toolButton = new ToolButton(this);
     toolButton->setIcon(QIcon::fromTheme(QStringLiteral("sud_neu")));
     toolButton->setText(tr("Anlegen"));
     toolButton->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);

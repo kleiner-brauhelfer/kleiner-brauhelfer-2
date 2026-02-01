@@ -21,7 +21,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLineEdit" name="lineEditFilter">
+    <widget class="LineEdit" name="lineEditFilter">
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier kann vollkommen frei in der aktiven Rohstoffliste gesucht werden. Es genügen Wortbestandteile, auch mitten in einem Begriff.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -90,6 +90,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>widgets/lineedit.h</header>
+  </customwidget>
   <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>

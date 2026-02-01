@@ -23,7 +23,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QRadioButton" name="radioButtonAlle">
+      <widget class="RadioButton" name="radioButtonAlle">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden &lt;span style=&quot; font-weight:600;&quot;&gt;alle Zutaten&lt;/span&gt; angezeigt.&lt;/p&gt;&lt;p&gt;Damit Zutaten hier aufscheinen, müssen sie vorher im tab Rohstoffe eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -36,7 +36,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButtonVorhanden">
+      <widget class="RadioButton" name="radioButtonVorhanden">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden alle vorhandenen Zutaten angezeigt.&lt;/p&gt;&lt;p&gt;Vorhandene Zutaten sind solche mit einer &lt;span style=&quot; font-weight:600;&quot;&gt;Mengenangabe größer Null&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Damit Zutaten hier aufscheinen, müssen sie vorher im tab Rohstoffe eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -46,7 +46,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEditFilter">
+      <widget class="LineEdit" name="lineEditFilter">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird nach Zutaten für die &lt;span style=&quot; font-weight:600;&quot;&gt;gewählte Rohstoffliste &lt;/span&gt;gesucht.&lt;/p&gt;&lt;p&gt;Meistens genügen schon drei Zeichen. Die Suche beschränkt sich auf die gewählte Rohstoffliste und nicht auf die Gesamtheit aller Rohstoffe in der Datenbank. Angezeigt werden Ergebnisse, die sich auf den Namen des Rohstoffs oder auf Einträge in den Felder Eigenschaften und Bemerkungen beziehen.&lt;/p&gt;&lt;p&gt;Damit Zutaten hier aufscheinen, müssen sie vorher im Reiter Rohstoffe eingetragen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -106,6 +106,16 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>widgets/lineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>RadioButton</class>
+   <extends>QRadioButton</extends>
+   <header>widgets/radiobutton.h</header>
+  </customwidget>
   <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>

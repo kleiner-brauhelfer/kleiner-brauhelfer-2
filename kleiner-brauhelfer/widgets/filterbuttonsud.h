@@ -1,13 +1,14 @@
 #ifndef FILTERBUTTONSUD_H
 #define FILTERBUTTONSUD_H
 
-#include <QToolButton>
-#include <QCheckBox>
-#include <QComboBox>
-#include "proxymodelsud.h"
-#include "dateedit.h"
+#include "toolbutton.h"
 
-class FilterButtonSud : public QToolButton
+class ProxyModelSud;
+class CheckBox;
+class ComboBox;
+class DateEdit;
+
+class FilterButtonSud : public ToolButton
 {
     Q_OBJECT
 
@@ -46,15 +47,15 @@ private:
 
 private:
     ProxyModelSud* mModel;
-    QCheckBox* mCheckBoxAlle;
-    QCheckBox* mCheckBoxRezept;
-    QCheckBox* mCheckBoxGebraut;
-    QCheckBox* mCheckBoxAbgefuellt;
-    QCheckBox* mCheckBoxAusgetrunken;
-    QCheckBox* mCheckBoxMerkliste;
-    QComboBox* mComboBoxKategorie;
-    QComboBox* mComboBoxAnlage;
-    QCheckBox* mCheckBoxDatum;
+    CheckBox* mCheckBoxAlle;
+    CheckBox* mCheckBoxRezept;
+    CheckBox* mCheckBoxGebraut;
+    CheckBox* mCheckBoxAbgefuellt;
+    CheckBox* mCheckBoxAusgetrunken;
+    CheckBox* mCheckBoxMerkliste;
+    ComboBox* mComboBoxKategorie;
+    ComboBox* mComboBoxAnlage;
+    CheckBox* mCheckBoxDatum;
     DateEdit* mDateEditMin;
     DateEdit* mDateEditMax;
 };

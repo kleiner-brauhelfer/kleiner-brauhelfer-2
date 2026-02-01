@@ -237,7 +237,7 @@
          </widget>
         </item>
         <item row="0" column="6" colspan="2">
-         <widget class="QCheckBox" name="cbAnstellmenge">
+         <widget class="CheckBox" name="cbAnstellmenge">
           <property name="text">
            <string>Bezogen auf Anstellmenge</string>
           </property>
@@ -617,7 +617,7 @@
           </widget>
          </item>
          <item row="0" column="5">
-          <widget class="QCheckBox" name="cbEntnahme">
+          <widget class="CheckBox" name="cbEntnahme">
            <property name="toolTip">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; der Zugabe festgelegt. Flüssigkeiten oder lösliche Stoffe werden mit keiner Entnahme definiert. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;Ist eine &lt;span style=&quot; font-weight:600;&quot;&gt;Entnahme&lt;/span&gt; vorgesehen, empfiehlt sich ein verschnürbares Baumwollsäckchen, um das Jungbier nicht unnötig zu verunreinigen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
@@ -680,6 +680,11 @@
    <class>PushButton</class>
    <extends>QPushButton</extends>
    <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>widgets/checkbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

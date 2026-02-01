@@ -12,7 +12,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLineEdit" name="tbFilter">
+    <widget class="LineEdit" name="tbFilter">
      <property name="toolTip">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird nach angelegten &lt;span style=&quot; font-weight:600;&quot;&gt;Kategorien&lt;/span&gt; gesucht. Kategorien dienen dazu, die verschiedenen Sude zu klassifizieren und damit besser unterscheidbar zu machen. Sinnvoll ist dies, wenn aus dem Biernamen z.B. nicht der Bierstil hervorgeht.&lt;/p&gt;&lt;p&gt;Kategorien können grob nach unter- oder obergärig oder international nach den Kategorien des &lt;a href=&quot;https://www.bjcp.org/docs/2015_Guidelines_Beer.pdf&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;BJCP Style Guidelines von 2015 &lt;/span&gt;&lt;/a&gt;unterschieden werden. Gerne werden von der Brau-Community auch Namen genutzt, die als &amp;quot;außer Kategorie&amp;quot; klassifziert werden und mehr ein Gefühl kommunizieren. Die beliebten Weihnachtsbiere gehören beispielsweise dazu.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
@@ -169,6 +169,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>widgets/lineedit.h</header>
+  </customwidget>
   <customwidget>
    <class>PushButton</class>
    <extends>QPushButton</extends>

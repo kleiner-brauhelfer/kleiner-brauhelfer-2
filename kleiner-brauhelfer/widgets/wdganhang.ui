@@ -45,7 +45,7 @@
        <number>4</number>
       </property>
       <item row="1" column="2">
-       <widget class="QCheckBox" name="checkBox_Relativ">
+       <widget class="CheckBox" name="checkBox_Relativ">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -125,7 +125,7 @@
        </widget>
       </item>
       <item row="0" column="1" colspan="3">
-       <widget class="QLineEdit" name="lineEdit_Pfad">
+       <widget class="LineEdit" name="lineEdit_Pfad">
         <property name="toolTip">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld wird der Pfad zum gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Anhang &lt;/span&gt;angegeben.&lt;/p&gt;&lt;p&gt;Es können Bilder, Textdokumente, PDF und sogar Filme eingefügt werden, es können in den Bemerkungen aber nur Bilder im Feld für Bemerkungen weiterverarbeitet werden.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung: &lt;/span&gt;Die Pfadangabe bleibt auch bei einem ungültigen Pfad bestehen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
@@ -138,9 +138,19 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>widgets/lineedit.h</header>
+  </customwidget>
+  <customwidget>
    <class>PushButton</class>
    <extends>QPushButton</extends>
    <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>widgets/checkbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

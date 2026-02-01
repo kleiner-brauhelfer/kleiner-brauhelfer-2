@@ -104,6 +104,7 @@ SOURCES += \
     model/spinboxdelegate.cpp \
     model/tagglobaldelegate.cpp \
     model/textdelegate.cpp \
+    widgets/checkbox.cpp \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
     widgets/datetimeedit.cpp \
@@ -111,12 +112,15 @@ SOURCES += \
     widgets/doublespinboxsud.cpp \
     widgets/filterbuttonlager.cpp \
     widgets/filterbuttonsud.cpp \
+    widgets/lineedit.cpp \
     widgets/pushbutton.cpp \
+    widgets/radiobutton.cpp \
     widgets/spinbox.cpp \
     widgets/spinboxsud.cpp \
     widgets/svgview.cpp \
     widgets/tableview.cpp \
     widgets/timeedit.cpp \
+    widgets/toolbutton.cpp \
     widgets/wdgabstractproxy.cpp \
     widgets/wdganhang.cpp \
     widgets/wdgbemerkung.cpp \
@@ -202,6 +206,7 @@ HEADERS += \
     model/spinboxdelegate.h \
     model/tagglobaldelegate.h \
     model/textdelegate.h \
+    widgets/checkbox.h \
     widgets/combobox.h \
     widgets/dateedit.h \
     widgets/datetimeedit.h \
@@ -209,12 +214,15 @@ HEADERS += \
     widgets/doublespinboxsud.h \
     widgets/filterbuttonlager.h \
     widgets/filterbuttonsud.h \
+    widgets/lineedit.h \
     widgets/pushbutton.h \
+    widgets/radiobutton.h \
     widgets/spinbox.h \
     widgets/spinboxsud.h \
     widgets/svgview.h \
     widgets/tableview.h \
     widgets/timeedit.h \
+    widgets/toolbutton.h \
     widgets/wdgabstractproxy.h \
     widgets/wdganhang.h \
     widgets/wdgbemerkung.h \

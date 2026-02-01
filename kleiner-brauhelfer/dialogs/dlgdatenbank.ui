@@ -32,7 +32,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="tbDatenbankPfad">
+      <widget class="LineEdit" name="tbDatenbankPfad">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dieses Feld zeigt den absoluten Pfad der gewählten &lt;span style=&quot; font-weight:600;&quot;&gt;Datenbank&lt;/span&gt;. Die ist hilfreich, wenn man mit mehreren Datenbanken arbeitet oder den Speicherort vergessen hat.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#fc0107;&quot;&gt;Achtung:&lt;/span&gt; Vor manuellen Eingriffen in die Datenbank wird dringendst empfohlen ein Backup der Datebank anzulegen. Manuelle Eingriffe sind u.a. Textänderungen in den Feldern.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -54,7 +54,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="tbDatenbankVersion">
+      <widget class="LineEdit" name="tbDatenbankVersion">
        <property name="minimumSize">
         <size>
          <width>80</width>
@@ -242,6 +242,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>widgets/lineedit.h</header>
+  </customwidget>
   <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>

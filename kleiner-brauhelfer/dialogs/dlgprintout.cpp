@@ -4,6 +4,7 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "templatetags.h"
+#include "proxymodelsud.h"
 #include "model/textdelegate.h"
 #include "model/datedelegate.h"
 #include "model/sudnamedelegate.h"

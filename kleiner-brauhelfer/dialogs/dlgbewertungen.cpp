@@ -2,6 +2,7 @@
 #include "ui_dlgbewertungen.h"
 #include "brauhelfer.h"
 #include "settings.h"
+#include "proxymodelsud.h"
 #include "model/textdelegate.h"
 #include "model/datedelegate.h"
 #include "model/sudnamedelegate.h"

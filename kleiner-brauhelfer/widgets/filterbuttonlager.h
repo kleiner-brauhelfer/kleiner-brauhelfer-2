@@ -1,13 +1,13 @@
 #ifndef FILTERBUTTONLAGER_H
 #define FILTERBUTTONLAGER_H
 
-#include <QToolButton>
+#include "toolbutton.h"
 #include "settings.h"
 
 class ProxyModelRohstoff;
-class QRadioButton;
+class RadioButton;
 
-class FilterButtonLager : public QToolButton
+class FilterButtonLager : public ToolButton
 {
     Q_OBJECT
 
@@ -29,10 +29,10 @@ private:
 
 private:
     ProxyModelRohstoff* mModel;
-    QRadioButton* mRadioButtonAlle;
-    QRadioButton* mRadioButtonVorhanden;
-    QRadioButton* mRadioButtonNichtVorhanden;
-    QRadioButton* mRadioButtonInGebrauch;
+    RadioButton* mRadioButtonAlle;
+    RadioButton* mRadioButtonVorhanden;
+    RadioButton* mRadioButtonNichtVorhanden;
+    RadioButton* mRadioButtonInGebrauch;
 };
 
 #endif // FILTERBUTTONLAGER_H

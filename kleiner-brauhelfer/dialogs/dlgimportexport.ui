@@ -26,7 +26,7 @@
          <number>4</number>
         </property>
         <item>
-         <widget class="QRadioButton" name="rbFormatKbh">
+         <widget class="RadioButton" name="rbFormatKbh">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden am besten &amp;quot;KBH&amp;quot;-Rezepte importiert. json ist das bevorzugte Dateiformat der Datenbank des Kleinen Brauhelfers v2.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Um Fehler zu vermeiden, sollte man immer das passende Datenbankformat je nach Quelle wählen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -39,7 +39,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="rbFormatMmum">
+         <widget class="RadioButton" name="rbFormatMmum">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden am besten &amp;quot;MMuM&amp;quot;-Rezepte importiert. json ist das bevorzugte Dateiformat der beliebten Rezeptdatenbank von &lt;a href=&quot;maischemalzundmehr.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Maische, Malz und mehr.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Um Fehler zu vermeiden, sollte man immer das passende Datenbankformat je nach Quelle wählen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -49,7 +49,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="rbFormatBeerxml">
+         <widget class="RadioButton" name="rbFormatBeerxml">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden am besten Rezepte im XML-Format importiert. BeerXML ist das bevorzugte Dateiformat beliebter amerikanischer Rezeptseiten wie &lt;a href=&quot;brewersfriend.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;Brewer's Friend&lt;/span&gt;&lt;/a&gt;&lt;a href=&quot;maischemalzundmehr.de&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0068da;&quot;&gt;.&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt; Um Fehler zu vermeiden, sollte man immer das passende Datenbankformat je nach Quelle wählen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -59,7 +59,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QRadioButton" name="rbFormatBrautomat">
+         <widget class="RadioButton" name="rbFormatBrautomat">
           <property name="text">
            <string>Brautomat (json)</string>
           </property>
@@ -78,7 +78,7 @@
          <number>4</number>
         </property>
         <item row="1" column="1">
-         <widget class="QLineEdit" name="tbUrl">
+         <widget class="LineEdit" name="tbUrl">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit passender URL kann hier ein Rezept direkt in den Kleinen Brauhelfer geladen werden.&lt;/p&gt;&lt;p&gt;Bei MMuM kopiert man die URL, indem man mit der rechten Maustaste auf den &amp;quot;JSON Export&amp;quot; Button klickt und dann &amp;quot;Adresse des Links kopieren&amp;quot; wählt.&lt;/p&gt;&lt;p&gt;Bei Brewers Friend: Rezept öffnen, Export - Beerxml, auf der nächsten Seite Rechtsklick über dem Link und &amp;quot;Adresse des Links kopieren&amp;quot; wählen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -112,7 +112,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="tbDatei">
+         <widget class="LineEdit" name="tbDatei">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Mit passendem Pfad kann hier ein Rezept direkt in den Kleinen Brauhelfer geladen werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -138,7 +138,7 @@
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="1" column="4">
-         <widget class="QCheckBox" name="cbNachgaerverlauf">
+         <widget class="CheckBox" name="cbNachgaerverlauf">
           <property name="text">
            <string notr="true">Nachgaerverlauf</string>
           </property>
@@ -148,7 +148,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="QCheckBox" name="cbHopfengaben">
+         <widget class="CheckBox" name="cbHopfengaben">
           <property name="text">
            <string notr="true">Hopfengaben</string>
           </property>
@@ -158,7 +158,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QCheckBox" name="cbMalzschuettung">
+         <widget class="CheckBox" name="cbMalzschuettung">
           <property name="text">
            <string notr="true">Malzschuettung</string>
           </property>
@@ -168,7 +168,7 @@
          </widget>
         </item>
         <item row="0" column="3">
-         <widget class="QCheckBox" name="cbHefegaben">
+         <widget class="CheckBox" name="cbHefegaben">
           <property name="text">
            <string notr="true">Hefegaben</string>
           </property>
@@ -178,7 +178,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QCheckBox" name="cbWasseraufbereitung">
+         <widget class="CheckBox" name="cbWasseraufbereitung">
           <property name="text">
            <string notr="true">Wasseraufbereitung</string>
           </property>
@@ -188,7 +188,7 @@
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QCheckBox" name="cbRasten">
+         <widget class="CheckBox" name="cbRasten">
           <property name="text">
            <string notr="true">Rasten</string>
           </property>
@@ -198,7 +198,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="QCheckBox" name="cbSchnellgaerverlauf">
+         <widget class="CheckBox" name="cbSchnellgaerverlauf">
           <property name="text">
            <string notr="true">Schnellgaerverlauf</string>
           </property>
@@ -208,7 +208,7 @@
          </widget>
         </item>
         <item row="0" column="4">
-         <widget class="QCheckBox" name="cbWeitereZutatenGaben">
+         <widget class="CheckBox" name="cbWeitereZutatenGaben">
           <property name="text">
            <string notr="true">WeitereZutatenGaben</string>
           </property>
@@ -218,7 +218,7 @@
          </widget>
         </item>
         <item row="1" column="3">
-         <widget class="QCheckBox" name="cbHauptgaerverlauf">
+         <widget class="CheckBox" name="cbHauptgaerverlauf">
           <property name="text">
            <string notr="true">Hauptgaerverlauf</string>
           </property>
@@ -228,7 +228,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="QCheckBox" name="cbSud">
+         <widget class="CheckBox" name="cbSud">
           <property name="text">
            <string notr="true">Sud</string>
           </property>
@@ -238,7 +238,7 @@
          </widget>
         </item>
         <item row="3" column="0">
-         <widget class="QCheckBox" name="cbBewertungen">
+         <widget class="CheckBox" name="cbBewertungen">
           <property name="text">
            <string notr="true">Bewertungen</string>
           </property>
@@ -248,7 +248,7 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QCheckBox" name="cbEtiketten">
+         <widget class="CheckBox" name="cbEtiketten">
           <property name="text">
            <string notr="true">Etiketten</string>
           </property>
@@ -258,7 +258,7 @@
          </widget>
         </item>
         <item row="3" column="2">
-         <widget class="QCheckBox" name="cbAnhang">
+         <widget class="CheckBox" name="cbAnhang">
           <property name="text">
            <string notr="true">Anhang</string>
           </property>
@@ -268,7 +268,7 @@
          </widget>
         </item>
         <item row="3" column="3">
-         <widget class="QCheckBox" name="cbTags">
+         <widget class="CheckBox" name="cbTags">
           <property name="text">
            <string notr="true">Tags</string>
           </property>
@@ -303,9 +303,24 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>widgets/lineedit.h</header>
+  </customwidget>
+  <customwidget>
    <class>PushButton</class>
    <extends>QPushButton</extends>
    <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>widgets/checkbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>RadioButton</class>
+   <extends>QRadioButton</extends>
+   <header>widgets/radiobutton.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

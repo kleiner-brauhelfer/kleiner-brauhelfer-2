@@ -80,7 +80,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="tbDatabase">
+           <widget class="LineEdit" name="tbDatabase">
             <property name="readOnly">
              <bool>true</bool>
             </property>
@@ -232,7 +232,7 @@
            </widget>
           </item>
           <item row="8" column="0">
-           <widget class="QCheckBox" name="cbCheckUpdate">
+           <widget class="CheckBox" name="cbCheckUpdate">
             <property name="text">
              <string>Auf Updates beim Start prüfen</string>
             </property>
@@ -266,7 +266,7 @@
            </widget>
           </item>
           <item row="5" column="0">
-           <widget class="QCheckBox" name="cbShowAnimations">
+           <widget class="CheckBox" name="cbShowAnimations">
             <property name="text">
              <string>Animationen</string>
             </property>
@@ -280,28 +280,28 @@
            </widget>
           </item>
           <item row="4" column="0">
-           <widget class="QCheckBox" name="cbShowTooltips">
+           <widget class="CheckBox" name="cbShowTooltips">
             <property name="text">
              <string>Tooltips</string>
             </property>
            </widget>
           </item>
           <item row="7" column="0">
-           <widget class="QCheckBox" name="cbConfirmClose">
+           <widget class="CheckBox" name="cbConfirmClose">
             <property name="text">
              <string>Bestätigung beim Beenden</string>
             </property>
            </widget>
           </item>
           <item row="2" column="0" colspan="3">
-           <widget class="QCheckBox" name="cbNumberFormat">
+           <widget class="CheckBox" name="cbNumberFormat">
             <property name="text">
              <string>Zahlen- und Datumsformat aus Spracheinstellung (Neustart erforderlich)</string>
             </property>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QCheckBox" name="cbFont">
+           <widget class="CheckBox" name="cbFont">
             <property name="text">
              <string>Systemschriftart</string>
             </property>
@@ -327,7 +327,7 @@
            </widget>
           </item>
           <item row="3" column="0">
-           <widget class="QCheckBox" name="cbModuleSchnellgaerprobe">
+           <widget class="CheckBox" name="cbModuleSchnellgaerprobe">
             <property name="text">
              <string>Schnellgärprobe</string>
             </property>
@@ -350,21 +350,21 @@
            </widget>
           </item>
           <item row="7" column="0">
-           <widget class="QCheckBox" name="cbModuleEtiketten">
+           <widget class="CheckBox" name="cbModuleEtiketten">
             <property name="text">
              <string>Etikett</string>
             </property>
            </widget>
           </item>
           <item row="12" column="0">
-           <widget class="QCheckBox" name="cbModuleLager">
+           <widget class="CheckBox" name="cbModuleLager">
             <property name="text">
              <string>Lagerverwaltung</string>
             </property>
            </widget>
           </item>
           <item row="16" column="0">
-           <widget class="QCheckBox" name="cbModulePreiskalkulation">
+           <widget class="CheckBox" name="cbModulePreiskalkulation">
             <property name="text">
              <string>Preiskalkulation</string>
             </property>
@@ -403,7 +403,7 @@
            </widget>
           </item>
           <item row="13" column="0">
-           <widget class="QCheckBox" name="cbModuleSpeise">
+           <widget class="CheckBox" name="cbModuleSpeise">
             <property name="text">
              <string>Speiseberechnung</string>
             </property>
@@ -469,14 +469,14 @@ Die graphische Auswertung lässt gute Rückschlüsse über die Gärbedingungen z
            </widget>
           </item>
           <item row="15" column="0">
-           <widget class="QCheckBox" name="cbModuleWasseraufbereitung">
+           <widget class="CheckBox" name="cbModuleWasseraufbereitung">
             <property name="text">
              <string>Wasseraufbereitung</string>
             </property>
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QCheckBox" name="cbModuleGaerverlauf">
+           <widget class="CheckBox" name="cbModuleGaerverlauf">
             <property name="text">
              <string>Gärverlauf</string>
             </property>
@@ -510,14 +510,14 @@ Unter Speise versteht man einen zurückgehaltenen Teil der Würze, der vor dem A
            </widget>
           </item>
           <item row="9" column="0">
-           <widget class="QCheckBox" name="cbModuleBrauuebersicht">
+           <widget class="CheckBox" name="cbModuleBrauuebersicht">
             <property name="text">
              <string>Brauübersicht</string>
             </property>
            </widget>
           </item>
           <item row="5" column="0">
-           <widget class="QCheckBox" name="cbModuleAusdruck">
+           <widget class="CheckBox" name="cbModuleAusdruck">
             <property name="text">
              <string>Ausdruck</string>
             </property>
@@ -593,14 +593,14 @@ Gut gepflegt, entscheidet sich hiermit wie genau das Programm arbeitet. Zu Begin
            </widget>
           </item>
           <item row="10" column="0">
-           <widget class="QCheckBox" name="cbModuleAnlagen">
+           <widget class="CheckBox" name="cbModuleAnlagen">
             <property name="text">
              <string>Ausrüstung</string>
             </property>
            </widget>
           </item>
           <item row="8" column="0">
-           <widget class="QCheckBox" name="cbModuleBewertungen">
+           <widget class="CheckBox" name="cbModuleBewertungen">
             <property name="text">
              <string>Bewertungen</string>
             </property>
@@ -650,6 +650,16 @@ Bei gebrauten Suden fasst die Zusammenfassung alle relevanten Informationen zusa
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>widgets/lineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>widgets/checkbox.h</header>
+  </customwidget>
   <customwidget>
    <class>PushButton</class>
    <extends>QPushButton</extends>

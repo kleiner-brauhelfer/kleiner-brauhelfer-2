@@ -4,6 +4,10 @@
 #include <QLabel>
 #include <QWidgetAction>
 #include <QMenu>
+#include "proxymodelsud.h"
+#include "checkbox.h"
+#include "combobox.h"
+#include "dateedit.h"
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -11,7 +15,7 @@ extern Brauhelfer* bh;
 extern Settings* gSettings;
 
 FilterButtonSud::FilterButtonSud(QWidget *parent) :
-    QToolButton(parent),
+    ToolButton(parent),
     mModel(nullptr),
     mCheckBoxAlle(nullptr),
     mCheckBoxRezept(nullptr),
@@ -52,20 +56,20 @@ void FilterButtonSud::setModel(ProxyModelSud* model, Items items)
     if (items.testFlag(Item::Status))
     {
         layout->addWidget(new QLabel(tr("Stadium"), widget), layout->rowCount(), 0);
-        mCheckBoxAlle= new QCheckBox(tr("Alle"), widget);
+        mCheckBoxAlle= new CheckBox(tr("Alle"), widget);
         mCheckBoxAlle->setTristate(true);
         layout->addWidget(mCheckBoxAlle, layout->rowCount()-1, 1);
         connect(mCheckBoxAlle, &QAbstractButton::clicked, this, &FilterButtonSud::setStatusAlle);
-        mCheckBoxRezept = new QCheckBox(tr("Rezept"), widget);
+        mCheckBoxRezept = new CheckBox(tr("Rezept"), widget);
         layout->addWidget(mCheckBoxRezept, layout->rowCount(), 1);
         connect(mCheckBoxRezept, &QAbstractButton::clicked, this, &FilterButtonSud::setStatus);
-        mCheckBoxGebraut = new QCheckBox(tr("Gebraut"), widget);
+        mCheckBoxGebraut = new CheckBox(tr("Gebraut"), widget);
         layout->addWidget(mCheckBoxGebraut, layout->rowCount(), 1);
         connect(mCheckBoxGebraut, &QAbstractButton::clicked, this, &FilterButtonSud::setStatus);
-        mCheckBoxAbgefuellt = new QCheckBox(tr("Abgefüllt"), widget);
+        mCheckBoxAbgefuellt = new CheckBox(tr("Abgefüllt"), widget);
         layout->addWidget(mCheckBoxAbgefuellt, layout->rowCount(), 1);
         connect(mCheckBoxAbgefuellt, &QAbstractButton::clicked, this, &FilterButtonSud::setStatus);
-        mCheckBoxAusgetrunken = new QCheckBox(tr("Ausgetrunken"), widget);
+        mCheckBoxAusgetrunken = new CheckBox(tr("Ausgetrunken"), widget);
         layout->addWidget(mCheckBoxAusgetrunken, layout->rowCount(), 1);
         connect(mCheckBoxAusgetrunken, &QAbstractButton::clicked, this, &FilterButtonSud::setStatus);
         line = new QFrame(this);
@@ -78,7 +82,7 @@ void FilterButtonSud::setModel(ProxyModelSud* model, Items items)
     if (items.testFlag(Item::Merkliste))
     {
         layout->addWidget(new QLabel(tr("Merkliste"), widget), layout->rowCount(), 0);
-        mCheckBoxMerkliste = new QCheckBox("", widget);
+        mCheckBoxMerkliste = new CheckBox("", widget);
         layout->addWidget(mCheckBoxMerkliste, layout->rowCount()-1, 1);
         connect(mCheckBoxMerkliste, &QAbstractButton::clicked, this, &FilterButtonSud::setMerkliste);
         line = new QFrame(this);
@@ -91,7 +95,7 @@ void FilterButtonSud::setModel(ProxyModelSud* model, Items items)
     if (items.testFlag(Item::Kategorie))
     {
         layout->addWidget(new QLabel(tr("Kategorie"), widget), layout->rowCount(), 0);
-        mComboBoxKategorie = new QComboBox(this);
+        mComboBoxKategorie = new ComboBox(this);
         ProxyModel* proxy = new ProxyModel(this);
         proxy->setSourceModel(bh->modelKategorien());
         mComboBoxKategorie->setModel(proxy);
@@ -108,7 +112,7 @@ void FilterButtonSud::setModel(ProxyModelSud* model, Items items)
     if (items.testFlag(Item::Anlage))
     {
         layout->addWidget(new QLabel(tr("Anlage"), widget), layout->rowCount(), 0);
-        mComboBoxAnlage = new QComboBox(this);
+        mComboBoxAnlage = new ComboBox(this);
         mComboBoxAnlage->addItem("");
         for (int i = 0; i < bh->modelAusruestung()->rowCount(); i++)
             mComboBoxAnlage->addItem(bh->modelAusruestung()->data(i, ModelAusruestung::ColName).toString());
@@ -124,7 +128,7 @@ void FilterButtonSud::setModel(ProxyModelSud* model, Items items)
     if (items.testFlag(Item::Braudatum))
     {
         layout->addWidget(new QLabel(tr("Gebraut"), widget), layout->rowCount(), 0);
-        mCheckBoxDatum = new QCheckBox(tr("zwischen"), widget);
+        mCheckBoxDatum = new CheckBox(tr("zwischen"), widget);
         layout->addWidget(mCheckBoxDatum, layout->rowCount()-1, 1);
         connect(mCheckBoxDatum, &QAbstractButton::clicked, this, &FilterButtonSud::setDateAlle);
         mDateEditMin = new DateEdit(widget);

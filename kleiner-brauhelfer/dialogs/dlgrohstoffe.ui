@@ -20,7 +20,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <widget class="QToolButton" name="buttonAdd">
+      <widget class="ToolButton" name="buttonAdd">
        <property name="minimumSize">
         <size>
          <width>40</width>
@@ -45,7 +45,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="buttonDelete">
+      <widget class="ToolButton" name="buttonDelete">
        <property name="minimumSize">
         <size>
          <width>40</width>
@@ -75,7 +75,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="tbFilter">
+      <widget class="LineEdit" name="tbFilter">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Freitextsuche&lt;/span&gt; für die Rohstoffe ermöglicht.&lt;/p&gt;&lt;p&gt;Durchsucht werden alle Spalten mit Ausnahme Datum, Preis und Links.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff9300;&quot;&gt;Tipp:&lt;/span&gt; Für eine schnelle Suche genügen schon die ersten Buchstaben&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -332,9 +332,19 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>widgets/lineedit.h</header>
+  </customwidget>
+  <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ToolButton</class>
+   <extends>QToolButton</extends>
+   <header>widgets/toolbutton.h</header>
   </customwidget>
   <customwidget>
    <class>FilterButtonLager</class>

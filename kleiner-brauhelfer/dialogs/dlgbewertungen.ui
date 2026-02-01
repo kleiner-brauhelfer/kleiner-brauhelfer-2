@@ -27,7 +27,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="tbFilter">
+      <widget class="LineEdit" name="tbFilter">
        <property name="toolTip">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Textfilter&lt;/span&gt; für die Sudsuche. Gesucht wird in den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Sudname&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Kommentar&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hefe&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -292,63 +292,63 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_12">
            <item row="2" column="1">
-            <widget class="QRadioButton" name="rbGesamteindruck_3">
+            <widget class="RadioButton" name="rbGesamteindruck_3">
              <property name="text">
               <string>überraschend, ungewöhnlich</string>
              </property>
             </widget>
            </item>
            <item row="2" column="2">
-            <widget class="QRadioButton" name="rbGesamteindruck_7">
+            <widget class="RadioButton" name="rbGesamteindruck_7">
              <property name="text">
               <string>nicht trinkbar, problematisch</string>
              </property>
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="QRadioButton" name="rbGesamteindruck_5">
+            <widget class="RadioButton" name="rbGesamteindruck_5">
              <property name="text">
               <string>unauffällig, gewöhnlich</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0">
-            <widget class="QRadioButton" name="rbGesamteindruck_ka">
+            <widget class="RadioButton" name="rbGesamteindruck_ka">
              <property name="text">
               <string>keine Angabe</string>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QRadioButton" name="rbGesamteindruck_2">
+            <widget class="RadioButton" name="rbGesamteindruck_2">
              <property name="text">
               <string>interessant</string>
              </property>
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QRadioButton" name="rbGesamteindruck_0">
+            <widget class="RadioButton" name="rbGesamteindruck_0">
              <property name="text">
               <string>toll, macht Lust auf mehr</string>
              </property>
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QRadioButton" name="rbGesamteindruck_1">
+            <widget class="RadioButton" name="rbGesamteindruck_1">
              <property name="text">
               <string>gutes, typisches Bier</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QRadioButton" name="rbGesamteindruck_4">
+            <widget class="RadioButton" name="rbGesamteindruck_4">
              <property name="text">
               <string>kunstvoll, kreativ, mutig</string>
              </property>
             </widget>
            </item>
            <item row="1" column="2">
-            <widget class="QRadioButton" name="rbGesamteindruck_6">
+            <widget class="RadioButton" name="rbGesamteindruck_6">
              <property name="text">
               <string>einmal ist genug, langweilig</string>
              </property>
@@ -383,56 +383,56 @@
             <widget class="QGroupBox" name="groupBox_34">
              <layout class="QGridLayout" name="gridLayout_15">
               <item row="2" column="0">
-               <widget class="QRadioButton" name="rbFarbe_5">
+               <widget class="RadioButton" name="rbFarbe_5">
                 <property name="text">
                  <string>gelb</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QRadioButton" name="rbFarbe_8">
+               <widget class="RadioButton" name="rbFarbe_8">
                 <property name="text">
                  <string>kupferrot, bernsteinfarben</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="0">
-               <widget class="QRadioButton" name="rbFarbe_ka">
+               <widget class="RadioButton" name="rbFarbe_ka">
                 <property name="text">
                  <string>keine Angabe</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QRadioButton" name="rbFarbe_9">
+               <widget class="RadioButton" name="rbFarbe_9">
                 <property name="text">
                  <string>braun bis tiefbraun</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="0">
-               <widget class="QRadioButton" name="rbFarbe_6">
+               <widget class="RadioButton" name="rbFarbe_6">
                 <property name="text">
                  <string>golden</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QRadioButton" name="rbFarbe_7">
+               <widget class="RadioButton" name="rbFarbe_7">
                 <property name="text">
                  <string>bernstein</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="0">
-               <widget class="QRadioButton" name="rbFarbe_4">
+               <widget class="RadioButton" name="rbFarbe_4">
                 <property name="text">
                  <string>hellgelb, lichthell</string>
                 </property>
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QRadioButton" name="rbFarbe_10">
+               <widget class="RadioButton" name="rbFarbe_10">
                 <property name="text">
                  <string>schwarz, tiefdunkel</string>
                 </property>
@@ -458,35 +458,35 @@
             <widget class="QGroupBox" name="groupBox_31">
              <layout class="QVBoxLayout" name="verticalLayout_8">
               <item>
-               <widget class="QRadioButton" name="rbFarbe_ka2">
+               <widget class="RadioButton" name="rbFarbe_ka2">
                 <property name="text">
                  <string>keine Angabe</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbFarbe_0">
+               <widget class="RadioButton" name="rbFarbe_0">
                 <property name="text">
                  <string>satt, intensiv</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbFarbe_1">
+               <widget class="RadioButton" name="rbFarbe_1">
                 <property name="text">
                  <string>glänzend</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbFarbe_2">
+               <widget class="RadioButton" name="rbFarbe_2">
                 <property name="text">
                  <string>matt, blass</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbFarbe_3">
+               <widget class="RadioButton" name="rbFarbe_3">
                 <property name="text">
                  <string>gräulich, fahl</string>
                 </property>
@@ -540,21 +540,21 @@
                <number>4</number>
               </property>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_ka">
+               <widget class="RadioButton" name="rbSchaum_ka">
                 <property name="text">
                  <string>keine Angabe</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_0">
+               <widget class="RadioButton" name="rbSchaum_0">
                 <property name="text">
                  <string>feinporig, fest</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_1">
+               <widget class="RadioButton" name="rbSchaum_1">
                 <property name="text">
                  <string>grobporig, schwach</string>
                 </property>
@@ -570,21 +570,21 @@
                <number>4</number>
               </property>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_ka2">
+               <widget class="RadioButton" name="rbSchaum_ka2">
                 <property name="text">
                  <string>keine Angabe</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_2">
+               <widget class="RadioButton" name="rbSchaum_2">
                 <property name="text">
                  <string>gut haftend am Glas</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_3">
+               <widget class="RadioButton" name="rbSchaum_3">
                 <property name="text">
                  <string>schlecht haftend</string>
                 </property>
@@ -600,28 +600,28 @@
                <number>4</number>
               </property>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_ka3">
+               <widget class="RadioButton" name="rbSchaum_ka3">
                 <property name="text">
                  <string>keine Angabe</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_4">
+               <widget class="RadioButton" name="rbSchaum_4">
                 <property name="text">
                  <string>gute Haltbarkeit</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_5">
+               <widget class="RadioButton" name="rbSchaum_5">
                 <property name="text">
                  <string>mässige Haltbarkeit</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_6">
+               <widget class="RadioButton" name="rbSchaum_6">
                 <property name="text">
                  <string>keine Haltbarkeit</string>
                 </property>
@@ -650,35 +650,35 @@
                <number>4</number>
               </property>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_ka4">
+               <widget class="RadioButton" name="rbSchaum_ka4">
                 <property name="text">
                  <string>keine Angabe</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_7">
+               <widget class="RadioButton" name="rbSchaum_7">
                 <property name="text">
                  <string>geringes Volumen</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_8">
+               <widget class="RadioButton" name="rbSchaum_8">
                 <property name="text">
                  <string>kräftiges Volumen</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_9">
+               <widget class="RadioButton" name="rbSchaum_9">
                 <property name="text">
                  <string>sehr voluminös, mächtig</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="rbSchaum_10">
+               <widget class="RadioButton" name="rbSchaum_10">
                 <property name="text">
                  <string>überschäumend</string>
                 </property>
@@ -713,84 +713,84 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_13">
            <item row="2" column="2">
-            <widget class="QCheckBox" name="rbGeruch_10">
+            <widget class="CheckBox" name="rbGeruch_10">
              <property name="text">
               <string>säuerlich</string>
              </property>
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="QCheckBox" name="rbGeruch_8">
+            <widget class="CheckBox" name="rbGeruch_8">
              <property name="text">
               <string>fruchtig</string>
              </property>
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QCheckBox" name="rbGeruch_7">
+            <widget class="CheckBox" name="rbGeruch_7">
              <property name="text">
               <string>hefig</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0">
-            <widget class="QCheckBox" name="rbGeruch_0">
+            <widget class="CheckBox" name="rbGeruch_0">
              <property name="text">
               <string>rein, abgerundet</string>
              </property>
             </widget>
            </item>
            <item row="3" column="0">
-            <widget class="QCheckBox" name="rbGeruch_3">
+            <widget class="CheckBox" name="rbGeruch_3">
              <property name="text">
               <string>unangenehm, unausgewogen</string>
              </property>
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QCheckBox" name="rbGeruch_1">
+            <widget class="CheckBox" name="rbGeruch_1">
              <property name="text">
               <string>frisch</string>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QCheckBox" name="rbGeruch_4">
+            <widget class="CheckBox" name="rbGeruch_4">
              <property name="text">
               <string>hopfenaromatisch, hopfig</string>
              </property>
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QCheckBox" name="rbGeruch_2">
+            <widget class="CheckBox" name="rbGeruch_2">
              <property name="text">
               <string>wohlriechend</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QCheckBox" name="rbGeruch_5">
+            <widget class="CheckBox" name="rbGeruch_5">
              <property name="text">
               <string>malzaromatisch, malzig</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QCheckBox" name="rbGeruch_6">
+            <widget class="CheckBox" name="rbGeruch_6">
              <property name="text">
               <string>süsslich, nach Würze</string>
              </property>
             </widget>
            </item>
            <item row="1" column="2">
-            <widget class="QCheckBox" name="rbGeruch_9">
+            <widget class="CheckBox" name="rbGeruch_9">
              <property name="text">
               <string>gewürzig</string>
              </property>
             </widget>
            </item>
            <item row="3" column="2">
-            <widget class="QCheckBox" name="rbGeruch_11">
+            <widget class="CheckBox" name="rbGeruch_11">
              <property name="text">
               <string>Geruchsfehler</string>
              </property>
@@ -822,63 +822,63 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_7">
            <item row="0" column="1">
-            <widget class="QCheckBox" name="rbGeschmack_5">
+            <widget class="CheckBox" name="rbGeschmack_5">
              <property name="text">
               <string>hopfenaromatisch, hopfig</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0">
-            <widget class="QCheckBox" name="rbGeschmack_0">
+            <widget class="CheckBox" name="rbGeschmack_0">
              <property name="text">
               <string>rein</string>
              </property>
             </widget>
            </item>
            <item row="3" column="0">
-            <widget class="QCheckBox" name="rbGeschmack_3">
+            <widget class="CheckBox" name="rbGeschmack_3">
              <property name="text">
               <string>unausgewogen, kantig</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QCheckBox" name="rbGeschmack_7">
+            <widget class="CheckBox" name="rbGeschmack_7">
              <property name="text">
               <string>süsslich, klebrig</string>
              </property>
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QCheckBox" name="rbGeschmack_2">
+            <widget class="CheckBox" name="rbGeschmack_2">
              <property name="text">
               <string>gehaltvoll</string>
              </property>
             </widget>
            </item>
            <item row="4" column="0">
-            <widget class="QCheckBox" name="rbGeschmack_4">
+            <widget class="CheckBox" name="rbGeschmack_4">
              <property name="text">
               <string>unreif, unrein</string>
              </property>
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QCheckBox" name="rbGeschmack_8">
+            <widget class="CheckBox" name="rbGeschmack_8">
              <property name="text">
               <string>säuerlich</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QCheckBox" name="rbGeschmack_6">
+            <widget class="CheckBox" name="rbGeschmack_6">
              <property name="text">
               <string>malzaromatisch, malzig</string>
              </property>
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QCheckBox" name="rbGeschmack_1">
+            <widget class="CheckBox" name="rbGeschmack_1">
              <property name="text">
               <string>ausgewogen, rund</string>
              </property>
@@ -901,28 +901,28 @@
             </widget>
            </item>
            <item row="3" column="2">
-            <widget class="QCheckBox" name="rbGeschmack_12">
+            <widget class="CheckBox" name="rbGeschmack_12">
              <property name="text">
               <string>Geschmacksfehler</string>
              </property>
             </widget>
            </item>
            <item row="2" column="2">
-            <widget class="QCheckBox" name="rbGeschmack_11">
+            <widget class="CheckBox" name="rbGeschmack_11">
              <property name="text">
               <string>hefig</string>
              </property>
             </widget>
            </item>
            <item row="1" column="2">
-            <widget class="QCheckBox" name="rbGeschmack_10">
+            <widget class="CheckBox" name="rbGeschmack_10">
              <property name="text">
               <string>fruchtig</string>
              </property>
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="QCheckBox" name="rbGeschmack_9">
+            <widget class="CheckBox" name="rbGeschmack_9">
              <property name="text">
               <string>gewürzig</string>
              </property>
@@ -938,63 +938,63 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_8">
            <item row="2" column="0">
-            <widget class="QRadioButton" name="rbAntrunk_1">
+            <widget class="RadioButton" name="rbAntrunk_1">
              <property name="text">
               <string>rezent, fein perlend</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0">
-            <widget class="QRadioButton" name="rbAntrunk_ka">
+            <widget class="RadioButton" name="rbAntrunk_ka">
              <property name="text">
               <string>keine Angabe</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QRadioButton" name="rbAntrunk_4">
+            <widget class="RadioButton" name="rbAntrunk_4">
              <property name="text">
               <string>stark prickelnd, aufdringlich</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QRadioButton" name="rbAntrunk_3">
+            <widget class="RadioButton" name="rbAntrunk_3">
              <property name="text">
               <string>prickelnd</string>
              </property>
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QRadioButton" name="rbAntrunk_0">
+            <widget class="RadioButton" name="rbAntrunk_0">
              <property name="text">
               <string>angenehm rezent</string>
              </property>
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="QRadioButton" name="rbAntrunk_5">
+            <widget class="RadioButton" name="rbAntrunk_5">
              <property name="text">
               <string>wenig rezent</string>
              </property>
             </widget>
            </item>
            <item row="2" column="2">
-            <widget class="QRadioButton" name="rbAntrunk_7">
+            <widget class="RadioButton" name="rbAntrunk_7">
              <property name="text">
               <string>sehr schal</string>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QRadioButton" name="rbAntrunk_2">
+            <widget class="RadioButton" name="rbAntrunk_2">
              <property name="text">
               <string>gut eingebunden</string>
              </property>
             </widget>
            </item>
            <item row="1" column="2">
-            <widget class="QRadioButton" name="rbAntrunk_6">
+            <widget class="RadioButton" name="rbAntrunk_6">
              <property name="text">
               <string>schal</string>
              </property>
@@ -1026,42 +1026,42 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_9">
            <item row="1" column="1">
-            <widget class="QRadioButton" name="rbHaupttrunk_2">
+            <widget class="RadioButton" name="rbHaupttrunk_2">
              <property name="text">
               <string>schlank</string>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QRadioButton" name="rbHaupttrunk_1">
+            <widget class="RadioButton" name="rbHaupttrunk_1">
              <property name="text">
               <string>etwas leer</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0">
-            <widget class="QRadioButton" name="rbHaupttrunk_ka">
+            <widget class="RadioButton" name="rbHaupttrunk_ka">
              <property name="text">
               <string>keine Angabe</string>
              </property>
             </widget>
            </item>
            <item row="1" column="2">
-            <widget class="QRadioButton" name="rbHaupttrunk_4">
+            <widget class="RadioButton" name="rbHaupttrunk_4">
              <property name="text">
               <string>mastig, breit</string>
              </property>
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="QRadioButton" name="rbHaupttrunk_3">
+            <widget class="RadioButton" name="rbHaupttrunk_3">
              <property name="text">
               <string>vollmundig</string>
              </property>
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QRadioButton" name="rbHaupttrunk_0">
+            <widget class="RadioButton" name="rbHaupttrunk_0">
              <property name="text">
               <string>wässrig, leer, dünn</string>
              </property>
@@ -1093,70 +1093,70 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_14">
            <item row="1" column="1">
-            <widget class="QRadioButton" name="rbNachtrunk_4">
+            <widget class="RadioButton" name="rbNachtrunk_4">
              <property name="text">
               <string>stark nachhängend</string>
              </property>
             </widget>
            </item>
            <item row="2" column="2">
-            <widget class="QRadioButton" name="rbNachtrunk_8">
+            <widget class="RadioButton" name="rbNachtrunk_8">
              <property name="text">
               <string>unangenehm</string>
              </property>
             </widget>
            </item>
            <item row="3" column="0">
-            <widget class="QRadioButton" name="rbNachtrunk_2">
+            <widget class="RadioButton" name="rbNachtrunk_2">
              <property name="text">
               <string>nicht anhängend</string>
              </property>
             </widget>
            </item>
            <item row="0" column="1">
-            <widget class="QRadioButton" name="rbNachtrunk_3">
+            <widget class="RadioButton" name="rbNachtrunk_3">
              <property name="text">
               <string>nachhängend</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0">
-            <widget class="QRadioButton" name="rbNachtrunk_ka">
+            <widget class="RadioButton" name="rbNachtrunk_ka">
              <property name="text">
               <string>keine Angabe</string>
              </property>
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="QRadioButton" name="rbNachtrunk_6">
+            <widget class="RadioButton" name="rbNachtrunk_6">
              <property name="text">
               <string>sehr herb, kräftig betont</string>
              </property>
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QRadioButton" name="rbNachtrunk_1">
+            <widget class="RadioButton" name="rbNachtrunk_1">
              <property name="text">
               <string>angenehm, ausgewogen</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QRadioButton" name="rbNachtrunk_5">
+            <widget class="RadioButton" name="rbNachtrunk_5">
              <property name="text">
               <string>wenig herb, unterentwickelt</string>
              </property>
             </widget>
            </item>
            <item row="1" column="2">
-            <widget class="QRadioButton" name="rbNachtrunk_7">
+            <widget class="RadioButton" name="rbNachtrunk_7">
              <property name="text">
               <string>nicht oder kaum wahrnehmbar</string>
              </property>
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QRadioButton" name="rbNachtrunk_0">
+            <widget class="RadioButton" name="rbNachtrunk_0">
              <property name="text">
               <string>sehr fein</string>
              </property>
@@ -1203,6 +1203,16 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>widgets/lineedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>CheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>widgets/checkbox.h</header>
+  </customwidget>
+  <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
@@ -1227,6 +1237,11 @@
    <class>DateEdit</class>
    <extends>QDateEdit</extends>
    <header>widgets/dateedit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>RadioButton</class>
+   <extends>QRadioButton</extends>
+   <header>widgets/radiobutton.h</header>
   </customwidget>
   <customwidget>
    <class>WdgRating</class>

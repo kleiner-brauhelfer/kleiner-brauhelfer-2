@@ -5,13 +5,13 @@
 #include <QLabel>
 #include <QWidgetAction>
 #include <QMenu>
-#include <QRadioButton>
+#include "radiobutton.h"
 #include "settings.h"
 
 extern Settings* gSettings;
 
 FilterButtonLager::FilterButtonLager(QWidget *parent) :
-    QToolButton(parent),
+    ToolButton(parent),
     mModel(nullptr),
     mRadioButtonAlle(nullptr),
     mRadioButtonVorhanden(nullptr),
@@ -24,19 +24,19 @@ FilterButtonLager::FilterButtonLager(QWidget *parent) :
     QWidget* widget = new QWidget(this);
     widget->setLayout(new QVBoxLayout(widget));
 
-    mRadioButtonAlle = new QRadioButton(tr("Alle"), widget);
+    mRadioButtonAlle = new RadioButton(tr("Alle"), widget);
     widget->layout()->addWidget(mRadioButtonAlle);
     connect(mRadioButtonAlle, &QAbstractButton::clicked, this, &FilterButtonLager::updateFilter);
 
-    mRadioButtonVorhanden = new QRadioButton(tr("Vorhanden"), widget);
+    mRadioButtonVorhanden = new RadioButton(tr("Vorhanden"), widget);
     widget->layout()->addWidget(mRadioButtonVorhanden);
     connect(mRadioButtonVorhanden, &QAbstractButton::clicked, this, &FilterButtonLager::updateFilter);
 
-    mRadioButtonNichtVorhanden = new QRadioButton(tr("Nicht vorhanden"), widget);
+    mRadioButtonNichtVorhanden = new RadioButton(tr("Nicht vorhanden"), widget);
     widget->layout()->addWidget(mRadioButtonNichtVorhanden);
     connect(mRadioButtonNichtVorhanden, &QAbstractButton::clicked, this, &FilterButtonLager::updateFilter);
 
-    mRadioButtonInGebrauch = new QRadioButton(tr("Nicht gebraute Rezepte"), widget);
+    mRadioButtonInGebrauch = new RadioButton(tr("Nicht gebraute Rezepte"), widget);
     widget->layout()->addWidget(mRadioButtonInGebrauch);
     connect(mRadioButtonInGebrauch, &QAbstractButton::clicked, this, &FilterButtonLager::updateFilter);
 

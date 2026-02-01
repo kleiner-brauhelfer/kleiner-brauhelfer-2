@@ -15,8 +15,9 @@ public:
     void setError(bool e);
     void setErrorRange(double min, double max);
 private:
+    bool event(QEvent *event) Q_DECL_OVERRIDE;
     void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
-    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
+    void updatePalette();
 public slots:
     void setValue(double val);
 private:

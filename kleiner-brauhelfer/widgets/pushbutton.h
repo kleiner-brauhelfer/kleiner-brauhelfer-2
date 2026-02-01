@@ -13,7 +13,8 @@ public:
     void setDefaultPalette(const QPalette &p);
     void setError(bool e);
 private:
-    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
+    bool event(QEvent *event) Q_DECL_OVERRIDE;
+    void updatePalette();
 private slots:
     void onActionChanged();
 private:

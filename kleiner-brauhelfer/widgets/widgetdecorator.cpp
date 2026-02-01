@@ -1,5 +1,12 @@
 #include "widgetdecorator.h"
 #include <QPointer>
+#include <QApplication>
+
+const QEvent::Type WidgetDecorator::valueChangedEmphasis = static_cast<QEvent::Type>(QEvent::registerEventType());
+const QEvent::Type WidgetDecorator::valueChangedEmphasisLeave = static_cast<QEvent::Type>(QEvent::registerEventType());
+
+QEvent WidgetDecorator::valueChangedEmphasisEvent = QEvent(valueChangedEmphasis);
+QEvent WidgetDecorator::valueChangedEmphasisLeaveEvent = QEvent(valueChangedEmphasisLeave);
 
 bool WidgetDecorator::suspendValueChanged = false;
 bool WidgetDecorator::suspendValueChangedClear = false;
@@ -10,33 +17,28 @@ void WidgetDecorator::valueChanged(QWidget *wdg, bool hasFocus)
 {
     if (suspendValueChanged)
         return;
-    if (hasFocus || valueChangedWidgets.size() > 0 || !focusRequired)
-    {
-        if (!contains(wdg))
-        {
-            wdg->setProperty("valueChangedRepaint", true);
-            wdg->update();
-            valueChangedWidgets.append(QPointer<QWidget>(wdg));
-        }
-    }
+    if (focusRequired && !hasFocus && valueChangedWidgets.empty())
+        return;
+    if (valueChangedWidgets.contains(wdg))
+        return;
+    valueChangedWidgets.append(QPointer<QWidget>(wdg));
+    qApp->sendEvent(wdg, &valueChangedEmphasisEvent);
 }
 
 bool WidgetDecorator::contains(const QWidget *wdg)
 {
-    return wdg->property("valueChangedRepaint").toBool();
+    return valueChangedWidgets.contains(wdg);
 }
 
 void WidgetDecorator::clearValueChanged()
 {
     if (suspendValueChanged || suspendValueChangedClear)
         return;
-    for (auto&& wdg : valueChangedWidgets)
+    QList<QPointer<QWidget>> list;
+    list.swap(valueChangedWidgets);
+    for (auto&& wdg : list)
     {
         if (!wdg.isNull())
-        {
-            wdg->setProperty("valueChangedRepaint", false);
-            wdg->update();
-        }
+            qApp->sendEvent(wdg, &valueChangedEmphasisLeaveEvent);
     }
-    valueChangedWidgets.clear();
 }

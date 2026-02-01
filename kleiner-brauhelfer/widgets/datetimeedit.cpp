@@ -15,21 +15,39 @@ DateTimeEdit::DateTimeEdit(QWidget *parent) :
     connect(this, &QDateTimeEdit::dateTimeChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
+bool DateTimeEdit::event(QEvent *event)
+{
+    if (event->type() == WidgetDecorator::valueChangedEmphasis || event->type() == WidgetDecorator::valueChangedEmphasisLeave)
+    {
+        updatePalette();
+        return true;
+    }
+    return QDateTimeEdit::event(event);
+}
+
 void DateTimeEdit::wheelEvent(QWheelEvent *event)
 {
     if (hasFocus())
         QDateTimeEdit::wheelEvent(event);
 }
 
-void DateTimeEdit::paintEvent(QPaintEvent *event)
+void DateTimeEdit::updatePalette()
 {
     if (WidgetDecorator::contains(this))
-        setPalette(gSettings->paletteChanged);
+    {
+        if (palette() != gSettings->paletteChanged)
+            setPalette(gSettings->paletteChanged);
+    }
     else if (mError)
-        setPalette(gSettings->paletteError);
+    {
+        if (palette() != gSettings->paletteError)
+            setPalette(gSettings->paletteError);
+    }
     else
-        setPalette(gSettings->palette);
-    QDateTimeEdit::paintEvent(event);
+    {
+        if (palette() != gSettings->palette)
+            setPalette(gSettings->palette);
+    }
 }
 
 void DateTimeEdit::setEnabled(bool e)
@@ -61,6 +79,6 @@ void DateTimeEdit::setError(bool e)
     if (mError != e)
     {
         mError = e;
-        update();
+        updatePalette();
     }
 }

@@ -14,7 +14,21 @@ DoubleSpinBox::DoubleSpinBox(QWidget *parent) :
     setAlignment(Qt::AlignCenter);
     setMinimum(std::numeric_limits<double>::lowest());
     setMaximum(std::numeric_limits<double>::max());
-    connect(this, &QDoubleSpinBox::valueChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
+    connect(this, &QDoubleSpinBox::valueChanged, [this]()
+    {
+        WidgetDecorator::valueChanged(this, hasFocus());
+        updatePalette();
+    });
+}
+
+bool DoubleSpinBox::event(QEvent *event)
+{
+    if (event->type() == WidgetDecorator::valueChangedEmphasis || event->type() == WidgetDecorator::valueChangedEmphasisLeave)
+    {
+        updatePalette();
+        return true;
+    }
+    return QDoubleSpinBox::event(event);
 }
 
 void DoubleSpinBox::wheelEvent(QWheelEvent *event)
@@ -23,17 +37,23 @@ void DoubleSpinBox::wheelEvent(QWheelEvent *event)
         QDoubleSpinBox::wheelEvent(event);
 }
 
-void DoubleSpinBox::paintEvent(QPaintEvent *event)
+void DoubleSpinBox::updatePalette()
 {
     if (WidgetDecorator::contains(this))
-        setPalette(gSettings->paletteChanged);
-    else if (mError)
-        setPalette(gSettings->paletteError);
-    else if (value() >= mErrorLimitMax || value() <= mErrorLimitMin)
-        setPalette(gSettings->paletteError);
+    {
+        if (palette() != gSettings->paletteChanged)
+            setPalette(gSettings->paletteChanged);
+    }
+    else if (mError || value() >= mErrorLimitMax || value() <= mErrorLimitMin)
+    {
+        if (palette() != gSettings->paletteError)
+            setPalette(gSettings->paletteError);
+    }
     else
-        setPalette(gSettings->palette);
-    QDoubleSpinBox::paintEvent(event);
+    {
+        if (palette() != gSettings->palette)
+            setPalette(gSettings->palette);
+    }
 }
 
 void DoubleSpinBox::setValue(double val)
@@ -64,7 +84,7 @@ void DoubleSpinBox::setError(bool e)
     if (mError != e)
     {
         mError = e;
-        update();
+        updatePalette();
     }
 }
 
@@ -72,5 +92,5 @@ void DoubleSpinBox::setErrorRange(double min, double max)
 {
     mErrorLimitMin = min;
     mErrorLimitMax = max;
-    update();
+    updatePalette();
 }

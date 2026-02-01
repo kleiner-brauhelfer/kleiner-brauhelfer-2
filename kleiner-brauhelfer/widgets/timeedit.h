@@ -14,8 +14,9 @@ public:
     void setReadOnly(bool r);
     void setError(bool e);
 private:
+    bool event(QEvent *event) Q_DECL_OVERRIDE;
     void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
-    void paintEvent(QPaintEvent *event) Q_DECL_OVERRIDE;
+    void updatePalette();
 private:
     bool mError;
 };

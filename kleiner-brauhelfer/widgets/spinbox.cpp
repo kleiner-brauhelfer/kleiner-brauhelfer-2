@@ -14,7 +14,21 @@ SpinBox::SpinBox(QWidget *parent) :
     setAlignment(Qt::AlignCenter);
     setMinimum(std::numeric_limits<int>::lowest());
     setMaximum(std::numeric_limits<int>::max());
-    connect(this, &QSpinBox::valueChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
+    connect(this, &QSpinBox::valueChanged, [this]()
+    {
+        WidgetDecorator::valueChanged(this, hasFocus());
+        updatePalette();
+    });
+}
+
+bool SpinBox::event(QEvent *event)
+{
+    if (event->type() == WidgetDecorator::valueChangedEmphasis || event->type() == WidgetDecorator::valueChangedEmphasisLeave)
+    {
+        updatePalette();
+        return true;
+    }
+    return QSpinBox::event(event);
 }
 
 void SpinBox::wheelEvent(QWheelEvent *event)
@@ -23,17 +37,23 @@ void SpinBox::wheelEvent(QWheelEvent *event)
         QSpinBox::wheelEvent(event);
 }
 
-void SpinBox::paintEvent(QPaintEvent *event)
+void SpinBox::updatePalette()
 {
     if (WidgetDecorator::contains(this))
-        setPalette(gSettings->paletteChanged);
-    else if (mError)
-        setPalette(gSettings->paletteError);
-    else if (value() >= mErrorLimitMax || value() <= mErrorLimitMin)
-        setPalette(gSettings->paletteError);
+    {
+        if (palette() != gSettings->paletteChanged)
+            setPalette(gSettings->paletteChanged);
+    }
+    else if (mError || value() >= mErrorLimitMax || value() <= mErrorLimitMin)
+    {
+        if (palette() != gSettings->paletteError)
+            setPalette(gSettings->paletteError);
+    }
     else
-        setPalette(gSettings->palette);
-    QSpinBox::paintEvent(event);
+    {
+        if (palette() != gSettings->palette)
+            setPalette(gSettings->palette);
+    }
 }
 
 void SpinBox::setValue(int val)
@@ -64,7 +84,7 @@ void SpinBox::setError(bool e)
     if (mError != e)
     {
         mError = e;
-        update();
+        updatePalette();
     }
 }
 
@@ -72,5 +92,5 @@ void SpinBox::setErrorRange(int min, int max)
 {
     mErrorLimitMin = min;
     mErrorLimitMax = max;
-    update();
+    updatePalette();
 }

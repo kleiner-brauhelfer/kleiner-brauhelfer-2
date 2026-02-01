@@ -51,21 +51,39 @@ void PushButton::onActionChanged()
     setChecked(mAction->isChecked());
 }
 
+bool PushButton::event(QEvent *event)
+{
+    if (event->type() == WidgetDecorator::valueChangedEmphasis || event->type() == WidgetDecorator::valueChangedEmphasisLeave)
+    {
+        updatePalette();
+        return true;
+    }
+    return QPushButton::event(event);
+}
+
 void PushButton::setDefaultPalette(const QPalette &p)
 {
     mDefaultPalette = p;
-    update();
+    updatePalette();
 }
 
-void PushButton::paintEvent(QPaintEvent *event)
+void PushButton::updatePalette()
 {
     if (WidgetDecorator::contains(this))
-        setPalette(gSettings->paletteChanged);
+    {
+        if (palette() != gSettings->paletteChanged)
+            setPalette(gSettings->paletteChanged);
+    }
     else if (mError)
-        setPalette(gSettings->paletteError);
+    {
+        if (palette() != gSettings->paletteError)
+            setPalette(gSettings->paletteError);
+    }
     else
-        setPalette(mDefaultPalette);
-    QPushButton::paintEvent(event);
+    {
+        if (palette() != mDefaultPalette)
+            setPalette(mDefaultPalette);
+    }
 }
 
 void PushButton::setError(bool e)
@@ -73,6 +91,6 @@ void PushButton::setError(bool e)
     if (mError != e)
     {
         mError = e;
-        update();
+        updatePalette();
     }
 }

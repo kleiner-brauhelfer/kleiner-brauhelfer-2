@@ -14,21 +14,39 @@ ComboBox::ComboBox(QWidget *parent) :
     connect(this, &QComboBox::currentTextChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
+bool ComboBox::event(QEvent *event)
+{
+    if (event->type() == WidgetDecorator::valueChangedEmphasis || event->type() == WidgetDecorator::valueChangedEmphasisLeave)
+    {
+        updatePalette();
+        return true;
+    }
+    return QComboBox::event(event);
+}
+
 void ComboBox::wheelEvent(QWheelEvent *event)
 {
     if (hasFocus())
         QComboBox::wheelEvent(event);
 }
 
-void ComboBox::paintEvent(QPaintEvent *event)
+void ComboBox::updatePalette()
 {
     if (WidgetDecorator::contains(this))
-        setPalette(gSettings->paletteChanged);
+    {
+        if (palette() != gSettings->paletteChanged)
+            setPalette(gSettings->paletteChanged);
+    }
     else if (mError)
-        setPalette(gSettings->paletteError);
+    {
+        if (palette() != gSettings->paletteError)
+            setPalette(gSettings->paletteError);
+    }
     else
-        setPalette(gSettings->palette);
-    QComboBox::paintEvent(event);
+    {
+        if (palette() != gSettings->palette)
+            setPalette(gSettings->palette);
+    }
 }
 
 void ComboBox::setError(bool e)
@@ -36,7 +54,7 @@ void ComboBox::setError(bool e)
     if (mError != e)
     {
         mError = e;
-        update();
+        updatePalette();
     }
 }
 

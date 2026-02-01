@@ -10,11 +10,13 @@ class CheckBox : public QCheckBox
 public:
     explicit CheckBox(QWidget *parent = nullptr);
     explicit CheckBox(const QString &text, QWidget *parent = nullptr);
+    void setDefaultPalette(const QPalette &p);
     void setError(bool e);
 private:
     bool event(QEvent *event) Q_DECL_OVERRIDE;
     void updatePalette();
 private:
+    QPalette mDefaultPalette;
     bool mError;
 };
 

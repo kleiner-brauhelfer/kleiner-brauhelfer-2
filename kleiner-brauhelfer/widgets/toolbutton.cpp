@@ -8,6 +8,7 @@ ToolButton::ToolButton(QWidget *parent) :
     QToolButton(parent),
     mError(false)
 {
+    setPopupMode(ToolButtonPopupMode::InstantPopup);
     connect(this, &QAbstractButton::clicked, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 

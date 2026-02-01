@@ -19,7 +19,6 @@ FilterButtonLager::FilterButtonLager(QWidget *parent) :
     mRadioButtonInGebrauch(nullptr)
 {
     setCheckable(true);
-    setPopupMode(ToolButtonPopupMode::InstantPopup);
 
     QWidget* widget = new QWidget(this);
     widget->setLayout(new QVBoxLayout(widget));

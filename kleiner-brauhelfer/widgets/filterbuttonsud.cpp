@@ -30,7 +30,6 @@ FilterButtonSud::FilterButtonSud(QWidget *parent) :
     mDateEditMax(nullptr)
 {
     setCheckable(true);
-    setPopupMode(ToolButtonPopupMode::InstantPopup);
 }
 
 ProxyModelSud* FilterButtonSud::model() const
@@ -55,21 +54,30 @@ void FilterButtonSud::setModel(ProxyModelSud* model, Items items)
 
     if (items.testFlag(Item::Status))
     {
+        QPalette pal = gSettings->palette;
         layout->addWidget(new QLabel(tr("Stadium"), widget), layout->rowCount(), 0);
         mCheckBoxAlle= new CheckBox(tr("Alle"), widget);
         mCheckBoxAlle->setTristate(true);
         layout->addWidget(mCheckBoxAlle, layout->rowCount()-1, 1);
         connect(mCheckBoxAlle, &QAbstractButton::clicked, this, &FilterButtonSud::setStatusAlle);
         mCheckBoxRezept = new CheckBox(tr("Rezept"), widget);
+        pal.setColor(QPalette::Base, gSettings->NichtGebrautBackground);
+        mCheckBoxRezept->setDefaultPalette(pal);
         layout->addWidget(mCheckBoxRezept, layout->rowCount(), 1);
         connect(mCheckBoxRezept, &QAbstractButton::clicked, this, &FilterButtonSud::setStatus);
         mCheckBoxGebraut = new CheckBox(tr("Gebraut"), widget);
+        pal.setColor(QPalette::Base, gSettings->GebrautBackground);
+        mCheckBoxGebraut->setDefaultPalette(pal);
         layout->addWidget(mCheckBoxGebraut, layout->rowCount(), 1);
         connect(mCheckBoxGebraut, &QAbstractButton::clicked, this, &FilterButtonSud::setStatus);
         mCheckBoxAbgefuellt = new CheckBox(tr("Abgefüllt"), widget);
+        pal.setColor(QPalette::Base, gSettings->AbgefuelltBackground);
+        mCheckBoxAbgefuellt->setDefaultPalette(pal);
         layout->addWidget(mCheckBoxAbgefuellt, layout->rowCount(), 1);
         connect(mCheckBoxAbgefuellt, &QAbstractButton::clicked, this, &FilterButtonSud::setStatus);
         mCheckBoxAusgetrunken = new CheckBox(tr("Ausgetrunken"), widget);
+        pal.setColor(QPalette::Base, gSettings->VerbrauchtBackground);
+        mCheckBoxAusgetrunken->setDefaultPalette(pal);
         layout->addWidget(mCheckBoxAusgetrunken, layout->rowCount(), 1);
         connect(mCheckBoxAusgetrunken, &QAbstractButton::clicked, this, &FilterButtonSud::setStatus);
         line = new QFrame(this);
@@ -81,8 +89,11 @@ void FilterButtonSud::setModel(ProxyModelSud* model, Items items)
     }
     if (items.testFlag(Item::Merkliste))
     {
+        QPalette pal = gSettings->palette;
         layout->addWidget(new QLabel(tr("Merkliste"), widget), layout->rowCount(), 0);
         mCheckBoxMerkliste = new CheckBox("", widget);
+        pal.setColor(QPalette::Base, gSettings->MekrlisteBackground);
+        mCheckBoxMerkliste->setDefaultPalette(pal);
         layout->addWidget(mCheckBoxMerkliste, layout->rowCount()-1, 1);
         connect(mCheckBoxMerkliste, &QAbstractButton::clicked, this, &FilterButtonSud::setMerkliste);
         line = new QFrame(this);

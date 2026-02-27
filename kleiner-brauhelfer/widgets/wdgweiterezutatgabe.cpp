@@ -227,7 +227,7 @@ void WdgWeitereZutatGabe::updateValues()
         }
         else
         {
-            ui->frameColor->setPalette(gSettings->palette);
+            ui->frameColor->setPalette(QGuiApplication::palette());
             ui->frameColor->setToolTip(QStringLiteral(""));
         }
     }
@@ -243,7 +243,7 @@ void WdgWeitereZutatGabe::updateValues()
         }
         else
         {
-            ui->frameColor->setPalette(gSettings->palette);
+            ui->frameColor->setPalette(QGuiApplication::palette());
             ui->frameColor->setToolTip(QStringLiteral(""));
         }
     }

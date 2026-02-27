@@ -111,7 +111,7 @@ void WdgHefeGabe::updateValues()
         }
         else
         {
-            ui->frameColor->setPalette(gSettings->palette);
+            ui->frameColor->setPalette(QGuiApplication::palette());
         }
         ui->frameColor->setToolTip(MainWindow::HefeTypname[idx]);
 
@@ -123,7 +123,7 @@ void WdgHefeGabe::updateValues()
     }
     else
     {
-        ui->frameColor->setPalette(gSettings->palette);
+        ui->frameColor->setPalette(QGuiApplication::palette());
         ui->frameColor->setToolTip(QStringLiteral(""));
         ui->tbMengeEmpfohlen->setValue(0);
     }

@@ -6,7 +6,7 @@ extern Settings *gSettings;
 
 PushButton::PushButton(QWidget *parent) :
     QPushButton(parent),
-    mDefaultPalette(gSettings->palette),
+    mDefaultPalette(palette()),
     mAction(nullptr),
     mError(false)
 {

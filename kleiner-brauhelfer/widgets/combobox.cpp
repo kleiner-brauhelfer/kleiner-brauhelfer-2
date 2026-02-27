@@ -1,4 +1,5 @@
 #include "combobox.h"
+#include <QGuiApplication>
 #include <QAbstractItemView>
 #include "widgetdecorator.h"
 #include "settings.h"
@@ -44,8 +45,8 @@ void ComboBox::updatePalette()
     }
     else
     {
-        if (palette() != gSettings->palette)
-            setPalette(gSettings->palette);
+        if (palette() != QGuiApplication::palette())
+            setPalette(QGuiApplication::palette());
     }
 }
 

@@ -226,8 +226,9 @@ void Settings::initTheme()
     }
     */
 
-    palette = QGuiApplication::palette();
+    QPalette palette = QGuiApplication::palette();
     palette.setColor(QPalette::Disabled, QPalette::Base, palette.color(QPalette::Active, QPalette::Base));
+    QGuiApplication::setPalette(palette);
     paletteChanged = palette;
     paletteChanged.setColor(QPalette::Base, colorChanged);
     paletteChanged.setColor(QPalette::Button, colorChanged);

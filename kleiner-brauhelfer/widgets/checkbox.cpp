@@ -6,7 +6,7 @@ extern Settings *gSettings;
 
 CheckBox::CheckBox(QWidget *parent) :
     QCheckBox(parent),
-    mDefaultPalette(gSettings->palette),
+    mDefaultPalette(palette()),
     mError(false)
 {
     connect(this, &QCheckBox::checkStateChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
@@ -44,7 +44,6 @@ void CheckBox::updatePalette()
     }
     else if (mError)
     {
-        qDebug() << "updatePalette error";
         if (palette() != gSettings->paletteError)
             setPalette(gSettings->paletteError);
     }

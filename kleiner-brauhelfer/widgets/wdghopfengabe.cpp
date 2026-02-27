@@ -114,7 +114,7 @@ void WdgHopfenGabe::updateValues()
     }
     else
     {
-        ui->frameColor->setPalette(gSettings->palette);
+        ui->frameColor->setPalette(QGuiApplication::palette());
         ui->frameColor->setToolTip(QStringLiteral(""));
     }
 

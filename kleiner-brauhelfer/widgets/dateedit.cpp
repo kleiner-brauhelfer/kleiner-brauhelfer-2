@@ -1,4 +1,5 @@
 #include "dateedit.h"
+#include <QGuiApplication>
 #include <QCalendarWidget>
 #include "widgetdecorator.h"
 #include "settings.h"
@@ -45,8 +46,8 @@ void DateEdit::updatePalette()
     }
     else
     {
-        if (palette() != gSettings->palette)
-            setPalette(gSettings->palette);
+        if (palette() != QGuiApplication::palette())
+            setPalette(QGuiApplication::palette());
     }
 }
 

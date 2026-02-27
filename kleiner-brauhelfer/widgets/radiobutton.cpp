@@ -1,4 +1,5 @@
 #include "radiobutton.h"
+#include <QGuiApplication>
 #include "widgetdecorator.h"
 #include "settings.h"
 
@@ -42,8 +43,8 @@ void RadioButton::updatePalette()
     }
     else
     {
-        if (palette() != gSettings->palette)
-            setPalette(gSettings->palette);
+        if (palette() != QGuiApplication::palette())
+            setPalette(QGuiApplication::palette());
     }
 }
 

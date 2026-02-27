@@ -54,7 +54,7 @@ void FilterButtonSud::setModel(ProxyModelSud* model, Items items)
 
     if (items.testFlag(Item::Status))
     {
-        QPalette pal = gSettings->palette;
+        QPalette pal = palette();
         layout->addWidget(new QLabel(tr("Stadium"), widget), layout->rowCount(), 0);
         mCheckBoxAlle= new CheckBox(tr("Alle"), widget);
         mCheckBoxAlle->setTristate(true);
@@ -89,7 +89,7 @@ void FilterButtonSud::setModel(ProxyModelSud* model, Items items)
     }
     if (items.testFlag(Item::Merkliste))
     {
-        QPalette pal = gSettings->palette;
+        QPalette pal = palette();
         layout->addWidget(new QLabel(tr("Merkliste"), widget), layout->rowCount(), 0);
         mCheckBoxMerkliste = new CheckBox("", widget);
         pal.setColor(QPalette::Base, gSettings->MekrlisteBackground);

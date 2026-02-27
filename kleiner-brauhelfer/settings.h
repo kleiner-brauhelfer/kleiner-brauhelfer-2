@@ -102,7 +102,6 @@ private:
     void initTheme();
 
 public:
-    QPalette palette;
     QPalette paletteError;
     QPalette paletteErrorLabel;
     QPalette paletteChanged;

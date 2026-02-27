@@ -4,10 +4,10 @@
 extern Settings *gSettings;
 
 ChartBase::ChartBase(QWidget *parent) :
-    QCustomPlot(parent)
+    QCustomPlot(parent),
+    colorText(palette().color(QPalette::Active, QPalette::Text)),
+    colorBack(palette().color(QPalette::Active, QPalette::Base))
 {
-    colorText = gSettings->palette.color(QPalette::Active, QPalette::Text);
-    colorBack = gSettings->palette.color(QPalette::Active, QPalette::Base);
     if (gSettings->theme() == Qt::ColorScheme::Dark)
     {
         setBackground(colorBack);

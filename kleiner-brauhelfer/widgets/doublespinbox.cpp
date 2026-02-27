@@ -1,4 +1,5 @@
 #include "doublespinbox.h"
+#include <QGuiApplication>
 #include "widgetdecorator.h"
 #include "settings.h"
 
@@ -51,8 +52,8 @@ void DoubleSpinBox::updatePalette()
     }
     else
     {
-        if (palette() != gSettings->palette)
-            setPalette(gSettings->palette);
+        if (palette() != QGuiApplication::palette())
+            setPalette(QGuiApplication::palette());
     }
 }
 

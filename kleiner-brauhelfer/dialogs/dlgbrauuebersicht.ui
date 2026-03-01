@@ -14,7 +14,7 @@
    <string>Brauübersicht</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="actionbrauuebersicht"/>
+   <iconset theme="brauuebersicht"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

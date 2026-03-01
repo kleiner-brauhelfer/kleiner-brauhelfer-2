@@ -66,7 +66,7 @@ h3 {
 }
 
 img.vorhanden {
-  content:url("qrc:/images/io.svg");
+  content:url("images/io.svg");
 }
 
 .nichtvorhanden {
@@ -74,7 +74,7 @@ img.vorhanden {
 }
 
 img.nichtvorhanden {
-  content:url("qrc:/images/nio.svg");
+  content:url("images/nio.svg");
 }
 
 .nichtgefunden {
@@ -82,19 +82,19 @@ img.nichtvorhanden {
 }
 
 img.nichtgefunden {
-  content:url("qrc:/images/nio.svg");
+  content:url("images/nio.svg");
 }
 
 img.glas {
-  content:url("qrc:/images/icons/light/svg/bier.svg");
+  content:url("images/light/glas.svg");
 }
 
 img.star {
-  content:url("qrc:/images/icons/light/svg/star.svg");
+  content:url("images/light/star.svg");
 }
 
 img.star_grey {
-  content:url("qrc:/images/icons/light/svg/star_gr.svg");
+  content:url("images/light/star_grey.svg");
 }
 
 .version {

@@ -136,7 +136,7 @@ void TabRezept::setup(SudObject *sud)
     pal.setColor(QPalette::Button, gSettings->colorAnhang);
     ui->btnNeuerAnhang->setDefaultPalette(pal);
 
-    mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Qt::ColorScheme::Dark ? QStringLiteral(":/images/icons/dark/svg/bier.svg") : QStringLiteral(":/images/icons/light/svg/bier.svg"));
+    mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Qt::ColorScheme::Dark ? QStringLiteral(":/images/icons/dark/svg/glas.svg") : QStringLiteral(":/images/icons/light/svg/glas.svg"));
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
 
     ProxyModel* proxy = new ProxyModel(this);
@@ -272,7 +272,7 @@ void TabRezept::modulesChanged(Settings::Modules modules)
     if (modules.testFlag(Settings::ModuleWasseraufbereitung))
     {
         if (gSettings->isModuleEnabled(Settings::ModuleWasseraufbereitung))
-            ui->tabMitte->addTab(ui->tabWasseraufbereitung, tr("Wasseraufbereitung"));
+            ui->tabMitte->addTab(ui->tabWasseraufbereitung, QIcon::fromTheme("wasseraufbereitung"), tr("Wasseraufbereitung"));
         else
             ui->tabMitte->removeTab(ui->tabMitte->indexOf(ui->tabWasseraufbereitung));
     }

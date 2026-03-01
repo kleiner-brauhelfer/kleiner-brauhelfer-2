@@ -2018,7 +2018,7 @@
              <string>Sud abgefüllt</string>
             </property>
             <property name="icon">
-             <iconset theme="sud_abgefuellt"/>
+             <iconset theme="abgefuellt"/>
             </property>
            </widget>
           </item>
@@ -2051,7 +2051,7 @@
              <string>Sud ausgetrunken</string>
             </property>
             <property name="icon">
-             <iconset theme="sud_verbraucht"/>
+             <iconset theme="ausgetrunken"/>
             </property>
            </widget>
           </item>

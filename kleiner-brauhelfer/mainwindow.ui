@@ -65,7 +65,7 @@
            </property>
            <widget class="TabSudAuswahl" name="tabSudAuswahl">
             <attribute name="icon">
-             <iconset theme="tabsudauswahl"/>
+             <iconset theme="sudauswahl"/>
             </attribute>
             <attribute name="title">
              <string>Sudauswahl</string>
@@ -73,7 +73,7 @@
            </widget>
            <widget class="TabRezept" name="tabRezept">
             <attribute name="icon">
-             <iconset theme="tabrezept"/>
+             <iconset theme="rezept"/>
             </attribute>
             <attribute name="title">
              <string>Rezept</string>
@@ -81,7 +81,7 @@
            </widget>
            <widget class="TabBraudaten" name="tabBraudaten">
             <attribute name="icon">
-             <iconset theme="tabbraudaten"/>
+             <iconset theme="braudaten"/>
             </attribute>
             <attribute name="title">
              <string>Braudaten</string>
@@ -89,7 +89,7 @@
            </widget>
            <widget class="TabAbfuellen" name="tabAbfuelldaten">
             <attribute name="icon">
-             <iconset theme="tababfuellen"/>
+             <iconset theme="abfuelldaten"/>
             </attribute>
             <attribute name="title">
              <string>Abfülldaten</string>
@@ -97,7 +97,7 @@
            </widget>
            <widget class="TabGaerverlauf" name="tabGaerverlauf">
             <attribute name="icon">
-             <iconset theme="tabgaerverlauf"/>
+             <iconset theme="gaerverlauf"/>
             </attribute>
             <attribute name="title">
              <string>Gärverlauf</string>
@@ -245,7 +245,7 @@
   </action>
   <action name="actionVerwerfen">
    <property name="icon">
-    <iconset theme="restore"/>
+    <iconset theme="discard"/>
    </property>
    <property name="text">
     <string>Verwerfen</string>
@@ -273,7 +273,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="unlocked"/>
+    <iconset theme="unlock"/>
    </property>
    <property name="text">
     <string>Entsperren</string>
@@ -304,7 +304,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset theme="actionrohstoffe"/>
+    <iconset theme="rohstoffe"/>
    </property>
    <property name="text">
     <string>Rohstoffe</string>
@@ -321,7 +321,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="actionbrauuebersicht"/>
+    <iconset theme="brauuebersicht"/>
    </property>
    <property name="text">
     <string>Brauübersicht</string>
@@ -335,7 +335,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="actionausruestung"/>
+    <iconset theme="ausruestung"/>
    </property>
    <property name="text">
     <string>Ausrüstung</string>
@@ -346,7 +346,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="datenbank"/>
+    <iconset theme="database"/>
    </property>
    <property name="text">
     <string>Datenbank</string>
@@ -357,7 +357,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="tabzusammenfassung"/>
+    <iconset theme="ausdruck"/>
    </property>
    <property name="text">
     <string>Ausdruck</string>
@@ -368,7 +368,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="tabetikette"/>
+    <iconset theme="etikett"/>
    </property>
    <property name="text">
     <string>Etikett</string>
@@ -379,7 +379,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset theme="tabbewertung"/>
+    <iconset theme="bewertung"/>
    </property>
    <property name="text">
     <string>Bewertungen</string>

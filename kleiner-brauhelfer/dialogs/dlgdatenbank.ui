@@ -14,7 +14,7 @@
    <string>Datenbank</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="datenbank"/>
+   <iconset theme="database"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>

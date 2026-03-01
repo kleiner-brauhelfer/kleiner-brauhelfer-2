@@ -26,5 +26,18 @@
         <file>data/Webview/zusammenfassung_en.html</file>
         <file>data/Webview/zusammenfassung_nl.html</file>
         <file>data/Webview/zusammenfassung_sv.html</file>
+        <file>data/Webview/images/getreide.svg</file>
+        <file>data/Webview/images/hefe.svg</file>
+        <file>data/Webview/images/hopfen.svg</file>
+        <file>data/Webview/images/io.svg</file>
+        <file>data/Webview/images/nio.svg</file>
+        <file>data/Webview/images/wasser.svg</file>
+        <file>data/Webview/images/zusatz.svg</file>
+        <file>data/Webview/images/dark/glas.svg</file>
+        <file>data/Webview/images/dark/star.svg</file>
+        <file>data/Webview/images/dark/star_grey.svg</file>
+        <file>data/Webview/images/light/glas.svg</file>
+        <file>data/Webview/images/light/star_grey.svg</file>
+        <file>data/Webview/images/light/star.svg</file>
     </qresource>
 </RCC>

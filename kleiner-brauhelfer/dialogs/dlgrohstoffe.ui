@@ -14,7 +14,7 @@
    <string>Rohstoffe</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="actionrohstoffe"/>
+   <iconset theme="rohstoffe"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -107,6 +107,9 @@
         <height>445</height>
        </rect>
       </property>
+      <attribute name="icon">
+       <iconset theme="malz"/>
+      </attribute>
       <attribute name="label">
        <string>Malz</string>
       </attribute>
@@ -159,6 +162,9 @@
         <height>445</height>
        </rect>
       </property>
+      <attribute name="icon">
+       <iconset theme="hopfen"/>
+      </attribute>
       <attribute name="label">
        <string>Hopfen</string>
       </attribute>
@@ -211,6 +217,9 @@
         <height>445</height>
        </rect>
       </property>
+      <attribute name="icon">
+       <iconset theme="hefe"/>
+      </attribute>
       <attribute name="label">
        <string>Hefe</string>
       </attribute>
@@ -263,6 +272,9 @@
         <height>445</height>
        </rect>
       </property>
+      <attribute name="icon">
+       <iconset theme="zusatz"/>
+      </attribute>
       <attribute name="label">
        <string>Zusätze</string>
       </attribute>

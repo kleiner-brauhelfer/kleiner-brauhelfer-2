@@ -14,7 +14,7 @@
    <string>Ausdruck</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="tabzusammenfassung"/>
+   <iconset theme="ausdruck"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>

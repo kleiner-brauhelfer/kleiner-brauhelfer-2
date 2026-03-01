@@ -14,7 +14,7 @@
    <string>Etikett</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="tabetikette"/>
+   <iconset theme="etikett"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_5">
    <item>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 64 64"
+   version="1.1"
+   xml:space="preserve"
+   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
+   id="svg3"
+   sodipodi:docname="to_up.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs3" /><sodipodi:namedview
+   id="namedview3"
+   pagecolor="#ffffff"
+   bordercolor="#222222"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="14.179688"
+   inkscape:cx="30.042974"
+   inkscape:cy="37.201101"
+   inkscape:window-width="3840"
+   inkscape:window-height="2054"
+   inkscape:window-x="-11"
+   inkscape:window-y="-11"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg3" />
+    <g
+   id="path5397-2"
+   transform="matrix(1.4668901,0,0,1.5652123,-13.8575,-17.010883)"
+   style="stroke-width:1.00767">
+            
+        </g><g
+   id="path5588-6-2"
+   transform="matrix(1.822345,0.29023647,0.06669872,2.000325,-44.015329,-25.436145)"
+   style="stroke-width:3.41353;stroke-dasharray:none">
+            <path
+   id="path2"
+   style="fill:none;fill-rule:nonzero;stroke:#222222;stroke-width:3.41353;stroke-dasharray:none"
+   d="M 56.290293,34.818934 24.417132,39.443559 50.339528,13.812331"
+   sodipodi:nodetypes="ccc" />
+        </g><g
+   id="path2991-5-9"
+   transform="matrix(0.02057853,0.02083745,-0.02042227,0.02297143,53.118664,-33.343379)"
+   style="stroke-width:1.00752;fill:#222222;fill-opacity:1">
+            <path
+   d="M 1495.77,1359.26 H 577.569 L 807.12,961.661 1036.67,564.068 Z"
+   style="fill-rule:nonzero;stroke:#222222;stroke-width:64.7534px;stroke-linecap:butt;stroke-miterlimit:2;fill:#222222;fill-opacity:1"
+   id="path3" />
+        </g>
+</svg>

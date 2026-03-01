@@ -14,7 +14,7 @@
    <string>Bewertungen</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="tabbewertung"/>
+   <iconset theme="bewertung"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>

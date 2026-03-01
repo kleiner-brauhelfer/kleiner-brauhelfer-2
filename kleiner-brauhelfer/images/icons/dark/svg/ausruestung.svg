@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 64 64"
+   version="1.1"
+   xml:space="preserve"
+   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"
+   id="svg9"
+   sodipodi:docname="ausruestung.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+   id="namedview9"
+   pagecolor="#ffffff"
+   bordercolor="#eeeeee"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="28.359375"
+   inkscape:cx="30.889256"
+   inkscape:cy="43.213223"
+   inkscape:window-width="3840"
+   inkscape:window-height="2054"
+   inkscape:window-x="-11"
+   inkscape:window-y="-11"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg9" />
+    <g
+   id="path867"
+   transform="matrix(0.97665605,0,0,0.989176,0.74738983,0.346358)"
+   style="stroke-width:1.00639;fill:#eeeeee;fill-opacity:1">
+            <path
+   d="m 26.667,51.399 v -7 L 40,28.999 H 50.667 L 64,44.399 v 7 z"
+   style="fill-rule:nonzero;stroke:#eeeeee;stroke-width:1.52971px;fill:#eeeeee;fill-opacity:1"
+   id="path5" />
+        </g><g
+   id="path869"
+   transform="matrix(0.97665605,0,0,0.989176,0.74738983,0.346358)"
+   style="stroke-width:1.00639;fill:#eeeeee;fill-opacity:1">
+            <path
+   d="m 21.354,51.399 -0.021,-7 6.667,-8.4 -4,-7.001 H 13.333 L 0,44.399 v 7 z"
+   style="fill-rule:nonzero;stroke:#eeeeee;stroke-width:1.52971px;fill:#eeeeee;fill-opacity:1"
+   id="path6" />
+        </g><rect
+   x="39.319561"
+   y="6.257"
+   width="11.848117"
+   height="20"
+   id="rect6"
+   style="stroke-width:0.999994;fill:#eeeeee;fill-opacity:1" /><rect
+   x="13.736515"
+   y="0"
+   width="11.848117"
+   height="26"
+   id="rect7"
+   style="stroke-width:0.999994;fill:#eeeeee;fill-opacity:1" /><rect
+   x="0.017529963"
+   y="54.868999"
+   width="22.339159"
+   height="9.1309996"
+   id="rect8"
+   style="stroke-width:1;fill:#eeeeee;fill-opacity:1" /><rect
+   x="26.070263"
+   y="54.869003"
+   width="37.985287"
+   height="9.1309996"
+   id="rect9"
+   style="stroke-width:0.999994;fill:#eeeeee;fill-opacity:1" />
+    <defs
+   id="defs9" />
+</svg>

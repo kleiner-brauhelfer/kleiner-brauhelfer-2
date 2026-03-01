@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 64 64"
+   version="1.1"
+   xml:space="preserve"
+   style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1;"
+   id="svg1"
+   sodipodi:docname="bewertung.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:serif="http://www.serif.com/"><defs
+   id="defs1">
+        
+    </defs><sodipodi:namedview
+   id="namedview1"
+   pagecolor="#ffffff"
+   bordercolor="#eeeeee"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="20.053106"
+   inkscape:cx="34.50837"
+   inkscape:cy="34.583171"
+   inkscape:window-width="3840"
+   inkscape:window-height="2054"
+   inkscape:window-x="-11"
+   inkscape:window-y="-11"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer-1" />
+    <g
+   id="Layer-1"
+   serif:id="Layer 1"
+   transform="matrix(0.932143,0,0,0.932143,2.18338,2.17141)">
+            <path
+   id="ol1"
+   serif:id="ol"
+   d="M 51.069568,62.843262 31.95246,52.272681 12.834389,62.782539 16.484053,40.47415 1.1438914,24.73635 22.393907,21.527682 32.007422,1.1566383 41.581404,21.541176 62.830455,24.811531 47.452687,40.520415 Z"
+   style="fill-rule:nonzero;stroke:#eeeeee;stroke-width:6.97318;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;fill:#eeeeee;fill-opacity:1" />
+        </g>
+</svg>

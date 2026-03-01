@@ -128,7 +128,7 @@
            <string>Hiermit wird eine Kategorie nach oben verschoben.</string>
           </property>
           <property name="icon">
-           <iconset theme="nach_oben"/>
+           <iconset theme="move_up"/>
           </property>
          </widget>
         </item>
@@ -150,7 +150,7 @@
            <string>Hiermit wird eine Kategorie nach unten verschoben.</string>
           </property>
           <property name="icon">
-           <iconset theme="nach_unten"/>
+           <iconset theme="move_down"/>
           </property>
          </widget>
         </item>

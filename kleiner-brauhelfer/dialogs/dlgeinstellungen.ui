@@ -114,6 +114,10 @@
              <property name="text">
               <string>System</string>
              </property>
+             <property name="icon">
+              <iconset resource="../images.qrc">
+               <normaloff>:/images/themes/system.svg</normaloff>:/images/themes/system.svg</iconset>
+             </property>
             </item>
             <item>
              <property name="text">
@@ -121,7 +125,7 @@
              </property>
              <property name="icon">
               <iconset resource="../images.qrc">
-               <normaloff>:/images/icons/light/light.svg</normaloff>:/images/icons/light/light.svg</iconset>
+               <normaloff>:/images/themes/light.svg</normaloff>:/images/themes/light.svg</iconset>
              </property>
             </item>
             <item>
@@ -130,7 +134,7 @@
              </property>
              <property name="icon">
               <iconset resource="../images.qrc">
-               <normaloff>:/images/icons/dark/dark.svg</normaloff>:/images/icons/dark/dark.svg</iconset>
+               <normaloff>:/images/themes/dark.svg</normaloff>:/images/themes/dark.svg</iconset>
              </property>
             </item>
            </widget>

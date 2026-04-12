@@ -6,7 +6,6 @@ ModelKategorien::ModelKategorien(Brauhelfer *bh, const QSqlDatabase &db) :
     SqlTableModel(bh, db),
     bh(bh)
 {
-    connect(this, &QAbstractItemModel::modelReset, this, &ModelKategorien::addEmpty);
 }
 
 void ModelKategorien::addEmpty()

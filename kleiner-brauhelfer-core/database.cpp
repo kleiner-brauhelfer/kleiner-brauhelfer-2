@@ -146,6 +146,8 @@ bool Database::connect(const QString &dbPath, bool readonly)
     db.setDatabaseName(dbPath);
     if (readonly)
         db.setConnectOptions(QStringLiteral("QSQLITE_OPEN_READONLY"));
+    else
+        db.setConnectOptions();
 
     if (!db.open())
     {
@@ -385,6 +387,8 @@ bool Database::save()
         mLastError = modelSud->lastError();
         ret = false;
     }
+    if (!ret)
+        qCritical(Brauhelfer::loggingCategory) << "Failed to save database";
     return ret;
 }
 

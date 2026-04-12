@@ -29,7 +29,7 @@
    <item>
     <widget class="QSplitter" name="splitterEditmode">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <widget class="QWidget" name="verticalLayoutWidget_3">
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -45,7 +45,7 @@
           </sizepolicy>
          </property>
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::Shape::StyledPanel</enum>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <property name="spacing">
@@ -98,17 +98,24 @@
             <number>100</number>
            </property>
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="lblZoom"/>
+          <widget class="QLabel" name="lblZoom">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
          </item>
          <item>
           <spacer name="horizontalSpacer_3">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -241,14 +248,14 @@
           </sizepolicy>
          </property>
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
          <widget class="QPlainTextEdit" name="tbTemplate">
           <property name="toolTip">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld ist der &lt;span style=&quot; font-weight:700;&quot;&gt;Spickzettel&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;HTML&lt;/span&gt; definiert. Platzhalter nehmen die Tags rechts auf und verabeiten sie.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="lineWrapMode">
-           <enum>QPlainTextEdit::NoWrap</enum>
+           <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
           </property>
          </widget>
          <widget class="QPlainTextEdit" name="tbTags">
@@ -256,7 +263,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;In diesem Feld sind die &lt;span style=&quot; font-weight:600;&quot;&gt;Tags &lt;/span&gt;im Spickzettel definiert. Tags werden links in HTML weiterverarbeitet.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="lineWrapMode">
-           <enum>QPlainTextEdit::NoWrap</enum>
+           <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
           </property>
           <property name="readOnly">
            <bool>true</bool>
@@ -273,7 +280,7 @@
           <bool>true</bool>
          </property>
          <property name="textInteractionFlags">
-          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+          <set>Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextSelectableByMouse</set>
          </property>
         </widget>
        </item>
@@ -312,8 +319,6 @@
   <tabstop>tbTemplate</tabstop>
   <tabstop>tbTags</tabstop>
  </tabstops>
- <resources>
-  <include location="../images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

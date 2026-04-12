@@ -46,6 +46,8 @@ WdgWebViewEditable::WdgWebViewEditable(QWidget *parent) :
     ui->splitterEditmode->setHandleWidth(0);
     ui->splitterEditmode->setSizes({1, 0});
     gZoomFactor = gSettings->valueInGroup("General", "WebViewZoomFactor", 1.0).toDouble();
+
+    ui->sliderZoom->installEventFilter(this);
 }
 
 WdgWebViewEditable::~WdgWebViewEditable()
@@ -333,6 +335,17 @@ void WdgWebViewEditable::on_sliderZoom_valueChanged(int value)
 void WdgWebViewEditable::on_sliderZoom_sliderReleased()
 {
     ui->lblZoom->clear();
+}
+
+bool WdgWebViewEditable::eventFilter(QObject *object, QEvent *event)
+{
+    if (event->type() == QEvent::MouseButtonDblClick && object == ui->sliderZoom)
+    {
+        ui->sliderZoom->setValue(100);
+        ui->lblZoom->clear();
+        return true;
+    }
+    return QObject::eventFilter(object, event);
 }
 
 void WdgWebViewEditable::on_btnPrint_clicked()

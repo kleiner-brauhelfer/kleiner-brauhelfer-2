@@ -48,6 +48,7 @@ private slots:
 
 private:
     bool checkSaveTemplate();
+    bool eventFilter(QObject *object, QEvent *event) Q_DECL_OVERRIDE;
 
 public:
     QVariantMap mTemplateTags;

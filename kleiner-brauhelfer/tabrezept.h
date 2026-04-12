@@ -26,6 +26,8 @@ public:
     void checkEnabled();
 
 private slots:
+    void themeChanged(Qt::ColorScheme theme);
+
     void sudLoaded();
     void sudDataChanged(const QModelIndex& index);
     void updateValues();

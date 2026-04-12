@@ -16,13 +16,7 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <property name="autoFillBackground">
-   <bool>true</bool>
-  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
-   <property name="spacing">
-    <number>4</number>
-   </property>
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -37,8 +31,11 @@
    </property>
    <item>
     <widget class="QFrame" name="frame">
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
@@ -152,13 +149,13 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge vom &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgussfaktor&lt;/span&gt; wird in einem komplizierten Verfahren im Hauptteil des Tab Rezeptes berechnet und setzt sich aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausfaktor zusammen, wie entweder manuell oder im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einem Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="readOnly">
            <bool>true</bool>
           </property>
           <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
+           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
           </property>
           <property name="decimals">
            <number>2</number>
@@ -190,7 +187,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete &lt;span style=&quot; font-weight:600;&quot;&gt;Restalkalität&lt;/span&gt; vom &lt;span style=&quot; font-weight:600;&quot;&gt;Brauwasser&lt;/span&gt; in Grad deutscher Härte °dH.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#0433ff;&quot;&gt;Zum Verständnis: &lt;/span&gt;Die Restalkalität &lt;span style=&quot; font-weight:600;&quot;&gt;°dH&lt;/span&gt; ist vereinfacht eine Maßeinheit, die einer anderen Maßeinheit, dem &lt;span style=&quot; font-weight:600;&quot;&gt;pH-Wert&lt;/span&gt; den Weg bereitet. Und das kommt so: &lt;span style=&quot; font-weight:600;&quot;&gt;0 °dH&lt;/span&gt; beschreibt &lt;span style=&quot; font-weight:600;&quot;&gt;salzfreies Wasser&lt;/span&gt;. Braumalze reagieren in salzfreiem Wasser sauer und verschieben den pH auf einen Wert zwischen  5,2 und 5,8.&lt;/p&gt;&lt;p&gt;Wasser nimmt im Boden Mineralien auf. Diese Mineralien verschieben die Restalkalität in den positiven Bereich. Ein positiver °dH-Bereich erhöht aber den pH-Wert in der Maische. Umgekehrt senkt eine negative Restalkalität den pH-Wert in der Maische.&lt;/p&gt;&lt;p&gt;Grundsätzlich gilt: Die sauren Reaktionen des Malzes sind gut bei einem &lt;span style=&quot; font-weight:600;&quot;&gt;pH &lt;/span&gt;von &lt;span style=&quot; font-weight:600;&quot;&gt;5,5&lt;/span&gt;. Optimal sind sie bei &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,4&lt;/span&gt; für &lt;span style=&quot; font-weight:600;&quot;&gt;helle&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;pH 5,6&lt;/span&gt; für &lt;span style=&quot; font-weight:600;&quot;&gt;dunkle Biere&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Neben der Restalkalität interessiert im Brauwasser auch der &lt;span style=&quot; font-weight:600; color:#0433ff;&quot;&gt;Salzgehalt&lt;/span&gt;. Fälschlich wird oft angenommen, dass viele Mineralien im Wasser hartes Wasser bedeuten. In Wirklichkeit haben das berühmte salzarme Wasser Pilsener Wasser und das mineralreiche Burton-on-Trent-Wasser, bekannt für IPA, die gleich Restalkalität nahe 0 °dH.&lt;/p&gt;&lt;p&gt;Die Mineralzusammensetzung ist letztlich ein entscheidener Faktor für den &lt;span style=&quot; font-weight:600; color:#0433ff;&quot;&gt;Bierstil&lt;/span&gt;. Das Pilsener Wasser sorgt für die weiche Anmutung eines Pilseners, das salzhaltige Burton-on-Trent-Wasser für Komplexität, die den Hopfencharakter eine English IPA unterstützt.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#0433ff;&quot;&gt;Zur Beachtung:&lt;/span&gt; Da die Materie der Mineralienzusammensetzung für einen Bierstil komplex ist, bietet der Kleine Brauhelfer im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rohstoffe&lt;/span&gt; im &lt;span style=&quot; font-weight:600;&quot;&gt;Reiter Wasser &lt;/span&gt;bewährte Wasserstile für alle Bierstile als &lt;span style=&quot; font-weight:600;&quot;&gt;Vorlage&lt;/span&gt; an, die eine aufwenige Recherche erübrigen. &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="decimals">
            <number>2</number>
@@ -231,13 +228,13 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge für die Verdünnung im &lt;span style=&quot; font-weight:600;&quot;&gt;High-Gravity-Verfahren&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Die&lt;span style=&quot; font-weight:600;&quot;&gt; High-Gravity-Menge &lt;/span&gt;wird im Hauptteil vom &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Rezept&lt;/span&gt; manuell angegeben und dann in einem komplizierten Verfahren berechnet. Wesentliches Merkmal von High Gravity ist, dass sein Anteil vom Nachguss abgezogen und gesondert vermerkt wird.&lt;/p&gt;&lt;p&gt;Dabei setzt sich der Nachguss aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausausbeutefaktor zusammen, wie entweder manuell oder im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Ausrüstung&lt;/span&gt; definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung:&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;und&lt;span style=&quot; font-weight:600;&quot;&gt; High-Gravity-Menge &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einem Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="readOnly">
            <bool>true</bool>
           </property>
           <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
+           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
           </property>
           <property name="decimals">
            <number>2</number>
@@ -276,7 +273,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier wird die &lt;span style=&quot; font-weight:600;&quot;&gt;Menge&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Brausalz&lt;/span&gt; oder einer &lt;span style=&quot; font-weight:600;&quot;&gt;Brausäure&lt;/span&gt; in ml/l oder g/l angegeben. &lt;/p&gt;&lt;p&gt;Der Wert hat rein informativen Charakter, praktisch entscheidend ist die Gesamtmenge des Zuatzes.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="decimals">
            <number>3</number>
@@ -315,7 +312,7 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier gibt der Kleine Brauhelfer die &lt;span style=&quot; font-weight:600;&quot;&gt;Gesamtmenge&lt;/span&gt; von einem &lt;span style=&quot; font-weight:600;&quot;&gt;Brausalz&lt;/span&gt; oder einer &lt;span style=&quot; font-weight:600;&quot;&gt;Brausäure&lt;/span&gt; in ml/l oder g/l zu Wasseraufbereitung aus. &lt;/p&gt;&lt;p&gt;Dieser Wert gilt für die gesamte Wassermenge des Sudes und hat rein informativen Charakter. Praktische Relevanz hat er &lt;span style=&quot; font-weight:600;&quot;&gt;aufgeteilt&lt;/span&gt; in den untenstehenden Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Nachguss&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="decimals">
            <number>2</number>
@@ -331,7 +328,7 @@
         <item row="0" column="9">
          <spacer name="horizontalSpacer">
           <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+           <enum>Qt::Orientation::Horizontal</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -363,13 +360,13 @@
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hier zeigt der Kleine Brauhelfer die berechnete Menge vom &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptguss&lt;/span&gt; an.&lt;/p&gt;&lt;p&gt;Der &lt;span style=&quot; font-weight:600;&quot;&gt;Hauptgussfaktor&lt;/span&gt; wird in einem komplizierten Verfahren im Hauptteil des Tab Rezeptes berechnet und setzt sich aus gewünschter Biermenge, Stammwürze soiwe High Gravity, Verdampfungsrate und Sudhausfaktor zusammen, wie entweder manuell oder im Tab Ausrüstung definiert.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff2600;&quot;&gt;Achtung: &lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Haupt- und Nachguss &lt;/span&gt;werden immer wieder &lt;span style=&quot; font-weight:600;&quot;&gt;fälschlich addiert &lt;/span&gt;und mit der fertigen Biermenge verwechselt.&lt;/p&gt;&lt;p&gt;Wenn das Addieren von Haupt- und Nachguss überhaupt einen Sinn macht, dann in der Wasseraufbereitung, etwa für passende Gebinde oder bei einem Osmose-Anlage.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="readOnly">
            <bool>true</bool>
           </property>
           <property name="buttonSymbols">
-           <enum>QAbstractSpinBox::NoButtons</enum>
+           <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
           </property>
           <property name="decimals">
            <number>2</number>
@@ -423,8 +420,6 @@
   <tabstop>tbMengeNg</tabstop>
   <tabstop>tbMengeHgf</tabstop>
  </tabstops>
- <resources>
-  <include location="../images.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

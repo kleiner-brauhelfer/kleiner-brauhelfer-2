@@ -103,9 +103,9 @@ void WdgWeitereZutatGabe::updateValues()
     ui->btnNachUnten->setVisible(mEnabled);
 
     ui->cbEntnahme->setVisible(typ != Brauhelfer::ZusatzTyp::Hopfen);
-    QPalette pal = palette();
+    QPalette pal = ui->frame->palette();
     pal.setColor(QPalette::Window, typ == Brauhelfer::ZusatzTyp::Hopfen ? gSettings->colorHopfen : gSettings->colorZusatz);
-    setPalette(pal);
+    ui->frame->setPalette(pal);
 
     int rowRohstoff;
     if (typ == Brauhelfer::ZusatzTyp::Hopfen)

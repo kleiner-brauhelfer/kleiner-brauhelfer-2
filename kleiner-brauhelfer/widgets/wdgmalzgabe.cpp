@@ -18,9 +18,9 @@ WdgMalzGabe::WdgMalzGabe(SudObject *sud, int row, QLayout *parentLayout, QWidget
 {
     ui->setupUi(this);
 
-    QPalette pal = palette();
+    QPalette pal = ui->frame->palette();
     pal.setColor(QPalette::Window, gSettings->colorMalz);
-    setPalette(pal);
+    ui->frame->setPalette(pal);
 
     ui->btnKorrektur->setError(true);
     ui->btnKorrekturExtrakt->setError(true);

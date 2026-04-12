@@ -17,9 +17,9 @@ WdgHopfenGabe::WdgHopfenGabe(SudObject *sud, int row, QLayout* parentLayout, QWi
 {
     ui->setupUi(this);
 
-    QPalette pal = palette();
+    QPalette pal = ui->frame->palette();
     pal.setColor(QPalette::Window, gSettings->colorHopfen);
-    setPalette(pal);
+    ui->frame->setPalette(pal);
 
     ui->btnMengeKorrektur->setError(true);
     ui->btnAnteilKorrektur->setError(true);

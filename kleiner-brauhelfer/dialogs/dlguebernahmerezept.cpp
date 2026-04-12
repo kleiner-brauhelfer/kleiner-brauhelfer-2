@@ -4,6 +4,8 @@
 #include "model/doublespinboxdelegate.h"
 #include "model/comboboxdelegate.h"
 #include "model/textdelegate.h"
+#include "model/sudnamedelegate.h"
+#include "model/datedelegate.h"
 #include "brauhelfer.h"
 #include "settings.h"
 
@@ -165,9 +167,13 @@ DlgUebernahmeRezept::DlgUebernahmeRezept(Art art, QWidget *parent) :
     model = new ProxyModel(this);
     model->setSourceModel(bh->modelSud());
     ui->tableViewSud->setModel(model);
-    ui->tableViewSud->appendCol({ModelSud::ColSudname, true, false, -1, new TextDelegate(ui->tableViewItem)});
-    ui->tableViewSud->appendCol({ModelSud::ColSudnummer, true, false, 80, new SpinBoxDelegate(ui->tableViewSud)});
+    ui->tableViewSud->appendCol({ModelSud::ColSudname, true, false, -1, new SudNameDelegate(ui->tableViewItem)});
+    ui->tableViewSud->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(ui->tableViewItem)});
+    ui->tableViewSud->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, ui->tableViewItem)});
+    ui->tableViewSud->appendCol({ModelSud::ColAnlage, true, true, 100, new TextDelegate(false, Qt::AlignCenter, ui->tableViewItem)});
+    ui->tableViewSud->appendCol({ModelSud::ColBraudatum, false, true, 100, new DateDelegate(false, true, ui->tableViewItem)});
     ui->tableViewSud->build();
+    ui->tableViewSud->setDefaultContextMenu(false, false);
     connect(ui->tableViewSud->selectionModel(), &QItemSelectionModel::selectionChanged, this, &DlgUebernahmeRezept::tableViewSud_selectionChanged);
 
     adjustSize();

@@ -28,9 +28,9 @@ WdgRast::WdgRast(SudObject *sud, int row, QLayout* parentLayout, QWidget *parent
 {
     ui->setupUi(this);
 
-    QPalette pal = palette();
+    QPalette pal = ui->frame->palette();
     pal.setColor(QPalette::Window, gSettings->colorRast);
-    setPalette(pal);
+    ui->frame->setPalette(pal);
 
     ui->cbRast->setCompleter(nullptr);
     connect(qApp, &QApplication::focusChanged, this, &WdgRast::focusChanged);

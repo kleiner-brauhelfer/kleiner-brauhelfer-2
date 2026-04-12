@@ -31,7 +31,8 @@ extern Settings* gSettings;
 TabRezept::TabRezept(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TabRezept),
-    mSud(nullptr)
+    mSud(nullptr),
+    mGlasSvg(nullptr)
 {
     ui->setupUi(this);
 }
@@ -39,14 +40,13 @@ TabRezept::TabRezept(QWidget *parent) :
 TabRezept::~TabRezept()
 {
     delete ui;
-    delete mGlasSvg;
+    if (mGlasSvg)
+        delete mGlasSvg;
 }
 
 void TabRezept::setup(SudObject *sud)
 {
     mSud = sud;
-
-    QPalette pal;
 
     ui->tbCO2->setColumn(mSud, ModelSud::ColCO2);
     ui->tbSW->setColumn(mSud, ModelSud::ColSW);
@@ -84,55 +84,12 @@ void TabRezept::setup(SudObject *sud)
     ui->tbMengeHefestarter->setColumn(mSud, ModelSud::ColMengeHefestarter);
     ui->tbSWHefestarter->setColumn(mSud, ModelSud::ColSWHefestarter);
 
-    ui->lblWarnungMalz->setPalette(gSettings->paletteErrorLabel);
     ui->btnMalzAusgleichen->setError(true);
     ui->btnShaAnpassen->setError(true);
-    ui->lblWarnungHopfen->setPalette(gSettings->paletteErrorLabel);
     ui->btnHopfenAusgleichen->setError(true);
-    ui->lblWarnungMaischplanWasser->setPalette(gSettings->paletteErrorLabel);
-    ui->lblWarnungMaischplanMalz->setPalette(gSettings->paletteErrorLabel);
     ui->btnMaischplanAusgleichen->setError(true);
     ui->btnMaischplanFaktorAnpassen->setError(true);
     ui->btnMaischplanAusgleichenMalz->setError(true);
-    ui->lblWarnungPh->setPalette(gSettings->paletteErrorLabel);
-
-    pal = ui->btnNeueMalzGabe->palette();
-    pal.setColor(QPalette::Button, gSettings->colorMalz);
-    ui->btnNeueMalzGabe->setDefaultPalette(pal);
-    ui->btnMalzGabenUebernehmen->setDefaultPalette(pal);
-
-    pal = ui->btnNeueHopfenGabe->palette();
-    pal.setColor(QPalette::Button, gSettings->colorHopfen);
-    ui->btnNeueHopfenGabe->setDefaultPalette(pal);
-    ui->btnHopfenGabenUebernehmen->setDefaultPalette(pal);
-    ui->btnNeueHopfenGabeGaerung->setDefaultPalette(pal);
-    ui->btnHopfenGabenUebernehmenGaerung->setDefaultPalette(pal);
-
-    pal = ui->btnNeueHefeGabe->palette();
-    pal.setColor(QPalette::Button, gSettings->colorHefe);
-    ui->btnNeueHefeGabe->setDefaultPalette(pal);
-    ui->btnHefeGabenUebernehmen->setDefaultPalette(pal);
-
-    pal = ui->btnNeueZusatzGabeKochen->palette();
-    pal.setColor(QPalette::Button, gSettings->colorZusatz);
-    ui->btnNeueZusatzGabeMaischen->setDefaultPalette(pal);
-    ui->btnZusazGabenUebernehmenMaischen->setDefaultPalette(pal);
-    ui->btnNeueZusatzGabeKochen->setDefaultPalette(pal);
-    ui->btnZusazGabenUebernehmenKochen->setDefaultPalette(pal);
-    ui->btnNeueZusatzGabeGaerung->setDefaultPalette(pal);
-    ui->btnZusazGabenUebernehmenGaerung->setDefaultPalette(pal);
-
-    pal = ui->btnNeueRast->palette();
-    pal.setColor(QPalette::Button, gSettings->colorRast);
-    ui->btnNeueRast->setDefaultPalette(pal);
-    ui->btnRastenUebernehmen->setDefaultPalette(pal);
-
-    pal = ui->btnNeueWasseraufbereitung->palette();
-    pal.setColor(QPalette::Button, gSettings->colorWasser);
-    ui->btnNeueWasseraufbereitung->setDefaultPalette(pal);
-    ui->btnWasseraufbereitungUebernehmen->setDefaultPalette(pal);
-
-    mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Qt::ColorScheme::Dark ? QStringLiteral(":/images/icons/dark/svg/glas.svg") : QStringLiteral(":/images/icons/light/svg/glas.svg"));
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
 
     ProxyModel* proxy = new ProxyModel(this);
@@ -176,6 +133,9 @@ void TabRezept::setup(SudObject *sud)
     ui->splitterWasseraufbereitung->restoreState(gSettings->value("splitterWasseraufbereitungState").toByteArray());
 
     gSettings->endGroup();
+
+    connect(gSettings, &Settings::themeChanged, this, &TabRezept::themeChanged);
+    themeChanged(gSettings->theme());
 
     connect(mSud->bh(), &Brauhelfer::modified, this, &TabRezept::updateValues);
     connect(mSud->bh(), &Brauhelfer::discarded, this, &TabRezept::sudLoaded);
@@ -253,6 +213,89 @@ void TabRezept::restoreView()
     ui->splitterGaerung->restoreState(mDefaultSplitterGaerungState);
     ui->splitterMaischplan->restoreState(mDefaultSplitterMaischplanState);
     ui->splitterWasseraufbereitung->restoreState(mDefaultSplitterWasseraufbereitungState);
+}
+
+void TabRezept::themeChanged(Qt::ColorScheme theme)
+{
+    setUpdatesEnabled(false);
+
+    QPalette pal;
+    pal = ui->btnNeueMalzGabe->palette();
+    pal.setColor(QPalette::Button, gSettings->colorMalz);
+    ui->btnNeueMalzGabe->setDefaultPalette(pal);
+    ui->btnMalzGabenUebernehmen->setDefaultPalette(pal);
+
+    pal = ui->btnNeueHopfenGabe->palette();
+    pal.setColor(QPalette::Button, gSettings->colorHopfen);
+    ui->btnNeueHopfenGabe->setDefaultPalette(pal);
+    ui->btnHopfenGabenUebernehmen->setDefaultPalette(pal);
+    ui->btnNeueHopfenGabeGaerung->setDefaultPalette(pal);
+    ui->btnHopfenGabenUebernehmenGaerung->setDefaultPalette(pal);
+
+    pal = ui->btnNeueHefeGabe->palette();
+    pal.setColor(QPalette::Button, gSettings->colorHefe);
+    ui->btnNeueHefeGabe->setDefaultPalette(pal);
+    ui->btnHefeGabenUebernehmen->setDefaultPalette(pal);
+
+    pal = ui->btnNeueZusatzGabeKochen->palette();
+    pal.setColor(QPalette::Button, gSettings->colorZusatz);
+    ui->btnNeueZusatzGabeMaischen->setDefaultPalette(pal);
+    ui->btnZusazGabenUebernehmenMaischen->setDefaultPalette(pal);
+    ui->btnNeueZusatzGabeKochen->setDefaultPalette(pal);
+    ui->btnZusazGabenUebernehmenKochen->setDefaultPalette(pal);
+    ui->btnNeueZusatzGabeGaerung->setDefaultPalette(pal);
+    ui->btnZusazGabenUebernehmenGaerung->setDefaultPalette(pal);
+
+    pal = ui->btnNeueRast->palette();
+    pal.setColor(QPalette::Button, gSettings->colorRast);
+    ui->btnNeueRast->setDefaultPalette(pal);
+    ui->btnRastenUebernehmen->setDefaultPalette(pal);
+
+    pal = ui->btnNeueWasseraufbereitung->palette();
+    pal.setColor(QPalette::Button, gSettings->colorWasser);
+    ui->btnNeueWasseraufbereitung->setDefaultPalette(pal);
+    ui->btnWasseraufbereitungUebernehmen->setDefaultPalette(pal);
+
+    ui->lblWarnungMalz->setPalette(gSettings->paletteErrorLabel);
+    ui->lblWarnungHopfen->setPalette(gSettings->paletteErrorLabel);
+    ui->lblWarnungMaischplanWasser->setPalette(gSettings->paletteErrorLabel);
+    ui->lblWarnungMaischplanMalz->setPalette(gSettings->paletteErrorLabel);
+    ui->lblWarnungPh->setPalette(gSettings->paletteErrorLabel);
+
+    while (ui->layoutMalzGaben->count())
+        delete ui->layoutMalzGaben->itemAt(0)->widget();
+    malzGaben_modified();
+
+    while (ui->layoutHopfenGaben->count())
+        delete ui->layoutHopfenGaben->itemAt(0)->widget();
+    hopfenGaben_modified();
+
+    while (ui->layoutHefeGaben->count())
+        delete ui->layoutHefeGaben->itemAt(0)->widget();
+    hefeGaben_modified();
+
+    while (ui->layoutZusaetzeMaischen->count())
+        delete ui->layoutZusaetzeMaischen->itemAt(0)->widget();
+    while (ui->layoutZusaetzeKochen->count())
+        delete ui->layoutZusaetzeKochen->itemAt(0)->widget();
+    while (ui->layoutZusaetzeGaerung->count())
+        delete ui->layoutZusaetzeGaerung->itemAt(0)->widget();
+    weitereZutatenGaben_modified();
+
+    while (ui->layoutRasten->count())
+        delete ui->layoutRasten->itemAt(0)->widget();
+    rasten_modified();
+
+    while (ui->layoutWasseraufbereitung->count())
+        delete ui->layoutWasseraufbereitung->itemAt(0)->widget();
+    wasseraufbereitung_modified();
+
+    if (mGlasSvg)
+        delete mGlasSvg;
+    mGlasSvg = new QGraphicsSvgItem(theme == Qt::ColorScheme::Dark ? QStringLiteral(":/images/icons/dark/svg/glas.svg") : QStringLiteral(":/images/icons/light/svg/glas.svg"));
+    updateGlas();
+
+    setUpdatesEnabled(true);
 }
 
 void TabRezept::modulesChanged(Settings::Modules modules)
@@ -1527,7 +1570,7 @@ void TabRezept::anhaenge_modified()
     const int nModel = mSud->modelAnhang()->rowCount();
     int nLayout = ui->layoutAnhang->count();
     while (nLayout < nModel)
-        ui->layoutAnhang->addWidget(new WdgAnhang(mSud, nLayout++));
+        ui->layoutAnhang->addWidget(new WdgAnhang(mSud, nLayout++, ui->layoutAnhang, this));
     while (ui->layoutAnhang->count() != nModel)
         delete ui->layoutAnhang->itemAt(ui->layoutAnhang->count() - 1)->widget();
     for (int i = 0; i < ui->layoutAnhang->count(); ++i)

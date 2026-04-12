@@ -1,7 +1,7 @@
 #ifndef WDGANHANG_H
 #define WDGANHANG_H
 
-#include <QWidget>
+#include "wdgabstractproxy.h"
 #include <QDir>
 
 class SudObject;
@@ -10,18 +10,17 @@ namespace Ui {
 class WdgAnhang;
 }
 
-class WdgAnhang : public QWidget
+class WdgAnhang : public WdgAbstractProxy
 {
     Q_OBJECT
 
 public:
     static bool isImage(const QString &pfad);
-    explicit WdgAnhang(SudObject *sud, int index, QWidget *parent = nullptr);
+    explicit WdgAnhang(SudObject *sud, int row, QLayout *parentLayout, QWidget *parent = nullptr);
     ~WdgAnhang();
     void openDialog();
     QString getPfad() const;
     QString getFullPfad() const;
-    void remove();
 
 public slots:
     void updateValues();
@@ -34,13 +33,8 @@ private slots:
     void on_btnLoeschen_clicked();
 
 private:
-    QVariant data(int col) const;
-    bool setData(int col, const QVariant &value);
-
-private:
     Ui::WdgAnhang *ui;
     SudObject *mSud;
-    int mIndex;
     QDir mBasis;
 };
 

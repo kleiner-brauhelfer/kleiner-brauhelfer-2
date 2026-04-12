@@ -4,7 +4,6 @@
 #include <QDesktopServices>
 #include "brauhelfer.h"
 #include "settings.h"
-#include "commands/undostack.h"
 
 extern Settings* gSettings;
 
@@ -17,11 +16,10 @@ bool WdgAnhang::isImage(const QString& pfad)
             || ext == QStringLiteral("jpeg") || ext == QStringLiteral("bmp"));
 }
 
-WdgAnhang::WdgAnhang(SudObject *sud, int index, QWidget *parent) :
-    QWidget(parent),
+WdgAnhang::WdgAnhang(SudObject *sud, int row, QLayout *parentLayout, QWidget *parent) :
+    WdgAbstractProxy(sud->modelAnhang(), row, parentLayout, parent),
     ui(new Ui::WdgAnhang),
-    mSud(sud),
-    mIndex(index)
+    mSud(sud)
 {
     mBasis = QDir(gSettings->databaseDir());
     ui->setupUi(this);
@@ -33,17 +31,6 @@ WdgAnhang::WdgAnhang(SudObject *sud, int index, QWidget *parent) :
 WdgAnhang::~WdgAnhang()
 {
     delete ui;
-}
-
-QVariant WdgAnhang::data(int col) const
-{
-    return mSud->modelAnhang()->data(mIndex, col);
-}
-
-bool WdgAnhang::setData(int col, const QVariant &value)
-{
-    gUndoStack->push(new SetModelDataCommand(mSud->modelAnhang(), mIndex, col, value));
-    return true;
 }
 
 void WdgAnhang::updateValues()
@@ -83,11 +70,6 @@ QString WdgAnhang::getFullPfad() const
         return QDir::cleanPath(mBasis.filePath(pfad));
     else
         return pfad;
-}
-
-void WdgAnhang::remove()
-{
-    mSud->modelAnhang()->removeRow(mIndex);
 }
 
 void WdgAnhang::openDialog()

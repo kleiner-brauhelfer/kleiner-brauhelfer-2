@@ -14,9 +14,9 @@ WdgWasseraufbereitung::WdgWasseraufbereitung(SudObject *sud, int row, QLayout *p
 {
     ui->setupUi(this);
 
-    QPalette pal = palette();
+    QPalette pal = ui->frame->palette();
     pal.setColor(QPalette::Window, gSettings->colorWasser);
-    setPalette(pal);
+    ui->frame->setPalette(pal);
 
     updateValues();
     connect(mSud->bh(), &Brauhelfer::modified, this, &WdgWasseraufbereitung::updateValues);

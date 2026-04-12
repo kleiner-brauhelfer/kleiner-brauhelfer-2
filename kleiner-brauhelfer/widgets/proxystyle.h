@@ -9,6 +9,7 @@ class ProxyStyle : public QProxyStyle
 
 public:
     explicit ProxyStyle();
+    int pixelMetric(PixelMetric metric, const QStyleOption *option = nullptr, const QWidget *widget = nullptr) const Q_DECL_OVERRIDE;
     QRect subControlRect(ComplexControl cc, const QStyleOptionComplex *opt, SubControl sc, const QWidget *widget) const Q_DECL_OVERRIDE;
     void drawPrimitive(PrimitiveElement element, const QStyleOption *option, QPainter *painter, const QWidget *widget = nullptr) const Q_DECL_OVERRIDE;
     void drawControl(ControlElement element, const QStyleOption *option, QPainter *painter, const QWidget *widget = nullptr) const Q_DECL_OVERRIDE;

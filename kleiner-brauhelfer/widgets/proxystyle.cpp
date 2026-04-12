@@ -3,6 +3,8 @@
 #include <QPainter>
 
 #define SCROLLBAR_ARROWS_EN 1
+#define SPLITTER_LENGTH 60
+#define SPLITTER_WIDTH 8
 
 static void drawArrow(QPainter* p, QRect rect, Qt::ArrowType arrowDirection, const QBrush& brush, const QPen& pen = Qt::NoPen)
 {
@@ -69,6 +71,17 @@ ProxyStyle::ProxyStyle() :
 {
 }
 
+int ProxyStyle::pixelMetric(PixelMetric metric, const QStyleOption *option, const QWidget *widget) const
+{
+    switch (metric)
+    {
+    case PM_SplitterWidth:
+        return SPLITTER_WIDTH;
+    default:
+        return QProxyStyle::pixelMetric(metric, option, widget);
+    }
+}
+
 QRect ProxyStyle::subControlRect(ComplexControl control, const QStyleOptionComplex *option, SubControl subcontrol, const QWidget *widget) const
 {
     QRect rect = QProxyStyle::subControlRect(control, option, subcontrol, widget);
@@ -118,12 +131,40 @@ void ProxyStyle::drawPrimitive(PrimitiveElement element, const QStyleOption *opt
     }
     default:
         QProxyStyle::drawPrimitive(element, option, painter, widget);
+        break;
     }
 }
 
 void ProxyStyle::drawControl(ControlElement element, const QStyleOption *option, QPainter *painter, const QWidget *widget) const
 {
-    QProxyStyle::drawControl(element, option, painter, widget);
+    switch (element)
+    {
+    case CE_Splitter:
+    {
+        if (option->state & State_MouseOver)
+        {
+            painter->setRenderHint(QPainter::Antialiasing);
+            painter->setPen(option->palette.color(QPalette::Mid));
+            painter->setBrush(option->palette.brush(QPalette::Highlight));
+            if (option->state & State_Horizontal)
+            {
+                int w = option->rect.width() - 4;
+                QRect r = QRect(option->rect.left() + 2, option->rect.center().y() - SPLITTER_LENGTH / 2, w, SPLITTER_LENGTH);
+                painter->drawRoundedRect(r, w/2, w/2);
+            }
+            else
+            {
+                int h = option->rect.height() - 4;
+                QRect r = QRect(option->rect.center().x() - SPLITTER_LENGTH / 2, option->rect.top() + 2, SPLITTER_LENGTH, h);
+                painter->drawRoundedRect(r, h/2, h/2);
+            }
+        }
+        break;
+    }
+    default:
+        QProxyStyle::drawControl(element, option, painter, widget);
+        break;
+    }
 }
 
 void ProxyStyle::drawComplexControl(ComplexControl control, const QStyleOptionComplex *option, QPainter *painter, const QWidget *widget) const
@@ -131,41 +172,71 @@ void ProxyStyle::drawComplexControl(ComplexControl control, const QStyleOptionCo
     switch (control)
     {
     case CC_ScrollBar:
+    {
+        const QStyleOptionSlider *scrollBar = qstyleoption_cast<const QStyleOptionSlider *>(option);
+        if (scrollBar)
         {
-            const QStyleOptionSlider *scrollBar = qstyleoption_cast<const QStyleOptionSlider *>(option);
-            if (scrollBar)
+            bool isHorizontal = scrollBar->orientation == Qt::Horizontal;
+            bool isLeftToRight = option->direction != Qt::RightToLeft;
+            bool hover = scrollBar->state & State_MouseOver;
+            QBrush brush = hover ? option->palette.brush(QPalette::Highlight) : option->palette.brush(QPalette::Mid);
+            QPen pen = hover ? QPen(option->palette.color(QPalette::Mid)) : QPen(Qt::NoPen);
+            painter->setRenderHint(QPainter::Antialiasing);
+            painter->setPen(pen);
+            if (scrollBar->subControls & SC_ScrollBarSlider)
             {
-                bool isHorizontal = scrollBar->orientation == Qt::Horizontal;
-                bool isLeftToRight = option->direction != Qt::RightToLeft;
-                bool hover = scrollBar->state & State_MouseOver;
-                QBrush brush = hover ? option->palette.brush(QPalette::Highlight) : option->palette.brush(QPalette::Mid);
-                QPen pen = hover ? QPen(option->palette.color(QPalette::Mid)) : QPen(Qt::NoPen);
-                painter->setRenderHint(QPainter::Antialiasing);
-                painter->setPen(pen);
-                if (scrollBar->subControls & SC_ScrollBarSlider)
-                {
-                    QRect rect = subControlRect(control, scrollBar, SC_ScrollBarSlider, widget);
-                    painter->setBrush(brush);
-                    if (isHorizontal)
-                        painter->drawRoundedRect(rect, rect.height()/2, rect.height()/2);
-                    else
-                        painter->drawRoundedRect(rect, rect.width()/2, rect.width()/2);
-                }
-                if (scrollBar->subControls & SC_ScrollBarSubLine)
-                {
-                    QRect rect = subControlRect(control, scrollBar, SC_ScrollBarSubLine, widget);
-                    Qt::ArrowType arrowType = isHorizontal ? (isLeftToRight ? Qt::LeftArrow : Qt::RightArrow) : (Qt::UpArrow);
-                    drawArrow(painter, rect, arrowType, brush, pen);
-                }
-                if (scrollBar->subControls & SC_ScrollBarAddLine)
-                {
-                    QRect rect = subControlRect(control, scrollBar, SC_ScrollBarAddLine, widget);
-                    Qt::ArrowType arrowType = isHorizontal ? (isLeftToRight ? Qt::RightArrow : Qt::LeftArrow) : (Qt::DownArrow);
-                    drawArrow(painter, rect, arrowType, brush, pen);
-                }
+                QRect rect = subControlRect(control, scrollBar, SC_ScrollBarSlider, widget);
+                painter->setBrush(brush);
+                if (isHorizontal)
+                    painter->drawRoundedRect(rect, rect.height()/2, rect.height()/2);
+                else
+                    painter->drawRoundedRect(rect, rect.width()/2, rect.width()/2);
+            }
+            if (scrollBar->subControls & SC_ScrollBarSubLine)
+            {
+                QRect rect = subControlRect(control, scrollBar, SC_ScrollBarSubLine, widget);
+                Qt::ArrowType arrowType = isHorizontal ? (isLeftToRight ? Qt::LeftArrow : Qt::RightArrow) : (Qt::UpArrow);
+                drawArrow(painter, rect, arrowType, brush, pen);
+            }
+            if (scrollBar->subControls & SC_ScrollBarAddLine)
+            {
+                QRect rect = subControlRect(control, scrollBar, SC_ScrollBarAddLine, widget);
+                Qt::ArrowType arrowType = isHorizontal ? (isLeftToRight ? Qt::RightArrow : Qt::LeftArrow) : (Qt::DownArrow);
+                drawArrow(painter, rect, arrowType, brush, pen);
             }
         }
         break;
+    }
+    case CC_Slider:
+    {
+        const QStyleOptionSlider *slider = qstyleoption_cast<const QStyleOptionSlider *>(option);
+        if (slider)
+        {
+            painter->setRenderHint(QPainter::Antialiasing);
+            if (slider->subControls & SC_SliderGroove)
+            {
+                QRect rect = subControlRect(control, slider, SC_SliderGroove, widget);
+                if (slider->orientation == Qt::Horizontal)
+                    rect.adjust(1, 0, -1, 0);
+                else
+                    rect.adjust(0, 1, 0, -1);
+                painter->setPen(option->palette.color(QPalette::Mid));
+                painter->setBrush(option->palette.brush(QPalette::Midlight));
+                painter->drawRoundedRect(rect, 2, 2);
+            }
+            if (slider->subControls & SC_SliderHandle)
+            {
+                bool enabled = slider->state & State_Enabled;
+                bool hover = slider->state & State_MouseOver && slider->activeSubControls & SC_SliderHandle;
+                QRect rect = subControlRect(control, slider, SC_SliderHandle, widget);
+                rect.adjust(1, 1, -1, -1);
+                painter->setPen((hover && enabled) ? option->palette.color(QPalette::Mid) : option->palette.color(QPalette::Dark));
+                painter->setBrush((hover && enabled) ? option->palette.color(QPalette::Highlight) : option->palette.color(QPalette::Button));
+                painter->drawRoundedRect(rect, 2, 2);
+            }
+        }
+        break;
+    }
     default:
         QProxyStyle::drawComplexControl(control, option, painter, widget);
         break;

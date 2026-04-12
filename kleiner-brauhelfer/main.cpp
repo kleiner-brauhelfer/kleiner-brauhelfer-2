@@ -12,6 +12,7 @@
 #include "brauhelfer.h"
 #include "settings.h"
 #include "widgets/webview.h"
+#include "widgets/proxystyle.h"
 
 // Modus, um Datenbankupdates zu testen.
 // In diesem Modus wird eine Kopie der Datenbank erstellt.
@@ -424,7 +425,7 @@ int main(int argc, char *argv[])
             if (connectDatabase())
             {
                 MainWindow w(nullptr);
-                a.setStyle(QStringLiteral("Fusion"));
+                a.setStyle(new ProxyStyle());
                 w.show();
                 try
                 {

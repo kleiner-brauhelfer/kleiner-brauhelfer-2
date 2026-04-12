@@ -57,12 +57,6 @@
            <property name="currentIndex">
             <number>0</number>
            </property>
-           <property name="iconSize">
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
            <widget class="TabSudAuswahl" name="tabSudAuswahl">
             <attribute name="icon">
              <iconset theme="sudauswahl"/>

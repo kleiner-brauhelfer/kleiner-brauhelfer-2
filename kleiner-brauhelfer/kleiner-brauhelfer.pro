@@ -113,6 +113,7 @@ SOURCES += \
     widgets/filterbuttonlager.cpp \
     widgets/filterbuttonsud.cpp \
     widgets/lineedit.cpp \
+    widgets/proxystyle.cpp \
     widgets/pushbutton.cpp \
     widgets/radiobutton.cpp \
     widgets/spinbox.cpp \
@@ -215,6 +216,7 @@ HEADERS += \
     widgets/filterbuttonlager.h \
     widgets/filterbuttonsud.h \
     widgets/lineedit.h \
+    widgets/proxystyle.h \
     widgets/pushbutton.h \
     widgets/radiobutton.h \
     widgets/spinbox.h \

@@ -1620,7 +1620,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
         Anteil.appendChild(element);
 
         element = doc.createElement(QStringLiteral("TIME"));
-        text = doc.createTextNode(QString::number(model.data(row, ModelHopfengaben::ColZeit).toInt()));
+        text = doc.createTextNode(QString::number(std::max(model.data(row, ModelHopfengaben::ColZeit).toInt(),0)));
         element.appendChild(text);
         Anteil.appendChild(element);
 
@@ -2010,50 +2010,53 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
     QDomElement waters = doc.createElement(QStringLiteral("WATERS"));
     Rezept.appendChild(waters);
 
+    QDomElement water = doc.createElement(QStringLiteral("WATER"));
+    waters.appendChild(water);
+
     element = doc.createElement(QStringLiteral("VERSION"));
     text = doc.createTextNode(BeerXmlVersion);
     element.appendChild(text);
-    waters.appendChild(element);
+    water.appendChild(element);
 
     element = doc.createElement(QStringLiteral("NAME"));
     text = doc.createTextNode(bh->modelSud()->data(sudRow, ModelSud::ColWasserprofil).toString().toHtmlEscaped());
     element.appendChild(text);
-    waters.appendChild(element);
+    water.appendChild(element);
 
     element = doc.createElement(QStringLiteral("AMOUNT"));
     text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, ModelSud::Colerg_W_Gesamt).toDouble(), 'f', 1));
     element.appendChild(text);
-    waters.appendChild(element);
+    water.appendChild(element);
 
     element = doc.createElement(QStringLiteral("CALCIUM"));
     text = doc.createTextNode(QStringLiteral("0.0"));
     element.appendChild(text);
-    waters.appendChild(element);
+    water.appendChild(element);
 
     element = doc.createElement(QStringLiteral("BICARBONATE"));
     text = doc.createTextNode(QStringLiteral("0.0"));
     element.appendChild(text);
-    waters.appendChild(element);
+    water.appendChild(element);
 
     element = doc.createElement(QStringLiteral("SULFATE"));
     text = doc.createTextNode(QStringLiteral("0.0"));
     element.appendChild(text);
-    waters.appendChild(element);
+    water.appendChild(element);
 
     element = doc.createElement(QStringLiteral("CHLORIDE"));
     text = doc.createTextNode(QStringLiteral("0.0"));
     element.appendChild(text);
-    waters.appendChild(element);
+    water.appendChild(element);
 
     element = doc.createElement(QStringLiteral("SODIUM"));
     text = doc.createTextNode(QStringLiteral("0.0"));
     element.appendChild(text);
-    waters.appendChild(element);
+    water.appendChild(element);
 
     element = doc.createElement(QStringLiteral("MAGNESIUM"));
     text = doc.createTextNode(QStringLiteral("0.0"));
     element.appendChild(text);
-    waters.appendChild(element);
+    water.appendChild(element);
 
     QDomElement mash = doc.createElement(QStringLiteral("MASH"));
     Rezept.appendChild(mash);

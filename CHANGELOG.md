@@ -10,6 +10,7 @@
 - Neu: Hefe- und Zusätzegaben können einzeln zurückgesetzt werden.
 - Neu: Knopf ersetzt die Filteroptionen in der Sudauswahl und Brauübersicht.
 - Neu: Ein zentrales Hilfefeld.
+- Fix: Export BeerXML fügt Eintrag <WATER> unter <WATERS>.
 
 ## Version 2.6.2 (30.12.2023)
 - Neu: Undofunktion über INI Datei ausschaltbar ([General] UndoEnabled=false).

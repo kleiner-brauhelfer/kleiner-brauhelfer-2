@@ -10,6 +10,10 @@ ToolButton::ToolButton(QWidget *parent) :
     mError(false)
 {
     setPopupMode(ToolButtonPopupMode::InstantPopup);
+}
+
+void ToolButton::addChangeDecorator()
+{
     connect(this, &QAbstractButton::clicked, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 

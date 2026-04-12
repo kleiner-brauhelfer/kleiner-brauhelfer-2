@@ -80,6 +80,8 @@ void TabBraudaten::setup(SudObject *sud)
     connect(mSud, &SudObject::dataChanged, this, &TabBraudaten::sudDataChanged);
 
     connect(ui->wdgBemerkung, &WdgBemerkung::changed, this, [this](const QString& html){gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBemerkungBrauen, html));});
+
+    WidgetDecorator::addDecortor(findChildren<QWidget*>());
 }
 
 void TabBraudaten::saveSettings()

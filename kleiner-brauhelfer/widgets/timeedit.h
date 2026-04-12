@@ -8,7 +8,8 @@ class TimeEdit : public QTimeEdit
     Q_OBJECT
 
 public:
-    TimeEdit(QWidget *parent = nullptr);
+    explicit TimeEdit(QWidget *parent = nullptr);
+    void addChangeDecorator();
     void setEnabled(bool e);
     void setDisabled(bool d);
     void setReadOnly(bool r);

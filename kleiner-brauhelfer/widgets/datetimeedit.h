@@ -8,7 +8,8 @@ class DateTimeEdit : public QDateTimeEdit
     Q_OBJECT
 
 public:
-    DateTimeEdit(QWidget *parent = nullptr);
+    explicit DateTimeEdit(QWidget *parent = nullptr);
+    void addChangeDecorator();
     void setEnabled(bool e);
     void setDisabled(bool d);
     void setReadOnly(bool r);

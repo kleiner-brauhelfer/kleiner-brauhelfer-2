@@ -6,6 +6,7 @@
 #include "biercalc.h"
 #include "settings.h"
 #include "dialogs/dlgrestextrakt.h"
+#include "widgets/widgetdecorator.h"
 #include "commands/undostack.h"
 
 extern Settings* gSettings;
@@ -76,6 +77,8 @@ void TabAbfuellen::setup(SudObject *sud)
 
     connect(ui->wdgBemerkungAbfuellen, &WdgBemerkung::changed, this, [this](const QString& html){gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBemerkungAbfuellen, html));});
     connect(ui->wdgBemerkungGaerung, &WdgBemerkung::changed, this, [this](const QString& html){gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBemerkungGaerung, html));});
+
+    WidgetDecorator::addDecortor(findChildren<QWidget*>());
 }
 
 void TabAbfuellen::saveSettings()

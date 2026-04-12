@@ -9,6 +9,7 @@ class ToolButton : public QToolButton
 
 public:
     explicit ToolButton(QWidget *parent = nullptr);
+    void addChangeDecorator();
     void setError(bool e);
 private:
     bool event(QEvent *event) Q_DECL_OVERRIDE;

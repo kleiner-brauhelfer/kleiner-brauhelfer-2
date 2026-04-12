@@ -13,6 +13,10 @@ DateTimeEdit::DateTimeEdit(QWidget *parent) :
     setFocusPolicy(Qt::StrongFocus);
     setAlignment(Qt::AlignCenter);
     setCalendarPopup(true);
+}
+
+void DateTimeEdit::addChangeDecorator()
+{
     connect(this, &QDateTimeEdit::dateTimeChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 

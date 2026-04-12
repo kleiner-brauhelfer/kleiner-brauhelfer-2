@@ -14,6 +14,7 @@
 #include "model/textdelegate.h"
 #include "dialogs/dlgrestextrakt.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
+#include "widgets/widgetdecorator.h"
 
 extern Settings* gSettings;
 
@@ -114,6 +115,8 @@ void TabGaerverlauf::setup(SudObject *sud)
     connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::rowsInserted, this, &TabGaerverlauf::updateWeitereZutaten);
     connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf::updateWeitereZutaten);
     connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::dataChanged, this, &TabGaerverlauf::updateWeitereZutaten);
+
+    WidgetDecorator::addDecortor(findChildren<QWidget*>());
 }
 
 void TabGaerverlauf::showEvent(QShowEvent *event)

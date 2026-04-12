@@ -8,7 +8,8 @@ class SpinBox : public QSpinBox
     Q_OBJECT
 
 public:
-    SpinBox(QWidget *parent = nullptr);
+    explicit SpinBox(QWidget *parent = nullptr);
+    void addChangeDecorator();
     void setEnabled(bool e);
     void setDisabled(bool d);
     void setReadOnly(bool r);

@@ -9,6 +9,10 @@ LineEdit::LineEdit(QWidget *parent) :
     QLineEdit(parent),
     mError(false)
 {
+}
+
+void LineEdit::addChangeDecorator()
+{
     connect(this, &QLineEdit::textChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 

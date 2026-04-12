@@ -9,7 +9,8 @@ class RadioButton : public QRadioButton
 
 public:
     explicit RadioButton(QWidget *parent = nullptr);
-    explicit RadioButton(const QString &text, QWidget *parent = nullptr);
+    RadioButton(const QString &text, QWidget *parent = nullptr);
+    void addChangeDecorator();
     void setError(bool e);
 private:
     bool event(QEvent *event) Q_DECL_OVERRIDE;

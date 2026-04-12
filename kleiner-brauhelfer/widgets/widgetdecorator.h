@@ -19,6 +19,8 @@ public:
     static bool focusRequired;
     static QList<QPointer<QWidget>> valueChangedWidgets;
 
+    static void addDecortor(QList<QWidget*> list);
+
 private:
     static QEvent valueChangedEmphasisEvent;
     static QEvent valueChangedEmphasisLeaveEvent;

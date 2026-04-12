@@ -15,6 +15,10 @@ DoubleSpinBox::DoubleSpinBox(QWidget *parent) :
     setAlignment(Qt::AlignCenter);
     setMinimum(std::numeric_limits<double>::lowest());
     setMaximum(std::numeric_limits<double>::max());
+}
+
+void DoubleSpinBox::addChangeDecorator()
+{
     connect(this, &QDoubleSpinBox::valueChanged, [this]()
     {
         WidgetDecorator::valueChanged(this, hasFocus());

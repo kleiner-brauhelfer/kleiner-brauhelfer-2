@@ -9,12 +9,15 @@ RadioButton::RadioButton(QWidget *parent) :
     QRadioButton(parent),
     mError(false)
 {
-    connect(this, &QAbstractButton::clicked, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
 RadioButton::RadioButton(const QString &text, QWidget *parent) :
     QRadioButton(text, parent),
     mError(false)
+{
+}
+
+void RadioButton::addChangeDecorator()
 {
     connect(this, &QAbstractButton::clicked, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }

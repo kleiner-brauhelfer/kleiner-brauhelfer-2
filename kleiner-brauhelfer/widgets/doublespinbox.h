@@ -8,7 +8,8 @@ class DoubleSpinBox : public QDoubleSpinBox
     Q_OBJECT
 
 public:
-    DoubleSpinBox(QWidget *parent = nullptr);
+    explicit DoubleSpinBox(QWidget *parent = nullptr);
+    void addChangeDecorator();
     void setEnabled(bool e);
     void setDisabled(bool d);
     void setReadOnly(bool r);

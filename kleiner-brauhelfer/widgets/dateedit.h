@@ -8,7 +8,8 @@ class DateEdit : public QDateEdit
     Q_OBJECT
 
 public:
-    DateEdit(QWidget *parent = nullptr);
+    explicit DateEdit(QWidget *parent = nullptr);
+    void addChangeDecorator();
     void setEnabled(bool e);
     void setDisabled(bool d);
     void setReadOnly(bool r);

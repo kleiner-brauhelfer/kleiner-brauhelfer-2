@@ -9,12 +9,15 @@ CheckBox::CheckBox(QWidget *parent) :
     mDefaultPalette(palette()),
     mError(false)
 {
-    connect(this, &QCheckBox::checkStateChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 
 CheckBox::CheckBox(const QString &text, QWidget *parent) :
     QCheckBox(text, parent),
     mError(false)
+{
+}
+
+void CheckBox::addChangeDecorator()
 {
     connect(this, &QCheckBox::checkStateChanged, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }

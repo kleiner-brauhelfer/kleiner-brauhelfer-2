@@ -8,7 +8,8 @@ class ComboBox : public QComboBox
     Q_OBJECT
 
 public:
-    ComboBox(QWidget *parent = nullptr);
+    explicit ComboBox(QWidget *parent = nullptr);
+    void addChangeDecorator();
     void setError(bool e);
     void setToolTip(const QString &str);
 private:

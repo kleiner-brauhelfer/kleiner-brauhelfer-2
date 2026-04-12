@@ -11,6 +11,10 @@ PushButton::PushButton(QWidget *parent) :
     mError(false)
 {
     setAutoDefault(false);
+}
+
+void PushButton::addChangeDecorator()
+{
     connect(this, &QAbstractButton::clicked, [this](){WidgetDecorator::valueChanged(this, hasFocus());});
 }
 

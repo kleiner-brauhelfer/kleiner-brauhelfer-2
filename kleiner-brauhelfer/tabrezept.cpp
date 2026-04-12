@@ -229,6 +229,8 @@ void TabRezept::setup(SudObject *sud)
     table->appendCol({ModelTags::ColValue, true, false, -1, new TextDelegate(table)});
     table->appendCol({ModelTags::ColGlobal, true, false, 0, new TagGlobalDelegate(mSud, table)});
     table->build();
+
+    WidgetDecorator::addDecortor(findChildren<QWidget*>());
 }
 
 void TabRezept::saveSettings()

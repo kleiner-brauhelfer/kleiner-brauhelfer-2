@@ -9,7 +9,8 @@ class CheckBox : public QCheckBox
 
 public:
     explicit CheckBox(QWidget *parent = nullptr);
-    explicit CheckBox(const QString &text, QWidget *parent = nullptr);
+    CheckBox(const QString &text, QWidget *parent = nullptr);
+    void addChangeDecorator();
     void setDefaultPalette(const QPalette &p);
     void setError(bool e);
 private:

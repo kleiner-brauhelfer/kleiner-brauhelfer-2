@@ -6,9 +6,9 @@ extern Settings* gSettings;
 Chart3::Chart3(QWidget *parent) :
     ChartBase(parent)
 {
-    QColor color1 = gSettings->DiagramLinie1;
-    QColor color2 = gSettings->DiagramLinie2;
-    QColor color3 = gSettings->DiagramLinie3;
+    QColor color1 = gSettings->colorLine1;
+    QColor color2 = gSettings->colorLine2;
+    QColor color3 = gSettings->colorLine3;
 
     setBackground(Qt::GlobalColor::transparent);
 
@@ -27,15 +27,15 @@ Chart3::Chart3(QWidget *parent) :
 
     graph1 = addGraph(xAxis, yAxis);
     graph1->setPen(QPen(color1, 2));
-    graph1->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color1, Qt::white, 6));
+    graph1->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color1, gSettings->colorBackground1, 6));
     graph1Limit = addGraph(xAxis2, yAxis);
     graph1Limit->setPen(QPen(color1, 2, Qt::DashLine));
     graph2 = addGraph(xAxis, yAxis2);
     graph2->setPen(QPen(color2, 2));
-    graph2->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color2, Qt::white, 6));
+    graph2->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color2, gSettings->colorBackground2, 6));
     graph3 = addGraph(xAxis, yAxis3);
     graph3->setPen(QPen(color3, 2));
-    graph3->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color3, Qt::white, 6));
+    graph3->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color3, gSettings->colorBackground3, 6));
 
     yAxisSelection = axisRect()->addAxis(QCPAxis::atLeft);
     yAxisSelection->setVisible(false);

@@ -75,7 +75,7 @@ void DoubleSpinBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem 
     if (mZeroRed)
     {
         if (index.data(Qt::DisplayRole).toDouble() <= 0.0)
-            painter->fillRect(option.rect, gSettings->ErrorBase);
+            painter->fillRect(option.rect, gSettings->colorErrorBase);
     }
     QStyledItemDelegate::paint(painter, option, index);
 }

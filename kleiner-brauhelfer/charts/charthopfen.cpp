@@ -45,8 +45,8 @@ void ChartHopfen::update(const SudObject* sud)
         int typ = sud->bh()->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, name, ModelHopfen::ColTyp).toInt();
         QCPBars *bars = new QCPBars(xAxis, yAxis);
         bars->setPen(Qt::NoPen);
-        if (typ >= 0 && typ < gSettings->HopfenTypBackgrounds.count())
-            bars->setBrush(gSettings->HopfenTypBackgrounds[typ]);
+        if (typ >= 0 && typ < gSettings->colorsHopfenTyp.count())
+            bars->setBrush(gSettings->colorsHopfenTyp[typ]);
         else
             bars->setBrush(Qt::gray);
         bars->addData(row+1, val);

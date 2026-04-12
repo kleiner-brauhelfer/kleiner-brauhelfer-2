@@ -62,7 +62,7 @@ void DateTimeDelegate::paint(QPainter *painter, const QStyleOptionViewItem &opti
     if (mExpiredRed)
     {
         if (QDate::currentDate().daysTo(index.data(Qt::DisplayRole).toDate()) < 0)
-            painter->fillRect(option.rect, gSettings->ErrorBase);
+            painter->fillRect(option.rect, gSettings->colorErrorBase);
     }
     QStyledItemDelegate::paint(painter, option, index);
 }

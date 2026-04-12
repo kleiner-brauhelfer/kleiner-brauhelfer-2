@@ -106,35 +106,32 @@ public:
     QPalette paletteErrorLabel;
     QPalette paletteChanged;
 
-    QColor ErrorBase;
-    QColor ErrorText;
+    QColor colorErrorBase;
+    QColor colorErrorText;
 
     QColor colorMalz;
     QColor colorHopfen;
     QColor colorHefe;
     QColor colorZusatz;
-    QColor colorWasser;
     QColor colorRast;
-    QColor colorAnhang;
-    QColor colorKommentar;
+    QColor colorWasser;
 
-    QColor NichtGebrautBackground;
-    QColor GebrautBackground;
-    QColor AbgefuelltBackground;
-    QColor VerbrauchtBackground;
-    QColor MekrlisteBackground;
+    QColor colorRezept;
+    QColor colorGebraut;
+    QColor colorAbgefuellt;
+    QColor colorAusgetrunken;
+    QColor colorMerkliste;
 
-    QList<QColor> HopfenTypBackgrounds;
-    QList<QColor> HefeTypOgUgBackgrounds;
-    QList<QColor> HefeTypTrFlBackgrounds;
-    QList<QColor> WZTypBackgrounds;
+    QList<QColor> colorsHopfenTyp;
+    QList<QColor> colorsHefeTyp;
+    QList<QColor> colorsZusatzTyp;
 
-    QColor DiagramLinie1;
-    QColor DiagramLinie2;
-    QColor DiagramLinie3;
-    QColor DiagramLinie1Light;
-    QColor DiagramLinie2Light;
-    QColor DiagramLinie3Light;
+    QColor colorLine1;
+    QColor colorLine2;
+    QColor colorLine3;
+    QColor colorBackground1;
+    QColor colorBackground2;
+    QColor colorBackground3;
 
     // run-time settings
     bool ForceEnabled = false;

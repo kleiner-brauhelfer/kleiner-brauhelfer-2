@@ -105,10 +105,10 @@ void WdgHopfenGabe::updateValues()
         zeitpunkt = Brauhelfer::HopfenZeitpunkt::Kochen;
     ui->cbZeitpunkt->setCurrentIndex(static_cast<int>(zeitpunkt) - 1);
     int idx = mSud->bh()->modelHopfen()->data(rowRohstoff, ModelHopfen::ColTyp).toInt();
-    if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
+    if (idx >= 0 && idx < gSettings->colorsHopfenTyp.count())
     {
         QPalette pal = ui->frameColor->palette();
-        pal.setColor(QPalette::Window, gSettings->HopfenTypBackgrounds[idx]);
+        pal.setColor(QPalette::Window, gSettings->colorsHopfenTyp[idx]);
         ui->frameColor->setPalette(pal);
         ui->frameColor->setToolTip(MainWindow::HopfenTypname[idx]);
     }

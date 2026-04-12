@@ -20,23 +20,23 @@ void SudNameDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
     QColor color;
     if (index.sibling(index.row(), ModelSud::ColMerklistenID).data().toBool())
     {
-        color = gSettings->MekrlisteBackground;
+        color = gSettings->colorMerkliste;
     }
     else
     {
         switch(static_cast<Brauhelfer::SudStatus>(index.sibling(index.row(), ModelSud::ColStatus).data().toInt()))
         {
         case Brauhelfer::SudStatus::Rezept:
-            color = gSettings->NichtGebrautBackground;
+            color = gSettings->colorRezept;
             break;
         case Brauhelfer::SudStatus::Gebraut:
-            color = gSettings->GebrautBackground;
+            color = gSettings->colorGebraut;
             break;
         case Brauhelfer::SudStatus::Abgefuellt:
-            color = gSettings->AbgefuelltBackground;
+            color = gSettings->colorAbgefuellt;
             break;
         case Brauhelfer::SudStatus::Verbraucht:
-            color = gSettings->VerbrauchtBackground;
+            color = gSettings->colorAusgetrunken;
             break;
         }
     }

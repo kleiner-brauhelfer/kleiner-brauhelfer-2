@@ -33,11 +33,11 @@ public:
         {
             int col = index.column();
             if (col == mColAuswahl3)
-                return gSettings->DiagramLinie3Light;
+                return gSettings->colorBackground3;
             if (col == mColAuswahl2)
-                return gSettings->DiagramLinie2Light;
+                return gSettings->colorBackground2;
             if (col == mColAuswahl1)
-                return gSettings->DiagramLinie1Light;
+                return gSettings->colorBackground1;
         }
         return ProxyModelSud::data(index, role);
     }

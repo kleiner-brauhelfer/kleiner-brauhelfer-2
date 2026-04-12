@@ -73,7 +73,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
             table->appendCol({ModelHopfen::ColMenge, true, false, 100, new SpinBoxDelegate(ui->tableView)});
         table->appendCol({ModelHopfen::ColAlpha, true, true, 100, new DoubleSpinBoxDelegate(1, ui->tableView)});
         table->appendCol({ModelHopfen::ColPellets, true, true, 100, new CheckBoxDelegate(table)});
-        table->appendCol({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::HopfenTypname, gSettings->HopfenTypBackgrounds, ui->tableView)});
+        table->appendCol({ModelHopfen::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::HopfenTypname, gSettings->colorsHopfenTyp, ui->tableView)});
         table->appendCol({ModelHopfen::ColBemerkung, true, true, 200, new TextDelegate(ui->tableView)});
         table->appendCol({ModelHopfen::ColEigenschaften, true, true, 200, new TextDelegate(ui->tableView)});
         table->appendCol({ModelHopfen::ColAlternativen, true, true, 200, new TextDelegate(ui->tableView)});
@@ -93,8 +93,8 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         table->appendCol({ModelHefe::ColName, true, false, 200, new TextDelegate(ui->tableView)});
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             table->appendCol({ModelHefe::ColMenge, true, false, 100, new SpinBoxDelegate(ui->tableView)});
-        table->appendCol({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(MainWindow::HefeTypname, gSettings->HefeTypOgUgBackgrounds, ui->tableView)});
-        table->appendCol({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(MainWindow::HefeTypFlTrName, gSettings->HefeTypTrFlBackgrounds, ui->tableView)});
+        table->appendCol({ModelHefe::ColTypOGUG, true, true, 100, new ComboBoxDelegate(MainWindow::HefeTypname, gSettings->colorsHefeTyp, ui->tableView)});
+        table->appendCol({ModelHefe::ColTypTrFl, true, true, 100, new ComboBoxDelegate(MainWindow::HefeTypFlTrName, ui->tableView)});
         table->appendCol({ModelHefe::ColSedimentation, true, true, 100, new TextDelegate(ui->tableView)});
         table->appendCol({ModelHefe::ColEVG, true, true, 100, new TextDelegate(ui->tableView)});
         table->appendCol({ModelHefe::ColTemperatur, true, true, 100, new TextDelegate(ui->tableView)});
@@ -118,7 +118,7 @@ DlgRohstoffAuswahl::DlgRohstoffAuswahl(Brauhelfer::RohstoffTyp rohstoff, QWidget
         if (gSettings->isModuleEnabled(Settings::ModuleLagerverwaltung))
             table->appendCol({ModelWeitereZutaten::ColMenge, true, false, 100, new DoubleSpinBoxDelegate(2, ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColEinheit, true, true, 100, new ComboBoxDelegate({"kg", "g", "mg", tr("Stk.")}, ui->tableView)});
-        table->appendCol({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::ZusatzTypname, gSettings->WZTypBackgrounds, ui->tableView)});
+        table->appendCol({ModelWeitereZutaten::ColTyp, true, true, 100, new ComboBoxDelegate(MainWindow::ZusatzTypname, gSettings->colorsZusatzTyp, ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColAusbeute, true, true, 100, new SpinBoxDelegate(ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColUnvergaerbar, true, true, 100, new CheckBoxDelegate(ui->tableView)});
         table->appendCol({ModelWeitereZutaten::ColFarbe, true, true, 100, new EbcDelegate(ui->tableView)});

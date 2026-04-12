@@ -61,182 +61,151 @@ void Settings::initTheme()
 
     // colors
     QColor colorChanged;
+    QPalette palette = qApp->palette();
     switch (theme())
     {
     default:
     case Qt::ColorScheme::Light:
-        ErrorBase = QColor(252,171,171);
-        ErrorText = QColor(180,10,10);
+
+        colorErrorBase = QColor(252,171,171);
+        colorErrorText = QColor(180,10,10);
         colorChanged = QColor(255,240,175);
 
-        colorMalz = QColor(252,247,224);
-        colorHopfen = QColor(222,253,224);
-        colorHefe = QColor(253,237,222);
-        colorZusatz = QColor(247,240,253);
-        colorWasser = QColor(232,247,253);
-        colorRast = QColor(253,232,232);
-        colorAnhang = QColor(235,253,245);
-        colorKommentar = QColor(249,249,249);
+        colorMalz = QColor(248, 242, 210);
+        colorHopfen = QColor(232, 248, 225);
+        colorHefe = QColor(248, 235, 215);
+        colorZusatz = QColor(238, 232, 248);
+        colorRast = QColor(248, 228, 228);
+        colorWasser = QColor(228, 242, 248);
 
-        NichtGebrautBackground = QColor(242,242,242);
-        GebrautBackground = QColor(242,231,201);
-        AbgefuelltBackground = QColor(196,229,165);
-        VerbrauchtBackground = QColor(206,206,206);
-        MekrlisteBackground = QColor(128,172,242);
+        colorRezept = QColor(195, 190, 165);
+        colorGebraut = QColor(222, 150, 135);
+        colorAbgefuellt = QColor(165, 205, 125);
+        colorAusgetrunken = QColor(115, 140, 135);
+        colorMerkliste = QColor(105, 150, 210);
 
-        HopfenTypBackgrounds = {QColor(), QColor(255,200,170), QColor(200,255,200), QColor(200,200,255)};
-        HefeTypOgUgBackgrounds = {QColor(), QColor(255,200,170), QColor(200,200,255)};
-        HefeTypTrFlBackgrounds = {QColor(), QColor(255,200,170), QColor(200,200,255)};
-        WZTypBackgrounds = {QColor(253,199,197),
-                            QColor(239,207,175),
-                            QColor(241,216,167),
-                            QColor(184,223,178),
-                            QColor(159,226,201),
-                            QColor(154,225,227),
-                            QColor(176,218,246),
-                            QColor(210,208,252)};
+        colorsHopfenTyp = {
+            QColor(),
+            QColor(235, 195, 165),
+            QColor(185, 225, 185),
+            QColor(185, 195, 235)
+        };
+        colorsHefeTyp = {
+            QColor(),
+            QColor(235, 195, 165),
+            QColor(185, 195, 235)
+        };
+        colorsZusatzTyp = {
+            QColor(235, 185, 185),
+            QColor(230, 200, 170),
+            QColor(230, 210, 170),
+            QColor(185, 220, 180),
+            QColor(170, 225, 200),
+            QColor(170, 220, 225),
+            QColor(180, 210, 235),
+            QColor(205, 200, 235)
+        };
 
-        DiagramLinie1 = QColor(123,33,178);
-        DiagramLinie2 = QColor(56,104,2);
-        DiagramLinie3 = QColor(120,30,30);
-        DiagramLinie1Light = QColor(153,98,188);
-        DiagramLinie2Light = QColor(102,150,46);
-        DiagramLinie3Light = QColor(211,97,97);
+        colorLine1 = QColor(120, 65, 175);
+        colorBackground1 = QColor(200, 160, 225);
+        colorLine2 = QColor(70, 120, 45);
+        colorBackground2 = QColor(170, 210, 150);
+        colorLine3 = QColor(155, 70, 70);
+        colorBackground3 = QColor(225, 165, 165);
+
+        palette.setColor(QPalette::Window, QColor(245, 245, 245));
+        palette.setColor(QPalette::Base, QColor(255, 255, 255));
+        palette.setColor(QPalette::AlternateBase, QColor(235, 235, 235));
+        palette.setColor(QPalette::WindowText, QColor(40, 40, 40));
+        palette.setColor(QPalette::Text, QColor(40, 40, 40));
+        palette.setColor(QPalette::Disabled, QPalette::Text, QColor(140, 140, 140));
+        palette.setColor(QPalette::Button, QColor(235, 235, 235));
+        palette.setColor(QPalette::ButtonText, QColor(40, 40, 40));
+        palette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(150, 150, 150));
+        palette.setColor(QPalette::Highlight, QColor(250, 235, 170));
+        palette.setColor(QPalette::HighlightedText, QColor(40, 40, 40));
+        palette.setColor(QPalette::Accent, QColor(110, 150, 210));
+        palette.setColor(QPalette::Link, QColor(150, 110, 200));
+        palette.setColor(QPalette::LinkVisited, QColor(120, 90, 170));
         break;
 
     case Qt::ColorScheme::Dark:
-        ErrorBase = QColor(165,84,84);
-        ErrorText = QColor(237,118,118);
-        colorChanged = QColor(106,73,52);
 
-        colorMalz = QColor(89,86,79);
-        colorHopfen = QColor(77,89,65);
-        colorHefe = QColor(89,82,75);
-        colorZusatz = QColor(83,76,86);
-        colorWasser = QColor(78,85,89);
-        colorRast = QColor(89,79,74);
-        colorAnhang = QColor(89,89,89);
-        colorKommentar = QColor(76,76,76);
+        colorErrorBase = QColor(140, 40, 40);
+        colorErrorText = QColor(237,118,118);
+        colorChanged = QColor(200, 170, 70);
 
-        NichtGebrautBackground = QColor(50, 50, 50);
-        GebrautBackground = QColor(96, 50, 49);
-        AbgefuelltBackground = QColor(78, 78, 38);
-        VerbrauchtBackground = QColor(80, 80, 80);
-        MekrlisteBackground = QColor(52, 58, 92);
+        colorMalz = QColor(55, 52, 40);
+        colorHopfen = QColor(45, 60, 50);
+        colorHefe = QColor(60, 48, 45);
+        colorZusatz = QColor(55, 50, 65);
+        colorRast = QColor(65, 45, 45);
+        colorWasser = QColor(40, 55, 65);
 
-        HopfenTypBackgrounds = {QColor(), QColor(127,72,47), QColor(75,127,75), QColor(89,89,127)};
-        HefeTypOgUgBackgrounds = {QColor(), QColor(75,127,75), QColor(89,89,127)};
-        HefeTypTrFlBackgrounds = {QColor(), QColor(75,127,75), QColor(89,89,127)};
-        WZTypBackgrounds = {QColor(127,65,62),
-                            QColor(127,87,0),
-                            QColor(127,127,0),
-                            QColor(56,127,28),
-                            QColor(0,127,87),
-                            QColor(0,171,176),
-                            QColor(0,125,127),
-                            QColor(76,75,127)};
+        colorRezept = QColor(70, 68, 55);
+        colorGebraut = QColor(95, 60, 55);
+        colorAbgefuellt = QColor(55, 80, 50);
+        colorAusgetrunken = QColor(45, 70, 65);
+        colorMerkliste = QColor(55, 75, 105);
 
-        DiagramLinie1 = QColor(105,139,87);
-        DiagramLinie2 = QColor(18,90,136);
-        DiagramLinie3 = QColor(138,108,77);
-        DiagramLinie1Light = QColor(105,139,87);
-        DiagramLinie2Light = QColor(18,90,136);
-        DiagramLinie3Light = QColor(138,108,77);
+        colorsHopfenTyp = {
+            QColor(),
+            QColor(95, 65, 50),
+            QColor(55, 85, 60),
+            QColor(60, 65, 95)
+        };
+
+        colorsHefeTyp = {
+            QColor(),
+            QColor(95, 65, 50),
+            QColor(60, 65, 95)
+        };
+
+        colorsZusatzTyp = {
+            QColor(95, 55, 55),
+            QColor(90, 70, 55),
+            QColor(90, 80, 55),
+            QColor(55, 85, 60),
+            QColor(50, 90, 80),
+            QColor(50, 85, 90),
+            QColor(60, 80, 100),
+            QColor(75, 70, 100)
+        };
+
+        colorLine1 = QColor(150, 110, 200);
+        colorBackground1 = QColor(70, 55, 85);
+        colorLine2 = QColor(110, 170, 90);
+        colorBackground2 = QColor(60, 80, 55);
+        colorLine3 = QColor(190, 110, 110);
+        colorBackground3 = QColor(85, 55, 55);
+
+        palette.setColor(QPalette::Window, QColor(30, 30, 35));
+        palette.setColor(QPalette::Base, QColor(20, 20, 25));
+        palette.setColor(QPalette::AlternateBase, QColor(40, 40, 45));
+        palette.setColor(QPalette::WindowText, QColor(220, 220, 220));
+        palette.setColor(QPalette::Text, QColor(220, 220, 220));
+        palette.setColor(QPalette::Disabled, QPalette::Text, QColor(120, 120, 120));
+        palette.setColor(QPalette::Button, QColor(45, 45, 50));
+        palette.setColor(QPalette::ButtonText, QColor(220, 220, 220));
+        palette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(120, 120, 120));
+        palette.setColor(QPalette::Highlight, QColor(210, 185, 90));
+        palette.setColor(QPalette::Highlight, QColor(170, 145, 70));
+        palette.setColor(QPalette::HighlightedText, QColor(220, 220, 220));
+        palette.setColor(QPalette::Accent, QColor(140, 180, 240));
+        palette.setColor(QPalette::Link, QColor(190, 150, 240));
+        palette.setColor(QPalette::LinkVisited, QColor(150, 120, 200));
         break;
     }
+    qApp->setPalette(palette);
 
-    // palette
-    /*
-    switch (theme())
-    {
-    default:
-    case Qt::ColorScheme::Light:
-        palette.setColorGroup(QPalette::Disabled,
-            QColor(128,128,128),//windowText
-            QColor(226,226,226),//button
-            QColor(240,240,240),//light
-            QColor(200,200,200),//dark
-            QColor(210,210,210),//mid
-            QColor(128,128,128),//text
-            QColor(240,240,240),//bright_text
-            QColor(255,255,255),//base
-            QColor(226,226,226));//window
-        palette.setColorGroup(QPalette::Active,
-            QColor(40,40,40),//windowText
-            QColor(226,226,226),//button
-            QColor(240,240,240),//light
-            QColor(200,200,200),//dark
-            QColor(210,210,210),//mid
-            QColor(40,40,40),//text
-            QColor(240,240,240),//bright_text
-            QColor(255,255,255),//base
-            QColor(226,226,226));//window
-        palette.setColorGroup(QPalette::Inactive,
-            QColor(40,40,40),//windowText
-            QColor(226,226,226),//button
-            QColor(240,240,240),//light
-            QColor(200,200,200),//dark
-            QColor(210,210,210),//mid
-            QColor(40,40,40),//text
-            QColor(240,240,240),//bright_text
-            QColor(255,255,255),//base
-            QColor(226,226,226));//window
-        palette.setColor(QPalette::Highlight, QColor(0,120,215));
-        palette.setColor(QPalette::HighlightedText, QColor(255,255,255));
-        palette.setColor(QPalette::Link, QColor(0,120,215));
-        palette.setColor(QPalette::LinkVisited, QColor(0,120,215));
-        break;
-
-    case Qt::ColorScheme::Dark:
-        palette.setColorGroup(QPalette::Disabled,
-            QColor(128,128,128),//windowText
-            QColor(53,53,53),//button
-            QColor(120,120,120),//light
-            QColor(25,25,25),//dark
-            QColor(32,32,32),//mid
-            QColor(128,128,128),//text
-            QColor(120,120,120),//bright_text
-            QColor(25,25,25),//base
-            QColor(53,53,53));//window
-        palette.setColorGroup(QPalette::Active,
-            QColor(255,255,255),//windowText
-            QColor(53,53,53),//button
-            QColor(120,120,120),//light
-            QColor(25,25,25),//dark
-            QColor(32,32,32),//mid
-            QColor(255,255,255),//text
-            QColor(120,120,120),//bright_text
-            QColor(25,25,25),//base
-            QColor(53,53,53));//window
-        palette.setColorGroup(QPalette::Inactive,
-            QColor(255,255,255),//windowText
-            QColor(53,53,53),//button
-            QColor(120,120,120),//light
-            QColor(25,25,25),//dark
-            QColor(32,32,32),//mid
-            QColor(255,255,255),//text
-            QColor(120,120,120),//bright_text
-            QColor(25,25,25),//base
-            QColor(53,53,53));//window
-        palette.setColor(QPalette::Highlight, QColor(42,130,218));
-        palette.setColor(QPalette::HighlightedText, QColor(0,0,0));
-        palette.setColor(QPalette::Link, QColor(42,130,218));
-        palette.setColor(QPalette::LinkVisited, QColor(42,130,218));
-        break;
-    }
-    */
-
-    QPalette palette = QGuiApplication::palette();
-    palette.setColor(QPalette::Disabled, QPalette::Base, palette.color(QPalette::Active, QPalette::Base));
-    QGuiApplication::setPalette(palette);
     paletteChanged = palette;
     paletteChanged.setColor(QPalette::Base, colorChanged);
     paletteChanged.setColor(QPalette::Button, colorChanged);
     paletteError = palette;
-    paletteError.setColor(QPalette::Base, ErrorBase);
-    paletteError.setColor(QPalette::Button, ErrorBase);
+    paletteError.setColor(QPalette::Base, colorErrorBase);
+    paletteError.setColor(QPalette::Button, colorErrorBase);
     paletteErrorLabel = palette;
-    paletteErrorLabel.setColor(QPalette::WindowText, ErrorText);
+    paletteErrorLabel.setColor(QPalette::WindowText, colorErrorText);
 
     endGroup();
 }

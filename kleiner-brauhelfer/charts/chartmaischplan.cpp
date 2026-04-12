@@ -7,7 +7,7 @@ extern Settings* gSettings;
 ChartMaischplan::ChartMaischplan(QWidget *parent) :
     ChartBase(parent)
 {
-    QColor colRect = gSettings->ErrorBase;
+    QColor colRect = gSettings->colorErrorBase;
     colRect.setAlpha(80);
 
     xAxis->setLabel(tr("Zeit") + " (min)");
@@ -69,7 +69,7 @@ void ChartMaischplan::update(const SudObject* sud)
         {
         case Brauhelfer::RastTyp::Zubruehen:
             graphAux = new QCPGraph(xAxis, yAxis);
-            graphAux->setPen(QPen(QBrush(gSettings->DiagramLinie3), 2, Qt::DashLine));
+            graphAux->setPen(QPen(QBrush(gSettings->colorLine3), 2, Qt::DashLine));
             T2 = model->data(row, ModelMaischplan::ColTempWasser).toInt();
             graphAux->setData({tTotal, tTotal}, {T2, T}, true);
             TMax = 100;
@@ -80,7 +80,7 @@ void ChartMaischplan::update(const SudObject* sud)
             break;
         case Brauhelfer::RastTyp::Zuschuetten:
             graphAux = new QCPGraph(xAxis, yAxis);
-            graphAux->setPen(QPen(QBrush(gSettings->DiagramLinie1), 2, Qt::DashLine));
+            graphAux->setPen(QPen(QBrush(gSettings->colorLine1), 2, Qt::DashLine));
             T2 = model->data(row, ModelMaischplan::ColTempWasser).toInt();
             graphAux->setData({tTotal, tTotal}, {T2, T}, true);
             TMax = 100;
@@ -91,7 +91,7 @@ void ChartMaischplan::update(const SudObject* sud)
             break;
         case Brauhelfer::RastTyp::Dekoktion:
             graphAux = new QCPGraph(xAxis, yAxis);
-            graphAux->setPen(QPen(QBrush(gSettings->DiagramLinie2), 2, Qt::DashLine));
+            graphAux->setPen(QPen(QBrush(gSettings->colorLine2), 2, Qt::DashLine));
             graphAux->addData(tTotal, lastT);
             temp = model->data(row, ModelMaischplan::ColDauerExtra2).toInt();
             if (temp > 0)

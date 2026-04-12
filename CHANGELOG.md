@@ -1,6 +1,8 @@
 # Changelog
 
 ## Version 2.6.3 (in Entwicklung)
+- Neu: Umstellung auf **Qt v6.11**
+- Neu: Farbschema überarbeitet.
 - Neu: Statistik in der Brauübersicht.
 - Neu: Menüleiste ersetzt durch Toolbar.
 - Neu: Einstellungen neu in einem Dialog. 

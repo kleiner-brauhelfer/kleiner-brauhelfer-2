@@ -103,10 +103,10 @@ void WdgHefeGabe::updateValues()
     if (rowRohstoff >= 0)
     {
         int idx = mSud->bh()->modelHefe()->data(rowRohstoff, ModelHefe::ColTypOGUG).toInt();
-        if (idx >= 0 && idx < gSettings->HefeTypOgUgBackgrounds.count())
+        if (idx >= 0 && idx < gSettings->colorsHefeTyp.count())
         {
             QPalette pal = ui->frameColor->palette();
-            pal.setColor(QPalette::Window, gSettings->HefeTypOgUgBackgrounds[idx]);
+            pal.setColor(QPalette::Window, gSettings->colorsHefeTyp[idx]);
             ui->frameColor->setPalette(pal);
         }
         else

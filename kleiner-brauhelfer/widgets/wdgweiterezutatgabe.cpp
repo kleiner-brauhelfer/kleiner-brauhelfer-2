@@ -218,10 +218,10 @@ void WdgWeitereZutatGabe::updateValues()
     if (typ == Brauhelfer::ZusatzTyp::Hopfen)
     {
         int idx = mSud->bh()->modelHopfen()->data(rowRohstoff, ModelHopfen::ColTyp).toInt();
-        if (idx >= 0 && idx < gSettings->HopfenTypBackgrounds.count())
+        if (idx >= 0 && idx < gSettings->colorsHopfenTyp.count())
         {
             QPalette pal = ui->frameColor->palette();
-            pal.setColor(QPalette::Window, gSettings->HopfenTypBackgrounds[idx]);
+            pal.setColor(QPalette::Window, gSettings->colorsHopfenTyp[idx]);
             ui->frameColor->setPalette(pal);
             ui->frameColor->setToolTip(tr("Hopfen"));
         }
@@ -234,10 +234,10 @@ void WdgWeitereZutatGabe::updateValues()
     else
     {
         int idx = static_cast<int>(typ);
-        if (idx >= 0 && idx < gSettings->WZTypBackgrounds.count())
+        if (idx >= 0 && idx < gSettings->colorsZusatzTyp.count())
         {
             QPalette pal = ui->frameColor->palette();
-            pal.setColor(QPalette::Window, gSettings->WZTypBackgrounds[idx]);
+            pal.setColor(QPalette::Window, gSettings->colorsZusatzTyp[idx]);
             ui->frameColor->setPalette(pal);
             ui->frameColor->setToolTip(MainWindow::ZusatzTypname[idx]);
         }

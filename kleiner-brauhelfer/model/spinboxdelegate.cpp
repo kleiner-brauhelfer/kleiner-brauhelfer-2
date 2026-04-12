@@ -73,7 +73,7 @@ void SpinBoxDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
     if (mZeroRed)
     {
         if (index.data(Qt::DisplayRole).toInt() <= 0)
-            painter->fillRect(option.rect, gSettings->ErrorBase);
+            painter->fillRect(option.rect, gSettings->colorErrorBase);
     }
     QStyledItemDelegate::paint(painter, option, index);
 }

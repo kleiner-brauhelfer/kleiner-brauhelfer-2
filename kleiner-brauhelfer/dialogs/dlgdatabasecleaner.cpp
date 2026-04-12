@@ -25,9 +25,9 @@ public:
         {
             QVariant data = index.data();
             if (!data.isValid() || data.isNull())
-                return gSettings->ErrorBase;
+                return gSettings->colorErrorBase;
             if (data.typeId() == QMetaType::QString && data.toString().isEmpty())
-                return gSettings->ErrorBase;
+                return gSettings->colorErrorBase;
         }
         return ProxyModel::data(index, role);
     }
@@ -69,7 +69,7 @@ public:
         {
             int id = index.data().toInt();
             if (!mIds.contains(id))
-                return gSettings->ErrorBase;
+                return gSettings->colorErrorBase;
         }
         return ProxyModel::data(index, role);
     }
@@ -104,7 +104,7 @@ public:
         {
             int value = index.data().toInt();
             if (value < mMin || value > mMax)
-                return gSettings->ErrorBase;
+                return gSettings->colorErrorBase;
         }
         return ProxyModel::data(index, role);
     }

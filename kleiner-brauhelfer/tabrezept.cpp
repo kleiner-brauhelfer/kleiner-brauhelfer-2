@@ -132,10 +132,6 @@ void TabRezept::setup(SudObject *sud)
     ui->btnNeueWasseraufbereitung->setDefaultPalette(pal);
     ui->btnWasseraufbereitungUebernehmen->setDefaultPalette(pal);
 
-    pal = ui->btnNeuerAnhang->palette();
-    pal.setColor(QPalette::Button, gSettings->colorAnhang);
-    ui->btnNeuerAnhang->setDefaultPalette(pal);
-
     mGlasSvg = new QGraphicsSvgItem(gSettings->theme() == Qt::ColorScheme::Dark ? QStringLiteral(":/images/icons/dark/svg/glas.svg") : QStringLiteral(":/images/icons/light/svg/glas.svg"));
     ui->lblKostenEinheit->setText(QLocale().currencySymbol() + "/L");
 

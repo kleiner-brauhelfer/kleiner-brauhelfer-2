@@ -6,10 +6,6 @@ extern Settings* gSettings;
 Chart3::Chart3(QWidget *parent) :
     ChartBase(parent)
 {
-    QColor color1 = gSettings->colorLine1;
-    QColor color2 = gSettings->colorLine2;
-    QColor color3 = gSettings->colorLine3;
-
     setBackground(Qt::GlobalColor::transparent);
 
     QSharedPointer<QCPAxisTickerDateTime> dateTicker(new QCPAxisTickerDateTime);
@@ -17,25 +13,25 @@ Chart3::Chart3(QWidget *parent) :
     xAxis->setTicker(dateTicker);
     xAxis->ticker()->setTickCount(8);
     xAxis2->setRange(0, 1);
-    yAxis->setLabelColor(color1);
-    yAxis->setTickLabelColor(color1);
-    yAxis2->setLabelColor(color2);
-    yAxis2->setTickLabelColor(color2);
+    yAxis->setLabelColor(gSettings->colorLine1);
+    yAxis->setTickLabelColor(gSettings->colorLine1);
+    yAxis2->setLabelColor(gSettings->colorLine2);
+    yAxis2->setTickLabelColor(gSettings->colorLine2);
     yAxis3 = axisRect()->addAxis(QCPAxis::atRight);
-    yAxis3->setLabelColor(color3);
-    yAxis3->setTickLabelColor(color3);
+    yAxis3->setLabelColor(gSettings->colorLine3);
+    yAxis3->setTickLabelColor(gSettings->colorLine3);
 
     graph1 = addGraph(xAxis, yAxis);
-    graph1->setPen(QPen(color1, 2));
-    graph1->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color1, gSettings->colorBackground1, 6));
+    graph1->setPen(QPen(gSettings->colorLine1, 2));
+    graph1->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, gSettings->colorLine1, gSettings->colorBackground1, 6));
     graph1Limit = addGraph(xAxis2, yAxis);
-    graph1Limit->setPen(QPen(color1, 2, Qt::DashLine));
+    graph1Limit->setPen(QPen(gSettings->colorLine1, 2, Qt::DashLine));
     graph2 = addGraph(xAxis, yAxis2);
-    graph2->setPen(QPen(color2, 2));
-    graph2->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color2, gSettings->colorBackground2, 6));
+    graph2->setPen(QPen(gSettings->colorLine2, 2));
+    graph2->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, gSettings->colorLine2, gSettings->colorBackground2, 6));
     graph3 = addGraph(xAxis, yAxis3);
-    graph3->setPen(QPen(color3, 2));
-    graph3->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, color3, gSettings->colorBackground3, 6));
+    graph3->setPen(QPen(gSettings->colorLine3, 2));
+    graph3->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, gSettings->colorLine3, gSettings->colorBackground3, 6));
 
     yAxisSelection = axisRect()->addAxis(QCPAxis::atLeft);
     yAxisSelection->setVisible(false);
@@ -45,23 +41,27 @@ Chart3::Chart3(QWidget *parent) :
     graphSelection->removeFromLegend();
     lblValueX = new QCPItemText(this);
     lblValueX->position->setAxes(xAxis, yAxisSelection);
-    lblValueX->setPen(QPen(Qt::black, 2));
-    lblValueX->setBrush(QBrush(Qt::white));
+    lblValueX->setColor(palette().color(QPalette::WindowText));
+    lblValueX->setPen(QPen(palette().color(QPalette::Window), 2));
+    lblValueX->setBrush(palette().brush(QPalette::Base));
     lblValueX->setPadding(QMargins(5, 2, 5, 2));
     lblValueY1 = new QCPItemText(this);
     lblValueY1->position->setAxes(xAxis, yAxisSelection);
-    lblValueY1->setPen(QPen(color1, 2));
-    lblValueY1->setBrush(QBrush(Qt::white));
+    lblValueY1->setColor(gSettings->colorLine1);
+    lblValueY1->setPen(QPen(gSettings->colorLine1, 2));
+    lblValueY1->setBrush(QBrush(gSettings->colorBackground1));
     lblValueY1->setPadding(QMargins(5, 2, 5, 2));
     lblValueY2 = new QCPItemText(this);
     lblValueY2->position->setAxes(xAxis, yAxisSelection);
-    lblValueY2->setPen(QPen(color2, 2));
-    lblValueY2->setBrush(QBrush(Qt::white));
+    lblValueY2->setColor(gSettings->colorLine2);
+    lblValueY2->setPen(QPen(gSettings->colorLine2, 2));
+    lblValueY2->setBrush(QBrush(gSettings->colorBackground2));
     lblValueY2->setPadding(QMargins(5, 2, 5, 2));
     lblValueY3 = new QCPItemText(this);
     lblValueY3->position->setAxes(xAxis, yAxisSelection);
-    lblValueY3->setPen(QPen(color3, 2));
-    lblValueY3->setBrush(QBrush(Qt::white));
+    lblValueY3->setColor(gSettings->colorLine3);
+    lblValueY3->setPen(QPen(gSettings->colorLine3, 2));
+    lblValueY3->setBrush(QBrush(gSettings->colorBackground3));
     lblValueY3->setPadding(QMargins(5, 2, 5, 2));
 
     clear();

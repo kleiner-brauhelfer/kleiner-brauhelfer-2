@@ -14,6 +14,7 @@ public:
     void drawPrimitive(PrimitiveElement element, const QStyleOption *option, QPainter *painter, const QWidget *widget = nullptr) const Q_DECL_OVERRIDE;
     void drawControl(ControlElement element, const QStyleOption *option, QPainter *painter, const QWidget *widget = nullptr) const Q_DECL_OVERRIDE;
     void drawComplexControl(ComplexControl control, const QStyleOptionComplex *option, QPainter *painter, const QWidget *widget = nullptr) const Q_DECL_OVERRIDE;
+    QPixmap generatedIconPixmap(QIcon::Mode iconMode, const QPixmap &pixmap, const QStyleOption *opt) const Q_DECL_OVERRIDE;
 };
 
 #endif // PROXYSTYLE_H

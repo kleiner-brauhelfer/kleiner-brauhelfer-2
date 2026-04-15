@@ -122,13 +122,15 @@ void Settings::initTheme()
         palette.setColor(QPalette::Base, QColor(255, 255, 255));
         palette.setColor(QPalette::AlternateBase, QColor(235, 235, 235));
         palette.setColor(QPalette::WindowText, QColor(40, 40, 40));
+        palette.setColor(QPalette::Disabled, QPalette::WindowText, QColor(140, 140, 140));
         palette.setColor(QPalette::Text, QColor(40, 40, 40));
         palette.setColor(QPalette::Disabled, QPalette::Text, QColor(140, 140, 140));
         palette.setColor(QPalette::Button, QColor(235, 235, 235));
         palette.setColor(QPalette::ButtonText, QColor(40, 40, 40));
-        palette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(150, 150, 150));
+        palette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(140, 140, 140));
         palette.setColor(QPalette::Highlight, QColor(250, 235, 170));
         palette.setColor(QPalette::HighlightedText, QColor(40, 40, 40));
+        palette.setColor(QPalette::Disabled, QPalette::HighlightedText, QColor(140, 140, 140));
         palette.setColor(QPalette::Accent, QColor(110, 150, 210));
         palette.setColor(QPalette::Link, QColor(150, 110, 200));
         palette.setColor(QPalette::LinkVisited, QColor(150, 110, 200));
@@ -190,6 +192,7 @@ void Settings::initTheme()
         palette.setColor(QPalette::Base, QColor(20, 20, 25));
         palette.setColor(QPalette::AlternateBase, QColor(40, 40, 45));
         palette.setColor(QPalette::WindowText, QColor(220, 220, 220));
+        palette.setColor(QPalette::Disabled, QPalette::WindowText, QColor(120, 120, 120));
         palette.setColor(QPalette::Text, QColor(220, 220, 220));
         palette.setColor(QPalette::Disabled, QPalette::Text, QColor(120, 120, 120));
         palette.setColor(QPalette::Button, QColor(45, 45, 50));
@@ -197,6 +200,7 @@ void Settings::initTheme()
         palette.setColor(QPalette::Disabled, QPalette::ButtonText, QColor(120, 120, 120));
         palette.setColor(QPalette::Highlight, QColor(100, 90, 35));
         palette.setColor(QPalette::HighlightedText, QColor(220, 220, 220));
+        palette.setColor(QPalette::Disabled, QPalette::HighlightedText, QColor(120, 120, 120));
         palette.setColor(QPalette::Accent, QColor(140, 180, 240));
         palette.setColor(QPalette::Link, QColor(190, 150, 240));
         palette.setColor(QPalette::LinkVisited, QColor(190, 150, 240));

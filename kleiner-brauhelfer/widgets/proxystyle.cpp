@@ -242,3 +242,36 @@ void ProxyStyle::drawComplexControl(ComplexControl control, const QStyleOptionCo
         break;
     }
 }
+
+QPixmap ProxyStyle::generatedIconPixmap(QIcon::Mode iconMode, const QPixmap &pixmap, const QStyleOption *opt) const
+{
+    if (iconMode == QIcon::Disabled)
+    {
+        const float mix = 0.9f;
+        QImage im = pixmap.toImage().convertToFormat(QImage::Format_ARGB32);
+        QColor bg = opt->palette.color(QPalette::Disabled, QPalette::ButtonText);
+        int red = bg.red();
+        int green = bg.green();
+        int blue = bg.blue();
+        uchar reds[256], greens[256], blues[256];
+        for (int i = 0; i < 256; ++i)
+        {
+            reds[i] = uchar((1.0f - mix) * i + mix * red);
+            greens[i] = uchar((1.0f - mix) * i + mix * green);
+            blues[i] = uchar((1.0f - mix) * i + mix * blue);
+        }
+        for (int y = 0; y < im.height(); ++y)
+        {
+            QRgb *scanLine = reinterpret_cast<QRgb*>(im.scanLine(y));
+            for (int x = 0; x < im.width(); ++x)
+            {
+                QRgb pixel = *scanLine;
+                uint ci = (qGray(pixel) * 3 + 128) / 4;
+                *scanLine = qRgba(reds[ci], greens[ci], blues[ci], qAlpha(pixel));
+                ++scanLine;
+            }
+        }
+        return QPixmap::fromImage(im);
+    }
+    return QProxyStyle::generatedIconPixmap(iconMode, pixmap, opt);
+}

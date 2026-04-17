@@ -48,21 +48,10 @@ DlgRohstoffe::DlgRohstoffe(QWidget *parent) :
     connect(ui->actionNeuObrama, &QAction::triggered, this, &DlgRohstoffe::buttonNeuVorlageObrama_clicked);
     connect(ui->actionNeuKopie, &QAction::triggered, this, &DlgRohstoffe::buttonCopy_clicked);
 
-    pal = ui->tableMalz->palette();
-    pal.setColor(QPalette::Button, gSettings->colorMalz);
-    ui->tableMalz->setPalette(pal);
-
-    pal = ui->tableHopfen->palette();
-    pal.setColor(QPalette::Button, gSettings->colorHopfen);
-    ui->tableHopfen->setPalette(pal);
-
-    pal = ui->tableHefe->palette();
-    pal.setColor(QPalette::Button, gSettings->colorHefe);
-    ui->tableHefe->setPalette(pal);
-
-    pal = ui->tableWeitereZutaten->palette();
-    pal.setColor(QPalette::Button, gSettings->colorZusatz);
-    ui->tableWeitereZutaten->setPalette(pal);
+    ui->tabMalz->setProperty("tabColor", gSettings->colorMalz);
+    ui->tabHopfen->setProperty("tabColor", gSettings->colorHopfen);
+    ui->tabHefe->setProperty("tabColor", gSettings->colorHefe);
+    ui->tabZusaetze->setProperty("tabColor", gSettings->colorZusatz);
 
     ProxyModelRohstoff *proxyModel;
     TableView *table;

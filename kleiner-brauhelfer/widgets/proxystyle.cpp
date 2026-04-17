@@ -1,6 +1,7 @@
 #include "proxystyle.h"
 #include <QStyleOptionSlider>
 #include <QPainter>
+#include <QToolBox>
 
 #define SCROLLBAR_ARROWS_EN 1
 #define SPLITTER_LENGTH 60
@@ -139,9 +140,42 @@ void ProxyStyle::drawControl(ControlElement element, const QStyleOption *option,
 {
     switch (element)
     {
+    case CE_ToolBoxTabShape:
+    {
+        bool hover = option->state & State_MouseOver;
+        QColor color = option->palette.color(hover ? QPalette::Highlight : QPalette::Button);
+        if (!hover)
+        {
+            const QStyleOptionToolBox *tb = qstyleoption_cast<const QStyleOptionToolBox *>(option);
+            if (const QToolBox *toolbox = qobject_cast<const QToolBox*>(widget)) {
+                for (int i = 0; i < toolbox->count(); ++i) {
+                    if (toolbox->itemText(i) == tb->text) {
+                        QColor c = toolbox->widget(i)->property("tabColor").value<QColor>();
+                        if (c.isValid())
+                            color = c;
+                        break;
+                    }
+                }
+            }
+        }
+        painter->setRenderHint(QPainter::Antialiasing);
+        painter->setBrush(color);
+        painter->setPen(option->palette.color(QPalette::Mid));
+        painter->drawRoundedRect(option->rect, 4, 4);
+        break;
+    }
+    case CE_ToolBoxTabLabel:
+    {
+        QFont f = painter->font();
+        f.setBold(true);
+        painter->setFont(f);
+        QProxyStyle::drawControl(element, option, painter, widget);
+        break;
+    }
     case CE_Splitter:
     {
-        if (option->state & State_MouseOver)
+        bool hover = option->state & State_MouseOver;
+        if (hover)
         {
             painter->setRenderHint(QPainter::Antialiasing);
             painter->setPen(option->palette.color(QPalette::Mid));
@@ -179,7 +213,7 @@ void ProxyStyle::drawComplexControl(ComplexControl control, const QStyleOptionCo
             bool isHorizontal = scrollBar->orientation == Qt::Horizontal;
             bool isLeftToRight = option->direction != Qt::RightToLeft;
             bool hover = scrollBar->state & State_MouseOver;
-            QBrush brush = hover ? option->palette.brush(QPalette::Highlight) : option->palette.brush(QPalette::Mid);
+            QBrush brush = option->palette.brush(hover ? QPalette::Highlight : QPalette::Mid);
             QPen pen = hover ? QPen(option->palette.color(QPalette::Mid)) : QPen(Qt::NoPen);
             painter->setRenderHint(QPainter::Antialiasing);
             painter->setPen(pen);
@@ -230,8 +264,8 @@ void ProxyStyle::drawComplexControl(ComplexControl control, const QStyleOptionCo
                 bool hover = slider->state & State_MouseOver && slider->activeSubControls & SC_SliderHandle;
                 QRect rect = subControlRect(control, slider, SC_SliderHandle, widget);
                 rect.adjust(1, 1, -1, -1);
-                painter->setPen((hover && enabled) ? option->palette.color(QPalette::Mid) : option->palette.color(QPalette::Dark));
-                painter->setBrush((hover && enabled) ? option->palette.color(QPalette::Highlight) : option->palette.color(QPalette::Button));
+                painter->setPen(option->palette.color((hover && enabled) ? QPalette::Mid : QPalette::Dark));
+                painter->setBrush(option->palette.color((hover && enabled) ? QPalette::Highlight : QPalette::Button));
                 painter->drawRoundedRect(rect, 2, 2);
             }
         }

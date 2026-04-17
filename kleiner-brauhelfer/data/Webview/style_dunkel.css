@@ -1,8 +1,8 @@
 body {
   font-family: Arial;
   font-size: 10pt;
-  background-color: #191919;
-  color: #dddddd;
+  background-color: rgb(20, 20, 25);
+  color: rgb(220, 220, 220);
 }
 
 body::-webkit-scrollbar {
@@ -10,7 +10,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #353535;
+  background-color: rgb(45, 45, 50);
 }
 
 p {
@@ -19,19 +19,19 @@ p {
 }
 
 a {
-  color: #2a82da;
+  color: rgb(190, 150, 240);
 }
 
 div.r {
   border-radius: 10px;
   padding: 6px;
   margin-bottom: 10px;
-  background-color: #353535;
+  background-color: rgb(45, 45, 50);
   page-break-inside: avoid;
 }
 
 div.rm {
-  border: 1px solid #353535;
+  border: 1px solid rgb(45, 45, 50);
   border-radius: 10px;
   margin-bottom: 5px;
   padding: 5px;
@@ -62,15 +62,15 @@ h3 {
 }
 
 .underline {
-  border-top: 0.5pt solid #353535;
+  border-top: 0.5pt solid rgb(45, 45, 50);
 }
 
 .value {
-  color: #2a82da;
+  color: rgb(140, 180, 240);
 }
 
 .vorhanden {
-  color: #82da2a;
+  color: rgb(85, 130, 70);
 }
 
 img.vorhanden {
@@ -78,7 +78,7 @@ img.vorhanden {
 }
 
 .nichtvorhanden {
-  color: #da2a82;
+  color: rgb(220, 80, 80);
 }
 
 img.nichtvorhanden {
@@ -86,7 +86,7 @@ img.nichtvorhanden {
 }
 
 .nichtgefunden {
-  color: grey;
+  color: rgb(120, 120, 120);
 }
 
 img.nichtgefunden {
@@ -106,7 +106,7 @@ img.star_grey {
 }
 
 .version {
-  color: #999999;
+  color: rgb(120, 120, 120);
 }
 
 .kommentar {
@@ -114,33 +114,33 @@ img.star_grey {
 }
 
 .bg_malz {
-  background-color: #59564F;
+  background-color: rgb(55, 52, 40);
 }
 
 .bg_hopfen {
-  background-color: #4D5941;
+  background-color: rgb(45, 60, 50);
 }
 
 .bg_hefe {
-  background-color: #59524B;
+  background-color: rgb(60, 48, 45);
 }
 
 .bg_zusatz {
-  background-color: #534C56;
+  background-color: rgb(55, 50, 65);
 }
 
 .bg_wasser {
-  background-color: #4E5559;
+  background-color: rgb(40, 55, 65);
 }
 
 .bg_kommentar {
-  background-color: #4C4C4C;
+  background-color: rgb(60, 60, 60);
 }
 
 .bg_rasten {
-  background-color: #594F4A;
+  background-color: rgb(65, 45, 45);
 }
 
 .bg_anhaenge {
-  background-color: #595959;
+  background-color: rgb(60, 60, 60);
 }

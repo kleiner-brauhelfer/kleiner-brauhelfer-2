@@ -11,24 +11,14 @@ HtmlHighLighter::HtmlHighLighter(QTextDocument *parent):
 {
     HighlightingRule rule;
 
-    if (gSettings->theme() != Qt::ColorScheme::Dark)
-    {
-        edgeTagFormat.setForeground(QBrush(QColor(0x32a9dd)));
-        insideTagFormat.setForeground(Qt::blue);
-        tagsFormat.setForeground(Qt::darkBlue);
-        multiLineCommentFormat.setForeground(Qt::darkGray);
-        quotationFormat.setForeground(Qt::darkGreen);
-        customTagFormat.setForeground(QColor(219, 137, 9));
-    }
-    else
-    {
-        edgeTagFormat.setForeground(QBrush(QColor(0x2a82da)));
-        insideTagFormat.setForeground(QBrush(QColor(0x32a9dd)));
-        tagsFormat.setForeground(QBrush(QColor(0x0044FF)));
-        multiLineCommentFormat.setForeground(Qt::darkGray);
-        quotationFormat.setForeground(QBrush(QColor(0x82da2a)));
-        customTagFormat.setForeground(QColor(219, 137, 9));
-    }
+    QPalette palette;
+    edgeTagFormat.setForeground(gSettings->colorLine1);
+    insideTagFormat.setForeground(palette.brush(QPalette::Accent));
+    tagsFormat.setForeground(gSettings->colorLine1);
+    multiLineCommentFormat.setForeground(palette.brush(QPalette::Disabled, QPalette::WindowText));
+    quotationFormat.setForeground(gSettings->colorLine2);
+    customTagFormat.setForeground(gSettings->colorLine3);
+
     insideTagFormat.setFontWeight(QFont::Bold);
     tagsFormat.setFontWeight(QFont::Bold);
 

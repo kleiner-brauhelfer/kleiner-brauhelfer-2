@@ -131,7 +131,7 @@ void Settings::initTheme()
         palette.setColor(QPalette::Highlight, QColor(250, 235, 170));
         palette.setColor(QPalette::HighlightedText, QColor(40, 40, 40));
         palette.setColor(QPalette::Disabled, QPalette::HighlightedText, QColor(140, 140, 140));
-        palette.setColor(QPalette::Accent, QColor(110, 150, 210));
+        palette.setColor(QPalette::Accent, QColor(60, 90, 210));
         palette.setColor(QPalette::Link, QColor(150, 110, 200));
         palette.setColor(QPalette::LinkVisited, QColor(150, 110, 200));
         break;

@@ -140,6 +140,26 @@ void ProxyStyle::drawControl(ControlElement element, const QStyleOption *option,
 {
     switch (element)
     {
+    case CE_ShapedFrame:
+    {
+        const QStyleOptionFrame *frame = qstyleoption_cast<const QStyleOptionFrame *>(option);
+        if (frame)
+        {
+            if (frame->frameShape == QFrame::HLine)
+            {
+                painter->fillRect(option->rect.adjusted(0,1,0,-1), option->palette.color(QPalette::Midlight));
+            }
+            else if (frame->frameShape == QFrame::VLine)
+            {
+                painter->fillRect(option->rect.adjusted(1,0,-1,0), option->palette.color(QPalette::Midlight));
+            }
+            else
+            {
+                QProxyStyle::drawControl(element, option, painter, widget);
+            }
+        }
+        break;
+    }
     case CE_ToolBoxTabShape:
     {
         bool hover = option->state & State_MouseOver;

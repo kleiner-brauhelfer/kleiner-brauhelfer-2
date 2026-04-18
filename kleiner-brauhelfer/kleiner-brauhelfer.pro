@@ -39,7 +39,8 @@ SOURCES += \
     settings.cpp \
     tababfuellen.cpp \
     tabbraudaten.cpp \
-    tabgaerverlauf.cpp \
+    tabgaerverlauf1.cpp \
+    tabgaerverlauf2.cpp \
     tabrezept.cpp \
     tabsudauswahl.cpp \
     tabsudauswahl_sudinfo.cpp \
@@ -142,7 +143,8 @@ HEADERS += \
     settings.h \
     tababfuellen.h \
     tabbraudaten.h \
-    tabgaerverlauf.h \
+    tabgaerverlauf1.h \
+    tabgaerverlauf2.h \
     tabrezept.h \
     tabsudauswahl.h \
     templatetags.h \
@@ -243,7 +245,8 @@ FORMS += \
     mainwindow.ui \
     tababfuellen.ui \
     tabbraudaten.ui \
-    tabgaerverlauf.ui \
+    tabgaerverlauf1.ui \
+    tabgaerverlauf2.ui \
     tabrezept.ui \
     tabsudauswahl.ui \
     dialogs/dlgabout.ui \

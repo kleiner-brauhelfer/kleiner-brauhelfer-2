@@ -12,6 +12,7 @@
 - Neu: Hefe- und Zusätzegaben können einzeln zurückgesetzt werden.
 - Neu: Knopf ersetzt die Filteroptionen in der Sudauswahl und Brauübersicht.
 - Neu: Ein zentrales Hilfefeld.
+- Neu: Reiter Gärverlauf in Haupt- und Nachgärung unterteilt.
 - Fix: Export BeerXML fügt Eintrag <WATER> unter <WATERS>.
 
 ## Version 2.6.2 (30.12.2023)

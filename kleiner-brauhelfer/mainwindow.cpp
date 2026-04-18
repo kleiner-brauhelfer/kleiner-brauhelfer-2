@@ -97,7 +97,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabRezept->setup(mSud);
     ui->tabBraudaten->setup(mSud);
     ui->tabAbfuelldaten->setup(mSud);
-    ui->tabGaerverlauf->setup(mSud);
+    ui->tabHauptgaerung->setup(mSud);
+    ui->tabNachgaerung->setup(mSud);
     qApp->installEventFilter(this);
 
     initActions();
@@ -404,7 +405,8 @@ void MainWindow::saveSettings()
     ui->tabRezept->saveSettings();
     ui->tabBraudaten->saveSettings();
     ui->tabAbfuelldaten->saveSettings();
-    ui->tabGaerverlauf->saveSettings();
+    ui->tabHauptgaerung->saveSettings();
+    ui->tabNachgaerung->saveSettings();
 }
 
 void MainWindow::restoreView()
@@ -417,7 +419,8 @@ void MainWindow::restoreView()
     ui->tabRezept->restoreView();
     ui->tabBraudaten->restoreView();
     ui->tabAbfuelldaten->restoreView();
-    ui->tabGaerverlauf->restoreView();
+    ui->tabHauptgaerung->restoreView();
+    ui->tabNachgaerung->restoreView();
     DlgAbout::restoreView();
     DlgAusruestung::restoreView();
     DlgBewertungen::restoreView();
@@ -455,27 +458,29 @@ void MainWindow::modulesChanged(Settings::Modules modules)
     ui->tabRezept->modulesChanged(modules);
     ui->tabBraudaten->modulesChanged(modules);
     ui->tabAbfuelldaten->modulesChanged(modules);
-    ui->tabGaerverlauf->modulesChanged(modules);
+    ui->tabHauptgaerung->modulesChanged(modules);
+    ui->tabNachgaerung->modulesChanged(modules);
     if (mSud->isLoaded())
         checkSud(mSud);
 }
 
 void MainWindow::updateTabs(Settings::Modules modules)
 {
-    int nextIndex = 4;
     if (modules.testFlag(Settings::ModuleGaerverlauf))
     {
-        int index = ui->tabMain->indexOf(ui->tabGaerverlauf);
         if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
         {
-            if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, QIcon::fromTheme("gaerung"), tr("Gärverlauf"));
+            if (ui->tabMain->indexOf(ui->tabHauptgaerung) < 0)
+                ui->tabMain->insertTab(3, ui->tabHauptgaerung, QIcon::fromTheme("gaerung_i"), tr("Hauptgärung"));
+            if (ui->tabMain->indexOf(ui->tabNachgaerung) < 0)
+                ui->tabMain->insertTab(5, ui->tabNachgaerung, QIcon::fromTheme("gaerung_ii"), tr("Nachgärung"));
         }
         else
-            ui->tabMain->removeTab(index);
+        {
+            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabHauptgaerung));
+            ui->tabMain->removeTab(ui->tabMain->indexOf(ui->tabNachgaerung));
+        }
     }
-    if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
-        nextIndex++;
     if (modules.testFlag(Settings::ModuleBrauuebersicht))
         ui->actionBrauUebersicht->setVisible(gSettings->isModuleEnabled(Settings::ModuleBrauuebersicht));
     if (modules.testFlag(Settings::ModuleAusruestung))
@@ -509,7 +514,8 @@ void MainWindow::updateValues()
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabRezept), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabBraudaten), loaded);
     ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabAbfuelldaten), loaded);
-    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabGaerverlauf), loaded);
+    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabHauptgaerung), loaded);
+    ui->tabMain->setTabEnabled(ui->tabMain->indexOf(ui->tabNachgaerung), loaded);
     ui->actionEingabefelderEntsperren->setChecked(false);
     ui->actionEingabefelderEntsperren->setEnabled(loaded && static_cast<Brauhelfer::SudStatus>(mSud->getStatus()) != Brauhelfer::SudStatus::Rezept);
     if (!loaded)
@@ -576,7 +582,8 @@ void MainWindow::eingabefelderEntsperren()
     ui->tabRezept->checkEnabled();
     ui->tabBraudaten->checkEnabled();
     ui->tabAbfuelldaten->checkEnabled();
-    ui->tabGaerverlauf->checkEnabled();
+    ui->tabHauptgaerung->checkEnabled();
+    ui->tabNachgaerung->checkEnabled();
     ui->actionEingabefelderEntsperren->setChecked(gSettings->ForceEnabled);
 }
 
@@ -588,7 +595,8 @@ void MainWindow::tabBarLabelsToggled(bool visible)
         ui->tabMain->setTabText(1, ui->tabRezept->windowTitle());
         ui->tabMain->setTabText(2, ui->tabBraudaten->windowTitle());
         ui->tabMain->setTabText(3, ui->tabAbfuelldaten->windowTitle());
-        ui->tabMain->setTabText(4, ui->tabGaerverlauf->windowTitle());
+        ui->tabMain->setTabText(4, ui->tabHauptgaerung->windowTitle());
+        ui->tabMain->setTabText(4, ui->tabNachgaerung->windowTitle());
     }
     else
     {

@@ -110,7 +110,7 @@ void TabRezept::setup(SudObject *sud)
     ui->wdgBemerkungWasseraufbereitung->setSudObject(mSud);
     ui->wdgBemerkungWasseraufbereitung->setPlaceholderText(tr("Bemerkung Wasseraufbereitung"));
 
-    gSettings->beginGroup("TabRezept");
+    gSettings->beginGroup(staticMetaObject.className());
 
     ui->splitter->setSizes({200, 100, 200});
     mDefaultSplitterState = ui->splitter->saveState();
@@ -195,7 +195,7 @@ void TabRezept::setup(SudObject *sud)
 
 void TabRezept::saveSettings()
 {
-    gSettings->beginGroup("TabRezept");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->setValue("splitterMaischenState", ui->splitterMaischen->saveState());
     gSettings->setValue("splitterKochenState", ui->splitterKochen->saveState());

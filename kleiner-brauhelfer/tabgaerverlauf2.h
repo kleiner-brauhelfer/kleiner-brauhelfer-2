@@ -1,5 +1,5 @@
-#ifndef TABGAERVERLAUF_H
-#define TABGAERVERLAUF_H
+#ifndef TABGAERVERLAUF2_H
+#define TABGAERVERLAUF2_H
 
 #include <QWidget>
 #include <QItemSelection>
@@ -8,16 +8,16 @@
 class SudObject;
 
 namespace Ui {
-class TabGaerverlauf;
+class TabGaerverlauf2;
 }
 
-class TabGaerverlauf : public QWidget
+class TabGaerverlauf2 : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit TabGaerverlauf(QWidget *parent = nullptr);
-    virtual ~TabGaerverlauf() Q_DECL_OVERRIDE;
+    explicit TabGaerverlauf2(QWidget *parent = nullptr);
+    virtual ~TabGaerverlauf2() Q_DECL_OVERRIDE;
     void setup(SudObject *sud);
     void saveSettings();
     void restoreView();
@@ -32,39 +32,23 @@ private:
     void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;
     QDateTime toDateTime(QString string) const;
     double toDouble(QString string, bool *ok = nullptr) const;
-    void pasteFromClipboardSchnellgaerverlauf(const QString& str);
-    void pasteFromClipboardHauptgaerverlauf(const QString& str);
     void pasteFromClipboardNachgaerverlauf(const QString& str);
 
 private slots:
     void sudLoaded();
-    void sudDataChanged(const QModelIndex& index);
-    void dataChangedSchnellgaerverlauf(const QModelIndex& index);
-    void dataChangedHauptgaerverlauf(const QModelIndex& index);
     void dataChangedNachgaerverlauf(const QModelIndex& index);
     void updateDiagramm();
     void updateValues();
-    void updateWeitereZutaten();
     void table_selectionChanged(const QItemSelection &selected);
     void diagram_selectionChanged(int index);
-    void on_btnAddSchnellgaerMessung_clicked();
-    void on_btnDelSchnellgaerMessung_clicked();
-    void on_btnImportSchnellgaerMessung_clicked();
-    void on_btnAddHauptgaerMessung_clicked();
-    void on_btnDelHauptgaerMessung_clicked();
-    void on_btnImportHauptgaerMessung_clicked();
-    void on_btnGaerungEwzZugeben_clicked();
-    void on_btnGaerungEwzEntnehmen_clicked();
     void on_btnAddNachgaerMessung_clicked();
     void on_btnDelNachgaerMessung_clicked();
     void on_btnImportNachgaerMessung_clicked();
 
 private:
-    Ui::TabGaerverlauf *ui;
+    Ui::TabGaerverlauf2 *ui;
     SudObject *mSud;
-    QByteArray mDefaultSplitterStateSchnellgaerung;
-    QByteArray mDefaultSplitterStateHauptgaerung;
     QByteArray mDefaultSplitterStateNachgaerung;
 };
 
-#endif // TABGAERVERLAUF_H
+#endif // TABGAERVERLAUF2_H

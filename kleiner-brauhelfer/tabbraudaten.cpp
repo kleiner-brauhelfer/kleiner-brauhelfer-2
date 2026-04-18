@@ -62,7 +62,7 @@ void TabBraudaten::setup(SudObject *sud)
     ui->wdgBemerkung->setSudObject(mSud);
     ui->wdgBemerkung->setPlaceholderText(tr("Bemerkung Braudaten"));
 
-    gSettings->beginGroup("TabBraudaten");
+    gSettings->beginGroup(staticMetaObject.className());
 
     ui->splitter->setSizes({100, 400});
     mDefaultSplitterState = ui->splitter->saveState();
@@ -86,7 +86,7 @@ void TabBraudaten::setup(SudObject *sud)
 
 void TabBraudaten::saveSettings()
 {
-    gSettings->beginGroup("TabBraudaten");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->setValue("splitterChartsState", ui->splitterCharts->saveState());
     gSettings->endGroup();

@@ -55,7 +55,7 @@ void TabAbfuellen::setup(SudObject *sud)
     ui->wdgBemerkungGaerung->setSudObject(mSud);
     ui->wdgBemerkungGaerung->setPlaceholderText(tr("Bemerkung Gärung & Reifung"));
 
-    gSettings->beginGroup("TabAbfuellen");
+    gSettings->beginGroup(staticMetaObject.className());
 
     ui->splitter->setSizes({100, 400});
     mDefaultSplitterState = ui->splitter->saveState();
@@ -83,7 +83,7 @@ void TabAbfuellen::setup(SudObject *sud)
 
 void TabAbfuellen::saveSettings()
 {
-    gSettings->beginGroup("TabAbfuellen");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->setValue("splitterChartsState", ui->splitterCharts->saveState());
     gSettings->setValue("ZuckerFaktor", ui->tbZuckerFaktor->value());

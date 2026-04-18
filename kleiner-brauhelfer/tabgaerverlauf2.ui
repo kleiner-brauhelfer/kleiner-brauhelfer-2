@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TabGaerverlauf2</class>
+ <widget class="QWidget" name="TabGaerverlauf2">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>814</width>
+    <height>685</height>
+   </rect>
+  </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>4</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="groupBoxNachgaerung">
+     <property name="title">
+      <string>Nachgärung</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QSplitter" name="splitterNachgaerung">
+        <property name="orientation">
+         <enum>Qt::Orientation::Vertical</enum>
+        </property>
+        <property name="childrenCollapsible">
+         <bool>false</bool>
+        </property>
+        <widget class="Chart3" name="widget_DiaNachgaerverlauf" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>100</height>
+          </size>
+         </property>
+        </widget>
+        <widget class="QWidget" name="verticalLayoutWidget_3">
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="TableView" name="tableWidget_Nachgaerverlauf">
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+            </property>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="wdgEditNachgaerung" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_96">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="PushButton" name="btnAddNachgaerMessung">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit wird eine &lt;span style=&quot; font-weight:600;&quot;&gt;Messung &lt;/span&gt;der &lt;span style=&quot; font-weight:600;&quot;&gt;Nachgärung&lt;/span&gt; hinzugefügt.&lt;/p&gt;&lt;p&gt;Der erste Messeintrag erfolgt automaisch, wenn im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Abfülldaten&lt;/span&gt; die Schnellgärprobe aktiviert ist. Der erste Eintrag ist dabei identisch mit der Stammwürze beim Anstellen im &lt;span style=&quot; font-weight:600;&quot;&gt;Tab Braudaten&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="icon">
+                <iconset theme="plus"/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="PushButton" name="btnDelNachgaerMessung">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit werden die &lt;span style=&quot; font-weight:600;&quot;&gt;markierten Messungen gelöscht&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Eine Löschung kann erwünscht sein, wenn man den ersten automatischen Eintrag nicht möchte oder es Messfehler im Gärverlauf gibt, die das Gesamtbild verfälschen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="icon">
+                <iconset theme="minus"/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="PushButton" name="btnImportNachgaerMessung">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Hiermit kann eine &lt;span style=&quot; font-weight:600;&quot;&gt;CSV-Datei&lt;/span&gt; mit Messungen &lt;span style=&quot; font-weight:600;&quot;&gt;importiert&lt;/span&gt; werden.&lt;/p&gt;&lt;p&gt;Das Importieren kann auch per Drag &amp;amp; Drop erfolgen. Liegen externe Daten in einem anderen Format vor, müssen diese vorher konvertiert werden. Dabei sollte die Spaltenkonfiguration der des Kleinen Brauhelfers entsprechen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="icon">
+                <iconset theme="import"/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_69">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>18</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PushButton</class>
+   <extends>QPushButton</extends>
+   <header>widgets/pushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TableView</class>
+   <extends>QTableView</extends>
+   <header>widgets/tableview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Chart3</class>
+   <extends>QWidget</extends>
+   <header>charts/chart3.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>tableWidget_Nachgaerverlauf</tabstop>
+  <tabstop>btnAddNachgaerMessung</tabstop>
+  <tabstop>btnDelNachgaerMessung</tabstop>
+  <tabstop>btnImportNachgaerMessung</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

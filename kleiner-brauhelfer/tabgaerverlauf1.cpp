@@ -1,5 +1,5 @@
-#include "tabgaerverlauf.h"
-#include "ui_tabgaerverlauf.h"
+#include "tabgaerverlauf1.h"
+#include "ui_tabgaerverlauf1.h"
 #include <QKeyEvent>
 #include <QMessageBox>
 #include <QClipboard>
@@ -18,24 +18,24 @@
 
 extern Settings* gSettings;
 
-TabGaerverlauf::TabGaerverlauf(QWidget *parent) :
+TabGaerverlauf1::TabGaerverlauf1(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::TabGaerverlauf),
+    ui(new Ui::TabGaerverlauf1),
     mSud(nullptr)
 {
     ui->setupUi(this);
 }
 
-TabGaerverlauf::~TabGaerverlauf()
+TabGaerverlauf1::~TabGaerverlauf1()
 {
     delete ui;
 }
 
-void TabGaerverlauf::setup(SudObject *sud)
+void TabGaerverlauf1::setup(SudObject *sud)
 {
     mSud = sud;
 
-    gSettings->beginGroup("TabGaerverlauf");
+    gSettings->beginGroup(staticMetaObject.className());
 
     TableView *table = ui->tableWidget_Schnellgaerverlauf;
     table->setModel(mSud->modelSchnellgaerverlauf());
@@ -49,8 +49,8 @@ void TabGaerverlauf::setup(SudObject *sud)
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateSchnellgaerung").toByteArray());
-    connect(table->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TabGaerverlauf::table_selectionChanged);
-    connect(ui->widget_DiaSchnellgaerverlauf, &Chart3::selectionChanged, this, &TabGaerverlauf::diagram_selectionChanged);
+    connect(table->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TabGaerverlauf1::table_selectionChangedSchnellgaerverlauf);
+    connect(ui->widget_DiaSchnellgaerverlauf, &Chart3::selectionChanged, this, &TabGaerverlauf1::diagram_selectionChangedSchnellgaerverlauf);
 
     table = ui->tableWidget_Hauptgaerverlauf;
     table->setModel(mSud->modelHauptgaerverlauf());
@@ -64,21 +64,11 @@ void TabGaerverlauf::setup(SudObject *sud)
     table->build();
     table->setDefaultContextMenu();
     table->restoreState(gSettings->value("tableStateHauptgaerung").toByteArray());
-    connect(table->selectionModel(),  &QItemSelectionModel::selectionChanged, this,  &TabGaerverlauf::table_selectionChanged);
-    connect(ui->widget_DiaHauptgaerverlauf, &Chart3::selectionChanged, this, &TabGaerverlauf::diagram_selectionChanged);
+    connect(table->selectionModel(),  &QItemSelectionModel::selectionChanged, this,  &TabGaerverlauf1::table_selectionChangedHauptgaerverlauf);
+    connect(ui->widget_DiaHauptgaerverlauf, &Chart3::selectionChanged, this, &TabGaerverlauf1::diagram_selectionChangedHauptgaerverlauf);
 
-    table = ui->tableWidget_Nachgaerverlauf;
-    table->setModel(mSud->modelNachgaerverlauf());
-    table->appendCol({ModelNachgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
-    table->appendCol({ModelNachgaerverlauf::ColDruck, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, 10.0, 0.1, false, table)});
-    table->appendCol({ModelNachgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, -20.0, 100.0, 0.1, false, table)});
-    table->appendCol({ModelNachgaerverlauf::ColCO2, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
-    table->appendCol({ModelNachgaerverlauf::ColBemerkung, true, true, -1, new TextDelegate(table)});
-    table->build();
-    table->setDefaultContextMenu();
-    table->restoreState(gSettings->value("tableStateNachgaerung").toByteArray());
-    connect(table->selectionModel(), &QItemSelectionModel::selectionChanged, this, &TabGaerverlauf::table_selectionChanged);
-    connect(ui->widget_DiaNachgaerverlauf, &Chart3::selectionChanged, this, &TabGaerverlauf::diagram_selectionChanged);
+    mDefaultSplitterState = ui->splitterSchnellgaerung->saveState();
+    ui->splitter->restoreState(gSettings->value("splitterState").toByteArray());
 
     mDefaultSplitterStateSchnellgaerung = ui->splitterSchnellgaerung->saveState();
     ui->splitterSchnellgaerung->restoreState(gSettings->value("splitterStateSchnellgaerung").toByteArray());
@@ -86,46 +76,39 @@ void TabGaerverlauf::setup(SudObject *sud)
     mDefaultSplitterStateHauptgaerung = ui->splitterHauptgaerung->saveState();
     ui->splitterHauptgaerung->restoreState(gSettings->value("splitterStateHauptgaerung").toByteArray());
 
-    mDefaultSplitterStateNachgaerung = ui->splitterNachgaerung->saveState();
-    ui->splitterNachgaerung->restoreState(gSettings->value("splitterStateNachgaerung").toByteArray());
-
     gSettings->endGroup();
 
-    connect(mSud->bh(), &Brauhelfer::discarded, this, &TabGaerverlauf::sudLoaded);
-    connect(mSud, &SudObject::loadedChanged, this, &TabGaerverlauf::sudLoaded);
-    connect(mSud, &SudObject::modified, this, &TabGaerverlauf::updateValues);
-    connect(mSud, &SudObject::dataChanged, this, &TabGaerverlauf::sudDataChanged);
-    connect(mSud->modelSchnellgaerverlauf(), &ProxyModel::layoutChanged, this, &TabGaerverlauf::updateDiagramm);
-    connect(mSud->modelSchnellgaerverlauf(), &ProxyModel::rowsInserted, this, &TabGaerverlauf::updateDiagramm);
-    connect(mSud->modelSchnellgaerverlauf(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf::updateDiagramm);
-    connect(mSud->modelSchnellgaerverlauf(), &ProxyModel::dataChanged, this, &TabGaerverlauf::dataChangedSchnellgaerverlauf);
-    connect(mSud->modelHauptgaerverlauf(), &ProxyModel::layoutChanged, this, &TabGaerverlauf::updateDiagramm);
-    connect(mSud->modelHauptgaerverlauf(), &ProxyModel::rowsInserted, this, &TabGaerverlauf::updateDiagramm);
-    connect(mSud->modelHauptgaerverlauf(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf::updateDiagramm);
-    connect(mSud->modelHauptgaerverlauf(), &ProxyModel::dataChanged, this, &TabGaerverlauf::dataChangedHauptgaerverlauf);
-    connect(mSud->modelNachgaerverlauf(), &ProxyModel::layoutChanged, this, &TabGaerverlauf::updateDiagramm);
-    connect(mSud->modelNachgaerverlauf(), &ProxyModel::rowsInserted,this, &TabGaerverlauf::updateDiagramm);
-    connect(mSud->modelNachgaerverlauf(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf::updateDiagramm);
-    connect(mSud->modelNachgaerverlauf(), &ProxyModel::dataChanged, this, &TabGaerverlauf::dataChangedNachgaerverlauf);
-    connect(mSud->modelHefegaben(), &ProxyModel::layoutChanged, this, &TabGaerverlauf::updateWeitereZutaten);
-    connect(mSud->modelHefegaben(), &ProxyModel::rowsInserted, this, &TabGaerverlauf::updateWeitereZutaten);
-    connect(mSud->modelHefegaben(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf::updateWeitereZutaten);
-    connect(mSud->modelHefegaben(), &ProxyModel::dataChanged, this, &TabGaerverlauf::updateWeitereZutaten);
-    connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::layoutChanged, this, &TabGaerverlauf::updateWeitereZutaten);
-    connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::rowsInserted, this, &TabGaerverlauf::updateWeitereZutaten);
-    connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf::updateWeitereZutaten);
-    connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::dataChanged, this, &TabGaerverlauf::updateWeitereZutaten);
+    connect(mSud->bh(), &Brauhelfer::discarded, this, &TabGaerverlauf1::sudLoaded);
+    connect(mSud, &SudObject::loadedChanged, this, &TabGaerverlauf1::sudLoaded);
+    connect(mSud, &SudObject::modified, this, &TabGaerverlauf1::updateValues);
+    connect(mSud, &SudObject::dataChanged, this, &TabGaerverlauf1::sudDataChanged);
+    connect(mSud->modelSchnellgaerverlauf(), &ProxyModel::layoutChanged, this, &TabGaerverlauf1::updateDiagramm);
+    connect(mSud->modelSchnellgaerverlauf(), &ProxyModel::rowsInserted, this, &TabGaerverlauf1::updateDiagramm);
+    connect(mSud->modelSchnellgaerverlauf(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf1::updateDiagramm);
+    connect(mSud->modelSchnellgaerverlauf(), &ProxyModel::dataChanged, this, &TabGaerverlauf1::dataChangedSchnellgaerverlauf);
+    connect(mSud->modelHauptgaerverlauf(), &ProxyModel::layoutChanged, this, &TabGaerverlauf1::updateDiagramm);
+    connect(mSud->modelHauptgaerverlauf(), &ProxyModel::rowsInserted, this, &TabGaerverlauf1::updateDiagramm);
+    connect(mSud->modelHauptgaerverlauf(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf1::updateDiagramm);
+    connect(mSud->modelHauptgaerverlauf(), &ProxyModel::dataChanged, this, &TabGaerverlauf1::dataChangedHauptgaerverlauf);
+    connect(mSud->modelHefegaben(), &ProxyModel::layoutChanged, this, &TabGaerverlauf1::updateWeitereZutaten);
+    connect(mSud->modelHefegaben(), &ProxyModel::rowsInserted, this, &TabGaerverlauf1::updateWeitereZutaten);
+    connect(mSud->modelHefegaben(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf1::updateWeitereZutaten);
+    connect(mSud->modelHefegaben(), &ProxyModel::dataChanged, this, &TabGaerverlauf1::updateWeitereZutaten);
+    connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::layoutChanged, this, &TabGaerverlauf1::updateWeitereZutaten);
+    connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::rowsInserted, this, &TabGaerverlauf1::updateWeitereZutaten);
+    connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::rowsRemoved, this, &TabGaerverlauf1::updateWeitereZutaten);
+    connect(mSud->modelWeitereZutatenGaben(), &ProxyModel::dataChanged, this, &TabGaerverlauf1::updateWeitereZutaten);
 
     WidgetDecorator::addDecortor(findChildren<QWidget*>());
 }
 
-void TabGaerverlauf::showEvent(QShowEvent *event)
+void TabGaerverlauf1::showEvent(QShowEvent *event)
 {
     Q_UNUSED(event)
     updateDiagramm();
 }
 
-void TabGaerverlauf::changeEvent(QEvent* event)
+void TabGaerverlauf1::changeEvent(QEvent* event)
 {
     switch(event->type())
     {
@@ -138,48 +121,31 @@ void TabGaerverlauf::changeEvent(QEvent* event)
     QWidget::changeEvent(event);
 }
 
-void TabGaerverlauf::saveSettings()
+void TabGaerverlauf1::saveSettings()
 {
-    gSettings->beginGroup("TabGaerverlauf");
+    gSettings->beginGroup(staticMetaObject.className());
     gSettings->setValue("tableStateSchnellgaerung", ui->tableWidget_Schnellgaerverlauf->horizontalHeader()->saveState());
     gSettings->setValue("tableStateHauptgaerung", ui->tableWidget_Hauptgaerverlauf->horizontalHeader()->saveState());
-    gSettings->setValue("tableStateNachgaerung", ui->tableWidget_Nachgaerverlauf->horizontalHeader()->saveState());
+    gSettings->setValue("splitterState", ui->splitter->saveState());
     gSettings->setValue("splitterStateSchnellgaerung", ui->splitterSchnellgaerung->saveState());
     gSettings->setValue("splitterStateHauptgaerung", ui->splitterHauptgaerung->saveState());
-    gSettings->setValue("splitterStateNachgaerung", ui->splitterNachgaerung->saveState());
     gSettings->endGroup();
 }
 
-void TabGaerverlauf::restoreView()
+void TabGaerverlauf1::restoreView()
 {
     ui->tableWidget_Schnellgaerverlauf->restoreDefaultState();
     ui->tableWidget_Hauptgaerverlauf->restoreDefaultState();
-    ui->tableWidget_Nachgaerverlauf->restoreDefaultState();
+    ui->splitter->restoreState(mDefaultSplitterState);
     ui->splitterSchnellgaerung->restoreState(mDefaultSplitterStateSchnellgaerung);
     ui->splitterHauptgaerung->restoreState(mDefaultSplitterStateHauptgaerung);
-    ui->splitterNachgaerung->restoreState(mDefaultSplitterStateNachgaerung);
 }
 
-void TabGaerverlauf::modulesChanged(Settings::Modules modules)
+void TabGaerverlauf1::modulesChanged(Settings::Modules modules)
 {
     if (modules.testFlag(Settings::ModuleSchnellgaerprobe))
     {
-        if (gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe))
-        {
-            if (ui->toolBox_Gaerverlauf->count() == 2)
-            {
-                ui->toolBox_Gaerverlauf->insertItem(0, ui->pageSchnellgaerung, QIcon::fromTheme("gaerung_s"), tr("Schnellgärprobe"));
-                ui->pageSchnellgaerung->setVisible(true);
-            }
-        }
-        else
-        {
-            if (ui->toolBox_Gaerverlauf->count() == 3)
-            {
-                ui->toolBox_Gaerverlauf->removeItem(0);
-                ui->pageSchnellgaerung->setVisible(false);
-            }
-        }
+        ui->groupBoxSchnellgaerprobe->setVisible(gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
     }
     if (mSud->isLoaded())
     {
@@ -187,7 +153,7 @@ void TabGaerverlauf::modulesChanged(Settings::Modules modules)
     }
 }
 
-void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
+void TabGaerverlauf1::keyPressEvent(QKeyEvent* event)
 {
     QWidget::keyPressEvent(event);
     if (ui->tableWidget_Schnellgaerverlauf->hasFocus())
@@ -224,26 +190,9 @@ void TabGaerverlauf::keyPressEvent(QKeyEvent* event)
             break;
         }
     }
-    else if (ui->tableWidget_Nachgaerverlauf->hasFocus())
-    {
-        switch (event->key())
-        {
-        case Qt::Key::Key_Delete:
-            on_btnDelNachgaerMessung_clicked();
-            break;
-        case Qt::Key::Key_Insert:
-            on_btnAddNachgaerMessung_clicked();
-            break;
-        default:
-            if (event->matches(QKeySequence::Paste))
-                if (ui->tableWidget_Nachgaerverlauf->editTriggers() != QAbstractItemView::EditTrigger::NoEditTriggers)
-                    pasteFromClipboardNachgaerverlauf(QApplication::clipboard()->text());
-            break;
-        }
-    }
 }
 
-void TabGaerverlauf::dragEnterEvent(QDragEnterEvent *event)
+void TabGaerverlauf1::dragEnterEvent(QDragEnterEvent *event)
 {
     if (event->mimeData()->hasUrls())
     {
@@ -251,42 +200,26 @@ void TabGaerverlauf::dragEnterEvent(QDragEnterEvent *event)
     }
 }
 
-void TabGaerverlauf::dropEvent(QDropEvent *event)
+void TabGaerverlauf1::dropEvent(QDropEvent *event)
 {
     for (const QUrl& url : event->mimeData()->urls())
     {
         QFile file(url.toLocalFile());
         if (file.open(QFile::ReadOnly | QFile::Text))
         {
-            const QWidget* currentWidget = ui->toolBox_Gaerverlauf->currentWidget();
-            if (currentWidget == ui->pageSchnellgaerung)
-                pasteFromClipboardSchnellgaerverlauf(file.readAll());
-            else if (currentWidget == ui->pageHauptgaerung)
-                pasteFromClipboardHauptgaerverlauf(file.readAll());
-            else if (currentWidget == ui->pageNachgaerung)
-                pasteFromClipboardNachgaerverlauf(file.readAll());
+            pasteFromClipboardHauptgaerverlauf(file.readAll());
         }
     }
 }
 
-void TabGaerverlauf::sudLoaded()
+void TabGaerverlauf1::sudLoaded()
 {
     updateDiagramm();
     updateValues();
     updateWeitereZutaten();
-    Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
-    switch (status)
-    {
-    case Brauhelfer::SudStatus::Abgefuellt:
-        ui->toolBox_Gaerverlauf->setCurrentWidget(ui->pageNachgaerung);
-        break;
-    default:
-        ui->toolBox_Gaerverlauf->setCurrentWidget(ui->pageHauptgaerung);
-        break;
-    }
 }
 
-void TabGaerverlauf::sudDataChanged(const QModelIndex& index)
+void TabGaerverlauf1::sudDataChanged(const QModelIndex& index)
 {
     if (index.column() == ModelSud::ColStatus)
     {
@@ -294,7 +227,7 @@ void TabGaerverlauf::sudDataChanged(const QModelIndex& index)
     }
 }
 
-void TabGaerverlauf::checkEnabled()
+void TabGaerverlauf1::checkEnabled()
 {
     bool enabled;
     QAbstractItemView::EditTriggers triggers = QAbstractItemView::EditTrigger::DoubleClicked |
@@ -310,39 +243,28 @@ void TabGaerverlauf::checkEnabled()
     enabled = status == Brauhelfer::SudStatus::Gebraut  || gSettings->ForceEnabled;
     ui->wdgEditHauptgaerung1->setVisible(enabled);
     ui->tableWidget_Hauptgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
-
-    enabled = status == Brauhelfer::SudStatus::Abgefuellt  || gSettings->ForceEnabled;
-    ui->wdgEditNachgaerung->setVisible(enabled);
-    ui->tableWidget_Nachgaerverlauf->setEditTriggers(enabled ? triggers : notriggers);
 }
 
-void TabGaerverlauf::updateValues()
+void TabGaerverlauf1::updateValues()
 {
     checkEnabled();
 }
 
-void TabGaerverlauf::dataChangedSchnellgaerverlauf(const QModelIndex& index)
+void TabGaerverlauf1::dataChangedSchnellgaerverlauf(const QModelIndex& index)
 {
     if (index.column() == ModelSchnellgaerverlauf::ColZeitstempel)
         mSud->modelSchnellgaerverlauf()->invalidate();
     updateDiagramm();
 }
 
-void TabGaerverlauf::dataChangedHauptgaerverlauf(const QModelIndex& index)
+void TabGaerverlauf1::dataChangedHauptgaerverlauf(const QModelIndex& index)
 {
     if (index.column() == ModelHauptgaerverlauf::ColZeitstempel)
         mSud->modelHauptgaerverlauf()->invalidate();
     updateDiagramm();
 }
 
-void TabGaerverlauf::dataChangedNachgaerverlauf(const QModelIndex& index)
-{
-    if (index.column() == ModelNachgaerverlauf::ColZeitstempel)
-        mSud->modelNachgaerverlauf()->invalidate();
-    updateDiagramm();
-}
-
-void TabGaerverlauf::updateDiagramm()
+void TabGaerverlauf1::updateDiagramm()
 {
     Chart3 *diag;
     ProxyModel *model = mSud->modelSchnellgaerverlauf();
@@ -405,50 +327,35 @@ void TabGaerverlauf::updateDiagramm()
         y2[row] = model->index(row, ModelNachgaerverlauf::ColDruck).data().toDouble();
         y3[row] = model->index(row, ModelNachgaerverlauf::ColTemp).data().toDouble();
     }
-    diag = ui->widget_DiaNachgaerverlauf;
-    diag->clear();
-    diag->setData1(x, y1, tr("CO₂"), QStringLiteral("g/L"), 1);
-    diag->setData2(x, y2, tr("Druck"), QStringLiteral("bar"), 2);
-    diag->setData3(x, y3, tr("Temperatur"), QStringLiteral("°C"), 1);
-    diag->setData1Limit(mSud->getCO2());
-    diag->rescale();
-    diag->replot();
 }
 
-void TabGaerverlauf::table_selectionChanged(const QItemSelection &selected)
+void TabGaerverlauf1::table_selectionChangedSchnellgaerverlauf(const QItemSelection &selected)
 {
-    Chart3 *diag;
-    const QWidget* currentWidget = ui->toolBox_Gaerverlauf->currentWidget();
-    if (currentWidget == ui->pageSchnellgaerung)
-        diag = ui->widget_DiaSchnellgaerverlauf;
-    else if (currentWidget == ui->pageHauptgaerung)
-        diag = ui->widget_DiaHauptgaerverlauf;
-    else if (currentWidget == ui->pageNachgaerung)
-        diag = ui->widget_DiaNachgaerverlauf;
-    else
-        return;
     int index = -1;
     if (selected.indexes().count() > 0)
         index = selected.indexes()[0].row();
-    diag->select(index);
+    ui->widget_DiaSchnellgaerverlauf->select(index);
 }
 
-void TabGaerverlauf::diagram_selectionChanged(int index)
+void TabGaerverlauf1::table_selectionChangedHauptgaerverlauf(const QItemSelection &selected)
 {
-    QTableView *table;
-    const QWidget* currentWidget = ui->toolBox_Gaerverlauf->currentWidget();
-    if (currentWidget == ui->pageSchnellgaerung)
-        table = ui->tableWidget_Schnellgaerverlauf;
-    else if (currentWidget == ui->pageHauptgaerung)
-        table = ui->tableWidget_Hauptgaerverlauf;
-    else if (currentWidget == ui->pageNachgaerung)
-        table = ui->tableWidget_Nachgaerverlauf;
-    else
-        return;
-    table->selectRow(index);
+    int index = -1;
+    if (selected.indexes().count() > 0)
+        index = selected.indexes()[0].row();
+    ui->widget_DiaHauptgaerverlauf->select(index);
 }
 
-void TabGaerverlauf::on_btnAddSchnellgaerMessung_clicked()
+void TabGaerverlauf1::diagram_selectionChangedSchnellgaerverlauf(int index)
+{
+    ui->tableWidget_Schnellgaerverlauf->selectRow(index);
+}
+
+void TabGaerverlauf1::diagram_selectionChangedHauptgaerverlauf(int index)
+{
+    ui->tableWidget_Hauptgaerverlauf->selectRow(index);
+}
+
+void TabGaerverlauf1::on_btnAddSchnellgaerMessung_clicked()
 {
     ProxyModel *model = mSud->modelSchnellgaerverlauf();
     double re = model->data(model->rowCount() - 1, ModelSchnellgaerverlauf::ColRestextrakt).toDouble();
@@ -469,7 +376,7 @@ void TabGaerverlauf::on_btnAddSchnellgaerMessung_clicked()
     }
 }
 
-void TabGaerverlauf::on_btnDelSchnellgaerMessung_clicked()
+void TabGaerverlauf1::on_btnDelSchnellgaerMessung_clicked()
 {
     QModelIndexList indices = ui->tableWidget_Schnellgaerverlauf->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
@@ -477,7 +384,7 @@ void TabGaerverlauf::on_btnDelSchnellgaerMessung_clicked()
         mSud->modelSchnellgaerverlauf()->removeRow(index.row());
 }
 
-void TabGaerverlauf::on_btnImportSchnellgaerMessung_clicked()
+void TabGaerverlauf1::on_btnImportSchnellgaerMessung_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("CSV Datei auswählen"),
                                                     QStringLiteral(""),
@@ -492,7 +399,7 @@ void TabGaerverlauf::on_btnImportSchnellgaerMessung_clicked()
     }
 }
 
-void TabGaerverlauf::on_btnAddHauptgaerMessung_clicked()
+void TabGaerverlauf1::on_btnAddHauptgaerMessung_clicked()
 {
     ProxyModel *model = mSud->modelHauptgaerverlauf();
     double re = model->data(model->rowCount() - 1, ModelHauptgaerverlauf::ColRestextrakt).toDouble();
@@ -513,7 +420,7 @@ void TabGaerverlauf::on_btnAddHauptgaerMessung_clicked()
     }
 }
 
-void TabGaerverlauf::updateWeitereZutaten()
+void TabGaerverlauf1::updateWeitereZutaten()
 {
     ui->comboBox_GaerungEwzAuswahl->clear();
     ui->comboBox_GaerungEwzAuswahlEntnahme->clear();
@@ -550,7 +457,7 @@ void TabGaerverlauf::updateWeitereZutaten()
     ui->widget_EwzEntnehmen->setVisible(ui->comboBox_GaerungEwzAuswahlEntnahme->count() > 0);
 }
 
-void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
+void TabGaerverlauf1::on_btnGaerungEwzZugeben_clicked()
 {
     QPair<Brauhelfer::RohstoffTyp,int> data = ui->comboBox_GaerungEwzAuswahl->currentData().value<QPair<Brauhelfer::RohstoffTyp,int>>();
     if (data.first == Brauhelfer::RohstoffTyp::Hefe)
@@ -589,7 +496,7 @@ void TabGaerverlauf::on_btnGaerungEwzZugeben_clicked()
     }
 }
 
-void TabGaerverlauf::on_btnGaerungEwzEntnehmen_clicked()
+void TabGaerverlauf1::on_btnGaerungEwzEntnehmen_clicked()
 {
     int id = ui->comboBox_GaerungEwzAuswahlEntnahme->currentData().toInt();
     int row = mSud->modelWeitereZutatenGaben()->getRowWithValue(ModelWeitereZutatenGaben::ColID, id);
@@ -600,7 +507,7 @@ void TabGaerverlauf::on_btnGaerungEwzEntnehmen_clicked()
     }
 }
 
-void TabGaerverlauf::on_btnDelHauptgaerMessung_clicked()
+void TabGaerverlauf1::on_btnDelHauptgaerMessung_clicked()
 {
     QModelIndexList indices = ui->tableWidget_Hauptgaerverlauf->selectionModel()->selectedRows();
     std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
@@ -608,7 +515,7 @@ void TabGaerverlauf::on_btnDelHauptgaerMessung_clicked()
         mSud->modelHauptgaerverlauf()->removeRow(index.row());
 }
 
-void TabGaerverlauf::on_btnImportHauptgaerMessung_clicked()
+void TabGaerverlauf1::on_btnImportHauptgaerMessung_clicked()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("CSV Datei auswählen"),
                                                     QStringLiteral(""),
@@ -623,42 +530,7 @@ void TabGaerverlauf::on_btnImportHauptgaerMessung_clicked()
     }
 }
 
-void TabGaerverlauf::on_btnAddNachgaerMessung_clicked()
-{
-    QMap<int, QVariant> values({{ModelNachgaerverlauf::ColSudID, mSud->id()}});
-    int row = mSud->modelNachgaerverlauf()->append(values);
-    if (row >= 0)
-    {
-        ui->tableWidget_Nachgaerverlauf->setCurrentIndex(mSud->modelNachgaerverlauf()->index(row, ModelNachgaerverlauf::ColDruck));
-        ui->tableWidget_Nachgaerverlauf->scrollTo(ui->tableWidget_Nachgaerverlauf->currentIndex());
-        ui->tableWidget_Nachgaerverlauf->edit(ui->tableWidget_Nachgaerverlauf->currentIndex());
-    }
-}
-
-void TabGaerverlauf::on_btnDelNachgaerMessung_clicked()
-{
-    QModelIndexList indices = ui->tableWidget_Nachgaerverlauf->selectionModel()->selectedRows();
-    std::sort(indices.begin(), indices.end(), [](const QModelIndex & a, const QModelIndex & b){ return a.row() > b.row(); });
-    for (const QModelIndex& index : std::as_const(indices))
-        mSud->modelNachgaerverlauf()->removeRow(index.row());
-}
-
-void TabGaerverlauf::on_btnImportNachgaerMessung_clicked()
-{
-    QString fileName = QFileDialog::getOpenFileName(this, tr("CSV Datei auswählen"),
-                                                    QStringLiteral(""),
-                                                    tr("CSV Datei (*.csv);;Alle Dateien (*.*)"));
-    if (!fileName.isEmpty())
-    {
-        QFile file(fileName);
-        if (file.open(QFile::ReadOnly | QFile::Text))
-        {
-            pasteFromClipboardNachgaerverlauf(file.readAll());
-        }
-    }
-}
-
-QDateTime TabGaerverlauf::toDateTime(QString string) const
+QDateTime TabGaerverlauf1::toDateTime(QString string) const
 {
     string.remove('\"').remove('\'');
   #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
@@ -696,7 +568,7 @@ QDateTime TabGaerverlauf::toDateTime(QString string) const
     return dt;
 }
 
-double TabGaerverlauf::toDouble(QString string, bool *ok) const
+double TabGaerverlauf1::toDouble(QString string, bool *ok) const
 {
     bool _ok = false;
     string.remove('\"').remove('\'');
@@ -708,7 +580,7 @@ double TabGaerverlauf::toDouble(QString string, bool *ok) const
     return val;
 }
 
-void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf(const QString &str)
+void TabGaerverlauf1::pasteFromClipboardSchnellgaerverlauf(const QString &str)
 {
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
     QStringList rows = str.split(QStringLiteral("\n"), Qt::SkipEmptyParts);
@@ -783,7 +655,7 @@ void TabGaerverlauf::pasteFromClipboardSchnellgaerverlauf(const QString &str)
     }
 }
 
-void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf(const QString& str)
+void TabGaerverlauf1::pasteFromClipboardHauptgaerverlauf(const QString& str)
 {
   #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
     QStringList rows = str.split(QStringLiteral("\n"), Qt::SkipEmptyParts);
@@ -855,79 +727,5 @@ void TabGaerverlauf::pasteFromClipboardHauptgaerverlauf(const QString& str)
                                 "Unterstütztes Format:\n"
                                 "Datum1;Restextrakt1;Temperatur1[;Bemerkung1]\n"
                                 "Datum2;Restextrakt2;Temperatur2[;Bemerkung2]"));
-    }
-}
-
-void TabGaerverlauf::pasteFromClipboardNachgaerverlauf(const QString& str)
-{
-  #if (QT_VERSION >= QT_VERSION_CHECK(5, 15, 0))
-    QStringList rows = str.split(QStringLiteral("\n"), Qt::SkipEmptyParts);
-  #else
-    QStringList rows = str.split("\n", QString::SkipEmptyParts);
-  #endif
-    if (rows.size() == 0)
-        rows.append(str);
-    bool error = false;
-    bool firstRow = true;
-    bool wasBlocked = mSud->bh()->modelNachgaerverlauf()->blockSignals(true);
-    for (const QString& row : std::as_const(rows))
-    {
-        QStringList cols = row.split(QStringLiteral("\t"));
-        if (cols.size() == 1)
-            cols = row.split(QStringLiteral(";"));
-        if (cols.size() == 1)
-            cols = row.split(QStringLiteral(","));
-        if (cols.size() > 1)
-        {
-            QDateTime dt = toDateTime(cols[0]);
-            if (dt.isValid())
-            {
-                QMap<int, QVariant> values = {{ModelNachgaerverlauf::ColSudID, mSud->id()},
-                                              {ModelNachgaerverlauf::ColZeitstempel, dt}};
-                if (cols.size() > 1)
-                {
-                    bool ok = false;
-                    double druck = toDouble(cols[1], &ok);
-                    if (ok)
-                    {
-                        values[ModelNachgaerverlauf::ColDruck] = druck;
-                        if (cols.size() > 2)
-                        {
-                            double temp = toDouble(cols[2], &ok);
-                            if (ok)
-                            {
-                                values[ModelNachgaerverlauf::ColTemp] = temp;
-                                values[ModelNachgaerverlauf::ColCO2] = BierCalc::co2(druck, temp);
-                            }
-                        }
-                    }
-                }
-                if (cols.size() > 3)
-                    values[ModelNachgaerverlauf::ColBemerkung] = cols[3];
-                if (cols.size() > 4)
-                    values[ModelNachgaerverlauf::ColBemerkung] = cols[4];
-                mSud->bh()->modelNachgaerverlauf()->appendDirect(values);
-            }
-            else
-            {
-                error = !firstRow;
-            }
-        }
-        else
-        {
-            error = !firstRow;
-        }
-        firstRow = false;
-    }
-    mSud->bh()->modelNachgaerverlauf()->blockSignals(wasBlocked);
-    mSud->bh()->modelNachgaerverlauf()->emitModified();
-    mSud->modelNachgaerverlauf()->invalidate();
-    if (error)
-    {
-        QMessageBox::warning(this, tr("Gärverlauf"),
-                             tr("Nicht alle Einträge konnten importiert werden.\n"
-                                "Unterstütztes Format:\n"
-                                "Datum1;Druck1;Temperatur1[;Bemerkung1]\n"
-                                "Datum2;Druck2;Temperatur2[;Bemerkung2]"));
     }
 }

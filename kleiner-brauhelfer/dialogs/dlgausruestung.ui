@@ -807,11 +807,14 @@
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="showGroupSeparator" stdset="0">
+              <bool>true</bool>
+             </property>
              <property name="decimals">
               <number>1</number>
              </property>
              <property name="maximum">
-              <double>9999.000000000000000</double>
+              <double>99999.000000000000000</double>
              </property>
              <property name="singleStep">
               <double>0.100000000000000</double>
@@ -989,11 +992,14 @@
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="showGroupSeparator" stdset="0">
+              <bool>true</bool>
+             </property>
              <property name="decimals">
               <number>1</number>
              </property>
              <property name="maximum">
-              <double>9999.000000000000000</double>
+              <double>99999.000000000000000</double>
              </property>
              <property name="singleStep">
               <double>0.100000000000000</double>
@@ -1059,11 +1065,14 @@
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="showGroupSeparator" stdset="0">
+              <bool>true</bool>
+             </property>
              <property name="decimals">
               <number>1</number>
              </property>
              <property name="maximum">
-              <double>9999.000000000000000</double>
+              <double>99999.000000000000000</double>
              </property>
              <property name="singleStep">
               <double>0.100000000000000</double>
@@ -1241,11 +1250,14 @@
              <property name="buttonSymbols">
               <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
              </property>
+             <property name="showGroupSeparator" stdset="0">
+              <bool>true</bool>
+             </property>
              <property name="decimals">
               <number>1</number>
              </property>
              <property name="maximum">
-              <double>9999.000000000000000</double>
+              <double>99999.000000000000000</double>
              </property>
              <property name="singleStep">
               <double>0.100000000000000</double>
@@ -1317,14 +1329,14 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>ComboBox</class>
    <extends>QComboBox</extends>
    <header>widgets/combobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

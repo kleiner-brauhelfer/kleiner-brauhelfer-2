@@ -54,7 +54,7 @@
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="childrenCollapsible">
       <bool>false</bool>
@@ -81,19 +81,19 @@
        </size>
       </property>
       <property name="contextMenuPolicy">
-       <enum>Qt::CustomContextMenu</enum>
+       <enum>Qt::ContextMenuPolicy::CustomContextMenu</enum>
       </property>
       <property name="editTriggers">
-       <set>QAbstractItemView::NoEditTriggers</set>
+       <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
       </property>
       <property name="alternatingRowColors">
        <bool>true</bool>
       </property>
       <property name="selectionMode">
-       <enum>QAbstractItemView::SingleSelection</enum>
+       <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
       </property>
       <property name="selectionBehavior">
-       <enum>QAbstractItemView::SelectRows</enum>
+       <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
       </property>
       <property name="wordWrap">
        <bool>false</bool>
@@ -133,7 +133,7 @@
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -183,11 +183,14 @@
         <property name="readOnly">
          <bool>true</bool>
         </property>
+        <property name="showGroupSeparator" stdset="0">
+         <bool>true</bool>
+        </property>
         <property name="decimals">
          <number>1</number>
         </property>
         <property name="maximum">
-         <double>10000.000000000000000</double>
+         <double>99999.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -201,6 +204,15 @@
         </property>
         <property name="readOnly">
          <bool>true</bool>
+        </property>
+        <property name="showGroupSeparator" stdset="0">
+         <bool>true</bool>
+        </property>
+        <property name="decimals">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>9999999.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -235,6 +247,12 @@
         </property>
         <property name="readOnly">
          <bool>true</bool>
+        </property>
+        <property name="showGroupSeparator" stdset="0">
+         <bool>true</bool>
+        </property>
+        <property name="maximum">
+         <double>99999.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -307,7 +325,7 @@
       <item row="1" column="6">
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -371,6 +389,12 @@
         </property>
         <property name="readOnly">
          <bool>true</bool>
+        </property>
+        <property name="showGroupSeparator" stdset="0">
+         <bool>true</bool>
+        </property>
+        <property name="maximum">
+         <double>99999.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -444,8 +468,14 @@
         <property name="readOnly">
          <bool>true</bool>
         </property>
+        <property name="showGroupSeparator" stdset="0">
+         <bool>true</bool>
+        </property>
         <property name="decimals">
-         <number>1</number>
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>9999999.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -459,6 +489,15 @@
         </property>
         <property name="readOnly">
          <bool>true</bool>
+        </property>
+        <property name="showGroupSeparator" stdset="0">
+         <bool>true</bool>
+        </property>
+        <property name="decimals">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>9999999.000000000000000</double>
         </property>
        </widget>
       </item>
@@ -607,7 +646,7 @@
         <item>
          <spacer name="horizontalSpacer_3">
           <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+           <enum>Qt::Orientation::Horizontal</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -658,14 +697,14 @@
    <header>widgets/lineedit.h</header>
   </customwidget>
   <customwidget>
+   <class>DoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>widgets/doublespinbox.h</header>
+  </customwidget>
+  <customwidget>
    <class>TableView</class>
    <extends>QTableView</extends>
    <header>widgets/tableview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>FilterButtonSud</class>
-   <extends>QToolButton</extends>
-   <header>widgets/filterbuttonsud.h</header>
   </customwidget>
   <customwidget>
    <class>ComboBox</class>
@@ -673,15 +712,9 @@
    <header>widgets/combobox.h</header>
   </customwidget>
   <customwidget>
-   <class>Chart3</class>
-   <extends>QWidget</extends>
-   <header>charts/chart3.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>DoubleSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>widgets/doublespinbox.h</header>
+   <class>SpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>widgets/spinbox.h</header>
   </customwidget>
   <customwidget>
    <class>DateEdit</class>
@@ -689,9 +722,15 @@
    <header>widgets/dateedit.h</header>
   </customwidget>
   <customwidget>
-   <class>SpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>widgets/spinbox.h</header>
+   <class>FilterButtonSud</class>
+   <extends>QToolButton</extends>
+   <header>widgets/filterbuttonsud.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Chart3</class>
+   <extends>QWidget</extends>
+   <header>charts/chart3.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>

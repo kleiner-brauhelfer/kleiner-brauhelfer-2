@@ -364,11 +364,14 @@
           <property name="alignment">
            <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
+          <property name="showGroupSeparator" stdset="0">
+           <bool>true</bool>
+          </property>
           <property name="decimals">
            <number>1</number>
           </property>
           <property name="maximum">
-           <double>9999.000000000000000</double>
+           <double>99999.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -412,11 +415,14 @@
           <property name="buttonSymbols">
            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
           </property>
+          <property name="showGroupSeparator" stdset="0">
+           <bool>true</bool>
+          </property>
           <property name="decimals">
            <number>1</number>
           </property>
           <property name="maximum">
-           <double>9999.000000000000000</double>
+           <double>99999.000000000000000</double>
           </property>
          </widget>
         </item>

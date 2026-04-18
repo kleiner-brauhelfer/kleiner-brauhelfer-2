@@ -164,8 +164,11 @@
           <property name="buttonSymbols">
            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
           </property>
+          <property name="showGroupSeparator" stdset="0">
+           <bool>true</bool>
+          </property>
           <property name="maximum">
-           <number>9999</number>
+           <number>99999</number>
           </property>
          </widget>
         </item>
@@ -277,8 +280,11 @@
           <property name="alignment">
            <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
+          <property name="showGroupSeparator" stdset="0">
+           <bool>true</bool>
+          </property>
           <property name="maximum">
-           <number>9999</number>
+           <number>99999</number>
           </property>
          </widget>
         </item>
@@ -309,8 +315,11 @@
           <property name="buttonSymbols">
            <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
           </property>
+          <property name="showGroupSeparator" stdset="0">
+           <bool>true</bool>
+          </property>
           <property name="maximum">
-           <number>9999</number>
+           <number>99999</number>
           </property>
          </widget>
         </item>
@@ -328,14 +337,14 @@
    <header>widgets/pushbutton.h</header>
   </customwidget>
   <customwidget>
-   <class>DateEdit</class>
-   <extends>QDateEdit</extends>
-   <header>widgets/dateedit.h</header>
-  </customwidget>
-  <customwidget>
    <class>SpinBox</class>
    <extends>QSpinBox</extends>
    <header>widgets/spinbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DateEdit</class>
+   <extends>QDateEdit</extends>
+   <header>widgets/dateedit.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -212,10 +212,17 @@ void MainWindow::initActions()
         return dlg;
     });
     connect(ui->actionDatenbank, &QAction::triggered, this, [this](){DlgAbstract::showDialog<DlgDatenbank>(this, ui->actionDatenbank);});
+  #ifdef QT_WEBENGINECORE_LIB
     connect(ui->actionHilfe, &QAction::triggered, this, [this](){
         DlgHilfe* dlg = DlgAbstract::showDialog<DlgHilfe>(this, ui->actionHilfe);
         dlg->setHomeUrl(QStringLiteral(URL_HILFE));
     });
+  #else
+    ui->actionHilfe->setCheckable(false);
+    connect(ui->actionHilfe, &QAction::triggered, this, [](){
+        QDesktopServices::openUrl(QUrl(URL_HILFE));
+    });
+  #endif
     connect(ui->actionUeber, &QAction::triggered, this, [this](){
         DlgAbout dlg(this);
         dlg.exec();

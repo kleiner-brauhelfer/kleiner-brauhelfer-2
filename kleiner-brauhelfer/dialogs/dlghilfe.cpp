@@ -9,12 +9,16 @@ DlgHilfe::DlgHilfe(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->webview->setContextMenuPolicy(Qt::DefaultContextMenu);
+  #ifdef QT_WEBENGINECORE_LIB
     connect(ui->webview, &WebView::urlChanged, this, &DlgHilfe::urlChanged);
+  #endif
 }
 
 DlgHilfe::~DlgHilfe()
 {
+  #ifdef QT_WEBENGINECORE_LIB
     ui->webview->setUrl(QUrl(QStringLiteral("")));
+  #endif
     delete ui;
 }
 

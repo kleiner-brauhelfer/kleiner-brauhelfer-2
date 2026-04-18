@@ -24,6 +24,7 @@ public:
         ColBemerkung,
         // virtual
         ColDeleted,
+        ColTage,
         // number of columns
         NumCols
     };

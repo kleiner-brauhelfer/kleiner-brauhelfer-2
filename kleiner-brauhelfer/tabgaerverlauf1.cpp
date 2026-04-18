@@ -9,6 +9,7 @@
 #include "biercalc.h"
 #include "settings.h"
 #include "model/datetimedelegate.h"
+#include "model/spinboxdelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/restextraktdelegate.h"
 #include "model/textdelegate.h"
@@ -40,6 +41,7 @@ void TabGaerverlauf1::setup(SudObject *sud)
     TableView *table = ui->tableWidget_Schnellgaerverlauf;
     table->setModel(mSud->modelSchnellgaerverlauf());
     table->appendCol({ModelSchnellgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
+    table->appendCol({ModelSchnellgaerverlauf::ColTage, true, true, 100, new SpinBoxDelegate(table)});
     table->appendCol({ModelSchnellgaerverlauf::ColRestextrakt, true, false, 100, new RestextraktDelegate(false, table)});
     table->appendCol({ModelSchnellgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, -20.0, 100.0, 0.1, false, table)});
     table->appendCol({ModelSchnellgaerverlauf::ColAlc, true, false, 100, new DoubleSpinBoxDelegate(1, table)});
@@ -55,6 +57,7 @@ void TabGaerverlauf1::setup(SudObject *sud)
     table = ui->tableWidget_Hauptgaerverlauf;
     table->setModel(mSud->modelHauptgaerverlauf());
     table->appendCol({ModelHauptgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
+    table->appendCol({ModelHauptgaerverlauf::ColTage, true, true, 100, new SpinBoxDelegate(table)});
     table->appendCol({ModelHauptgaerverlauf::ColRestextrakt, true, false, 100, new RestextraktDelegate(true, table)});
     table->appendCol({ModelHauptgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, -20.0, 100.0, 0.1, false, table)});
     table->appendCol({ModelHauptgaerverlauf::ColAlc, true, false, 100, new DoubleSpinBoxDelegate(1, table)});

@@ -771,6 +771,7 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelSchnellgaerverlauf::ColRestextrakt, Qt::Horizontal, tr("SRE") + "\n(°P)");
     model->setHeaderData(ModelSchnellgaerverlauf::ColTemp, Qt::Horizontal, tr("Temperatur") + "\n(°C)");
     model->setHeaderData(ModelSchnellgaerverlauf::ColAlc, Qt::Horizontal, tr("Alkohol") + "\n(%vol)");
+    model->setHeaderData(ModelSchnellgaerverlauf::ColTage, Qt::Horizontal, tr("Tage"));
     model->setHeaderData(ModelSchnellgaerverlauf::ColsEVG, Qt::Horizontal, tr("sEVG") + "\n(%)");
     model->setHeaderData(ModelSchnellgaerverlauf::ColtEVG, Qt::Horizontal, tr("tEVG") + "\n(%)");
     model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
@@ -780,16 +781,18 @@ void MainWindow::initLabels()
     model->setHeaderData(ModelHauptgaerverlauf::ColRestextrakt, Qt::Horizontal, tr("SRE") + "\n(°P)");
     model->setHeaderData(ModelHauptgaerverlauf::ColTemp, Qt::Horizontal, tr("Temperatur") + "\n(°C)");
     model->setHeaderData(ModelHauptgaerverlauf::ColAlc, Qt::Horizontal, tr("Alkohol") + "\n(%vol)");
+    model->setHeaderData(ModelHauptgaerverlauf::ColTage, Qt::Horizontal, tr("Tage"));
     model->setHeaderData(ModelHauptgaerverlauf::ColsEVG, Qt::Horizontal, tr("sEVG") + "\n(%)");
     model->setHeaderData(ModelHauptgaerverlauf::ColtEVG, Qt::Horizontal, tr("tEVG") + "\n(%)");
-    model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
+    model->setHeaderData(ModelHauptgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
 
     model = bh->modelNachgaerverlauf();
     model->setHeaderData(ModelNachgaerverlauf::ColZeitstempel, Qt::Horizontal, tr("Datum"));
     model->setHeaderData(ModelNachgaerverlauf::ColDruck, Qt::Horizontal, tr("Druck") + "\n(bar)");
     model->setHeaderData(ModelNachgaerverlauf::ColTemp, Qt::Horizontal, tr("Temperatur") + "\n(°C)");
     model->setHeaderData(ModelNachgaerverlauf::ColCO2, Qt::Horizontal, tr("CO2") + "\n(g/L)");
-    model->setHeaderData(ModelSchnellgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
+    model->setHeaderData(ModelNachgaerverlauf::ColBemerkung, Qt::Horizontal, tr("Bemerkung"));
+    model->setHeaderData(ModelNachgaerverlauf::ColTage, Qt::Horizontal, tr("Tage"));
 
     model = bh->modelBewertungen();
     model->setHeaderData(ModelBewertungen::ColSudName, Qt::Horizontal, tr("Sud"));

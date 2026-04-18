@@ -23,6 +23,7 @@ public:
         ColBemerkung,
         // virtual
         ColDeleted,
+        ColTage,
         ColsEVG,
         ColtEVG,
         // number of columns

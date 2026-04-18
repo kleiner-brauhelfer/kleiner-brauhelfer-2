@@ -25,6 +25,7 @@ public:
         ColDeleted,
         ColsEVG,
         ColtEVG,
+        ColTage,
         // number of columns
         NumCols
     };

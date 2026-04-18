@@ -9,6 +9,7 @@
 #include "biercalc.h"
 #include "settings.h"
 #include "model/datetimedelegate.h"
+#include "model/spinboxdelegate.h"
 #include "model/doublespinboxdelegate.h"
 #include "model/textdelegate.h"
 #include "dialogs/dlgrohstoffeabziehen.h"
@@ -38,6 +39,7 @@ void TabGaerverlauf2::setup(SudObject *sud)
     TableView *table = ui->tableWidget_Nachgaerverlauf;
     table->setModel(mSud->modelNachgaerverlauf());
     table->appendCol({ModelNachgaerverlauf::ColZeitstempel, true, false, 150, new DateTimeDelegate(false, false, table)});
+    table->appendCol({ModelNachgaerverlauf::ColTage, true, true, 100, new SpinBoxDelegate(table)});
     table->appendCol({ModelNachgaerverlauf::ColDruck, true, false, 100, new DoubleSpinBoxDelegate(2, 0.0, 10.0, 0.1, false, table)});
     table->appendCol({ModelNachgaerverlauf::ColTemp, true, false, 100, new DoubleSpinBoxDelegate(1, -20.0, 100.0, 0.1, false, table)});
     table->appendCol({ModelNachgaerverlauf::ColCO2, true, false, 100, new DoubleSpinBoxDelegate(1, table)});

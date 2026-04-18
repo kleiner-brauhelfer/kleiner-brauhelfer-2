@@ -7,6 +7,7 @@ ModelSchnellgaerverlauf::ModelSchnellgaerverlauf(Brauhelfer* bh, const QSqlDatab
     SqlTableModel(bh, db),
     bh(bh)
 {
+    mVirtualField.append(QStringLiteral("Tage"));
     mVirtualField.append(QStringLiteral("sEVG"));
     mVirtualField.append(QStringLiteral("tEVG"));
 }
@@ -18,6 +19,22 @@ QVariant ModelSchnellgaerverlauf::dataExt(const QModelIndex &idx) const
     case ColZeitstempel:
     {
         return QDateTime::fromString(QSqlTableModel::data(idx).toString(), Qt::ISODate);
+    }
+    case ColTage:
+    {
+        QVariant sudId = data(idx.row(), ColSudID);
+        for (int r = 0; r < rowCount(); ++r)
+        {
+            if (data(r, ColDeleted).toBool())
+                continue;
+            if (data(r, ColSudID) == sudId)
+            {
+                QDateTime start = data(r, ColZeitstempel).toDateTime();
+                QDateTime dt = data(idx.row(), ColZeitstempel).toDateTime();
+                return start.daysTo(dt);
+            }
+        }
+        return 0;
     }
     case ColsEVG:
     {

@@ -20,7 +20,7 @@
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="childrenCollapsible">
       <bool>false</bool>
@@ -38,9 +38,6 @@
          </item>
          <item>
           <widget class="LineEdit" name="tbFilter">
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Textfilter&lt;/span&gt; für die Sudsuche. Gesucht wird in den Feldern &lt;span style=&quot; font-weight:600;&quot;&gt;Sudname&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Kommentar&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Malz&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hopfen&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Hefe&lt;/span&gt;, &lt;span style=&quot; font-weight:600;&quot;&gt;Zusätze&lt;/span&gt; und &lt;span style=&quot; font-weight:600;&quot;&gt;Tags&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
            <property name="placeholderText">
             <string>Suche</string>
            </property>
@@ -58,8 +55,11 @@
          </item>
          <item>
           <widget class="Line" name="line">
+           <property name="frameShadow">
+            <enum>QFrame::Shadow::Plain</enum>
+           </property>
            <property name="orientation">
-            <enum>Qt::Vertical</enum>
+            <enum>Qt::Orientation::Vertical</enum>
            </property>
           </widget>
          </item>
@@ -68,19 +68,19 @@
        <item>
         <widget class="TableView" name="table">
          <property name="contextMenuPolicy">
-          <enum>Qt::CustomContextMenu</enum>
+          <enum>Qt::ContextMenuPolicy::CustomContextMenu</enum>
          </property>
          <property name="editTriggers">
-          <set>QAbstractItemView::NoEditTriggers</set>
+          <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
          </property>
          <property name="alternatingRowColors">
           <bool>true</bool>
          </property>
          <property name="selectionMode">
-          <enum>QAbstractItemView::SingleSelection</enum>
+          <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
          </property>
          <property name="selectionBehavior">
-          <enum>QAbstractItemView::SelectRows</enum>
+          <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
          </property>
          <property name="sortingEnabled">
           <bool>true</bool>
@@ -100,7 +100,7 @@
        <item>
         <widget class="QComboBox" name="cbAuswahl">
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Die Spalte Zusammenfassung ist eine der wichtigsten Neuerungen im Kleinen Brauhelfer v2. Sie ist extrem nützlich, wenn es um einen Abgleich zwischen ungebrauten Suden und dem Rohstofflager geht. augeschlüsselt nach Malz, Hopfen, Hefe und Zutaten werden zu wenig oder nicht vorhandene Rohstoffe rot dargestellt. Dies alle kumuliert. Entscheiden ist dabei eine eindeutige Benennung von Zutaten im &lt;span style=&quot; font-weight:700;&quot;&gt;Reiter Rohstoffe.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Sude für die rechte Spalte werden per Shift ausgewählt und auf dem gleichen Weg abgewählt. Eine wertvolle Hilfe, wenn es um Nachbestellungen und Orientierung über das persönliche Braugeschehen geht.&lt;/p&gt;&lt;p&gt;Über die Buttons unten lässt sich die generierte &lt;span style=&quot; font-weight:700;&quot;&gt;Zutatenliste&lt;/span&gt; als &lt;span style=&quot; font-weight:700;&quot;&gt;PDF&lt;/span&gt; abspeichern oder &lt;span style=&quot; font-weight:700;&quot;&gt;ausdrucken.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Auswahl einer &lt;span style=&quot; font-weight:700;&quot;&gt;Vorlage&lt;/span&gt; für die Printausgabe. Eigene Vorlagen (HTML Dateien) können im &lt;span style=&quot; font-style:italic;&quot;&gt;Webview&lt;/span&gt; Datenordner abgelegt werden.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
@@ -111,9 +111,6 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
-         </property>
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Über die Buttons unten lässt sich die generierte &lt;span style=&quot; font-weight:700;&quot;&gt;Zutatenliste&lt;/span&gt; als &lt;span style=&quot; font-weight:700;&quot;&gt;PDF&lt;/span&gt; abspeichern oder &lt;span style=&quot; font-weight:700;&quot;&gt;ausdrucken.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700; color:#ff9300;&quot;&gt;Tipp:&lt;/span&gt;&lt;span style=&quot; font-weight:700;&quot;/&gt;Eignet sich hervorragend als Einkaufszettel.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>
@@ -135,15 +132,15 @@
    <header>widgets/tableview.h</header>
   </customwidget>
   <customwidget>
+   <class>FilterButtonSud</class>
+   <extends>QToolButton</extends>
+   <header>widgets/filterbuttonsud.h</header>
+  </customwidget>
+  <customwidget>
    <class>WdgWebViewEditable</class>
    <extends>QWidget</extends>
    <header>widgets/wdgwebvieweditable.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>FilterButtonSud</class>
-   <extends>QToolButton</extends>
-   <header>widgets/filterbuttonsud.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

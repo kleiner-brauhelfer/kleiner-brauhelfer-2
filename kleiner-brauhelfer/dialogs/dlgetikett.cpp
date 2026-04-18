@@ -138,7 +138,10 @@ void DlgEtikett::restoreView()
 void DlgEtikett::select(const QVariant &sudId)
 {
     ProxyModel *model = static_cast<ProxyModel*>(ui->table->model());
-    ui->table->selectRow(model->getRowWithValue(ModelSud::ColID, sudId));
+    int row = model->getRowWithValue(ModelSud::ColID, sudId);
+    if (row < 0)
+        row = 0;
+    ui->table->selectRow(row);
 }
 
 void DlgEtikett::onTableSelectionChanged(const QItemSelection &selected)
@@ -169,23 +172,18 @@ void DlgEtikett::updateAll()
 void DlgEtikett::updateAuswahlListe()
 {
     ui->cbAuswahl->clear();
-    ui->cbAuswahl->addItem(QStringLiteral(""));
-    for (int row = 0; row < mSud->modelAnhang()->rowCount(); ++row)
-    {
-        QString pfad = mSud->modelAnhang()->index(row, ModelAnhang::ColPfad).data().toString();
-        if (pfad.endsWith(QStringLiteral(".svg"), Qt::CaseInsensitive))
-        {
-            QFileInfo fi(pfad);
-            ui->cbAuswahl->addItem(fi.fileName(), fi.filePath());
-        }
-    }
-
+    ui->cbAuswahl->addItem(tr("<leer>"), QStringLiteral(""));
+    QString pfad = data(ModelEtiketten::ColPfad).toString();
     QDirIterator it(gSettings->dataDir(3), QStringList() << QStringLiteral("*.svg"));
     while (it.hasNext())
     {
         it.next();
-        ui->cbAuswahl->addItem(it.fileName(), it.filePath());
+        ui->cbAuswahl->addItem(it.fileName().chopped(4).replace("_", " "), it.filePath());
+        if (pfad == it.filePath())
+            pfad = "";
     }
+    if (!pfad.isEmpty())
+        ui->cbAuswahl->addItem(pfad, pfad);
 }
 
 QString DlgEtikett::generateSvg(const QString &svg)
@@ -313,14 +311,7 @@ void DlgEtikett::on_cbAuswahl_activated(int index)
 
     if (index == 0)
     {
-        if (mSud->modelEtiketten()->rowCount() > 0)
-        {
-            QString pfad = data(ModelEtiketten::ColPfad).toString();
-            mSud->modelEtiketten()->removeRow(0);
-            int row = mSud->modelAnhang()->getRowWithValue(ModelAnhang::ColPfad, pfad);
-            if (row >= 0)
-                mSud->modelAnhang()->removeRow(row);
-        }
+        mSud->modelEtiketten()->removeRow(0);
     }
     else
     {
@@ -356,15 +347,30 @@ void DlgEtikett::on_cbAuswahl_activated(int index)
 
 void DlgEtikett::on_btnOeffnen_clicked()
 {
+    if (checkSave())
+        return;
+    ui->btnSaveTemplate->setVisible(false);
+
     QString fileName = QFileDialog::getOpenFileName(this, tr("SVG auswählen"), QStringLiteral(""), tr("SVG (*.svg)"));
     if (!fileName.isEmpty())
     {
-        QMap<int, QVariant> values({{ModelAnhang::ColSudID, mSud->id()},
-                                    {ModelAnhang::ColPfad, fileName}});
-        mSud->modelAnhang()->append(values);
+        if (mSud->modelEtiketten()->rowCount() == 0)
+        {
+            QMap<int, QVariant> values({{ModelEtiketten::ColSudID, mSud->id()},
+                                        {ModelEtiketten::ColPfad, fileName}});
+            mSud->modelEtiketten()->append(values);
+        }
+        else
+        {
+            setData(ModelEtiketten::ColPfad, fileName);
+            if (!bh->modelEtiketten()->setValuesFrom(mSud->modelEtiketten()->mapRowToSource(0), fileName))
+            {
+                setData(ModelEtiketten::ColBreite, 0);
+                setData(ModelEtiketten::ColHoehe, 0);
+            }
+        }
         updateAuswahlListe();
         updateAll();
-        on_cbAuswahl_activated(ui->cbAuswahl->findText(QFileInfo(fileName).fileName()));
     }
 }
 

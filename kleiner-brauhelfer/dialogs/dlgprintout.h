@@ -23,6 +23,7 @@ public:
     void select(const QVariant &sudId);
 
 private slots:
+    void updateSelections();
     void updateWebView();
     void onFilterChanged();
     void on_tbFilter_textChanged(const QString &pattern);

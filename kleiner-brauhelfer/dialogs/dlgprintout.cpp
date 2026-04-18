@@ -33,22 +33,6 @@ DlgPrintout::DlgPrintout(QWidget *parent) :
     table->build();
     table->setDefaultContextMenu(false, false);
 
-    QStringList lst;
-    QDirIterator it(gSettings->dataDir(1), QStringList() << QStringLiteral("*.html"));
-    while (it.hasNext())
-    {
-        it.next();
-        QString filename = it.fileName();
-        filename.chop(5);
-        int lastUnderscore = filename.lastIndexOf('_');
-        if (filename.length() - lastUnderscore == 3)
-            filename = filename.left(lastUnderscore);
-        if (!lst.contains(filename) && filename != QStringLiteral("sudinfo"))
-            lst.append(filename);
-    }
-    ui->cbAuswahl->clear();
-    ui->cbAuswahl->addItems(lst);
-
     ui->splitter->setStretchFactor(0, 0);
     ui->splitter->setStretchFactor(1, 1);
     ui->splitter->setSizes({300, 600});
@@ -63,7 +47,7 @@ DlgPrintout::DlgPrintout(QWidget *parent) :
     connect(proxyModel, &ProxyModel::rowsInserted, this, &DlgPrintout::onFilterChanged);
     connect(proxyModel, &ProxyModel::rowsRemoved, this, &DlgPrintout::onFilterChanged);
 
-    ui->table->selectRow(0);
+    updateSelections();
 }
 
 DlgPrintout::~DlgPrintout()
@@ -105,7 +89,29 @@ void DlgPrintout::restoreView()
 void DlgPrintout::select(const QVariant &sudId)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
-    ui->table->selectRow(model->getRowWithValue(ModelSud::ColID, sudId));
+    int row = model->getRowWithValue(ModelSud::ColID, sudId);
+    if (row < 0)
+        row = 0;
+    ui->table->selectRow(row);
+}
+
+void DlgPrintout::updateSelections()
+{
+    QStringList lst;
+    QDirIterator it(gSettings->dataDir(1), QStringList() << QStringLiteral("*.html"));
+    while (it.hasNext())
+    {
+        it.next();
+        QString filename = it.fileName();
+        filename.chop(5);
+        int lastUnderscore = filename.lastIndexOf('_');
+        if (filename.length() - lastUnderscore == 3)
+            filename = filename.left(lastUnderscore);
+        if (!lst.contains(filename) && filename != QStringLiteral("sudinfo"))
+            lst.append(filename);
+    }
+    ui->cbAuswahl->clear();
+    ui->cbAuswahl->addItems(lst);
 }
 
 void DlgPrintout::updateWebView()

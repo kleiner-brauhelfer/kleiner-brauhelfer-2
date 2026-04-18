@@ -168,7 +168,7 @@ void TabGaerverlauf::modulesChanged(Settings::Modules modules)
         {
             if (ui->toolBox_Gaerverlauf->count() == 2)
             {
-                ui->toolBox_Gaerverlauf->insertItem(0, ui->pageSchnellgaerung, tr("Schnellgärprobe"));
+                ui->toolBox_Gaerverlauf->insertItem(0, ui->pageSchnellgaerung, QIcon::fromTheme("gaerung_s"), tr("Schnellgärprobe"));
                 ui->pageSchnellgaerung->setVisible(true);
             }
         }

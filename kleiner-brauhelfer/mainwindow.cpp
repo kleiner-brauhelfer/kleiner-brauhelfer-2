@@ -469,7 +469,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
         {
             if (index < 0)
-                ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, QIcon::fromTheme("tabgaerverlauf"), tr("Gärverlauf"));
+                ui->tabMain->insertTab(nextIndex, ui->tabGaerverlauf, QIcon::fromTheme("gaerung"), tr("Gärverlauf"));
         }
         else
             ui->tabMain->removeTab(index);

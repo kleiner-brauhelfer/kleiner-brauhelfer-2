@@ -14,7 +14,7 @@
    <string>Braudaten</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="tabbraudaten"/>
+   <iconset theme="braudaten"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="spacing">

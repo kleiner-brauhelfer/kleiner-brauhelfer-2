@@ -485,7 +485,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleGaerverlauf))
         {
             if (ui->tabMain->indexOf(ui->tabHauptgaerung) < 0)
-                ui->tabMain->insertTab(3, ui->tabHauptgaerung, QIcon::fromTheme("gaerung_i"), tr("Hauptgärung"));
+                ui->tabMain->insertTab(3, ui->tabHauptgaerung, QIcon::fromTheme("gaerung_i"), ui->actionTabBarLabels->isChecked() ? ui->tabHauptgaerung->windowTitle() : "");
         }
         else
         {
@@ -497,7 +497,7 @@ void MainWindow::updateTabs(Settings::Modules modules)
         if (gSettings->isModuleEnabled(Settings::ModuleNachgaerung))
         {
             if (ui->tabMain->indexOf(ui->tabNachgaerung) < 0)
-                ui->tabMain->insertTab(5, ui->tabNachgaerung, QIcon::fromTheme("gaerung_ii"), tr("Nachgärung"));
+                ui->tabMain->insertTab(5, ui->tabNachgaerung, QIcon::fromTheme("gaerung_ii"), ui->actionTabBarLabels->isChecked() ? ui->tabNachgaerung->windowTitle() : "");
         }
         else
         {
@@ -614,12 +614,12 @@ void MainWindow::tabBarLabelsToggled(bool visible)
 {
     if (visible)
     {
-        ui->tabMain->setTabText(0, ui->tabSudAuswahl->windowTitle());
-        ui->tabMain->setTabText(1, ui->tabRezept->windowTitle());
-        ui->tabMain->setTabText(2, ui->tabBraudaten->windowTitle());
-        ui->tabMain->setTabText(3, ui->tabAbfuelldaten->windowTitle());
-        ui->tabMain->setTabText(4, ui->tabHauptgaerung->windowTitle());
-        ui->tabMain->setTabText(4, ui->tabNachgaerung->windowTitle());
+        ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabSudAuswahl), ui->tabSudAuswahl->windowTitle());
+        ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabRezept), ui->tabRezept->windowTitle());
+        ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabBraudaten), ui->tabBraudaten->windowTitle());
+        ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabHauptgaerung), ui->tabHauptgaerung->windowTitle());
+        ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabAbfuelldaten), ui->tabAbfuelldaten->windowTitle());
+        ui->tabMain->setTabText(ui->tabMain->indexOf(ui->tabNachgaerung), ui->tabNachgaerung->windowTitle());
     }
     else
     {
@@ -628,6 +628,7 @@ void MainWindow::tabBarLabelsToggled(bool visible)
         ui->tabMain->setTabText(2, QString());
         ui->tabMain->setTabText(3, QString());
         ui->tabMain->setTabText(4, QString());
+        ui->tabMain->setTabText(5, QString());
     }
 }
 

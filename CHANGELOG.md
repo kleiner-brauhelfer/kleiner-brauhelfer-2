@@ -1,6 +1,8 @@
 # Changelog
 
-## Version 2.6.3 (in Entwicklung)
+## Version 2.6.4 (in Entwicklung)
+
+## Version 2.6.3 (09.05.2026)
 - Neu: Umstellung auf **Qt v6.11**
 - Neu: Farbschema überarbeitet.
 - Neu: Statistik in der Brauübersicht.

@@ -251,8 +251,8 @@ void TabBraudaten::updateValues()
     Brauhelfer::SudStatus status = static_cast<Brauhelfer::SudStatus>(mSud->getStatus());
 
     QDateTime dt = mSud->getBraudatum();
-    ui->tbBraudatum->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
-    ui->tbBraudatumZeit->setTime(dt.isValid() ? dt.time() : QDateTime::currentDateTime().time());
+    ui->tbBraudatum->setDate(dt.isValid() ? dt.date() : QDate(2000,1,1));
+    ui->tbBraudatumZeit->setTime(dt.isValid() ? dt.time() : QTime(0,0));
 
     ui->tbHopfenseihenVerlust->setValue(mSud->getWuerzemengeVorHopfenseihen() - mSud->getWuerzemengeKochende());
 
@@ -326,6 +326,11 @@ void TabBraudaten::on_tbBraudatumZeit_timeChanged(const QTime &time)
 }
 
 void TabBraudaten::on_btnBraudatumHeute_clicked()
+{
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBraudatum, QDateTime::currentDateTime()));
+}
+
+void TabBraudaten::on_btnBraudatumClear_clicked()
 {
     gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColBraudatum, QDateTime()));
 }

@@ -31,6 +31,7 @@ private slots:
     void on_tbBraudatum_dateChanged(const QDate &date);
     void on_tbBraudatumZeit_timeChanged(const QTime &time);
     void on_btnBraudatumHeute_clicked();
+    void on_btnBraudatumClear_clicked();
     void on_btnSWKochbeginn_clicked();
     void on_btnWuerzemengeKochbeginn_clicked();
     void on_tbTempKochbeginn_valueChanged(double);

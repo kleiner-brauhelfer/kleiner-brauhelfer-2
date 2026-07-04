@@ -12,6 +12,7 @@
         <file>images/icons/dark/svg/bewertung.svg</file>
         <file>images/icons/dark/svg/braudaten.svg</file>
         <file>images/icons/dark/svg/brauuebersicht.svg</file>
+        <file>images/icons/dark/svg/clear.svg</file>
         <file>images/icons/dark/svg/comments.svg</file>
         <file>images/icons/dark/svg/database.svg</file>
         <file>images/icons/dark/svg/delete.svg</file>
@@ -39,6 +40,7 @@
         <file>images/icons/dark/svg/minus.svg</file>
         <file>images/icons/dark/svg/move_down.svg</file>
         <file>images/icons/dark/svg/move_up.svg</file>
+        <file>images/icons/dark/svg/now.svg</file>
         <file>images/icons/dark/svg/pdf.svg</file>
         <file>images/icons/dark/svg/plus.svg</file>
         <file>images/icons/dark/svg/print.svg</file>
@@ -78,6 +80,7 @@
         <file>images/icons/light/svg/bewertung.svg</file>
         <file>images/icons/light/svg/braudaten.svg</file>
         <file>images/icons/light/svg/brauuebersicht.svg</file>
+        <file>images/icons/light/svg/clear.svg</file>
         <file>images/icons/light/svg/comments.svg</file>
         <file>images/icons/light/svg/database.svg</file>
         <file>images/icons/light/svg/delete.svg</file>
@@ -105,6 +108,7 @@
         <file>images/icons/light/svg/minus.svg</file>
         <file>images/icons/light/svg/move_down.svg</file>
         <file>images/icons/light/svg/move_up.svg</file>
+        <file>images/icons/light/svg/now.svg</file>
         <file>images/icons/light/svg/pdf.svg</file>
         <file>images/icons/light/svg/plus.svg</file>
         <file>images/icons/light/svg/print.svg</file>

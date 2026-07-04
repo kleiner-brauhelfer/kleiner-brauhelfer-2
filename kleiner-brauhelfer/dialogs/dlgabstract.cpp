@@ -14,11 +14,14 @@ DlgAbstract::DlgAbstract(const QString &settingsGroup, QWidget *parent, Qt::Wind
 
 void DlgAbstract::showEvent(QShowEvent *event)
 {
-    mDefaultGeometry = saveGeometry();
-    gSettings->beginGroup(mSettingsGroup);
-    restoreGeometry(gSettings->value("geometry").toByteArray());
-    gSettings->endGroup();
-    loadSettings();
+    if (mDefaultGeometry.isEmpty())
+    {
+        mDefaultGeometry = saveGeometry();
+        gSettings->beginGroup(mSettingsGroup);
+        restoreGeometry(gSettings->value("geometry").toByteArray());
+        gSettings->endGroup();
+        loadSettings();
+    }
     QDialog::showEvent(event);
 }
 

@@ -5,6 +5,7 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 
+class SqlTableModel;
 class Brauhelfer;
 class ModelSud;
 class ModelMaischplan;
@@ -78,6 +79,7 @@ private:
     ModelWasseraufbereitung* modelWasseraufbereitung;
     int mVersion;
     QSqlError mLastError;
+    QList<SqlTableModel*> mModels;
 };
 
 #endif // DATABASE_H

@@ -6,7 +6,8 @@
 
 Database::Database() :
     mVersion(-1),
-    mLastError(QString())
+    mLastError(QString()),
+    mModels()
 {
     QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"), QStringLiteral("kbh"));
 }
@@ -39,6 +40,31 @@ void Database::createTables(Brauhelfer* bh)
     modelKategorien = new ModelKategorien(bh, db);
     modelWasseraufbereitung = new ModelWasseraufbereitung(bh, db);
     modelSud->createConnections();
+
+    mModels = {
+        modelMalz,
+        modelHopfen,
+        modelHefe,
+        modelWeitereZutaten,
+        modelWasser,
+        modelGeraete,
+        modelAusruestung,
+        modelMaischplan,
+        modelMalzschuettung,
+        modelHopfengaben,
+        modelHefegaben,
+        modelWeitereZutatenGaben,
+        modelSchnellgaerverlauf,
+        modelHauptgaerverlauf,
+        modelNachgaerverlauf,
+        modelBewertungen,
+        modelAnhang,
+        modelEtiketten,
+        modeTags,
+        modelKategorien,
+        modelWasseraufbereitung,
+        modelSud
+    };
 }
 
 void Database::setTables()
@@ -181,28 +207,8 @@ void Database::disconnect()
 {
     if (isConnected())
     {
-        modelSud->clear();
-        modelMaischplan->clear();
-        modelMalzschuettung->clear();
-        modelHopfengaben->clear();
-        modelHefegaben->clear();
-        modelWeitereZutatenGaben->clear();
-        modelSchnellgaerverlauf->clear();
-        modelHauptgaerverlauf->clear();
-        modelNachgaerverlauf->clear();
-        modelBewertungen->clear();
-        modelMalz->clear();
-        modelHopfen->clear();
-        modelHefe->clear();
-        modelWeitereZutaten->clear();
-        modelAnhang->clear();
-        modelAusruestung->clear();
-        modelGeraete->clear();
-        modelWasser->clear();
-        modelEtiketten->clear();
-        modeTags->clear();
-        modelKategorien->clear();
-        modelWasseraufbereitung->clear();
+        for (auto* model : std::as_const(mModels))
+            model->clear();
         mVersion = -1;
 
         QSqlDatabase db = QSqlDatabase::database(QStringLiteral("kbh"), false);
@@ -219,54 +225,16 @@ bool Database::isDirty() const
 {
     if (!isConnected())
         return false;
-    return modelSud->isDirty() ||
-           modelMaischplan->isDirty() ||
-           modelMalzschuettung->isDirty() ||
-           modelHopfengaben->isDirty() ||
-           modelHefegaben->isDirty() ||
-           modelWeitereZutatenGaben->isDirty() ||
-           modelSchnellgaerverlauf->isDirty() ||
-           modelHauptgaerverlauf->isDirty() ||
-           modelNachgaerverlauf->isDirty() ||
-           modelBewertungen->isDirty() ||
-           modelMalz->isDirty() ||
-           modelHopfen->isDirty() ||
-           modelHefe->isDirty() ||
-           modelWeitereZutaten->isDirty() ||
-           modelAnhang->isDirty() ||
-           modelAusruestung->isDirty() ||
-           modelGeraete->isDirty() ||
-           modelWasser->isDirty() ||
-           modelEtiketten->isDirty() ||
-           modeTags->isDirty() ||
-           modelKategorien->isDirty() ||
-           modelWasseraufbereitung->isDirty();
+    for (auto* model : std::as_const(mModels))
+        if (model->isDirty())
+            return true;
+    return false;
 }
 
 void Database::select()
 {
-    modelMalz->select();
-    modelHopfen->select();
-    modelHefe->select();
-    modelWeitereZutaten->select();
-    modelWasser->select();
-    modelGeraete->select();
-    modelAusruestung->select();
-    modelMaischplan->select();
-    modelMalzschuettung->select();
-    modelHopfengaben->select();
-    modelHefegaben->select();
-    modelWeitereZutatenGaben->select();
-    modelSchnellgaerverlauf->select();
-    modelHauptgaerverlauf->select();
-    modelNachgaerverlauf->select();
-    modelBewertungen->select();
-    modelAnhang->select();
-    modelEtiketten->select();
-    modeTags->select();
-    modelKategorien->select();
-    modelWasseraufbereitung->select();
-    modelSud->select();
+    for (auto* model : std::as_const(mModels))
+        model->select();
 }
 
 int Database::version() const
@@ -276,146 +244,39 @@ int Database::version() const
 
 bool Database::save()
 {
-    bool ret = true;
-    if (!modelMalz->submitAll())
+    QSqlDatabase db = QSqlDatabase::database(QStringLiteral("kbh"), false);
+    if (!db.transaction())
     {
-        mLastError = modelMalz->lastError();
-        ret = false;
+        qCritical(Brauhelfer::loggingCategory) << "Failed to create a database transaction";
+        return false;
     }
-    if (!modelHopfen->submitAll())
+
+    for (auto* model : std::as_const(mModels))
     {
-        mLastError = modelHopfen->lastError();
-        ret = false;
+        if (!model->submitAll())
+        {
+            mLastError = model->lastError();
+            db.rollback();
+            qCritical(Brauhelfer::loggingCategory) << "Failed to submit to database (" << model->tableName() << "):" << mLastError.text();
+            return false;
+        }
     }
-    if (!modelHefe->submitAll())
+
+    if (!db.commit())
     {
-        mLastError = modelHefe->lastError();
-        ret = false;
+        mLastError = db.lastError();
+        qCritical(Brauhelfer::loggingCategory) << "Failed to commit to database:" << mLastError.text();
+        db.rollback();
+        return false;
     }
-    if (!modelWeitereZutaten->submitAll())
-    {
-        mLastError = modelWeitereZutaten->lastError();
-        ret = false;
-    }
-    if (!modelWasser->submitAll())
-    {
-        mLastError = modelWasser->lastError();
-        ret = false;
-    }
-    if (!modelGeraete->submitAll())
-    {
-        mLastError = modelGeraete->lastError();
-        ret = false;
-    }
-    if (!modelAusruestung->submitAll())
-    {
-        mLastError = modelAusruestung->lastError();
-        ret = false;
-    }
-    if (!modelMaischplan->submitAll())
-    {
-        mLastError = modelMaischplan->lastError();
-        ret = false;
-    }
-    if (!modelMalzschuettung->submitAll())
-    {
-        mLastError = modelMalzschuettung->lastError();
-        ret = false;
-    }
-    if (!modelHopfengaben->submitAll())
-    {
-        mLastError = modelHopfengaben->lastError();
-        ret = false;
-    }
-    if (!modelHefegaben->submitAll())
-    {
-        mLastError = modelHefegaben->lastError();
-        ret = false;
-    }
-    if (!modelWeitereZutatenGaben->submitAll())
-    {
-        mLastError = modelWeitereZutatenGaben->lastError();
-        ret = false;
-    }
-    if (!modelSchnellgaerverlauf->submitAll())
-    {
-        mLastError = modelSchnellgaerverlauf->lastError();
-        ret = false;
-    }
-    if (!modelHauptgaerverlauf->submitAll())
-    {
-        mLastError = modelHauptgaerverlauf->lastError();
-        ret = false;
-    }
-    if (!modelNachgaerverlauf->submitAll())
-    {
-        mLastError = modelNachgaerverlauf->lastError();
-        ret = false;
-    }
-    if (!modelBewertungen->submitAll())
-    {
-        mLastError = modelBewertungen->lastError();
-        ret = false;
-    }
-    if (!modelAnhang->submitAll())
-    {
-        mLastError = modelAnhang->lastError();
-        ret = false;
-    }
-    if (!modelEtiketten->submitAll())
-    {
-        mLastError = modelEtiketten->lastError();
-        ret = false;
-    }
-    if (!modeTags->submitAll())
-    {
-        mLastError = modeTags->lastError();
-        ret = false;
-    }
-    if (!modelKategorien->submitAll())
-    {
-        mLastError = modelKategorien->lastError();
-        ret = false;
-    }
-    if (!modelWasseraufbereitung->submitAll())
-    {
-        mLastError = modelWasseraufbereitung->lastError();
-        ret = false;
-    }
-    if (!modelSud->submitAll())
-    {
-        mLastError = modelSud->lastError();
-        ret = false;
-    }
-    if (!ret)
-        qCritical(Brauhelfer::loggingCategory) << "Failed to save database";
-    return ret;
+
+    return true;
 }
 
 void Database::discard()
 {
-    modelMalz->revertAll();
-    modelHopfen->revertAll();
-    modelHefe->revertAll();
-    modelWeitereZutaten->revertAll();
-    modelWasser->revertAll();
-    modelAusruestung->revertAll();
-    modelGeraete->revertAll();
-    modelMaischplan->revertAll();
-    modelMalzschuettung->revertAll();
-    modelHopfengaben->revertAll();
-    modelHefegaben->revertAll();
-    modelWeitereZutatenGaben->revertAll();
-    modelSchnellgaerverlauf->revertAll();
-    modelHauptgaerverlauf->revertAll();
-    modelNachgaerverlauf->revertAll();
-    modelBewertungen->revertAll();
-    modelAnhang->revertAll();
-    modelEtiketten->revertAll();
-    modeTags->revertAll();
-    modelKategorien->revertAll();
-    modelWasseraufbereitung->revertAll();
-    modelSud->revertAll();
+    for (auto* model : std::as_const(mModels))
+        model->revertAll();
 }
 
 QSqlQuery Database::sqlExec(const QSqlDatabase &db, const QString &query)

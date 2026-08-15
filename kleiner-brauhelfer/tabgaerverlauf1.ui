@@ -14,10 +14,10 @@
    <bool>true</bool>
   </property>
   <property name="windowTitle">
-   <string>Gärverlauf</string>
+   <string>Hauptgärung</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="tabgaerverlauf_i"/>
+   <iconset theme="gaerung_i"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

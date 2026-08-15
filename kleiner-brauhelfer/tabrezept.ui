@@ -14,7 +14,7 @@
    <string>Rezept</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="tabrezept"/>
+   <iconset theme="rezept"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">

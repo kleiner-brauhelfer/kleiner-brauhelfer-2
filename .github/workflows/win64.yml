@@ -16,12 +16,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: 6.10.*
+          version: 6.11.*
           modules: qtwebengine qtwebchannel qtpositioning
 
       - name: Build kleiner-brauhelfer-2
@@ -39,7 +39,7 @@ jobs:
           cd ../..
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: kleiner-brauhelfer-2
           path: deploy

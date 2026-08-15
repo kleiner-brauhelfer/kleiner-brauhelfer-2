@@ -14,7 +14,7 @@
    <string>Sudauswahl</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="tabsudauswahl"/>
+   <iconset theme="sudauswahl"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>

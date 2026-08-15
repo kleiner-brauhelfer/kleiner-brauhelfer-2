@@ -228,13 +228,11 @@ void TabAbfuellen::updateValues()
         wdg->updateValue();
 
     QDateTime dt = mSud->getAbfuelldatum();
-    ui->tbAbfuelldatum->setMinimumDate(mSud->getBraudatum().date());
-    ui->tbAbfuelldatum->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
-    ui->tbAbfuelldatumZeit->setTime(dt.isValid() ? dt.time() : QDateTime::currentDateTime().time());
+    ui->tbAbfuelldatum->setDate(dt.isValid() ? dt.date() : QDate(2000,1,1));
+    ui->tbAbfuelldatumZeit->setTime(dt.isValid() ? dt.time() : QTime(0,0));
     ui->tbDauerHauptgaerung->setValue((int)mSud->getBraudatum().daysTo(ui->tbAbfuelldatum->dateTime()));
     dt = mSud->getReifungStart();
-    ui->tbReifung->setMinimumDate(ui->tbAbfuelldatum->date());
-    ui->tbReifung->setDate(dt.isValid() ? dt.date() : QDateTime::currentDateTime().date());
+    ui->tbReifung->setDate(dt.isValid() ? dt.date() : QDate(2000,1,1));
 
     ui->cbSchnellgaerprobeAktiv->setChecked(mSud->getSchnellgaerprobeAktiv() && gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
     ui->tbSWSchnellgaerprobe->setVisible(ui->cbSchnellgaerprobeAktiv->isChecked());
@@ -303,6 +301,11 @@ void TabAbfuellen::on_tbAbfuelldatumZeit_timeChanged(const QTime &time)
 
 void TabAbfuellen::on_btnAbfuelldatumHeute_clicked()
 {
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColAbfuelldatum, QDateTime::currentDateTime()));
+}
+
+void TabAbfuellen::on_btnAbfuelldatumClear_clicked()
+{
     gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColAbfuelldatum, QDateTime()));
 }
 
@@ -313,6 +316,11 @@ void TabAbfuellen::on_tbReifung_dateChanged(const QDate &date)
 }
 
 void TabAbfuellen::on_btnReifungHeute_clicked()
+{
+    gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColReifungStart, QDateTime::currentDateTime()));
+}
+
+void TabAbfuellen::on_btnReifungClear_clicked()
 {
     gUndoStack->push(new SetModelDataCommand(mSud->bh()->modelSud(), mSud->row(), ModelSud::ColReifungStart, QDateTime()));
 }

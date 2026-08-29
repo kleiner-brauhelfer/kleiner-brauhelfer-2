@@ -16,8 +16,8 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
-	dev-qt/qtwebengine:6	
-	dev-qt/qtsvg:6
+	>=dev-qt/qtwebengine-6.11
+	>=dev-qt/qtsvg-6.11
 "
 
 RDEPEND="${DEPEND}"

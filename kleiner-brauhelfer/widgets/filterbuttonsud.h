@@ -2,11 +2,13 @@
 #define FILTERBUTTONSUD_H
 
 #include "toolbutton.h"
+#include <QMouseEvent>
 
 class ProxyModelSud;
 class CheckBox;
 class ComboBox;
 class DateEdit;
+class PushButton;
 
 class FilterButtonSud : public ToolButton
 {
@@ -14,11 +16,12 @@ class FilterButtonSud : public ToolButton
 
 public:
     enum Item {
-        Status = 1,
-        Merkliste = 2,
-        Kategorie = 4,
-        Anlage = 8,
-        Braudatum = 16,
+        Clear = 1,
+        Status = 2,
+        Merkliste = 4,
+        Kategorie = 8,
+        Anlage = 16,
+        Braudatum = 32,
         Alle = 255
     };
     Q_DECLARE_FLAGS(Items, Item)
@@ -44,6 +47,7 @@ private slots:
 
 private:
     void updateChecked();
+    void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
 
 private:
     ProxyModelSud* mModel;
@@ -58,6 +62,7 @@ private:
     CheckBox* mCheckBoxDatum;
     DateEdit* mDateEditMin;
     DateEdit* mDateEditMax;
+    PushButton* mButtonClear;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(FilterButtonSud::Items)

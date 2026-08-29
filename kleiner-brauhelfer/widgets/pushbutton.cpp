@@ -14,6 +14,16 @@ PushButton::PushButton(QWidget *parent) :
     connect(this, &QAbstractButton::clicked, this, &PushButton::updatePalette);
 }
 
+PushButton::PushButton(const QString &text, QWidget *parent) :
+    QPushButton(text, parent),
+    mDefaultPalette(palette()),
+    mAction(nullptr),
+    mError(false)
+{
+    setAutoDefault(false);
+    connect(this, &QAbstractButton::clicked, this, &PushButton::updatePalette);
+}
+
 void PushButton::addChangeDecorator()
 {
     connect(this, &QAbstractButton::clicked, [this](){WidgetDecorator::valueChanged(this, hasFocus());});

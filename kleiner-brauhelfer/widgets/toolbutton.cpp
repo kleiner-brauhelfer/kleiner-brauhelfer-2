@@ -11,6 +11,7 @@ ToolButton::ToolButton(QWidget *parent) :
 {
     setPopupMode(ToolButtonPopupMode::InstantPopup);
     connect(this, &QAbstractButton::clicked, this, &ToolButton::updatePalette);
+    connect(this, &QAbstractButton::toggled, this, &ToolButton::updatePalette);
 }
 
 void ToolButton::addChangeDecorator()
@@ -36,6 +37,11 @@ void ToolButton::updatePalette()
             setPalette(gSettings->paletteChanged);
     }
     else if (mError)
+    {
+        if (palette() != gSettings->paletteError)
+            setPalette(gSettings->paletteError);
+    }
+    else if (isChecked())
     {
         if (palette() != gSettings->paletteError)
             setPalette(gSettings->paletteError);

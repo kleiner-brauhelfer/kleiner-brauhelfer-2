@@ -32,7 +32,7 @@ TabSudAuswahl::TabSudAuswahl(QWidget *parent) :
     ProxyModelSud *proxyModel = new ProxyModelSud(this);
     proxyModel->setSourceModel(bh->modelSud());
     table->setModel(proxyModel);
-    table->appendCol({ModelSud::ColSudname, true, false, -1, new SudNameDelegate(table)});
+    table->appendCol({ModelSud::ColSudname, true, false, 200, new SudNameDelegate(table)});
     table->appendCol({ModelSud::ColSudnummer, true, true, 80, new SpinBoxDelegate(table)});
     table->appendCol({ModelSud::ColKategorie, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});
     table->appendCol({ModelSud::ColAnlage, true, true, 100, new TextDelegate(false, Qt::AlignCenter, table)});

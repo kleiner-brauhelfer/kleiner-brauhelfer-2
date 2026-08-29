@@ -9,6 +9,7 @@ class PushButton : public QPushButton
 
 public:
     explicit PushButton(QWidget *parent = nullptr);
+    explicit PushButton(const QString &text, QWidget *parent = nullptr);
     void addChangeDecorator();
     void setAction(QAction *action);
     void setDefaultPalette(const QPalette &p);

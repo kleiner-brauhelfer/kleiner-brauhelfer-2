@@ -3,6 +3,7 @@
 
 #include "toolbutton.h"
 #include "settings.h"
+#include <QMouseEvent>
 
 class ProxyModelRohstoff;
 class RadioButton;
@@ -26,6 +27,7 @@ private slots:
 
 private:
     void updateChecked();
+    void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
 
 private:
     ProxyModelRohstoff* mModel;

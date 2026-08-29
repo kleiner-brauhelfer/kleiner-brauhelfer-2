@@ -72,11 +72,11 @@ void Settings::initTheme()
         colorErrorText = QColor(180, 10, 10);
         colorErrorBase = QColor(252, 171, 171);
         colorErrorWindow = QColor(245, 185, 185);
-        colorErrorButton = QColor(230, 135, 135);
+        colorErrorButton = QColor(245, 185, 185); //QColor(230, 135, 135);
 
         colorChangedBase = QColor(255, 240, 175);
         colorChangedWindow = QColor(250, 235, 190);
-        colorChangedButton = QColor(240, 215, 140);
+        colorChangedButton = QColor(250, 235, 190); //QColor(240, 215, 140);
 
         colorMalz = QColor(248, 242, 210);
         colorHopfen = QColor(232, 248, 225);
@@ -142,11 +142,11 @@ void Settings::initTheme()
         colorErrorText = QColor(220, 80, 80);
         colorErrorBase = QColor(80, 30, 30);
         colorErrorWindow = QColor(160, 70, 70);
-        colorErrorButton = QColor(110, 45, 45);
+        colorErrorButton = QColor(160, 70, 70); //QColor(110, 45, 45);
 
         colorChangedBase = QColor(70, 65, 40);
         colorChangedWindow = QColor(85, 80, 50);
-        colorChangedButton = QColor(110, 102, 65);
+        colorChangedButton = QColor(85, 80, 50); //QColor(110, 102, 65);
 
         colorMalz = QColor(55, 52, 40);
         colorHopfen = QColor(45, 60, 50);

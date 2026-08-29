@@ -71,6 +71,17 @@ void FilterButtonLager::setModel(ProxyModelRohstoff* model)
 void FilterButtonLager::clear()
 {
     mModel->clearFilter();
+    updateChecked();
+}
+
+void FilterButtonLager::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button() != Qt::LeftButton)
+    {
+        clear();
+        event->accept();
+    }
+    ToolButton::mousePressEvent(event);
 }
 
 void FilterButtonLager::filterChanged()

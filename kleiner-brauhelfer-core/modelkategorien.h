@@ -29,11 +29,6 @@ public:
     ModelKategorien(Brauhelfer* bh, const QSqlDatabase &db = QSqlDatabase());
     bool setDataExt(const QModelIndex &idx, const QVariant &value) Q_DECL_OVERRIDE;
     void defaultValues(QMap<int, QVariant> &values) const Q_DECL_OVERRIDE;
-    bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) Q_DECL_OVERRIDE;
-
-private:
-
-    void addEmpty();
 
 private:
 

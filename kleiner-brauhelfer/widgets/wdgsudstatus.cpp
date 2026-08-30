@@ -24,9 +24,18 @@ QSize WdgSudStatus::sizeHint() const
 
 void WdgSudStatus::setSud(SudObject *sud)
 {
+    if (mSud)
+    {
+        disconnect(mSud, &SudObject::loadedChanged, this, nullptr);
+        disconnect(mSud, &SudObject::dataChanged, this, nullptr);
+    }
     mSud = sud;
-    connect(mSud, &SudObject::loadedChanged, this, [this](){update();});
-    connect(mSud, &SudObject::dataChanged, this, [this](){update();});
+    if (mSud)
+    {
+        connect(mSud, &SudObject::loadedChanged, this, [this](){update();});
+        connect(mSud, &SudObject::dataChanged, this, [this](){update();});
+        update();
+    }
 }
 
 SudObject* WdgSudStatus::getSud() const

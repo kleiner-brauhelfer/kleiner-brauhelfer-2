@@ -8,14 +8,6 @@ ModelKategorien::ModelKategorien(Brauhelfer *bh, const QSqlDatabase &db) :
 {
 }
 
-void ModelKategorien::addEmpty()
-{
-    for (int r = 0; r < rowCount(); ++r)
-        if (data(r, ColName).toString().isEmpty())
-            return;
-    append({{ColName, ""}});
-}
-
 bool ModelKategorien::setDataExt(const QModelIndex &idx, const QVariant &value)
 {
     switch(idx.column())
@@ -46,12 +38,4 @@ bool ModelKategorien::setDataExt(const QModelIndex &idx, const QVariant &value)
 void ModelKategorien::defaultValues(QMap<int, QVariant> &values) const
 {
     values[ColName] = getUniqueName(index(0, ColName), values[ColName], true);
-}
-
-bool ModelKategorien::removeRows(int row, int count, const QModelIndex &parent)
-{
-    for (int r = row; r < row + count; ++r)
-        if (data(r, ColName).toString().isEmpty())
-            return false;
-    return SqlTableModel::removeRows(row, count, parent);
 }

@@ -155,7 +155,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(gSettings, &Settings::databasePathChanged, this, [this](){restart(1000);});
     connect(gSettings, &Settings::modulesChanged, this, &MainWindow::modulesChanged);
 
-    connect(ui->tabSudAuswahl, &TabSudAuswahl::clicked, this, &MainWindow::loadSud);
+    connect(ui->tabSudAuswahl, &TabSudAuswahl::doubleClicked, this, &MainWindow::loadSud);
 
     connect(bh, &Brauhelfer::modified, this, &MainWindow::databaseModified);
     connect(bh, &Brauhelfer::discarded, this, &MainWindow::updateValues);

@@ -42,8 +42,14 @@ void SudNameDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
     }
     if (color.isValid())
     {
-        QRect rect = QRect(option.rect.x()+1, option.rect.y()+1, 8, option.rect.height()-2);
-        painter->fillRect(rect, color);
+        painter->fillRect(option.rect.x()+1, option.rect.y()+1, 8, option.rect.height()-2, color);
+
+        QColor colorFade = color;
+        colorFade.setAlphaF(gSettings->theme() == Qt::ColorScheme::Light ? 0.3 : 0.6);
+        QLinearGradient gradient = QLinearGradient(option.rect.right(), 0, option.rect.left(), 0);
+        gradient.setColorAt(1.0, colorFade);
+        gradient.setColorAt(0.0, Qt::transparent);
+        painter->fillRect(option.rect, gradient);
     }
 
     QStyleOptionViewItem opt(option);

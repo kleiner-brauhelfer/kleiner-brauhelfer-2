@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 2.6.4 (in Entwicklung)
+## Version 2.6.4 (30.08.2026)
 - Neu: Hilfe und Sud Status Leiste lassen sich verschieben.
 - Neu: Felder für Braudatum, Abfülldatum und Beginn Reifung klarer.
 - Neu: Wenn kein Beginn der Reifung eingetragen ist, wird das Abfülldatum für die Berechnung der Woche verwendet.

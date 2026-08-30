@@ -24,6 +24,7 @@ public:
     void setupToolbar(QToolBar* toolbar);
 
 signals:
+    void doubleClicked(int sudId);
     void clicked(int sudId);
 
 private slots:

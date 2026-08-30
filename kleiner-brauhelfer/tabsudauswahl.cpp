@@ -187,6 +187,8 @@ void TabSudAuswahl::selectionChanged()
         ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
         QModelIndex index = ui->table->selectionModel()->selectedRows()[0];
         ui->actionMerken->setChecked(model->data(index.row(), ModelSud::ColMerklistenID).toBool());
+        int sudId = model->data(index.row(), ModelSud::ColID).toInt();
+        emit clicked(sudId);
     }
 }
 
@@ -214,7 +216,7 @@ void TabSudAuswahl::on_table_doubleClicked(const QModelIndex &index)
 {
     ProxyModelSud *model = static_cast<ProxyModelSud*>(ui->table->model());
     int sudId = model->data(index.row(), ModelSud::ColID).toInt();
-    emit clicked(sudId);
+    emit doubleClicked(sudId);
 }
 
 void TabSudAuswahl::on_table_customContextMenuRequested(const QPoint &pos)
@@ -371,6 +373,6 @@ void TabSudAuswahl::sudLaden()
     if (selection.count() > 0)
     {
         int sudId = model->data(selection[0].row(), ModelSud::ColID).toInt();
-        emit clicked(sudId);
+        emit doubleClicked(sudId);
     }
 }

@@ -110,6 +110,16 @@
              <property name="alignment">
               <set>Qt::AlignmentFlag::AlignCenter</set>
              </property>
+             <property name="specialValueText">
+              <string notr="true">---</string>
+             </property>
+             <property name="minimumDate">
+              <date>
+               <year>2000</year>
+               <month>1</month>
+               <day>1</day>
+              </date>
+             </property>
             </widget>
            </item>
            <item row="0" column="0">
@@ -126,6 +136,9 @@
              </property>
              <property name="alignment">
               <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+             <property name="specialValueText">
+              <string notr="true">---</string>
              </property>
             </widget>
            </item>

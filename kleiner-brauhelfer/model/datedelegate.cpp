@@ -69,5 +69,8 @@ void DateDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, 
 
 QString DateDelegate::displayText(const QVariant &value, const QLocale &locale) const
 {
-    return locale.toString(value.toDate(), QLocale::ShortFormat);
+    QDate dt = value.toDate();
+    if (dt.isValid())
+        return locale.toString(dt, QLocale::ShortFormat);
+    return "---";
 }

@@ -96,7 +96,7 @@ void DockTitleBar::updateLayout()
         {
         case Qt::DockWidgetArea::TopDockWidgetArea:
         case Qt::DockWidgetArea::BottomDockWidgetArea:
-            mDockWidget->setFixedHeight(mDockWidget->widget()->minimumSizeHint().height() + height());
+            mDockWidget->setFixedHeight(mDockWidget->widget()->minimumSizeHint().height() + 14);
             mDockWidget->setMinimumWidth(0);
             mDockWidget->setMaximumWidth(QWIDGETSIZE_MAX);
             break;

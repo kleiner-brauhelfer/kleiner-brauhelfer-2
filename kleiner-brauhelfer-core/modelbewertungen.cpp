@@ -21,6 +21,8 @@ QVariant ModelBewertungen::dataExt(const QModelIndex &idx) const
     {
         QVariant sudID = data(idx.row(), ColSudID);
         QDateTime dt = bh->modelSud()->dataSud(sudID, ModelSud::ColReifungStart).toDateTime();
+        if (!dt.isValid())
+            dt = bh->modelSud()->dataSud(sudID, ModelSud::ColAbfuelldatum).toDateTime();
         if (dt.isValid())
             return dt.daysTo(data(idx.row(), ColDatum).toDateTime()) / 7 + 1;
         return 0;

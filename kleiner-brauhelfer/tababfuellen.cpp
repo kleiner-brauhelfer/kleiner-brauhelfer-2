@@ -188,8 +188,10 @@ void TabAbfuellen::checkEnabled()
     ui->tbAbfuelldatum->setDisabled(abgefuellt);
     ui->tbAbfuelldatumZeit->setDisabled(abgefuellt);
     ui->btnAbfuelldatumHeute->setVisible(!abgefuellt);
+    ui->btnAbfuelldatumClear->setVisible(!abgefuellt);
     ui->tbReifung->setDisabled(verbraucht);
-    ui->btnReifungHeute->setVisible(!abgefuellt);
+    ui->btnReifungHeute->setVisible(!verbraucht);
+    ui->btnReifungClear->setVisible(!verbraucht);
     ui->tbReifezeit->setVisible(!verbraucht);
     ui->lblReifezeit->setVisible(!verbraucht);
     ui->lblReifezeitEinheit->setVisible(!verbraucht);

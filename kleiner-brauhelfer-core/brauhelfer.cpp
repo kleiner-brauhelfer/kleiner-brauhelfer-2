@@ -298,6 +298,7 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
         values.insert(ModelSud::ColErstellt, QDateTime::currentDateTime().toString(Qt::ISODate));
         values.remove(ModelSud::ColBraudatum);
         values.remove(ModelSud::ColAbfuelldatum);
+        values.remove(ModelSud::ColReifungStart);
         values.insert(ModelSud::ColVerduennungAnstellen, 0);
         values.insert(ModelSud::ColVerschneidungAbfuellen, 0);
     }

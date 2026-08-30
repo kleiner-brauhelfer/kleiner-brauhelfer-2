@@ -198,6 +198,7 @@ void TabBraudaten::checkEnabled()
     ui->tbBraudatum->setDisabled(gebraut);
     ui->tbBraudatumZeit->setDisabled(gebraut);
     ui->btnBraudatumHeute->setVisible(!gebraut);
+    ui->btnBraudatumClear->setVisible(!gebraut);
     ui->tbSWKochbeginn->setDisabled(gebraut);
     ui->btnSWKochbeginn->setVisible(!gebraut);
     ui->tbWuerzemengeKochbeginn->setDisabled(gebraut);

@@ -378,6 +378,8 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         if (status >= Brauhelfer::SudStatus::Abgefuellt)
         {
             QDateTime dt = data(idx.row(), ColReifungStart).toDateTime();
+            if (!dt.isValid())
+                dt = data(idx.row(), ColAbfuelldatum).toDateTime();
             if (dt.isValid())
                 return dt.daysTo(QDateTime::currentDateTime()) / 7 + 1;
         }
@@ -389,9 +391,11 @@ QVariant ModelSud::dataExt(const QModelIndex &idx) const
         if (status >= Brauhelfer::SudStatus::Abgefuellt)
         {
             QDateTime dt = data(idx.row(), ColReifungStart).toDateTime();
+            if (!dt.isValid())
+                dt = data(idx.row(), ColAbfuelldatum).toDateTime();
             if (dt.isValid())
             {
-                qint64 tageReifung = dt.daysTo(QDateTime::currentDateTime());
+                int tageReifung = dt.daysTo(QDateTime::currentDateTime());
                 int tageReifungSoll = data(idx.row(), ColReifezeit).toInt() * 7;
                 return tageReifungSoll - tageReifung;
             }

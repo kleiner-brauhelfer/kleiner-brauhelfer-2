@@ -3,9 +3,11 @@
 ## Version 2.6.4 (in Entwicklung)
 - Neu: Hilfe und Sud Status Leiste lassen sich verschieben.
 - Neu: Felder für Braudatum, Abfülldatum und Beginn Reifung klarer.
+- Neu: Wenn kein Beginn der Reifung eingetragen ist, wird das Abfülldatum für die Berechnung der Woche verwendet.
 - Fix: Überschriften der Reiter wurden manchmal falsch dargestellt.
 - Fix: Filter zwei mal in Fenster Ausdruck.
 - Fix: Sudfilter für alle Kategorien und Anlagen.
+- Fix: Beginn der Reifung wird beim Kopieren eines Sudes zurückgesetzt.
 
 ## Version 2.6.3 (09.05.2026)
 - Neu: Umstellung auf **Qt v6.11**

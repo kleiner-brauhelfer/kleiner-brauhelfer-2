@@ -250,7 +250,7 @@ bool Database::update()
                 if (query2.first())
                 {
                     QDateTime braudatum = query2.value(0).toDateTime();
-                    qint64 tage = braudatum.daysTo(zeitpunkt);
+                    int tage = braudatum.daysTo(zeitpunkt);
                     sqlExec(db, QStringLiteral("UPDATE WeitereZutatenGaben SET ZugabeNach=%1 WHERE ID=%2").arg(tage).arg(id));
                 }
                 if (typ < 0)

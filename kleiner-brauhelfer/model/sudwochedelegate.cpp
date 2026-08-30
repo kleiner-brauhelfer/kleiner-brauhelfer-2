@@ -21,6 +21,6 @@ void SudWocheDelegate::initStyleOption(QStyleOptionViewItem *option, const QMode
     }
     else
     {
-        option->text = "";
+        option->text = "---";
     }
 }

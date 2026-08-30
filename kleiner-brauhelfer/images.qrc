@@ -13,6 +13,7 @@
         <file>images/icons/dark/svg/braudaten.svg</file>
         <file>images/icons/dark/svg/brauuebersicht.svg</file>
         <file>images/icons/dark/svg/clear.svg</file>
+        <file>images/icons/dark/svg/close.svg</file>
         <file>images/icons/dark/svg/comments.svg</file>
         <file>images/icons/dark/svg/database.svg</file>
         <file>images/icons/dark/svg/delete.svg</file>
@@ -21,6 +22,7 @@
         <file>images/icons/dark/svg/etikett.svg</file>
         <file>images/icons/dark/svg/export.svg</file>
         <file>images/icons/dark/svg/filter.svg</file>
+        <file>images/icons/dark/svg/floating.svg</file>
         <file>images/icons/dark/svg/gaerung.svg</file>
         <file>images/icons/dark/svg/gaerung_i.svg</file>
         <file>images/icons/dark/svg/gaerung_ii.svg</file>
@@ -81,6 +83,7 @@
         <file>images/icons/light/svg/braudaten.svg</file>
         <file>images/icons/light/svg/brauuebersicht.svg</file>
         <file>images/icons/light/svg/clear.svg</file>
+        <file>images/icons/light/svg/close.svg</file>
         <file>images/icons/light/svg/comments.svg</file>
         <file>images/icons/light/svg/database.svg</file>
         <file>images/icons/light/svg/delete.svg</file>
@@ -89,6 +92,7 @@
         <file>images/icons/light/svg/etikett.svg</file>
         <file>images/icons/light/svg/export.svg</file>
         <file>images/icons/light/svg/filter.svg</file>
+        <file>images/icons/light/svg/floating.svg</file>
         <file>images/icons/light/svg/gaerung.svg</file>
         <file>images/icons/light/svg/gaerung_i.svg</file>
         <file>images/icons/light/svg/gaerung_ii.svg</file>

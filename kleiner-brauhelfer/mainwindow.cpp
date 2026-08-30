@@ -8,6 +8,7 @@
 #include <QStyleFactory>
 #include <QDesktopServices>
 #include <QStyleHints>
+#include <QSplitter>
 #include "brauhelfer.h"
 #include "commands/undostack.h"
 #include "biercalc.h"
@@ -40,6 +41,7 @@
 #include "dialogs/dlgwasseraufbereitung.h"
 #include "dialogs/dlgwasserprofile.h"
 #include "widgets/widgetdecorator.h"
+#include "widgets/docktitlebar.h"
 
 extern Brauhelfer* bh;
 extern Settings* gSettings;
@@ -123,12 +125,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionTabBarLabels->setChecked(gSettings->value("tabBarLabels", true).toBool());
     ui->actionTabBarLocation->setChecked(gSettings->value("tabBarLocation", true).toBool());
     restoreState(gSettings->value("state").toByteArray());
-    ui->splitterHelp->setSizes({900, 100});
-    ui->splitterHelp->setStretchFactor(0, 1);
-    ui->splitterHelp->setStretchFactor(1, 0);
-    mDefaultSplitterHelpState = ui->splitterHelp->saveState();
-    ui->splitterHelp->restoreState(gSettings->value("splitterHelpState").toByteArray());
     gSettings->endGroup();
+
+    ui->dockWidgetSudStatus->setTitleBarWidget(new DockTitleBar(true, ui->dockWidgetSudStatus));
+    ui->dockWidgetHelp->setTitleBarWidget(new DockTitleBar(ui->dockWidgetHelp));
+    connect(ui->dockWidgetSudStatus, &QDockWidget::dockLocationChanged, this, &MainWindow::updateLayout);
+    connect(ui->dockWidgetHelp, &QDockWidget::dockLocationChanged, this, &MainWindow::updateLayout);
+    updateLayout();
 
     if (ui->toolBarSave->isHidden())
         ui->toolBarSave->setVisible(true);
@@ -333,6 +336,22 @@ void MainWindow::themeChanged(Qt::ColorScheme theme)
     QGuiApplication::styleHints()->setColorScheme(theme);
 }
 
+void MainWindow::updateLayout()
+{
+    int left = 12, top = 12, right = 12, bottom = 12;
+    Qt::DockWidgetArea locDockHelp = ui->dockWidgetHelp->isVisible() ? ui->dockWidgetHelp->dockLocation() : Qt::DockWidgetArea::NoDockWidgetArea;
+    Qt::DockWidgetArea locDockSudStatus = ui->dockWidgetSudStatus->isVisible() ? ui->dockWidgetSudStatus->dockLocation() : Qt::DockWidgetArea::NoDockWidgetArea;
+    if (locDockHelp == Qt::DockWidgetArea::LeftDockWidgetArea || locDockSudStatus == Qt::DockWidgetArea::LeftDockWidgetArea)
+        left = 0;
+    if (locDockHelp == Qt::DockWidgetArea::TopDockWidgetArea || locDockSudStatus == Qt::DockWidgetArea::TopDockWidgetArea)
+        top = 0;
+    if (locDockHelp == Qt::DockWidgetArea::RightDockWidgetArea || locDockSudStatus == Qt::DockWidgetArea::RightDockWidgetArea)
+        right = 0;
+    if (locDockHelp == Qt::DockWidgetArea::BottomDockWidgetArea || locDockSudStatus == Qt::DockWidgetArea::BottomDockWidgetArea)
+        bottom = 0;
+    centralWidget()->layout()->setContentsMargins(left, top, right, bottom);
+}
+
 void MainWindow::restart(int retCode)
 {
     if (bh->isDirty())
@@ -412,7 +431,6 @@ void MainWindow::saveSettings()
     gSettings->setValue("tabBarLabels", ui->actionTabBarLabels->isChecked());
     gSettings->setValue("tabBarLocation", ui->actionTabBarLocation->isChecked());
     gSettings->setValue("state", saveState());
-    gSettings->setValue("splitterHelpState", ui->splitterHelp->saveState());
     gSettings->endGroup();
     ui->tabSudAuswahl->saveSettings();
     ui->tabRezept->saveSettings();
@@ -428,7 +446,6 @@ void MainWindow::restoreView()
     restoreState(mDefaultState);
     ui->actionTabBarLabels->setChecked(true);
     ui->actionTabBarLocation->setChecked(true);
-    ui->splitterHelp->restoreState(mDefaultSplitterHelpState);
     ui->tabSudAuswahl->restoreView();
     ui->tabRezept->restoreView();
     ui->tabBraudaten->restoreView();

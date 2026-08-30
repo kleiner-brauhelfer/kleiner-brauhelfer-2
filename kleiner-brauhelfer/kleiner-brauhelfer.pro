@@ -109,6 +109,7 @@ SOURCES += \
     widgets/combobox.cpp \
     widgets/dateedit.cpp \
     widgets/datetimeedit.cpp \
+    widgets/docktitlebar.cpp \
     widgets/doublespinbox.cpp \
     widgets/doublespinboxsud.cpp \
     widgets/filterbuttonlager.cpp \
@@ -214,6 +215,7 @@ HEADERS += \
     widgets/combobox.h \
     widgets/dateedit.h \
     widgets/datetimeedit.h \
+    widgets/docktitlebar.h \
     widgets/doublespinbox.h \
     widgets/doublespinboxsud.h \
     widgets/filterbuttonlager.h \

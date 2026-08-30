@@ -32,6 +32,7 @@ public:
 private slots:
     void focusChanged(QWidget *old, QWidget *now);
     void themeChanged(Qt::ColorScheme theme);
+    void updateLayout();
     void databaseModified();
     void updateTabs(Settings::Modules modules);
     void updateValues();
@@ -63,7 +64,6 @@ private:
     SudObject* mSud;
     QByteArray mDefaultGeometry;
     QByteArray mDefaultState;
-    QByteArray mDefaultSplitterHelpState;
 };
 
 #endif // MAINWINDOW_H

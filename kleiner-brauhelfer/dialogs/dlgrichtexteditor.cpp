@@ -238,27 +238,85 @@ void DlgRichTextEditor::on_btnColorText_clicked()
     ui->tbRichText->setFocus();
 }
 
+static void selectFormatRange(QTextCursor &cursor, std::function<bool(const QTextCharFormat &)> matches)
+{
+    if (!matches(cursor.charFormat()))
+        return;
+
+    int start = cursor.position();
+    while (start > 0)
+    {
+        QTextCursor c(cursor.document());
+        c.setPosition(start - 1);
+        if (!matches(c.charFormat()))
+            break;
+        --start;
+    }
+    --start;
+
+    int end = cursor.position();
+    while (end < cursor.document()->characterCount() - 1)
+    {
+        QTextCursor c(cursor.document());
+        c.setPosition(end);
+        if (!matches(c.charFormat()))
+            break;
+        ++end;
+    }
+    --end;
+
+    cursor.setPosition(start);
+    cursor.setPosition(end, QTextCursor::KeepAnchor);
+}
+
 void DlgRichTextEditor::on_btnBold_clicked(bool checked)
 {
+    QTextCursor cursor = ui->tbRichText->textCursor();
+    if (!cursor.hasSelection())
+    {
+        if (cursor.charFormat().fontWeight() == QFont::Bold)
+            selectFormatRange(cursor, [](const QTextCharFormat &f) { return f.fontWeight() == QFont::Bold; });
+        else
+            cursor.select(QTextCursor::WordUnderCursor);
+    }
     QTextCharFormat format;
     format.setFontWeight(checked ? QFont::Bold : QFont::Normal);
-    ui->tbRichText->mergeCurrentCharFormat(format);
+    cursor.mergeCharFormat(format);
+    ui->tbRichText->mergeCurrentCharFormat(cursor.charFormat());
     ui->tbRichText->setFocus();
 }
 
 void DlgRichTextEditor::on_btnItalic_clicked(bool checked)
 {
+    QTextCursor cursor = ui->tbRichText->textCursor();
+    if (!cursor.hasSelection())
+    {
+        if (cursor.charFormat().fontItalic())
+            selectFormatRange(cursor, [](const QTextCharFormat &f) { return f.fontItalic(); });
+        else
+            cursor.select(QTextCursor::WordUnderCursor);
+    }
     QTextCharFormat format;
     format.setFontItalic(checked);
-    ui->tbRichText->mergeCurrentCharFormat(format);
+    cursor.mergeCharFormat(format);
+    ui->tbRichText->mergeCurrentCharFormat(cursor.charFormat());
     ui->tbRichText->setFocus();
 }
 
 void DlgRichTextEditor::on_btnUnderline_clicked(bool checked)
 {
+    QTextCursor cursor = ui->tbRichText->textCursor();
+    if (!cursor.hasSelection())
+    {
+        if (cursor.charFormat().fontUnderline())
+            selectFormatRange(cursor, [](const QTextCharFormat &f) { return f.fontUnderline(); });
+        else
+            cursor.select(QTextCursor::WordUnderCursor);
+    }
     QTextCharFormat format;
     format.setFontUnderline(checked);
-    ui->tbRichText->mergeCurrentCharFormat(format);
+    cursor.mergeCharFormat(format);
+    ui->tbRichText->mergeCurrentCharFormat(cursor.charFormat());
     ui->tbRichText->setFocus();
 }
 
@@ -292,36 +350,45 @@ void DlgRichTextEditor::on_btnRight_clicked(bool checked)
 
 void DlgRichTextEditor::on_btnLink_clicked(bool checked)
 {
-    QTextCharFormat format;
     QTextCursor cursor = ui->tbRichText->textCursor();
-    bool unlink = cursor.charFormat().isAnchor();
-    if (checked)
+    bool isAnchor = cursor.charFormat().isAnchor();
+    bool ok = false;
+    QString url = isAnchor ? cursor.charFormat().anchorHref() : "";
+    url = QInputDialog::getText(this, tr("Link erstellen"), tr("URL:"), QLineEdit::Normal, url, &ok);
+    if (ok)
     {
-        bool ok = false;
-        QString url = QStringLiteral("http://");
-        url = QInputDialog::getText(this, tr("Link erstellen"), tr("URL:"), QLineEdit::Normal, url, &ok);
-        if (ok && !url.isEmpty())
+        if (!cursor.hasSelection())
         {
+            if (isAnchor)
+                selectFormatRange(cursor, [cursor](const QTextCharFormat &f) { return f.isAnchor() && f.anchorHref() == cursor.charFormat().anchorHref(); });
+            else
+                cursor.select(QTextCursor::WordUnderCursor);
+        }
+
+        if (url.isEmpty())
+        {
+            if (isAnchor)
+            {
+                QTextCharFormat format;
+                format.setAnchor(false);
+                format.setAnchorHref(url);
+                format.setForeground(QColor());
+                format.setFontUnderline(false);
+                cursor.mergeCharFormat(format);
+            }
+        }
+        else
+        {
+            QTextCharFormat format;
             format.setAnchor(true);
             format.setAnchorHref(url);
             format.setForeground(palette().color(QPalette::Link));
             format.setFontUnderline(true);
-            unlink = false;
+            cursor.mergeCharFormat(format);
         }
     }
-
-    if (unlink)
-    {
-        format.setAnchor(false);
-        format.setForeground(QColor());
-        format.setFontUnderline(false);
-        if (!cursor.hasSelection())
-            cursor.select(QTextCursor::BlockUnderCursor);
-        cursor.mergeCharFormat(format);
-    }
-
-    ui->btnLink->setChecked(format.isAnchor());
-    ui->tbRichText->mergeCurrentCharFormat(format);
+    ui->btnLink->setChecked(cursor.charFormat().isAnchor());
+    ui->tbRichText->mergeCurrentCharFormat(cursor.charFormat());
     ui->tbRichText->setFocus();
 }
 

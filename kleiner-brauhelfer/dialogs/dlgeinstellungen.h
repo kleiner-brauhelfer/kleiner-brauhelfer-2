@@ -46,6 +46,8 @@ private slots:
     void on_cbModuleSpeise_clicked(bool checked);
     void on_cbModuleWasseraufbereitung_clicked(bool checked);
     void on_cbModulePreiskalkulation_clicked(bool checked);
+    void on_cbGraphicBackend_currentTextChanged(const QString &backend);
+    void on_cbGraphicApi_currentTextChanged(const QString &api);
 
 private:
     void updateValues();

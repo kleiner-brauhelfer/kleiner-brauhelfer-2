@@ -9,6 +9,9 @@
 #if QT_NETWORK_LIB
 #include <QSslSocket>
 #endif
+#ifdef QT_WEBENGINECORE_LIB
+#include <QQuickWindow>
+#endif
 #include "brauhelfer.h"
 #include "settings.h"
 #include "widgets/webview.h"
@@ -375,18 +378,29 @@ int main(int argc, char *argv[])
 {
     int ret = EXIT_FAILURE;
 
-    QApplication a(argc, argv);
-
     // set application name, organization and version
-    a.setOrganizationName(QStringLiteral(ORGANIZATION));
-    a.setApplicationName(QStringLiteral(TARGET));
-    a.setApplicationVersion(QStringLiteral(VERSION));
+    QCoreApplication::setOrganizationName(QStringLiteral(ORGANIZATION));
+    QCoreApplication::setApplicationName(QStringLiteral(TARGET));
+    QCoreApplication::setApplicationVersion(QStringLiteral(VERSION));
 
     // load settings
-    if (QFile::exists(a.applicationDirPath() + "/portable"))
-        gSettings = new Settings(QCoreApplication::applicationDirPath());
+    const QString appDir = QFileInfo(argv[0]).absolutePath();
+    if (QFile::exists(appDir + "/portable"))
+        gSettings = new Settings(appDir);
     else
         gSettings = new Settings();
+
+    // application
+  #ifdef QT_WEBENGINECORE_LIB
+    QString backend = gSettings->valueInGroup("Graphic", "backend").toString();
+    if (!backend.isEmpty())
+        QQuickWindow::setSceneGraphBackend(backend);
+    QSGRendererInterface::GraphicsApi api = static_cast<QSGRendererInterface::GraphicsApi>(gSettings->valueInGroup("Graphic", "api").toInt());
+    if (api != QSGRendererInterface::Unknown)
+        QQuickWindow::setGraphicsApi(api);
+  #endif
+    QApplication a(argc, argv);
+    gSettings->init();
 
     // logging
     defaultMessageHandler = qInstallMessageHandler(messageHandler);

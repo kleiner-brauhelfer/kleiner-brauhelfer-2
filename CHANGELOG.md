@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 2.6.5 (in Entwicklung)
+- Neu: Einstellungsmöglichkeit für Graphic Backend (sceneGraphBackend) und API (graphicsApi) (https://doc.qt.io/qt-6/qquickwindow.html)
+- Fix: Link Eingabe im Editor für Bemerkungen.
+
 ## Version 2.6.4 (30.08.2026)
 - Neu: Hilfe und Sud Status Leiste lassen sich verschieben.
 - Neu: Felder für Braudatum, Abfülldatum und Beginn Reifung klarer.

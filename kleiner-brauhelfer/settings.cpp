@@ -12,22 +12,23 @@
 Settings::Settings(QObject *parent) :
     QSettings(QSettings::IniFormat, QSettings::UserScope, QCoreApplication::organizationName(), QCoreApplication::applicationName(), parent)
 {
-    defaultFont = QGuiApplication::font();
-    initModules();
-    initTheme();
 }
 
 Settings::Settings(const QString& dir, QObject *parent) :
     QSettings(dir + "/" + QCoreApplication::applicationName() + ".ini", QSettings::IniFormat, parent)
 {
-    defaultFont = QGuiApplication::font();
-    initModules();
-    initTheme();
 }
 
 Settings::~Settings()
 {
     setValueInGroup("General", "version", QCoreApplication::applicationVersion());
+}
+
+void Settings::init()
+{
+    defaultFont = QGuiApplication::font();
+    initModules();
+    initTheme();
 }
 
 void Settings::setValueInGroup(QAnyStringView group, QAnyStringView key, const QVariant &value)

@@ -3,6 +3,7 @@
 #include <QApplication>
 #include <QFileDialog>
 #include <QFontDialog>
+#include <QSGRendererInterface>
 #include "settings.h"
 
 extern Settings* gSettings;
@@ -55,6 +56,9 @@ void DlgEinstellungen::updateValues()
     ui->cbConfirmClose->setChecked(gSettings->value("BeendenAbfrage", true).toBool());
     ui->cbCheckUpdate->setChecked(gSettings->value("CheckUpdate", true).toBool());
     gSettings->endGroup();
+
+    ui->cbGraphicBackend->setCurrentText(gSettings->valueInGroup("Graphic", "backend", "").toString());
+    ui->cbGraphicApi->setCurrentIndex(gSettings->valueInGroup("Graphic", "api", QSGRendererInterface::Unknown).toInt());
 
     ui->cbModuleGaerverlauf->setChecked(gSettings->isModuleEnabled(Settings::ModuleGaerverlauf));
     ui->cbModuleSchnellgaerprobe->setChecked(gSettings->isModuleEnabled(Settings::ModuleSchnellgaerprobe));
@@ -217,4 +221,29 @@ void DlgEinstellungen::on_cbModuleWasseraufbereitung_clicked(bool checked)
 void DlgEinstellungen::on_cbModulePreiskalkulation_clicked(bool checked)
 {
     gSettings->enableModule(Settings::ModulePreiskalkulation, checked);
+}
+
+void DlgEinstellungen::on_cbGraphicBackend_currentTextChanged(const QString &backend)
+{
+    gSettings->setValueInGroup("Graphic", "backend", backend);
+}
+
+void DlgEinstellungen::on_cbGraphicApi_currentTextChanged(const QString &api)
+{
+    QSGRendererInterface::GraphicsApi value = QSGRendererInterface::Unknown;
+    if (api == "Software")
+        value = QSGRendererInterface::Software;
+    else if (api == "OpenVG")
+        value = QSGRendererInterface::OpenVG;
+    else if (api == "OpenGL")
+        value = QSGRendererInterface::OpenGL;
+    else if (api == "Direct3D11")
+        value = QSGRendererInterface::Direct3D11;
+    else if (api == "Direct3D12")
+        value = QSGRendererInterface::Direct3D12;
+    else if (api == "Vulkan")
+        value = QSGRendererInterface::Vulkan;
+    else if (api == "Metal")
+        value = QSGRendererInterface::Metal;
+    gSettings->setValueInGroup("Graphic", "api", value);
 }

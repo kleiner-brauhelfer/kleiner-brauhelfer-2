@@ -48,6 +48,8 @@ public:
     Settings(const QString& dir, QObject *parent = nullptr);
     virtual ~Settings();
 
+    void init();
+
     void setValueInGroup(QAnyStringView group, QAnyStringView key, const QVariant &value);
     QVariant valueInGroup(QAnyStringView group, QAnyStringView key, const QVariant &defaultValue = QVariant());
 

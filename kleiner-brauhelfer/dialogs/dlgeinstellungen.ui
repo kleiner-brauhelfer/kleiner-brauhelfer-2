@@ -658,6 +658,124 @@ Die graphische Auswertung lässt gute Rückschlüsse über die Gärbedingungen z
         </widget>
        </item>
        <item>
+        <widget class="QGroupBox" name="gbAdvanced">
+         <property name="title">
+          <string>Erweiterte Einstellungen</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="1" column="1">
+           <widget class="QComboBox" name="cbGraphicApi">
+            <item>
+             <property name="text">
+              <string notr="true"/>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">Software</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">OpenVG</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">OpenGL</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">Direct3D11</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">Direct3D12</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">Vulkan</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">Metal</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Grafik Backend</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Grafik API</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="cbGraphicBackend">
+            <item>
+             <property name="text">
+              <string/>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">rhi</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">software</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string notr="true">openvg</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QLabel" name="label_26">
+            <property name="text">
+             <string>Neustart erforderlich</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="label_27">
+            <property name="text">
+             <string>Neustart erforderlich</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Orientation::Vertical</enum>

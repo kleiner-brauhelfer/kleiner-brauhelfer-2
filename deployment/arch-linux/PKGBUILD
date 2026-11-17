@@ -2,7 +2,7 @@
 # Contributor: jkoch < 	johannes [aTTTT] ortsraum {d00t} de>
 # Contributor: Daniel Dietrich <shaddow2k@@gmail..com>
 pkgname=kleiner-brauhelfer
-pkgver=2.5.0
+pkgver=2.6.5
 pkgrel=1
 pkgdesc="A Qt-based tool for hobby brewer to calculate and manage the beer brewing process."
 arch=("i686" "x86_64")

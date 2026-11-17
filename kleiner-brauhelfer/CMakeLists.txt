@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.16)
 
-# Define project organization, name, version and build type of the kleiner-brauhelfer-core library
+# Define project organization, name, version and build type of the kleiner-brauhelfer-2 application
 set(ORGANIZATION kleiner-brauhelfer)
 set(TARGET kleiner-brauhelfer-2)
-set(VERSION 2.9.2)
+set(VERSION 2.6.5)
 set(BUILD_TYPE STATIC)
 
 # Set name, version and language of the project

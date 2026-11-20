@@ -30,13 +30,75 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(QT_ANDROID_BUILD_ALL_ABIS TRUE)
 
 # Source files
-file(GLOB SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+set(SOURCES
+    biercalc.cpp
+    brauhelfer.cpp
+    database.cpp
+    database_update.cpp
+    importexport.cpp
+    modelanhang.cpp
+    modelausruestung.cpp
+    modelbewertungen.cpp
+    modeletiketten.cpp
+    modelgeraete.cpp
+    modelhauptgaerverlauf.cpp
+    modelhefe.cpp
+    modelhefegaben.cpp
+    modelhopfen.cpp
+    modelhopfengaben.cpp
+    modelkategorien.cpp
+    modelmaischplan.cpp
+    modelmalz.cpp
+    modelmalzschuettung.cpp
+    modelnachgaerverlauf.cpp
+    modelschnellgaerverlauf.cpp
+    modelsud.cpp
+    modeltags.cpp
+    modelwasser.cpp
+    modelwasseraufbereitung.cpp
+    modelweiterezutaten.cpp
+    modelweiterezutatengaben.cpp
+    proxymodel.cpp
+    proxymodelrohstoff.cpp
+    proxymodelsud.cpp
+    sqltablemodel.cpp
+    sudobject.cpp
 )
 
 # Header files
-file(GLOB HEADERS
-    ${CMAKE_CURRENT_SOURCE_DIR}/*.h
+set(HEADERS
+    importexport.h
+    kleiner-brauhelfer-core_global.h
+    biercalc.h
+    brauhelfer.h
+    database.h
+    modelanhang.h
+    modelausruestung.h
+    modelbewertungen.h
+    modeletiketten.h
+    modelgeraete.h
+    modelhauptgaerverlauf.h
+    modelhefe.h
+    modelhefegaben.h
+    modelhopfen.h
+    modelhopfengaben.h
+    modelkategorien.h
+    modelmaischplan.h
+    modelmalz.h
+    modelmalzschuettung.h
+    modelnachgaerverlauf.h
+    modelschnellgaerverlauf.h
+    modelsud.h
+    modeltags.h
+    modelwasser.h
+    modelwasseraufbereitung.h
+    modelweiterezutaten.h
+    modelweiterezutatengaben.h
+    proxymodel.h
+    proxymodelrohstoff.h
+    proxymodelsud.h
+    sqltablemodel.h
+    sudobject.h
 )
 
 # Add the library to the build system
@@ -52,6 +114,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 # Set the definitions
 target_compile_definitions(${PROJECT_NAME} PRIVATE
+    QT_DEPRECATED_WARNINGS
     ORGANIZATION="${ORGANIZATION}"
     TARGET="${TARGET}"
     VER_MAJ=${PROJECT_VERSION_MAJOR}

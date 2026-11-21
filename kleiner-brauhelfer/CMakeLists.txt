@@ -24,7 +24,7 @@ find_package(Qt6 REQUIRED COMPONENTS
 )
 
 # Setup project-wide defaults to a standard arrangement
-qt_standard_project_setup(REQUIRES 6.5)
+qt_standard_project_setup(REQUIRES 6.10)
 
 # Globally disable static linkage for Qt6
 set(Qt6_STATIC OFF CACHE BOOL "" FORCE)

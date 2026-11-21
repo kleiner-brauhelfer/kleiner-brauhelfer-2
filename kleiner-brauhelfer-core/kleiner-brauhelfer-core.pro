@@ -1,3 +1,5 @@
+!versionAtLeast(QT_VERSION, 6.10.0):error("Use at least Qt 6.10.0")
+
 QT += core sql xml
 QT -= gui
 

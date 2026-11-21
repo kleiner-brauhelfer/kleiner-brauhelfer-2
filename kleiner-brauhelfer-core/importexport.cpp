@@ -31,7 +31,7 @@ static double toDouble(QJsonValueRef value, double notFoundValue = 0.0)
     case QJsonValue::String:
         s = value.toString();
         if (s.startsWith(QStringLiteral("\"")))
-            s.truncate(1);
+            s.remove(0, 1);
         if (s.endsWith(QStringLiteral("\"")))
             s.chop(1);
         return s.toDouble();
@@ -421,9 +421,9 @@ int ImportExport::importMaischeMalzundMehr(Brauhelfer *bh, const QByteArray &con
                 bh->modelMaischplan()->append(values);
 
             }
-            for (QJsonArray::const_iterator it = array.constBegin()+1; it != array.constEnd(); ++it)
+            for (int i = 1; i < array.size(); ++i)
             {
-                obj = it->toObject();
+                obj = array.at(i).toObject();
                 values.clear();
                 values[ModelMaischplan::ColSudID] = sudId;
                 values[ModelMaischplan::ColName] = removeHtmlEntities(obj[QStringLiteral("Form")].toString());
@@ -726,7 +726,7 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
         bh->modelMaischplan()->appendDirect(values);
         for (QDomNode n = nMashSteps.firstChildElement(QStringLiteral("MASH_STEP")); !n.isNull(); n = n.nextSiblingElement(QStringLiteral("MASH_STEP")))
         {
-            QString typ = n.firstChildElement(QStringLiteral("TYP")).text().toLower();
+            QString typ = n.firstChildElement(QStringLiteral("TYPE")).text().toLower();
             values.clear();
             values[ModelMaischplan::ColSudID] = sudId;
             values[ModelMaischplan::ColName] = n.firstChildElement(QStringLiteral("NAME")).text();
@@ -739,7 +739,8 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
             else if (typ == QStringLiteral("infusion"))
             {
                 values[ModelMaischplan::ColTyp] = static_cast<int>(Brauhelfer::RastTyp::Zubruehen);
-                values[ModelMaischplan::ColAnteilWasser] = 100 * n.firstChildElement(QStringLiteral("INFUSE_AMOUNT")).text().toDouble() / V_tot;
+                if (V_tot > 0.0)
+                    values[ModelMaischplan::ColAnteilWasser] = 100 * n.firstChildElement(QStringLiteral("INFUSE_AMOUNT")).text().toDouble() / V_tot;
             }
             else if (typ == QStringLiteral("decoction"))
             {
@@ -817,7 +818,7 @@ int ImportExport::importBeerXml(Brauhelfer* bh, const QByteArray &content)
                 values.clear();
                 values[ModelHopfengaben::ColSudID] = sudId;
                 values[ModelHopfengaben::ColName] = n.firstChildElement(QStringLiteral("NAME")).text();
-                values[ModelHopfengaben::Colerg_Menge] = n.firstChildElement(QStringLiteral("AMOUNT")).text().toDouble();
+                values[ModelHopfengaben::Colerg_Menge] = n.firstChildElement(QStringLiteral("AMOUNT")).text().toDouble() * 1000;
                 values[ModelHopfengaben::ColZeit]  = n.firstChildElement(QStringLiteral("TIME")).text().toDouble();
                 values[ModelHopfengaben::ColAlpha] = n.firstChildElement(QStringLiteral("ALPHA")).text().toDouble();
                 values[ModelHopfengaben::ColPellets] = n.firstChildElement(QStringLiteral("FORM")).text() == QStringLiteral("Pellet");
@@ -1457,7 +1458,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
     Rezept.appendChild(element);
 
     element = doc.createElement(QStringLiteral("NAME"));
-    text = doc.createTextNode(bh->modelSud()->data(sudRow, ModelSud::ColSudname).toString().toHtmlEscaped());
+    text = doc.createTextNode(bh->modelSud()->data(sudRow, ModelSud::ColSudname).toString());
     element.appendChild(text);
     Rezept.appendChild(element);
 
@@ -1488,6 +1489,21 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
 
     element = doc.createElement(QStringLiteral("EFFICIENCY"));
     text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, ModelSud::ColSudhausausbeute).toDouble(), 'f', 1));
+    element.appendChild(text);
+    Rezept.appendChild(element);
+
+    element = doc.createElement(QStringLiteral("OG"));
+    text = doc.createTextNode(QString::number(BierCalc::platoToDichte(bh->modelSud()->data(sudRow, ModelSud::ColSW).toDouble()), 'f', 4));
+    element.appendChild(text);
+    Rezept.appendChild(element);
+
+    element = doc.createElement(QStringLiteral("IBU"));
+    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, ModelSud::ColIBU).toDouble(), 'f', 1));
+    element.appendChild(text);
+    Rezept.appendChild(element);
+
+    element = doc.createElement(QStringLiteral("CARBONATION"));
+    text = doc.createTextNode(QString::number(bh->modelSud()->data(sudRow, ModelSud::ColCO2).toDouble(), 'f', 3));
     element.appendChild(text);
     Rezept.appendChild(element);
 
@@ -1540,7 +1556,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
     element.appendChild(text);
     style.appendChild(element);
 
-    val *= 0.8;
+    val = BierCalc::platoToDichte(bh->modelSud()->data(sudRow, ModelSud::ColSRESoll).toDouble());
     element = doc.createElement(QStringLiteral("FG_MIN"));
     text = doc.createTextNode(QString::number(val, 'f', 4));
     element.appendChild(text);
@@ -1600,7 +1616,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
         Anteil.appendChild(element);
 
         element = doc.createElement(QStringLiteral("NAME"));
-        text = doc.createTextNode(model.data(row, ModelHopfengaben::ColName).toString().toHtmlEscaped());
+        text = doc.createTextNode(model.data(row, ModelHopfengaben::ColName).toString());
         element.appendChild(text);
         Anteil.appendChild(element);
 
@@ -1670,7 +1686,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
             Anteil.appendChild(element);
 
             element = doc.createElement(QStringLiteral("NAME"));
-            text = doc.createTextNode(model.data(row, ModelWeitereZutatenGaben::ColName).toString().toHtmlEscaped());
+            text = doc.createTextNode(model.data(row, ModelWeitereZutatenGaben::ColName).toString());
             element.appendChild(text);
             Anteil.appendChild(element);
 
@@ -1689,7 +1705,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
             element.appendChild(text);
             Anteil.appendChild(element);
 
-            str = model.data(row, ModelWeitereZutatenGaben::ColBemerkung).toString().toHtmlEscaped();
+            str = model.data(row, ModelWeitereZutatenGaben::ColBemerkung).toString();
             if (!str.isEmpty())
             {
                element = doc.createElement(QStringLiteral("NOTES"));
@@ -1754,7 +1770,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
         Anteil.appendChild(element);
 
         element = doc.createElement(QStringLiteral("NAME"));
-        text = doc.createTextNode(model.data(row, ModelMalzschuettung::ColName).toString().toHtmlEscaped());
+        text = doc.createTextNode(model.data(row, ModelMalzschuettung::ColName).toString());
         element.appendChild(text);
         Anteil.appendChild(element);
 
@@ -1798,7 +1814,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
             Anteil.appendChild(element);
 
             element = doc.createElement(QStringLiteral("NAME"));
-            text = doc.createTextNode(model.data(row, ModelWeitereZutatenGaben::ColName).toString().toHtmlEscaped());
+            text = doc.createTextNode(model.data(row, ModelWeitereZutatenGaben::ColName).toString());
             element.appendChild(text);
             Anteil.appendChild(element);
 
@@ -1850,7 +1866,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
                 Anteil.appendChild(element);
             }
 
-            str = model.data(row, ModelWeitereZutatenGaben::ColBemerkung).toString().toHtmlEscaped();
+            str = model.data(row, ModelWeitereZutatenGaben::ColBemerkung).toString();
             if (!str.isEmpty())
             {
                 element = doc.createElement(QStringLiteral("NOTES"));
@@ -1877,7 +1893,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
         Anteil.appendChild(element);
 
         element = doc.createElement(QStringLiteral("NAME"));
-        text = doc.createTextNode(model.data(row, ModelHefegaben::ColName).toString().toHtmlEscaped());
+        text = doc.createTextNode(model.data(row, ModelHefegaben::ColName).toString());
         element.appendChild(text);
         Anteil.appendChild(element);
 
@@ -1933,7 +1949,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
             Anteil.appendChild(element);
 
             element = doc.createElement(QStringLiteral("NAME"));
-            text = doc.createTextNode(model.data(row, ModelWeitereZutatenGaben::ColName).toString().toHtmlEscaped());
+            text = doc.createTextNode(model.data(row, ModelWeitereZutatenGaben::ColName).toString());
             element.appendChild(text);
             Anteil.appendChild(element);
 
@@ -1996,7 +2012,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
             element.appendChild(text);
             Anteil.appendChild(element);
 
-            str = model.data(row, ModelWeitereZutatenGaben::ColBemerkung).toString().toHtmlEscaped();
+            str = model.data(row, ModelWeitereZutatenGaben::ColBemerkung).toString();
             if (!str.isEmpty())
             {
                 element = doc.createElement(QStringLiteral("NOTES"));
@@ -2019,7 +2035,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
     water.appendChild(element);
 
     element = doc.createElement(QStringLiteral("NAME"));
-    text = doc.createTextNode(bh->modelSud()->data(sudRow, ModelSud::ColWasserprofil).toString().toHtmlEscaped());
+    text = doc.createTextNode(bh->modelSud()->data(sudRow, ModelSud::ColWasserprofil).toString());
     element.appendChild(text);
     water.appendChild(element);
 
@@ -2093,7 +2109,7 @@ QByteArray ImportExport::exportBeerXml(Brauhelfer* bh, int sudRow, bool compact)
         Anteil.appendChild(element);
 
         element = doc.createElement(QStringLiteral("NAME"));
-        text = doc.createTextNode(model.data(row, ModelMaischplan::ColName).toString().toHtmlEscaped());
+        text = doc.createTextNode(model.data(row, ModelMaischplan::ColName).toString());
         element.appendChild(text);
         Anteil.appendChild(element);
 

@@ -24,7 +24,7 @@ QVariant ModelHopfengaben::dataExt(const QModelIndex &idx) const
         double alpha = data(idx.row(), ColAlpha).toDouble();
         double ausbeute = data(idx.row(), ColAusbeute).toDouble();
         double mengeSoll = bh->modelSud()->dataSud(data(idx.row(), ColSudID), ModelSud::ColMengeSollAnstellen).toDouble();
-        return menge * alpha * ausbeute / (10 * mengeSoll);
+        return mengeSoll != 0.0 ? menge * alpha * ausbeute / (10 * mengeSoll) : 0.0;
     }
     case ColAusbeute:
     {
@@ -36,7 +36,7 @@ QVariant ModelHopfengaben::dataExt(const QModelIndex &idx) const
         double sw_beginn = bh->modelSud()->data(rowSudId, ModelSud::ColSWSollKochbeginn).toDouble();
         double sw_ende = bh->modelSud()->data(rowSudId, ModelSud::ColSWSollKochende).toDouble();
         double sw;
-        if (t > 0)
+        if (t > 0 && kochzeit > 0)
             sw = (sw_ende - sw_beginn) / kochzeit * (kochzeit - t/2)  + sw_beginn;
         else
             sw = sw_ende;
@@ -97,7 +97,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                 double summe = 0.0;
                 for (int r = 0; r < rowCount(); ++r)
                 {
-                    if (data(r, ColSudID) == sudId)
+                    if (data(r, ColSudID) == sudId && !data(r, ColDeleted).toBool())
                     {
                         double alpha = index(r, ColAlpha).data().toDouble();
                         double ausbeute = index(r, ColAusbeute).data().toDouble();
@@ -105,10 +105,10 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                         summe += prozent * alpha * ausbeute;
                     }
                 }
-                double factor = ibuSoll * 10 * mengeSoll / summe;
+                double factor = summe != 0.0 ? ibuSoll * 10 * mengeSoll / summe : 0.0;
                 for (int r = 0; r < rowCount(); ++r)
                 {
-                    if (data(r, ColSudID) == sudId)
+                    if (data(r, ColSudID) == sudId && !data(r, ColDeleted).toBool())
                     {
                         double menge = factor * index(r, ColProzent).data().toDouble();
                         QSqlTableModel::setData(index(r, Colerg_Menge), menge);
@@ -154,12 +154,12 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                 double summe = 0.0;
                 for (int r = 0; r < rowCount(); ++r)
                 {
-                    if (index(r, ColSudID).data() == sudId)
+                    if (index(r, ColSudID).data() == sudId && !data(r, ColDeleted).toBool())
                     {
                         summe += index(r, Colerg_Menge).data().toDouble();
                     }
                 }
-                double p = value.toDouble() / summe * 100;
+                double p = summe != 0.0 ? value.toDouble() / summe * 100 : 0.0;
                 QSqlTableModel::setData(index(idx.row(), ColProzent), p);
                 break;
             }
@@ -169,7 +169,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                 double ibuSoll = bh->modelSud()->dataSud(sudId, ModelSud::ColIBU).toDouble();
                 double alpha = data(idx.row(), ColAlpha).toDouble();
                 double ausbeute = data(idx.row(), ColAusbeute).toDouble();
-                double p = (10 * alpha * ausbeute * value.toDouble()) / (ibuSoll * mengeSoll);
+                double p = (ibuSoll != 0.0 && mengeSoll != 0.0) ? (10 * alpha * ausbeute * value.toDouble()) / (ibuSoll * mengeSoll) : 0.0;
                 QSqlTableModel::setData(index(idx.row(), ColProzent), p);
                 break;
             }

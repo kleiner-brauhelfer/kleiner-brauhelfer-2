@@ -86,36 +86,14 @@ int ModelNachgaerverlauf::getLastRow(const QVariant &sudId) const
 
 QDateTime ModelNachgaerverlauf::getLastDateTime(const QVariant &sudId) const
 {
-    QDateTime lastDt;
-    for (int r = 0; r < rowCount(); ++r)
-    {
-        if (data(r, ColSudID) == sudId)
-        {
-            QDateTime dt = data(r, ColZeitstempel).toDateTime();
-            if (!lastDt.isValid() || dt > lastDt)
-                lastDt = dt;
-        }
-    }
-    return lastDt;
+    const int row = getLastRow(sudId);
+    return row >= 0 ? data(row, ColZeitstempel).toDateTime() : QDateTime();
 }
 
 double ModelNachgaerverlauf::getLastCO2(const QVariant &sudId) const
 {
-    double co2 = 0.0;
-    QDateTime lastDt;
-    for (int r = 0; r < rowCount(); ++r)
-    {
-        if (data(r, ColSudID) == sudId)
-        {
-            QDateTime dt = data(r, ColZeitstempel).toDateTime();
-            if (!lastDt.isValid() || dt > lastDt)
-            {
-                lastDt = dt;
-                co2 = data(r, ColCO2).toDouble();
-            }
-        }
-    }
-    return co2;
+    const int row = getLastRow(sudId);
+    return row >= 0 ? data(row, ColCO2).toDouble() : 0.0;
 }
 
 void ModelNachgaerverlauf::defaultValues(QMap<int, QVariant> &values) const

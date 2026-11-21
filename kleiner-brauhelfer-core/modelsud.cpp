@@ -1105,6 +1105,7 @@ bool ModelSud::removeRows(int row, int count, const QModelIndex &parent)
         removeRowsFrom(bh->modelAnhang(), ModelAnhang::ColSudID, sudIds);
         removeRowsFrom(bh->modelEtiketten(), ModelEtiketten::ColSudID, sudIds);
         removeRowsFrom(bh->modelTags(), ModelTags::ColSudID, sudIds);
+        removeRowsFrom(bh->modelWasseraufbereitung(), ModelWasseraufbereitung::ColSudID, sudIds);
         return true;
     }
     return false;

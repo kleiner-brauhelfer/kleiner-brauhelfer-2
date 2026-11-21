@@ -247,7 +247,8 @@ bool Database::save()
     QSqlDatabase db = QSqlDatabase::database(QStringLiteral("kbh"), false);
     if (!db.transaction())
     {
-        qCritical(Brauhelfer::loggingCategory) << "Failed to create a database transaction";
+        mLastError = db.lastError();
+        qCritical(Brauhelfer::loggingCategory) << "Failed to create a database transaction:" << mLastError.text();
         return false;
     }
 
@@ -256,8 +257,9 @@ bool Database::save()
         if (!model->submitAll())
         {
             mLastError = model->lastError();
-            db.rollback();
             qCritical(Brauhelfer::loggingCategory) << "Failed to submit to database (" << model->tableName() << "):" << mLastError.text();
+            if (!db.rollback())
+                qCritical(Brauhelfer::loggingCategory) << "Failed to roll back database:" << db.lastError().text();
             return false;
         }
     }
@@ -266,7 +268,8 @@ bool Database::save()
     {
         mLastError = db.lastError();
         qCritical(Brauhelfer::loggingCategory) << "Failed to commit to database:" << mLastError.text();
-        db.rollback();
+        if (!db.rollback())
+            qCritical(Brauhelfer::loggingCategory) << "Failed to roll back database:" << db.lastError().text();
         return false;
     }
 

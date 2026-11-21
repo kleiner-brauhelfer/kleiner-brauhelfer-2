@@ -18,7 +18,7 @@ void ProxyModel::setSourceModel(QAbstractItemModel *model)
         disconnect(prevModel, &QAbstractItemModel::modelReset, this, &ProxyModel::invalidate);
         if(SqlTableModel* m = qobject_cast<SqlTableModel*>(prevModel))
             disconnect(m, &SqlTableModel::modified, this, &ProxyModel::modified);
-        else if(ProxyModel* m = qobject_cast<ProxyModel*>(model))
+        else if(ProxyModel* m = qobject_cast<ProxyModel*>(prevModel))
             disconnect(m, &ProxyModel::modified, this, &ProxyModel::modified);
     }
 

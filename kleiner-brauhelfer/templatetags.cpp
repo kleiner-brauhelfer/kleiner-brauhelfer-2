@@ -39,6 +39,13 @@ QString textToHtml(QString text)
         return "<div style=\"white-space: pre-wrap;\">" + text + "</div>";
 }
 
+static QString getStringListValue(const QStringList &list, int index)
+{
+    if (index >= 0 && index < list.count())
+        return list[index];
+    return QString();
+}
+
 void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
 {
     QVariantList liste;
@@ -294,7 +301,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
             {
                 QVariantMap map;
                 map[QStringLiteral("Name")] = model->data(row, ModelWasseraufbereitung::ColName);
-                map[QStringLiteral("Einheit")] = MainWindow::Einheiten[model->data(row, ModelWasseraufbereitung::ColEinheit).toInt()];
+                map[QStringLiteral("Einheit")] = getStringListValue(MainWindow::Einheiten, model->data(row, ModelWasseraufbereitung::ColEinheit).toInt());
                 double m = model->data(row, ModelWasseraufbereitung::ColMenge).toDouble();
                 map[QStringLiteral("MengeHauptguss")] = locale.toString(m * f1, 'f', 2);
                 map[QStringLiteral("MengeNachguss")] = locale.toString(m * f2, 'f', 2);
@@ -416,7 +423,7 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
             int dauer;
             map.insert(QStringLiteral("Name"), model->data(row, ModelWeitereZutatenGaben::ColName));
             Brauhelfer::Einheit einheit = static_cast<Brauhelfer::Einheit>(model->data(row, ModelWeitereZutatenGaben::ColEinheit).toInt());
-            map.insert(QStringLiteral("Einheit"), MainWindow::Einheiten[static_cast<int>(einheit)]);
+            map.insert(QStringLiteral("Einheit"), getStringListValue(MainWindow::Einheiten, static_cast<int>(einheit)));
             switch (einheit)
             {
             case Brauhelfer::Einheit::Kg:
@@ -502,11 +509,11 @@ void TemplateTags::erstelleTagListe(QVariantMap &ctx, int sudRow)
             if (typ == Brauhelfer::ZusatzTyp::Hopfen)
             {
                 int idx = bh->modelHopfen()->getValueFromSameRow(ModelHopfen::ColName, map[QStringLiteral("Name")], ModelHopfen::ColTyp).toInt();
-                map.insert(QStringLiteral("Typ"), MainWindow::HopfenTypname[idx]);
+                map.insert(QStringLiteral("Typ"), getStringListValue(MainWindow::HopfenTypname, idx));
             }
             else
             {
-                map.insert(QStringLiteral("Typ"), MainWindow::ZusatzTypname[static_cast<int>(typ)]);
+                map.insert(QStringLiteral("Typ"), getStringListValue(MainWindow::ZusatzTypname, static_cast<int>(typ)));
                 listeZusatzAlle << map;
             }
             if (listePtr)

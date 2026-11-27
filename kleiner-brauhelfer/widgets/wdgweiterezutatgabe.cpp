@@ -124,7 +124,8 @@ void WdgWeitereZutatGabe::updateValues()
     }
     if (!ui->tbMengeTotal->hasFocus())
     {
-        QString str = MainWindow::Einheiten[static_cast<int>(einheit)];
+        int idx = static_cast<int>(einheit);
+        QString str = (idx >= 0 && idx < MainWindow::Einheiten.count()) ? MainWindow::Einheiten[idx] : "";
         ui->lblEinheit->setText(str);
         ui->lblVorhandenEinheit->setText(str);
         int colMengeTotal = ui->cbAnstellmenge->isChecked() ? ModelWeitereZutatenGaben::Colerg_MengeIst : ModelWeitereZutatenGaben::Colerg_Menge;
@@ -167,6 +168,13 @@ void WdgWeitereZutatGabe::updateValues()
             break;
         case Brauhelfer::Einheit::ml:
             ui->lblEinheitProLiter->setText(QStringLiteral("mL/L"));
+            ui->tbMenge->setDecimals(2);
+            ui->tbMengeTotal->setDecimals(2);
+            ui->tbVorhanden->setDecimals(2);
+            ui->tbMengeTotal->setValue(data(colMengeTotal).toDouble());
+            break;
+        default:
+            ui->lblEinheitProLiter->setText(QStringLiteral(""));
             ui->tbMenge->setDecimals(2);
             ui->tbMengeTotal->setDecimals(2);
             ui->tbVorhanden->setDecimals(2);

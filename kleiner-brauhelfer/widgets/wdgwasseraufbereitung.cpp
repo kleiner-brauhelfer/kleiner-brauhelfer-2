@@ -72,7 +72,8 @@ void WdgWasseraufbereitung::updateValues()
         ui->tbRestalkalitaet->setMinimum(-99);
         ui->tbRestalkalitaet->setMaximum(0);
     }
-    QString einheit = MainWindow::Einheiten[data(ModelWasseraufbereitung::ColEinheit).toInt()];
+    int idx = data(ModelWasseraufbereitung::ColEinheit).toInt();
+    QString einheit = (idx >= 0 && idx < MainWindow::Einheiten.count()) ? MainWindow::Einheiten[idx] : "";
     ui->lblEinheit->setText(einheit + "/l");
     ui->lblEinheitGesamt->setText(einheit);
     ui->lblEinheitHg->setText(einheit);

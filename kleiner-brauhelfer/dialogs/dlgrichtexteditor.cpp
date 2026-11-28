@@ -90,7 +90,7 @@ void DlgRichTextEditor::setHtml(const QString& html)
 QString DlgRichTextEditor::toHtml() const
 {
     if (ui->tbRichText->toPlainText().isEmpty())
-        return QStringLiteral("");
+        return QString();
     return extractBody(ui->tbRichText->toHtml());
 }
 
@@ -350,6 +350,7 @@ void DlgRichTextEditor::on_btnRight_clicked(bool checked)
 
 void DlgRichTextEditor::on_btnLink_clicked(bool checked)
 {
+    Q_UNUSED(checked)
     QTextCursor cursor = ui->tbRichText->textCursor();
     bool isAnchor = cursor.charFormat().isAnchor();
     bool ok = false;

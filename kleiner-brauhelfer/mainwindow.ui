@@ -11,7 +11,7 @@
    </rect>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_main">
     <property name="leftMargin">
      <number>12</number>
     </property>
@@ -208,7 +208,7 @@
     <number>4</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetSudStatusContents">
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout_sudstatus">
      <property name="topMargin">
       <number>0</number>
      </property>
@@ -241,7 +241,7 @@
     <number>8</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetHelpContents">
-    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <layout class="QVBoxLayout" name="verticalLayout_help">
      <property name="topMargin">
       <number>0</number>
      </property>

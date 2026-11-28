@@ -23,7 +23,7 @@ QVariant ModelNachgaerverlauf::dataExt(const QModelIndex &idx) const
         QVariant sudId = data(idx.row(), ColSudID);
         for (int r = 0; r < rowCount(); ++r)
         {
-            if (data(r, ColDeleted).toBool())
+            if (isRowDeleted(r))
                 continue;
             if (data(r, ColSudID) == sudId)
             {
@@ -71,7 +71,7 @@ int ModelNachgaerverlauf::getLastRow(const QVariant &sudId) const
     QDateTime lastDt;
     for (int r = 0; r < rowCount(); ++r)
     {
-        if (data(r, ColSudID).toInt() == sudId && !data(r, fieldIndex(QStringLiteral("deleted"))).toBool())
+        if (data(r, ColSudID).toInt() == sudId && !isRowDeleted(r))
         {
             QDateTime dt = data(r, ColZeitstempel).toDateTime();
             if (!lastDt.isValid() || dt > lastDt)

@@ -131,8 +131,6 @@ int ModelMalzschuettung::import(int row)
 
 void ModelMalzschuettung::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains(ColName))
-        values.insert(ColName, bh->modelMalz()->data(0, ModelMalz::ColName));
     if (!values.contains(ColProzent))
         values.insert(ColProzent, 0.0);
 }

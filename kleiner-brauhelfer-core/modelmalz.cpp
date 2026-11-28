@@ -127,6 +127,8 @@ void ModelMalz::onSudDataChanged(const QModelIndex &topLeft, const QModelIndex &
     Q_UNUSED(roles)
     if (ModelSud::ColStatus >= topLeft.column() && ModelSud::ColStatus <= bottomRight.column())
         resetInGebrauch();
+    else if (ModelSud::ColDeleted >= topLeft.column() && ModelSud::ColDeleted <= bottomRight.column())
+        resetInGebrauch();
 }
 
 void ModelMalz::onMalzschuettungDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
@@ -134,7 +136,9 @@ void ModelMalz::onMalzschuettungDataChanged(const QModelIndex &topLeft, const QM
     Q_UNUSED(roles)
     if (ModelMalzschuettung::ColSudID >= topLeft.column() && ModelMalzschuettung::ColSudID <= bottomRight.column())
         resetInGebrauch();
-    if (ModelMalzschuettung::ColName >= topLeft.column() && ModelMalzschuettung::ColName <= bottomRight.column())
+    else if (ModelMalzschuettung::ColName >= topLeft.column() && ModelMalzschuettung::ColName <= bottomRight.column())
+        resetInGebrauch();
+    else if (ModelMalzschuettung::ColDeleted >= topLeft.column() && ModelMalzschuettung::ColDeleted <= bottomRight.column())
         resetInGebrauch();
 }
 

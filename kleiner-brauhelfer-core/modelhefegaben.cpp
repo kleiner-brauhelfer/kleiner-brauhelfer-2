@@ -115,8 +115,6 @@ void ModelHefegaben::defaultValues(QMap<int, QVariant> &values) const
             }
         }
     }
-    if (!values.contains(ColName))
-        values.insert(ColName, bh->modelHefe()->data(0, ModelHefe::ColName));
     if (!values.contains(ColMenge))
         values.insert(ColMenge, 1);
     if (!values.contains(ColZugegeben))

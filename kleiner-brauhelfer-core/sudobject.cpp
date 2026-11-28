@@ -136,7 +136,7 @@ bool SudObject::isLoaded() const
 
 void SudObject::onSudLayoutChanged()
 {
-    if (getValue(ModelSud::ColDeleted).toBool())
+    if (mBh->modelSud()->isRowDeleted(mRowSud))
     {
         unload();
     }

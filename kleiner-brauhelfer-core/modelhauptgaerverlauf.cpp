@@ -25,7 +25,7 @@ QVariant ModelHauptgaerverlauf::dataExt(const QModelIndex &idx) const
         QVariant sudId = data(idx.row(), ColSudID);
         for (int r = 0; r < rowCount(); ++r)
         {
-            if (data(r, ColDeleted).toBool())
+            if (isRowDeleted(r))
                 continue;
             if (data(r, ColSudID) == sudId)
             {
@@ -105,7 +105,7 @@ int ModelHauptgaerverlauf::getLastRow(const QVariant &sudId) const
     QDateTime lastDt;
     for (int r = 0; r < rowCount(); ++r)
     {
-        if (data(r, ColSudID) == sudId && !data(r, fieldIndex(QStringLiteral("deleted"))).toBool())
+        if (data(r, ColSudID) == sudId && !isRowDeleted(r))
         {
             QDateTime dt = data(r, ColZeitstempel).toDateTime();
             if (!lastDt.isValid() || dt > lastDt)
@@ -123,7 +123,7 @@ double ModelHauptgaerverlauf::getHighestTemp(const QVariant &sudId) const
     double tempMax = 0;
     for (int r = 0; r < rowCount(); ++r)
     {
-        if (data(r, ColSudID) == sudId && !data(r, fieldIndex(QStringLiteral("deleted"))).toBool())
+        if (data(r, ColSudID) == sudId && !isRowDeleted(r))
         {
             double temp = data(r, ColTemp).toDouble();
             if (temp > tempMax)

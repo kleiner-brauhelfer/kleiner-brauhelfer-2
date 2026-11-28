@@ -13,7 +13,7 @@ int ModelEtiketten::getLastRow(const QVariant& pfad, int excludeRow) const
     {
         if (row == excludeRow)
             continue;
-        if (data(row, ColPfad) == pfad && !data(row, fieldIndex(QStringLiteral("deleted"))).toBool())
+        if (data(row, ColPfad) == pfad && !isRowDeleted(row))
             return row;
     }
     return -1;

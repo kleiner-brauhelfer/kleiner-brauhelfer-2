@@ -167,6 +167,8 @@ void ModelWeitereZutaten::onSudDataChanged(const QModelIndex &topLeft, const QMo
     Q_UNUSED(roles)
     if (ModelSud::ColStatus >= topLeft.column() && ModelSud::ColStatus <= bottomRight.column())
         resetInGebrauch();
+    else if (ModelSud::ColDeleted >= topLeft.column() && ModelSud::ColDeleted <= bottomRight.column())
+        resetInGebrauch();
 }
 
 void ModelWeitereZutaten::onWeitereZutatenGabenDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
@@ -174,7 +176,9 @@ void ModelWeitereZutaten::onWeitereZutatenGabenDataChanged(const QModelIndex &to
     Q_UNUSED(roles)
     if (ModelWeitereZutatenGaben::ColSudID >= topLeft.column() && ModelWeitereZutatenGaben::ColSudID <= bottomRight.column())
         resetInGebrauch();
-    if (ModelWeitereZutatenGaben::ColName >= topLeft.column() && ModelWeitereZutatenGaben::ColName <= bottomRight.column())
+    else if (ModelWeitereZutatenGaben::ColName >= topLeft.column() && ModelWeitereZutatenGaben::ColName <= bottomRight.column())
+        resetInGebrauch();
+    else if (ModelWeitereZutatenGaben::ColDeleted >= topLeft.column() && ModelWeitereZutatenGaben::ColDeleted <= bottomRight.column())
         resetInGebrauch();
 }
 

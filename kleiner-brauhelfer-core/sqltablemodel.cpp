@@ -201,7 +201,7 @@ bool SqlTableModel::removeRows(int row, int count, const QModelIndex &parent)
     {
         for (int i = 0; i < count; ++i)
         {
-            QModelIndex idx = index(row + i, fieldIndex(QStringLiteral("deleted")));
+            QModelIndex idx = index(row + i, QSqlTableModel::columnCount());
             if (idx.isValid())
             {
                 emit dataChanged(idx, idx, QVector<int>());
@@ -365,13 +365,42 @@ void SqlTableModel::revertAll()
     emit modified();
 }
 
+bool SqlTableModel::isRowDeleted(int row) const
+{
+    if (row < 0 || row >= rowCount())
+        return false;
+    return data(row, QSqlTableModel::columnCount()).toBool();
+}
+
+QList<int> SqlTableModel::nonDeletedRows() const
+{
+    QList<int> rows;
+    for (int row = 0; row < rowCount(); ++row)
+    {
+        if (!isRowDeleted(row))
+            rows.append(row);
+    }
+    return rows;
+}
+
+QList<int> SqlTableModel::nonDeletedRowsWithValue(int col, const QVariant &value) const
+{
+    QList<int> rows;
+    for (int row = 0; row < rowCount(); ++row)
+    {
+        if (!isRowDeleted(row) && data(row, col) == value)
+            rows.append(row);
+    }
+    return rows;
+}
+
 int SqlTableModel::getRowWithValue(int col, const QVariant &value) const
 {
     if (col != -1)
     {
         for (int row = 0; row < rowCount(); ++row)
         {
-            if (data(row, col) == value && !data(row, fieldIndex(QStringLiteral("deleted"))).toBool())
+            if (data(row, col) == value && !isRowDeleted(row))
                 return row;
         }
     }
@@ -413,7 +442,7 @@ bool SqlTableModel::isUnique(const QModelIndex &index, const QVariant &value, bo
     {
         if (!ignoreIndexRow && row == index.row())
             continue;
-        if (data(row, fieldIndex(QStringLiteral("deleted"))).toBool())
+        if (isRowDeleted(row))
             continue;
         if (data(row, index.column()) == value)
             return false;

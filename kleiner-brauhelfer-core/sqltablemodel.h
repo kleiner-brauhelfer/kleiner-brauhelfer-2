@@ -178,6 +178,27 @@ public:
     Q_INVOKABLE void revertAll();
 
     /**
+     * @brief Checks whether a row is marked for deletion
+     * @param row Row number
+     * @return True if the row is marked for deletion; false for an invalid row
+     */
+    Q_INVOKABLE bool isRowDeleted(int row) const;
+
+    /**
+     * @brief Gets the row numbers of rows not marked for deletion
+     * @return Row numbers in model order
+     */
+    Q_INVOKABLE QList<int> nonDeletedRows() const;
+
+    /**
+     * @brief Gets the row numbers of rows not marked for deletion matching a given field name key
+     * @param col Column number to compare
+     * @param value Value of field name to match
+     * @return Row numbers in model order
+     */
+    Q_INVOKABLE QList<int> nonDeletedRowsWithValue(int col, const QVariant &value) const;
+
+    /**
      * @brief Gets the row number matching a given value
      * @param col Column number to compare
      * @param value Value of field name to match

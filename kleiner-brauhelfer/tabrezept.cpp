@@ -1104,8 +1104,8 @@ void TabRezept::on_btnZusazGabenUebernehmenMaischen_clicked()
         QMap<int, QVariant> overrideValues = {{ModelWeitereZutatenGaben::ColSudID, mSud->id()},
                                               {ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben)}};
         SqlTableModel* model = mSud->bh()->modelWeitereZutatenGaben();
-        int N = model->rowCount();
-        for (int r = 0; r < N; ++r)
+        const QList<int> rows = model->nonDeletedRows();
+        for (int r : rows)
         {
             if (model->data(r, ModelWeitereZutatenGaben::ColSudID) == sudId &&
                 model->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() == static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Maischen))
@@ -1278,8 +1278,8 @@ void TabRezept::on_btnZusazGabenUebernehmenKochen_clicked()
         QMap<int, QVariant> overrideValues = {{ModelWeitereZutatenGaben::ColSudID, mSud->id()},
                                               {ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben)}};
         SqlTableModel* model = mSud->bh()->modelWeitereZutatenGaben();
-        int N = model->rowCount();
-        for (int r = 0; r < N; ++r)
+        const QList<int> rows = model->nonDeletedRows();
+        for (int r : rows)
         {
             if (model->data(r, ModelWeitereZutatenGaben::ColSudID) == sudId &&
                 model->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() == static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Kochen))
@@ -1422,8 +1422,8 @@ void TabRezept::on_btnHopfenGabenUebernehmenGaerung_clicked()
         QMap<int, QVariant> overrideValues = {{ModelWeitereZutatenGaben::ColSudID, mSud->id()},
                                               {ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben)}};
         SqlTableModel* model = mSud->bh()->modelWeitereZutatenGaben();
-        int N = model->rowCount();
-        for (int r = 0; r < N; ++r)
+        const QList<int> rows = model->nonDeletedRows();
+        for (int r : rows)
         {
             if (model->data(r, ModelWeitereZutatenGaben::ColSudID) == sudId &&
                 model->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() == static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung) &&
@@ -1465,8 +1465,8 @@ void TabRezept::on_btnZusazGabenUebernehmenGaerung_clicked()
         QMap<int, QVariant> overrideValues = {{ModelWeitereZutatenGaben::ColSudID, mSud->id()},
                                               {ModelWeitereZutatenGaben::ColZugabestatus, static_cast<int>(Brauhelfer::ZusatzStatus::NichtZugegeben)}};
         SqlTableModel* model = mSud->bh()->modelWeitereZutatenGaben();
-        int N = model->rowCount();
-        for (int r = 0; r < N; ++r)
+        const QList<int> rows = model->nonDeletedRows();
+        for (int r : rows)
         {
             if (model->data(r, ModelWeitereZutatenGaben::ColSudID) == sudId &&
                 model->data(r, ModelWeitereZutatenGaben::ColZeitpunkt).toInt() == static_cast<int>(Brauhelfer::ZusatzZeitpunkt::Gaerung) &&

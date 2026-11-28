@@ -61,7 +61,7 @@ int ModelBewertungen::max(const QVariant &sudId)
     int max = -1;
     for (int r = 0; r < rowCount(); ++r)
     {
-        if (data(r, ColDeleted).toBool())
+        if (isRowDeleted(r))
             continue;
         if (data(r, ColSudID) == sudId)
         {
@@ -78,7 +78,7 @@ int ModelBewertungen::mean(const QVariant &sudId)
     int total = 0, n = 0;
     for (int r = 0; r < rowCount(); ++r)
     {
-        if (data(r, ColDeleted).toBool())
+        if (isRowDeleted(r))
             continue;
         if (data(r, ColSudID) == sudId)
         {

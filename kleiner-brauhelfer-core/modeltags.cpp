@@ -51,6 +51,8 @@ bool ModelTags::isUnique(const QModelIndex &index, const QVariant &value, const 
     {
         if (!ignoreIndexRow && row == index.row())
             continue;
+        if (isRowDeleted(row))
+            continue;
         if (data(row, ColSudID) != sudId)
             continue;
         if (data(row, index.column()) == value)

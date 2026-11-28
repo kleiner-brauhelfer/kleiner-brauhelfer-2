@@ -100,6 +100,8 @@ void ModelHefe::onSudDataChanged(const QModelIndex &topLeft, const QModelIndex &
     Q_UNUSED(roles)
     if (ModelSud::ColStatus >= topLeft.column() && ModelSud::ColStatus <= bottomRight.column())
         resetInGebrauch();
+    else if (ModelSud::ColDeleted >= topLeft.column() && ModelSud::ColDeleted <= bottomRight.column())
+        resetInGebrauch();
 }
 
 void ModelHefe::onHefegabenDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
@@ -107,7 +109,9 @@ void ModelHefe::onHefegabenDataChanged(const QModelIndex &topLeft, const QModelI
     Q_UNUSED(roles)
     if (ModelHefegaben::ColSudID >= topLeft.column() && ModelHefegaben::ColSudID <= bottomRight.column())
         resetInGebrauch();
-    if (ModelHefegaben::ColName >= topLeft.column() && ModelHefegaben::ColName <= bottomRight.column())
+    else if (ModelHefegaben::ColName >= topLeft.column() && ModelHefegaben::ColName <= bottomRight.column())
+        resetInGebrauch();
+    else if (ModelHefegaben::ColDeleted >= topLeft.column() && ModelHefegaben::ColDeleted <= bottomRight.column())
         resetInGebrauch();
 }
 

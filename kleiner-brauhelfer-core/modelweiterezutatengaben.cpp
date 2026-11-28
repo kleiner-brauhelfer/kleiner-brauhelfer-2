@@ -346,18 +346,16 @@ void ModelWeitereZutatenGaben::defaultValues(QMap<int, QVariant> &values) const
             }
         }
     }
-    if (values.contains(ColTyp))
+    if (!values.contains(ColName) && values.contains(ColTyp))
     {
         Brauhelfer::ZusatzTyp typ = static_cast<Brauhelfer::ZusatzTyp>(values.value(ColTyp).toInt());
         if (typ == Brauhelfer::ZusatzTyp::Hopfen)
         {
-            if (!values.contains(ColName))
-                values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColName));
+            values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColName));
         }
         else
         {
-            if (!values.contains(ColName))
-                values.insert(ColName, bh->modelWeitereZutaten()->data(0, ModelWeitereZutaten::ColName));
+            values.insert(ColName, bh->modelWeitereZutaten()->data(0, ModelWeitereZutaten::ColName));
         }
     }
     if (!values.contains(ColMenge))

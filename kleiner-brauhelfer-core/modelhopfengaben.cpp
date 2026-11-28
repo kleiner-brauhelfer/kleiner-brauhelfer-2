@@ -97,7 +97,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                 double summe = 0.0;
                 for (int r = 0; r < rowCount(); ++r)
                 {
-                    if (data(r, ColSudID) == sudId && !data(r, ColDeleted).toBool())
+                    if (data(r, ColSudID) == sudId && !isRowDeleted(r))
                     {
                         double alpha = index(r, ColAlpha).data().toDouble();
                         double ausbeute = index(r, ColAusbeute).data().toDouble();
@@ -108,7 +108,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                 double factor = summe != 0.0 ? ibuSoll * 10 * mengeSoll / summe : 0.0;
                 for (int r = 0; r < rowCount(); ++r)
                 {
-                    if (data(r, ColSudID) == sudId && !data(r, ColDeleted).toBool())
+                    if (data(r, ColSudID) == sudId && !isRowDeleted(r))
                     {
                         double menge = factor * index(r, ColProzent).data().toDouble();
                         QSqlTableModel::setData(index(r, Colerg_Menge), menge);
@@ -154,7 +154,7 @@ bool ModelHopfengaben::setDataExt(const QModelIndex &idx, const QVariant &value)
                 double summe = 0.0;
                 for (int r = 0; r < rowCount(); ++r)
                 {
-                    if (index(r, ColSudID).data() == sudId && !data(r, ColDeleted).toBool())
+                    if (index(r, ColSudID).data() == sudId && !isRowDeleted(r))
                     {
                         summe += index(r, Colerg_Menge).data().toDouble();
                     }
@@ -322,8 +322,6 @@ int ModelHopfengaben::import(int row)
 
 void ModelHopfengaben::defaultValues(QMap<int, QVariant> &values) const
 {
-    if (!values.contains(ColName))
-        values.insert(ColName, bh->modelHopfen()->data(0, ModelHopfen::ColName));
     if (!values.contains(ColProzent))
         values.insert(ColProzent, 0);
     if (!values.contains(ColZeit))

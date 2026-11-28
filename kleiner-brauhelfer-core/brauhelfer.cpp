@@ -333,20 +333,17 @@ int Brauhelfer::sudKopieren(int sudId, const QString& name, bool teilen)
 
 void Brauhelfer::sudKopierenModel(SqlTableModel* model, int colSudId, const QVariant &sudId, const QMap<int, QVariant> &overrideValues)
 {
-    int N = model->rowCount();
-    for (int r = 0; r < N; ++r)
+    const QList<int> rows = model->nonDeletedRowsWithValue(colSudId, sudId);
+    for (int r : rows)
     {
-        if (model->data(r, colSudId) == sudId)
+        QMap<int, QVariant> values = model->copyValues(r);
+        QMap<int, QVariant>::const_iterator it = overrideValues.constBegin();
+        while (it != overrideValues.constEnd())
         {
-            QMap<int, QVariant> values = model->copyValues(r);
-            QMap<int, QVariant>::const_iterator it = overrideValues.constBegin();
-            while (it != overrideValues.constEnd())
-            {
-                values.insert(it.key(), it.value());
-                ++it;
-            }
-            model->appendDirect(values);
+            values.insert(it.key(), it.value());
+            ++it;
         }
+        model->appendDirect(values);
     }
 }
 

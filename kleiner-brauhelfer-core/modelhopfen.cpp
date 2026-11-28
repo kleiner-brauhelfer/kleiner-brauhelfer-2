@@ -119,6 +119,8 @@ void ModelHopfen::onSudDataChanged(const QModelIndex &topLeft, const QModelIndex
     Q_UNUSED(roles)
     if (ModelSud::ColStatus >= topLeft.column() && ModelSud::ColStatus <= bottomRight.column())
         resetInGebrauch();
+    else if (ModelSud::ColDeleted >= topLeft.column() && ModelSud::ColDeleted <= bottomRight.column())
+        resetInGebrauch();
 }
 
 void ModelHopfen::onHopfengabenDataChanged(const QModelIndex &topLeft, const QModelIndex &bottomRight, const QList<int> &roles)
@@ -126,7 +128,9 @@ void ModelHopfen::onHopfengabenDataChanged(const QModelIndex &topLeft, const QMo
     Q_UNUSED(roles)
     if (ModelHopfengaben::ColSudID >= topLeft.column() && ModelHopfengaben::ColSudID <= bottomRight.column())
         resetInGebrauch();
-    if (ModelHopfengaben::ColName >= topLeft.column() && ModelHopfengaben::ColName <= bottomRight.column())
+    else if (ModelHopfengaben::ColName >= topLeft.column() && ModelHopfengaben::ColName <= bottomRight.column())
+        resetInGebrauch();
+    else if (ModelHopfengaben::ColDeleted >= topLeft.column() && ModelHopfengaben::ColDeleted <= bottomRight.column())
         resetInGebrauch();
 }
 

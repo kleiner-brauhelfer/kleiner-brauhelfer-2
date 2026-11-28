@@ -14,16 +14,16 @@ public:
 
     enum Column
     {
-        ColID,
-        ColSudID,
-        ColName,
-        ColMenge,
-        ColZugegeben,
-        ColZugabeNach,
-        // virtual
-        ColDeleted,
-        ColZugabeDatum,
-        ColAbfuellbereit,
+        ColID,            // INTEGER  | ID
+        ColSudID,         // INTEGER  | Sud ID, Referenz auf ID in ModelSud
+        ColName,          // TEXT     | Hefename
+        ColMenge,         // INTEGER  | Menge [Einheit]
+        ColZugegeben,     // BOOLEAN  | Zugegeben
+        ColZugabeNach,    // INTEGER  | Zugabe nach [Tagen seit Braudatum]
+        // virtual columns
+        ColDeleted,       // BOOLEAN  | Virtuelles Löschmerkmal
+        ColZugabeDatum,   // DATETIME | Zugabedatum, Braudatum + ZugabeNach
+        ColAbfuellbereit, // BOOLEAN  | Bereit zum Abfuellen, sobald die Hefe zugegeben wurde
         // number of columns
         NumCols
     };

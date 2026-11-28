@@ -14,11 +14,11 @@ public:
 
     enum Column
     {
-        ColID,
-        ColBezeichnung,
-        ColAusruestungAnlagenID,
-        // virtual
-        ColDeleted,
+        ColID,                   // INTEGER  | ID
+        ColBezeichnung,          // TEXT     | Name des Geraets
+        ColAusruestungAnlagenID, // NUMERIC  | Ausruestung ID, Referenz auf ID in ModelAusruestung (TODO: INTEGER)
+        // virtual columns
+        ColDeleted,              // BOOLEAN  | marked for deletion
         // number of columns
         NumCols
     };

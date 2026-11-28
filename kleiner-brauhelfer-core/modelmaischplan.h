@@ -14,28 +14,28 @@ public:
 
     enum Column
     {
-        ColID,
-        ColSudID,
-        ColTyp,
-        ColName,
-        ColTempWasser,
-        ColAnteilWasser,
-        ColTempMalz,
-        ColAnteilMalz,
-        ColTempRast,
-        ColDauerRast,
-        ColAnteilMaische,
-        ColTempExtra1,
-        ColDauerExtra1,
-        ColTempExtra2,
-        ColDauerExtra2,
-        // virtual
-        ColDeleted,
-        ColMengeWasser,
-        ColTotalMengeWasser,
-        ColMengeMalz,
-        ColTotalMengeMalz,
-        ColMengeMaische,
+        ColID,               // INTEGER  | ID
+        ColSudID,            // INTEGER  | Sud ID, Referenz auf ID in ModelSud
+        ColTyp,              // ENUM     | Typ des Maischschritts [Brauhelfer::RastTyp]
+        ColName,             // TEXT     | Name
+        ColTempWasser,       // REAL     | Temperatur Wasser [°C]
+        ColAnteilWasser,     // REAL     | Anteil Wasser [%]
+        ColTempMalz,         // REAL     | Temperatur Malz [°C]
+        ColAnteilMalz,       // REAL     | Anteil Malz [%]
+        ColTempRast,         // REAL     | Temperatur Rast [°C]
+        ColDauerRast,        // INTEGER  | Dauer Rast [min]
+        ColAnteilMaische,    // REAL     | Anteil Maische [%]
+        ColTempExtra1,       // REAL     | Temperatur der Dekoktions- oder Extramischung 1 [°C]
+        ColDauerExtra1,      // INTEGER  | Dauer der Dekoktions- oder Extramischung 1 [min]
+        ColTempExtra2,       // REAL     | Temperatur der Dekoktions- oder Extramischung 2 [°C]
+        ColDauerExtra2,      // INTEGER  | Dauer der Dekoktions- oder Extramischung 2 [min]
+        // virtual columns
+        ColDeleted,          // BOOLEAN  | marked for deletion
+        ColMengeWasser,      // REAL     | Wassermenge dieses Schritts aus Anteil der Hauptgussmenge [Liter]
+        ColTotalMengeWasser, // REAL     | Kumulierte Wassermenge bis zu diesem Schritt [Liter]
+        ColMengeMalz,        // REAL     | Malzmenge dieses Schritts aus Anteil und Gesamtmalzmenge [kg]
+        ColTotalMengeMalz,   // REAL     | Kumulierte Malzmenge bis zu diesem Schritt [kg]
+        ColMengeMaische,     // REAL     | Maischeanteil an kumulierter Wassermenge und Malzverdraengung [Liter]
         // number of columns
         NumCols
     };

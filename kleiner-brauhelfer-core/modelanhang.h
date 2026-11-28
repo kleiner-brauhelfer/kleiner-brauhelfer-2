@@ -14,11 +14,11 @@ public:
 
     enum Column
     {
-        ColID,
-        ColSudID,
-        ColPfad,
-        // virtual
-        ColDeleted,
+        ColID,      // INTEGER  | ID
+        ColSudID,   // INTEGER  | Sud ID, Referenz auf ID in ModelSud
+        ColPfad,    // TEXT     | Dateipfad des Anhangs
+        // virtual columns
+        ColDeleted, // BOOLEAN  | marked for deletion
         // number of columns
         NumCols
     };

@@ -14,22 +14,22 @@ public:
 
     enum Column
     {
-        ColID,
-        ColName,
-        ColMenge,
-        ColAlpha,
-        ColPellets,
-        ColTyp,
-        ColBemerkung,
-        ColEigenschaften,
-        ColAlternativen,
-        ColPreis,
-        ColEingelagert,
-        ColMindesthaltbar,
-        ColLink,
-        // virtual
-        ColDeleted,
-        ColInGebrauch,
+        ColID,             // INTEGER  | ID
+        ColName,           // TEXT     | Name
+        ColMenge,          // REAL     | Menge [g]
+        ColAlpha,          // REAL     | Alpha-Säure [%]
+        ColPellets,        // BOOLEAN  | Pellets
+        ColTyp,            // ENUM     | Hopfentyp [Brauhelfer::HopfenTyp]
+        ColBemerkung,      // TEXT     | Bemerkung
+        ColEigenschaften,  // TEXT     | Eigenschaften
+        ColAlternativen,   // TEXT     | Alternativen
+        ColPreis,          // REAL     | Preis [Waehrung/g]
+        ColEingelagert,    // DATETIME | Einlagerungsdatum
+        ColMindesthaltbar, // DATETIME | Verfallsdatum
+        ColLink,           // TEXT     | Link
+        // virtual columns
+        ColDeleted,        // BOOLEAN  | marked for deletion
+        ColInGebrauch,     // BOOLEAN  | Hopfen wird in mindestens einem Sud im Rezeptstatus verwendet
         // number of columns
         NumCols
     };

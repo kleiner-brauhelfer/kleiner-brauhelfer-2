@@ -14,18 +14,18 @@ public:
 
     enum Column
     {
-        ColID,
-        ColSudID,
-        ColZeitstempel,
-        ColRestextrakt,
-        ColAlc,
-        ColTemp,
-        ColBemerkung,
-        // virtual
-        ColDeleted,
-        ColTage,
-        ColsEVG,
-        ColtEVG,
+        ColID,          // INTEGER  | ID
+        ColSudID,       // INTEGER  | Sud ID, Referenz auf ID in ModelSud
+        ColZeitstempel, // DATETIME | Zeitstempel der Messung
+        ColRestextrakt, // REAL     | Restextrakt [°P]
+        ColAlc,         // REAL     | Alkohol [%vol]
+        ColTemp,        // REAL     | Temperatur [°C]
+        ColBemerkung,   // TEXT     | Bemerkung
+        // virtual columns
+        ColDeleted,     // BOOLEAN  | marked for deletion
+        ColTage,        // INTEGER  | Vergangene Tage seit der ersten Messung des Suds
+        ColsEVG,        // REAL     | Scheinbarer EVG aus Ist-Stammwuerze und Restextrakt [%]
+        ColtEVG,        // REAL     | Tatsaechlicher EVG aus Ist-Stammwuerze und korrigiertem Restextrakt [%]
         // number of columns
         NumCols
     };

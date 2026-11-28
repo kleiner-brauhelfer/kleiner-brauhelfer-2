@@ -14,25 +14,25 @@ public:
 
     enum Column
     {
-        ColID,
-        ColName,
-        ColMenge,
-        ColEinheit,
-        ColTyp,
-        ColAusbeute,
-        ColFarbe,
-        ColBemerkung,
-        ColEigenschaften,
-        ColAlternativen,
-        ColPreis,
-        ColEingelagert,
-        ColMindesthaltbar,
-        ColLink,
-        ColUnvergaerbar,
-        // virtual
-        ColDeleted,
-        ColMengeNormiert,
-        ColInGebrauch,
+        ColID,             // INTEGER  | ID
+        ColName,           // TEXT     | Name der Zutat
+        ColMenge,          // REAL     | Menge [Einheit]
+        ColEinheit,        // ENUM     | Einheit [Brauhelfer::Einheit]
+        ColTyp,            // ENUM     | Zutatentyp [Brauhelfer::ZusatzTyp]
+        ColAusbeute,       // REAL     | Ausbeute [%]
+        ColFarbe,          // REAL     | Farbe [EBC]
+        ColBemerkung,      // TEXT     | Bemerkung
+        ColEigenschaften,  // TEXT     | Eigenschaften
+        ColAlternativen,   // TEXT     | Alternativen
+        ColPreis,          // REAL     | Preis [Waehrung/Einheit]
+        ColEingelagert,    // DATETIME | Einlagerungsdatum
+        ColMindesthaltbar, // DATETIME | Verfallsdatum
+        ColLink,           // TEXT     | Link
+        ColUnvergaerbar,   // BOOLEAN  | Unvergaerbar
+        // virtual columns
+        ColDeleted,        // BOOLEAN  | marked for deletion
+        ColMengeNormiert,  // REAL     | Menge auf g, ml oder Stueck normalisiert
+        ColInGebrauch,     // BOOLEAN  | Zutat wird in mindestens einem Sud im Rezeptstatus verwendet
         // number of columns
         NumCols
     };

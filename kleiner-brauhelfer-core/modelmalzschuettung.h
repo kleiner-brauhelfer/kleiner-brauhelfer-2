@@ -14,18 +14,18 @@ public:
 
     enum Column
     {
-        ColID,
-        ColSudID,
-        ColName,
-        ColProzent,
-        Colerg_Menge,
-        ColFarbe,
-        ColPotential,
-        ColpH,
-        // virtual
-        ColDeleted,
-        ColExtrakt,
-        ColExtraktProzent,
+        ColID,             // INTEGER  | ID
+        ColSudID,          // INTEGER  | Sud ID, Referenz auf ID in ModelSud
+        ColName,           // TEXT     | Malzname
+        ColProzent,        // REAL     | Anteil an der Gesamtmalzmenge [%]
+        Colerg_Menge,      // REAL     | Berechnete Malzmenge aus Anteil und Gesamtmalzmenge [kg]
+        ColFarbe,          // REAL     | Farbe [EBC]
+        ColPotential,      // REAL     | Extraktpotenzial [°P/kg] (bei Berechnungen nicht verwendet)
+        ColpH,             // REAL     | pH
+        // virtual columns
+        ColDeleted,        // BOOLEAN  | marked for deletion
+        ColExtrakt,        // REAL     | Malz-Stammwuerzeanteil multipliziert mit Malzanteil [°P]
+        ColExtraktProzent, // REAL     | Anteil des Malzextrakts an der Stammwuerze aus allen Zutaten [%]
         // number of columns
         NumCols
     };

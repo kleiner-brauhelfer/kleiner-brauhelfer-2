@@ -14,28 +14,28 @@ public:
 
     enum Column
     {
-        ColID,
-        ColName,
-        ColHydrogencarbonat,
-        ColCalcium,
-        ColMagnesium,
-        ColSulfat,
-        ColChlorid,
-        ColNatrium,
-        ColRestalkalitaetAdd,
-        ColBemerkung,
-        // virtual
-        ColDeleted,
-        ColHydrogencarbonatMmol,
-        ColCalciumMmol,
-        ColMagnesiumMmol,
-        ColSulfatMmol,
-        ColChloridMmol,
-        ColNatriumMmol,
-        ColCarbonatHaerte,
-        ColCalciumHaerte,
-        ColMagnesiumHaerte,
-        ColRestalkalitaet,
+        ColID,                   // INTEGER  | ID
+        ColName,                 // TEXT     | Name
+        ColHydrogencarbonat,     // REAL     | Hydrogencarbonat [mg/L]
+        ColCalcium,              // REAL     | Calcium [mg/L]
+        ColMagnesium,            // REAL     | Magnesium [mg/L]
+        ColSulfat,               // REAL     | Sulfat [mg/L]
+        ColChlorid,              // REAL     | Chlorid [mg/L]
+        ColNatrium,              // REAL     | Natrium [mg/L]
+        ColRestalkalitaetAdd,    // REAL     | Restalkalitaet Zusatz [mmol/L]
+        ColBemerkung,            // TEXT     | Bemerkung
+        // virtual columns
+        ColDeleted,              // BOOLEAN  | marked for deletion
+        ColHydrogencarbonatMmol, // REAL     | Hydrogencarbonat aus mg/L in mmol/L umgerechnet
+        ColCalciumMmol,          // REAL     | Calcium aus mg/L in mmol/L umgerechnet
+        ColMagnesiumMmol,        // REAL     | Magnesium aus mg/L in mmol/L umgerechnet
+        ColSulfatMmol,           // REAL     | Sulfat aus mg/L in mmol/L umgerechnet
+        ColChloridMmol,          // REAL     | Chlorid aus mg/L in mmol/L umgerechnet
+        ColNatriumMmol,          // REAL     | Natrium aus mg/L in mmol/L umgerechnet
+        ColCarbonatHaerte,       // REAL     | Carbonathaerte aus Hydrogencarbonat berechnet [°dH]
+        ColCalciumHaerte,        // REAL     | Calciumhaerte aus Calcium berechnet [°dH]
+        ColMagnesiumHaerte,      // REAL     | Magnesiumhaerte aus Magnesium berechnet [°dH]
+        ColRestalkalitaet,       // REAL     | Restalkalitaet aus Hydrogencarbonat, Calcium, Magnesium und Zusatz [mmol/L]
         // number of columns
         NumCols
     };

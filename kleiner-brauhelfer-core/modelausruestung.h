@@ -14,31 +14,31 @@ public:
 
     enum Column
     {
-        ColID,
-        ColName,
-        ColTyp,
-        ColSudhausausbeute,
-        ColVerdampfungsrate,
-        ColKorrekturWasser,
-        ColKorrekturFarbe,
-        ColKorrekturMenge,
-        ColMaischebottich_Hoehe,
-        ColMaischebottich_Durchmesser,
-        ColMaischebottich_MaxFuellhoehe,
-        ColSudpfanne_Hoehe,
-        ColSudpfanne_Durchmesser,
-        ColSudpfanne_MaxFuellhoehe,
-        ColKosten,
-        ColBemerkung,
-        // virtual
-        ColDeleted,
-        ColMaischebottich_Volumen,
-        ColMaischebottich_MaxFuellvolumen,
-        ColSudpfanne_Volumen,
-        ColSudpfanne_MaxFuellvolumen,
-        ColVermoegen,
-        ColAnzahlSude,
-        ColAnzahlGebrauteSude,
+        ColID,                             // INTEGER  | ID
+        ColName,                           // TEXT     | Name der Anlage
+        ColTyp,                            // ENUM     | Typ der Anlage [AnlageTyp]
+        ColSudhausausbeute,                // REAL     | Sudhausausbeute [%]
+        ColVerdampfungsrate,               // REAL     | Verdampfungsrate [Liter/h]
+        ColKorrekturWasser,                // REAL     | Korrektur der Nachgussmenge [Liter]
+        ColKorrekturFarbe,                 // REAL     | Korrektur Farbe [EBC]
+        ColKorrekturMenge,                 // REAL     | Korrektur der Sollmenge [Liter]
+        ColMaischebottich_Hoehe,           // REAL     | Maischebottich Hoehe [cm]
+        ColMaischebottich_Durchmesser,     // REAL     | Maischebottich Durchmesser [cm]
+        ColMaischebottich_MaxFuellhoehe,   // REAL     | Maischebottich max. Fuellhoehe [cm]
+        ColSudpfanne_Hoehe,                // REAL     | Sudpfanne Hoehe [cm]
+        ColSudpfanne_Durchmesser,          // REAL     | Sudpfanne Durchmesser [cm]
+        ColSudpfanne_MaxFuellhoehe,        // REAL     | Sudpfanne max. Fuellhoehe [cm]
+        ColKosten,                         // REAL     | Betriebskosten (pauschal) [Waehrung]
+        ColBemerkung,                      // TEXT     | Bemerkung
+        // virtual columns
+        ColDeleted,                        // BOOLEAN  | marked for deletion
+        ColMaischebottich_Volumen,         // REAL     | Maischebottich-Zylindervolumen aus Hoehe und Durchmesser [Liter]
+        ColMaischebottich_MaxFuellvolumen, // REAL     | Maischebottich-Maximalvolumen aus Fuellhoehe und Durchmesser [Liter]
+        ColSudpfanne_Volumen,              // REAL     | Sudpfannen-Zylindervolumen aus Hoehe und Durchmesser [Liter]
+        ColSudpfanne_MaxFuellvolumen,      // REAL     | Sudpfannen-Maximalvolumen aus Fuellhoehe und Durchmesser [Liter]
+        ColVermoegen,                      // REAL     | Kleineres der maximalen Fuellvolumen von Maischebottich und Sudpfanne [Liter]
+        ColAnzahlSude,                     // INTEGER  | Anzahl aller Sude mit dieser Anlage [-]
+        ColAnzahlGebrauteSude,             // INTEGER  | Anzahl gebrauter Sude [-]
         // number of columns
         NumCols
     };

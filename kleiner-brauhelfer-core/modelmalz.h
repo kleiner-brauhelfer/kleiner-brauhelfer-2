@@ -14,23 +14,23 @@ public:
 
     enum Column
     {
-        ColID,
-        ColName,
-        ColMenge,
-        ColPotential,
-        ColFarbe,
-        ColpH,
-        ColMaxProzent,
-        ColBemerkung,
-        ColEigenschaften,
-        ColAlternativen,
-        ColPreis,
-        ColEingelagert,
-        ColMindesthaltbar,
-        ColLink,
-        // virtual
-        ColDeleted,
-        ColInGebrauch,
+        ColID,             // INTEGER  | ID
+        ColName,           // TEXT     | Name
+        ColMenge,          // REAL     | Menge [kg]
+        ColPotential,      // REAL     | Extrakt Potential [°P/kg]
+        ColFarbe,          // REAL     | Farbe [EBC]
+        ColpH,             // REAL     | pH Wert [pH]
+        ColMaxProzent,     // REAL     | Max. Prozentsatz [%]
+        ColBemerkung,      // TEXT     | Bemerkung
+        ColEigenschaften,  // TEXT     | Eigenschaften
+        ColAlternativen,   // TEXT     | Alternativen
+        ColPreis,          // REAL     | Preis [Waehrung/kg]
+        ColEingelagert,    // DATETIME | Einlagerungsdatum
+        ColMindesthaltbar, // DATETIME | Verfallsdatum
+        ColLink,           // TEXT     | Link
+        // virtual columns
+        ColDeleted,        // BOOLEAN  | marked for deletion
+        ColInGebrauch,     // BOOLEAN  | Malz wird in mindestens einem Sud im Rezeptstatus verwendet
         // number of columns
         NumCols
     };

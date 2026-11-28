@@ -14,13 +14,13 @@ public:
 
     enum Column
     {
-        ColID,
-        ColSudID,
-        ColKey,
-        ColValue,
-        // virtual
-        ColDeleted,
-        ColGlobal,
+        ColID,      // INTEGER  | ID
+        ColSudID,   // INTEGER  | Sud ID, Referenz auf ID in ModelSud oder -1 fur global
+        ColKey,     // TEXT     | Schluessel des benutzerdefinierten Tags
+        ColValue,   // TEXT     | Wert des benutzerdefinierten Tags
+        // virtual columns
+        ColDeleted, // BOOLEAN  | marked for deletion
+        ColGlobal,  // BOOLEAN  | Kennzeichnung eines Tags fuer alle Sude
         // number of columns
         NumCols
     };

@@ -14,25 +14,25 @@ public:
 
     enum Column
     {
-        ColID,
-        ColName,
-        ColMenge,
-        ColTypOGUG,
-        ColTypTrFl,
-        ColWuerzemenge,
-        ColSedimentation,
-        ColEVG,
-        ColTemperatur,
-        ColBemerkung,
-        ColEigenschaften,
-        ColAlternativen,
-        ColPreis,
-        ColEingelagert,
-        ColMindesthaltbar,
-        ColLink,
-        // virtual
-        ColDeleted,
-        ColInGebrauch,
+        ColID,             // INTEGER  | ID
+        ColName,           // TEXT     | Name
+        ColMenge,          // INTEGER  | Menge [-]
+        ColTypOGUG,        // INTEGER  | Gaerungsart: obergaerig oder untergaerig
+        ColTypTrFl,        // ENUM     | Hefetyp (trocken / fluessig) [Brauhelfer::HefeTyp]
+        ColWuerzemenge,    // REAL     | Würzenmenge für eine Einheit [Liter]
+        ColSedimentation,  // TEXT     | Sedimentation
+        ColEVG,            // TEXT     | EVG
+        ColTemperatur,     // TEXT     | Geeigneter Gärtemperaturbereich [°C]
+        ColBemerkung,      // TEXT     | Bemerkung
+        ColEigenschaften,  // TEXT     | Eigenschaften
+        ColAlternativen,   // TEXT     | Alternativen
+        ColPreis,          // REAL     | Preis [Waehrung/Einheit]
+        ColEingelagert,    // DATETIME | Einlagerungsdatum
+        ColMindesthaltbar, // DATETIME | Verfallsdatum
+        ColLink,           // TEXT     | Link
+        // virtual columns
+        ColDeleted,        // BOOLEAN  | marked for deletion
+        ColInGebrauch,     // BOOLEAN  | Hefe wird in mindestens einem Sud im Rezeptstatus verwendet
         // number of columns
         NumCols
     };

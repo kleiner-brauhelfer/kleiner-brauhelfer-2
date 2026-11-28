@@ -14,19 +14,19 @@ public:
 
     enum Column
     {
-        ColID,
-        ColSudID,
-        ColName,
-        ColProzent,
-        ColZeit,
-        Colerg_Menge,
-        ColAlpha,
-        ColPellets,
-        ColZeitpunkt, // in DB: Vorderwuerze (bei Gelegenheit umbenennen)
-        // virtual
-        ColDeleted,
-        ColIBUAnteil,
-        ColAusbeute,
+        ColID,        // INTEGER  | ID
+        ColSudID,     // INTEGER  | Sud ID, Referenz auf ID in ModelSud
+        ColName,      // TEXT     | Hopfenname
+        ColProzent,   // REAL     | Prozent [%]
+        ColZeit,      // INTEGER  | Zeit [min]
+        Colerg_Menge, // REAL     | Gesamtmenge [g]
+        ColAlpha,     // REAL     | Alpha-Säure [%]
+        ColPellets,   // BOOLEAN  | Pellets
+        ColZeitpunkt, // ENUM     | Zeitpunkt der Hopfengabe [Brauhelfer::HopfenZeitpunkt] (TODO: in Datenbank 'Vorderwuerze')
+        // virtual columns
+        ColDeleted,   // BOOLEAN  | marked for deletion
+        ColIBUAnteil, // REAL     | IBU-Beitrag der Gabe bezogen auf Sollmenge und Alpha-Ausbeute [%]
+        ColAusbeute,  // REAL     | Hopfenausbeute nach Kochzeit und Stammwuerze mit Pellet- und Kochgabe-Korrektur [%]
         // number of columns
         NumCols
     };

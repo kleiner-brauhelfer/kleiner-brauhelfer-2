@@ -14,23 +14,23 @@ public:
 
     enum Column
     {
-        ColID,
-        ColSudID,
-        ColPfad,
-        ColAnzahl,
-        ColBreite,
-        ColHoehe,
-        ColAbstandHor,
-        ColAbstandVert,
-        ColRandOben,
-        ColRandLinks,
-        ColRandRechts,
-        ColRandUnten,
-        ColPapiergroesse,
-        ColAusrichtung,
-        ColHintergrundfarbe,
-        // virtual
-        ColDeleted,
+        ColID,               // INTEGER  | ID
+        ColSudID,            // INTEGER  | Sud ID, Referenz auf ID in ModelSud
+        ColPfad,             // TEXT     | Dateipfad der Etikette
+        ColAnzahl,           // INTEGER  | Anzahl Etiketten auf einem Blatt
+        ColBreite,           // INTEGER  | Breite [mm]
+        ColHoehe,            // INTEGER  | Hoehe [mm]
+        ColAbstandHor,       // INTEGER  | Horizontaler Abstand zwischen Etiketten [mm]
+        ColAbstandVert,      // INTEGER  | Vertikaler Abstand zwischen Etiketten [mm]
+        ColRandOben,         // INTEGER  | Oberer Rand [mm]
+        ColRandLinks,        // INTEGER  | Linker Rand [mm]
+        ColRandRechts,       // INTEGER  | Rechter Rand [mm]
+        ColRandUnten,        // INTEGER  | Unterer Rand [mm]
+        ColPapiergroesse,    // INTEGER  | Papiergroesse [QPageSize::PageSizeId]
+        ColAusrichtung,      // INTEGER  | Ausrichtung [QPageLayout::Orientation]
+        ColHintergrundfarbe, // INTEGER  | Hintergrundfarbe [RGB]
+        // virtual columns
+        ColDeleted,          // BOOLEAN  | marked for deletion
         // number of columns
         NumCols
     };

@@ -15,16 +15,16 @@ public:
 
     enum Column
     {
-        ColID,
-        ColSudID,
-        ColZeitstempel,
-        ColDruck,
-        ColTemp,
-        ColCO2,
-        ColBemerkung,
-        // virtual
-        ColDeleted,
-        ColTage,
+        ColID,          // INTEGER  | ID
+        ColSudID,       // INTEGER  | Sud ID, Referenz auf ID in ModelSud
+        ColZeitstempel, // DATETIME | Zeitstempel der Messung
+        ColDruck,       // REAL     | Druck [bar]
+        ColTemp,        // REAL     | Temperatur [°C]
+        ColCO2,         // REAL     | Aus Druck und Temperatur berechneter CO2-Gehalt [g/L]
+        ColBemerkung,   // TEXT     | Bemerkung
+        // virtual columns
+        ColDeleted,     // BOOLEAN  | marked for deletion
+        ColTage,        // INTEGER  | Vergangene Tage seit der ersten Messung des Suds
         // number of columns
         NumCols
     };

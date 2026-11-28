@@ -14,15 +14,15 @@ public:
 
     enum Column
     {
-        ColID,
-        ColSudID,
-        ColName,
-        ColMenge,
-        ColEinheit,
-        ColFaktor,
-        ColRestalkalitaet,
-        // virtual
-        ColDeleted,
+        ColID,             // INTEGER  | ID
+        ColSudID,          // INTEGER  | Sud ID, Referenz auf ID in ModelSud
+        ColName,           // TEXT     | Name
+        ColMenge,          // REAL     | Aufbereitungsmenge; wird mit Faktor in Restalkalitaet umgerechnet [Einheit]
+        ColEinheit,        // ENUM     | Einheit [Brauhelfer::Einheit]
+        ColFaktor,         // REAL     | Umrechnungsfaktor zwischen Aufbereitungsmenge und Restalkalitaet
+        ColRestalkalitaet, // REAL     | Restalkalitaetsbeitrag aus Menge geteilt durch Faktor [mmol/L]
+        // virtual columns
+        ColDeleted,        // BOOLEAN  | marked for deletion
         // number of columns
         NumCols
     };
